@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Be- és kimenet, számítások - 10. évfolyam</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4">
+        <a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a>
+      </div>
+
+      <h1 class="text-center mb-4">2. Be- és kimenet, számítások</h1>
+      <p class="lead text-center mb-5">
+        Ebben a témakörben adatokat kérünk be a felhasználótól, átalakítjuk őket a megfelelő típusra, majd képletek segítségével számításokat végzünk.
+      </p>
+
+      <div class="alert alert-primary" role="alert">
+        <h2 class="h4">Mit fogsz megtanulni?</h2>
+        <ul class="mb-0">
+          <li>adatbekérés az <code>input()</code> függvénnyel,</li>
+          <li>az <code>int()</code> és <code>float()</code> típusátalakítás használata,</li>
+          <li>számítások készítése bekért adatokkal,</li>
+          <li>eredmények kerekítése és formázott kiírása,</li>
+          <li>összetettebb képletek programkóddá alakítása.</li>
+        </ul>
+      </div>
+
+      <h2 class="mt-5">1. Adatbekérés az input() függvénnyel</h2>
+      <p>Az <code>input()</code> megállítja a programot, és megvárja, hogy a felhasználó beírjon egy adatot.</p>
+      <pre class="bg-light p-3 rounded"><code>nev = input("Add meg a neved: ")
+print(f"Szia, {nev}!")</code></pre>
+      <div class="alert alert-warning">
+        Az <code>input()</code> eredménye mindig szöveg, vagyis <code>str</code> típusú adat, még akkor is, ha számjegyeket írunk be.
+      </div>
+
+      <h2 class="mt-5">2. Miért kell típusátalakítás?</h2>
+      <pre class="bg-light p-3 rounded"><code>szam = input("Adj meg egy számot: ")
+print(szam * 3)</code></pre>
+      <p>Ha a felhasználó 5-öt ír be, az eredmény <code>555</code> lesz, mert a program egy szöveget ismétel meg háromszor.</p>
+      <p>A számoláshoz előbb egész számmá kell alakítani az adatot:</p>
+      <pre class="bg-light p-3 rounded"><code>szam = int(input("Adj meg egy egész számot: "))
+print(szam * 3)</code></pre>
+
+      <h3 class="mt-4">A legfontosabb átalakítások</h3>
+      <table class="table table-bordered">
+        <thead><tr><th>Függvény</th><th>Eredmény típusa</th><th>Példa</th></tr></thead>
+        <tbody>
+          <tr><td><code>str()</code></td><td>szöveg</td><td><code>str(25)</code></td></tr>
+          <tr><td><code>int()</code></td><td>egész szám</td><td><code>int("25")</code></td></tr>
+          <tr><td><code>float()</code></td><td>tizedes szám</td><td><code>float("25.7")</code></td></tr>
+        </tbody>
+      </table>
+      <p>A tizedes számokat Pythonban ponttal kell megadni: <code>3.14</code>.</p>
+
+      <h2 class="mt-5">3. Az adatok típusának ellenőrzése</h2>
+      <p>A <code>type()</code> függvény megmutatja egy adat típusát.</p>
+      <pre class="bg-light p-3 rounded"><code>szoveg = input("Írj be valamit: ")
+print(type(szoveg))
+
+szam = int(szoveg)
+print(type(szam))</code></pre>
+
+      <h2 class="mt-5">4. Két szám bekérése és feldolgozása</h2>
+      <pre class="bg-light p-3 rounded"><code>a = int(input("Add meg az a értékét: "))
+b = int(input("Add meg a b értékét: "))
+
+osszeg = a + b
+kulonbseg = a - b
+szorzat = a * b
+hanyados = a / b
+
+print(f"A két szám összege: {osszeg}")
+print(f"A két szám különbsége: {kulonbseg}")
+print(f"A két szám szorzata: {szorzat}")
+print(f"A két szám hányadosa: {hanyados}")</code></pre>
+      <div class="alert alert-secondary">
+        Egyelőre feltételezzük, hogy <code>b</code> nem nulla. A hibás adatok ellenőrzésével az elágazások témakörében foglalkozunk.
+      </div>
+
+      <h2 class="mt-5">5. Kerekítés</h2>
+      <p>A <code>round()</code> függvény segítségével megadhatjuk, hány tizedesjegyre szeretnénk kerekíteni.</p>
+      <pre class="bg-light p-3 rounded"><code>eredmeny = 10 / 3
+print(round(eredmeny, 2))</code></pre>
+      <p>F-stringben közvetlenül is megadható a megjelenített tizedesjegyek száma:</p>
+      <pre class="bg-light p-3 rounded"><code>eredmeny = 10 / 3
+print(f"Az eredmény: {eredmeny:.2f}")</code></pre>
+
+      <h2 class="mt-5">6. Példa – Fahrenheit átváltása Celsius-fokra</h2>
+      <pre class="bg-light p-3 rounded"><code>fahrenheit = float(input("Hőmérséklet Fahrenheitben: "))
+celsius = (fahrenheit - 32) * 5 / 9
+
+print(f"{fahrenheit} °F = {celsius:.2f} °C")</code></pre>
+
+      <h2 class="mt-5">7. Példa – A kör kerülete és területe</h2>
+      <p>A <code>math</code> modul tartalmazza a π pontosabb értékét.</p>
+      <pre class="bg-light p-3 rounded"><code>import math
+
+sugar = float(input("Add meg a kör sugarát: "))
+kerulet = 2 * math.pi * sugar
+terulet = math.pi * sugar ** 2
+
+print(f"A kör kerülete: {kerulet:.2f}")
+print(f"A kör területe: {terulet:.2f}")</code></pre>
+
+      <h2 class="mt-5">8. Példa – Ébresztőóra</h2>
+      <p>A maradékos osztással biztosíthatjuk, hogy az eredmény 0 és 23 közé essen.</p>
+      <pre class="bg-light p-3 rounded"><code>most = int(input("Hány óra van jelenleg? "))
+hatralevo = int(input("Hány óra múlva csörögjön az ébresztő? "))
+
+ebreszto = (most + hatralevo) % 24
+print(f"Az ébresztő {ebreszto} órakor szólal meg.")</code></pre>
+
+      <h2 class="mt-5">9. Példa – Utazási költség</h2>
+      <pre class="bg-light p-3 rounded"><code>fogyasztas = float(input("Az autó fogyasztása (l/100 km): "))
+literar = float(input("Az üzemanyag ára (Ft/l): "))
+tavolsag = float(input("Az utazás hossza (km): "))
+utasok = int(input("Az utasok száma: "))
+
+szukseges_uzemanyag = tavolsag * fogyasztas / 100
+teljes_koltseg = szukseges_uzemanyag * literar
+koltseg_utasankent = teljes_koltseg / utasok
+
+print(f"A teljes költség: {teljes_koltseg:.0f} Ft")
+print(f"Az egy utasra jutó költség: {koltseg_utasankent:.0f} Ft")</code></pre>
+
+      <h2 class="mt-5">10. Gyakorlófeladatok</h2>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="card-title h5">1. Téglalap</h3>
+          <p>Kérd be egy téglalap két oldalát, majd írd ki a kerületét és területét!</p>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="card-title h5">2. Életkor</h3>
+          <p>Kérd be a felhasználó születési évét és az aktuális évet, majd számítsd ki, hány éves lesz az adott évben!</p>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="card-title h5">3. Celsius–Fahrenheit átváltás</h3>
+          <p>Kérj be egy Celsius-fokban megadott hőmérsékletet, és váltsd át Fahrenheitre!</p>
+          <p class="mb-0"><strong>Képlet:</strong> Fahrenheit = Celsius × 9 / 5 + 32</p>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="card-title h5">4. Számtani sorozat</h3>
+          <p>Kérd be a sorozat első elemét, különbségét és azt, hogy hányadik elemet keressük! Számítsd ki a keresett elemet!</p>
+          <p class="mb-0"><strong>Képlet:</strong> a<sub>n</sub> = a<sub>1</sub> + (n − 1) × d</p>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="card-title h5">5. Címletező program – kihívás</h3>
+          <p>Kérj be egy egész összeget, majd írd ki, hogy a lehető legkevesebb 100, 50, 20, 10, 5, 2 és 1 eurós címletből hogyan állítható össze!</p>
+          <p class="mb-0">Használd az egész osztást (<code>//</code>) és a maradékos osztást (<code>%</code>)!</p>
+        </div>
+      </div>
+
+      <h2 class="mt-5">11. Lehetséges megoldások</h2>
+      <details class="card mb-3">
+        <summary class="card-header fw-semibold">1. Téglalap megoldása</summary>
+        <div class="card-body"><pre class="bg-light p-3 rounded mb-0"><code>a = float(input("Az egyik oldal: "))
+b = float(input("A másik oldal: "))
+
+kerulet = 2 * (a + b)
+terulet = a * b
+
+print(f"Kerület: {kerulet}")
+print(f"Terület: {terulet}")</code></pre></div>
+      </details>
+
+      <details class="card mb-3">
+        <summary class="card-header fw-semibold">2–4. feladat megoldása</summary>
+        <div class="card-body">
+          <h4 class="h6">Életkor</h4>
+          <pre class="bg-light p-3 rounded"><code>szuletesi_ev = int(input("Születési év: "))
+aktualis_ev = int(input("Aktuális év: "))
+kor = aktualis_ev - szuletesi_ev
+print(f"Ebben az évben {kor} éves leszel.")</code></pre>
+          <h4 class="h6">Celsius–Fahrenheit</h4>
+          <pre class="bg-light p-3 rounded"><code>celsius = float(input("Hőmérséklet Celsius-fokban: "))
+fahrenheit = celsius * 9 / 5 + 32
+print(f"{celsius} °C = {fahrenheit:.2f} °F")</code></pre>
+          <h4 class="h6">Számtani sorozat</h4>
+          <pre class="bg-light p-3 rounded mb-0"><code>elso = int(input("Az első elem: "))
+d = int(input("A különbség: "))
+n = int(input("A keresett elem sorszáma: "))
+
+keresett = elso + (n - 1) * d
+print(f"A sorozat {n}. eleme: {keresett}")</code></pre>
+        </div>
+      </details>
+
+      <details class="card mb-4">
+        <summary class="card-header fw-semibold">5. Címletező program megoldása</summary>
+        <div class="card-body"><pre class="bg-light p-3 rounded mb-0"><code>osszeg = int(input("Add meg az összeget euróban: "))
+
+szazas = osszeg // 100
+osszeg %= 100
+otvenes = osszeg // 50
+osszeg %= 50
+huszas = osszeg // 20
+osszeg %= 20
+tizes = osszeg // 10
+osszeg %= 10
+otos = osszeg // 5
+osszeg %= 5
+kettes = osszeg // 2
+egyes = osszeg % 2
+
+print(f"100 eurós: {szazas} db")
+print(f"50 eurós: {otvenes} db")
+print(f"20 eurós: {huszas} db")
+print(f"10 eurós: {tizes} db")
+print(f"5 eurós: {otos} db")
+print(f"2 eurós: {kettes} db")
+print(f"1 eurós: {egyes} db")</code></pre></div>
+      </details>
+
+      <div class="alert alert-success mt-5" role="alert">
+        <strong>Összefoglalás:</strong> már tudsz adatokat bekérni, azokat egész vagy tizedes számmá alakítani, képletekkel számolni, valamint az eredményt kerekítve és formázva kiírni.
+      </div>
+
+      <div class="d-flex flex-column flex-md-row gap-3 justify-content-between mt-5">
+        <a href="../01_python_alapok/index.html" class="btn btn-outline-secondary btn-lg">← Előző témakör</a>
+        <a href="../index.html" class="btn btn-secondary btn-lg">Témakörök</a>
+      </div>
+    </div>
+  </body>
+</html>
