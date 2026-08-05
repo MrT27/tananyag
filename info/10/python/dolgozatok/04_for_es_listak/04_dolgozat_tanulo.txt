@@ -1,0 +1,37 @@
+# PYTHON DOLGOZAT 4. – FOR CIKLUS ÉS LISTÁK
+# Idő: 45 perc                     Összpontszám: 40 pont
+#
+# A fájlt nevezd át erre: 04_dolgozat.py
+# A programokat egymás alá készítsd el ebben a fájlban.
+# Minden eredményt érthető szöveggel írj ki.
+
+
+# 1. FELADAT – PÁROS SZÁMOK (8 pont)
+# Kérj be egy pozitív egész számot!
+# For ciklussal írd ki a páros számokat 2-től a megadott számig!
+# Ha a megadott szám páratlan, az utolsó kiírt szám az előtte levő páros legyen.
+
+
+
+# 2. FELADAT – LISTA BEJÁRÁSA (8 pont)
+# Hozd létre az alábbi listát:
+# tantargyak = ["matematika", "magyar", "informatika", "történelem"]
+# For ciklussal írd ki a lista elemeit sorszámozva!
+# A kívánt forma például: 1. matematika
+
+
+
+# 3. FELADAT – SZÁMOK BEKÉRÉSE (10 pont)
+# Kérj be pontosan 5 egész számot, és tárold őket egy listában!
+# A bekéréshez használj for ciklust!
+# Ezután írd ki a teljes listát és a számok összegét!
+
+
+
+# 4. FELADAT – HŐMÉRSÉKLETEK (14 pont)
+# Az alábbi lista egy hét napi hőmérsékleteit tartalmazza:
+# homersekletek = [12, 17, 9, 21, 18, 7, 15]
+# Írd ki egymás alá a 15 foknál magasabb értékeket!
+# Számold meg, hány ilyen nap volt!
+# Írd ki a legmagasabb hőmérsékletet is!
+# A maximum meghatározásához most használhatod a max() függvényt.

@@ -1,0 +1,40 @@
+# PYTHON DOLGOZAT 4. – MEGOLDÁSOK
+
+
+# 1. FELADAT – PÁROS SZÁMOK
+felso_hatar = int(input("Adj meg egy pozitív egész számot: "))
+
+for szam in range(2, felso_hatar + 1, 2):
+    print(szam)
+
+
+# 2. FELADAT – LISTA BEJÁRÁSA
+tantargyak = ["matematika", "magyar", "informatika", "történelem"]
+
+for i in range(len(tantargyak)):
+    print(f"{i + 1}. {tantargyak[i]}")
+
+
+# 3. FELADAT – SZÁMOK BEKÉRÉSE
+szamok = []
+
+for i in range(5):
+    szam = int(input(f"Add meg a(z) {i + 1}. egész számot: "))
+    szamok.append(szam)
+
+print(f"A lista: {szamok}")
+print(f"A számok összege: {sum(szamok)}")
+
+
+# 4. FELADAT – HŐMÉRSÉKLETEK
+homersekletek = [12, 17, 9, 21, 18, 7, 15]
+darab = 0
+
+print("A 15 foknál magasabb értékek:")
+for homerseklet in homersekletek:
+    if homerseklet > 15:
+        print(homerseklet)
+        darab += 1
+
+print(f"A 15 foknál melegebb napok száma: {darab}")
+print(f"A legmagasabb hőmérséklet: {max(homersekletek)} °C")
