@@ -1,0 +1,40 @@
+# PYTHON DOLGOZAT 5. – PROGRAMOZÁSI TÉTELEK
+# Idő: 45 perc                     Összpontszám: 40 pont
+#
+# A fájlt nevezd át erre: 05_dolgozat.py
+# A programokat egymás alá készítsd el ebben a fájlban.
+# Minden eredményt érthető szöveggel írj ki.
+# A sum(), min(), max() és count() függvényeket most ne használd.
+
+
+# 1. FELADAT – ÖSSZEGZÉS ÉS ÁTLAG (8 pont)
+# Dolgozz az alábbi listával:
+# pontok = [72, 85, 64, 91, 78, 69]
+# Ciklussal számítsd ki a pontok összegét és átlagát!
+# Az átlagot két tizedesjeggyel írd ki!
+
+
+
+# 2. FELADAT – MEGSZÁMLÁLÁS (8 pont)
+# Dolgozz az alábbi listával:
+# homersekletek = [12, 17, 9, 21, 18, 7, 15, 23]
+# Számold meg ciklussal, hány érték nagyobb 15-nél!
+
+
+
+# 3. FELADAT – ELDÖNTÉS ÉS KERESÉS (10 pont)
+# Dolgozz az alábbi listával:
+# nevek = ["Anna", "Béla", "Csilla", "Dávid", "Erika"]
+# Kérj be egy nevet!
+# Írd ki, hogy szerepel-e a listában!
+# Ha szerepel, írd ki azt is, hányadik helyen található!
+# A sorszámozás 1-től induljon.
+
+
+
+# 4. FELADAT – MINIMUM ÉS MAXIMUM (14 pont)
+# Dolgozz az alábbi listával:
+# tavolsagok = [128, 95, 164, 87, 142, 110]
+# Ciklussal határozd meg a legkisebb és a legnagyobb értéket!
+# Írd ki mindkettőt, majd számítsd ki a különbségüket is!
+# Segítség: a kezdő minimum és maximum legyen a lista első eleme.

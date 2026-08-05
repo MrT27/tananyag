@@ -1,0 +1,59 @@
+# PYTHON DOLGOZAT 5. – MEGOLDÁSOK
+
+
+# 1. FELADAT – ÖSSZEGZÉS ÉS ÁTLAG
+pontok = [72, 85, 64, 91, 78, 69]
+osszeg = 0
+
+for pont in pontok:
+    osszeg += pont
+
+atlag = osszeg / len(pontok)
+print(f"A pontok összege: {osszeg}")
+print(f"A pontok átlaga: {atlag:.2f}")
+
+
+# 2. FELADAT – MEGSZÁMLÁLÁS
+homersekletek = [12, 17, 9, 21, 18, 7, 15, 23]
+darab = 0
+
+for homerseklet in homersekletek:
+    if homerseklet > 15:
+        darab += 1
+
+print(f"A 15-nél nagyobb értékek száma: {darab}")
+
+
+# 3. FELADAT – ELDÖNTÉS ÉS KERESÉS
+nevek = ["Anna", "Béla", "Csilla", "Dávid", "Erika"]
+keresett_nev = input("Adj meg egy nevet: ")
+megtalalt = False
+hely = -1
+
+for i in range(len(nevek)):
+    if nevek[i] == keresett_nev:
+        megtalalt = True
+        hely = i + 1
+        break
+
+if megtalalt:
+    print(f"A név szerepel a listában, a(z) {hely}. helyen.")
+else:
+    print("A név nem szerepel a listában.")
+
+
+# 4. FELADAT – MINIMUM ÉS MAXIMUM
+tavolsagok = [128, 95, 164, 87, 142, 110]
+minimum = tavolsagok[0]
+maximum = tavolsagok[0]
+
+for tavolsag in tavolsagok:
+    if tavolsag < minimum:
+        minimum = tavolsag
+    if tavolsag > maximum:
+        maximum = tavolsag
+
+kulonbseg = maximum - minimum
+print(f"A legkisebb távolság: {minimum} km")
+print(f"A legnagyobb távolság: {maximum} km")
+print(f"A különbségük: {kulonbseg} km")
