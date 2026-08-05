@@ -1,0 +1,51 @@
+# PYTHON DOLGOZAT 3. – MEGOLDÁSOK
+
+
+# 1. FELADAT – SZÁMLÁLÁS
+felso_hatar = int(input("Adj meg egy pozitív egész számot: "))
+
+szam = 1
+while szam <= felso_hatar:
+    print(szam)
+    szam += 1
+
+
+# 2. FELADAT – VISSZASZÁMLÁLÁS
+szam = int(input("Adj meg egy pozitív egész számot: "))
+
+while szam >= 0:
+    print(szam)
+    szam -= 1
+
+print("Indulás!")
+
+
+# 3. FELADAT – HELYES ADAT BEKÉRÉSE
+szam = int(input("Adj meg egy egész számot 1 és 10 között: "))
+
+while szam < 1 or szam > 10:
+    print("Hibás érték.")
+    szam = int(input("Adj meg egy egész számot 1 és 10 között: "))
+
+print(f"Elfogadott szám: {szam}")
+
+
+# 4. FELADAT – VÉGJELES ADATFELDOLGOZÁS
+osszeg = 0
+darab = 0
+
+szam = int(input("Adj meg egy egész számot, a befejezéshez 0-t: "))
+
+while szam != 0:
+    osszeg += szam
+    darab += 1
+    szam = int(input("Adj meg egy egész számot, a befejezéshez 0-t: "))
+
+print(f"A számok összege: {osszeg}")
+print(f"A számok darabszáma: {darab}")
+
+if darab > 0:
+    atlag = osszeg / darab
+    print(f"A számok átlaga: {atlag:.2f}")
+else:
+    print("Nem érkezett feldolgozható adat.")

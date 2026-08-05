@@ -1,0 +1,36 @@
+# PYTHON DOLGOZAT 3. – WHILE CIKLUS
+# Idő: 45 perc                     Összpontszám: 40 pont
+#
+# A fájlt nevezd át erre: 03_dolgozat.py
+# A programokat egymás alá készítsd el ebben a fájlban.
+# Minden eredményt érthető szöveggel írj ki.
+
+
+# 1. FELADAT – SZÁMLÁLÁS (8 pont)
+# Kérj be egy pozitív egész számot!
+# While ciklussal írd ki a számokat 1-től a megadott számig!
+# A számok egymás alá kerüljenek.
+
+
+
+# 2. FELADAT – VISSZASZÁMLÁLÁS (8 pont)
+# Kérj be egy pozitív egész számot!
+# While ciklussal számolj vissza ettől a számtól 0-ig!
+# A végén írd ki: Indulás!
+
+
+
+# 3. FELADAT – HELYES ADAT BEKÉRÉSE (10 pont)
+# Kérj be egy egész számot 1 és 10 között!
+# Hibás érték esetén írd ki: Hibás érték.
+# Addig kérd újra a számot, amíg megfelelő érték nem érkezik!
+# A végén írd ki az elfogadott számot.
+
+
+
+# 4. FELADAT – VÉGJELES ADATFELDOLGOZÁS (14 pont)
+# Kérj be egész számokat egymás után!
+# A 0 legyen a befejező érték, ezt már ne dolgozd fel!
+# Írd ki a megadott számok összegét és darabszámát!
+# Ha legalább egy szám érkezett, írd ki az átlagot két tizedesjeggyel!
+# Ha rögtön 0 érkezik, írd ki: Nem érkezett feldolgozható adat.
