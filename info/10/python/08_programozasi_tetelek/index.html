@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programozási tételek - 10. évfolyam</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4"><a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a></div>
+      <h1 class="text-center mb-4">8. Programozási tételek</h1>
+      <p class="lead text-center mb-5">Gyakran ugyanazokat az adatfeldolgozási mintákat használjuk. Ezeket nevezzük programozási tételeknek.</p>
+
+      <div class="alert alert-primary">
+        <h2 class="h4">Mit fogsz megtanulni?</h2>
+        <ul class="mb-0">
+          <li>összegzés és megszámlálás alkalmazását,</li>
+          <li>eldöntést és lineáris keresést,</li>
+          <li>legkisebb és legnagyobb elem meghatározását,</li>
+          <li>kiválasztást és kiválogatást,</li>
+          <li>a megfelelő tétel felismerését egy feladat szövegéből,</li>
+          <li>több tétel összekapcsolását összetett feladatokban.</li>
+        </ul>
+      </div>
+
+      <h2 class="mt-5">1. Mit nevezünk programozási tételnek?</h2>
+      <p>A programozási tételek olyan általános megoldási minták, amelyek sok különböző feladatban újra felhasználhatók. A lista elemeit többnyire ciklussal járjuk be, közben pedig egy változóban gyűjtjük az eredményt.</p>
+      <div class="alert alert-info"><strong>Fontos gondolat:</strong> először azt kell felismerni, milyen eredményt keresünk: összeget, darabszámot, választ egy kérdésre, egy konkrét elemet vagy egy új listát.</div>
+
+      <h2 class="mt-5">2. Összegzés tétele</h2>
+      <p>Az elemek összegét határozzuk meg. Az eredményváltozó kezdeti értéke <code>0</code>.</p>
+      <pre class="bg-light p-3 rounded"><code>szamok = [12, 7, 5, 18, 9]
+osszeg = 0
+
+for szam in szamok:
+    osszeg += szam
+
+print(f"Az elemek összege: {osszeg}")</code></pre>
+      <p>Feltételes összegzésnél csak a megfelelő elemeket adjuk hozzá.</p>
+      <pre class="bg-light p-3 rounded"><code>paros_osszeg = 0
+
+for szam in szamok:
+    if szam % 2 == 0:
+        paros_osszeg += szam
+
+print(f"A páros számok összege: {paros_osszeg}")</code></pre>
+
+      <h2 class="mt-5">3. Megszámlálás tétele</h2>
+      <p>Megszámoljuk, hány elem felel meg egy feltételnek.</p>
+      <pre class="bg-light p-3 rounded"><code>jegyek = [5, 3, 4, 2, 5, 1, 4]
+darab = 0
+
+for jegy in jegyek:
+    if jegy == 5:
+        darab += 1
+
+print(f"Az ötösök száma: {darab}")</code></pre>
+      <div class="alert alert-secondary">Az összegzésnél az elemek értékét adjuk össze, a megszámlálásnál mindig egy számlálót növelünk.</div>
+
+      <h2 class="mt-5">4. Átlagszámítás</h2>
+      <p>Az átlag nem külön programozási tétel: összegzést és darabszámot használunk hozzá.</p>
+      <pre class="bg-light p-3 rounded"><code>pontok = [72, 65, 91, 84, 78]
+osszeg = 0
+
+for pont in pontok:
+    osszeg += pont
+
+atlag = osszeg / len(pontok)
+print(f"Az átlag: {atlag:.2f}")</code></pre>
+      <div class="alert alert-warning"><strong>Üres lista:</strong> osztás előtt ellenőrizni kell, hogy a lista tartalmaz-e elemet.</div>
+
+      <h2 class="mt-5">5. Eldöntés tétele</h2>
+      <p>A kérdésre igen vagy nem a válasz: található-e legalább egy megfelelő elem?</p>
+      <pre class="bg-light p-3 rounded"><code>szamok = [3, 7, 11, 14, 19]
+talalhato = False
+
+for szam in szamok:
+    if szam % 2 == 0:
+        talalhato = True
+        break
+
+if talalhato:
+    print("Van páros szám a listában.")
+else:
+    print("Nincs páros szám a listában.")</code></pre>
+      <p>A <code>break</code> azért használható, mert az első találat után már ismerjük a választ.</p>
+
+      <h2 class="mt-5">6. Lineáris keresés</h2>
+      <p>Nemcsak azt szeretnénk tudni, hogy van-e találat, hanem a helyére vagy az adatára is szükségünk van.</p>
+      <pre class="bg-light p-3 rounded"><code>nevek = ["Anna", "Béla", "Csilla", "Dávid"]
+keresett = input("Kit keresel? ")
+index = -1
+
+for i in range(len(nevek)):
+    if nevek[i].lower() == keresett.lower():
+        index = i
+        break
+
+if index != -1:
+    print(f"A név indexe: {index}")
+else:
+    print("A név nem található.")</code></pre>
+      <div class="alert alert-warning"><strong>Miért −1?</strong> A lista érvényes indexei 0-tól kezdődnek, ezért a −1 külön jelölheti, hogy nem találtunk megfelelő elemet.</div>
+
+      <h2 class="mt-5">7. Minimum- és maximumkiválasztás</h2>
+      <p>Feltételezzük, hogy a lista nem üres. Az első elemet tekintjük kezdetben a legkisebbnek vagy legnagyobbnak.</p>
+      <pre class="bg-light p-3 rounded"><code>homersekletek = [12, 9, 15, 7, 14]
+minimum = homersekletek[0]
+maximum = homersekletek[0]
+
+for homerseklet in homersekletek[1:]:
+    if homerseklet &lt; minimum:
+        minimum = homerseklet
+    if homerseklet &gt; maximum:
+        maximum = homerseklet
+
+print(f"Minimum: {minimum} °C")
+print(f"Maximum: {maximum} °C")</code></pre>
+      <p>Ha a szélsőérték helye is kell, indexet tárolunk.</p>
+      <pre class="bg-light p-3 rounded"><code>max_index = 0
+
+for i in range(1, len(homersekletek)):
+    if homersekletek[i] &gt; homersekletek[max_index]:
+        max_index = i
+
+print(f"A legnagyobb érték indexe: {max_index}")</code></pre>
+
+      <h2 class="mt-5">8. Kiválasztás tétele</h2>
+      <p>Biztosan tudjuk, hogy a keresett elem szerepel az adatok között, ezért a cél a helyének meghatározása.</p>
+      <pre class="bg-light p-3 rounded"><code>szamok = [8, 13, 21, 34, 55]
+keresett = 21
+i = 0
+
+while szamok[i] != keresett:
+    i += 1
+
+print(f"A keresett elem indexe: {i}")</code></pre>
+      <div class="alert alert-danger"><strong>Csak akkor használható biztonságosan,</strong> ha garantált, hogy a keresett elem valóban megtalálható a listában. Ellenkező esetben lineáris keresést használjunk.</div>
+
+      <h2 class="mt-5">9. Kiválogatás tétele</h2>
+      <p>A feltételnek megfelelő összes elemet új listába gyűjtjük.</p>
+      <pre class="bg-light p-3 rounded"><code>szamok = [4, 11, 8, 17, 20, 5]
+parosak = []
+
+for szam in szamok:
+    if szam % 2 == 0:
+        parosak.append(szam)
+
+print(parosak)</code></pre>
+      <p>Az eredeti lista nem változik meg.</p>
+
+      <h2 class="mt-5">10. Másolás tétele</h2>
+      <p>Minden elemből új értéket készítünk, és ezeket egy új listában tároljuk.</p>
+      <pre class="bg-light p-3 rounded"><code>celsius = [0, 10, 20, 30]
+fahrenheit = []
+
+for fok in celsius:
+    fahrenheit.append(fok * 9 / 5 + 32)
+
+print(fahrenheit)</code></pre>
+      <div class="alert alert-info">Kiválogatásnál csak néhány elem kerül az új listába; másolásnál minden eredeti elemhez létrejön egy új elem.</div>
+
+      <h2 class="mt-5">11. Több tétel összekapcsolása</h2>
+      <p>Egy valódi feladat gyakran több programozási tételt is igényel.</p>
+      <pre class="bg-light p-3 rounded"><code>pontok = [56, 82, 47, 91, 73, 88]
+osszeg = 0
+sikeresek = []
+maximum = pontok[0]
+
+for pont in pontok:
+    osszeg += pont
+
+    if pont &gt;= 60:
+        sikeresek.append(pont)
+
+    if pont &gt; maximum:
+        maximum = pont
+
+atlag = osszeg / len(pontok)
+
+print(f"Átlag: {atlag:.2f}")
+print(f"Sikeres eredmények: {sikeresek}")
+print(f"Legjobb eredmény: {maximum}")</code></pre>
+
+      <h2 class="mt-5">12. Melyik tételt válasszam?</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered align-middle">
+          <thead><tr><th>A feladat kérdése</th><th>Javasolt tétel</th></tr></thead>
+          <tbody>
+            <tr><td>Mennyi az adatok összege?</td><td>Összegzés</td></tr>
+            <tr><td>Hány adat felel meg a feltételnek?</td><td>Megszámlálás</td></tr>
+            <tr><td>Van-e megfelelő adat?</td><td>Eldöntés</td></tr>
+            <tr><td>Hol található egy adat, amely lehet, hogy nincs a listában?</td><td>Lineáris keresés</td></tr>
+            <tr><td>Melyik a legkisebb vagy legnagyobb adat?</td><td>Minimum- vagy maximumkiválasztás</td></tr>
+            <tr><td>Mely elemek felelnek meg a feltételnek?</td><td>Kiválogatás</td></tr>
+            <tr><td>Hogyan alakítható át minden elem?</td><td>Másolás</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="mt-5">13. Gyakorlófeladatok</h2>
+      <ol class="list-group list-group-numbered mb-4">
+        <li class="list-group-item">Határozd meg egy számlista elemeinek összegét és átlagát!</li>
+        <li class="list-group-item">Számold meg, hány negatív szám található egy listában!</li>
+        <li class="list-group-item">Döntsd el, van-e a listában 100-nál nagyobb szám!</li>
+        <li class="list-group-item">Kérj be egy nevet, és keresd meg egy névlistában! Írd ki az indexét vagy azt, hogy nincs benne!</li>
+        <li class="list-group-item">Határozd meg egy lista legkisebb elemét és annak indexét!</li>
+        <li class="list-group-item">Gyűjtsd új listába a legalább négyes osztályzatokat!</li>
+        <li class="list-group-item">Egy napi hőmérsékleteket tartalmazó listából írd ki az átlagot, a minimumot, a maximumot és a fagypont alatti értékek számát!</li>
+      </ol>
+
+      <details class="card mb-3">
+        <summary class="card-header fw-semibold">1–2. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>szamok = [12, 5, 9, 18, 6]
+osszeg = 0
+
+for szam in szamok:
+    osszeg += szam
+
+print(f"Összeg: {osszeg}")
+print(f"Átlag: {osszeg / len(szamok):.2f}")</code></pre>
+          <pre class="bg-light p-3 rounded mb-0"><code>szamok = [3, -2, 7, -8, 0, -1]
+darab = 0
+
+for szam in szamok:
+    if szam &lt; 0:
+        darab += 1
+
+print(f"Negatív számok: {darab}")</code></pre>
+        </div>
+      </details>
+
+      <details class="card mb-3">
+        <summary class="card-header fw-semibold">3–4. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>szamok = [23, 67, 104, 81, 99]
+van_nagy = False
+
+for szam in szamok:
+    if szam &gt; 100:
+        van_nagy = True
+        break
+
+print("Van 100-nál nagyobb szám." if van_nagy else "Nincs 100-nál nagyobb szám.")</code></pre>
+          <pre class="bg-light p-3 rounded mb-0"><code>nevek = ["Anna", "Béla", "Csilla", "Dávid"]
+keresett = input("Add meg a keresett nevet: ")
+index = -1
+
+for i in range(len(nevek)):
+    if nevek[i].lower() == keresett.lower():
+        index = i
+        break
+
+if index == -1:
+    print("Nincs a listában.")
+else:
+    print(f"A név indexe: {index}")</code></pre>
+        </div>
+      </details>
+
+      <details class="card mb-3">
+        <summary class="card-header fw-semibold">5–6. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>szamok = [18, 4, 27, 9, 4, 15]
+min_index = 0
+
+for i in range(1, len(szamok)):
+    if szamok[i] &lt; szamok[min_index]:
+        min_index = i
+
+print(f"Minimum: {szamok[min_index]}")
+print(f"Index: {min_index}")</code></pre>
+          <pre class="bg-light p-3 rounded mb-0"><code>jegyek = [2, 5, 3, 4, 1, 5, 4]
+jo_jegyek = []
+
+for jegy in jegyek:
+    if jegy &gt;= 4:
+        jo_jegyek.append(jegy)
+
+print(jo_jegyek)</code></pre>
+        </div>
+      </details>
+
+      <details class="card mb-4">
+        <summary class="card-header fw-semibold">7. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded mb-0"><code>homersekletek = [3, -2, 5, 1, -4, 6, 0]
+osszeg = 0
+minimum = homersekletek[0]
+maximum = homersekletek[0]
+fagyos_napok = 0
+
+for fok in homersekletek:
+    osszeg += fok
+
+    if fok &lt; minimum:
+        minimum = fok
+    if fok &gt; maximum:
+        maximum = fok
+    if fok &lt; 0:
+        fagyos_napok += 1
+
+print(f"Átlag: {osszeg / len(homersekletek):.2f} °C")
+print(f"Minimum: {minimum} °C")
+print(f"Maximum: {maximum} °C")
+print(f"Fagypont alatti napok: {fagyos_napok}")</code></pre>
+        </div>
+      </details>
+
+      <div class="alert alert-success mt-5"><strong>Összefoglalás:</strong> már felismered és alkalmazod az alapvető programozási tételeket. Tudsz adatokat összegezni és megszámolni, keresni, szélsőértéket meghatározni, valamint feltétel alapján új listát készíteni.</div>
+
+      <div class="d-flex flex-column flex-md-row gap-3 justify-content-between mt-5">
+        <a href="../07_szovegek_es_listak_feldolgozasa/index.html" class="btn btn-outline-secondary btn-lg">← Előző témakör</a>
+        <a href="../index.html" class="btn btn-secondary btn-lg">Témakörök</a>
+      </div>
+    </div>
+  </body>
+</html>
