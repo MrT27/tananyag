@@ -1,0 +1,5 @@
+A gyakorlás teszi a mestert.
+A hibákból lehet a legtöbbet tanulni.
+Egy nagy program sok kis lépésből áll.
+A pontos változónév segíti a megértést.
+A jó megoldás egyszerű és átlátható.

@@ -1,0 +1,10 @@
+piros;Ford;128400;12
+kék;Toyota;95600;8
+fehér;Ford;164200;19
+fekete;Skoda;87300;6
+szürke;Toyota;142800;14
+zöld;Opel;118900;11
+fehér;Ford;73400;5
+kék;Skoda;156700;17
+fekete;Opel;101200;9
+piros;Toyota;68200;4

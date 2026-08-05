@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fájlkezelés - 10. évfolyam</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+<div class="container py-5">
+  <div class="mb-4"><a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a></div>
+  <h1 class="text-center mb-4">12. Fájlkezelés</h1>
+  <p class="lead text-center mb-5">Adatok beolvasása szövegfájlból, feldolgozása, majd az eredmények mentése.</p>
+
+  <div class="alert alert-primary">
+    <h2 class="h4">Mit fogsz megtanulni?</h2>
+    <ul class="mb-0">
+      <li>szövegfájlt biztonságosan megnyitni a <code>with open()</code> szerkezettel,</li>
+      <li>a fájl sorait bejárni és megtisztítani,</li>
+      <li>tagolt adatokat listára bontani és megfelelő típusra alakítani,</li>
+      <li>a beolvasott rekordokat szótárak listájában tárolni,</li>
+      <li>eredményeket új fájlba írni.</li>
+    </ul>
+  </div>
+
+  <h2 class="mt-5">1. Fájl megnyitása és beolvasása</h2>
+  <p>A fájlt célszerű ugyanabba a mappába menteni, ahol a Python-program található.</p>
+  <pre class="bg-light p-3 rounded"><code>with open("nevek.txt", "r", encoding="UTF-8") as bemenet:
+    for sor in bemenet:
+        print(sor)</code></pre>
+  <p>Az <code>r</code> olvasási módot jelent. A <code>with</code> blokk végén a Python automatikusan bezárja a fájlt.</p>
+
+  <h2 class="mt-5">2. Sorvégi karakter eltávolítása</h2>
+  <pre class="bg-light p-3 rounded"><code>nevek = []
+
+with open("nevek.txt", "r", encoding="UTF-8") as bemenet:
+    for sor in bemenet:
+        nevek.append(sor.strip())
+
+print(nevek)</code></pre>
+  <div class="alert alert-warning"><strong>Fontos:</strong> a <code>strip()</code> eltávolítja a sorvégi sortörést és a felesleges szóközöket.</div>
+
+  <h2 class="mt-5">3. Tagolt adatok feldolgozása</h2>
+  <p>A saját feladataidban gyakran pontosvessző választja el az egy sorhoz tartozó adatokat.</p>
+  <pre class="bg-light p-3 rounded"><code># ceg.txt egyik sora:
+# Anna;szakértő;520000;2014
+
+dolgozok = []
+
+with open("ceg.txt", "r", encoding="UTF-8") as bemenet:
+    for sor in bemenet:
+        adatok = sor.strip().split(";")
+        dolgozo = {
+            "nev": adatok[0],
+            "pozicio": adatok[1],
+            "fizetes": int(adatok[2]),
+            "kezdes_eve": int(adatok[3])
+        }
+        dolgozok.append(dolgozo)</code></pre>
+  <p>A fájlból minden adat szövegként érkezik, ezért a számokat <code>int()</code> vagy <code>float()</code> segítségével át kell alakítani.</p>
+
+  <h2 class="mt-5">4. A beolvasott adatok feldolgozása</h2>
+  <pre class="bg-light p-3 rounded"><code>print(f"{len(dolgozok)} dolgozó van a listában.")
+
+fizikai_darab = 0
+fizetes_osszesen = 0
+
+for dolgozo in dolgozok:
+    if dolgozo["pozicio"] == "fizikai":
+        fizikai_darab += 1
+    fizetes_osszesen += dolgozo["fizetes"]
+
+print(f"Fizikai dolgozók: {fizikai_darab} fő")
+print(f"Havi fizetés összesen: {fizetes_osszesen:,} Ft")</code></pre>
+  <p>Itt már a korábban tanult megszámlálást és összegzést alkalmazzuk fájlból érkező adatokon.</p>
+
+  <h2 class="mt-5">5. Keresés és szélsőérték fájlból beolvasott adatokban</h2>
+  <pre class="bg-light p-3 rounded"><code>talalat = False
+for dolgozo in dolgozok:
+    if dolgozo["pozicio"] == "szakértő":
+        talalat = True
+        break
+
+print("Van szakértő." if talalat else "Nincs szakértő.")
+
+max_index = 0
+for i in range(1, len(dolgozok)):
+    if dolgozok[i]["fizetes"] &gt; dolgozok[max_index]["fizetes"]:
+        max_index = i
+
+print(f"A legtöbbet {dolgozok[max_index]['nev']} keresi.")</code></pre>
+
+  <h2 class="mt-5">6. Fájlba írás</h2>
+  <pre class="bg-light p-3 rounded"><code>with open("eredmeny.txt", "w", encoding="UTF-8") as kimenet:
+    print("A 2010 után belépett fizikai dolgozók:", file=kimenet)
+
+    for dolgozo in dolgozok:
+        if dolgozo["kezdes_eve"] &gt; 2010 and dolgozo["pozicio"] == "fizikai":
+            print(dolgozo["nev"], file=kimenet)</code></pre>
+  <p>A <code>w</code> új fájlt készít, vagy felülírja a meglévőt. A <code>print(..., file=kimenet)</code> a képernyő helyett a fájlba ír.</p>
+
+  <h2 class="mt-5">7. Írási módok</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead><tr><th>Mód</th><th>Jelentés</th></tr></thead>
+      <tbody>
+        <tr><td><code>r</code></td><td>Meglévő fájl olvasása.</td></tr>
+        <tr><td><code>w</code></td><td>Új fájl írása; a korábbi tartalmat felülírja.</td></tr>
+        <tr><td><code>a</code></td><td>Új tartalom hozzáfűzése a fájl végéhez.</td></tr>
+        <tr><td><code>x</code></td><td>Új fájl létrehozása; hibát ad, ha már létezik.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="mt-5">8. Teljes példa: autóflotta</h2>
+  <pre class="bg-light p-3 rounded"><code>autok = []
+
+with open("autok.txt", "r", encoding="UTF-8") as bemenet:
+    for sor in bemenet:
+        adatok = sor.strip().split(";")
+        auto = {
+            "szin": adatok[0],
+            "marka": adatok[1],
+            "futott_km": int(adatok[2]),
+            "szerviz_napok": int(adatok[3])
+        }
+        autok.append(auto)
+
+ford_km = 0
+markak = []
+
+for auto in autok:
+    if auto["marka"] == "Ford":
+        ford_km += auto["futott_km"]
+    if auto["marka"] not in markak:
+        markak.append(auto["marka"])
+
+print(f"A flottában {len(autok)} autó van.")
+print(f"A Fordok összesen {ford_km:,} km-t futottak.")
+
+with open("markak.txt", "w", encoding="UTF-8") as kimenet:
+    for marka in markak:
+        print(marka, file=kimenet)</code></pre>
+
+  <h2 class="mt-5">A témakörhöz tartozó adatfájlok</h2>
+  <p>Töltsd le a feladathoz szükséges fájlt, majd másold ugyanabba a mappába, ahol a Python-programod található.</p>
+  <div class="list-group mb-4">
+    <a class="list-group-item list-group-item-action" href="adatok/nevek.txt" download><strong>nevek.txt</strong> – soronként egy név</a>
+    <a class="list-group-item list-group-item-action" href="adatok/szamok.txt" download><strong>szamok.txt</strong> – soronként egy egész szám</a>
+    <a class="list-group-item list-group-item-action" href="adatok/termekek.txt" download><strong>termekek.txt</strong> – név;ár;készlet</a>
+    <a class="list-group-item list-group-item-action" href="adatok/ceg.txt" download><strong>ceg.txt</strong> – név;pozíció;fizetés;kezdés éve</a>
+    <a class="list-group-item list-group-item-action" href="adatok/autok.txt" download><strong>autok.txt</strong> – szín;márka;futott kilométer;szerviznapok</a>
+    <a class="list-group-item list-group-item-action" href="adatok/idezet.txt" download><strong>idezet.txt</strong> – soronként egy idézet</a>
+    <a class="list-group-item list-group-item-action" href="adatok/README.txt" download><strong>README.txt</strong> – fájlformátumok és használati útmutató</a>
+  </div>
+  <div class="alert alert-info"><strong>Tipp:</strong> a fájlneveket ne változtasd meg, mert a mintaprogramok ezeket a neveket használják.</div>
+
+  <h2 class="mt-5">Gyakorlófeladatok</h2>
+  <ol class="list-group list-group-numbered mb-4">
+    <li class="list-group-item">Olvasd be egy <code>szamok.txt</code> fájl egész számait, majd írd ki az összegüket és átlagukat!</li>
+    <li class="list-group-item">Olvasd be a <code>nevek.txt</code> fájlt, és írd ki az öt karakternél hosszabb neveket!</li>
+    <li class="list-group-item">Egy <code>termekek.txt</code> fájl sorai: név;ár;készlet. Határozd meg a legdrágább terméket!</li>
+    <li class="list-group-item">A <code>ceg.txt</code> alapján írd ki fájlba a 400 000 Ft-nál többet keresők nevét!</li>
+    <li class="list-group-item">Az <code>autok.txt</code> adataiból számold meg márkánként az autókat!</li>
+    <li class="list-group-item">Olvass be idézeteket, fordítsd meg minden sor karaktereit, és mentsd őket új fájlba!</li>
+  </ol>
+
+  <details class="card mb-3">
+    <summary class="card-header fw-semibold">1–3. feladat megoldási mintája</summary>
+    <div class="card-body">
+      <pre class="bg-light p-3 rounded"><code>szamok = []
+with open("szamok.txt", "r", encoding="UTF-8") as bemenet:
+    for sor in bemenet:
+        szamok.append(int(sor.strip()))
+
+print(sum(szamok))
+print(sum(szamok) / len(szamok))</code></pre>
+      <pre class="bg-light p-3 rounded"><code>with open("nevek.txt", "r", encoding="UTF-8") as bemenet:
+    for sor in bemenet:
+        nev = sor.strip()
+        if len(nev) &gt; 5:
+            print(nev)</code></pre>
+      <pre class="bg-light p-3 rounded mb-0"><code>termekek = []
+with open("termekek.txt", "r", encoding="UTF-8") as bemenet:
+    for sor in bemenet:
+        adat = sor.strip().split(";")
+        termekek.append({"nev": adat[0], "ar": int(adat[1]), "keszlet": int(adat[2])})
+
+max_index = 0
+for i in range(1, len(termekek)):
+    if termekek[i]["ar"] &gt; termekek[max_index]["ar"]:
+        max_index = i
+print(termekek[max_index]["nev"])</code></pre>
+    </div>
+  </details>
+
+  <details class="card mb-4">
+    <summary class="card-header fw-semibold">4–6. feladat megoldási mintája</summary>
+    <div class="card-body">
+      <pre class="bg-light p-3 rounded"><code>with open("magas_fizetes.txt", "w", encoding="UTF-8") as kimenet:
+    for dolgozo in dolgozok:
+        if dolgozo["fizetes"] &gt; 400000:
+            print(dolgozo["nev"], file=kimenet)</code></pre>
+      <pre class="bg-light p-3 rounded"><code>gyakorisag = {}
+for auto in autok:
+    marka = auto["marka"]
+    gyakorisag[marka] = gyakorisag.get(marka, 0) + 1
+
+for marka, darab in gyakorisag.items():
+    print(marka, darab)</code></pre>
+      <pre class="bg-light p-3 rounded mb-0"><code>with open("idezet.txt", "r", encoding="UTF-8") as bemenet, \
+     open("idezet_uj.txt", "w", encoding="UTF-8") as kimenet:
+    for sor in bemenet:
+        print(sor.strip()[::-1], file=kimenet)</code></pre>
+    </div>
+  </details>
+
+  <div class="alert alert-success mt-5"><strong>Összefoglalás:</strong> már képes vagy külső fájlból adatokat beolvasni, azokat listákban és szótárakban feldolgozni, majd a kapott eredményt új fájlba menteni. Ezzel összeállt a 10. évfolyamos Python-anyag minden fontos eszköze.</div>
+
+  <div class="d-flex flex-column flex-md-row gap-3 justify-content-between mt-5">
+    <a href="../11_szotarak/index.html" class="btn btn-outline-secondary btn-lg">← Előző témakör</a>
+    <a href="../index.html" class="btn btn-secondary btn-lg">Témakörök</a>
+  </div>
+</div>
+</body>
+</html>
