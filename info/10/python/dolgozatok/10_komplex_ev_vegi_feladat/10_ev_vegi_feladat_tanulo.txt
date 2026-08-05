@@ -1,0 +1,45 @@
+# 10. ÉRTÉKELÉS – KOMPLEX ÉV VÉGI FELADAT
+# WEBÁRUHÁZI RENDELÉSEK
+# 90 perc – 60 pont
+#
+# A rendelesek.txt fájlt másold a program mellé!
+# Egy sor felépítése:
+# azonosító;vevő neve;termék;kategória;darabszám;egységár;teljesítve
+# A teljesítve mező értéke: igen vagy nem.
+#
+# A programot függvényekre bontva készítsd el!
+
+# 1. FELADAT – BEOLVASÁS (12 pont)
+# Olvasd be a rendelesek.txt fájlt szótárak listájába!
+# A darabszámot és az egységárat alakítsd egész számmá!
+# Írd ki a beolvasott rendelések számát!
+
+
+# 2. FELADAT – RENDELÉSI ÉRTÉK (8 pont)
+# Készíts rendeles_erteke(rendeles) nevű függvényt!
+# A függvény adja vissza a darabszám és az egységár szorzatát!
+# Írd ki az összes rendelés együttes értékét!
+
+
+# 3. FELADAT – LEGNAGYOBB RENDELÉS (10 pont)
+# Keresd meg a legnagyobb értékű rendelést!
+# Írd ki az azonosítóját, a vevő nevét és a rendelés értékét!
+# A max() függvényt ne használd!
+
+
+# 4. FELADAT – KATEGÓRIÁK STATISZTIKÁJA (10 pont)
+# Készíts szótárt, amely megadja, kategóriánként hány darab terméket rendeltek!
+# Írd ki a kategóriákat és a hozzájuk tartozó darabszámokat!
+
+
+# 5. FELADAT – KERESÉS (8 pont)
+# Kérj be egy vevőnevet!
+# Írd ki a vevő rendeléseinek azonosítóját és értékét!
+# Ha nincs ilyen vevő, írj ki hibaüzenetet!
+
+
+# 6. FELADAT – EREDMÉNYFÁJL (12 pont)
+# A nem teljesített rendeléseket írd a teljesitesre_var.txt fájlba!
+# Egy sor tartalma legyen:
+# azonosító;vevő neve;termék;rendelési érték
+# Végül írd ki, hány rendelés került a fájlba!
