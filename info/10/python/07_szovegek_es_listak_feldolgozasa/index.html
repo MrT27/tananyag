@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Szövegek és listák feldolgozása - 10. évfolyam</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4"><a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a></div>
+      <h1 class="text-center mb-4">7. Szövegek és listák feldolgozása</h1>
+      <p class="lead text-center mb-5">A szövegeket karakterenként vagy szavanként is feldolgozhatjuk, a kiválasztott adatokat pedig új listába gyűjthetjük.</p>
+
+      <div class="alert alert-primary">
+        <h2 class="h4">Mit fogsz megtanulni?</h2>
+        <ul class="mb-0">
+          <li>szöveg karaktereinek bejárását,</li>
+          <li>gyakori szövegkezelő metódusok használatát,</li>
+          <li>mondatok szavakra bontását a <code>split()</code> segítségével,</li>
+          <li>lista elemeinek összefűzését a <code>join()</code> metódussal,</li>
+          <li>keresést, megszámlálást és szűrést,</li>
+          <li>új lista készítését egy meglévő lista alapján.</li>
+        </ul>
+      </div>
+
+      <h2 class="mt-5">1. A szöveg mint karaktersorozat</h2>
+      <p>A Python a szöveget karakterek rendezett sorozataként kezeli. Emiatt indexelhető, szeletelhető és ciklussal bejárható.</p>
+      <pre class="bg-light p-3 rounded"><code>szo = "programozás"
+
+print(szo[0])    # p
+print(szo[-1])   # s
+print(szo[0:7])  # program</code></pre>
+      <div class="alert alert-warning"><strong>Fontos:</strong> a szöveg karaktereit nem módosíthatjuk közvetlenül. Egy változtatáshoz új szöveget kell létrehozni.</div>
+
+      <h2 class="mt-5">2. Szöveg bejárása</h2>
+      <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy szót: ")
+
+for karakter in szo:
+    print(karakter)</code></pre>
+      <p>Indexes bejárást akkor használunk, ha a karakter helyére is szükségünk van.</p>
+      <pre class="bg-light p-3 rounded"><code>szo = "Python"
+
+for i in range(len(szo)):
+    print(f"{i}. index: {szo[i]}")</code></pre>
+
+      <h2 class="mt-5">3. Kis- és nagybetűk kezelése</h2>
+      <pre class="bg-light p-3 rounded"><code>nev = input("Add meg a neved: ")
+
+print(nev.lower())       # minden betű kicsi
+print(nev.upper())       # minden betű nagy
+print(nev.capitalize())  # az első betű nagy
+print(nev.title())       # minden szó első betűje nagy</code></pre>
+      <p>Keresés előtt gyakran egységesítjük a szöveget, hogy a kis- és nagybetűk ne befolyásolják az eredményt.</p>
+
+      <h2 class="mt-5">4. Felesleges szóközök eltávolítása</h2>
+      <pre class="bg-light p-3 rounded"><code>szoveg = "   Python tananyag   "
+
+print(szoveg.strip())   # mindkét oldalról
+print(szoveg.lstrip())  # bal oldalról
+print(szoveg.rstrip())  # jobb oldalról</code></pre>
+      <div class="alert alert-secondary">A <code>strip()</code> különösen hasznos fájlból beolvasott sorok és felhasználói adatok tisztításakor.</div>
+
+      <h2 class="mt-5">5. Keresés szövegben</h2>
+      <pre class="bg-light p-3 rounded"><code>mondat = "A Python könnyen tanulható nyelv."
+
+if "Python" in mondat:
+    print("A keresett szó szerepel a mondatban.")
+
+print(mondat.count("a"))
+print(mondat.startswith("A"))
+print(mondat.endswith("nyelv."))</code></pre>
+
+      <h2 class="mt-5">6. Szöveg cseréje</h2>
+      <pre class="bg-light p-3 rounded"><code>mondat = "A macska a széken ül."
+uj_mondat = mondat.replace("macska", "kutya")
+
+print(uj_mondat)</code></pre>
+      <p>A <code>replace()</code> nem az eredeti szöveget módosítja, hanem egy új szöveget ad vissza.</p>
+
+      <h2 class="mt-5">7. Mondat felbontása szavakra: split()</h2>
+      <p>A <code>split()</code> egy szövegből listát készít. Alapértelmezés szerint a szóközöknél darabol.</p>
+      <pre class="bg-light p-3 rounded"><code>mondat = input("Írj be egy mondatot: ")
+szavak = mondat.split()
+
+print(szavak)
+print(f"A mondat {len(szavak)} szóból áll.")</code></pre>
+      <p>Más elválasztójelet is megadhatunk.</p>
+      <pre class="bg-light p-3 rounded"><code>adat = "alma;körte;szilva;barack"
+gyumolcsok = adat.split(";")
+
+print(gyumolcsok)</code></pre>
+
+      <h2 class="mt-5">8. Lista összefűzése szöveggé: join()</h2>
+      <pre class="bg-light p-3 rounded"><code>szavak = ["A", "Python", "jól", "tanulható"]
+mondat = " ".join(szavak)
+
+print(mondat)</code></pre>
+      <p>Az idézőjelek között megadott szöveg kerül az elemek közé.</p>
+      <pre class="bg-light p-3 rounded"><code>nevek = ["Anna", "Béla", "Csilla"]
+print(", ".join(nevek))</code></pre>
+
+      <h2 class="mt-5">9. Karakterek megszámlálása</h2>
+      <p>Számoljuk meg, hány magánhangzó szerepel egy szóban!</p>
+      <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy szót: ").lower()
+maganhangzok = "aáeéiíoóöőuúüű"
+darab = 0
+
+for karakter in szo:
+    if karakter in maganhangzok:
+        darab += 1
+
+print(f"A magánhangzók száma: {darab}")</code></pre>
+
+      <h2 class="mt-5">10. Szavak keresése és szűrése</h2>
+      <p>Gyűjtsük ki azokat a szavakat, amelyek legalább öt karakterből állnak!</p>
+      <pre class="bg-light p-3 rounded"><code>mondat = input("Írj be egy mondatot: ")
+szavak = mondat.split()
+hosszu_szavak = []
+
+for szo in szavak:
+    if len(szo) >= 5:
+        hosszu_szavak.append(szo)
+
+print(hosszu_szavak)</code></pre>
+      <div class="alert alert-info"><strong>Ez a szűrés alapgondolata:</strong> végigjárjuk az adatokat, megvizsgálunk egy feltételt, és a megfelelő elemeket új listába tesszük.</div>
+
+      <h2 class="mt-5">11. Szöveg megfordítása</h2>
+      <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy szót: ")
+forditott = ""
+
+for karakter in szo:
+    forditott = karakter + forditott
+
+print(forditott)</code></pre>
+      <p>Szeleteléssel rövidebben is megoldható:</p>
+      <pre class="bg-light p-3 rounded"><code>print(szo[::-1])</code></pre>
+
+      <h2 class="mt-5">12. Palindrom vizsgálata</h2>
+      <p>A palindrom olyan szó vagy szöveg, amely visszafelé olvasva is ugyanaz.</p>
+      <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy szót: ").lower()
+
+if szo == szo[::-1]:
+    print("Palindrom.")
+else:
+    print("Nem palindrom.")</code></pre>
+
+      <h2 class="mt-5">13. Gyakorlófeladatok</h2>
+      <ol class="list-group list-group-numbered mb-4">
+        <li class="list-group-item">Kérj be egy szót, majd írd ki a karaktereit külön sorokba!</li>
+        <li class="list-group-item">Kérj be egy mondatot, és írd ki, hány karakterből, illetve hány szóból áll!</li>
+        <li class="list-group-item">Kérj be egy szöveget, majd számold meg benne az „a” betűket kis- és nagybetűtől függetlenül!</li>
+        <li class="list-group-item">Kérj be egy mondatot, és írd ki csak a négy karakternél hosszabb szavakat!</li>
+        <li class="list-group-item">Kérj be öt nevet egy listába, majd írd ki azokat, amelyek „A” betűvel kezdődnek!</li>
+        <li class="list-group-item">Kérj be vesszővel elválasztott egész számokat, alakítsd őket számlistává, majd írd ki a páros számokat!</li>
+        <li class="list-group-item">Kérj be egy mondatot, fordítsd meg a szavak sorrendjét, majd írd ki az eredményt!</li>
+      </ol>
+
+      <details class="card mb-3">
+        <summary class="card-header fw-semibold">1–2. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy szót: ")
+
+for karakter in szo:
+    print(karakter)</code></pre>
+          <pre class="bg-light p-3 rounded mb-0"><code>mondat = input("Írj be egy mondatot: ")
+szavak = mondat.split()
+
+print(f"Karakterek száma: {len(mondat)}")
+print(f"Szavak száma: {len(szavak)}")</code></pre>
+        </div>
+      </details>
+
+      <details class="card mb-3">
+        <summary class="card-header fw-semibold">3–4. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>szoveg = input("Adj meg egy szöveget: ").lower()
+darab = 0
+
+for karakter in szoveg:
+    if karakter == "a":
+        darab += 1
+
+print(f"Az a betűk száma: {darab}")</code></pre>
+          <pre class="bg-light p-3 rounded mb-0"><code>mondat = input("Írj be egy mondatot: ")
+szavak = mondat.split()
+
+for szo in szavak:
+    if len(szo) > 4:
+        print(szo)</code></pre>
+        </div>
+      </details>
+
+      <details class="card mb-3">
+        <summary class="card-header fw-semibold">5–6. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>nevek = []
+
+for i in range(5):
+    nevek.append(input(f"Add meg a(z) {i + 1}. nevet: ").strip())
+
+for nev in nevek:
+    if nev.lower().startswith("a"):
+        print(nev)</code></pre>
+          <pre class="bg-light p-3 rounded mb-0"><code>adat = input("Adj meg egész számokat vesszővel elválasztva: ")
+szoveges_szamok = adat.split(",")
+szamok = []
+
+for elem in szoveges_szamok:
+    szamok.append(int(elem.strip()))
+
+for szam in szamok:
+    if szam % 2 == 0:
+        print(szam)</code></pre>
+        </div>
+      </details>
+
+      <details class="card mb-4">
+        <summary class="card-header fw-semibold">7. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded mb-0"><code>mondat = input("Írj be egy mondatot: ")
+szavak = mondat.split()
+szavak.reverse()
+
+print(" ".join(szavak))</code></pre>
+        </div>
+      </details>
+
+      <div class="alert alert-success mt-5"><strong>Összefoglalás:</strong> már tudsz szöveget karakterenként és szavanként feldolgozni, szöveget listává alakítani, listát szöveggé összefűzni, valamint feltétel alapján karaktereket és listaelemeket keresni, megszámolni és kiválogatni.</div>
+
+      <div class="d-flex flex-column flex-md-row gap-3 justify-content-between mt-5">
+        <a href="../06_listak/index.html" class="btn btn-outline-secondary btn-lg">← Előző témakör</a>
+        <a href="../index.html" class="btn btn-secondary btn-lg">Témakörök</a>
+      </div>
+    </div>
+  </body>
+</html>
