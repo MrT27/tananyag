@@ -1,7 +1,7 @@
-# PYTHON DOLGOZAT 6. – FÜGGVÉNYEK
+# PYTHON DOLGOZAT 7. – FÜGGVÉNYEK
 # Idő: 45 perc                     Összpontszám: 40 pont
 #
-# A fájlt nevezd át erre: 06_dolgozat.py
+# A fájlt nevezd át erre: 07_dolgozat.py
 # Minden feladatban készítsd el a kért függvényt, majd hívd is meg!
 # Az eredményeket érthető szöveggel írd ki.
 

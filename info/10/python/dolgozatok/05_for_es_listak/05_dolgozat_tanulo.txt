@@ -1,7 +1,7 @@
-# PYTHON DOLGOZAT 4. – FOR CIKLUS ÉS LISTÁK
+# PYTHON DOLGOZAT 5. – FOR CIKLUS ÉS LISTÁK
 # Idő: 45 perc                     Összpontszám: 40 pont
 #
-# A fájlt nevezd át erre: 04_dolgozat.py
+# A fájlt nevezd át erre: 05_dolgozat.py
 # A programokat egymás alá készítsd el ebben a fájlban.
 # Minden eredményt érthető szöveggel írj ki.
 

@@ -1,0 +1,29 @@
+# PYTHON RÖPDOLGOZAT 2. – LOGIKAI MŰVELETEK – MEGOLDÁSOK
+
+
+# 1. FELADAT – KORHATÁR
+kor = int(input("Életkor: "))
+megfelelo_kor = kor >= 14 and kor <= 18
+print(f"14 és 18 év közötti: {megfelelo_kor}")
+
+
+# 2. FELADAT – HÉTVÉGE
+nap = input("A nap neve kisbetűvel: ").strip().lower()
+hetvege = nap == "szombat" or nap == "vasárnap"
+print(f"Hétvége: {hetvege}")
+
+
+# 3. FELADAT – NEM ÜRES SZÖVEG
+szoveg = input("Adj meg egy szöveget: ")
+nem_ures = not (szoveg == "")
+print(f"Nem üres szöveg: {nem_ures}")
+
+
+# 4. FELADAT – BELÉPÉS
+felhasznalonev = input("Felhasználónév: ")
+jelszo = input("Jelszó: ")
+
+if felhasznalonev == "diak" and jelszo == "python10":
+    print("Sikeres belépés.")
+else:
+    print("Sikertelen belépés.")

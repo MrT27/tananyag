@@ -1,7 +1,7 @@
-# PYTHON DOLGOZAT 5. – PROGRAMOZÁSI TÉTELEK
+# PYTHON DOLGOZAT 6. – PROGRAMOZÁSI TÉTELEK
 # Idő: 45 perc                     Összpontszám: 40 pont
 #
-# A fájlt nevezd át erre: 05_dolgozat.py
+# A fájlt nevezd át erre: 06_dolgozat.py
 # A programokat egymás alá készítsd el ebben a fájlban.
 # Minden eredményt érthető szöveggel írj ki.
 # A sum(), min(), max() és count() függvényeket most ne használd.

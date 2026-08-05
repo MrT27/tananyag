@@ -1,7 +1,7 @@
-# PYTHON DOLGOZAT 2. – ELÁGAZÁSOK
+# PYTHON DOLGOZAT 3. – ELÁGAZÁSOK
 # Idő: 45 perc                     Összpontszám: 40 pont
 #
-# A fájlt nevezd át erre: 02_dolgozat.py
+# A fájlt nevezd át erre: 03_dolgozat.py
 # A programokat egymás alá készítsd el ebben a fájlban.
 # Minden eredményt érthető szöveggel írj ki.
 
