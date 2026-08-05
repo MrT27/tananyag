@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listák - 10. évfolyam</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4"><a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a></div>
+      <h1 class="text-center mb-4">6. Listák</h1>
+      <p class="lead text-center mb-5">A listában több összetartozó adatot tárolhatunk, módosíthatunk és dolgozhatunk fel egyetlen változó segítségével.</p>
+
+      <div class="alert alert-primary">
+        <h2 class="h4">Mit fogsz megtanulni?</h2>
+        <ul class="mb-0">
+          <li>lista létrehozását és kiírását,</li>
+          <li>az elemek elérését index alapján,</li>
+          <li>a szeletelés alapjait,</li>
+          <li>elemek módosítását, hozzáadását és törlését,</li>
+          <li>a lista hosszának meghatározását,</li>
+          <li>listák bejárását <code>for</code> ciklussal,</li>
+          <li>lista feltöltését billentyűzetről.</li>
+        </ul>
+      </div>
+
+      <h2 class="mt-5">1. Mi az a lista?</h2>
+      <p>A lista több értéket tárol egy meghatározott sorrendben. A lista elemeit szögletes zárójelek közé írjuk, és vesszővel választjuk el.</p>
+      <pre class="bg-light p-3 rounded"><code>gyumolcsok = ["alma", "banán", "citrom", "dió"]
+szamok = [4, 7, 12, 3]
+
+print(gyumolcsok)
+print(szamok)</code></pre>
+      <div class="alert alert-secondary">Egy lista különböző típusú adatokat is tartalmazhat, de kezdőként célszerű egy listában azonos jelentésű és azonos típusú adatokat tárolni.</div>
+
+      <h2 class="mt-5">2. Elemek elérése index alapján</h2>
+      <p>A lista elemeinek sorszámát <strong>indexnek</strong> nevezzük. Pythonban az indexelés 0-tól kezdődik.</p>
+      <pre class="bg-light p-3 rounded"><code>gyumolcsok = ["alma", "banán", "citrom", "dió"]
+
+print(gyumolcsok[0])   # alma
+print(gyumolcsok[2])   # citrom
+print(gyumolcsok[-1])  # dió</code></pre>
+      <div class="alert alert-warning"><strong>Fontos:</strong> egy négyelemű lista érvényes pozitív indexei: 0, 1, 2 és 3. A nem létező index használata hibát okoz.</div>
+
+      <h2 class="mt-5">3. A lista hossza</h2>
+      <p>A <code>len()</code> függvény megadja, hány elem található a listában.</p>
+      <pre class="bg-light p-3 rounded"><code>gyumolcsok = ["alma", "banán", "citrom", "dió"]
+
+print(len(gyumolcsok))  # 4</code></pre>
+      <p>Az utolsó elem pozitív indexe ezért mindig <code>len(lista) - 1</code>.</p>
+
+      <h2 class="mt-5">4. Szeletelés</h2>
+      <p>Szeleteléssel a lista egy részét kérhetjük le. A kezdőindex eleme bekerül, a végindex eleme viszont már nem.</p>
+      <pre class="bg-light p-3 rounded"><code>gyumolcsok = ["alma", "banán", "citrom", "dió", "eper", "füge"]
+
+print(gyumolcsok[2:4])  # ['citrom', 'dió']
+print(gyumolcsok[:3])   # az első három elem
+print(gyumolcsok[4:])   # a 4-es indextől a végéig</code></pre>
+
+      <h2 class="mt-5">5. Listaelem módosítása</h2>
+      <p>A lista módosítható adatszerkezet: egy elemének új értéket adhatunk.</p>
+      <pre class="bg-light p-3 rounded"><code>gyumolcsok = ["alma", "banán", "citrom"]
+
+gyumolcsok[2] = "cseresznye"
+print(gyumolcsok)</code></pre>
+
+      <h2 class="mt-5">6. Új elemek hozzáadása</h2>
+      <h3 class="mt-4">Hozzáadás a lista végéhez: append()</h3>
+      <pre class="bg-light p-3 rounded"><code>gyumolcsok = ["alma", "banán", "citrom"]
+gyumolcsok.append("dió")
+
+print(gyumolcsok)</code></pre>
+
+      <h3 class="mt-4">Beszúrás adott helyre: insert()</h3>
+      <pre class="bg-light p-3 rounded"><code>gyumolcsok = ["alma", "banán", "citrom"]
+gyumolcsok.insert(1, "körte")
+
+print(gyumolcsok)</code></pre>
+      <p>Az <code>insert(1, "körte")</code> az 1-es indexű helyre szúrja be az új elemet; a korábbi elemek jobbra tolódnak.</p>
+
+      <h2 class="mt-5">7. Elemek törlése</h2>
+      <pre class="bg-light p-3 rounded"><code>gyumolcsok = ["alma", "banán", "citrom", "dió"]
+
+gyumolcsok.remove("banán")  # törlés érték alapján
+torolt = gyumolcsok.pop(1)  # törlés index alapján, az értéket visszaadja
+del gyumolcsok[-1]          # törlés index alapján
+
+print(gyumolcsok)
+print(f"A pop által törölt elem: {torolt}")</code></pre>
+      <div class="alert alert-warning">A <code>remove()</code> hibát okoz, ha a megadott érték nincs a listában. Ezt később az <code>in</code> operátorral ellenőrizhetjük.</div>
+
+      <h2 class="mt-5">8. Keresés az in operátorral</h2>
+      <pre class="bg-light p-3 rounded"><code>gyumolcsok = ["alma", "banán", "citrom"]
+
+if "banán" in gyumolcsok:
+    print("A banán szerepel a listában.")
+else:
+    print("A banán nem szerepel a listában.")</code></pre>
+
+      <h2 class="mt-5">9. Lista bejárása</h2>
+      <h3 class="mt-4">Elemek közvetlen bejárása</h3>
+      <pre class="bg-light p-3 rounded"><code>gyumolcsok = ["alma", "banán", "citrom"]
+
+for gyumolcs in gyumolcsok:
+    print(gyumolcs)</code></pre>
+
+      <h3 class="mt-4">Bejárás indexekkel</h3>
+      <pre class="bg-light p-3 rounded"><code>gyumolcsok = ["alma", "banán", "citrom"]
+
+for i in range(len(gyumolcsok)):
+    print(f"{i}. index: {gyumolcsok[i]}")</code></pre>
+      <div class="alert alert-secondary">Ha csak az értékekre van szükségünk, az első megoldás egyszerűbb. Indexes bejárást akkor használjunk, ha az indexre is szükség van.</div>
+
+      <h2 class="mt-5">10. Lista feltöltése billentyűzetről</h2>
+      <p>Kérjünk be öt számot, és helyezzük őket egy listába!</p>
+      <pre class="bg-light p-3 rounded"><code>szamok = []
+
+for i in range(5):
+    szam = int(input(f"Add meg a(z) {i + 1}. számot: "))
+    szamok.append(szam)
+
+print(szamok)</code></pre>
+
+      <h2 class="mt-5">11. Rendezés és megfordítás</h2>
+      <pre class="bg-light p-3 rounded"><code>szamok = [8, 2, 11, 4, 1]
+
+szamok.sort()
+print(szamok)
+
+szamok.reverse()
+print(szamok)</code></pre>
+      <p>A <code>sort()</code> növekvő sorrendbe rendezi, a <code>reverse()</code> pedig megfordítja a lista aktuális sorrendjét.</p>
+
+      <h2 class="mt-5">12. Lista másolása</h2>
+      <pre class="bg-light p-3 rounded"><code>eredeti = [1, 2, 3]
+masolat = eredeti.copy()
+
+masolat.append(4)
+
+print(eredeti)  # [1, 2, 3]
+print(masolat)  # [1, 2, 3, 4]</code></pre>
+      <div class="alert alert-danger"><strong>Gyakori hiba:</strong> a <code>masolat = eredeti</code> nem készít önálló másolatot. Ilyenkor a két változó ugyanarra a listára hivatkozik.</div>
+
+      <h2 class="mt-5">13. Gyakorlófeladatok</h2>
+      <ol class="list-group list-group-numbered mb-4">
+        <li class="list-group-item">Hozz létre egy öt városnevet tartalmazó listát! Írd ki az első, a harmadik és az utolsó elemet!</li>
+        <li class="list-group-item">Hozz létre egy számlistát, majd módosítsd a második elemét 100-ra!</li>
+        <li class="list-group-item">Kérj be három kedvenc ételt, és tárold őket egy listában! Ezután írd ki őket soronként!</li>
+        <li class="list-group-item">Készíts listát öt egész számból! Írd ki a lista hosszát, majd rendezd növekvő sorrendbe!</li>
+        <li class="list-group-item">Kérj be egy gyümölcsnevet, és írd ki, hogy szerepel-e az előre elkészített listában!</li>
+        <li class="list-group-item">Kérj be öt számot egy listába, majd írd ki közülük csak a páros számokat!</li>
+        <li class="list-group-item">Készíts bevásárlólistát! A felhasználó addig adhasson hozzá termékeket, amíg üres Entert nem nyom.</li>
+      </ol>
+
+      <details class="card mb-3">
+        <summary class="card-header fw-semibold">1–2. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>varosok = ["Budapest", "Pécs", "Szeged", "Győr", "Eger"]
+
+print(varosok[0])
+print(varosok[2])
+print(varosok[-1])</code></pre>
+          <pre class="bg-light p-3 rounded mb-0"><code>szamok = [4, 8, 12, 16]
+szamok[1] = 100
+
+print(szamok)</code></pre>
+        </div>
+      </details>
+
+      <details class="card mb-3">
+        <summary class="card-header fw-semibold">3–4. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>etelek = []
+
+for i in range(3):
+    etel = input(f"Add meg a(z) {i + 1}. kedvenc ételedet: ")
+    etelek.append(etel)
+
+for etel in etelek:
+    print(etel)</code></pre>
+          <pre class="bg-light p-3 rounded mb-0"><code>szamok = [12, 3, 19, 7, 5]
+
+print(f"A lista hossza: {len(szamok)}")
+szamok.sort()
+print(szamok)</code></pre>
+        </div>
+      </details>
+
+      <details class="card mb-3">
+        <summary class="card-header fw-semibold">5–6. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>gyumolcsok = ["alma", "banán", "körte", "szilva"]
+keresett = input("Melyik gyümölcsöt keresed? ").lower()
+
+if keresett in gyumolcsok:
+    print("A gyümölcs szerepel a listában.")
+else:
+    print("A gyümölcs nem szerepel a listában.")</code></pre>
+          <pre class="bg-light p-3 rounded mb-0"><code>szamok = []
+
+for i in range(5):
+    szamok.append(int(input(f"Add meg a(z) {i + 1}. számot: ")))
+
+for szam in szamok:
+    if szam % 2 == 0:
+        print(szam)</code></pre>
+        </div>
+      </details>
+
+      <details class="card mb-4">
+        <summary class="card-header fw-semibold">7. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded mb-0"><code>bevasarlolista = []
+termek = input("Adj meg egy terméket, a befejezéshez nyomj Entert: ")
+
+while termek != "":
+    bevasarlolista.append(termek)
+    termek = input("Adj meg egy terméket, a befejezéshez nyomj Entert: ")
+
+print("Bevásárlólista:")
+for termek in bevasarlolista:
+    print(f"- {termek}")</code></pre>
+        </div>
+      </details>
+
+      <div class="alert alert-success mt-5"><strong>Összefoglalás:</strong> már tudsz több adatot egy listában tárolni, az elemeket index alapján elérni és módosítani, új elemeket hozzáadni, elemeket törölni, valamint listát ciklussal feltölteni és bejárni.</div>
+
+      <div class="d-flex flex-column flex-md-row gap-3 justify-content-between mt-5">
+        <a href="../05_for_ciklus/index.html" class="btn btn-outline-secondary btn-lg">← Előző témakör</a>
+        <a href="../index.html" class="btn btn-secondary btn-lg">Témakörök</a>
+      </div>
+    </div>
+  </body>
+</html>
