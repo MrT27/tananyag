@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6. dolgozat – Függvények</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"><link rel="icon" type="image/png" href="/favicon.png"></head>
+<body><div class="container py-5"><div class="mb-4"><a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a></div>
+<h1 class="text-center mb-3">6. dolgozat – Függvények</h1><p class="lead text-center mb-5">45 perc · 40 pont · négy gyakorlati programozási feladat</p>
+<div class="alert alert-primary"><strong>Használat:</strong> a fájlok Python-kódként használhatók. Letöltés után csak a <code>.txt</code> kiterjesztést kell <code>.py</code>-ra átnevezni.</div>
+<h2 class="mt-5">Letölthető fájlok</h2><div class="list-group mb-5">
+<a class="list-group-item list-group-item-action" href="06_dolgozat_tanulo.txt" download><strong>06_dolgozat_tanulo.txt</strong> – rövid, kommentelt feladatleírások</a>
+<a class="list-group-item list-group-item-action" href="06_dolgozat_megoldas.txt" download><strong>06_dolgozat_megoldas.txt</strong> – a teljes megoldás</a></div>
+<h2>Megoldások a honlapon</h2><details class="card mb-3"><summary class="card-header fw-semibold">Teljes megoldás megjelenítése</summary><div class="card-body"><pre class="bg-light p-3 rounded"><code># PYTHON DOLGOZAT 6. – MEGOLDÁSOK
+
+
+# 1. FELADAT – KÖSZÖNTÉS
+def koszont(nev):
+    print(f&quot;Szia, {nev}! Jó munkát!&quot;)
+
+
+nev = input(&quot;Add meg a neved: &quot;)
+koszont(nev)
+
+
+# 2. FELADAT – TÉGLALAP TERÜLETE
+def teglalap_terulet(a, b):
+    return a * b
+
+
+a = float(input(&quot;Add meg az egyik oldalt: &quot;))
+b = float(input(&quot;Add meg a másik oldalt: &quot;))
+terulet = teglalap_terulet(a, b)
+print(f&quot;A téglalap területe: {terulet}&quot;)
+
+
+# 3. FELADAT – PÁROS SZÁM
+def paros_e(szam):
+    return szam % 2 == 0
+
+
+szam = int(input(&quot;Adj meg egy egész számot: &quot;))
+if paros_e(szam):
+    print(&quot;A megadott szám páros.&quot;)
+else:
+    print(&quot;A megadott szám páratlan.&quot;)
+
+
+# 4. FELADAT – PONTHATÁR
+def pontok_hatar_felett(pontlista, ponthatar):
+    megfelelo_pontok = []
+    for pont in pontlista:
+        if pont &gt;= ponthatar:
+            megfelelo_pontok.append(pont)
+    return megfelelo_pontok
+
+
+pontok = [42, 75, 61, 88, 53, 96, 67]
+ponthatar = int(input(&quot;Add meg a ponthatárt: &quot;))
+eredmeny = pontok_hatar_felett(pontok, ponthatar)
+print(f&quot;A ponthatárt elérő pontok: {eredmeny}&quot;)
+print(f&quot;A megfelelő pontok száma: {len(eredmeny)}&quot;)
+</code></pre></div></details>
+<div class="alert alert-warning mt-4"><strong>Tanári megjegyzés:</strong> dolgozatírás előtt a megoldás hivatkozása vagy ez a lenyitható rész ideiglenesen eltávolítható.</div>
+<div class="d-flex flex-column flex-md-row gap-3 justify-content-between mt-5"><a href="../05_programozasi_tetelek/index.html" class="btn btn-outline-secondary btn-lg">← Előző dolgozat</a><a href="../index.html" class="btn btn-secondary btn-lg">Dolgozatok</a><a href="../../index.html" class="btn btn-outline-secondary btn-lg">Python témakörök</a></div>
+</div></body></html>

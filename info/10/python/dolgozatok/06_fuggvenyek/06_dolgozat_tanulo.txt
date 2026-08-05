@@ -1,0 +1,42 @@
+# PYTHON DOLGOZAT 6. – FÜGGVÉNYEK
+# Idő: 45 perc                     Összpontszám: 40 pont
+#
+# A fájlt nevezd át erre: 06_dolgozat.py
+# Minden feladatban készítsd el a kért függvényt, majd hívd is meg!
+# Az eredményeket érthető szöveggel írd ki.
+
+
+# 1. FELADAT – KÖSZÖNTÉS (8 pont)
+# Készíts koszont nevű függvényt, amely egy nevet kap paraméterként!
+# A függvény írja ki: Szia, ...! Jó munkát!
+# Kérj be egy nevet, majd hívd meg vele a függvényt!
+
+
+
+# 2. FELADAT – TÉGLALAP TERÜLETE (8 pont)
+# Készíts teglalap_terulet nevű függvényt!
+# A függvény két oldalt kapjon paraméterként,
+# és return segítségével adja vissza a téglalap területét!
+# Kérd be a két oldalt, hívd meg a függvényt, majd írd ki az eredményt!
+# Képlet: terület = a * b
+
+
+
+# 3. FELADAT – PÁROS SZÁM (10 pont)
+# Készíts paros_e nevű függvényt, amely egy egész számot kap!
+# A függvény True értéket adjon vissza, ha a szám páros,
+# különben False értéket!
+# Kérj be egy számot, és a függvény eredménye alapján írj ki
+# megfelelő szöveges választ!
+
+
+
+# 4. FELADAT – PONTHATÁR (14 pont)
+# Dolgozz az alábbi listával:
+# pontok = [42, 75, 61, 88, 53, 96, 67]
+# Készíts pontok_hatar_felett nevű függvényt!
+# A függvény kapja meg a pontok listáját és egy ponthatárt!
+# Készítsen és adjon vissza egy új listát azokból a pontokból,
+# amelyek legalább elérik a megadott ponthatárt!
+# Kérj be egy ponthatárt, hívd meg a függvényt,
+# majd írd ki az új listát és az elemeinek számát!

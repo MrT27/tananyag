@@ -1,0 +1,49 @@
+# PYTHON DOLGOZAT 6. – MEGOLDÁSOK
+
+
+# 1. FELADAT – KÖSZÖNTÉS
+def koszont(nev):
+    print(f"Szia, {nev}! Jó munkát!")
+
+
+nev = input("Add meg a neved: ")
+koszont(nev)
+
+
+# 2. FELADAT – TÉGLALAP TERÜLETE
+def teglalap_terulet(a, b):
+    return a * b
+
+
+a = float(input("Add meg az egyik oldalt: "))
+b = float(input("Add meg a másik oldalt: "))
+terulet = teglalap_terulet(a, b)
+print(f"A téglalap területe: {terulet}")
+
+
+# 3. FELADAT – PÁROS SZÁM
+def paros_e(szam):
+    return szam % 2 == 0
+
+
+szam = int(input("Adj meg egy egész számot: "))
+if paros_e(szam):
+    print("A megadott szám páros.")
+else:
+    print("A megadott szám páratlan.")
+
+
+# 4. FELADAT – PONTHATÁR
+def pontok_hatar_felett(pontlista, ponthatar):
+    megfelelo_pontok = []
+    for pont in pontlista:
+        if pont >= ponthatar:
+            megfelelo_pontok.append(pont)
+    return megfelelo_pontok
+
+
+pontok = [42, 75, 61, 88, 53, 96, 67]
+ponthatar = int(input("Add meg a ponthatárt: "))
+eredmeny = pontok_hatar_felett(pontok, ponthatar)
+print(f"A ponthatárt elérő pontok: {eredmeny}")
+print(f"A megfelelő pontok száma: {len(eredmeny)}")
