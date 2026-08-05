@@ -1,0 +1,9 @@
+Molnár Ferenc;A Pál utcai fiúk;1906;176
+Jókai Mór;Az arany ember;1872;416
+Szabó Magda;Abigél;1970;384
+Fekete István;Tüskevár;1957;352
+Gárdonyi Géza;Egri csillagok;1899;560
+Szabó Magda;Az ajtó;1987;288
+Jókai Mór;A kőszívű ember fiai;1869;640
+Fekete István;Vuk;1965;120
+Karinthy Frigyes;Tanár úr kérem;1916;144

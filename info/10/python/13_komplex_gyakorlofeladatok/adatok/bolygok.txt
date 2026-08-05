@@ -1,0 +1,8 @@
+Merkúr;kőzetbolygó;4879;57.9
+Vénusz;kőzetbolygó;12104;108.2
+Föld;kőzetbolygó;12742;149.6
+Mars;kőzetbolygó;6779;227.9
+Jupiter;gázóriás;139820;778.5
+Szaturnusz;gázóriás;116460;1434.0
+Uránusz;jégóriás;50724;2871.0
+Neptunusz;jégóriás;49244;4495.0
