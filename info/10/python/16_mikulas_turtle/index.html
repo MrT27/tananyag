@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mikulás-sapka - Turtle projekt</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+<div class="container py-5">
+  <div class="mb-4"><a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a></div>
+  <h1 class="text-center mb-4">Extra oldal: Mikulás-sapka – Turtle projekt</h1>
+  <p class="lead text-center mb-5">Külön elérhető ünnepi program Mikulás-napra vagy decemberi utolsó órára.</p>
+
+  <div class="alert alert-danger">
+    <h2 class="h4">Mit készít a program?</h2>
+    <ul class="mb-0">
+      <li>piros Mikulás-sapkát fehér bojttal,</li>
+      <li>ünnepi feliratot,</li>
+      <li>véletlen helyekre rajzolt hópelyheket,</li>
+      <li>kattintással bezárható Turtle-ablakot.</li>
+    </ul>
+  </div>
+
+  <h2 class="mt-5">A program teljes kódja</h2>
+  <pre class="bg-light p-3 rounded"><code>import turtle
+import random
+
+# Háttér beállítása
+bg = turtle.Screen()
+bg.bgcolor("light blue")
+
+# Teknős létrehozása
+Sanyi = turtle.Turtle()
+
+# Háromszög rajzolása
+Sanyi.color("dark red")
+Sanyi.penup()
+Sanyi.goto(-30, 120)
+Sanyi.begin_fill()
+Sanyi.pendown()
+Sanyi.goto(-140, -120)
+Sanyi.forward(200)
+Sanyi.left(110)
+Sanyi.forward(260)
+Sanyi.end_fill()
+
+# Kör rajzolása a háromszög közepén
+Sanyi.penup()
+Sanyi.backward(40)
+Sanyi.pendown()
+Sanyi.begin_fill()
+Sanyi.color("white")
+Sanyi.right(80)
+Sanyi.circle(30)
+Sanyi.end_fill()
+
+# Bojt rajzolása a háromszög aljára
+Sanyi.penup()
+Sanyi.goto(-142, -132)
+Sanyi.pendown()
+Sanyi.setheading(0)
+
+# Bojt készítése kis körökkel
+for _ in range(9):
+    Sanyi.begin_fill()
+    Sanyi.circle(13)
+    Sanyi.end_fill()
+    Sanyi.penup()
+    Sanyi.forward(25)
+    Sanyi.pendown()
+
+# Üzenet kiírása
+Sanyi.penup()
+Sanyi.goto(0, -200)
+Sanyi.color("gold")
+Sanyi.write(
+    "Csing ling ling száncsengő",
+    font=("Lucida Handwriting", 18, "bold"),
+    align="center",
+)
+Sanyi.color("white")
+Sanyi.pendown()
+
+# Hópehely rajzolása
+def rajzolj_hopihet(meret):
+    ag = meret / 3
+    for i in range(6):
+        Sanyi.forward(meret)
+        Sanyi.backward(ag)
+        Sanyi.right(30)
+        Sanyi.forward(ag)
+        Sanyi.backward(ag)
+        Sanyi.left(60)
+        Sanyi.forward(ag)
+        Sanyi.backward(ag)
+        Sanyi.right(30)
+        Sanyi.backward(meret - ag)
+        Sanyi.right(60)
+
+# Véletlen helyre ugrás
+def menj_veletlen_helyre():
+    Sanyi.penup()
+    Sanyi.goto(random.randint(-250, 250), random.randint(-250, 250))
+    Sanyi.pendown()
+
+Sanyi.pensize(4)
+menj_veletlen_helyre()
+rajzolj_hopihet(15)
+menj_veletlen_helyre()
+rajzolj_hopihet(20)
+menj_veletlen_helyre()
+rajzolj_hopihet(10)
+menj_veletlen_helyre()
+rajzolj_hopihet(17)
+Sanyi.hideturtle()
+
+# Klikkeléssel zárható ablak
+turtle.exitonclick()
+</code></pre>
+
+  <div class="alert alert-info mt-4">
+    <strong>Órai ötletek:</strong> módosítsátok a hópelyhek számát és méretét, a sapka színét, a feliratot vagy a háttérszínt. Haladóbb feladatként ciklussal is létrehozható több véletlen hópehely.
+  </div>
+
+  <h2 class="mt-5">Letölthető fájl</h2>
+  <div class="list-group mb-4">
+    <a class="list-group-item list-group-item-action" href="mikulas_sapka.py" download><strong>mikulas_sapka.py</strong> – azonnal futtatható Turtle-program</a>
+  </div>
+
+  <div class="d-flex flex-column flex-md-row gap-3 justify-content-between mt-5">
+    <a href="../14_karacsonyfa_turtle/index.html" class="btn btn-outline-success btn-lg">Karácsonyfa oldal</a>
+    <a href="../15_nyiltnapi_turtle/index.html" class="btn btn-outline-warning btn-lg">Nyílt napi oldal</a>
+    <a href="../index.html" class="btn btn-secondary btn-lg">Python témakörök</a>
+  </div>
+</div>
+</body>
+</html>
