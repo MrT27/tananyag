@@ -1,0 +1,35 @@
+# PYTHON DOLGOZAT 1. – ALAPOK, BE- ÉS KIMENET
+# Idő: 45 perc                     Összpontszám: 40 pont
+#
+# A fájlt nevezd át erre: 01_dolgozat.py
+# A programokat egymás alá készítsd el ebben a fájlban.
+# Minden eredményt érthető szöveggel írj ki.
+
+
+# 1. FELADAT – BEMUTATKOZÁS (8 pont)
+# Kérd be a vezetéknevet, keresztnevet és életkort!
+# Minta: Üdvözöllek, Kiss Anna! 16 éves vagy.
+
+
+
+# 2. FELADAT – TÉGLALAP (10 pont)
+# Kérd be a két oldal hosszát valós számként!
+# Írd ki a kerületet cm-ben és a területet cm²-ben!
+
+
+
+# 3. FELADAT – HŐMÉRSÉKLET (10 pont)
+# Kérj be egy Celsius-fokot!
+# Fahrenheit = Celsius * 9 / 5 + 32
+# Az eredményt két tizedesjeggyel írd ki!
+
+
+
+# 4. FELADAT – UTAZÁSI KÖLTSÉG (12 pont)
+# Kérd be a távolságot km-ben, a fogyasztást liter/100 km-ben
+# és az üzemanyag árát Ft/literben!
+# Képletek:
+# elfogyasztott üzemanyag = távolság / 100 * fogyasztás
+# teljes költség = elfogyasztott üzemanyag * üzemanyag ára
+# Írd ki az elfogyasztott üzemanyagot két tizedesjeggyel,
+# a teljes költséget pedig egész forintra kerekítve!

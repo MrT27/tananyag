@@ -1,0 +1,41 @@
+# PYTHON DOLGOZAT 1. – MEGOLDÁSOK
+
+
+# 1. FELADAT – BEMUTATKOZÁS
+vezeteknev = input("Vezetéknév: ")
+keresztnev = input("Keresztnév: ")
+eletkor = int(input("Életkor: "))
+
+print(f"Üdvözöllek, {vezeteknev} {keresztnev}! {eletkor} éves vagy.")
+
+
+# 2. FELADAT – TÉGLALAP
+a = float(input("A oldal hossza (cm): "))
+b = float(input("B oldal hossza (cm): "))
+
+kerulet = 2 * (a + b)
+terulet = a * b
+
+print(f"A téglalap kerülete: {kerulet} cm")
+print(f"A téglalap területe: {terulet} cm²")
+
+
+# 3. FELADAT – HŐMÉRSÉKLET
+celsius = float(input("Hőmérséklet Celsius-fokban: "))
+fahrenheit = celsius * 9 / 5 + 32
+
+print(f"{celsius} °C = {fahrenheit:.2f} °F")
+
+
+# 4. FELADAT – UTAZÁSI KÖLTSÉG
+# elfogyasztott üzemanyag = távolság / 100 * fogyasztás
+# teljes költség = elfogyasztott üzemanyag * üzemanyag ára
+tavolsag = float(input("Távolság (km): "))
+fogyasztas = float(input("Átlagfogyasztás (liter/100 km): "))
+uzemanyag_ar = float(input("Üzemanyag ára (Ft/liter): "))
+
+elfogyasztott_uzemanyag = tavolsag / 100 * fogyasztas
+teljes_koltseg = elfogyasztott_uzemanyag * uzemanyag_ar
+
+print(f"Elfogyasztott üzemanyag: {elfogyasztott_uzemanyag:.2f} liter")
+print(f"Az utazás üzemanyagköltsége: {teljes_koltseg:.0f} Ft")

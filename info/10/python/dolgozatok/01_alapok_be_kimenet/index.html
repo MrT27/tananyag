@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1. dolgozat – Alapok, be- és kimenet</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"><link rel="icon" type="image/png" href="/favicon.png"></head>
+<body><div class="container py-5"><div class="mb-4"><a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a></div>
+<h1 class="text-center mb-3">1. dolgozat – Alapok, be- és kimenet</h1><p class="lead text-center mb-5">45 perc · 40 pont · négy gyakorlati programozási feladat</p>
+<div class="alert alert-primary"><strong>Használat:</strong> a fájlok Python-kódként használhatók. Letöltés után csak a <code>.txt</code> kiterjesztést kell <code>.py</code>-ra átnevezni.</div>
+<h2 class="mt-5">Letölthető fájlok</h2>
+<div class="list-group mb-5">
+<a class="list-group-item list-group-item-action" href="01_dolgozat_tanulo.txt" download><strong>01_dolgozat_tanulo.txt</strong> – rövid, kommentelt feladatleírások</a>
+<a class="list-group-item list-group-item-action" href="01_dolgozat_megoldas.txt" download><strong>01_dolgozat_megoldas.txt</strong> – a teljes megoldás</a>
+</div>
+<h2>Megoldások a honlapon</h2>
+<details class="card mb-3"><summary class="card-header fw-semibold">Teljes megoldás megjelenítése</summary><div class="card-body"><pre class="bg-light p-3 rounded"><code># PYTHON DOLGOZAT 1. – MEGOLDÁSOK
+
+
+# 1. FELADAT – BEMUTATKOZÁS
+vezeteknev = input("Vezetéknév: ")
+keresztnev = input("Keresztnév: ")
+eletkor = int(input("Életkor: "))
+
+print(f"Üdvözöllek, {vezeteknev} {keresztnev}! {eletkor} éves vagy.")
+
+
+# 2. FELADAT – TÉGLALAP
+a = float(input("A oldal hossza (cm): "))
+b = float(input("B oldal hossza (cm): "))
+
+kerulet = 2 * (a + b)
+terulet = a * b
+
+print(f"A téglalap kerülete: {kerulet} cm")
+print(f"A téglalap területe: {terulet} cm²")
+
+
+# 3. FELADAT – HŐMÉRSÉKLET
+celsius = float(input("Hőmérséklet Celsius-fokban: "))
+fahrenheit = celsius * 9 / 5 + 32
+
+print(f"{celsius} °C = {fahrenheit:.2f} °F")
+
+
+# 4. FELADAT – UTAZÁSI KÖLTSÉG
+# elfogyasztott üzemanyag = távolság / 100 * fogyasztás
+# teljes költség = elfogyasztott üzemanyag * üzemanyag ára
+tavolsag = float(input("Távolság (km): "))
+fogyasztas = float(input("Átlagfogyasztás (liter/100 km): "))
+uzemanyag_ar = float(input("Üzemanyag ára (Ft/liter): "))
+
+elfogyasztott_uzemanyag = tavolsag / 100 * fogyasztas
+teljes_koltseg = elfogyasztott_uzemanyag * uzemanyag_ar
+
+print(f"Elfogyasztott üzemanyag: {elfogyasztott_uzemanyag:.2f} liter")
+print(f"Az utazás üzemanyagköltsége: {teljes_koltseg:.0f} Ft")
+</code></pre></div></details>
+<div class="alert alert-warning mt-4"><strong>Tanári megjegyzés:</strong> dolgozatírás előtt a megoldás hivatkozása vagy ez a lenyitható rész ideiglenesen eltávolítható.</div>
+<div class="d-flex justify-content-between mt-5"><a href="../index.html" class="btn btn-secondary btn-lg">Dolgozatok</a><a href="../../index.html" class="btn btn-outline-secondary btn-lg">Python témakörök</a></div>
+</div></body></html>
