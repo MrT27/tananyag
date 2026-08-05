@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Függvények - 10. évfolyam</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4"><a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a></div>
+      <h1 class="text-center mb-4">9. Függvények</h1>
+      <p class="lead text-center mb-5">A függvényekkel a programot kisebb, áttekinthető és többször felhasználható részekre bontjuk.</p>
+
+      <div class="alert alert-primary">
+        <h2 class="h4">Mit fogsz megtanulni?</h2>
+        <ul class="mb-0">
+          <li>függvényt létrehozni és meghívni,</li>
+          <li>paramétereket átadni,</li>
+          <li>eredményt visszaadni a <code>return</code> utasítással,</li>
+          <li>különbséget tenni kiíró és értéket visszaadó függvény között,</li>
+          <li>listákat feldolgozó függvényeket készíteni,</li>
+          <li>egy nagyobb programot kisebb feladatokra bontani.</li>
+        </ul>
+      </div>
+
+      <h2 class="mt-5">1. Miért használunk függvényeket?</h2>
+      <p>Ha ugyanazt a műveletet többször kell elvégezni, nem célszerű minden alkalommal újra leírni a kódot. A függvény egy névvel ellátott programrész, amelyet szükség szerint meghívhatunk.</p>
+      <div class="alert alert-info"><strong>Előnyök:</strong> rövidebb program, kevesebb ismétlés, könnyebb javítás és áttekinthetőbb felépítés.</div>
+
+      <h2 class="mt-5">2. Egyszerű függvény létrehozása</h2>
+      <p>A függvényt a <code>def</code> kulcsszóval hozzuk létre. A függvény törzsét behúzással jelöljük.</p>
+      <pre class="bg-light p-3 rounded"><code>def koszones():
+    print("Üdvözöllek a Python tananyagban!")
+
+koszones()
+koszones()</code></pre>
+      <div class="alert alert-warning"><strong>Fontos:</strong> a függvény létrehozása még nem hajtja végre a benne lévő utasításokat. Ehhez meg kell hívni a függvényt.</div>
+
+      <h2 class="mt-5">3. Paraméterek</h2>
+      <p>A paraméter segítségével adatot adhatunk át a függvénynek.</p>
+      <pre class="bg-light p-3 rounded"><code>def koszones(nev):
+    print(f"Szia, {nev}!")
+
+koszones("Anna")
+koszones("Béla")</code></pre>
+      <p>A <code>nev</code> a függvény paramétere, az <code>"Anna"</code> és <code>"Béla"</code> pedig a híváskor átadott argumentum.</p>
+
+      <h2 class="mt-5">4. Több paraméter</h2>
+      <pre class="bg-light p-3 rounded"><code>def teglalap_adatai(a, b):
+    kerulet = 2 * (a + b)
+    terulet = a * b
+    print(f"Kerület: {kerulet}")
+    print(f"Terület: {terulet}")
+
+teglalap_adatai(5, 3)</code></pre>
+      <div class="alert alert-secondary">A paraméterek sorrendje számít. A híváskor megadott első érték az első paraméterhez kerül.</div>
+
+      <h2 class="mt-5">5. Visszatérési érték: <code>return</code></h2>
+      <p>A függvény nemcsak kiírhat valamit, hanem eredményt is visszaadhat. A visszaadott értéket változóban tárolhatjuk vagy további számításban használhatjuk.</p>
+      <pre class="bg-light p-3 rounded"><code>def negyzet(szam):
+    return szam * szam
+
+eredmeny = negyzet(6)
+print(eredmeny)
+print(negyzet(10) + 5)</code></pre>
+      <div class="alert alert-danger"><strong>Gyakori hiba:</strong> a <code>print()</code> csak kiír, a <code>return</code> viszont visszaad egy értéket a függvény hívásának helyére.</div>
+
+      <h2 class="mt-5">6. Kiíró és értéket visszaadó függvény</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card h-100"><div class="card-body">
+            <h3 class="h5">Kiíró függvény</h3>
+            <pre class="bg-light p-3 rounded mb-0"><code>def duplaz_kiir(szam):
+    print(szam * 2)</code></pre>
+          </div></div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100"><div class="card-body">
+            <h3 class="h5">Értéket visszaadó függvény</h3>
+            <pre class="bg-light p-3 rounded mb-0"><code>def duplaz(szam):
+    return szam * 2</code></pre>
+          </div></div>
+        </div>
+      </div>
+      <p class="mt-3">Általában a visszatérési értéket használó megoldás rugalmasabb, mert az eredménnyel a függvényen kívül is dolgozhatunk.</p>
+
+      <h2 class="mt-5">7. Logikai értéket visszaadó függvény</h2>
+      <p>Az elágazások feltételét külön függvénybe is szervezhetjük.</p>
+      <pre class="bg-light p-3 rounded"><code>def paros_e(szam):
+    return szam % 2 == 0
+
+szam = int(input("Adj meg egy egész számot: "))
+
+if paros_e(szam):
+    print("A szám páros.")
+else:
+    print("A szám páratlan.")</code></pre>
+
+      <h2 class="mt-5">8. Helyi változók</h2>
+      <p>A függvényben létrehozott változó általában csak a függvényen belül használható.</p>
+      <pre class="bg-light p-3 rounded"><code>def kor_terulet(sugar):
+    pi = 3.14159
+    terulet = pi * sugar ** 2
+    return terulet
+
+print(kor_terulet(4))</code></pre>
+      <div class="alert alert-warning">A <code>terulet</code> változóra a függvényen kívül nem hivatkozhatunk közvetlenül. Az értékét a <code>return</code> segítségével adjuk vissza.</div>
+
+      <h2 class="mt-5">9. Lista átadása függvénynek</h2>
+      <p>A korábban megismert programozási tételeket függvényekbe szervezhetjük.</p>
+      <pre class="bg-light p-3 rounded"><code>def lista_osszege(szamok):
+    osszeg = 0
+
+    for szam in szamok:
+        osszeg += szam
+
+    return osszeg
+
+adatok = [4, 8, 3, 12]
+print(lista_osszege(adatok))</code></pre>
+
+      <h2 class="mt-5">10. Feltételes megszámlálás függvényben</h2>
+      <pre class="bg-light p-3 rounded"><code>def pozitivak_szama(szamok):
+    darab = 0
+
+    for szam in szamok:
+        if szam &gt; 0:
+            darab += 1
+
+    return darab
+
+adatok = [-3, 5, 0, 8, -1, 4]
+print(f"Pozitív számok: {pozitivak_szama(adatok)}")</code></pre>
+
+      <h2 class="mt-5">11. Új listát visszaadó függvény</h2>
+      <pre class="bg-light p-3 rounded"><code>def parosak_kivalogatasa(szamok):
+    parosak = []
+
+    for szam in szamok:
+        if szam % 2 == 0:
+            parosak.append(szam)
+
+    return parosak
+
+adatok = [3, 8, 11, 14, 20, 5]
+print(parosak_kivalogatasa(adatok))</code></pre>
+      <div class="alert alert-info">A függvény bemenete egy lista, a kimenete pedig egy új lista. Az eredeti lista nem változik meg.</div>
+
+      <h2 class="mt-5">12. Alapértelmezett paraméter</h2>
+      <pre class="bg-light p-3 rounded"><code>def koszones(nev, napszak="napot"):
+    print(f"Jó {napszak}, {nev}!")
+
+koszones("Anna")
+koszones("Béla", "reggelt")</code></pre>
+      <p>Az alapértelmezett értékkel rendelkező paramétert nem kötelező minden híváskor megadni.</p>
+
+      <h2 class="mt-5">13. Egy program felbontása függvényekre</h2>
+      <pre class="bg-light p-3 rounded"><code>def beker_pozitiv_szam():
+    szam = int(input("Adj meg egy pozitív egész számot: "))
+
+    while szam &lt;= 0:
+        szam = int(input("Hibás adat. Adj meg pozitív számot: "))
+
+    return szam
+
+
+def osztok_szama(szam):
+    darab = 0
+
+    for oszto in range(1, szam + 1):
+        if szam % oszto == 0:
+            darab += 1
+
+    return darab
+
+
+szam = beker_pozitiv_szam()
+print(f"A szám osztóinak száma: {osztok_szama(szam)}")</code></pre>
+      <p>A főprogram rövid és jól olvasható marad, a részfeladatok pedig külön függvényekbe kerülnek.</p>
+
+      <h2 class="mt-5">14. Gyakori hibák</h2>
+      <ul class="list-group mb-4">
+        <li class="list-group-item">A függvény meghívásának elfelejtése.</li>
+        <li class="list-group-item">A <code>return</code> és a <code>print()</code> összekeverése.</li>
+        <li class="list-group-item">Nem megfelelő számú argumentum átadása.</li>
+        <li class="list-group-item">A <code>return</code> utáni utasítások végrehajtásának várása.</li>
+        <li class="list-group-item">A függvényen belüli helyi változó használata a függvényen kívül.</li>
+      </ul>
+
+      <h2 class="mt-5">15. Gyakorlófeladatok</h2>
+      <ol class="list-group list-group-numbered mb-4">
+        <li class="list-group-item">Készíts <code>koszon</code> nevű függvényt, amely paraméterként kap egy nevet, és személyre szabott üzenetet ír ki!</li>
+        <li class="list-group-item">Készíts függvényt, amely visszaadja egy téglalap kerületét!</li>
+        <li class="list-group-item">Készíts <code>pozitiv_e</code> nevű függvényt, amely logikai értékkel jelzi, hogy a kapott szám pozitív-e!</li>
+        <li class="list-group-item">Készíts függvényt, amely visszaadja egy számlista átlagát! Üres lista esetén adjon vissza <code>None</code> értéket!</li>
+        <li class="list-group-item">Készíts függvényt, amely megszámolja egy szövegben a magánhangzókat!</li>
+        <li class="list-group-item">Készíts függvényt, amely egy listából új listába gyűjti a megadott határnál nagyobb számokat!</li>
+        <li class="list-group-item">Bonts függvényekre egy programot, amely öt jegyet kér be, kiszámítja az átlagot, majd szövegesen értékeli az eredményt!</li>
+      </ol>
+
+      <details class="card mb-3">
+        <summary class="card-header fw-semibold">1–3. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>def koszon(nev):
+    print(f"Szia, {nev}! Jó tanulást!")
+
+koszon("Anna")</code></pre>
+          <pre class="bg-light p-3 rounded"><code>def teglalap_kerulete(a, b):
+    return 2 * (a + b)
+
+print(teglalap_kerulete(5, 3))</code></pre>
+          <pre class="bg-light p-3 rounded mb-0"><code>def pozitiv_e(szam):
+    return szam &gt; 0
+
+print(pozitiv_e(-4))</code></pre>
+        </div>
+      </details>
+
+      <details class="card mb-3">
+        <summary class="card-header fw-semibold">4–6. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>def atlag(szamok):
+    if len(szamok) == 0:
+        return None
+
+    osszeg = 0
+    for szam in szamok:
+        osszeg += szam
+
+    return osszeg / len(szamok)</code></pre>
+          <pre class="bg-light p-3 rounded"><code>def maganhangzok_szama(szoveg):
+    darab = 0
+
+    for karakter in szoveg.lower():
+        if karakter in "aáeéiíoóöőuúüű":
+            darab += 1
+
+    return darab</code></pre>
+          <pre class="bg-light p-3 rounded mb-0"><code>def nagyobbak(szamok, hatar):
+    eredmeny = []
+
+    for szam in szamok:
+        if szam &gt; hatar:
+            eredmeny.append(szam)
+
+    return eredmeny</code></pre>
+        </div>
+      </details>
+
+      <details class="card mb-4">
+        <summary class="card-header fw-semibold">7. feladat megoldása</summary>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded mb-0"><code>def jegyek_bekerese():
+    jegyek = []
+
+    for i in range(5):
+        jegy = int(input(f"{i + 1}. jegy: "))
+        jegyek.append(jegy)
+
+    return jegyek
+
+
+def lista_atlaga(szamok):
+    osszeg = 0
+
+    for szam in szamok:
+        osszeg += szam
+
+    return osszeg / len(szamok)
+
+
+def ertekeles(atlag):
+    if atlag &gt;= 4.5:
+        return "kiváló"
+    elif atlag &gt;= 3.5:
+        return "jó"
+    elif atlag &gt;= 2.5:
+        return "közepes"
+    elif atlag &gt;= 2:
+        return "elégséges"
+    else:
+        return "elégtelen"
+
+
+jegyek = jegyek_bekerese()
+atlag = lista_atlaga(jegyek)
+print(f"Átlag: {atlag:.2f}")
+print(f"Értékelés: {ertekeles(atlag)}")</code></pre>
+        </div>
+      </details>
+
+      <div class="alert alert-success mt-5"><strong>Összefoglalás:</strong> már tudsz függvényt létrehozni, paramétereket átadni és értéket visszaadni. Képes vagy a korábban tanult ciklusokat, elágazásokat, listákat és programozási tételeket önálló függvényekbe szervezni.</div>
+
+      <div class="d-flex flex-column flex-md-row gap-3 justify-content-between mt-5">
+        <a href="../08_programozasi_tetelek/index.html" class="btn btn-outline-secondary btn-lg">← Előző témakör</a>
+        <a href="../index.html" class="btn btn-secondary btn-lg">Témakörök</a>
+      </div>
+    </div>
+  </body>
+</html>
