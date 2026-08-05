@@ -1,0 +1,38 @@
+# PYTHON DOLGOZAT 2. – ELÁGAZÁSOK
+# Idő: 45 perc                     Összpontszám: 40 pont
+#
+# A fájlt nevezd át erre: 02_dolgozat.py
+# A programokat egymás alá készítsd el ebben a fájlban.
+# Minden eredményt érthető szöveggel írj ki.
+
+
+# 1. FELADAT – POZITÍV SZÁM (8 pont)
+# Kérj be egy egész számot!
+# Ha a szám pozitív, írd ki: A szám pozitív.
+# Nulla vagy negatív szám esetén ne írj ki semmit!
+
+
+
+# 2. FELADAT – PÁROS VAGY PÁRATLAN (10 pont)
+# Kérj be egy egész számot!
+# Írd ki, hogy a szám páros vagy páratlan!
+# Segítség: egy szám páros, ha a 2-vel vett osztási maradéka 0.
+
+
+
+# 3. FELADAT – HŐMÉRSÉKLET (10 pont)
+# Kérj be egy hőmérsékletet Celsius-fokban!
+# 0 fok alatt írd ki: Fagy.
+# 0 és 25 fok között, a határokat is beleértve: Kellemes idő.
+# 25 fok felett: Meleg van.
+
+
+
+# 4. FELADAT – BELÉPŐJEGY (12 pont)
+# Kérd be az életkort és azt, hogy van-e diákigazolvány!
+# A diákigazolványra a válasz: igen vagy nem.
+# A belépőjegy ára 3000 Ft.
+# 6 éves kor alatt a belépés ingyenes.
+# 6–18 éves kor között vagy érvényes diákigazolvánnyal 50% kedvezmény jár.
+# Minden más esetben teljes árat kell fizetni.
+# Írd ki a fizetendő összeget!

@@ -1,0 +1,44 @@
+# PYTHON DOLGOZAT 2. – MEGOLDÁSOK
+
+
+# 1. FELADAT – POZITÍV SZÁM
+szam = int(input("Adj meg egy egész számot: "))
+
+if szam > 0:
+    print("A szám pozitív.")
+
+
+# 2. FELADAT – PÁROS VAGY PÁRATLAN
+szam = int(input("Adj meg egy egész számot: "))
+
+if szam % 2 == 0:
+    print("A szám páros.")
+else:
+    print("A szám páratlan.")
+
+
+# 3. FELADAT – HŐMÉRSÉKLET
+homerseklet = float(input("Hőmérséklet Celsius-fokban: "))
+
+if homerseklet < 0:
+    print("Fagy.")
+elif homerseklet <= 25:
+    print("Kellemes idő.")
+else:
+    print("Meleg van.")
+
+
+# 4. FELADAT – BELÉPŐJEGY
+TELJES_AR = 3000
+
+kor = int(input("Életkor: "))
+diakigazolvany = input("Van diákigazolvány? (igen/nem): ").strip().lower()
+
+if kor < 6:
+    fizetendo = 0
+elif kor <= 18 or diakigazolvany == "igen":
+    fizetendo = TELJES_AR * 0.5
+else:
+    fizetendo = TELJES_AR
+
+print(f"Fizetendő összeg: {fizetendo:.0f} Ft")
