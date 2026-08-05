@@ -1,0 +1,10 @@
+Kiss Anna;informatika;485000;3
+Nagy Péter;gazdasági;430000;12
+Tóth Eszter;informatika;515000;1
+Szabó Bence;karbantartás;390000;8
+Varga Júlia;gazdasági;455000;0
+Farkas Gábor;informatika;498000;15
+Balogh Réka;ügyfélszolgálat;420000;4
+Kovács Márton;karbantartás;405000;11
+Molnár Dóra;ügyfélszolgálat;438000;2
+Horváth Ádám;gazdasági;470000;6

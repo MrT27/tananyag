@@ -1,0 +1,3 @@
+Nagy Péter;12
+Farkas Gábor;15
+Kovács Márton;11
