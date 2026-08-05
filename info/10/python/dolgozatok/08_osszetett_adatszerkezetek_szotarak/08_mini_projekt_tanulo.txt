@@ -1,0 +1,52 @@
+# 8. ÉRTÉKELÉS – ÖSSZETETT ADATSZERKEZETEK ÉS SZÓTÁRAK
+# MINI PROJEKT: ISKOLAI KÖNYVTÁR
+# Összesen: 50 pont
+#
+# A programot ebben a fájlban készítsd el!
+# A fájlt nevezd át erre: 08_konyvtar.py
+# A megadott könyvlistát ne módosítsd!
+
+konyvek = [
+    {"cim": "A Pál utcai fiúk", "szerzo": "Molnár Ferenc", "kategoria": "regény", "oldal": 176, "elerheto": True},
+    {"cim": "Egri csillagok", "szerzo": "Gárdonyi Géza", "kategoria": "regény", "oldal": 544, "elerheto": False},
+    {"cim": "Tüskevár", "szerzo": "Fekete István", "kategoria": "regény", "oldal": 368, "elerheto": True},
+    {"cim": "Python kezdőknek", "szerzo": "Kód Elek", "kategoria": "informatika", "oldal": 240, "elerheto": True},
+    {"cim": "A világűr titkai", "szerzo": "Csillag Áron", "kategoria": "ismeretterjesztő", "oldal": 312, "elerheto": False},
+    {"cim": "Robotok világa", "szerzo": "Gép Anna", "kategoria": "informatika", "oldal": 198, "elerheto": True}
+]
+
+# 1. FELADAT – KÖNYVEK LISTÁZÁSA (6 pont)
+# Írd ki minden könyv címét, szerzőjét és kategóriáját!
+# Minden könyv külön sorban jelenjen meg.
+
+
+# 2. FELADAT – ELÉRHETŐ KÖNYVEK (7 pont)
+# Számold meg, hány könyv kölcsönözhető jelenleg!
+# Írd ki az eredményt magyarázó szöveggel!
+
+
+# 3. FELADAT – KERESÉS SZERZŐ ALAPJÁN (8 pont)
+# Kérj be egy szerzőnevet!
+# Írd ki az adott szerző könyveinek címét!
+# Ha nincs ilyen szerző, írd ki: Nincs ilyen szerző.
+
+
+# 4. FELADAT – LEGHOSSZABB KÖNYV (8 pont)
+# Keresd meg a legtöbb oldalas könyvet!
+# Írd ki a címét és az oldalszámát!
+# Ne használd a max() függvényt!
+
+
+# 5. FELADAT – KATEGÓRIÁK STATISZTIKÁJA (9 pont)
+# Készíts egy szótárt, amely megmutatja,
+# hogy kategóriánként hány könyv szerepel a listában!
+# Írd ki a kategóriákat és a darabszámokat!
+
+
+# 6. FELADAT – KÖLCSÖNZÉS FÜGGVÉNNYEL (12 pont)
+# Készíts kolcsonoz(konyvek, cim) nevű függvényt!
+# Ha a könyv létezik és elérhető, állítsd az elerheto értékét False-ra,
+# majd térj vissza True értékkel!
+# Egyébként térj vissza False értékkel!
+# Kérj be egy könyvcímet, hívd meg a függvényt,
+# majd írd ki, hogy sikeres vagy sikertelen volt-e a kölcsönzés.
