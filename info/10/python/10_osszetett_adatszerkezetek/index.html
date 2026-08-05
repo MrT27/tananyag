@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Összetett adatszerkezetek - 10. évfolyam</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"><link rel="icon" type="image/png" href="/favicon.png"></head>
+<body><div class="container py-5">
+<div class="mb-4"><a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a></div>
+<h1 class="text-center mb-4">10. Összetett adatszerkezetek</h1>
+<p class="lead text-center mb-5">Több összetartozó adat kezelése párhuzamos listákkal és listák listájával.</p>
+<div class="alert alert-primary"><h2 class="h4">Mit fogsz megtanulni?</h2><ul class="mb-0"><li>összetartozó adatokat több listában tárolni,</li><li>azonos indexű elemeket együtt feldolgozni,</li><li>kétdimenziós listát létrehozni és bejárni,</li><li>sorokat, rekordokat és kapcsolódó adatokat kezelni,</li><li>a korábbi programozási tételeket összetett adatokon alkalmazni.</li></ul></div>
+
+<h2 class="mt-5">1. Összetartozó adatok</h2>
+<p>Egy tanulóhoz, termékhez vagy városhoz több adat tartozhat. Ezeket kezdetben párhuzamos listákban tárolhatjuk.</p>
+<pre class="bg-light p-3 rounded"><code>nevek = ["Anna", "Béla", "Csilla"]
+jegyek = [5, 3, 4]
+
+print(nevek[0], jegyek[0])</code></pre>
+<div class="alert alert-info">Az azonos indexű elemek tartoznak össze: a <code>nevek[0]</code> és a <code>jegyek[0]</code> ugyanannak a tanulónak az adata.</div>
+
+<h2 class="mt-5">2. Párhuzamos listák bejárása</h2>
+<pre class="bg-light p-3 rounded"><code>termekek = ["füzet", "toll", "radír"]
+arak = [650, 420, 300]
+keszlet = [12, 25, 8]
+
+for i in range(len(termekek)):
+    print(f"{termekek[i]}: {arak[i]} Ft, {keszlet[i]} db")</code></pre>
+<div class="alert alert-warning"><strong>Fontos:</strong> a listák hossza és sorrendje legyen azonos. Ha csak az egyik listát rendezzük át, az adatok kapcsolata megszűnik.</div>
+
+<h2 class="mt-5">3. Feltételes feldolgozás</h2>
+<pre class="bg-light p-3 rounded"><code>nevek = ["Anna", "Béla", "Csilla", "Dávid"]
+pontok = [86, 54, 73, 91]
+
+for i in range(len(nevek)):
+    if pontok[i] &gt;= 80:
+        print(f"{nevek[i]}: {pontok[i]} pont")</code></pre>
+
+<h2 class="mt-5">4. Szélsőérték kapcsolódó adattal</h2>
+<p>A legnagyobb érték helyett annak indexét őrizzük meg, így a kapcsolódó nevet is elérjük.</p>
+<pre class="bg-light p-3 rounded"><code>varosok = ["Pécs", "Szeged", "Győr", "Eger"]
+homersekletek = [24.5, 27.1, 25.8, 23.9]
+max_index = 0
+
+for i in range(1, len(homersekletek)):
+    if homersekletek[i] &gt; homersekletek[max_index]:
+        max_index = i
+
+print(f"Legmelegebb: {varosok[max_index]}")
+print(f"Hőmérséklet: {homersekletek[max_index]} °C")</code></pre>
+
+<h2 class="mt-5">5. Listák listája</h2>
+<p>Egy lista elemei maguk is lehetnek listák. Egy belső lista egy teljes rekordot tartalmazhat.</p>
+<pre class="bg-light p-3 rounded"><code>tanulok = [
+    ["Anna", 5, 4, 5],
+    ["Béla", 3, 4, 2],
+    ["Csilla", 5, 5, 4]
+]
+
+print(tanulok[0])
+print(tanulok[0][0])
+print(tanulok[0][2])</code></pre>
+<p>Az első index a sort, a második a soron belüli elemet választja ki.</p>
+
+<h2 class="mt-5">6. Kétdimenziós lista bejárása</h2>
+<pre class="bg-light p-3 rounded"><code>tabla = [
+    [2, 4, 6],
+    [1, 3, 5],
+    [8, 7, 9]
+]
+
+for sor in tabla:
+    for elem in sor:
+        print(elem, end=" ")
+    print()</code></pre>
+<p>A külső ciklus a sorokat, a belső ciklus az adott sor elemeit járja be.</p>
+
+<h2 class="mt-5">7. Rekord adatainak feldolgozása</h2>
+<pre class="bg-light p-3 rounded"><code>tanulok = [
+    ["Anna", 5, 4, 5],
+    ["Béla", 3, 4, 2],
+    ["Csilla", 5, 5, 4]
+]
+
+for tanulo in tanulok:
+    nev = tanulo[0]
+    jegyek = tanulo[1:]
+    atlag = sum(jegyek) / len(jegyek)
+    print(f"{nev} átlaga: {atlag:.2f}")</code></pre>
+
+<h2 class="mt-5">8. Új rekord hozzáadása</h2>
+<pre class="bg-light p-3 rounded"><code>konyvek = [
+    ["Egri csillagok", "Gárdonyi Géza", 560],
+    ["A Pál utcai fiúk", "Molnár Ferenc", 240]
+]
+
+konyvek.append(["Tüskevár", "Fekete István", 320])</code></pre>
+
+<h2 class="mt-5">9. Feldolgozás függvénnyel</h2>
+<pre class="bg-light p-3 rounded"><code>def legdragabb_termek(termekek):
+    max_index = 0
+    for i in range(1, len(termekek)):
+        if termekek[i][1] &gt; termekek[max_index][1]:
+            max_index = i
+    return termekek[max_index]
+
+adatok = [["füzet", 650], ["toll", 420], ["hátizsák", 12900]]
+termek = legdragabb_termek(adatok)
+print(f"{termek[0]}: {termek[1]} Ft")</code></pre>
+
+<h2 class="mt-5">10. Melyiket használjuk?</h2>
+<div class="table-responsive"><table class="table table-bordered"><thead><tr><th>Megoldás</th><th>Előny</th><th>Hátrány</th></tr></thead><tbody><tr><td>Párhuzamos listák</td><td>Kezdetben egyszerű.</td><td>Könnyű elveszíteni az adatok kapcsolatát.</td></tr><tr><td>Listák listája</td><td>Egy rekord adatai együtt maradnak.</td><td>Az indexek jelentését észben kell tartani.</td></tr></tbody></table></div>
+<p>A következő témakörben a szótárak olvashatóbbá teszik a rekordokat, mert sorszámok helyett nevekkel hivatkozhatunk az adatokra.</p>
+
+<h2 class="mt-5">11. Gyakori hibák</h2>
+<ul class="list-group mb-4"><li class="list-group-item">A párhuzamos listák eltérő hosszúságúak.</li><li class="list-group-item">Csak az egyik listát rendezzük át.</li><li class="list-group-item">Felcseréljük a sor és az oszlop indexét.</li><li class="list-group-item">Maximumkereséskor nem az indexet őrizzük meg.</li><li class="list-group-item">Egy teljes rekord helyett csak egyetlen adatot adunk hozzá.</li></ul>
+
+<h2 class="mt-5">12. Gyakorlófeladatok</h2>
+<ol class="list-group list-group-numbered mb-4"><li class="list-group-item">Tárold öt város nevét és lakosságát párhuzamos listákban, majd írd ki őket páronként!</li><li class="list-group-item">Írd ki azokat a termékeket, amelyekből tíznél kevesebb van készleten!</li><li class="list-group-item">Határozd meg a legtöbb pontot elért tanuló nevét!</li><li class="list-group-item">Hozz létre egy 3 × 4-es számtáblát, és számítsd ki az elemek összegét!</li><li class="list-group-item">Tanulók nevét és három jegyét tárold listák listájában, majd írd ki az átlagukat!</li><li class="list-group-item">Írd ki a 300 oldalnál hosszabb könyvek címét és szerzőjét!</li><li class="list-group-item">Készíts függvényt, amely visszaadja egy kétdimenziós számlista legnagyobb elemét!</li></ol>
+
+<details class="card mb-3"><summary class="card-header fw-semibold">1–3. feladat megoldása</summary><div class="card-body"><pre class="bg-light p-3 rounded"><code>varosok = ["Pécs", "Szeged", "Győr", "Eger", "Sopron"]
+lakossag = [140000, 158000, 129000, 53000, 62000]
+for i in range(len(varosok)):
+    print(f"{varosok[i]}: {lakossag[i]} fő")</code></pre><pre class="bg-light p-3 rounded"><code>termekek = ["füzet", "toll", "radír", "vonalzó"]
+keszlet = [12, 7, 4, 16]
+for i in range(len(termekek)):
+    if keszlet[i] &lt; 10:
+        print(termekek[i])</code></pre><pre class="bg-light p-3 rounded mb-0"><code>nevek = ["Anna", "Béla", "Csilla"]
+pontok = [82, 91, 88]
+max_index = 0
+for i in range(1, len(pontok)):
+    if pontok[i] &gt; pontok[max_index]:
+        max_index = i
+print(nevek[max_index])</code></pre></div></details>
+
+<details class="card mb-3"><summary class="card-header fw-semibold">4–6. feladat megoldása</summary><div class="card-body"><pre class="bg-light p-3 rounded"><code>tabla = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+osszeg = 0
+for sor in tabla:
+    for elem in sor:
+        osszeg += elem
+print(osszeg)</code></pre><pre class="bg-light p-3 rounded"><code>tanulok = [["Anna", 5, 4, 5], ["Béla", 3, 4, 2], ["Csilla", 5, 5, 4]]
+for tanulo in tanulok:
+    atlag = sum(tanulo[1:]) / len(tanulo[1:])
+    print(f"{tanulo[0]}: {atlag:.2f}")</code></pre><pre class="bg-light p-3 rounded mb-0"><code>konyvek = [["Egri csillagok", "Gárdonyi Géza", 560], ["A Pál utcai fiúk", "Molnár Ferenc", 240], ["Tüskevár", "Fekete István", 320]]
+for konyv in konyvek:
+    if konyv[2] &gt; 300:
+        print(f"{konyv[0]} - {konyv[1]}")</code></pre></div></details>
+
+<details class="card mb-4"><summary class="card-header fw-semibold">7. feladat megoldása</summary><div class="card-body"><pre class="bg-light p-3 rounded mb-0"><code>def legnagyobb_elem(tabla):
+    maximum = tabla[0][0]
+    for sor in tabla:
+        for elem in sor:
+            if elem &gt; maximum:
+                maximum = elem
+    return maximum
+
+print(legnagyobb_elem([[4, 8, 2], [11, 3, 7], [5, 9, 6]]))</code></pre></div></details>
+
+<div class="alert alert-success mt-5"><strong>Összefoglalás:</strong> már tudsz összetartozó adatokat párhuzamos listákban és listák listájában tárolni, indexekkel kapcsolatot teremteni közöttük, valamint ciklusokkal, programozási tételekkel és függvényekkel feldolgozni őket.</div>
+<div class="d-flex flex-column flex-md-row gap-3 justify-content-between mt-5"><a href="../09_fuggvenyek/index.html" class="btn btn-outline-secondary btn-lg">← Előző témakör</a><a href="../index.html" class="btn btn-secondary btn-lg">Témakörök</a></div>
+</div></body></html>
