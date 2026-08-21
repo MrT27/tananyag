@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promptolás - Mesterséges intelligencia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4">
+        <a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a>
+      </div>
+
+      <h1 class="text-center mb-4">1. Promptolás</h1>
+      <p class="lead text-center mb-5">Hogyan adjunk pontos és jól használható utasítást a mesterséges intelligenciának?</p>
+
+      <div class="alert alert-primary" role="alert">
+        <h2 class="h4">Mit fogsz megtanulni?</h2>
+        <ul class="mb-0">
+          <li>mit jelent a prompt és a promptolás,</li>
+          <li>milyen jellemzői vannak egy jó promptnak,</li>
+          <li>miért befolyásolja a kérés megfogalmazása az MI válaszát,</li>
+          <li>miért érdemes az első választ további pontosításokkal javítani.</li>
+        </ul>
+      </div>
+
+      <h2 class="mt-5">1. Mi az a prompt?</h2>
+      <p>
+        A <strong>prompt</strong> az az utasítás vagy kérés, amelyet egy mesterséges intelligenciának adunk, például a ChatGPT-nek.
+        A prompt megadja, hogy milyen témában és milyen formában kérünk választ.
+      </p>
+      <p>A kapott eredmény lehet például <strong>szöveg, kép, kód vagy más kimenet</strong>.</p>
+
+      <h2 class="mt-5">2. Mit jelent a promptolás?</h2>
+      <p>
+        A <strong>promptolás</strong> a promptok megalkotása, kipróbálása és finomítása.
+        A cél az, hogy minél pontosabb, hasznosabb vagy kreatívabb választ kapjunk.
+      </p>
+      <div class="alert alert-info">
+        A promptolás egyre fontosabb készség, ha hatékonyan szeretnénk MI-eszközökkel dolgozni.
+      </div>
+
+      <h2 class="mt-5">3. Mitől jó egy prompt?</h2>
+      <p>
+        Egy jó prompt <strong>világos, célorientált</strong>, és tartalmaz minden olyan információt,
+        amelyre az MI-nek szüksége van a megfelelő válasz elkészítéséhez.
+      </p>
+
+      <div class="row g-3 mt-2">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100"><div class="card-body"><h3 class="h5">Specifikus</h3><p class="mb-0">Pontosan megadja, mit szeretnénk.</p></div></div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100"><div class="card-body"><h3 class="h5">Egyértelmű</h3><p class="mb-0">A kérés világosan értelmezhető.</p></div></div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100"><div class="card-body"><h3 class="h5">Kontextuális</h3><p class="mb-0">Megadja a feladathoz szükséges körülményeket.</p></div></div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100"><div class="card-body"><h3 class="h5">Stílus- vagy formátumkérés</h3><p class="mb-0">Megadhatjuk, milyen formában készüljön a válasz.</p></div></div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100"><div class="card-body"><h3 class="h5">Célhoz illeszkedő</h3><p class="mb-0">A prompt a kívánt eredményhez igazodik.</p></div></div>
+        </div>
+      </div>
+
+      <h2 class="mt-5">4. Mit nem csinál az MI, amikor válaszol?</h2>
+      <div class="alert alert-warning">
+        <strong>Az MI nem gondolkodik, hanem minták alapján válaszol.</strong>
+      </div>
+      <p>
+        Ezért fontos, hogyan fogalmazzuk meg a kérésünket. Ha a prompt pontatlan vagy hiányos,
+        a válasz sem biztos, hogy olyan lesz, amilyet szerettünk volna.
+      </p>
+
+      <h2 class="mt-5">5. Miért kaphatunk eltérő válaszokat?</h2>
+      <p>
+        Az MI nem „egy helyes választ” keres, hanem a kérdéshez igazodik.
+        Ugyanarra a témára eltérő válaszok érkezhetnek attól függően, hogyan kérdezünk.
+      </p>
+      <ul>
+        <li>Kreatív feladatoknál ez előny lehet.</li>
+        <li>Tanulásnál mindig ellenőrizni kell az információkat, mert nem minden válasz pontos.</li>
+      </ul>
+
+      <h2 class="mt-5">6. A promptolás egy folyamat</h2>
+      <p>
+        A promptolás nem egyszeri kérés, hanem <strong>folyamat és párbeszéd</strong>.
+        A nekünk megfelelő választ általában nem rögtön az első kérdés után kapjuk meg.
+      </p>
+      <div class="alert alert-success">
+        Az első kérés után érdemes <strong>pontosítani</strong> a promptot.
+      </div>
+
+      <h2 class="mt-5">7. Jó és rossz prompt – hétköznapi példa</h2>
+      <div class="card mb-3 border-danger">
+        <div class="card-body">
+          <h3 class="h5">Pontatlan utasítás</h3>
+          <p class="mb-0">„Menj el egy boltba, és hozz valamit enni.”</p>
+        </div>
+      </div>
+      <p>Nem derül ki pontosan, melyik boltba kell menni, mit kell venni, és mennyi pénzt lehet elkölteni.</p>
+
+      <div class="card mb-3 border-success">
+        <div class="card-body">
+          <h3 class="h5">Pontos utasítás</h3>
+          <p class="mb-0">„Menj el a Lidl-be és vegyél 1 kg fehér kenyeret, de csak, ha 800 Ft alatt van az ára.”</p>
+        </div>
+      </div>
+      <p>Itt már pontosan tudjuk, hova kell menni, mit kell venni és milyen feltétellel.</p>
+
+      <h2 class="mt-5">8. Jó és rossz MI-prompt</h2>
+      <div class="card mb-3 border-danger">
+        <div class="card-body">
+          <h3 class="h5">Rossz prompt</h3>
+          <p class="mb-0">„Írj egy szöveget a Napról!”</p>
+        </div>
+      </div>
+      <p>A kérésből nem derül ki például a kívánt hossz, mélység vagy stílus.</p>
+
+      <div class="card mb-3 border-warning">
+        <div class="card-body">
+          <h3 class="h5">Jobb prompt</h3>
+          <p class="mb-0">„Írj egy 150 szavas ismeretterjesztő szöveget a Napról egy 10 évesnek.”</p>
+        </div>
+      </div>
+
+      <div class="card mb-3 border-success">
+        <div class="card-body">
+          <h3 class="h5">Jó prompt</h3>
+          <p class="mb-0">„Írj egy 150 szavas ismeretterjesztő szöveget a Napról, amit egy 10 éves gyermek is megérthet. Használj egyszerű nyelvezetet és adj példákat!”</p>
+        </div>
+      </div>
+
+      <h2 class="mt-5">9. Promptolás a gyakorlatban</h2>
+      <p>
+        A kapott tananyag két rövid videón keresztül is bemutatja az MI-eszközök használatát.
+        Nézd meg őket, és figyeld meg, hogyan hat a megadott kérés az elkészült eredményre.
+      </p>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="h4">ChatGPT – videós bemutató</h3>
+          <p>Figyeld meg, hogyan történik a kérés megadása és a válasz elkészítése.</p>
+          <div class="ratio ratio-16x9">
+            <video controls preload="metadata">
+              <source src="../anyagok/01_promptolas/chatgpt.mp4" type="video/mp4" />
+              A böngésződ nem támogatja a videólejátszást.
+            </video>
+          </div>
+          <div class="mt-3">
+            <a class="btn btn-outline-primary" href="../anyagok/01_promptolas/chatgpt.mp4">Videó megnyitása külön</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="h4">Gemini – videós bemutató</h3>
+          <p>Figyeld meg, hogyan lehet egy MI-nek adott kérést tovább pontosítani és módosítani.</p>
+          <div class="ratio ratio-16x9">
+            <video controls preload="metadata">
+              <source src="../anyagok/01_promptolas/gemini.mp4" type="video/mp4" />
+              A böngésződ nem támogatja a videólejátszást.
+            </video>
+          </div>
+          <div class="mt-3">
+            <a class="btn btn-outline-primary" href="../anyagok/01_promptolas/gemini.mp4">Videó megnyitása külön</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-secondary">
+        <h3 class="h5">Videók után</h3>
+        <ul class="mb-0">
+          <li>Milyen utasítást kapott az MI?</li>
+          <li>Milyen eredményt készített?</li>
+          <li>Hol lehetett volna még pontosítani a kérést?</li>
+          <li>Mit változtatnál a prompton, ha más eredményt szeretnél?</li>
+        </ul>
+      </div>
+
+      <h2 class="mt-5">10. Példák különböző MI-eszközökre</h2>
+      <p>A prezentáció további példákat is mutat arra, hogy a prompt meghatározza a kívánt eredményt.</p>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+          <thead>
+            <tr><th>Eszköz</th><th>Példa a prompt céljára</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Google Gemini</td><td>Kép létrehozása, majd a kép további pontosítása és módosítása.</td></tr>
+            <tr><td>ChatGPT</td><td>Meghatározott hosszúságú, rímelésű, témájú és célközönségnek szóló vers készítése.</td></tr>
+            <tr><td>Suno</td><td>Rövid, meghatározott témájú és stílusú dal készítése.</td></tr>
+            <tr><td>ElevenLabs</td><td>Megadott szöveg felhasználása hangalapú feladathoz.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="mt-5">11. Órai gyakorlás</h2>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h3 class="h5">1. feladat – Mi hiányzik?</h3>
+          <p>Vizsgáld meg ezt a promptot:</p>
+          <p class="fw-semibold">„Írj egy szöveget a Napról!”</p>
+          <p class="mb-0">Gyűjtsd össze, milyen információkkal lehetne pontosabbá tenni.</p>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <h3 class="h5">2. feladat – Javítsd a promptot!</h3>
+          <p class="mb-0">Alakítsd át a Napról szóló pontatlan promptot először jobb, majd jó prompttá a fenti példák mintájára.</p>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <h3 class="h5">3. feladat – Keresd a jó prompt jellemzőit!</h3>
+          <p>Olvasd el ezt a promptot:</p>
+          <p class="fw-semibold">„Írj egy 150 szavas ismeretterjesztő szöveget a Napról, amit egy 10 éves gyermek is megérthet. Használj egyszerű nyelvezetet és adj példákat!”</p>
+          <p class="mb-0">Azonosítsd benne, mitől specifikus, egyértelmű, kontextuális, formátumot megadó és célhoz illeszkedő.</p>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <h3 class="h5">4. feladat – Pontosítás</h3>
+          <p class="mb-0">Beszéljétek meg, hogyan lehet egy első MI-válasz után további kérésekkel közelebb kerülni a kívánt eredményhez.</p>
+        </div>
+      </div>
+
+      <div class="alert alert-success mt-4">
+        <strong>Összefoglalás:</strong> a jó prompt világos, célorientált és kellően részletes. A promptolás nem egyszeri kérés, hanem olyan folyamat, amelyben a választ további pontosításokkal javíthatjuk.
+      </div>
+
+      <div class="card mt-5">
+        <div class="card-body">
+          <h2 class="h4">Az órához tartozó eredeti források</h2>
+          <div class="d-grid gap-2 d-md-flex flex-wrap">
+            <a href="../anyagok/01_promptolas/promptolas.pptx" class="btn btn-outline-primary">Promptolás prezentáció</a>
+            <a href="../anyagok/01_promptolas/chatgpt.mp4" class="btn btn-outline-primary">ChatGPT videó</a>
+            <a href="../anyagok/01_promptolas/gemini.mp4" class="btn btn-outline-primary">Gemini videó</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between gap-3 mt-5">
+        <span></span>
+        <a class="btn btn-secondary" href="../index.html">Tartalomjegyzék</a>
+        <a class="btn btn-outline-secondary" href="../02_hogyan_tanul_az_mi/index.html">2. Hogyan tanul az MI? →</a>
+      </div>
+    </div>
+  </body>
+</html>

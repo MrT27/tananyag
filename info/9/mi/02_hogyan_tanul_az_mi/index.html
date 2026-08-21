@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hogyan tanul az MI? - Mesterséges intelligencia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4">
+        <a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a>
+      </div>
+
+      <h1 class="text-center mb-4">2. Hogyan tanul az MI?</h1>
+      <p class="lead text-center mb-5">Minták, tanulási adatok és predikció – gépi tanulás egyszerűen.</p>
+
+      <div class="alert alert-primary" role="alert">
+        <h2 class="h4">Mit fogsz megtanulni?</h2>
+        <ul class="mb-0">
+          <li>mit jelent a gépi tanulás,</li>
+          <li>milyen lépésekből áll egy egyszerű tanulási folyamat,</li>
+          <li>miben hasonlít és miben különbözik az emberi és a gépi tanulás,</li>
+          <li>mi a felügyelt és a felügyelet nélküli tanulás,</li>
+          <li>hogyan próbálhatunk ki egy egyszerű képosztályozási feladatot.</li>
+        </ul>
+      </div>
+
+      <h2 class="mt-5">1. Mi a gépi tanulás?</h2>
+      <p>
+        A <strong>gépi tanulás</strong> egy mesterséges intelligencia-alapú módszer, amely lehetővé teszi,
+        hogy a számítógép <strong>példák alapján mintákat tanuljon meg felismerni</strong>, majd ezek alapján
+        új adatokat osztályozzon vagy értelmezzen.
+      </p>
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="row text-center align-items-center g-3">
+            <div class="col-md-4"><div class="p-3 border rounded"><strong>Bemenet</strong><br />adatok, példák</div></div>
+            <div class="col-md-4"><div class="p-3 border rounded"><strong>Szabály</strong><br />felismert mintázatok</div></div>
+            <div class="col-md-4"><div class="p-3 border rounded"><strong>Kimenet</strong><br />eredmény, besorolás</div></div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="mt-5">2. A gépi tanulás egyszerű lépései</h2>
+      <ol class="list-group list-group-numbered mb-4">
+        <li class="list-group-item"><strong>Tanulási adathalmaz:</strong> sok példa, jellemzőkkel és címkékkel.</li>
+        <li class="list-group-item"><strong>Tanulási folyamat:</strong> az algoritmus elemzi az adatokat és mintázatokat keres.</li>
+        <li class="list-group-item"><strong>Modell:</strong> a megtanult szabályokat tartalmazó matematikai modell.</li>
+        <li class="list-group-item"><strong>Új adat:</strong> a modell választ ad egy korábban nem látott bemenetre.</li>
+      </ol>
+      <div class="alert alert-secondary">
+        A prezentáció a modell belső működését <strong>„fekete doboz”</strong> kifejezéssel szemlélteti: a bemenetből egy tanult modell segítségével lesz kimenet.
+      </div>
+
+      <h2 class="mt-5">3. Hogyan tanulunk mi, emberek?</h2>
+      <p>A kapott tananyag az emberi tanulás néhány fontos elemét emeli ki:</p>
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-3"><div class="card h-100"><div class="card-body"><h3 class="h5">Tapasztalat</h3><p class="mb-0">Példákból és helyzetekből tanulunk.</p></div></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card h-100"><div class="card-body"><h3 class="h5">Ismétlés</h3><p class="mb-0">A sokszori ismétlés segíti a rögzülést.</p></div></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card h-100"><div class="card-body"><h3 class="h5">Hibából következtetés</h3><p class="mb-0">A hibáinkból új következtetéseket vonhatunk le.</p></div></div></div>
+        <div class="col-md-6 col-lg-3"><div class="card h-100"><div class="card-body"><h3 class="h5">Általánosítás</h3><p class="mb-0">A megtanultakat új helyzetekben is alkalmazzuk.</p></div></div></div>
+      </div>
+
+      <h2 class="mt-5">4. Az MI is tanul, de nem úgy, mint mi</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card h-100 border-success">
+            <div class="card-body">
+              <h3 class="h4">Ember</h3>
+              <ul class="mb-0">
+                <li>jelentéseket keres,</li>
+                <li>összefüggéseket értelmez,</li>
+                <li>tudatosan tanul,</li>
+                <li>érzelmei és motivációi is vannak.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 border-primary">
+            <div class="card-body">
+              <h3 class="h4">Mesterséges intelligencia</h3>
+              <ul class="mb-0">
+                <li>adatokat dolgoz fel,</li>
+                <li>mintázatokat keres,</li>
+                <li>jellemzők és valószínűségek alapján válaszol,</li>
+                <li>nem értelmezi a dolgokat úgy, mint az ember.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-warning mt-4">
+        <strong>A tananyag fő üzenete:</strong> a mesterséges intelligencia nem úgy „érti” a dolgokat, mint az ember; mintázatokat ismer fel az adatokban.
+      </div>
+
+      <h2 class="mt-5">5. Más adatmennyiségből tanulunk</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+          <thead><tr><th>Ember</th><th>Mesterséges intelligencia</th></tr></thead>
+          <tbody>
+            <tr><td>Korlátozott mennyiségű információval találkozik.</td><td>Óriási adatmennyiséggel dolgozhat.</td></tr>
+            <tr><td>Hosszú idő alatt tanul.</td><td>Rövid idő alatt nagy mennyiségű adatot dolgozhat fel.</td></tr>
+            <tr><td>Kevés példából is képes általánosítani.</td><td>Milliók vagy milliárdok példájából dolgozhat.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="mt-5">6. Miből tanul az MI?</h2>
+      <p>A prezentáció példái szerint az MI tanulhat:</p>
+      <ul>
+        <li>előre kiválasztott szövegekből,</li>
+        <li>könyvekből, cikkekből és weboldalakból,</li>
+        <li>sok milliárd példából, vagyis adatból.</li>
+      </ul>
+      <p>Az anyag arra is felhívja a figyelmet, hogy az interneten hibás, ellentmondó és hamis információk is lehetnek, ezért az adatok kiválasztása fontos.</p>
+      <div class="alert alert-info">
+        A prezentáció szerint az MI <strong>használat közben nem tanul tovább</strong>, hanem azt alkalmazza, amit korábban megtanítottak neki.
+      </div>
+
+      <h2 class="mt-5">7. Felügyelt tanulás</h2>
+      <p>
+        A felügyelt tanulásnál a tananyag <strong>rengeteg címkézett adatot</strong> mutat példaként.
+        Ilyenkor a példákhoz előre megadjuk, hogy melyik kategóriába tartoznak – például macska, kutya vagy papagáj.
+      </p>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="h5">A folyamat a prezentáció szerint</h3>
+          <p class="mb-0">Címkézett adatok → tanulási folyamat → jellemzők kinyerése → modell osztályozása → predikció.</p>
+        </div>
+      </div>
+
+      <h2 class="mt-5">8. Felügyelet nélküli tanulás</h2>
+      <p>
+        Felügyelet nélküli tanulásnál a bemeneti adatok <strong>nincsenek előre felcímkézve</strong>.
+        A gép a hasonlóságokat keresi, és csoportokat alakít ki.
+      </p>
+      <p>A prezentáció ezt különböző színű pontok csoportosításával szemlélteti.</p>
+
+      <h2 class="mt-5">9. A gép is hibázhat</h2>
+      <p>A tananyag egy egyszerű példával mutatja be a javítás folyamatát:</p>
+      <div class="d-flex flex-wrap gap-2 align-items-center mb-4">
+        <span class="badge text-bg-secondary p-3">„Ez egy kutya.”</span>
+        <span>→</span>
+        <span class="badge text-bg-danger p-3">„Nem, ez egy macska.”</span>
+        <span>→</span>
+        <span class="badge text-bg-warning p-3">különbség mérése</span>
+        <span>→</span>
+        <span class="badge text-bg-primary p-3">modell módosítása</span>
+        <span>→</span>
+        <span class="badge text-bg-success p-3">„Ez egy macska.”</span>
+      </div>
+
+      <h2 class="mt-5">10. Nézzük meg a gyakorlatban!</h2>
+      <p>
+        A témához kapott videó a <strong>Teachable Machine</strong> használatát mutatja be.
+        Nézd meg, hogyan kerülnek példák a különböző kategóriákba, majd hogyan történik a modell kipróbálása.
+      </p>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="h4">Teachable Machine – videós bemutató</h3>
+          <div class="ratio ratio-16x9">
+            <video controls preload="metadata">
+              <source src="../anyagok/02_hogyan_tanul_az_mi/teachableMachine.mp4" type="video/mp4" />
+              A böngésződ nem támogatja a videólejátszást.
+            </video>
+          </div>
+          <div class="mt-3">
+            <a class="btn btn-outline-primary" href="../anyagok/02_hogyan_tanul_az_mi/teachableMachine.mp4">Videó megnyitása külön</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-secondary">
+        <h3 class="h5">Videó közben figyeld meg!</h3>
+        <ul class="mb-0">
+          <li>Milyen kategóriákat hoznak létre?</li>
+          <li>Milyen példákat kap a modell a tanuláshoz?</li>
+          <li>Mi történik a tanítás után?</li>
+          <li>Hogyan derül ki, hogy a modell jól vagy rosszul sorol be egy új képet?</li>
+        </ul>
+      </div>
+
+      <h2 class="mt-5">11. Gyakorlat – kutya vagy macska?</h2>
+      <p>
+        A témához külön képcsomagot is kaptunk. A képek két tanulási csoportba rendezhetők:
+        <strong>kutya</strong> és <strong>macska</strong>. Ezek után négy külön tesztképpel próbálhatod ki a modellt.
+      </p>
+
+      <div class="row g-4 mt-1">
+        <div class="col-lg-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="h5">Tanítóképek – kutya</h3>
+              <div class="row g-2">
+                <div class="col-3"><img class="img-fluid rounded" src="../anyagok/02_hogyan_tanul_az_mi/teachablemachine_kepek/kutya1.jpg" alt="Kutya tanítókép 1" /></div>
+                <div class="col-3"><img class="img-fluid rounded" src="../anyagok/02_hogyan_tanul_az_mi/teachablemachine_kepek/kutya2.jpg" alt="Kutya tanítókép 2" /></div>
+                <div class="col-3"><img class="img-fluid rounded" src="../anyagok/02_hogyan_tanul_az_mi/teachablemachine_kepek/kutya3.jpg" alt="Kutya tanítókép 3" /></div>
+                <div class="col-3"><img class="img-fluid rounded" src="../anyagok/02_hogyan_tanul_az_mi/teachablemachine_kepek/kutya4.jpg" alt="Kutya tanítókép 4" /></div>
+              </div>
+              <p class="small text-body-secondary mt-3 mb-0">A csomagban összesen 8 kutyakép található.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="h5">Tanítóképek – macska</h3>
+              <div class="row g-2">
+                <div class="col-3"><img class="img-fluid rounded" src="../anyagok/02_hogyan_tanul_az_mi/teachablemachine_kepek/macska1.jpg" alt="Macska tanítókép 1" /></div>
+                <div class="col-3"><img class="img-fluid rounded" src="../anyagok/02_hogyan_tanul_az_mi/teachablemachine_kepek/macska2.jpg" alt="Macska tanítókép 2" /></div>
+                <div class="col-3"><img class="img-fluid rounded" src="../anyagok/02_hogyan_tanul_az_mi/teachablemachine_kepek/macska3.jpg" alt="Macska tanítókép 3" /></div>
+                <div class="col-3"><img class="img-fluid rounded" src="../anyagok/02_hogyan_tanul_az_mi/teachablemachine_kepek/macska4.jpg" alt="Macska tanítókép 4" /></div>
+              </div>
+              <p class="small text-body-secondary mt-3 mb-0">A csomagban összesen 8 macskakép található.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-body">
+          <h3 class="h5">Feladat menete</h3>
+          <ol class="mb-0">
+            <li>Hozz létre két kategóriát: <strong>kutya</strong> és <strong>macska</strong>.</li>
+            <li>Töltsd be a hozzájuk tartozó tanítóképeket.</li>
+            <li>Tanítsd be a modellt a videóban látott módon.</li>
+            <li>Próbáld ki a négy tesztképet.</li>
+            <li>Jegyezd fel, melyik képnél volt biztos a modell, és melyik okozott nehézséget.</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3 class="h4 mt-4">Tesztképek</h3>
+      <div class="row g-3">
+        <div class="col-6 col-md-3">
+          <div class="card h-100"><img class="card-img-top" src="../anyagok/02_hogyan_tanul_az_mi/teachablemachine_kepek/teszt1-macska.jpg" alt="Teszt 1 - macska" /><div class="card-body"><p class="card-text mb-0">1. tesztkép</p></div></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card h-100"><img class="card-img-top" src="../anyagok/02_hogyan_tanul_az_mi/teachablemachine_kepek/teszt2-kutya.jpg" alt="Teszt 2 - kutya" /><div class="card-body"><p class="card-text mb-0">2. tesztkép</p></div></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card h-100"><img class="card-img-top" src="../anyagok/02_hogyan_tanul_az_mi/teachablemachine_kepek/teszt3-vegyes.jpg" alt="Teszt 3 - vegyes" /><div class="card-body"><p class="card-text mb-0">3. tesztkép – vegyes</p></div></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card h-100"><img class="card-img-top" src="../anyagok/02_hogyan_tanul_az_mi/teachablemachine_kepek/teszt4-becsapos.jpg" alt="Teszt 4 - becsapós" /><div class="card-body"><p class="card-text mb-0">4. tesztkép – becsapós</p></div></div>
+        </div>
+      </div>
+
+      <h2 class="mt-5">12. Gondolkodtató kérdések</h2>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">1. kérdés</h3><p class="mb-0">Miért van szükség sok példára ahhoz, hogy a modell mintázatokat tudjon felismerni?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">2. kérdés</h3><p class="mb-0">Mi a különbség a címkézett és a címkézetlen adatok között?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">3. kérdés</h3><p class="mb-0">Mit mutat meg egy hibás besorolás a modellről és a tanulási adatokról?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">4. kérdés</h3><p class="mb-0">A kutya–macska gyakorlat melyik tanulási módra példa: felügyelt vagy felügyelet nélküli? Indokold!</p></div></div>
+
+      <div class="alert alert-success mt-4">
+        <strong>Összefoglalás:</strong> a gépi tanulás során a számítógép példákból és adatokból mintázatokat keres. A tanult modell új adatokra predikciót adhat, de hibázhat is. A felügyelt tanulás címkézett példákkal dolgozik, a felügyelet nélküli tanulás pedig címkézés nélkül keres hasonlóságokat és csoportokat.
+      </div>
+
+      <div class="card mt-5">
+        <div class="card-body">
+          <h2 class="h4">Az órához tartozó eredeti források</h2>
+          <div class="d-grid gap-2 d-md-flex flex-wrap">
+            <a href="../anyagok/02_hogyan_tanul_az_mi/hogyan_tanul_az_mi.pptx" class="btn btn-outline-primary">Prezentáció</a>
+            <a href="../anyagok/02_hogyan_tanul_az_mi/teachableMachine.mp4" class="btn btn-outline-primary">Teachable Machine videó</a>
+            <a href="../anyagok/02_hogyan_tanul_az_mi/teachablemachine_kepek.zip" class="btn btn-outline-primary">Gyakorló képek letöltése</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between gap-3 mt-5">
+        <a class="btn btn-outline-secondary" href="../01_promptolas/index.html">← 1. Promptolás</a>
+        <a class="btn btn-secondary" href="../index.html">Tartalomjegyzék</a>
+        <span></span>
+      </div>
+    </div>
+  </body>
+</html>
