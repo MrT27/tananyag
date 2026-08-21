@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MI a szöveg- és beszédelemzésben - Mesterséges intelligencia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4">
+        <a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a>
+      </div>
+
+      <h1 class="text-center mb-4">7. MI a szöveg- és beszédelemzésben</h1>
+      <p class="lead text-center mb-5">Hogyan dolgozza fel a mesterséges intelligencia a természetes nyelvet, és miért nem ugyanúgy „érti” a mondatokat, mint az ember?</p>
+
+      <div class="alert alert-primary" role="alert">
+        <h2 class="h4">Mit fogsz megtanulni?</h2>
+        <ul class="mb-0">
+          <li>mit jelent az NLP, vagyis a természetes nyelvfeldolgozás,</li>
+          <li>milyen feladatokra használható,</li>
+          <li>mi a tokenizálás,</li>
+          <li>hogyan használ statisztikai előrejelzést az MI,</li>
+          <li>miért számít, hogy milyen szövegeken tanították a modellt,</li>
+          <li>hogyan jelenhet meg torzítás vagy tévedés a válaszokban.</li>
+        </ul>
+      </div>
+
+      <h2 class="mt-5">1. Bevezető feladat – találd ki a hiányzó szót!</h2>
+      <div class="card mb-4">
+        <div class="card-body">
+          <p>A prezentáció egy egyszerű feladattal indít: hiányos mondatokban kell kitalálni, milyen szó illik a „…” helyére.</p>
+          <p class="mb-0"><strong>Gondolkodj el:</strong> honnan tudtad, mi hiányzik? A teljes mondat jelentését nézted, vagy az előtte és utána álló szavakból következtettél?</p>
+        </div>
+      </div>
+
+      <h2 class="mt-5">2. Mi az NLP?</h2>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="h5">NLP = Natural Language Processing</h3>
+          <p>Magyarul: <strong>természetes nyelvfeldolgozás</strong>.</p>
+          <p>Az MI egyik területe, amely többek között az alábbi feladatokkal foglalkozik:</p>
+          <ul class="mb-0">
+            <li>szövegek értelmezése,</li>
+            <li>fordítás,</li>
+            <li>kérdésekre válaszadás,</li>
+            <li>beszédfelismerés.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert alert-warning">
+        <strong>Fontos:</strong> a tananyag kiemeli, hogy az MI nem úgy „érti” a nyelvet, mint az ember. Mintázatokat keres a szövegben.
+      </div>
+
+      <h2 class="mt-5">3. Szöveg darabolása – tokenizálás</h2>
+      <p>Az MI a mondatokat kisebb darabokra bontja. Ezeket nevezzük <strong>tokeneknek</strong>. A feldolgozás során a nagyobb szöveget olyan kisebb részekre bontja, amelyekkel dolgozni tud.</p>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="h5">Példa a prezentációból</h3>
+          <p><strong>Mondat:</strong> „A kutya ugat.”</p>
+          <p class="mb-0"><strong>Tokenek:</strong> „A” | „kutya” | „ugat” | „.”</p>
+        </div>
+      </div>
+
+      <div class="alert alert-info">
+        <strong>A prezentáció hasonlata:</strong> mi egyben látjuk a teljes képet, az MI pedig kis „puzzle-darabokat” illeszt egymás mellé, és ezek alapján próbálja kitalálni, mi következik.
+      </div>
+
+      <h2 class="mt-5">4. Statisztikai előrejelzés</h2>
+      <p>A tananyag szerint az MI nem azt vizsgálja, hogy „mi az igazság”, hanem azt számolja, hogy egy adott szövegrész után melyik folytatás a legvalószínűbb.</p>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="h5">Példa</h3>
+          <p><strong>„A macska felmászott a …”</strong></p>
+          <p class="mb-0">A prezentáció szerint egy valószínű folytatás: <strong>„fára”</strong>.</p>
+        </div>
+      </div>
+
+      <p>Ez magyarázza azt is, miért adhat az MI egyik alkalommal jó választ, máskor pedig hibásat: valószínűségek alapján dolgozik, nem úgy értelmezi a mondat jelentését, mint mi.</p>
+
+      <h2 class="mt-5">5. Tanulás sok szövegből</h2>
+      <div class="card mb-4">
+        <div class="card-body">
+          <p>A prezentáció szerint a ChatGPT-t nagyon sok szövegen tanították, és példaként a Reddit fórum beszélgetéseit is említi.</p>
+          <p>Az ilyen szövegek között azonban lehet:</p>
+          <ul class="mb-0">
+            <li>pontatlan információ,</li>
+            <li>vicces túlzás és szleng,</li>
+            <li>álhír.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert alert-secondary">
+        <strong>Következmény:</strong> a chatbot válaszai is lehetnek torzak, viccesek vagy tévesek, ha a tanuláshoz használt szövegekben ilyen minták fordultak elő.
+      </div>
+
+      <h2 class="mt-5">6. Példák torzításokra</h2>
+      <div class="row g-3 mb-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="h5">Sztereotípia</h3>
+              <p class="mb-0">A prezentáció példája szerint ha sokszor jelenik meg egy olyan állítás, mint „a macska mindig gonosz, a kutya mindig jó”, a modell hasonló torz mintát ismételhet.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="h5">Álhírek</h3>
+              <p class="mb-0">A modell olyan stílusú vagy tartalmú válaszokat is létrehozhat, amelyek az álhírek mintázataira hasonlítanak.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="h5">Szleng</h3>
+              <p class="mb-0">A „lol” vagy „epic fail” típusú kifejezéseket megtanulhatja, de a tananyag szerint nem feltétlenül „tudja”, hogy ezek vicces vagy szlengszerű fordulatok.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="mt-5">7. Órai gyakorlat – következő szó</h2>
+      <div class="card mb-4">
+        <div class="card-body">
+          <p>Dolgozzatok párokban! Az egyik tanuló kezdjen el egy mondatot, a másik pedig mondjon rá egy valószínű folytatást.</p>
+          <p>Ezután próbáljatok ugyanahhoz a mondatkezdethez több különböző, de még mindig értelmes folytatást találni.</p>
+          <p class="mb-0"><strong>Beszéljétek meg:</strong> mitől lett valamelyik folytatás valószínűbb, mint a másik?</p>
+        </div>
+      </div>
+
+      <h2 class="mt-5">8. Órai gyakorlat – tokenek</h2>
+      <div class="card mb-4">
+        <div class="card-body">
+          <p>Írjatok egy rövid mondatot, majd bontsátok kisebb részekre a prezentációban látott minta alapján.</p>
+          <p class="mb-0">Például: <strong>„A kutya ugat.” → „A” | „kutya” | „ugat” | „.”</strong></p>
+        </div>
+      </div>
+
+      <h2 class="mt-5">9. Beszélgessünk!</h2>
+      <div class="alert alert-info">
+        A prezentáció utolsó diája beszélgetésre hív. Vitatkozzatok arról, miért fontos tudni, hogy az MI mintázatok és valószínűségek alapján dolgozik, amikor a válaszait használjuk.
+      </div>
+
+      <h2 class="mt-5">10. Óra végi ellenőrző kérdések</h2>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">1. kérdés</h3><p class="mb-0">Mit jelent az NLP rövidítés?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">2. kérdés</h3><p class="mb-0">Sorolj fel két olyan feladatot, amelyre természetes nyelvfeldolgozást használhatunk!</p></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">3. kérdés</h3><p class="mb-0">Mit nevezünk tokennek?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">4. kérdés</h3><p class="mb-0">Mi alapján próbálja az MI megjósolni, mi következzen egy szövegben?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">5. kérdés</h3><p class="mb-0">Miért okozhat problémát, ha a tanító szövegek között pontatlan információ vagy álhír van?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">6. kérdés</h3><p class="mb-0">Mi a különbség aközött, ahogyan az ember és ahogyan a tananyag szerint az MI kezeli a nyelvet?</p></div></div>
+
+      <div class="alert alert-success mt-4">
+        <strong>Összefoglalás:</strong> a természetes nyelvfeldolgozás során az MI a szöveget kisebb részekre bontja, mintázatokat keres, és valószínűségek alapján próbálja meghatározni a következő elemet. Mivel sokféle szövegből tanul, pontatlan, torz vagy félrevezető mintákat is átvehet.
+      </div>
+
+      <div class="card mt-5">
+        <div class="card-body">
+          <h2 class="h4">Az órához tartozó eredeti forrás</h2>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="../anyagok/07_szoveg_es_beszedelemzes/mi_a_szovegelemzesben.pptx" class="btn btn-outline-primary">MI a szövegelemzésben prezentáció</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between gap-3 mt-5">
+        <a class="btn btn-outline-secondary" href="../06_mi_es_termeszetvedelem/index.html">← 6. MI és természetvédelem</a>
+        <a class="btn btn-secondary" href="../index.html">Tartalomjegyzék</a>
+        <span></span>
+      </div>
+    </div>
+  </body>
+</html>
