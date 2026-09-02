@@ -9,11 +9,32 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>
+      body { background: #f8f9fa; }
+      .topic-card { transition: transform .15s ease, box-shadow .15s ease; }
+      .topic-card:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.08); }
+    </style>
   </head>
   <body>
     <div class="container py-5">
-      <h1 class="text-center mb-5">11. évfolyam</h1>
-      <p class="lead text-center">Még nincs feltöltött tananyag.</p>
+      <h1 class="text-center mb-2">11. évfolyam</h1>
+      <p class="lead text-center text-secondary mb-5">Digitális kultúra tananyagok</p>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="card topic-card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <span class="badge text-bg-primary mb-3">Webfejlesztés</span>
+              <h2 class="h4">HTML és CSS</h2>
+              <p class="text-secondary mb-4">
+                HTML-dokumentumok felépítése, szemantikus HTML, majd CSS-formázás.
+              </p>
+              <a href="html/index.html" class="btn btn-primary">Tananyag megnyitása</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="d-grid gap-2 col-md-6 mx-auto mt-5">
         <a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a>
       </div>

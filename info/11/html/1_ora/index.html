@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. óra – A weboldal szerkezete</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>
+      body { background: #f8f9fa; }
+      .hero {
+        background: linear-gradient(135deg, #ffffff 0%, #eef5ff 100%);
+        border: 1px solid #e6e9ef;
+      }
+      .section-card { border: 0; box-shadow: 0 .25rem .8rem rgba(0,0,0,.05); }
+      pre {
+        background: #212529;
+        color: #f8f9fa;
+        border-radius: .75rem;
+        padding: 1rem;
+        overflow-x: auto;
+        margin-bottom: 0;
+      }
+      code { color: #c7254e; }
+      pre code { color: inherit; }
+      .structure {
+        white-space: pre;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        background: #f1f3f5;
+        border-radius: .75rem;
+        padding: 1rem;
+        overflow-x: auto;
+      }
+      .callout {
+        border-left: .35rem solid #0d6efd;
+        background: #eef5ff;
+      }
+      .important {
+        border-left: .35rem solid #ffc107;
+        background: #fff8e1;
+      }
+      .task {
+        border-left: .35rem solid #198754;
+        background: #edf8f1;
+      }
+      .checklist li { margin-bottom: .35rem; }
+    </style>
+  </head>
+  <body>
+    <main class="container py-5">
+      <section class="hero rounded-4 p-4 p-md-5 mb-4">
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span class="badge text-bg-primary">11. évfolyam</span>
+          <span class="badge text-bg-success">HTML és CSS</span>
+          <span class="badge text-bg-dark">1. óra</span>
+        </div>
+        <h1 class="display-6 fw-bold">A weboldal szerkezete HTML5 elemekkel</h1>
+        <p class="lead mb-0">
+          A már elkészített magazinoldalt logikus részekre bontjuk a
+          <code>header</code>, <code>nav</code>, <code>article</code> és
+          <code>footer</code> elemek segítségével.
+        </p>
+      </section>
+
+      <div class="alert alert-primary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+        <div>
+          <strong>Órai kezdőprojekt:</strong> töltsd le, csomagold ki, majd nyisd meg a mappát Visual Studio Code-ban.
+        </div>
+        <a href="alap_hu.zip" class="btn btn-primary text-nowrap">alap_hu.zip letöltése</a>
+      </div>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">Az óra célja</h2>
+          <p>Az óra végére képes leszel:</p>
+          <ul class="checklist">
+            <li>egy weboldal tartalmát logikai egységekre bontani;</li>
+            <li>használni a <code>header</code>, <code>nav</code>, <code>article</code> és <code>footer</code> elemeket;</li>
+            <li>helyesen egymásba ágyazni a szerkezeti elemeket;</li>
+            <li>megkülönböztetni a <code>head</code> és <code>header</code> elemet;</li>
+            <li>megérteni, miért nem feltétlenül változik meg az oldal kinézete az új elemek használatától.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">1. Mi a probléma a jelenlegi oldallal?</h2>
+          <p>
+            Eddig már sok HTML-elemet használunk: címsorokat, bekezdéseket,
+            linkeket, képeket és kiemeléseket. A böngésző mindent megjelenít,
+            de a kódban az elemek nagy része egyszerűen egymás után következik.
+          </p>
+
+          <div class="structure">Weboldal
+
+├── Fejléc
+│   ├── Magazin neve
+│   └── Navigáció
+│
+├── Cikk
+│   ├── Cikk fejléce
+│   └── Cikk tartalma
+│
+└── Lábléc</div>
+
+          <p class="mt-3 mb-0">
+            A célunk az, hogy ezt a logikai szerkezetet a HTML-kódban is
+            egyértelműen megjelenítsük.
+          </p>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">2. A <code>nav</code> elem</h2>
+          <p>
+            A <code>nav</code> a <em>navigation</em>, vagyis navigáció rövidítése.
+            Olyan fontos hivatkozásokat fogunk vele össze, amelyek az oldal vagy
+            a webhely különböző részeihez vezetnek.
+          </p>
+
+          <h3 class="h5">A linkek eredetileg</h3>
+          <pre><code>&lt;a href="#"&gt;Blog&lt;/a&gt;
+&lt;a href="#"&gt;Kihívások&lt;/a&gt;
+&lt;a href="#"&gt;Flexbox&lt;/a&gt;
+&lt;a href="#"&gt;CSS Grid&lt;/a&gt;</code></pre>
+
+          <h3 class="h5 mt-4">Navigációként csoportosítva</h3>
+          <pre><code>&lt;nav&gt;
+  &lt;a href="#"&gt;Blog&lt;/a&gt;
+  &lt;a href="#"&gt;Kihívások&lt;/a&gt;
+  &lt;a href="#"&gt;Flexbox&lt;/a&gt;
+  &lt;a href="#"&gt;CSS Grid&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+
+          <div class="callout rounded-3 p-3 mt-4">
+            <strong>Figyeld meg:</strong> az oldal kinézete ettől lehet, hogy
+            egyáltalán nem változik. A <code>nav</code> most elsősorban azt
+            mondja meg, hogy ezek a linkek navigációt alkotnak.
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">3. A <code>header</code> elem</h2>
+          <p>
+            A <code>header</code> egy oldal vagy egy tartalmi egység bevezető,
+            fejléc jellegű részét jelöli. A magazin nevét és a navigációt ezért
+            egy közös <code>header</code> elembe tehetjük.
+          </p>
+
+          <pre><code>&lt;header&gt;
+  &lt;h1&gt;Kód Magazin&lt;/h1&gt;
+
+  &lt;nav&gt;
+    &lt;a href="#"&gt;Blog&lt;/a&gt;
+    &lt;a href="#"&gt;Kihívások&lt;/a&gt;
+    &lt;a href="#"&gt;Flexbox&lt;/a&gt;
+    &lt;a href="#"&gt;CSS Grid&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+
+          <div class="important rounded-3 p-3 mt-4">
+            <h3 class="h5">Ne keverd össze: <code>head</code> és <code>header</code>!</h3>
+            <p class="mb-2"><code>&lt;head&gt;</code> – a dokumentummal kapcsolatos adatokat tartalmazza, például a címet és a metaadatokat.</p>
+            <p class="mb-0"><code>&lt;header&gt;</code> – a weboldal vagy egy tartalmi egység látható bevezető része.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">4. Az <code>article</code> elem</h2>
+          <p>
+            Az <code>article</code> egy önállóan is értelmezhető tartalmi
+            egységet jelöl. Ilyen lehet például egy blogbejegyzés, hírcikk,
+            fórumbejegyzés vagy termékértékelés.
+          </p>
+
+          <pre><code>&lt;article&gt;
+  &lt;h2&gt;A web alapnyelve: HTML&lt;/h2&gt;
+
+  &lt;p&gt;
+    A cikket &lt;strong&gt;Laura Jones&lt;/strong&gt; írta.
+  &lt;/p&gt;
+
+  &lt;h3&gt;Mi az a HTML?&lt;/h3&gt;
+
+  &lt;p&gt;
+    A HTML a HyperText Markup Language rövidítése.
+  &lt;/p&gt;
+&lt;/article&gt;</code></pre>
+
+          <p class="mt-3 mb-0">
+            A mintaprojektünk fő blogbejegyzése ezért jól leírható
+            <code>article</code> elemmel.
+          </p>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">5. <code>header</code> az <code>article</code> elemen belül</h2>
+          <p>
+            Egy oldalon több <code>header</code> is lehet. A cikk saját
+            bevezető részét – például a címet, a szerzőt, a dátumot és a szerző
+            képét – külön <code>header</code> elembe tehetjük.
+          </p>
+
+          <pre><code>&lt;article&gt;
+  &lt;header&gt;
+    &lt;h2&gt;A web alapnyelve: HTML&lt;/h2&gt;
+
+    &lt;p&gt;
+      A cikket &lt;strong&gt;Laura Jones&lt;/strong&gt; írta.
+    &lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;h3&gt;Mi az a HTML?&lt;/h3&gt;
+
+  &lt;p&gt;
+    A HTML a HyperText Markup Language rövidítése.
+  &lt;/p&gt;
+&lt;/article&gt;</code></pre>
+
+          <div class="callout rounded-3 p-3 mt-4">
+            A külső <code>header</code> az egész oldal fejlécét, a belső
+            <code>header</code> pedig a cikk fejlécét jelöli.
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">6. A <code>footer</code> elem</h2>
+          <p>
+            A <code>footer</code> egy oldal vagy tartalmi egység lezáró,
+            lábléc jellegű részét jelöli.
+          </p>
+
+          <pre><code>&lt;footer&gt;
+  &lt;p&gt;Copyright &amp;copy; 2026 Kód Magazin&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+          <p class="mt-3">
+            Az <code>&amp;copy;</code> karakterhivatkozást a böngésző
+            <strong>©</strong> jelként jeleníti meg.
+          </p>
+
+          <div class="alert alert-light border mb-0">
+            A <strong>©</strong> karakter modern UTF-8 HTML-ben közvetlenül is
+            beírható, de érdemes ismerni az <code>&amp;copy;</code> alakot is.
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">7. A teljes oldal szerkezete</h2>
+
+          <pre><code>&lt;body&gt;
+
+  &lt;header&gt;
+    &lt;h1&gt;Kód Magazin&lt;/h1&gt;
+
+    &lt;nav&gt;
+      &lt;a href="#"&gt;Blog&lt;/a&gt;
+      &lt;a href="#"&gt;Kihívások&lt;/a&gt;
+      &lt;a href="#"&gt;Flexbox&lt;/a&gt;
+      &lt;a href="#"&gt;CSS Grid&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;article&gt;
+
+    &lt;header&gt;
+      &lt;h2&gt;A web alapnyelve: HTML&lt;/h2&gt;
+
+      &lt;p&gt;
+        A cikket &lt;strong&gt;Laura Jones&lt;/strong&gt; írta.
+      &lt;/p&gt;
+    &lt;/header&gt;
+
+    &lt;h3&gt;Mi az a HTML?&lt;/h3&gt;
+
+    &lt;p&gt;
+      A HTML a HyperText Markup Language rövidítése.
+    &lt;/p&gt;
+
+  &lt;/article&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;Copyright &amp;copy; 2026 Kód Magazin&lt;/p&gt;
+  &lt;/footer&gt;
+
+&lt;/body&gt;</code></pre>
+
+          <h3 class="h5 mt-4">Hierarchiában</h3>
+          <div class="structure">body
+│
+├── header
+│   ├── h1
+│   └── nav
+│       ├── a
+│       ├── a
+│       ├── a
+│       └── a
+│
+├── article
+│   ├── header
+│   │   ├── h2
+│   │   └── p
+│   └── a cikk további tartalma
+│
+└── footer
+    └── p</div>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">8. Miért nem változik meg látványosan az oldal?</h2>
+          <p>
+            A <code>header</code>, <code>nav</code>, <code>article</code> és
+            <code>footer</code> elsődleges feladata nem a formázás.
+          </p>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="border rounded-3 p-3 h-100">
+                <h3 class="h5">HTML</h3>
+                <p class="mb-0"><strong>Mi ez a tartalom?</strong><br />Szerkezetet és jelentést ad.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="border rounded-3 p-3 h-100">
+                <h3 class="h5">CSS</h3>
+                <p class="mb-0"><strong>Hogyan nézzen ki?</strong><br />A megjelenést fogjuk vele szabályozni.</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-3 mb-0">
+            A következő órán ezt a gondolatot nevezzük majd
+            <strong>szemantikus HTML-nek</strong>, és megismerjük az
+            <code>aside</code> elemet is.
+          </p>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">9. Közös órai feladat</h2>
+          <div class="task rounded-3 p-3">
+            <ol class="mb-0">
+              <li>Töltsd le és csomagold ki az <code>alap_hu.zip</code> projektet.</li>
+              <li>Nyisd meg a projektmappát Visual Studio Code-ban.</li>
+              <li>A navigáció linkjeit helyezd <code>nav</code> elembe.</li>
+              <li>A magazin címét és a navigációt fogd össze egy <code>header</code> elemmel.</li>
+              <li>A teljes blogbejegyzést helyezd <code>article</code> elembe.</li>
+              <li>A cikk címét, szerzőjét, dátumát és szerzői képét helyezd az <code>article</code> saját <code>header</code> elemébe.</li>
+              <li>Az oldal végén készíts <code>footer</code> elemet.</li>
+              <li>Ments, majd frissítsd az oldalt a böngészőben.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">10. Önálló kódolási kihívás</h2>
+          <p>Alakítsd át az alábbi kódot logikusan strukturált HTML-lé:</p>
+
+          <pre><code>&lt;h1&gt;Iskolai Magazin&lt;/h1&gt;
+
+&lt;a href="#"&gt;Kezdőlap&lt;/a&gt;
+&lt;a href="#"&gt;Hírek&lt;/a&gt;
+&lt;a href="#"&gt;Sport&lt;/a&gt;
+
+&lt;h2&gt;Megkezdődött a tanév&lt;/h2&gt;
+
+&lt;p&gt;A cikket Nagy Anna írta.&lt;/p&gt;
+
+&lt;p&gt;
+  Szeptemberben ismét megkezdődött
+  az oktatás az iskolában.
+&lt;/p&gt;
+
+&lt;p&gt;Copyright © 2026 Iskolai Magazin&lt;/p&gt;</code></pre>
+
+          <p class="mt-3 mb-2"><strong>Használd legalább ezeket:</strong></p>
+          <p class="mb-0">
+            <code>header</code>, <code>nav</code>, <code>article</code>,
+            <code>footer</code>
+          </p>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">11. Ellenőrző kérdések</h2>
+          <ol class="mb-0">
+            <li>Mire használjuk a <code>nav</code> elemet?</li>
+            <li>Mit jelöl a <code>header</code> elem?</li>
+            <li>Mi a különbség a <code>head</code> és a <code>header</code> között?</li>
+            <li>Lehet-e több <code>header</code> egy oldalon?</li>
+            <li>Mire használjuk az <code>article</code> elemet?</li>
+            <li>Mire használjuk a <code>footer</code> elemet?</li>
+            <li>Mit jelenít meg az <code>&amp;copy;</code>?</li>
+            <li>Miért nem feltétlenül változik meg az oldal kinézete ezektől az elemektől?</li>
+            <li>Melyik technológia felel majd elsősorban a megjelenésért?</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">Összefoglalás</h2>
+          <div class="row g-3">
+            <div class="col-sm-6 col-lg-3">
+              <div class="border rounded-3 p-3 h-100">
+                <code>&lt;header&gt;</code>
+                <p class="small mb-0 mt-2">Bevezető vagy fejléc jellegű rész.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="border rounded-3 p-3 h-100">
+                <code>&lt;nav&gt;</code>
+                <p class="small mb-0 mt-2">Navigációs hivatkozások csoportja.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="border rounded-3 p-3 h-100">
+                <code>&lt;article&gt;</code>
+                <p class="small mb-0 mt-2">Önállóan is értelmezhető tartalmi egység.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="border rounded-3 p-3 h-100">
+                <code>&lt;footer&gt;</code>
+                <p class="small mb-0 mt-2">Lezáró vagy lábléc jellegű rész.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-success mt-4 mb-0">
+            <strong>Jegyezd meg:</strong> ezen az órán a weboldal szerkezetét
+            alakítottuk ki. A következő órán azt nézzük meg, miért fontos, hogy
+            a HTML-elemeknek jelentésük is legyen.
+          </div>
+        </div>
+      </section>
+
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">A mintaprojekt teljes kódja</h2>
+          <p>
+            Az alábbi kód a mintaprojekt teljes, változatlan kódja.
+            Ezt a változatot a következő tananyagban is elérhetővé tesszük.
+          </p>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <a href="vegleges_kod.html" download class="btn btn-outline-primary">
+              Teljes HTML-kód letöltése
+            </a>
+          </div>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;hu&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;A web alapnyelve: HTML&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;!--
+    &lt;h1&gt;A web alapnyelve: HTML&lt;/h1&gt;
+    &lt;h2&gt;A web alapnyelve: HTML&lt;/h2&gt;
+    &lt;h3&gt;A web alapnyelve: HTML&lt;/h3&gt;
+    &lt;h4&gt;A web alapnyelve: HTML&lt;/h4&gt;
+    &lt;h5&gt;A web alapnyelve: HTML&lt;/h5&gt;
+    &lt;h6&gt;A web alapnyelve: HTML&lt;/h6&gt;
+    --&gt;
+
+    &lt;header&gt;
+      &lt;h1&gt;📘 Kód Magazin&lt;/h1&gt;
+
+      &lt;nav&gt;
+        &lt;a href=&quot;blog.html&quot;&gt;Blog&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Kihívások&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Flexbox&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;CSS Grid&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h2&gt;A web alapnyelve: HTML&lt;/h2&gt;
+
+        &lt;img
+          src=&quot;img/laura-jones.jpg&quot;
+          alt=&quot;Laura Jones portréja&quot;
+          height=&quot;50&quot;
+          width=&quot;50&quot;
+        /&gt;
+
+        &lt;p&gt;Közzétette: &lt;strong&gt;Laura Jones&lt;/strong&gt;, 2027. június 21., hétfő&lt;/p&gt;
+
+        &lt;img
+          src=&quot;img/post-img.jpg&quot;
+          alt=&quot;HTML-kód egy képernyőn&quot;
+          width=&quot;500&quot;
+          height=&quot;200&quot;
+        /&gt;
+      &lt;/header&gt;
+
+      &lt;p&gt;
+        Minden modern weboldal és webalkalmazás három
+        &lt;em&gt;alapvető&lt;/em&gt;
+        technológiára épül: HTML-re, CSS-re és JavaScriptre. Ezek a web
+        alapvető nyelvei és technológiái.
+      &lt;/p&gt;
+
+      &lt;p&gt;
+        Ebben a bejegyzésben a HTML-re összpontosítunk. Megtanuljuk, mi is a
+        HTML, és azt is, hogy miért érdemes neked is megtanulnod.
+      &lt;/p&gt;
+
+      &lt;h3&gt;Mi az a HTML?&lt;/h3&gt;
+      &lt;p&gt;
+        A HTML a &lt;strong&gt;H&lt;/strong&gt;yper&lt;strong&gt;T&lt;/strong&gt;ext
+        &lt;strong&gt;M&lt;/strong&gt;arkup &lt;strong&gt;L&lt;/strong&gt;anguage rövidítése. Ez egy
+        jelölőnyelv, amelyet a webfejlesztők a weboldalak tartalmának
+        strukturálására és leírására használnak (nem programozási nyelv).
+      &lt;/p&gt;
+      &lt;p&gt;
+        A HTML különböző típusú tartalmakat leíró elemekből áll: bekezdésekből,
+        hivatkozásokból, címsorokból, képekből, videókból stb. A webböngészők
+        értelmezik a HTML-t, és a HTML-kódot weboldalként jelenítik meg.
+      &lt;/p&gt;
+      &lt;p&gt;A HTML-ben egy elem általában három részből áll:&lt;/p&gt;
+
+      &lt;ol&gt;
+        &lt;li&gt;Nyitó tag&lt;/li&gt;
+        &lt;li&gt;Záró tag&lt;/li&gt;
+        &lt;li&gt;Az elem tartalma&lt;/li&gt;
+      &lt;/ol&gt;
+
+      &lt;p&gt;
+        További információkat az
+        &lt;a
+          href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML&quot;
+          target=&quot;_blank&quot;
+          &gt;MDN Web Docs&lt;/a
+        &gt; oldalán találsz.
+      &lt;/p&gt;
+
+      &lt;h3&gt;Miért érdemes HTML-t tanulni?&lt;/h3&gt;
+
+      &lt;p&gt;
+        Számtalan oka van annak, hogy megtanuljuk a web egyik alapvető nyelvét.
+        Íme öt közülük:
+      &lt;/p&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;Hogy használni tudd a webfejlesztés egyik alapvető nyelvét&lt;/li&gt;
+        &lt;li&gt;
+          Hogy saját kezűleg készíthess szép weboldalakat olyan eszközök helyett,
+          mint a WordPress vagy a Wix
+        &lt;/li&gt;
+        &lt;li&gt;Hogy webalkalmazásokat készíthess&lt;/li&gt;
+        &lt;li&gt;Hogy lenyűgözd a barátaidat&lt;/li&gt;
+        &lt;li&gt;Hogy jól érezd magad közben 😃&lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;p&gt;Remélhetőleg tanultál valami újat. Találkozunk legközelebb!&lt;/p&gt;
+    &lt;/article&gt;
+
+    &lt;aside&gt;
+      &lt;h4&gt;Kapcsolódó bejegyzések&lt;/h4&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;img
+            src=&quot;img/related-1.jpg&quot;
+            alt=&quot;Programozó személy&quot;
+            width=&quot;75&quot;
+            height=&quot;75&quot;
+          /&gt;
+          &lt;a href=&quot;#&quot;&gt;Hogyan tanuljunk webfejlesztést?&lt;/a&gt;
+          &lt;p&gt;Szerző: Jonas Schmedtmann&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;img src=&quot;img/related-2.jpg&quot; alt=&quot;Villám&quot; width=&quot;75&quot; height=&quot;75&quot; /&gt;
+          &lt;a href=&quot;#&quot;&gt;A CSS ismeretlen ereje&lt;/a&gt;
+          &lt;p&gt;Szerző: Jim Dillon&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;img
+            src=&quot;img/related-3.jpg&quot;
+            alt=&quot;JavaScript-kód egy képernyőn&quot;
+            width=&quot;75&quot;
+            height=&quot;75&quot;
+          /&gt;
+          &lt;a href=&quot;#&quot;&gt;Miért nagyszerű a JavaScript?&lt;/a&gt;
+          &lt;p&gt;Szerző: Matilda&lt;/p&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+
+    &lt;footer&gt;Copyright &amp;copy; 2027 Kód Magazin.&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+        <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a HTML tananyaghoz</a>
+        <a href="alap_hu.zip" class="btn btn-outline-primary btn-lg">Kezdőprojekt letöltése</a>
+      </div>
+    </main>
+  </body>
+</html>
