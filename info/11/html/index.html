@@ -12,7 +12,10 @@
     <style>
       body { background: #f8f9fa; }
       .lesson-card { transition: transform .15s ease, box-shadow .15s ease; }
-      .lesson-card:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.08); }
+      .lesson-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.08);
+      }
     </style>
   </head>
   <body>
@@ -57,10 +60,45 @@
             </div>
           </div>
         </div>
+
+        <div class="col-lg-6">
+          <div class="card lesson-card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <span class="badge text-bg-success">3. óra</span>
+                <span class="text-secondary small">VS Code</span>
+              </div>
+              <h2 class="h4">VS Code beállítása HTML-hez</h2>
+              <p class="text-secondary">
+                Hasznos bővítmények, automatikus tagek és a Live Server használata.
+              </p>
+              <a href="3_ora/index.html" class="btn btn-primary">Óra megnyitása</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card lesson-card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <span class="badge text-bg-warning">1. kihívás</span>
+                <span class="text-secondary small">Gyakorlás</span>
+              </div>
+              <h2 class="h4">Kapcsolódó bejegyzések</h2>
+              <p class="text-secondary">
+                Relatív képútvonalak, <code>aside</code>, listák, képek és
+                hivatkozások önálló elkészítése.
+              </p>
+              <a href="4_kihivas/index.html" class="btn btn-warning">Kihívás megnyitása</a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="d-grid gap-2 col-md-6 mx-auto mt-5">
-        <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a 11. évfolyamhoz</a>
+        <a href="../index.html" class="btn btn-secondary btn-lg">
+          Vissza a 11. évfolyamhoz
+        </a>
       </div>
     </div>
   </body>

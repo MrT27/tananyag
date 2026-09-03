@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. kihívás – Kapcsolódó bejegyzések</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>
+      body { background: #f8f9fa; }
+      .hero {
+        background: linear-gradient(135deg, #fff 0%, #fff8e1 100%);
+        border: 1px solid #eee;
+      }
+      .section-card { border: 0; box-shadow: 0 .25rem .8rem rgba(0,0,0,.05); }
+      pre {
+        background: #212529;
+        color: #f8f9fa;
+        border-radius: .75rem;
+        padding: 1rem;
+        overflow-x: auto;
+        margin-bottom: 0;
+      }
+      code { color: #c7254e; }
+      pre code { color: inherit; }
+      .task { border-left: .35rem solid #198754; background: #edf8f1; }
+      .hint { border-left: .35rem solid #0d6efd; background: #eef5ff; }
+      .warning-box { border-left: .35rem solid #ffc107; background: #fff8e1; }
+    </style>
+  </head>
+  <body>
+    <main class="container py-5">
+      <section class="hero rounded-4 p-4 p-md-5 mb-4">
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span class="badge text-bg-primary">11. évfolyam</span>
+          <span class="badge text-bg-success">HTML és CSS</span>
+          <span class="badge text-bg-warning">1. kihívás</span>
+        </div>
+        <h1 class="display-6 fw-bold">Kapcsolódó bejegyzések elkészítése</h1>
+        <p class="lead mb-0">
+          Az első nagyobb önálló HTML-feladat: rendezd a képeket mappába,
+          javítsd az elérési utakat, majd készítsd el a kapcsolódó bejegyzések
+          részét szemantikus HTML-lel.
+        </p>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">A kihívás célja</h2>
+          <p>Ebben a feladatban egyszerre gyakoroljuk az eddig tanultakat:</p>
+          <ul>
+            <li>mappák és fájlok kezelése;</li>
+            <li>relatív fájlelérési utak;</li>
+            <li><code>img</code> elem;</li>
+            <li><code>a</code> hivatkozás;</li>
+            <li><code>ul</code> és <code>li</code> lista;</li>
+            <li>elemek egymásba ágyazása;</li>
+            <li><code>aside</code> használata;</li>
+            <li>szemantikus HTML.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">1. A képek rendezése</h2>
+          <p>
+            Egy webprojektben érdemes a képeket külön mappában tárolni.
+            Hozz létre a projektben egy:
+          </p>
+          <pre><code>img</code></pre>
+          <p class="mt-3">
+            nevű mappát, majd helyezd bele az összes képfájlt.
+          </p>
+
+          <div class="warning-box rounded-3 p-3">
+            <strong>Figyelem:</strong> ha egy képet áthelyezel, a korábbi
+            <code>src</code> elérési út már nem lesz helyes. A HTML-kódban is
+            módosítani kell az útvonalat.
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">2. Relatív elérési utak</h2>
+          <p>Ha a kép az <code>index.html</code> mellett található:</p>
+          <pre><code>&lt;img src="laura-jones.jpg" alt="Laura Jones portréja" /&gt;</code></pre>
+
+          <p class="mt-4">Ha áthelyezzük az <code>img</code> mappába:</p>
+          <pre><code>&lt;img src="img/laura-jones.jpg" alt="Laura Jones portréja" /&gt;</code></pre>
+
+          <div class="hint rounded-3 p-3 mt-4">
+            <strong>Szabály:</strong> először a mappa nevét írjuk, utána
+            <code>/</code>, majd a fájl nevét.
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">3. A tényleges kihívás</h2>
+          <p>
+            A fő <code>article</code> után készíts egy új részt
+            <code>aside</code> elemmel.
+          </p>
+          <pre><code>&lt;aside&gt;
+
+&lt;/aside&gt;</code></pre>
+
+          <p class="mt-3">
+            Ez a rész a fő cikkhez kapcsolódó, de attól elkülönülő
+            <strong>kapcsolódó bejegyzéseket</strong> fogja tartalmazni.
+          </p>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">4. Mit kell elkészítened?</h2>
+          <div class="task rounded-3 p-3">
+            <ol class="mb-0">
+              <li>Készíts egy címsort: <strong>Kapcsolódó bejegyzések</strong>.</li>
+              <li>A három kapcsolódó bejegyzést rendezetlen listában készítsd el.</li>
+              <li>Minden listaelem tartalmazzon egy képet.</li>
+              <li>Minden listaelemben legyen egy hivatkozás a bejegyzés címével.</li>
+              <li>Minden listaelemben legyen egy bekezdés a szerző nevével.</li>
+              <li>A képek mérete legyen <strong>75 × 75 pixel</strong>.</li>
+              <li>Adj értelmes <code>alt</code> szöveget minden képhez.</li>
+              <li>A linkek egyelőre mutathatnak <code>#</code> címre.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">5. A szükséges tartalom</h2>
+
+          <h3 class="h5">1. bejegyzés</h3>
+          <ul>
+            <li>Kép: <code>img/related-1.jpg</code></li>
+            <li>Cím: <strong>Hogyan tanuljunk webfejlesztést?</strong></li>
+            <li>Szerző: Jonas Schmedtmann</li>
+          </ul>
+
+          <h3 class="h5">2. bejegyzés</h3>
+          <ul>
+            <li>Kép: <code>img/related-2.jpg</code></li>
+            <li>Cím: <strong>A CSS ismeretlen ereje</strong></li>
+            <li>Szerző: Jim Dillon</li>
+          </ul>
+
+          <h3 class="h5">3. bejegyzés</h3>
+          <ul class="mb-0">
+            <li>Kép: <code>img/related-3.jpg</code></li>
+            <li>Cím: <strong>Miért nagyszerű a JavaScript?</strong></li>
+            <li>Szerző: Matilda</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">6. Milyen szerkezetben gondolkodj?</h2>
+          <pre><code>&lt;aside&gt;
+  &lt;h4&gt;...&lt;/h4&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;img ... /&gt;
+      &lt;a ...&gt;...&lt;/a&gt;
+      &lt;p&gt;...&lt;/p&gt;
+    &lt;/li&gt;
+
+    ...
+  &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+
+          <div class="hint rounded-3 p-3 mt-4">
+            Ez még nem a kész megoldás, csak a szerkezet. A tagek tartalmát,
+            attribútumait és a további listaelemeket neked kell megírnod.
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">7. Miért lista?</h2>
+          <p>
+            A kapcsolódó bejegyzések tartalmilag egy felsorolást alkotnak:
+            több, egymással azonos szerepű bejegyzés követi egymást.
+          </p>
+          <p class="mb-0">
+            Ezért szemantikusan megfelelő a <code>ul</code> és
+            <code>li</code> használata akkor is, ha később CSS-sel
+            eltávolítjuk a felsorolásjeleket.
+          </p>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">8. Miért <code>aside</code>?</h2>
+          <p>
+            A weboldal fő tartalma a blogbejegyzés, amely az
+            <code>article</code> elemben található. A kapcsolódó bejegyzések
+            ezt kiegészítik, de nem részei közvetlenül a cikknek.
+          </p>
+          <p class="mb-0">
+            Ezért itt szemantikusan jó választás az <code>aside</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">9. Kezdőkód</h2>
+          <p>
+            Ha szeretnéd, letöltheted azt a változatot, amelyből a kapcsolódó
+            bejegyzések részt eltávolítottuk. Ebből önállóan felépítheted a
+            kihívás megoldását.
+          </p>
+          <a href="kihivas_kezdokod.html" download class="btn btn-primary mb-3">
+            Kihívás kezdőkód letöltése
+          </a>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;hu&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;A web alapnyelve: HTML&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;!--
+    &lt;h1&gt;A web alapnyelve: HTML&lt;/h1&gt;
+    &lt;h2&gt;A web alapnyelve: HTML&lt;/h2&gt;
+    &lt;h3&gt;A web alapnyelve: HTML&lt;/h3&gt;
+    &lt;h4&gt;A web alapnyelve: HTML&lt;/h4&gt;
+    &lt;h5&gt;A web alapnyelve: HTML&lt;/h5&gt;
+    &lt;h6&gt;A web alapnyelve: HTML&lt;/h6&gt;
+    --&gt;
+
+    &lt;header&gt;
+      &lt;h1&gt;📘 Kód Magazin&lt;/h1&gt;
+
+      &lt;nav&gt;
+        &lt;a href=&quot;blog.html&quot;&gt;Blog&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Kihívások&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Flexbox&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;CSS Grid&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h2&gt;A web alapnyelve: HTML&lt;/h2&gt;
+
+        &lt;img
+          src=&quot;img/laura-jones.jpg&quot;
+          alt=&quot;Laura Jones portréja&quot;
+          height=&quot;50&quot;
+          width=&quot;50&quot;
+        /&gt;
+
+        &lt;p&gt;Közzétette: &lt;strong&gt;Laura Jones&lt;/strong&gt;, 2027. június 21., hétfő&lt;/p&gt;
+
+        &lt;img
+          src=&quot;img/post-img.jpg&quot;
+          alt=&quot;HTML-kód egy képernyőn&quot;
+          width=&quot;500&quot;
+          height=&quot;200&quot;
+        /&gt;
+      &lt;/header&gt;
+
+      &lt;p&gt;
+        Minden modern weboldal és webalkalmazás három
+        &lt;em&gt;alapvető&lt;/em&gt;
+        technológiára épül: HTML-re, CSS-re és JavaScriptre. Ezek a web
+        alapvető nyelvei és technológiái.
+      &lt;/p&gt;
+
+      &lt;p&gt;
+        Ebben a bejegyzésben a HTML-re összpontosítunk. Megtanuljuk, mi is a
+        HTML, és azt is, hogy miért érdemes neked is megtanulnod.
+      &lt;/p&gt;
+
+      &lt;h3&gt;Mi az a HTML?&lt;/h3&gt;
+      &lt;p&gt;
+        A HTML a &lt;strong&gt;H&lt;/strong&gt;yper&lt;strong&gt;T&lt;/strong&gt;ext
+        &lt;strong&gt;M&lt;/strong&gt;arkup &lt;strong&gt;L&lt;/strong&gt;anguage rövidítése. Ez egy
+        jelölőnyelv, amelyet a webfejlesztők a weboldalak tartalmának
+        strukturálására és leírására használnak (nem programozási nyelv).
+      &lt;/p&gt;
+      &lt;p&gt;
+        A HTML különböző típusú tartalmakat leíró elemekből áll: bekezdésekből,
+        hivatkozásokból, címsorokból, képekből, videókból stb. A webböngészők
+        értelmezik a HTML-t, és a HTML-kódot weboldalként jelenítik meg.
+      &lt;/p&gt;
+      &lt;p&gt;A HTML-ben egy elem általában három részből áll:&lt;/p&gt;
+
+      &lt;ol&gt;
+        &lt;li&gt;Nyitó tag&lt;/li&gt;
+        &lt;li&gt;Záró tag&lt;/li&gt;
+        &lt;li&gt;Az elem tartalma&lt;/li&gt;
+      &lt;/ol&gt;
+
+      &lt;p&gt;
+        További információkat az
+        &lt;a
+          href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML&quot;
+          target=&quot;_blank&quot;
+          &gt;MDN Web Docs&lt;/a
+        &gt; oldalán találsz.
+      &lt;/p&gt;
+
+      &lt;h3&gt;Miért érdemes HTML-t tanulni?&lt;/h3&gt;
+
+      &lt;p&gt;
+        Számtalan oka van annak, hogy megtanuljuk a web egyik alapvető nyelvét.
+        Íme öt közülük:
+      &lt;/p&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;Hogy használni tudd a webfejlesztés egyik alapvető nyelvét&lt;/li&gt;
+        &lt;li&gt;
+          Hogy saját kezűleg készíthess szép weboldalakat olyan eszközök helyett,
+          mint a WordPress vagy a Wix
+        &lt;/li&gt;
+        &lt;li&gt;Hogy webalkalmazásokat készíthess&lt;/li&gt;
+        &lt;li&gt;Hogy lenyűgözd a barátaidat&lt;/li&gt;
+        &lt;li&gt;Hogy jól érezd magad közben 😃&lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;p&gt;Remélhetőleg tanultál valami újat. Találkozunk legközelebb!&lt;/p&gt;
+    &lt;/article&gt;
+
+    &lt;!-- KIHÍVÁS: ide készítsd el a Kapcsolódó bejegyzések részt &lt;aside&gt; elemmel. --&gt;
+
+    &lt;footer&gt;Copyright &amp;copy; 2027 Kód Magazin.&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">10. Ellenőrzőlista</h2>
+          <p>Mielőtt megnézed a megoldást, ellenőrizd:</p>
+          <ul>
+            <li>Van <code>aside</code> elem?</li>
+            <li>Van megfelelő címsor?</li>
+            <li>A bejegyzések <code>ul</code> listában vannak?</li>
+            <li>Három <code>li</code> elem készült?</li>
+            <li>Minden listaelem tartalmaz képet, linket és szerzőt?</li>
+            <li>A képek útvonala <code>img/...</code> formátumú?</li>
+            <li>A képek 75 × 75 pixelesek?</li>
+            <li>Minden képnek van értelmes <code>alt</code> szövege?</li>
+            <li>Minden nyitó taghez tartozik megfelelő záró tag?</li>
+            <li>A behúzás áttekinthető?</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">A kihívás teljes megoldása</h2>
+          <p>
+            Csak akkor nézd meg, ha már önállóan megpróbáltad elkészíteni a
+            feladatot. Nem baj, ha a te kódod kisebb részletekben eltér,
+            amennyiben helyes HTML-t és megfelelő szemantikát használsz.
+          </p>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <a href="vegleges_kod.html" download class="btn btn-outline-primary">
+              Teljes megoldás letöltése
+            </a>
+          </div>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;hu&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;A web alapnyelve: HTML&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;!--
+    &lt;h1&gt;A web alapnyelve: HTML&lt;/h1&gt;
+    &lt;h2&gt;A web alapnyelve: HTML&lt;/h2&gt;
+    &lt;h3&gt;A web alapnyelve: HTML&lt;/h3&gt;
+    &lt;h4&gt;A web alapnyelve: HTML&lt;/h4&gt;
+    &lt;h5&gt;A web alapnyelve: HTML&lt;/h5&gt;
+    &lt;h6&gt;A web alapnyelve: HTML&lt;/h6&gt;
+    --&gt;
+
+    &lt;header&gt;
+      &lt;h1&gt;📘 Kód Magazin&lt;/h1&gt;
+
+      &lt;nav&gt;
+        &lt;a href=&quot;blog.html&quot;&gt;Blog&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Kihívások&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Flexbox&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;CSS Grid&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h2&gt;A web alapnyelve: HTML&lt;/h2&gt;
+
+        &lt;img
+          src=&quot;img/laura-jones.jpg&quot;
+          alt=&quot;Laura Jones portréja&quot;
+          height=&quot;50&quot;
+          width=&quot;50&quot;
+        /&gt;
+
+        &lt;p&gt;Közzétette: &lt;strong&gt;Laura Jones&lt;/strong&gt;, 2027. június 21., hétfő&lt;/p&gt;
+
+        &lt;img
+          src=&quot;img/post-img.jpg&quot;
+          alt=&quot;HTML-kód egy képernyőn&quot;
+          width=&quot;500&quot;
+          height=&quot;200&quot;
+        /&gt;
+      &lt;/header&gt;
+
+      &lt;p&gt;
+        Minden modern weboldal és webalkalmazás három
+        &lt;em&gt;alapvető&lt;/em&gt;
+        technológiára épül: HTML-re, CSS-re és JavaScriptre. Ezek a web
+        alapvető nyelvei és technológiái.
+      &lt;/p&gt;
+
+      &lt;p&gt;
+        Ebben a bejegyzésben a HTML-re összpontosítunk. Megtanuljuk, mi is a
+        HTML, és azt is, hogy miért érdemes neked is megtanulnod.
+      &lt;/p&gt;
+
+      &lt;h3&gt;Mi az a HTML?&lt;/h3&gt;
+      &lt;p&gt;
+        A HTML a &lt;strong&gt;H&lt;/strong&gt;yper&lt;strong&gt;T&lt;/strong&gt;ext
+        &lt;strong&gt;M&lt;/strong&gt;arkup &lt;strong&gt;L&lt;/strong&gt;anguage rövidítése. Ez egy
+        jelölőnyelv, amelyet a webfejlesztők a weboldalak tartalmának
+        strukturálására és leírására használnak (nem programozási nyelv).
+      &lt;/p&gt;
+      &lt;p&gt;
+        A HTML különböző típusú tartalmakat leíró elemekből áll: bekezdésekből,
+        hivatkozásokból, címsorokból, képekből, videókból stb. A webböngészők
+        értelmezik a HTML-t, és a HTML-kódot weboldalként jelenítik meg.
+      &lt;/p&gt;
+      &lt;p&gt;A HTML-ben egy elem általában három részből áll:&lt;/p&gt;
+
+      &lt;ol&gt;
+        &lt;li&gt;Nyitó tag&lt;/li&gt;
+        &lt;li&gt;Záró tag&lt;/li&gt;
+        &lt;li&gt;Az elem tartalma&lt;/li&gt;
+      &lt;/ol&gt;
+
+      &lt;p&gt;
+        További információkat az
+        &lt;a
+          href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML&quot;
+          target=&quot;_blank&quot;
+          &gt;MDN Web Docs&lt;/a
+        &gt; oldalán találsz.
+      &lt;/p&gt;
+
+      &lt;h3&gt;Miért érdemes HTML-t tanulni?&lt;/h3&gt;
+
+      &lt;p&gt;
+        Számtalan oka van annak, hogy megtanuljuk a web egyik alapvető nyelvét.
+        Íme öt közülük:
+      &lt;/p&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;Hogy használni tudd a webfejlesztés egyik alapvető nyelvét&lt;/li&gt;
+        &lt;li&gt;
+          Hogy saját kezűleg készíthess szép weboldalakat olyan eszközök helyett,
+          mint a WordPress vagy a Wix
+        &lt;/li&gt;
+        &lt;li&gt;Hogy webalkalmazásokat készíthess&lt;/li&gt;
+        &lt;li&gt;Hogy lenyűgözd a barátaidat&lt;/li&gt;
+        &lt;li&gt;Hogy jól érezd magad közben 😃&lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;p&gt;Remélhetőleg tanultál valami újat. Találkozunk legközelebb!&lt;/p&gt;
+    &lt;/article&gt;
+
+    &lt;aside&gt;
+      &lt;h4&gt;Kapcsolódó bejegyzések&lt;/h4&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;img
+            src=&quot;img/related-1.jpg&quot;
+            alt=&quot;Programozó személy&quot;
+            width=&quot;75&quot;
+            height=&quot;75&quot;
+          /&gt;
+          &lt;a href=&quot;#&quot;&gt;Hogyan tanuljunk webfejlesztést?&lt;/a&gt;
+          &lt;p&gt;Szerző: Jonas Schmedtmann&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;img src=&quot;img/related-2.jpg&quot; alt=&quot;Villám&quot; width=&quot;75&quot; height=&quot;75&quot; /&gt;
+          &lt;a href=&quot;#&quot;&gt;A CSS ismeretlen ereje&lt;/a&gt;
+          &lt;p&gt;Szerző: Jim Dillon&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;img
+            src=&quot;img/related-3.jpg&quot;
+            alt=&quot;JavaScript-kód egy képernyőn&quot;
+            width=&quot;75&quot;
+            height=&quot;75&quot;
+          /&gt;
+          &lt;a href=&quot;#&quot;&gt;Miért nagyszerű a JavaScript?&lt;/a&gt;
+          &lt;p&gt;Szerző: Matilda&lt;/p&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+
+    &lt;footer&gt;Copyright &amp;copy; 2027 Kód Magazin.&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+        <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a HTML és CSS főoldalra</a>
+        <a href="../3_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző óra</a>
+      </div>
+    </main>
+  </body>
+</html>

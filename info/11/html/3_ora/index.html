@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. óra – VS Code beállítása HTML-hez</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>
+      body { background: #f8f9fa; }
+      .hero { background: linear-gradient(135deg, #ffffff 0%, #eef5ff 100%); border: 1px solid #e6e9ef; }
+      .section-card { border: 0; box-shadow: 0 .25rem .8rem rgba(0,0,0,.05); }
+      pre { background: #212529; color: #f8f9fa; border-radius: .75rem; padding: 1rem; overflow-x: auto; margin-bottom: 0; }
+      code { color: #c7254e; }
+      pre code { color: inherit; }
+      .callout { border-left: .35rem solid #0d6efd; background: #eef5ff; }
+      .important { border-left: .35rem solid #ffc107; background: #fff8e1; }
+      .task { border-left: .35rem solid #198754; background: #edf8f1; }
+    </style>
+  </head>
+  <body>
+    <main class="container py-5">
+      <section class="hero rounded-4 p-4 p-md-5 mb-4">
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span class="badge text-bg-primary">11. évfolyam</span>
+          <span class="badge text-bg-success">HTML és CSS</span>
+          <span class="badge text-bg-dark">3. óra</span>
+        </div>
+        <h1 class="display-6 fw-bold">VS Code beállítása HTML- és CSS-fejlesztéshez</h1>
+        <p class="lead mb-0">Hasznos bővítmények telepítése, automatikus tagek használata és a Live Server beállítása.</p>
+      </section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">Az óra célja</h2>
+        <ul>
+          <li>VS Code bővítményeket telepíteni és használni;</li>
+          <li>képelőnézetet használni HTML-kódban;</li>
+          <li>színkiemelést használni CSS-ben;</li>
+          <li>automatikusan átnevezni és lezárni HTML-tageket;</li>
+          <li>Live Serverrel futtatni a weboldalt;</li>
+          <li>megérteni a localhost és a port fogalmának alapját.</li>
+        </ul>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">1. Miért használunk bővítményeket?</h2>
+        <p>A VS Code önmagában is alkalmas HTML és CSS írására, de néhány bővítménnyel gyorsabbá és kényelmesebbé tehetjük a munkát.</p>
+        <div class="callout rounded-3 p-3"><strong>Fontos:</strong> a bővítmények nem helyettesítik a HTML- és CSS-ismereteket. A már megtanult munkát gyorsítják.</div>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">2. A bővítmények panel</h2>
+        <p>A VS Code bal oldali oldalsávjában nyisd meg az <strong>Extensions</strong> panelt. Itt kereshetjük meg, telepíthetjük és engedélyezhetjük a szükséges bővítményeket.</p>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">3. Képelőnézet</h2>
+        <p>A képelőnézetet biztosító bővítmény segíthet megmutatni a HTML-ben hivatkozott képet közvetlenül a szerkesztőben.</p>
+        <pre><code>&lt;img
+  src="img/post-img.jpg"
+  alt="HTML-kód egy képernyőn"
+/&gt;</code></pre>
+        <p class="mt-3 mb-0">Ez különösen akkor hasznos, ha a projektben sok képfájl található.</p>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">4. Színkiemelő bővítmény</h2>
+        <p>A színkiemelő bővítmény CSS-ben vizuálisan is segíthet felismerni a megadott színeket.</p>
+        <pre><code>color: #0d6efd;
+background-color: #f8f9fa;</code></pre>
+        <p class="mt-3 mb-0">A CSS tanulásakor ez különösen hasznos lesz.</p>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">5. Automatikus tag-átnevezés</h2>
+        <p>Ha megváltoztatjuk egy HTML-elem nyitó tagjét, a megfelelő bővítmény a záró taget is együtt módosíthatja.</p>
+        <pre><code>&lt;p&gt;Szöveg&lt;/p&gt;</code></pre>
+        <p class="mt-3">Például:</p>
+        <pre><code>&lt;div&gt;Szöveg&lt;/div&gt;</code></pre>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">6. Automatikus záró tagek</h2>
+        <p>A VS Code képes automatikusan létrehozni a HTML-elemek záró tagjét.</p>
+        <pre><code>&lt;p&gt;&lt;/p&gt;</code></pre>
+        <p class="mt-3 mb-0">Mivel már ismerjük a nyitó és záró tagek működését, ezt a segítséget mostantól nyugodtan használhatjuk.</p>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">7. Live Server</h2>
+        <p>A Live Server egy helyi webszerveren futtatja a projektet, és mentéskor automatikusan frissítheti a böngészőben megnyitott oldalt.</p>
+        <ol>
+          <li>Telepítsd a Live Server bővítményt.</li>
+          <li>Nyisd meg a projekt HTML-fájlját.</li>
+          <li>Kattints az alsó állapotsor <strong>Go Live</strong> gombjára.</li>
+          <li>A böngészőben megnyílik a weboldal.</li>
+        </ol>
+        <div class="important rounded-3 p-3"><strong>Megjegyzés:</strong> a portszám eltérhet. Gyakori példa az <code>5500</code>, de nem minden gépen szükségszerűen ugyanaz.</div>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">8. Automatikus frissítés kipróbálása</h2>
+        <p>Módosítsd ideiglenesen a magazin főcímét:</p>
+        <pre><code>&lt;h1&gt;📘 Saját Kód Magazin&lt;/h1&gt;</code></pre>
+        <p class="mt-3">Mentsd el a fájlt. Live Server használatakor a böngésző automatikusan frissülhet. Ezután állítsd vissza az eredeti címet.</p>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">9. Localhost és port</h2>
+        <p>A Live Server a saját számítógépünkön futó helyi webszervert használ. Ezt a környezetet gyakran <strong>localhost</strong> néven említjük.</p>
+        <pre><code>http://127.0.0.1:5500/</code></pre>
+        <p class="mt-3 mb-0">A portszám segít megkülönböztetni a számítógépen futó különböző hálózati szolgáltatásokat. Kezdőként ennek részletes működését még nem kell ismerni.</p>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">10. Live Server leállítása</h2>
+        <p>Ha befejeztük a fejlesztést, az állapotsorban a futó Live Server jelzésére kattintva leállíthatjuk.</p>
+        <div class="callout rounded-3 p-3">Ha a Live Server nem működik, továbbra is megnyithatod közvetlenül az <code>index.html</code> fájlt a böngészőben, majd kézzel frissítheted.</div>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">11. Közös órai feladat</h2>
+        <div class="task rounded-3 p-3">
+          <ol class="mb-0">
+            <li>Nyisd meg a Kód Magazin projektet VS Code-ban.</li>
+            <li>Nyisd meg az Extensions panelt.</li>
+            <li>Telepítsd vagy ellenőrizd a képelőnézetet biztosító bővítményt.</li>
+            <li>Telepítsd vagy ellenőrizd a színkiemelő bővítményt.</li>
+            <li>Telepítsd vagy ellenőrizd az automatikus tag-átnevezést.</li>
+            <li>Kapcsold be az automatikus záró tageket.</li>
+            <li>Telepítsd és indítsd el a Live Servert.</li>
+            <li>Módosítsd ideiglenesen a főcímet, majd mentsd el a fájlt.</li>
+            <li>Ellenőrizd az automatikus frissítést.</li>
+            <li>Állítsd vissza az eredeti kódot.</li>
+          </ol>
+        </div>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">12. Ellenőrző kérdések</h2>
+        <ol>
+          <li>Mire használható a képelőnézet?</li>
+          <li>Mikor lesz hasznos a színkiemelés?</li>
+          <li>Mit csinál az automatikus tag-átnevezés?</li>
+          <li>Mire való az automatikus záró tag?</li>
+          <li>Mire használjuk a Live Servert?</li>
+          <li>Mi történhet mentés után Live Server használatakor?</li>
+          <li>Mit jelent a localhost?</li>
+          <li>Mi a portszám?</li>
+          <li>Mit tehetsz, ha a Live Server nem működik?</li>
+        </ol>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">Összefoglalás</h2>
+        <ul>
+          <li><strong>Képelőnézet:</strong> segít felismerni a képfájlokat.</li>
+          <li><strong>Színkiemelés:</strong> segít a CSS-színek használatakor.</li>
+          <li><strong>Automatikus tag-átnevezés:</strong> együtt módosítja a nyitó és záró taget.</li>
+          <li><strong>Automatikus zárás:</strong> létrehozza a záró taget.</li>
+          <li><strong>Live Server:</strong> helyi szerveren futtatja és mentéskor frissíti az oldalt.</li>
+        </ul>
+      </div></section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">A mintaprojekt teljes kódja</h2>
+          <p>Az alábbi teljes HTML-kód ezen az órán is változatlanul elérhető.</p>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <a href="vegleges_kod.html" download class="btn btn-outline-primary">Teljes HTML-kód letöltése</a>
+          </div>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;hu&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;A web alapnyelve: HTML&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;!--
+    &lt;h1&gt;A web alapnyelve: HTML&lt;/h1&gt;
+    &lt;h2&gt;A web alapnyelve: HTML&lt;/h2&gt;
+    &lt;h3&gt;A web alapnyelve: HTML&lt;/h3&gt;
+    &lt;h4&gt;A web alapnyelve: HTML&lt;/h4&gt;
+    &lt;h5&gt;A web alapnyelve: HTML&lt;/h5&gt;
+    &lt;h6&gt;A web alapnyelve: HTML&lt;/h6&gt;
+    --&gt;
+
+    &lt;header&gt;
+      &lt;h1&gt;📘 Kód Magazin&lt;/h1&gt;
+
+      &lt;nav&gt;
+        &lt;a href=&quot;blog.html&quot;&gt;Blog&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Kihívások&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Flexbox&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;CSS Grid&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h2&gt;A web alapnyelve: HTML&lt;/h2&gt;
+
+        &lt;img
+          src=&quot;img/laura-jones.jpg&quot;
+          alt=&quot;Laura Jones portréja&quot;
+          height=&quot;50&quot;
+          width=&quot;50&quot;
+        /&gt;
+
+        &lt;p&gt;Közzétette: &lt;strong&gt;Laura Jones&lt;/strong&gt;, 2027. június 21., hétfő&lt;/p&gt;
+
+        &lt;img
+          src=&quot;img/post-img.jpg&quot;
+          alt=&quot;HTML-kód egy képernyőn&quot;
+          width=&quot;500&quot;
+          height=&quot;200&quot;
+        /&gt;
+      &lt;/header&gt;
+
+      &lt;p&gt;
+        Minden modern weboldal és webalkalmazás három
+        &lt;em&gt;alapvető&lt;/em&gt;
+        technológiára épül: HTML-re, CSS-re és JavaScriptre. Ezek a web
+        alapvető nyelvei és technológiái.
+      &lt;/p&gt;
+
+      &lt;p&gt;
+        Ebben a bejegyzésben a HTML-re összpontosítunk. Megtanuljuk, mi is a
+        HTML, és azt is, hogy miért érdemes neked is megtanulnod.
+      &lt;/p&gt;
+
+      &lt;h3&gt;Mi az a HTML?&lt;/h3&gt;
+      &lt;p&gt;
+        A HTML a &lt;strong&gt;H&lt;/strong&gt;yper&lt;strong&gt;T&lt;/strong&gt;ext
+        &lt;strong&gt;M&lt;/strong&gt;arkup &lt;strong&gt;L&lt;/strong&gt;anguage rövidítése. Ez egy
+        jelölőnyelv, amelyet a webfejlesztők a weboldalak tartalmának
+        strukturálására és leírására használnak (nem programozási nyelv).
+      &lt;/p&gt;
+      &lt;p&gt;
+        A HTML különböző típusú tartalmakat leíró elemekből áll: bekezdésekből,
+        hivatkozásokból, címsorokból, képekből, videókból stb. A webböngészők
+        értelmezik a HTML-t, és a HTML-kódot weboldalként jelenítik meg.
+      &lt;/p&gt;
+      &lt;p&gt;A HTML-ben egy elem általában három részből áll:&lt;/p&gt;
+
+      &lt;ol&gt;
+        &lt;li&gt;Nyitó tag&lt;/li&gt;
+        &lt;li&gt;Záró tag&lt;/li&gt;
+        &lt;li&gt;Az elem tartalma&lt;/li&gt;
+      &lt;/ol&gt;
+
+      &lt;p&gt;
+        További információkat az
+        &lt;a
+          href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML&quot;
+          target=&quot;_blank&quot;
+          &gt;MDN Web Docs&lt;/a
+        &gt; oldalán találsz.
+      &lt;/p&gt;
+
+      &lt;h3&gt;Miért érdemes HTML-t tanulni?&lt;/h3&gt;
+
+      &lt;p&gt;
+        Számtalan oka van annak, hogy megtanuljuk a web egyik alapvető nyelvét.
+        Íme öt közülük:
+      &lt;/p&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;Hogy használni tudd a webfejlesztés egyik alapvető nyelvét&lt;/li&gt;
+        &lt;li&gt;
+          Hogy saját kezűleg készíthess szép weboldalakat olyan eszközök helyett,
+          mint a WordPress vagy a Wix
+        &lt;/li&gt;
+        &lt;li&gt;Hogy webalkalmazásokat készíthess&lt;/li&gt;
+        &lt;li&gt;Hogy lenyűgözd a barátaidat&lt;/li&gt;
+        &lt;li&gt;Hogy jól érezd magad közben 😃&lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;p&gt;Remélhetőleg tanultál valami újat. Találkozunk legközelebb!&lt;/p&gt;
+    &lt;/article&gt;
+
+    &lt;aside&gt;
+      &lt;h4&gt;Kapcsolódó bejegyzések&lt;/h4&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;img
+            src=&quot;img/related-1.jpg&quot;
+            alt=&quot;Programozó személy&quot;
+            width=&quot;75&quot;
+            height=&quot;75&quot;
+          /&gt;
+          &lt;a href=&quot;#&quot;&gt;Hogyan tanuljunk webfejlesztést?&lt;/a&gt;
+          &lt;p&gt;Szerző: Jonas Schmedtmann&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;img src=&quot;img/related-2.jpg&quot; alt=&quot;Villám&quot; width=&quot;75&quot; height=&quot;75&quot; /&gt;
+          &lt;a href=&quot;#&quot;&gt;A CSS ismeretlen ereje&lt;/a&gt;
+          &lt;p&gt;Szerző: Jim Dillon&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;img
+            src=&quot;img/related-3.jpg&quot;
+            alt=&quot;JavaScript-kód egy képernyőn&quot;
+            width=&quot;75&quot;
+            height=&quot;75&quot;
+          /&gt;
+          &lt;a href=&quot;#&quot;&gt;Miért nagyszerű a JavaScript?&lt;/a&gt;
+          &lt;p&gt;Szerző: Matilda&lt;/p&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+
+    &lt;footer&gt;Copyright &amp;copy; 2027 Kód Magazin.&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+        <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a HTML tananyaghoz</a>
+        <a href="../2_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző óra</a>
+        <a href="../4_kihivas/index.html" class="btn btn-warning btn-lg">Következő: 1. kihívás</a>
+      </div>
+    </main>
+  </body>
+</html>
