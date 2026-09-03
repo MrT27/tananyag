@@ -1,0 +1,28 @@
+/* 1. CSS óra – szelektorok kombinálása */
+
+/* Több szelektor összekapcsolása vesszővel */
+h1,
+h2,
+h3,
+h4,
+p,
+li {
+  font-family: sans-serif;
+}
+
+/* Alap betűméretek a példákhoz */
+p {
+  font-size: 22px;
+}
+
+/* Leszármazott (descendant) szelektor:
+   csak a footer elemen belüli bekezdések */
+footer p {
+  font-size: 16px;
+}
+
+/* Beágyazott leszármazott szelektor:
+   csak az article elemben lévő header bekezdései */
+article header p {
+  font-style: italic;
+}

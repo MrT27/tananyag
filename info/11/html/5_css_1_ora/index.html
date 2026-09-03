@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 1. óra – Szelektorok kombinálása</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>
+      body { background: #f8f9fa; }
+      .hero { background: linear-gradient(135deg, #fff 0%, #eefaff 100%); border: 1px solid #e6e9ef; }
+      .section-card { border: 0; box-shadow: 0 .25rem .8rem rgba(0,0,0,.05); }
+      pre { background: #212529; color: #f8f9fa; border-radius: .75rem; padding: 1rem; overflow-x: auto; margin-bottom: 0; }
+      code { color: #c7254e; }
+      pre code { color: inherit; }
+      .callout { border-left: .35rem solid #0dcaf0; background: #eefbff; }
+      .warning-box { border-left: .35rem solid #ffc107; background: #fff8e1; }
+      .task { border-left: .35rem solid #198754; background: #edf8f1; }
+    </style>
+  </head>
+  <body>
+    <main class="container py-5">
+      <section class="hero rounded-4 p-4 p-md-5 mb-4">
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span class="badge text-bg-primary">11. évfolyam</span>
+          <span class="badge text-bg-info">CSS</span>
+          <span class="badge text-bg-dark">1. óra</span>
+        </div>
+        <h1 class="display-6 fw-bold">Szelektorok kombinálása CSS-ben</h1>
+        <p class="lead mb-0">
+          Megtanuljuk csökkenteni az ismétlődő CSS-kódot, több elemet egyszerre
+          kijelölni, valamint egy adott HTML-részen belüli elemeket formázni.
+        </p>
+      </section>
+
+      <div class="alert alert-info d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+        <div>
+          <strong>Órai fájlok:</strong> a kezdő projektből dolgozunk. A teljes
+          tanfolyami végállapotot is mellékeltem összehasonlításhoz.
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+          <a href="starter.zip" class="btn btn-primary">Starter letöltése</a>
+          <a href="final.zip" class="btn btn-outline-primary">Final letöltése</a>
+        </div>
+      </div>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">Az óra célja</h2>
+        <p>Az óra végére képes leszel:</p>
+        <ul>
+          <li>több CSS-szelektort egy szabályban összekapcsolni;</li>
+          <li>felismerni és csökkenteni a felesleges kódismétlést;</li>
+          <li>használni a leszármazott szelektort;</li>
+          <li>egy adott konténeren belüli elemeket célzottan formázni;</li>
+          <li>megérteni, miért válhat törékennyé a túl hosszú, HTML-struktúrát követő szelektor.</li>
+        </ul>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">1. Mi a probléma az ismétlődő CSS-sel?</h2>
+        <p>Tegyük fel, hogy ugyanazt a betűtípust több elemhez külön-külön megadjuk:</p>
+        <pre><code>h1 {
+  font-family: sans-serif;
+}
+
+h2 {
+  font-family: sans-serif;
+}
+
+h3 {
+  font-family: sans-serif;
+}
+
+p {
+  font-family: sans-serif;
+}
+
+li {
+  font-family: sans-serif;
+}</code></pre>
+        <p class="mt-3 mb-0">
+          Ez működik, de feleslegesen ismétlődik. Ha később megváltoztatjuk a
+          betűtípust, minden szabályt külön át kellene írni.
+        </p>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">2. Szelektorlista – több elem kijelölése egyszerre</h2>
+        <p>
+          Ha ugyanazt a formázást több elemre szeretnénk alkalmazni, a
+          szelektorokat <strong>vesszővel</strong> választjuk el.
+        </p>
+        <pre><code>h1,
+h2,
+h3,
+h4,
+p,
+li {
+  font-family: sans-serif;
+}</code></pre>
+
+        <div class="callout rounded-3 p-3 mt-4">
+          <strong>Olvasd így:</strong> válaszd ki az összes <code>h1</code>,
+          <code>h2</code>, <code>h3</code>, <code>h4</code>, <code>p</code> és
+          <code>li</code> elemet, majd alkalmazd rájuk ugyanazt a szabályt.
+        </div>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">3. Miért jobb ez?</h2>
+        <p>Ha most más betűtípust szeretnénk, csak egyetlen helyen kell módosítani:</p>
+        <pre><code>h1,
+h2,
+h3,
+h4,
+p,
+li {
+  font-family: serif;
+}</code></pre>
+        <p class="mt-3 mb-0">
+          Ezután egyetlen módosítással visszaállíthatjuk
+          <code>sans-serif</code>-re is. A kód rövidebb és könnyebben
+          karbantartható.
+        </p>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">4. A lábléc szövegének előkészítése</h2>
+        <p>
+          A következő példához a <code>footer</code> szövegét helyezzük
+          bekezdésbe.
+        </p>
+        <h3 class="h5">Eredetileg</h3>
+        <pre><code>&lt;footer&gt;Copyright &amp;copy; 2027 by The Code Magazine.&lt;/footer&gt;</code></pre>
+        <h3 class="h5 mt-4">Módosítva</h3>
+        <pre><code>&lt;footer&gt;
+  &lt;p&gt;Copyright &amp;copy; 2027 by The Code Magazine.&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+        <p class="mt-3 mb-0">
+          Így a lábléc szövege is egy <code>p</code> elem, ezért megkapja a
+          bekezdések általános formázását.
+        </p>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">5. Leszármazott szelektor</h2>
+        <p>
+          A normál bekezdések legyenek például 22 pixelesek:
+        </p>
+        <pre><code>p {
+  font-size: 22px;
+}</code></pre>
+        <p class="mt-3">
+          A láblécben viszont kisebb szöveget szeretnénk. Ehhez:
+        </p>
+        <pre><code>footer p {
+  font-size: 16px;
+}</code></pre>
+
+        <div class="callout rounded-3 p-3 mt-4">
+          <code>footer p</code> jelentése: válaszd ki azokat a
+          <code>p</code> elemeket, amelyek egy <code>footer</code> elemen belül
+          találhatók.
+        </div>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">6. Miért nevezik leszármazott szelektornak?</h2>
+        <p>A HTML-struktúrát egyszerűsítve így láthatjuk:</p>
+        <pre><code>&lt;footer&gt;
+  &lt;p&gt;Copyright...&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+        <p class="mt-3 mb-0">
+          A <code>p</code> a <code>footer</code> belsejében található. A CSS-ben
+          a két szelektor közötti <strong>szóköz</strong> jelzi ezt a kapcsolatot.
+        </p>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">7. Egy másik példa: a cikk szerzője</h2>
+        <p>
+          A cikk fejlécében található szerzői bekezdést szeretnénk dőlt
+          betűssé tenni.
+        </p>
+        <pre><code>header p {
+  font-style: italic;
+}</code></pre>
+        <p class="mt-3">
+          Ez elsőre működhet, de van egy probléma: az oldalon több
+          <code>header</code> elem is lehet.
+        </p>
+        <div class="warning-box rounded-3 p-3">
+          Ha a fő oldalfejlécbe később bekerül egy <code>p</code>, azt is
+          dőlt betűssé tenné a <code>header p</code> szabály.
+        </div>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">8. Pontosabb leszármazott szelektor</h2>
+        <p>
+          A szerzői bekezdés az <code>article</code> elemben található
+          <code>header</code> része. Pontosíthatunk:
+        </p>
+        <pre><code>article header p {
+  font-style: italic;
+}</code></pre>
+        <p class="mt-3 mb-0">
+          Ez csak azokat a bekezdéseket választja ki, amelyek egy
+          <code>article</code> belsejében lévő <code>header</code> elemen belül
+          találhatók.
+        </p>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">9. Mi a hátránya?</h2>
+        <p>
+          Az <code>article header p</code> működik, de már erősen függ a HTML
+          pontos szerkezetétől.
+        </p>
+        <p>
+          Ha később átszervezzük a HTML-t, a CSS-szelektor is elromolhat vagy
+          módosításra szorulhat.
+        </p>
+        <div class="warning-box rounded-3 p-3">
+          Ezért nem érdemes indokolatlanul hosszú, mély HTML-struktúrát követő
+          szelektorokat építeni. A következő témában olyan elemeket fogunk
+          megismerni, amelyeknek saját nevet adhatunk, és egyszerűbben célozhatjuk őket.
+        </div>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">10. Közös órai feladat</h2>
+        <div class="task rounded-3 p-3">
+          <ol class="mb-0">
+            <li>Csomagold ki a <code>starter.zip</code> projektet.</li>
+            <li>Hozz létre egy <code>style.css</code> fájlt.</li>
+            <li>Kösd be a HTML <code>head</code> részében.</li>
+            <li>Készíts szelektorlistát a <code>h1, h2, h3, h4, p, li</code> elemekhez.</li>
+            <li>Állítsd a betűtípust <code>sans-serif</code>-re.</li>
+            <li>A footer szövegét helyezd <code>p</code> elembe.</li>
+            <li>A normál bekezdések betűmérete legyen 22 px.</li>
+            <li>A <code>footer p</code> betűmérete legyen 16 px.</li>
+            <li>Az <code>article header p</code> legyen dőlt betűs.</li>
+            <li>Mentsd a fájlokat és ellenőrizd az eredményt Live Serverrel.</li>
+          </ol>
+        </div>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">11. Ellenőrző kérdések</h2>
+        <ol>
+          <li>Hogyan választunk ki több különböző elemet ugyanazzal a CSS-szabállyal?</li>
+          <li>Miért előnyös a szelektorlista?</li>
+          <li>Mit jelent a <code>footer p</code> szelektor?</li>
+          <li>Mi a különbség a vessző és a szóköz szerepe között a szelektorokban?</li>
+          <li>Miért lehet túl általános a <code>header p</code>?</li>
+          <li>Mit választ ki az <code>article header p</code>?</li>
+          <li>Miért lehet problémás a túl mély leszármazott szelektor?</li>
+        </ol>
+      </div></section>
+
+      <section class="card section-card mb-4"><div class="card-body p-4">
+        <h2 class="h3">Összefoglalás</h2>
+        <p><strong>Szelektorlista:</strong></p>
+        <pre><code>h1,
+h2,
+h3,
+h4,
+p,
+li {
+  font-family: sans-serif;
+}</code></pre>
+        <p class="mt-4"><strong>Leszármazott szelektor:</strong></p>
+        <pre><code>footer p {
+  font-size: 16px;
+}</code></pre>
+        <p class="mt-4"><strong>Pontosabb, beágyazott leszármazott szelektor:</strong></p>
+        <pre><code>article header p {
+  font-style: italic;
+}</code></pre>
+        <div class="callout rounded-3 p-3 mt-4">
+          <strong>Legfontosabb gondolat:</strong> a CSS-ben törekedjünk arra,
+          hogy ne ismételjük feleslegesen ugyanazokat a szabályokat, de a
+          szelektoraink se váljanak szükségtelenül bonyolulttá.
+        </div>
+      </div></section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">Az óra végére elkészülő kód</h2>
+          <p>
+            Ez az a köztes állapot, amelyet ezen az órán el kell érnünk. Nem a
+            teljes CSS-fejezet végleges megoldása, hanem pontosan ennek az órának
+            az eredménye.
+          </p>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <a href="orai_megoldas.zip" class="btn btn-primary">Órai megoldás letöltése</a>
+            <a href="final.zip" class="btn btn-outline-secondary">Teljes későbbi final projekt</a>
+          </div>
+
+          <h3 class="h5">style.css</h3>
+          <pre><code>/* 1. CSS óra – szelektorok kombinálása */
+
+/* Több szelektor összekapcsolása vesszővel */
+h1,
+h2,
+h3,
+h4,
+p,
+li {
+  font-family: sans-serif;
+}
+
+/* Alap betűméretek a példákhoz */
+p {
+  font-size: 22px;
+}
+
+/* Leszármazott (descendant) szelektor:
+   csak a footer elemen belüli bekezdések */
+footer p {
+  font-size: 16px;
+}
+
+/* Beágyazott leszármazott szelektor:
+   csak az article elemben lévő header bekezdései */
+article header p {
+  font-style: italic;
+}
+</code></pre>
+
+          <h3 class="h5 mt-4">Az órai HTML-változat</h3>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;link href=&quot;style.css&quot; rel=&quot;stylesheet&quot; /&gt;
+    &lt;title&gt;The Basic Language of the Web: HTML&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;!--
+    &lt;h1&gt;The Basic Language of the Web: HTML&lt;/h1&gt;
+    &lt;h2&gt;The Basic Language of the Web: HTML&lt;/h2&gt;
+    &lt;h3&gt;The Basic Language of the Web: HTML&lt;/h3&gt;
+    &lt;h4&gt;The Basic Language of the Web: HTML&lt;/h4&gt;
+    &lt;h5&gt;The Basic Language of the Web: HTML&lt;/h5&gt;
+    &lt;h6&gt;The Basic Language of the Web: HTML&lt;/h6&gt;
+    --&gt;
+
+    &lt;header&gt;
+      &lt;h1&gt;📘 The Code Magazine&lt;/h1&gt;
+
+      &lt;nav&gt;
+        &lt;a href=&quot;blog.html&quot;&gt;Blog&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Challenges&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Flexbox&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;CSS Grid&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h2&gt;The Basic Language of the Web: HTML&lt;/h2&gt;
+
+        &lt;img
+          src=&quot;img/laura-jones.jpg&quot;
+          alt=&quot;Headshot of Laura Jones&quot;
+          height=&quot;50&quot;
+          width=&quot;50&quot;
+        /&gt;
+
+        &lt;p&gt;Posted by &lt;strong&gt;Laura Jones&lt;/strong&gt; on Monday, June 21st 2027&lt;/p&gt;
+
+        &lt;img
+          src=&quot;img/post-img.jpg&quot;
+          alt=&quot;HTML code on a screen&quot;
+          width=&quot;500&quot;
+          height=&quot;200&quot;
+        /&gt;
+      &lt;/header&gt;
+
+      &lt;p&gt;
+        All modern websites and web applications are built using three
+        &lt;em&gt;fundamental&lt;/em&gt;
+        technologies: HTML, CSS and JavaScript. These are the languages of the
+        web.
+      &lt;/p&gt;
+
+      &lt;p&gt;
+        In this post, let&#x27;s focus on HTML. We will learn what HTML is all about,
+        and why you too should learn it.
+      &lt;/p&gt;
+
+      &lt;h3&gt;What is HTML?&lt;/h3&gt;
+      &lt;p&gt;
+        HTML stands for &lt;strong&gt;H&lt;/strong&gt;yper&lt;strong&gt;T&lt;/strong&gt;ext
+        &lt;strong&gt;M&lt;/strong&gt;arkup &lt;strong&gt;L&lt;/strong&gt;anguage. It&#x27;s a markup
+        language that web developers use to structure and describe the content
+        of a webpage (not a programming language).
+      &lt;/p&gt;
+      &lt;p&gt;
+        HTML consists of elements that describe different types of content:
+        paragraphs, links, headings, images, video, etc. Web browsers understand
+        HTML and render HTML code as websites.
+      &lt;/p&gt;
+      &lt;p&gt;In HTML, each element is made up of 3 parts:&lt;/p&gt;
+
+      &lt;ol&gt;
+        &lt;li&gt;The opening tag&lt;/li&gt;
+        &lt;li&gt;The closing tag&lt;/li&gt;
+        &lt;li&gt;The actual element&lt;/li&gt;
+      &lt;/ol&gt;
+
+      &lt;p&gt;
+        You can learn more at
+        &lt;a
+          href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML&quot;
+          target=&quot;_blank&quot;
+          &gt;MDN Web Docs&lt;/a
+        &gt;.
+      &lt;/p&gt;
+
+      &lt;h3&gt;Why should you learn HTML?&lt;/h3&gt;
+
+      &lt;p&gt;
+        There are countless reasons for learning the fundamental language of the
+        web. Here are 5 of them:
+      &lt;/p&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;To be able to use the fundamental web dev language&lt;/li&gt;
+        &lt;li&gt;
+          To hand-craft beautiful websites instead of relying on tools like
+          Worpress or Wix
+        &lt;/li&gt;
+        &lt;li&gt;To build web applications&lt;/li&gt;
+        &lt;li&gt;To impress friends&lt;/li&gt;
+        &lt;li&gt;To have fun 😃&lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;p&gt;Hopefully you learned something new here. See you next time!&lt;/p&gt;
+    &lt;/article&gt;
+
+    &lt;aside&gt;
+      &lt;h4&gt;Related posts&lt;/h4&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;img
+            src=&quot;img/related-1.jpg&quot;
+            alt=&quot;Person programming&quot;
+            width=&quot;75&quot;
+            width=&quot;75&quot;
+          /&gt;
+          &lt;a href=&quot;#&quot;&gt;How to Learn Web Development&lt;/a&gt;
+          &lt;p&gt;By Jonas Schmedtmann&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;img src=&quot;img/related-2.jpg&quot; alt=&quot;Lightning&quot; width=&quot;75&quot; heigth=&quot;75&quot; /&gt;
+          &lt;a href=&quot;#&quot;&gt;The Unknown Powers of CSS&lt;/a&gt;
+          &lt;p&gt;By Jim Dillon&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;img
+            src=&quot;img/related-3.jpg&quot;
+            alt=&quot;JavaScript code on a screen&quot;
+            width=&quot;75&quot;
+            height=&quot;75&quot;
+          /&gt;
+          &lt;a href=&quot;#&quot;&gt;Why JavaScript is Awesome&lt;/a&gt;
+          &lt;p&gt;By Matilda&lt;/p&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+
+    &lt;footer&gt;
+      &lt;p&gt;Copyright &amp;copy; 2027 by The Code Magazine.&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+        <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a HTML és CSS főoldalra</a>
+        <a href="../4_kihivas/index.html" class="btn btn-outline-secondary btn-lg">Előző: HTML kihívás</a>
+      </div>
+    </main>
+  </body>
+</html>
