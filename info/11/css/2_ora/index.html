@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS 2. óra – Színek és szegélyek</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#eefaff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+  </style>
+</head>
+<body>
+<main class="container py-5">
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-primary">11. évfolyam</span>
+    <span class="badge text-bg-info">CSS</span>
+    <span class="badge text-bg-dark">2. óra</span>
+    <h1 class="display-6 fw-bold mt-3">Színek, háttérszínek és szegélyek CSS-ben</h1>
+    <p class="lead mb-0">RGB, hexadecimális színek, háttérszín, szegélyek és a VS Code színválasztója.</p>
+  </section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra célja</h2>
+    <ul>
+      <li>megérteni az RGB színmodell alapját;</li>
+      <li>RGB és hexadecimális színeket felismerni;</li>
+      <li>szöveg- és háttérszínt beállítani;</li>
+      <li>szegélyeket készíteni;</li>
+      <li>a VS Code színválasztóját használni.</li>
+    </ul>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. RGB színmodell</h2>
+    <p>Az RGB a Red, Green, Blue rövidítése. Mindhárom csatorna 0 és 255 közötti értéket kaphat.</p>
+    <pre><code>rgb(255, 0, 0)     /* piros */
+rgb(0, 255, 0)     /* zöld */
+rgb(0, 0, 255)     /* kék */
+rgb(255, 255, 255) /* fehér */
+rgb(0, 0, 0)       /* fekete */</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. Hexadecimális színek</h2>
+    <pre><code>#1098ad
+#444444
+#f7f7f7</code></pre>
+    <p class="mt-3">Rövidíthető például: <code>#444444 → #444</code>, <code>#ffffff → #fff</code>.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. Átlátszóság</h2>
+    <pre><code>rgba(244, 179, 63, 0.3)</code></pre>
+    <p class="mt-3">Az utolsó érték az alfa: 0 teljesen átlátszó, 1 teljesen fedő.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. Szövegszín</h2>
+    <pre><code>h1,
+h2,
+h3 {
+  color: #1098ad;
+}
+
+body {
+  color: #444;
+}</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. Háttérszín és osztály</h2>
+    <pre><code>.main-header {
+  background-color: #f7f7f7;
+}</code></pre>
+    <div class="callout rounded-3 p-3 mt-3">
+      A <code>.main-header</code> osztályszelektor. Így csak a fő fejlécet formázzuk, nem minden <code>header</code> elemet.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. Szegély</h2>
+    <pre><code>border: 5px solid #1098ad;</code></pre>
+    <p class="mt-3">A három érték: vastagság, stílus, szín.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. Szegély csak felül és alul</h2>
+    <pre><code>aside {
+  background-color: #f7f7f7;
+  border-top: 5px solid #1098ad;
+  border-bottom: 5px solid #1098ad;
+}</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. VS Code színválasztó</h2>
+    <p>Ha a színkód fölé visszük az egeret, a VS Code színválasztót jeleníthet meg. Ezzel gyorsan válthatunk színt és átlátszóságot.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. Közös órai feladat</h2>
+    <div class="task rounded-3 p-3">
+      <ol class="mb-0">
+        <li>A <code>body</code> szövegszíne legyen <code>#444</code>.</li>
+        <li>A <code>h1</code>, <code>h2</code>, <code>h3</code> legyen <code>#1098ad</code>.</li>
+        <li>A fő fejléc kapjon <code>main-header</code> osztályt.</li>
+        <li>A fő fejléc háttere legyen <code>#f7f7f7</code>.</li>
+        <li>Az <code>aside</code> kapja meg ugyanezt a hátteret.</li>
+        <li>Az <code>aside</code> felső és alsó szegélye legyen <code>5px solid #1098ad</code>.</li>
+        <li>Próbáld ki a VS Code színválasztóját.</li>
+      </ol>
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">10. Ellenőrző kérdések</h2>
+    <ol>
+      <li>Mit jelent az RGB?</li>
+      <li>Milyen értékeket vehet fel egy RGB-csatorna?</li>
+      <li>Mit jelent a <code>#1098ad</code> jelölés?</li>
+      <li>Mire való a <code>color</code>?</li>
+      <li>Mire való a <code>background-color</code>?</li>
+      <li>Mit jelent a <code>border: 5px solid #1098ad;</code>?</li>
+      <li>Miért jobb itt a <code>.main-header</code>, mint a sima <code>header</code>?</li>
+    </ol>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra végére elkészülő CSS</h2>
+    <a href="orai_style.css" download class="btn btn-primary mb-3">Órai CSS letöltése</a>
+    <pre><code>body {
+  color: #444;
+  font-family: sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  color: #1098ad;
+}
+
+.main-header {
+  background-color: #f7f7f7;
+}
+
+aside {
+  background-color: #f7f7f7;
+  border-top: 5px solid #1098ad;
+  border-bottom: 5px solid #1098ad;
+}
+</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">A projekt teljes CSS-kódja</h2>
+    <p>Több későbbi témát is tartalmaz, ezért ez most referenciaanyagként van itt.</p>
+    <a href="teljes_style.css" download class="btn btn-outline-secondary mb-3">Teljes CSS letöltése</a>
+    <pre><code>* {
+  /* border-top: 10px solid #1098ad; */
+  margin: 0;
+  padding: 0;
+}
+
+/* PAGE SECTIONS */
+body {
+  color: #444;
+  font-family: sans-serif;
+
+  border-top: 10px solid #1098ad;
+  position: relative;
+}
+
+.container {
+  width: 800px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  margin: 0 auto;
+}
+
+.main-header {
+  background-color: #f7f7f7;
+  /* padding: 20px;
+  padding-left: 40px;
+  padding-right: 40px; */
+  padding: 20px 40px;
+  margin-bottom: 60px;
+  /* height: 80px; */
+}
+
+nav {
+  font-size: 18px;
+  /* text-align: center; */
+}
+
+article {
+  margin-bottom: 60px;
+}
+
+.post-header {
+  margin-bottom: 40px;
+  /* position: relative; */
+}
+
+aside {
+  background-color: #f7f7f7;
+  border-top: 5px solid #1098ad;
+  border-bottom: 5px solid #1098ad;
+  /* padding-top: 50px;
+  padding-bottom: 50px; */
+  padding: 50px 0;
+  width: 500px;
+}
+
+/* SMALLER ELEMENTS */
+h1,
+h2,
+h3 {
+  color: #1098ad;
+}
+
+h1 {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+h2 {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+h4 {
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+p {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+ul,
+ol {
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+
+li {
+  font-size: 20px;
+  margin-bottom: 10px;
+  /* display: inline; */
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* footer p {
+  font-size: 16px;
+} */
+
+/* article header p {
+  font-style: italic;
+} */
+
+#author {
+  font-style: italic;
+  font-size: 18px;
+}
+
+#copyright {
+  font-size: 16px;
+}
+
+.related-author {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* ul {
+  list-style: none;
+} */
+
+.related {
+  list-style: none;
+}
+
+body {
+  /* background-color: orangered; */
+}
+
+/* .first-li {
+  font-weight: bold;
+} */
+
+li:first-child {
+  font-weight: bold;
+}
+
+li:last-child {
+  font-style: italic;
+  color: aqua;
+}
+
+/* itt egy számot kell irni vagy vannak kulcs szavak odd - az lesz a páratlenok even pedig a párosak */
+li:nth-child(even) {
+  /* color: red; */
+}
+
+/* Misconception: this won&#x27;t work! */
+/* Csak akkor működik, ha az article első eleme valóban p */
+article p:first-child {
+  color: red;
+}
+
+/* Styling links */
+a:link {
+  color: #1098ad;
+  text-decoration: none;
+}
+
+a:visited {
+  /* color: #777; */
+  color: #1098ad;
+}
+
+a:hover {
+  color: orangered;
+  font-weight: bold;
+  text-decoration: underline orangered;
+}
+
+a:active {
+  background-color: black;
+  font-style: italic;
+}
+/* LVHA */
+
+.post-img {
+  width: 100%;
+  height: auto;
+}
+
+nav a:link {
+  /* background-color: orangered;
+  margin: 20px;
+  padding: 20px;
+
+  display: block; */
+
+  margin-right: 30px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+nav a:link:last-child {
+  margin-right: 0;
+}
+
+button {
+  font-size: 22px;
+  padding: 20px;
+  cursor: pointer;
+
+  position: absolute;
+  /* top: 50px;
+  left: 50px; */
+  bottom: 50px;
+  right: 50px;
+}
+
+h1::first-letter {
+  font-style: normal;
+  margin-right: 5px;
+}
+
+h3 + p::first-line {
+  /* color: red; */
+}
+
+h2 {
+  /* background-color: orange; */
+  position: relative;
+}
+
+h2::before {
+  content: &quot;TOP&quot;;
+  background-color: #ffe70e;
+  color: #444;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  padding: 5px 10px;
+  position: absolute;
+  top: -10px;
+  right: -25px;
+}
+
+/* Resolving conflicts */
+/* #copyright {
+  color: red;
+}
+
+.copyright {
+  color: blue;
+}
+
+.text {
+  color: yellow;
+}
+
+footer p {
+  color: green !important;
+} */
+
+/* nav a:link,
+nav p {
+  font-size: 18px;
+} */
+</code></pre>
+  </div></section>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+    <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a>
+    <a href="../1_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző óra</a>
+    <a href="../3_ora/index.html" class="btn btn-primary btn-lg">Következő: pszeudo-osztályok</a>
+  </div>
+</main>
+</body>
+</html>

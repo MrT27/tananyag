@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS 3. óra – Pszeudo-osztályok</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#eefaff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+  </style>
+</head>
+<body>
+<main class="container py-5">
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-primary">11. évfolyam</span>
+    <span class="badge text-bg-info">CSS</span>
+    <span class="badge text-bg-dark">3. óra</span>
+    <h1 class="display-6 fw-bold mt-3">Pszeudo-osztályok CSS-ben</h1>
+    <p class="lead mb-0">
+      Megtanuljuk automatikusan kiválasztani egy lista első, utolsó vagy adott sorszámú elemét.
+    </p>
+  </section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra célja</h2>
+    <ul>
+      <li>megérteni, mi az a pszeudo-osztály;</li>
+      <li>használni a <code>:first-child</code> és <code>:last-child</code> szelektorokat;</li>
+      <li>használni a <code>:nth-child()</code> pszeudo-osztályt;</li>
+      <li>megérteni az <code>odd</code> és <code>even</code> kulcsszavakat;</li>
+      <li>felismerni a <code>:first-child</code> egyik gyakori félreértését.</li>
+    </ul>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. Mi az a pszeudo-osztály?</h2>
+    <p>
+      A pszeudo-osztály egy már meglévő elem bizonyos állapotát vagy helyzetét célozza meg.
+      Kettősponttal írjuk.
+    </p>
+    <pre><code>li:first-child {
+  font-weight: bold;
+}</code></pre>
+    <div class="callout rounded-3 p-3 mt-3">
+      Ez azokat az <code>li</code> elemeket választja ki, amelyek a saját szülőelemük első gyermekei.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. Az első listaelem – <code>:first-child</code></h2>
+    <p>Korábban ezt külön osztállyal is megoldhattuk volna:</p>
+    <pre><code>&lt;li class="first-li"&gt;Első elem&lt;/li&gt;</code></pre>
+    <p class="mt-3">De elegánsabb:</p>
+    <pre><code>li:first-child {
+  font-weight: bold;
+}</code></pre>
+    <p class="mt-3 mb-0">
+      Így minden lista első eleme automatikusan félkövér lesz.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. Az utolsó listaelem – <code>:last-child</code></h2>
+    <pre><code>li:last-child {
+  font-style: italic;
+}</code></pre>
+    <p class="mt-3 mb-0">
+      Ez minden olyan <code>li</code> elemet kijelöl, amely a saját szülőjének utolsó gyermeke.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. Adott sorszám – <code>:nth-child()</code></h2>
+    <p>Ha például a második listaelemet szeretnénk kiválasztani:</p>
+    <pre><code>li:nth-child(2) {
+  color: red;
+}</code></pre>
+    <p class="mt-3">A harmadik:</p>
+    <pre><code>li:nth-child(3) {
+  color: red;
+}</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. Páros és páratlan elemek</h2>
+    <p>Páratlan elemek:</p>
+    <pre><code>li:nth-child(odd) {
+  color: red;
+}</code></pre>
+    <p class="mt-3">Páros elemek:</p>
+    <pre><code>li:nth-child(even) {
+  color: red;
+}</code></pre>
+    <div class="callout rounded-3 p-3 mt-3">
+      Ez különösen hasznos például táblázatok vagy ismétlődő listaelemek váltakozó formázásánál.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. Gyakori félreértés</h2>
+    <p>
+      Nézzük ezt:
+    </p>
+    <pre><code>article p:first-child {
+  color: red;
+}</code></pre>
+    <div class="important rounded-3 p-3 mt-3">
+      Ez <strong>nem</strong> azt jelenti, hogy „az article első p eleme”.
+      Azt jelenti: válassz olyan <code>p</code> elemet, amely egyben az
+      <code>article</code> első gyermeke is.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. Miért nem működik mindig?</h2>
+    <p>Ha az <code>article</code> első eleme például egy <code>header</code>:</p>
+    <pre><code>&lt;article&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;p&gt;Első bekezdés&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+    <p class="mt-3">
+      akkor a <code>p</code> ugyan az első bekezdés, de nem az <code>article</code> első gyermeke.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. Mikor működik jól?</h2>
+    <p>
+      Listákban különösen jól működik, mert egy <code>ul</code> vagy <code>ol</code>
+      gyermekei jellemzően mind <code>li</code> elemek.
+    </p>
+    <pre><code>&lt;ul&gt;
+  &lt;li&gt;Első&lt;/li&gt;
+  &lt;li&gt;Második&lt;/li&gt;
+  &lt;li&gt;Harmadik&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. Közös órai feladat</h2>
+    <div class="task rounded-3 p-3">
+      <ol class="mb-0">
+        <li>Az összes lista első eleme legyen félkövér.</li>
+        <li>Az összes lista utolsó eleme legyen dőlt.</li>
+        <li>A második listaelemek legyenek pirosak.</li>
+        <li>Próbáld ki az <code>odd</code> és <code>even</code> kulcsszavakat.</li>
+        <li>Próbáld ki az <code>article p:first-child</code> szelektort.</li>
+        <li>Módosítsd a HTML-t úgy, hogy a <code>p</code> tényleg az első gyermek legyen.</li>
+        <li>Figyeld meg, mikor kezd el működni a szabály.</li>
+      </ol>
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">10. Ellenőrző kérdések</h2>
+    <ol>
+      <li>Mit jelöl a kettőspont a CSS szelektorban?</li>
+      <li>Mit választ ki az <code>li:first-child</code>?</li>
+      <li>Mit választ ki az <code>li:last-child</code>?</li>
+      <li>Mit jelent az <code>li:nth-child(3)</code>?</li>
+      <li>Mit jelent az <code>odd</code>?</li>
+      <li>Mit jelent az <code>even</code>?</li>
+      <li>Miért nem feltétlenül működik az <code>article p:first-child</code>?</li>
+      <li>Milyen HTML-szerkezetnél különösen hasznosak ezek a pszeudo-osztályok?</li>
+    </ol>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra CSS-kódja</h2>
+    <a href="orai_style.css" download class="btn btn-primary mb-3">Órai CSS letöltése</a>
+    <pre><code>/* Pszeudo-osztályok */
+
+/* Minden lista első eleme */
+li:first-child {
+  font-weight: bold;
+}
+
+/* Minden lista utolsó eleme */
+li:last-child {
+  font-style: italic;
+}
+
+/* Egy konkrét sorszámú elem */
+li:nth-child(2) {
+  color: red;
+}
+
+/* Páros elemek */
+li:nth-child(even) {
+  color: red;
+}
+
+/* Páratlan elemek */
+li:nth-child(odd) {
+  color: red;
+}
+
+/* Fontos: ez csak akkor működik,
+   ha a p valóban az article első gyermeke */
+article p:first-child {
+  color: red;
+}
+
+/* Ez akkor működik, ha a p az article utolsó gyermeke */
+article p:last-child {
+  color: red;
+}
+</code></pre>
+  </div></section>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+    <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a>
+    <a href="../2_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző: színek és szegélyek</a>
+  </div>
+</main>
+</body>
+</html>
