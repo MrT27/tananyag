@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS 5. óra – Chrome DevTools alapok</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#eefaff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+  </style>
+</head>
+<body>
+<main class="container py-5">
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-primary">11. évfolyam</span>
+    <span class="badge text-bg-info">CSS</span>
+    <span class="badge text-bg-dark">5. óra</span>
+    <h1 class="display-6 fw-bold mt-3">Chrome DevTools – fejlesztői eszközök</h1>
+    <p class="lead mb-0">
+      Megtanuljuk megvizsgálni a HTML-elemeket, az alkalmazott CSS-szabályokat,
+      és ideiglenesen módosítani a stílusokat közvetlenül a böngészőben.
+    </p>
+  </section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra célja</h2>
+    <ul>
+      <li>megnyitni a böngésző fejlesztői eszközeit;</li>
+      <li>használni az <strong>Elements</strong> fület;</li>
+      <li>egy HTML-elemhez tartozó CSS-szabályokat megvizsgálni;</li>
+      <li>CSS-tulajdonságokat ideiglenesen be- és kikapcsolni;</li>
+      <li>új stílust tesztelni a böngészőben;</li>
+      <li>pszeudo-osztály állapotokat, például <code>:hover</code>-t kényszeríteni;</li>
+      <li>megérteni, hogy ezek a módosítások nem írják át automatikusan a saját fájljainkat.</li>
+    </ul>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. Mi az a DevTools?</h2>
+    <p>
+      A modern böngészők beépített fejlesztői eszközöket tartalmaznak.
+      Ezeket röviden <strong>DevTools</strong>-nak nevezzük.
+    </p>
+    <p class="mb-0">
+      Segítségével megnézhetjük, hogy a böngésző milyen HTML-t és CSS-t használ
+      egy adott elem megjelenítéséhez.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. A fejlesztői eszközök megnyitása</h2>
+    <p>A leirat három lehetőséget említ:</p>
+    <ol>
+      <li>jobb kattintás az oldalon → <strong>Inspect / Vizsgálat</strong>;</li>
+      <li>a böngésző menüjéből a fejlesztői eszközök megnyitása;</li>
+      <li>billentyűparancs használata.</li>
+    </ol>
+    <div class="callout rounded-3 p-3">
+      Kezdőként a legegyszerűbb módszer: jobb kattintás a vizsgálandó elemre,
+      majd <strong>Inspect</strong>.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. Az Elements fül</h2>
+    <p>
+      Az <strong>Elements</strong> fülön láthatjuk az oldal HTML-szerkezetét.
+      Az elemek lenyithatók, így végig tudjuk követni az egymásba ágyazott
+      HTML-elemeket.
+    </p>
+    <div class="important rounded-3 p-3">
+      Ha az egérrel egy HTML-elem fölé visszük a mutatót a DevToolsban,
+      a böngésző az oldalon is kiemeli a hozzá tartozó területet.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. HTML-elemek vizsgálata</h2>
+    <p>
+      Például kiválaszthatjuk a fő fejlécet, a navigációt vagy egy címsort.
+      Így megfigyelhetjük, hogy az adott elem pontosan mekkora területet foglal el.
+    </p>
+    <pre><code>&lt;header class="main-header"&gt;
+  ...
+&lt;/header&gt;</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. A Styles panel</h2>
+    <p>
+      Egy kijelölt elem mellett a <strong>Styles</strong> panelen láthatjuk az
+      összes olyan CSS-szabályt, amely az adott elemre érvényes.
+    </p>
+    <p>Például egy <code>h1</code>-re több különböző szabály is hathat:</p>
+    <pre><code>h1,
+h2,
+h3 {
+  color: #1098ad;
+}
+
+h1 {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-style: italic;
+}</code></pre>
+    <p class="mt-3 mb-0">
+      A DevTools segít megérteni, hogy ezek közül melyik szabály milyen tulajdonságot ad az elemhez.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. Alapértelmezett böngészőstílusok</h2>
+    <p>
+      Nem minden stílust mi írunk. A böngésző saját alapértelmezett
+      stílusokat is alkalmazhat.
+    </p>
+    <p>
+      A leirat ezt <strong>user agent stylesheet</strong> néven említi.
+      Például egy <code>h1</code> alapértelmezés szerint félkövér lehet.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. CSS-szabályok be- és kikapcsolása</h2>
+    <p>
+      A Styles panelen egy tulajdonság melletti jelölőnégyzettel ideiglenesen
+      ki- vagy bekapcsolhatjuk az adott szabályt.
+    </p>
+    <pre><code>color: #1098ad;
+text-decoration: none;</code></pre>
+    <div class="callout rounded-3 p-3 mt-3">
+      Ez nagyon hasznos hibakereséshez: gyorsan kiderül, melyik tulajdonság
+      okozza az adott megjelenést.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. Új stílus kipróbálása</h2>
+    <p>
+      A DevToolsban új CSS-tulajdonságot is megadhatunk teszteléshez.
+      Például:
+    </p>
+    <pre><code>font-size: 30px;</code></pre>
+    <p class="mt-3">
+      Az eredmény azonnal megjelenik a böngészőben.
+    </p>
+    <div class="important rounded-3 p-3">
+      Ezek a módosítások csak ideiglenesek. Az oldal újratöltésekor eltűnnek,
+      mert a saját HTML- és CSS-fájljaink nem módosulnak.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. Pszeudo-osztály állapotok tesztelése</h2>
+    <p>
+      A DevTools segítségével egy elem állapotát is kényszeríthetjük.
+      Ez különösen hasznos a linkeknél.
+    </p>
+    <pre><code>a:hover {
+  color: orangered;
+  font-weight: bold;
+}</code></pre>
+    <p class="mt-3">
+      Így a linket úgy tudjuk megvizsgálni, mintha éppen fölötte lenne az egér,
+      akkor is, ha valójában nincs fölötte.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">10. <code>:active</code> állapot vizsgálata</h2>
+    <p>
+      Ugyanígy az <code>:active</code> állapot is bekapcsolható a fejlesztői eszközökben.
+    </p>
+    <pre><code>a:active {
+  background-color: black;
+  font-style: italic;
+}</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">11. Közös órai feladat</h2>
+    <div class="task rounded-3 p-3">
+      <ol class="mb-0">
+        <li>Nyisd meg a Kód Magazin oldalt a böngészőben.</li>
+        <li>Jobb kattintás → Inspect segítségével nyisd meg a DevTools-t.</li>
+        <li>Az Elements fülön keresd meg a fő <code>h1</code> elemet.</li>
+        <li>Vizsgáld meg a Styles panelen a rá érvényes CSS-szabályokat.</li>
+        <li>Kapcsold ki ideiglenesen a színét.</li>
+        <li>Adj hozzá ideiglenesen <code>font-size: 30px;</code> tulajdonságot.</li>
+        <li>Vizsgálj meg egy linket.</li>
+        <li>Kényszerítsd a <code>:hover</code> állapotot.</li>
+        <li>Próbáld ki az <code>:active</code> állapotot is.</li>
+        <li>Frissítsd újra az oldalt, és figyeld meg, mi történik a módosításokkal.</li>
+      </ol>
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">12. Ellenőrző kérdések</h2>
+    <ol>
+      <li>Mi a DevTools?</li>
+      <li>Mire használjuk az Elements fület?</li>
+      <li>Mit mutat a Styles panel?</li>
+      <li>Mi az a user agent stylesheet?</li>
+      <li>Hogyan kapcsolhatunk ki ideiglenesen egy CSS-tulajdonságot?</li>
+      <li>Mi történik a DevToolsban végzett módosításokkal oldalfrissítés után?</li>
+      <li>Miért hasznos a <code>:hover</code> állapot kényszerítése?</li>
+      <li>Mikor lehet hasznos a DevTools hibakeresésnél?</li>
+    </ol>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Gyakorló jegyzet</h2>
+    <a href="devtools_jegyzet.txt" download class="btn btn-primary">
+      DevTools gyakorló jegyzet letöltése
+    </a>
+  </div></section>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+    <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a>
+    <a href="../4_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző: linkek formázása</a>
+  </div>
+</main>
+</body>
+</html>
