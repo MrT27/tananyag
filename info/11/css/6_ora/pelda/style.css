@@ -1,0 +1,31 @@
+/*
+  CSS prioritás – mini példaprojekt
+  Figyeld meg ugyanannak a tulajdonságnak az ütközését!
+*/
+
+p {
+  color: green;
+  font-size: 28px;
+}
+
+.kiemelt {
+  color: blue;
+  font-weight: bold;
+}
+
+.szines {
+  color: orange;
+}
+
+#szoveg {
+  color: red;
+}
+
+/*
+  5. feladat:
+  Vedd ki a kommentből, majd nézd meg, mi történik!
+
+p {
+  color: purple !important;
+}
+*/

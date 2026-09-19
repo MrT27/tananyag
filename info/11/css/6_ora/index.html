@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS 6. óra – Ütköző szabályok és prioritás</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#eefaff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .danger-note { border-left:.35rem solid #dc3545; background:#fff1f2; }
+  </style>
+</head>
+<body>
+<main class="container py-5">
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-primary">11. évfolyam</span>
+    <span class="badge text-bg-info">CSS</span>
+    <span class="badge text-bg-dark">6. óra – elmélet</span>
+    <h1 class="display-6 fw-bold mt-3">Ütköző CSS-szabályok és prioritás</h1>
+    <p class="lead mb-0">
+      Mi történik akkor, ha ugyanarra a HTML-elemre több CSS-szabály is vonatkozik?
+    </p>
+  </section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra célja</h2>
+    <ul class="mb-0">
+      <li>megérteni, hogy ugyanarra az elemre több CSS-szabály is vonatkozhat;</li>
+      <li>felismerni az egymással ütköző deklarációkat;</li>
+      <li>megérteni az ID-, osztály-, pszeudo-osztály- és elemszelektor prioritását;</li>
+      <li>tudni, mi történik azonos prioritás esetén;</li>
+      <li>felismerni az inline stílus és az <code>!important</code> szerepét;</li>
+      <li>a DevTools segítségével megvizsgálni, melyik szabály érvényesül.</li>
+    </ul>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. Több szabály is vonatkozhat ugyanarra az elemre</h2>
+    <p>Vegyünk egy bekezdést, amelynek van azonosítója és osztálya is:</p>
+    <pre><code>&lt;p id="author-text" class="author"&gt;Isaac Asimov&lt;/p&gt;</code></pre>
+    <p>Erre az elemre egyszerre több különböző szelektorral is hivatkozhatunk:</p>
+    <pre><code>p {
+  font-size: 18px;
+  color: gray;
+}
+
+.author {
+  font-size: 20px;
+  font-style: italic;
+}
+
+#author-text {
+  font-size: 22px;
+  font-family: sans-serif;
+}</code></pre>
+    <div class="callout rounded-3 p-3">
+      Mindhárom szabály vonatkozik a bekezdésre. A kérdés csak az, mi történik azokkal a tulajdonságokkal, amelyek egymásnak ellentmondanak.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. Nem az egész szabály „veszít”</h2>
+    <p>
+      Az előző példában a <code>font-size</code> három különböző értéket kapott. Ezt a konfliktust a böngészőnek fel kell oldania.
+      A többi tulajdonság viszont továbbra is érvényes lehet.
+    </p>
+    <ul class="mb-0">
+      <li>a <code>font-style: italic</code> az osztályból származhat;</li>
+      <li>a <code>font-family</code> az ID-szelektorból származhat;</li>
+      <li>a <code>color</code> az elemszelektorból származhat;</li>
+      <li>a <code>font-size</code> értékéről viszont a prioritás dönt.</li>
+    </ul>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. A szelektorok egyszerűsített prioritása</h2>
+    <p>Kezdőként ezt a sorrendet érdemes megjegyezni:</p>
+    <div class="important rounded-3 p-3 mb-3 text-center fs-5 fw-semibold">
+      ID &gt; osztály / pszeudo-osztály &gt; elem &gt; univerzális szelektor
+    </div>
+    <p class="mb-0">
+      Ezért a fenti példában az ID-szelektorban szereplő <code>font-size: 22px;</code> fog érvényesülni.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. Azonos prioritás esetén a későbbi szabály nyer</h2>
+    <p>Ha két szelektor ugyanolyan erősségű, akkor a CSS-ben később szereplő deklaráció érvényesül.</p>
+    <pre><code>.copyright {
+  color: blue;
+}
+
+.text {
+  color: yellow;
+}</code></pre>
+    <p class="mb-0">
+      Ha ugyanaz az elem mindkét osztályhoz tartozik, és nincs erősebb szelektor, akkor ebben a példában a szöveg sárga lesz.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. Pszeudo-osztály és elemszelektor</h2>
+    <p>A pszeudo-osztály magasabb prioritású, mint az egyszerű elemszelektor.</p>
+    <pre><code>a {
+  color: red;
+}
+
+a:hover {
+  color: blue;
+}</code></pre>
+    <p class="mb-0">
+      Amikor a link <code>:hover</code> állapotba kerül, a második szabály színe érvényesül.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. Inline stílus</h2>
+    <p>HTML-ben közvetlenül az elemhez is írhatunk stílust:</p>
+    <pre><code>&lt;p id="author-text" style="color: purple;"&gt;Isaac Asimov&lt;/p&gt;</code></pre>
+    <p class="mb-0">
+      Az inline stílus nagyobb prioritást kap, mint egy hagyományos ID-szelektor. A tananyagban azonban továbbra is a külön CSS-fájl használata az ajánlott megoldás.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. Az <code>!important</code> kulcsszó</h2>
+    <pre><code>p {
+  color: green !important;
+}</code></pre>
+    <p>Az <code>!important</code> egy deklarációt nagyon magas prioritásúvá tesz.</p>
+    <div class="danger-note rounded-3 p-3">
+      Általában ne használd konfliktusok gyors elrejtésére. Jobb megoldás egyszerűbb, átláthatóbb szelektorokat írni.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. DevTools: miért van áthúzva egy szabály?</h2>
+    <p>
+      A DevTools <strong>Styles</strong> paneljén egyszerre láthatjuk az elemre vonatkozó szabályokat.
+      Ha egy deklaráció elveszít egy ütközést, a böngésző általában áthúzva jeleníti meg.
+    </p>
+    <div class="callout rounded-3 p-3">
+      Ezért a DevTools az egyik legjobb eszköz annak kiderítésére, hogy miért nem azt a stílust látjuk, amelyet vártunk.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. Amit meg kell jegyezni</h2>
+    <ul class="mb-0">
+      <li>ugyanarra az elemre egyszerre több CSS-szabály is vonatkozhat;</li>
+      <li>csak az egymásnak ellentmondó deklarációknál kell eldönteni, melyik nyer;</li>
+      <li><strong>ID &gt; osztály / pszeudo-osztály &gt; elem</strong>;</li>
+      <li>azonos prioritás esetén a később szereplő szabály nyer;</li>
+      <li>az inline stílus még erősebb;</li>
+      <li>az <code>!important</code> csak végső megoldás legyen;</li>
+      <li>a DevToolsban az áthúzott deklaráció segít felismerni a konfliktust.</li>
+    </ul>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Külön magyarázó példa</h2>
+    <p>
+      A következő mini projektben egyetlen <code>&lt;p&gt;</code> elemen próbáljuk ki a szabályok ütközését lépésről lépésre.
+    </p>
+    <a href="pelda/index.html" class="btn btn-primary btn-lg">Példaprojekt megnyitása</a>
+  </div></section>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+    <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a>
+    <a href="../5_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző: DevTools</a>
+  </div>
+</main>
+</body>
+</html>
