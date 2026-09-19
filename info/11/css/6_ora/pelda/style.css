@@ -1,31 +1,29 @@
-/*
-  CSS prioritás – mini példaprojekt
-  Figyeld meg ugyanannak a tulajdonságnak az ütközését!
-*/
+/* 1. Univerzális szelektor – legalacsonyabb prioritás */
+* {
+  color: gray;
+}
 
+/* 2. Elem szelektor */
 p {
   color: green;
   font-size: 28px;
 }
 
+/* 3. Osztály szelektor */
 .kiemelt {
   color: blue;
-  font-weight: bold;
 }
 
-.szines {
-  color: orange;
-}
-
+/* 4. ID szelektor */
 #szoveg {
   color: red;
 }
 
-/*
-  5. feladat:
-  Vedd ki a kommentből, majd nézd meg, mi történik!
+/* 5. Inline stílus az index.html-ben van:
+   style="color: orange;"
+*/
 
+/* 6. !important – legmagasabb prioritás */
 p {
   color: purple !important;
 }
-*/

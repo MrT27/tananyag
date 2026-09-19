@@ -210,10 +210,63 @@ a:hover {
   </div></section>
 
   <section class="card section-card mb-4"><div class="card-body p-4">
-    <h2 class="h3">Külön magyarázó példa</h2>
+    <h2 class="h3">Külön magyarázó példa – mind a 6 prioritási szint egyszerre</h2>
     <p>
-      A következő mini projektben egyetlen <code>&lt;p&gt;</code> elemen próbáljuk ki a szabályok ütközését lépésről lépésre.
+      Ebben a példában ugyanarra az egyetlen <code>&lt;p&gt;</code> elemre mind a hat szint egyszerre vonatkozik.
+      A DevToolsban ezért jól megfigyelhető, melyik <code>color</code> deklaráció érvényesül, és melyek vannak áthúzva.
     </p>
+
+    <h3 class="h5 mt-4">index.html</h3>
+    <pre><code>&lt;!doctype html&gt;
+&lt;html lang="hu"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;CSS prioritás – 6 szint&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p id="szoveg" class="kiemelt" style="color: orange"&gt;
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam,
+      laboriosam. Quod, ex?
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h3 class="h5 mt-4">style.css</h3>
+    <pre><code>/* 1. Univerzális szelektor – legalacsonyabb prioritás */
+* {
+  color: gray;
+}
+
+/* 2. Elem szelektor */
+p {
+  color: green;
+  font-size: 28px;
+}
+
+/* 3. Osztály szelektor */
+.kiemelt {
+  color: blue;
+}
+
+/* 4. ID szelektor */
+#szoveg {
+  color: red;
+}
+
+/* 5. Inline stílus az index.html-ben van:
+   style="color: orange;"
+*/
+
+/* 6. !important – legmagasabb prioritás */
+p {
+  color: purple !important;
+}</code></pre>
+
+    <div class="callout rounded-3 p-3 mb-3">
+      <strong>Megfigyelés:</strong> alapállapotban a szöveg lila lesz az <code>!important</code> miatt. A DevToolsban kapcsold ki egymás után a szabályokat, és figyeld meg, hogyan lép elő a következő prioritási szint.
+    </div>
     <a href="pelda/index.html" class="btn btn-primary btn-lg">Példaprojekt megnyitása</a>
   </div></section>
 
