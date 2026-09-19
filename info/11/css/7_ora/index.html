@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS 7. óra – Box model és oldalelrendezés</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#eefaff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+  </style>
+</head>
+<body>
+<main class="container py-5">
+
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-primary">11. évfolyam</span>
+    <span class="badge text-bg-info">CSS</span>
+    <span class="badge text-bg-dark">7. óra</span>
+    <h1 class="display-6 fw-bold mt-3">Box model és oldalelrendezés</h1>
+    <p class="lead mb-0">
+      A meglévő Kód Magazin cikket visszük tovább:
+      <code>margin</code>, <code>padding</code>, <code>width</code> és
+      <code>margin: 0 auto</code>.
+    </p>
+  </section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Miért van szükség erre?</h2>
+    <p>
+      Eddig főleg azt szabályoztuk, hogy az elemek milyen színűek és milyen betűkkel jelenjenek meg.
+      Most azt tanuljuk meg, hogyan helyezkedjenek el egymáshoz képest.
+    </p>
+    <div class="important rounded-3 p-3">
+      A cél továbbra is ugyanaz a Kód Magazin projekt – most csak a dobozok méretét és térközeit rendezzük.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. A box model alapötlete</h2>
+    <p>Minden HTML-elem felfogható egy dobozként.</p>
+    <ul>
+      <li><strong>content</strong> – maga a tartalom;</li>
+      <li><strong>padding</strong> – belső térköz;</li>
+      <li><strong>border</strong> – szegély;</li>
+      <li><strong>margin</strong> – külső térköz.</li>
+    </ul>
+    <div class="callout rounded-3 p-3">
+      Egyszerűen: <strong>padding belül, margin kívül.</strong>
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. Alapértelmezett térközök nullázása</h2>
+    <p>A böngésző saját margókat és paddingeket ad bizonyos elemekhez. Ezeket lenullázhatjuk:</p>
+    <pre><code>* {
+  margin: 0;
+  padding: 0;
+}</code></pre>
+    <p class="mt-3 mb-0">
+      A <code>*</code> az univerzális szelektor: minden elemre vonatkozik.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. A teljes oldal szélessége – <code>.container</code></h2>
+    <p>HTML-ben a fő tartalmat egy közös dobozba tesszük:</p>
+    <pre><code>&lt;div class="container"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+
+    <p class="mt-3">CSS-ben:</p>
+    <pre><code>.container {
+  width: 800px;
+  margin: 0 auto;
+}</code></pre>
+
+    <div class="callout rounded-3 p-3 mt-3">
+      <code>width: 800px;</code> beállítja a doboz szélességét.
+      A <code>margin: 0 auto;</code> pedig vízszintesen középre igazítja.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. Mit jelent a <code>margin: 0 auto</code>?</h2>
+    <pre><code>margin: 0 auto;</code></pre>
+    <ul class="mt-3">
+      <li><code>0</code> – fent és lent nincs margó;</li>
+      <li><code>auto</code> – bal és jobb oldalon a böngésző egyenlően osztja el a helyet.</li>
+    </ul>
+    <p class="mb-0">
+      Ez akkor működik jól, ha az elemnek van megadott szélessége.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. Padding a fő fejlécben</h2>
+    <pre><code>.main-header {
+  background-color: #f7f7f7;
+  padding: 20px 40px;
+}</code></pre>
+    <p class="mt-3">
+      A két érték jelentése:
+    </p>
+    <ul>
+      <li><code>20px</code> – fent és lent;</li>
+      <li><code>40px</code> – bal és jobb oldalon.</li>
+    </ul>
+    <p class="mb-0">
+      A padding tehát a fejléc tartalma és a doboz széle közötti hely.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. Margin az elemek között</h2>
+    <pre><code>.main-header {
+  margin-bottom: 60px;
+}
+
+article {
+  margin-bottom: 60px;
+}
+
+.post-header {
+  margin-bottom: 40px;
+}</code></pre>
+    <p class="mt-3 mb-0">
+      Ezekkel az elemek közötti külső térközt szabályozzuk.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. Az aside mérete és belső térköze</h2>
+    <pre><code>aside {
+  background-color: #f7f7f7;
+  border-top: 5px solid #1098ad;
+  border-bottom: 5px solid #1098ad;
+  padding: 50px 0;
+  width: 500px;
+}</code></pre>
+    <p class="mt-3">
+      A <code>padding: 50px 0;</code> azt jelenti, hogy fent és lent 50 px belső térköz van,
+      bal és jobb oldalon pedig 0.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. A módosított HTML-részlet</h2>
+    <pre><code>&lt;body&gt;
+  &lt;div class=&quot;container&quot;&gt;
+
+    &lt;header class=&quot;main-header&quot;&gt;
+      ...
+    &lt;/header&gt;
+
+    &lt;article&gt;
+      &lt;header class=&quot;post-header&quot;&gt;
+        ...
+      &lt;/header&gt;
+
+      ...
+    &lt;/article&gt;
+
+    &lt;aside&gt;
+      ...
+    &lt;/aside&gt;
+
+    &lt;footer&gt;
+      ...
+    &lt;/footer&gt;
+
+  &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. Közös órai feladat</h2>
+    <div class="task rounded-3 p-3">
+      <ol class="mb-0">
+        <li>Tedd a teljes oldal tartalmát egy <code>container</code> class-ú divbe.</li>
+        <li>Állítsd a container szélességét 800 px-re.</li>
+        <li>Igazítsd középre <code>margin: 0 auto;</code> segítségével.</li>
+        <li>Nullázd le az alapértelmezett margin és padding értékeket a <code>*</code> szelektorral.</li>
+        <li>Adj a fő fejlécnek <code>padding: 20px 40px;</code> értéket.</li>
+        <li>Adj a fő fejléc alá 60 px margót.</li>
+        <li>Adj az article alá 60 px margót.</li>
+        <li>Adj a post-header alá 40 px margót.</li>
+        <li>Az aside szélessége legyen 500 px.</li>
+        <li>Az aside felső és alsó paddingje legyen 50 px.</li>
+      </ol>
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">10. Ellenőrző kérdések</h2>
+    <ol>
+      <li>Mi a különbség a margin és a padding között?</li>
+      <li>Mit választ ki a <code>*</code> szelektor?</li>
+      <li>Mire való a <code>width</code>?</li>
+      <li>Mit jelent a <code>margin: 0 auto;</code>?</li>
+      <li>Miért kell szélességet adni a containernek a középre igazításhoz?</li>
+      <li>Mit jelent a <code>padding: 20px 40px;</code>?</li>
+      <li>Mi a különbség a <code>margin-bottom</code> és a <code>padding-bottom</code> között?</li>
+    </ol>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra CSS-kódja</h2>
+    <a href="orai_style.css" download class="btn btn-primary mb-3">Órai CSS letöltése</a>
+    <pre><code>/* BOX MODEL ÉS OLDAL ELRENDEZÉS */
+
+/* Alapértelmezett margók és belső térközök nullázása */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Az oldal fő tartalmi doboza */
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+/* Fő fejléc */
+.main-header {
+  background-color: #f7f7f7;
+  padding: 20px 40px;
+  margin-bottom: 60px;
+}
+
+/* Cikk */
+article {
+  margin-bottom: 60px;
+}
+
+/* A cikk saját fejléce */
+.post-header {
+  margin-bottom: 40px;
+}
+
+/* Kapcsolódó tartalom */
+aside {
+  background-color: #f7f7f7;
+  border-top: 5px solid #1098ad;
+  border-bottom: 5px solid #1098ad;
+  padding: 50px 0;
+  width: 500px;
+}
+</code></pre>
+  </div></section>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+    <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a>
+    <a href="../6_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző: class és ID</a>
+  </div>
+
+</main>
+</body>
+</html>

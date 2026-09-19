@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS 9. óra – Képek és navigáció</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#eefaff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+  </style>
+</head>
+<body>
+<main class="container py-5">
+
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-primary">11. évfolyam</span>
+    <span class="badge text-bg-info">CSS</span>
+    <span class="badge text-bg-dark">9. óra</span>
+    <h1 class="display-6 fw-bold mt-3">Képek és navigáció formázása</h1>
+    <p class="lead mb-0">
+      A meglévő Kód Magazin projektet visszük tovább:
+      a fő kép méretezése és a navigációs linkek rendezése következik.
+    </p>
+  </section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. Mi a cél?</h2>
+    <p>
+      A fő cikk képe töltse ki a cikk rendelkezésre álló szélességét,
+      miközben megtartja az eredeti képarányát.
+    </p>
+    <p class="mb-0">
+      A navigációs linkeket pedig szeretnénk egymás mellett, rendezett térközzel megjeleníteni.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. Class a fő képen</h2>
+    <p>HTML-ben adjunk nevet a fő cikk képének:</p>
+    <pre><code>&lt;img
+  class="post-img"
+  src="img/post-img.jpg"
+  alt="HTML-kód egy laptop képernyőjén"
+/&gt;</code></pre>
+
+    <p class="mt-3">CSS-ben:</p>
+    <pre><code>.post-img {
+  width: 100%;
+  height: auto;
+}</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. Mit jelent a <code>width: 100%</code>?</h2>
+    <p>
+      A kép szélessége a rendelkezésére álló szülőelem teljes szélessége lesz.
+    </p>
+    <div class="callout rounded-3 p-3">
+      A <code>100%</code> nem feltétlenül a teljes böngészőablak szélességét jelenti,
+      hanem annak az elemnek a szélességét, amelyben a kép található.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. Miért kell a <code>height: auto</code>?</h2>
+    <pre><code>.post-img {
+  width: 100%;
+  height: auto;
+}</code></pre>
+    <p class="mt-3">
+      A <code>height: auto;</code> megtartja a kép eredeti képarányát.
+      Így a kép nem nyúlik meg és nem torzul el.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. Navigációs linkek formázása</h2>
+    <p>
+      A navigációban lévő linkeket célzottan formázhatjuk:
+    </p>
+    <pre><code>nav a:link {
+  margin-right: 30px;
+  margin-top: 10px;
+  display: inline-block;
+}</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. Miért <code>inline-block</code>?</h2>
+    <p>
+      A linkek alapvetően inline elemek. Az <code>inline-block</code> megtartja azt,
+      hogy egymás mellett maradjanak, de közben könnyebben kezelhetővé válnak a
+      térközeik és méreteik.
+    </p>
+    <div class="important rounded-3 p-3">
+      Most még nem készítünk bonyolult menüt. A cél csak az, hogy a linkek
+      rendezettebben jelenjenek meg egymás mellett.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. Linkek közötti térköz</h2>
+    <pre><code>nav a:link {
+  margin-right: 30px;
+}</code></pre>
+    <p class="mt-3">
+      Minden navigációs link jobb oldalára 30 px térközt teszünk.
+    </p>
+
+    <p>Az utolsó linknél erre már nincs szükség:</p>
+    <pre><code>nav a:link:last-child {
+  margin-right: 0;
+}</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. A HTML-részlet</h2>
+    <pre><code>&lt;nav&gt;
+  &lt;a href=&quot;#&quot;&gt;Blog&lt;/a&gt;
+  &lt;a href=&quot;#&quot;&gt;Kihívások&lt;/a&gt;
+  &lt;a href=&quot;#&quot;&gt;Flexbox&lt;/a&gt;
+  &lt;a href=&quot;#&quot;&gt;CSS Grid&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;img
+  class=&quot;post-img&quot;
+  src=&quot;img/post-img.jpg&quot;
+  alt=&quot;HTML-kód egy laptop képernyőjén&quot;
+/&gt;
+</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. Közös órai feladat</h2>
+    <div class="task rounded-3 p-3">
+      <ol class="mb-0">
+        <li>Adj a fő cikk képének <code>post-img</code> class-t.</li>
+        <li>A kép szélessége legyen <code>100%</code>.</li>
+        <li>A kép magassága legyen <code>auto</code>.</li>
+        <li>A navigációs linkek jobb oldalára tegyél 30 px margót.</li>
+        <li>A linkek felső margója legyen 10 px.</li>
+        <li>Állítsd a navigációs linkeket <code>inline-block</code> megjelenítésre.</li>
+        <li>Az utolsó navigációs link jobb margója legyen 0.</li>
+      </ol>
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">10. Ellenőrző kérdések</h2>
+    <ol>
+      <li>Mit jelent a <code>width: 100%</code> egy képnél?</li>
+      <li>Miért használunk <code>height: auto</code> értéket?</li>
+      <li>Mit jelent az <code>inline-block</code>?</li>
+      <li>Miért használunk <code>margin-right</code>-ot a navigációs linkeken?</li>
+      <li>Miért nullázzuk az utolsó link jobb oldali margóját?</li>
+      <li>Mit választ ki a <code>nav a:link</code> szelektor?</li>
+    </ol>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra CSS-kódja</h2>
+    <a href="orai_style.css" download class="btn btn-primary mb-3">Órai CSS letöltése</a>
+    <pre><code>/* KÉPEK ÉS NAVIGÁCIÓ FORMÁZÁSA */
+
+/* A fő cikk képe töltse ki a rendelkezésre álló szélességet */
+.post-img {
+  width: 100%;
+  height: auto;
+}
+
+/* Navigációs linkek */
+nav a:link {
+  margin-right: 30px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+/* Az utolsó link után ne legyen felesleges térköz */
+nav a:link:last-child {
+  margin-right: 0;
+}
+</code></pre>
+  </div></section>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+    <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a>
+    <a href="../8_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző: tipográfia és térközök</a>
+  </div>
+
+</main>
+</body>
+</html>

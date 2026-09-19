@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS 8. óra – Tipográfia és térközök</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#eefaff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+  </style>
+</head>
+<body>
+<main class="container py-5">
+
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-primary">11. évfolyam</span>
+    <span class="badge text-bg-info">CSS</span>
+    <span class="badge text-bg-dark">8. óra</span>
+    <h1 class="display-6 fw-bold mt-3">Tipográfia és térközök finomítása</h1>
+    <p class="lead mb-0">
+      A meglévő Kód Magazin cikk megjelenését tesszük rendezettebbé
+      betűméretekkel, sormagassággal, igazítással és margókkal.
+    </p>
+  </section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. Címsorok mérete és megjelenése</h2>
+    <pre><code>h1 {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+h2 {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 30px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. <code>text-transform</code></h2>
+    <p>
+      A <code>text-transform: uppercase;</code> a megjelenő szöveget nagybetűssé alakítja.
+    </p>
+    <pre><code>h1 {
+  text-transform: uppercase;
+}</code></pre>
+    <div class="callout rounded-3 p-3 mt-3">
+      Fontos: ez a megjelenést módosítja, nem a HTML-ben lévő eredeti szöveget.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. <code>text-align</code></h2>
+    <p>
+      A kapcsolódó cikkek címe középre igazítható:
+    </p>
+    <pre><code>h4 {
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+}</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. Bekezdések olvashatósága – <code>line-height</code></h2>
+    <pre><code>p {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}</code></pre>
+    <p class="mt-3">
+      A <code>line-height</code> a sorok közötti távolságot szabályozza.
+      A <code>1.5</code> azt jelenti, hogy a sormagasság a betűméret másfélszerese.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. Címsorok közötti térköz</h2>
+    <pre><code>h2 {
+  margin-bottom: 30px;
+}
+
+h3 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}</code></pre>
+    <p class="mt-3 mb-0">
+      A <code>margin-top</code> és <code>margin-bottom</code> segítségével
+      szabályozzuk a blokkok közötti függőleges távolságot.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. Listák térközei</h2>
+    <pre><code>ul,
+ol {
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+
+li {
+  font-size: 20px;
+  margin-bottom: 10px;
+}</code></pre>
+    <p class="mt-3">
+      A listát balról beljebb húzzuk, a listaelemek között pedig külön térközt hagyunk.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. Az utolsó listaelem külön kezelése</h2>
+    <pre><code>li:last-child {
+  margin-bottom: 0;
+}</code></pre>
+    <p class="mt-3">
+      Így az utolsó listaelem alatt nem marad felesleges plusz térköz.
+    </p>
+    <div class="callout rounded-3 p-3">
+      Ezzel a korábban tanult <code>:last-child</code> pszeudo-osztályt
+      most valódi elrendezési célra használjuk.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. Közös órai feladat</h2>
+    <div class="task rounded-3 p-3">
+      <ol class="mb-0">
+        <li>A <code>h1</code> legyen 26 px-es, nagybetűs és dőlt.</li>
+        <li>A <code>h2</code> legyen 40 px-es, alatta 30 px margóval.</li>
+        <li>A <code>h3</code> legyen 30 px-es, fölötte 40 px, alatta 20 px margóval.</li>
+        <li>A <code>h4</code> legyen nagybetűs és középre igazított.</li>
+        <li>A bekezdések legyenek 22 px-esek, <code>line-height: 1.5</code> értékkel.</li>
+        <li>A bekezdések alatt legyen 15 px margó.</li>
+        <li>A listák legyenek balról 50 px-re behúzva.</li>
+        <li>A listaelemek alatt legyen 10 px margó.</li>
+        <li>Az utolsó listaelem alatt ne legyen margó.</li>
+      </ol>
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. Ellenőrző kérdések</h2>
+    <ol>
+      <li>Mire való a <code>text-transform</code>?</li>
+      <li>Mit csinál a <code>text-align: center;</code>?</li>
+      <li>Mit szabályoz a <code>line-height</code>?</li>
+      <li>Mi a különbség a <code>margin-top</code> és <code>margin-bottom</code> között?</li>
+      <li>Miért hasznos a <code>li:last-child { margin-bottom: 0; }</code>?</li>
+    </ol>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra CSS-kódja</h2>
+    <a href="orai_style.css" download class="btn btn-primary mb-3">Órai CSS letöltése</a>
+    <pre><code>/* TIPOGRÁFIA ÉS TÉRKÖZÖK FINOMÍTÁSA */
+
+h1 {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+h2 {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 30px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+p {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+ul,
+ol {
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+
+li {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+</code></pre>
+  </div></section>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+    <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a>
+    <a href="../7_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző: box model</a>
+  </div>
+
+</main>
+</body>
+</html>
