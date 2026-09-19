@@ -84,8 +84,54 @@
     <div class="important rounded-3 p-3 mb-3 text-center fs-5 fw-semibold">
       ID &gt; osztály / pszeudo-osztály &gt; elem &gt; univerzális szelektor
     </div>
+
+    <div class="table-responsive mb-3">
+      <table class="table table-bordered table-striped align-middle mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th>Szelektor típusa</th>
+            <th>Példa</th>
+            <th>Prioritás</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>!important</code></td>
+            <td><code>color: red !important;</code></td>
+            <td>Legmagasabb</td>
+          </tr>
+          <tr>
+            <td>Inline stílus</td>
+            <td><code>&lt;p style=&quot;color: red;&quot;&gt;</code></td>
+            <td>Nagyon magas</td>
+          </tr>
+          <tr>
+            <td>ID szelektor</td>
+            <td><code>#szoveg</code></td>
+            <td>Magas</td>
+          </tr>
+          <tr>
+            <td>Osztály / pszeudo-osztály</td>
+            <td><code>.kiemelt</code>, <code>:hover</code></td>
+            <td>Közepes</td>
+          </tr>
+          <tr>
+            <td>Elem szelektor</td>
+            <td><code>p</code>, <code>h1</code>, <code>a</code></td>
+            <td>Alacsony</td>
+          </tr>
+          <tr>
+            <td>Univerzális szelektor</td>
+            <td><code>*</code></td>
+            <td>Legalacsonyabb</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <p class="mb-0">
       Ezért a fenti példában az ID-szelektorban szereplő <code>font-size: 22px;</code> fog érvényesülni.
+      Ha két szabály azonos prioritású, akkor a CSS-ben később szereplő szabály nyer.
     </p>
   </div></section>
 
