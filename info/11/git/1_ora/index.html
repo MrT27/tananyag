@@ -190,9 +190,62 @@ git commit
     </div>
   </section>
 
+
   <section class="card section-card mb-4">
     <div class="card-body p-4">
-      <h2 class="h3">10. Közös órai feladat</h2>
+      <h2 class="h3">9. Korábbi commit megtekintése – <code>git checkout</code></h2>
+
+      <p>
+        A <code>git log</code> segítségével meg tudjuk nézni a commitok azonosítóját.
+        Ha szeretnénk megnézni, hogyan nézett ki a projekt egy korábbi commitnál,
+        használhatjuk a <code>git checkout</code> parancsot.
+      </p>
+
+      <pre><code>git checkout COMMIT_AZONOSITO</code></pre>
+
+      <p class="mt-3">
+        Például:
+      </p>
+
+      <pre><code>git checkout a1b2c3d</code></pre>
+
+      <div class="important rounded-3 p-3">
+        Ilyenkor nem a legfrissebb állapotot látjuk, hanem azt a projektverziót,
+        amelyik az adott commitnál létezett.
+      </div>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">10. Visszatérés a legfrissebb ágra – <code>main</code> vagy <code>master</code></h2>
+
+      <p>
+        A Git repository alapértelmezett ágának neve lehet <code>main</code> vagy
+        régebbi beállításoknál <code>master</code>.
+      </p>
+
+      <p>
+        Ha egy korábbi commitot néztünk meg, visszatérhetünk a legfrissebb állapothoz:
+      </p>
+
+      <pre><code>git checkout main</code></pre>
+
+      <p>vagy régebbi repository esetén:</p>
+
+      <pre><code>git checkout master</code></pre>
+
+      <div class="callout rounded-3 p-3">
+        <strong>main</strong> és <strong>master</strong> ugyanazt a szerepet töltheti be:
+        az alapértelmezett ág neve. Újabb projektekben jellemzően a <code>main</code>
+        elnevezést használjuk.
+      </div>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">11. Közös órai feladat</h2>
 
       <div class="task rounded-3 p-3">
         <ol class="mb-0">
@@ -214,7 +267,7 @@ git commit
 
   <section class="card section-card mb-4">
     <div class="card-body p-4">
-      <h2 class="h3">11. Mit kell tudni az óra végére?</h2>
+      <h2 class="h3">12. Mit kell tudni az óra végére?</h2>
 
       <table class="table table-bordered align-middle">
         <thead class="table-dark">
@@ -229,6 +282,9 @@ git commit
           <tr><td><code>git add index.html</code></td><td>Fájl előkészítése a következő commithoz</td></tr>
           <tr><td><code>git commit -m "..."</code></td><td>Pillanatkép készítése</td></tr>
           <tr><td><code>git log</code></td><td>Commitelőzmények megtekintése</td></tr>
+          <tr><td><code>git checkout COMMIT_AZONOSITO</code></td><td>Korábbi commit állapotának megtekintése</td></tr>
+          <tr><td><code>git checkout main</code></td><td>Visszatérés a main ágra</td></tr>
+          <tr><td><code>git checkout master</code></td><td>Visszatérés a master ágra régebbi repository esetén</td></tr>
         </tbody>
       </table>
     </div>
@@ -236,7 +292,7 @@ git commit
 
   <section class="card section-card mb-4">
     <div class="card-body p-4">
-      <h2 class="h3">12. Ellenőrző kérdések</h2>
+      <h2 class="h3">13. Ellenőrző kérdések</h2>
 
       <ol>
         <li>Mire használjuk a Gitet?</li>
@@ -248,20 +304,28 @@ git commit
         <li>Miért írunk commitüzenetet?</li>
         <li>Mit mutat meg a <code>git log</code>?</li>
         <li>Mi a különbség egy fájl elmentése és egy commit között?</li>
+        <li>Mire használjuk a <code>git checkout COMMIT_AZONOSITO</code> parancsot?</li>
+        <li>Mi a különbség a <code>main</code> és a <code>master</code> elnevezés között?</li>
+        <li>Hogyan térünk vissza a legfrissebb állapothoz egy korábbi commit megtekintése után?</li>
       </ol>
     </div>
   </section>
 
   <section class="card section-card mb-4">
     <div class="card-body p-4">
-      <h2 class="h3">Parancsok egyben</h2>
+      <h2 class="h3">14. Parancsok egyben</h2>
       <a href="parancsok.txt" download class="btn btn-primary mb-3">Parancsok letöltése</a>
 
       <pre><code>cd projektmappa
 git init
 git add index.html
 git commit -m "Első verzió"
-git log</code></pre>
+git log
+git checkout COMMIT_AZONOSITO
+git checkout main
+
+# régebbi repository esetén:
+git checkout master</code></pre>
     </div>
   </section>
 
