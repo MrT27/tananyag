@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git 1. óra – Helyi verziókövetés</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#eef2ff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0d6efd; background:#eef5ff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+  </style>
+</head>
+<body>
+<main class="container py-5">
+
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-dark">Git</span>
+    <span class="badge text-bg-primary">11. évfolyam</span>
+    <span class="badge text-bg-info">1. óra</span>
+    <h1 class="display-6 fw-bold mt-3">Git alapok – helyi verziókövetés</h1>
+    <p class="lead mb-0">
+      Megtanuljuk, hogyan követhetjük egy projekt változásait, és hogyan készíthetünk
+      visszakereshető pillanatképeket a kód különböző állapotairól.
+    </p>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">1. Mi az a Git?</h2>
+      <p>
+        A Git egy verziókövető rendszer. Segítségével nyomon követhetjük,
+        hogyan változik egy projekt az idő során.
+      </p>
+      <p>
+        Ha eljutunk egy olyan állapothoz, amellyel elégedettek vagyunk,
+        készíthetünk róla egy <strong>pillanatképet</strong>.
+        Ezt a Gitben <strong>commitnak</strong> nevezzük.
+      </p>
+
+      <div class="callout rounded-3 p-3">
+        A Git nem ugyanaz, mint a GitHub. Ezen az órán még csak a saját gépünkön dolgozunk.
+      </div>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">2. Ellenőrizzük, hogy működik-e a Git</h2>
+      <p>Nyiss terminált, majd írd be:</p>
+
+      <pre><code>git</code></pre>
+
+      <p class="mt-3 mb-0">
+        Ha a Git súgója vagy parancslistája jelenik meg, akkor a Git telepítve van.
+      </p>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">3. Projektmappa megnyitása a terminálban</h2>
+
+      <p>Tegyük fel, hogy van egy ilyen projektünk:</p>
+
+      <pre><code>git-gyakorlat/
+└── index.html</code></pre>
+
+      <p class="mt-3">A terminálban lépjünk be a mappába:</p>
+
+      <pre><code>cd git-gyakorlat</code></pre>
+
+      <div class="important rounded-3 p-3 mt-3">
+        A Git-parancsokat mindig abban a projektmappában adjuk ki, amelyen dolgozni szeretnénk.
+      </div>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">4. Git repository létrehozása</h2>
+
+      <pre><code>git init</code></pre>
+
+      <p class="mt-3">
+        Ezzel Git repositoryvá alakítjuk a projektmappát.
+        A háttérben létrejön egy rejtett <code>.git</code> mappa.
+      </p>
+
+      <div class="important rounded-3 p-3">
+        A <code>.git</code> mappát nem szerkesztjük kézzel.
+        Ebben tárolja a Git a verziókövetéshez szükséges adatokat.
+      </div>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">5. Első fájl hozzáadása</h2>
+
+      <p>
+        A Git nem készít automatikusan pillanatképet minden fájlról.
+        Először meg kell mondanunk, melyik fájlt szeretnénk a következő commitba tenni.
+      </p>
+
+      <pre><code>git add index.html</code></pre>
+
+      <p class="mt-3 mb-0">
+        Ezzel az <code>index.html</code> fájlt előkészítettük a következő commithoz.
+      </p>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">6. Első commit</h2>
+
+      <pre><code>git commit -m "Első verzió"</code></pre>
+
+      <p class="mt-3">
+        A commit egy pillanatkép a projekt egy adott állapotáról.
+      </p>
+
+      <ul>
+        <li><code>git commit</code> – elkészíti a pillanatképet;</li>
+        <li><code>-m</code> – commitüzenetet adunk meg;</li>
+        <li><code>"Első verzió"</code> – röviden leírjuk, mit tartalmaz ez az állapot.</li>
+      </ul>
+
+      <div class="callout rounded-3 p-3">
+        A commitüzenet legyen rövid, de mondja el, mi változott.
+      </div>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">7. Készítsünk második verziót</h2>
+
+      <p>
+        Módosítsd az <code>index.html</code> fájlt, például adj hozzá egy új bekezdést.
+        Mentsd el a fájlt, majd:
+      </p>
+
+      <pre><code>git add index.html
+git commit -m "Bekezdés hozzáadása"</code></pre>
+
+      <p class="mt-3 mb-0">
+        A projektnek most már két külön eltárolt állapota van.
+      </p>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">8. Commitok megtekintése</h2>
+
+      <pre><code>git log</code></pre>
+
+      <p class="mt-3">
+        A <code>git log</code> megmutatja a projekt commitelőzményeit.
+        Láthatjuk többek között a commitok azonosítóját és az üzenetüket.
+      </p>
+
+      <div class="important rounded-3 p-3">
+        Ezen az órán még nem lépkedünk vissza korábbi commitokra.
+        Most az a fontos, hogy megértsük: minden commit egy eltárolt projektállapot.
+      </div>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">9. A folyamat</h2>
+
+      <pre><code>fájl módosítása
+      ↓
+fájl mentése
+      ↓
+git add
+      ↓
+git commit
+      ↓
+új pillanatkép</code></pre>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">10. Közös órai feladat</h2>
+
+      <div class="task rounded-3 p-3">
+        <ol class="mb-0">
+          <li>Készíts <code>git-gyakorlat</code> nevű mappát.</li>
+          <li>Hozz létre benne egy egyszerű <code>index.html</code> fájlt.</li>
+          <li>Nyisd meg a projektmappát terminálban.</li>
+          <li>Inicializáld a repositoryt <code>git init</code> paranccsal.</li>
+          <li>Add hozzá az <code>index.html</code> fájlt.</li>
+          <li>Készíts commitot <code>Első verzió</code> üzenettel.</li>
+          <li>Módosítsd az oldalt egy új bekezdéssel.</li>
+          <li>Mentsd el a fájlt.</li>
+          <li>Add hozzá újra a fájlt.</li>
+          <li>Készíts új commitot <code>Bekezdés hozzáadása</code> üzenettel.</li>
+          <li>A <code>git log</code> segítségével nézd meg mindkét commitot.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">11. Mit kell tudni az óra végére?</h2>
+
+      <table class="table table-bordered align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>Parancs</th>
+            <th>Feladata</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>cd</code></td><td>Belépés a projektmappába</td></tr>
+          <tr><td><code>git init</code></td><td>Git repository létrehozása</td></tr>
+          <tr><td><code>git add index.html</code></td><td>Fájl előkészítése a következő commithoz</td></tr>
+          <tr><td><code>git commit -m "..."</code></td><td>Pillanatkép készítése</td></tr>
+          <tr><td><code>git log</code></td><td>Commitelőzmények megtekintése</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">12. Ellenőrző kérdések</h2>
+
+      <ol>
+        <li>Mire használjuk a Gitet?</li>
+        <li>Mi az a repository?</li>
+        <li>Mit csinál a <code>git init</code>?</li>
+        <li>Mi kerül a rejtett <code>.git</code> mappába?</li>
+        <li>Mit csinál a <code>git add</code>?</li>
+        <li>Mi az a commit?</li>
+        <li>Miért írunk commitüzenetet?</li>
+        <li>Mit mutat meg a <code>git log</code>?</li>
+        <li>Mi a különbség egy fájl elmentése és egy commit között?</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4">
+    <div class="card-body p-4">
+      <h2 class="h3">Parancsok egyben</h2>
+      <a href="parancsok.txt" download class="btn btn-primary mb-3">Parancsok letöltése</a>
+
+      <pre><code>cd projektmappa
+git init
+git add index.html
+git commit -m "Első verzió"
+git log</code></pre>
+    </div>
+  </section>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+    <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a Git főoldalra</a>
+    <a href="../../index.html" class="btn btn-outline-secondary btn-lg">Vissza a 11. évfolyamhoz</a>
+  </div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,5 @@
+cd projektmappa
+git init
+git add index.html
+git commit -m "Első verzió"
+git log
