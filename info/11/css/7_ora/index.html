@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS 7. óra – Öröklődés és univerzális szelektor</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#eefaff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+  </style>
+</head>
+<body>
+<main class="container py-5">
+
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-primary">11. évfolyam</span>
+    <span class="badge text-bg-info">CSS</span>
+    <span class="badge text-bg-dark">7. óra</span>
+    <h1 class="display-6 fw-bold mt-3">Öröklődés és univerzális szelektor</h1>
+    <p class="lead mb-0">
+      Megnézzük, hogyan öröklődnek bizonyos CSS-tulajdonságok a szülőelemről
+      a gyermekelemekre, és miben különbözik ettől a <code>*</code> univerzális szelektor.
+    </p>
+  </section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra célja</h2>
+    <ul class="mb-0">
+      <li>megérteni a CSS öröklődés működését;</li>
+      <li>felismerni, hogy nem minden tulajdonság öröklődik;</li>
+      <li>megérteni, hogyan írja felül egy közvetlen szabály az örökölt értéket;</li>
+      <li>használni a <code>body</code> elemet általános szövegformázásokhoz;</li>
+      <li>megérteni a <code>*</code> univerzális szelektor működését;</li>
+      <li>különbséget tenni a <code>body</code>-ból öröklődő stílus és a <code>*</code> közvetlen kijelölése között.</li>
+    </ul>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. Mi az öröklődés?</h2>
+    <p>
+      Bizonyos CSS-tulajdonságok értékei a szülőelemről átkerülhetnek
+      a benne található gyermekelemekre.
+    </p>
+
+    <pre><code>&lt;p&gt;
+  Közzétette: &lt;strong&gt;Laura Jones&lt;/strong&gt;
+&lt;/p&gt;</code></pre>
+
+    <p class="mt-3">
+      Ha a bekezdés például dőlt betűs és meghatározott betűméretű,
+      a benne lévő <code>strong</code> elem több szövegformázási tulajdonságot
+      megörökölhet a bekezdéstől.
+    </p>
+
+    <div class="callout rounded-3 p-3">
+      <strong>Öröklődés:</strong> bizonyos tulajdonságértékek a szülőelemről
+      a gyermekelemekhez kerülnek.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. Általános szövegformázás a <code>body</code>-n</h2>
+    <p>
+      A <code>body</code> tartalmazza az oldal látható elemeit, ezért kényelmes hely
+      az olyan szöveggel kapcsolatos tulajdonságok megadására,
+      amelyeket az oldal sok eleme használ.
+    </p>
+
+    <pre><code>body {
+  color: #444;
+  font-family: sans-serif;
+}</code></pre>
+
+    <p class="mt-3 mb-0">
+      Ezeket az értékeket a benne található elemek örökölhetik,
+      ha nincs rájuk külön más érték megadva.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. Az örökölt érték felülírható</h2>
+
+    <pre><code>body {
+  color: #444;
+}
+
+h1,
+h2,
+h3 {
+  color: #1098ad;
+}</code></pre>
+
+    <p class="mt-3">
+      A címsorok nem a <code>body</code> szürke színét használják,
+      mert rájuk külön, közvetlenül megadtunk egy másik <code>color</code> értéket.
+    </p>
+
+    <div class="important rounded-3 p-3">
+      Az örökölt érték alacsony prioritású: egy közvetlen CSS-szabály könnyen felülírja.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. Nem minden tulajdonság öröklődik</h2>
+    <p>
+      Főként a szöveghez kapcsolódó tulajdonságok öröklődnek.
+      Ilyen például a <code>color</code> és a <code>font-family</code>.
+    </p>
+
+    <p>A szegély viszont nem öröklődik:</p>
+
+    <pre><code>body {
+  border-top: 10px solid blue;
+}</code></pre>
+
+    <p class="mt-3 mb-0">
+      Ettől csak a <code>body</code> kap felső szegélyt.
+      A benne lévő elemek nem kapnak automatikusan saját felső szegélyt.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. Öröklődés kisebb egységen belül</h2>
+    <p>
+      Az öröklődés nem csak a <code>body</code>-nál használható.
+      Például a navigációban:
+    </p>
+
+    <pre><code>nav {
+  font-size: 18px;
+}</code></pre>
+
+    <p class="mt-3">
+      A <code>nav</code> belsejében lévő elemek megörökölhetik ezt a betűméretet,
+      ha nincs rájuk külön más betűméret megadva.
+    </p>
+
+    <div class="callout rounded-3 p-3">
+      Ha például egy <code>p</code> elemre már külön megadtunk <code>font-size: 22px;</code> értéket,
+      akkor az a közvetlen szabály felülírja a <code>nav</code>-ból örökölt 18 px-t.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. Az univerzális szelektor: <code>*</code></h2>
+
+    <pre><code>* {
+  border-top: 1px solid blue;
+}</code></pre>
+
+    <p class="mt-3">
+      A <code>*</code> minden egyes elemet kijelöl az oldalon.
+      Itt nem öröklődés történik: minden elem közvetlenül megkapja a megadott szabályt.
+    </p>
+
+    <div class="important rounded-3 p-3">
+      Ez jó kísérlet annak megfigyelésére, hogy a <code>*</code> ténylegesen minden elemet kijelöl,
+      de a kék szegélyt természetesen nem hagyjuk benne a kész oldalban.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. <code>body</code> és <code>*</code> – nem ugyanaz</h2>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th></th>
+            <th><code>body</code></th>
+            <th><code>*</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Mit jelöl ki?</th>
+            <td>Csak a body elemet</td>
+            <td>Minden elemet</td>
+          </tr>
+          <tr>
+            <th>Hogyan kapják meg más elemek a stílust?</th>
+            <td>Öröklődéssel</td>
+            <td>Közvetlen kijelöléssel</td>
+          </tr>
+          <tr>
+            <th>Minden tulajdonság továbbadódik?</th>
+            <td>Nem</td>
+            <td>A megadott szabály minden elemre közvetlenül vonatkozik</td>
+          </tr>
+          <tr>
+            <th>Tipikus példa</th>
+            <td><code>color</code>, <code>font-family</code></td>
+            <td>Olyan szabály, amelyet tényleg minden elemre alkalmazni akarunk</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout rounded-3 p-3">
+      <strong>A legfontosabb különbség:</strong>
+      a <code>body</code> nem választja ki az összes elemet.
+      Bizonyos értékek öröklődnek belőle.
+      A <code>*</code> viszont közvetlenül minden elemet kijelöl.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. Közös órai kísérlet a Kód Magazin projekten</h2>
+
+    <div class="task rounded-3 p-3">
+      <ol class="mb-0">
+        <li>Nyisd meg a Kód Magazin projektet.</li>
+        <li>A <code>body</code>-nak adj ideiglenesen <code>color: red;</code> értéket.</li>
+        <li>Figyeld meg, mely elemek lesznek pirosak, és melyek maradnak a korábbi színükön.</li>
+        <li>Kommentáld ki rövid időre a címsorok külön <code>color</code> szabályát, és nézd meg újra az eredményt.</li>
+        <li>Helyezd a <code>font-family: sans-serif;</code> szabályt a <code>body</code>-ba.</li>
+        <li>Figyeld meg, hogyan változik az oldal többi szövege és a linkek megjelenése.</li>
+        <li>Adj a <code>body</code>-nak egy felső szegélyt, és figyeld meg, hogy a gyermekelemek nem öröklik azt.</li>
+        <li>Próbáld ki ideiglenesen a <code>* { border-top: 1px solid blue; }</code> szabályt.</li>
+        <li>Hasonlítsd össze a <code>body</code> és a <code>*</code> működését.</li>
+        <li>A kísérlet végén kommentáld ki a <code>*</code>-os szegélyt.</li>
+      </ol>
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. Amit meg kell jegyezni</h2>
+    <ul class="mb-0">
+      <li>bizonyos CSS-tulajdonságok öröklődnek a szülőelemről;</li>
+      <li>leggyakrabban a szöveggel kapcsolatos tulajdonságok öröklődnek;</li>
+      <li>egy közvetlen CSS-szabály felülírja az örökölt értéket;</li>
+      <li>a <code>border</code> nem öröklődik automatikusan;</li>
+      <li>a <code>body</code> jó hely általános szövegformázások megadására;</li>
+      <li>a <code>*</code> univerzális szelektor minden elemet közvetlenül kijelöl;</li>
+      <li>a <code>body</code> és a <code>*</code> két külön mechanizmus.</li>
+    </ul>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">10. Ellenőrző kérdések</h2>
+    <ol>
+      <li>Mit jelent CSS-ben az öröklődés?</li>
+      <li>Milyen típusú tulajdonságok öröklődnek leggyakrabban?</li>
+      <li>Mi történik, ha egy elemre külön más értéket adunk, mint amit örökölne?</li>
+      <li>Öröklődik-e automatikusan a <code>border-top</code>?</li>
+      <li>Miért célszerű a <code>color</code> és a <code>font-family</code> tulajdonságot gyakran a <code>body</code>-n megadni?</li>
+      <li>Mit választ ki a <code>*</code> szelektor?</li>
+      <li>Mi a különbség a <code>body</code> és a <code>*</code> működése között?</li>
+    </ol>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra CSS-kódja</h2>
+    <a href="orai_style.css" download class="btn btn-primary mb-3">Órai CSS letöltése</a>
+    <pre><code>/* CSS öröklődés és univerzális szelektor */
+
+body {
+  color: #444;
+  font-family: sans-serif;
+}
+
+/* A címsorok közvetlenül kapnak színt,
+   ezért ez felülírja a body-ból örökölt színt. */
+h1,
+h2,
+h3 {
+  color: #1098ad;
+}
+
+/* Az öröklődés kisebb egységen belül is működik. */
+nav {
+  font-size: 18px;
+}
+
+/* Kísérlet az univerzális szelektorral:
+   minden elemet közvetlenül kijelöl. */
+/*
+* {
+  border-top: 1px solid blue;
+}
+*/
+</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Tanári órai segédlet</h2>
+    <p class="mb-3">
+      A több tantermes GitHub munkamenethez továbbra is használható a meglévő tanári segédlet.
+    </p>
+    <a href="../../tanari/git_munkamenet/index.html" class="btn btn-dark">Git / GitHub tanári segédlet</a>
+  </div></section>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+    <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a>
+    <a href="../6_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző: ütköző CSS-szabályok</a>
+  </div>
+
+</main>
+</body>
+</html>
