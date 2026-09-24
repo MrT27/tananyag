@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookZone dolgozat – lépésről lépésre</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#ecfdf5 100%); border:1px solid #d1fae5; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+    .check { border-left:.35rem solid #0d6efd; background:#eef5ff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+  </style>
+</head>
+<body>
+<main class="container py-5">
+
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-success">Gyakorlás</span>
+    <span class="badge text-bg-primary">HTML + CSS</span>
+    <h1 class="display-6 fw-bold mt-3">BookZone dolgozat – megoldás lépésről lépésre</h1>
+    <p class="lead mb-0">
+      Ugyanazt a feladatot oldjuk meg, amit a dolgozatban kellett elkészíteni.
+      Nem egyben másoljuk be a kész megoldást: minden lépésnél megnézzük,
+      mit kér a feladat és miért azt a HTML- vagy CSS-megoldást használjuk.
+    </p>
+  </section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">0. Kiindulás</h2>
+    <p>A dolgozatban ezekből a fájlokból indulunk:</p>
+    <pre><code>index.html
+style.css
+szoveg.txt
+img/
+└── haromtest-problema.jpg</code></pre>
+    <p>A <code>szoveg.txt</code> csak a tartalmat adja. Nekünk kell eldönteni, melyik szövegből lesz címsor, bekezdés, lista vagy hivatkozás.</p>
+    <div class="d-flex gap-2 flex-wrap">
+      <a href="bookzone_kiindulo.zip" class="btn btn-primary">Kiinduló fájlok</a>
+      <a href="feladatlap.pdf" class="btn btn-outline-secondary">Eredeti feladatlap</a>
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. A CSS-fájl bekötése</h2>
+    <p>Először az <code>index.html</code> és a <code>style.css</code> között kell kapcsolatot létrehozni.</p>
+    <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+    <div class="check rounded-3 p-3">
+      <strong>Ellenőrzés:</strong> a sor a <code>head</code> elemben legyen, és a fájlnév pontosan <code>style.css</code> legyen.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. Fő fejléc és navigáció</h2>
+    <p>A BookZone neve és a három menüpont az oldal fő fejlécébe kerül.</p>
+    <pre><code>&lt;header class="main-header"&gt;
+  &lt;h1&gt;BookZone&lt;/h1&gt;
+
+  &lt;nav&gt;
+    &lt;a href="#"&gt;Kezdőlap&lt;/a&gt;
+    &lt;a href="#"&gt;Könyvek&lt;/a&gt;
+    &lt;a href="#"&gt;Kapcsolat&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+    <p class="mt-3">A <code>main-header</code> class azért kell, mert később csak ezt a fejlécet szeretnénk háttérszínnel formázni.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. A fő könyv szerkezete</h2>
+    <p>A részletesen bemutatott könyv önálló tartalom, ezért <code>article</code> elembe kerül.</p>
+    <pre><code>&lt;article&gt;
+  &lt;header&gt;
+    &lt;h2&gt;A háromtest-probléma&lt;/h2&gt;
+    &lt;p&gt;Liu Cixin&lt;/p&gt;
+  &lt;/header&gt;
+&lt;/article&gt;</code></pre>
+    <div class="important rounded-3 p-3">
+      Az oldalon két <code>header</code> is lehet. A külső az egész oldal fő fejléce, az article-ben lévő pedig a könyv saját fejléce.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. Borítókép és ár</h2>
+    <pre><code>&lt;img
+  src="img/haromtest-problema.jpg"
+  alt="A háromtest-probléma című sci-fi regény borítója"
+  width="300"
+&gt;
+
+&lt;p&gt;&lt;strong&gt;5 990 Ft&lt;/strong&gt;&lt;/p&gt;</code></pre>
+    <p class="mt-3">Az <code>alt</code> röviden leírja a képet. Az ár kiemelésére a szemantikailag is hangsúlyt jelentő <code>strong</code> elemet használjuk.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. Leírás és könyvjellemzők</h2>
+    <p>A két leíró szöveg két külön bekezdés lesz, a három jellemző pedig felsorolás.</p>
+    <pre><code>&lt;p&gt;
+  A történet középpontjában egy különös tudományos rejtély és az emberiség
+  jövőjét alapjaiban megváltoztató felfedezés áll.
+&lt;/p&gt;
+
+&lt;p&gt;
+  A regény a tudomány, a technológia és az idegen civilizációk kérdéseit
+  egy izgalmas, nagyszabású sci-fi történetben kapcsolja össze.
+&lt;/p&gt;
+
+&lt;h3&gt;A könyv jellemzői&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Puha kötés&lt;/li&gt;
+  &lt;li&gt;400+ oldal&lt;/li&gt;
+  &lt;li&gt;Tudományos-fantasztikus regény&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a href="#"&gt;További információ&lt;/a&gt;</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. Az ajánlott könyvek – <code>aside</code></h2>
+    <p>Ez kiegészítő tartalom a fő könyv mellett, ezért <code>aside</code> elembe kerül.</p>
+    <pre><code>&lt;aside&gt;
+  &lt;h4&gt;Ajánlott könyvek&lt;/h4&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;h3&gt;1984&lt;/h3&gt;
+      &lt;p&gt;Szerző: George Orwell&lt;/p&gt;
+      &lt;a href="#"&gt;Részletek&lt;/a&gt;
+    &lt;/li&gt;
+
+    &lt;li&gt;
+      &lt;h3&gt;A marsi&lt;/h3&gt;
+      &lt;p&gt;Szerző: Andy Weir&lt;/p&gt;
+      &lt;a href="#"&gt;Részletek&lt;/a&gt;
+    &lt;/li&gt;
+
+    &lt;li&gt;
+      &lt;h3&gt;Ready Player One&lt;/h3&gt;
+      &lt;p&gt;Szerző: Ernest Cline&lt;/p&gt;
+      &lt;a href="#"&gt;Részletek&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. Lábléc</h2>
+    <pre><code>&lt;footer&gt;
+  &lt;p&gt;Copyright © 2026 BookZone&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+    <div class="check rounded-3 p-3 mt-3">
+      Ezzel a HTML szerkezete elkészült. Mielőtt CSS-t írunk, ellenőrizzük, hogy minden szöveg, kép és link megjelenik-e.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. CSS – az oldal alapbeállításai</h2>
+    <pre><code>body {
+  color: #374151;
+  font-family: sans-serif;
+}
+
+.main-header {
+  background-color: #ecfdf5;
+}</code></pre>
+    <p class="mt-3">A <code>body</code> adja az oldal alap szövegszínét és betűtípusát. A fejléc világoszöld hátterét csak a <code>.main-header</code> kapja.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. Címsorok formázása</h2>
+    <p>A <code>h1</code>, <code>h2</code> és <code>h3</code> ugyanazt a színt kapja, ezért szelektorlistát használunk.</p>
+    <pre><code>h1,
+h2,
+h3 {
+  color: #047857;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 26px;
+}
+
+h4 {
+  font-size: 20px;
+}</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">10. Bekezdések és listaelemek</h2>
+    <pre><code>p {
+  font-size: 20px;
+}
+
+li {
+  font-size: 18px;
+}</code></pre>
+    <p class="mt-3">Az elemszelektor minden azonos típusú elemre hat, ezért nem kell minden bekezdést külön megjelölni.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">11. Az <code>aside</code> formázása</h2>
+    <pre><code>aside {
+  background-color: #ecfdf5;
+  border-top: 5px solid #047857;
+  border-bottom: 5px solid #047857;
+}</code></pre>
+    <p class="mt-3">Itt egyszerre gyakoroljuk a háttérszínt és a felső/alsó szegélyt.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">12. Pszeudo-osztályok</h2>
+    <pre><code>li:first-child {
+  font-weight: bold;
+}
+
+li:nth-child(even) {
+  color: #b45309;
+}</code></pre>
+    <p class="mt-3">
+      A <code>:first-child</code> azokat a <code>li</code> elemeket választja ki, amelyek a saját szülőjük első gyermekei.
+      A <code>:nth-child(even)</code> a páros sorszámú gyermekeket választja.
+    </p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">13. Linkek – LVHA</h2>
+    <p>A linkállapotokat a tanult sorrendben írjuk: Link → Visited → Hover → Active.</p>
+    <pre><code>a:link {
+  color: #047857;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #047857;
+}
+
+a:hover {
+  color: #b45309;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+a:active {
+  background-color: #111827;
+  font-style: italic;
+}</code></pre>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">14. Végső ellenőrzés</h2>
+    <div class="task rounded-3 p-3">
+      <ol class="mb-0">
+        <li>A <code>style.css</code> be van kötve.</li>
+        <li>A fő fejléc <code>main-header</code> class-t kapott.</li>
+        <li>Megvan a <code>nav</code>, az <code>article</code>, az <code>aside</code> és a <code>footer</code>.</li>
+        <li>A kép elérési útja helyes, és van <code>alt</code> szövege.</li>
+        <li>Az ár <code>strong</code> elemben van.</li>
+        <li>A könyvjellemzők listában vannak.</li>
+        <li>A három ajánlott könyv külön listaelem.</li>
+        <li>A címsorok szelektorlistával kapják a fő színt.</li>
+        <li>Működik a <code>:first-child</code> és a <code>:nth-child(even)</code>.</li>
+        <li>A linkek LVHA sorrendben vannak formázva.</li>
+      </ol>
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">15. Teljes megoldás</h2>
+    <p>Ha minden lépést végigcsináltál, összehasonlíthatod a saját munkádat a teljes megoldással.</p>
+    <div class="d-flex gap-2 flex-wrap mb-3">
+      <a href="bookzone_megoldas.zip" class="btn btn-success">Teljes megoldás letöltése</a>
+      <a href="megoldas/index.html" class="btn btn-outline-success">Megoldás megnyitása</a>
+    </div>
+
+    <details>
+      <summary class="fw-bold mb-3">Teljes HTML megjelenítése</summary>
+      <pre><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;hu&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;BookZone&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;header class=&quot;main-header&quot;&gt;
+    &lt;h1&gt;BookZone&lt;/h1&gt;
+
+    &lt;nav&gt;
+      &lt;a href=&quot;#&quot;&gt;Kezdőlap&lt;/a&gt;
+      &lt;a href=&quot;#&quot;&gt;Könyvek&lt;/a&gt;
+      &lt;a href=&quot;#&quot;&gt;Kapcsolat&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h2&gt;A háromtest-probléma&lt;/h2&gt;
+      &lt;p&gt;Liu Cixin&lt;/p&gt;
+    &lt;/header&gt;
+
+    &lt;img
+      src=&quot;img/haromtest-problema.jpg&quot;
+      alt=&quot;A háromtest-probléma című sci-fi regény borítója&quot;
+      width=&quot;300&quot;
+    &gt;
+
+    &lt;p&gt;&lt;strong&gt;5 990 Ft&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;
+      A történet középpontjában egy különös tudományos rejtély és az emberiség
+      jövőjét alapjaiban megváltoztató felfedezés áll.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+      A regény a tudomány, a technológia és az idegen civilizációk kérdéseit
+      egy izgalmas, nagyszabású sci-fi történetben kapcsolja össze.
+    &lt;/p&gt;
+
+    &lt;h3&gt;A könyv jellemzői&lt;/h3&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Puha kötés&lt;/li&gt;
+      &lt;li&gt;400+ oldal&lt;/li&gt;
+      &lt;li&gt;Tudományos-fantasztikus regény&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;a href=&quot;#&quot;&gt;További információ&lt;/a&gt;
+  &lt;/article&gt;
+
+  &lt;aside&gt;
+    &lt;h4&gt;Ajánlott könyvek&lt;/h4&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;h3&gt;1984&lt;/h3&gt;
+        &lt;p&gt;Szerző: George Orwell&lt;/p&gt;
+        &lt;a href=&quot;#&quot;&gt;Részletek&lt;/a&gt;
+      &lt;/li&gt;
+
+      &lt;li&gt;
+        &lt;h3&gt;A marsi&lt;/h3&gt;
+        &lt;p&gt;Szerző: Andy Weir&lt;/p&gt;
+        &lt;a href=&quot;#&quot;&gt;Részletek&lt;/a&gt;
+      &lt;/li&gt;
+
+      &lt;li&gt;
+        &lt;h3&gt;Ready Player One&lt;/h3&gt;
+        &lt;p&gt;Szerző: Ernest Cline&lt;/p&gt;
+        &lt;a href=&quot;#&quot;&gt;Részletek&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/aside&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;Copyright © 2026 BookZone&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+    </details>
+
+    <details class="mt-3">
+      <summary class="fw-bold mb-3">Teljes CSS megjelenítése</summary>
+      <pre><code>body {
+  color: #374151;
+  font-family: sans-serif;
+}
+
+/* FŐ FEJLÉC */
+.main-header {
+  background-color: #ecfdf5;
+}
+
+/* CÍMSOROK */
+h1,
+h2,
+h3 {
+  color: #047857;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 26px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+/* SZÖVEGEK */
+p {
+  font-size: 20px;
+}
+
+li {
+  font-size: 18px;
+}
+
+/* AJÁNLOTT KÖNYVEK */
+aside {
+  background-color: #ecfdf5;
+  border-top: 5px solid #047857;
+  border-bottom: 5px solid #047857;
+}
+
+/* PSZEUDO-OSZTÁLYOK */
+li:first-child {
+  font-weight: bold;
+}
+
+li:nth-child(even) {
+  color: #b45309;
+}
+
+/* LINKEK – LVHA */
+a:link {
+  color: #047857;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #047857;
+}
+
+a:hover {
+  color: #b45309;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+a:active {
+  background-color: #111827;
+  font-style: italic;
+}
+</code></pre>
+    </details>
+  </div></section>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+    <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a>
+  </div>
+
+</main>
+</body>
+</html>
