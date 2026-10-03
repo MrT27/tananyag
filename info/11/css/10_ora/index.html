@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CSS 10. óra – Konténer és középre igazítás</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#eefaff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+  
+    .box-diagram { max-width:680px; margin:1.5rem auto; text-align:center; color:#212529; }
+    .box-margin { padding:16px; background:#fff0cf; border:2px dashed #956000; }
+    .box-border { padding:10px; background:#73502d; color:white; }
+    .box-padding { padding:18px; background:#d6efcf; color:#20361c; }
+    .box-content { padding:24px 8px; background:#d5edff; border:1px dashed #28618c; color:#163c59; }
+    .layer-label { display:block; font-weight:700; margin-bottom:10px; }
+    .formula { font-size:1.15rem; font-weight:600; }
+    summary { cursor:pointer; font-weight:600; }
+    @media (max-width:400px) { .box-margin,.box-padding { padding:10px; } }
+  </style>
+</head>
+<body><main class="container py-5"><section class="hero rounded-4 p-4 p-md-5 mb-4"><span class="badge text-bg-primary">11. évfolyam</span> <span class="badge text-bg-info">CSS</span> <span class="badge text-bg-dark">10. óra</span><h1 class="display-6 fw-bold mt-3">Konténer és középre igazítás</h1><p class="lead mb-0">A 9. óra magazinoldalát egy 800 px széles, vízszintesen középre igazított tartalmi egységbe rendezzük.</p></section><div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Esti ismétlés Jonas kurzusából:</strong><span>36. videó – Centering our Page</span></div>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Az óra célja és előkészületek</h2><ul><li>A teljes oldaltartalom közös konténerbe helyezése.</li><li>A <code>.container</code> osztályszelektor és a <code>width: 800px;</code> használata.</li><li>Középre igazítás automatikus oldalsó margókkal, majd rövidített megadással.</li></ul><p>Folytasd a 9. óra magazinoldalát. A kezdőcsomag annak kész térközbeállításait tartalmazza, konténer nélkül. Csomagold ki, és nyisd meg az index.html-t Live Serverrel.</p><a class="btn btn-outline-primary" download="" href="kezdo.zip">Kezdőcsomag letöltése</a></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">1. Miért használunk konténert?</h2><p>A blokk szintű elemek általában kitöltik a rendelkezésükre álló szélességet. Nagy képernyőn így a szövegsorok túl hosszúak lehetnek. Egy közös befoglaló elemben egyszerre szabályozhatjuk a fejléc, a cikk és a kapcsolódó bejegyzések elhelyezkedését.</p><div class="callout rounded-3 p-3">A konténer egy közös szülőelem. A <code>container</code> egy általunk választott osztálynév: önmagában nem ad szélességet vagy középre igazítást.</div></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">2. A tartalom becsomagolása</h2><p>A <code>body</code> nyitó tagje után hozz létre egy <code>div</code> elemet. A záró tagje az utolsó tartalmi elem után, a <code>&lt;/body&gt;</code> elé kerüljön. A meglévő elemek teljes tartalmát hagyd meg!</p><pre><code>&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;header class="main-header"&gt;
+      &lt;!-- A meglévő fejléc és navigáció --&gt;
+    &lt;/header&gt;
+    &lt;article id="cikk"&gt;
+      &lt;!-- A meglévő cikk --&gt;
+    &lt;/article&gt;
+    &lt;aside id="kapcsolodo"&gt;
+      &lt;!-- A kapcsolódó bejegyzések --&gt;
+    &lt;/aside&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre><p>A <code>div</code> általános csoportosító elem. A <code>class="container"</code> HTML-attribútumot CSS-ben a <code>.container</code> szelektorral jelöljük ki. A HTML osztálynév elé nem írunk pontot.</p><div class="important rounded-3 p-3">A kódok a saját gyakorlóoldaladba kerüljenek. Ez a tananyag Bootstrapet használ, amelynek szintén van container osztálya; a gyakorlóoldal nem használ Bootstrapet.</div></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">3. Szélesség: width: 800px</h2><pre><code>.container {
+  width: 800px;
+}</code></pre><p>A konténer tartalmi szélessége 800 CSS-pixel lesz. Ments és frissíts: az oldal keskenyebb lett, de a konténer még balra helyezkedik el. A <code>width</code> önmagában nem igazít középre.</p><p>A konténernek most nincs saját paddingje vagy kerete, ezért a kerettel együtt mért szélessége is 800 px. Alapértelmezett méretezésnél a később ráadott padding és keret hozzáadódna ehhez. A belső fejléc paddingje nem a konténer paddingje.</p></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">4. Automatikus bal és jobb margó</h2><pre><code>.container {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}</code></pre><p>A normál dokumentumfolyamban lévő blokk két automatikus oldalsó margója egyenlően osztja el a megmaradó vízszintes helyet. Ha a szülő rendelkezésre álló szélessége nagyobb 800 px-nél, a konténer vízszintesen középre kerül.</p><div class="callout rounded-3 p-3">1200 px széles szülő esetén: <strong>(1200 − 800) / 2 = 200 px</strong> margó mindkét oldalon.</div><figure class="mt-3"><div style="display:flex;text-align:center;border:2px solid #1098ad"><div style="flex:1;background:#fff0cf;padding:20px 4px">200 px<br/>auto</div><div style="flex:4;background:#d5edff;padding:20px 4px">.container<br/>800 px</div><div style="flex:1;background:#fff0cf;padding:20px 4px">200 px<br/>auto</div></div><figcaption class="text-secondary mt-2">Az 1200 px-es példa arányait szemléltető ábra.</figcaption></figure><p>Az <code>auto</code> értéket a böngésző számítja ki; nem egy előre rögzített pixelszám. A <code>text-align: center;</code> a szöveget igazítaná a dobozon belül, nem magát a konténert. Ez a módszer függőlegesen sem igazít középre.</p></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">5. Rövidítés: margin: 0 auto</h2><p>Cseréld le a két oldalsó deklarációt egyetlen sorra:</p><pre><code>.container {
+  width: 800px;
+  margin: 0 auto;
+}</code></pre><ul><li>Első érték: <code>0</code> → felső és alsó margó.</li><li>Második érték: <code>auto</code> → bal és jobb margó.</li></ul><p>A két megoldás vízszintes igazítása azonos. A rövidített változat a felső és alsó margót is nullázza, míg a két oldalankénti deklaráció azokat nem módosítja. A korábbi reset miatt ebben a példában már eleve nullák.</p><div class="important rounded-3 p-3">A <code>margin: auto 0;</code> más jelentésű: a bal és jobb margó nulla lenne. A sorrend: fent-lent, majd bal-jobb.</div></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">6. Közös órai kísérlet és DevTools</h2><ol><li>Konténer nélkül figyeld meg az oldal szélességét.</li><li>Csomagold a fejlécet, cikket és aside-ot egyetlen divbe.</li><li>Add meg a 800 px szélességet, majd külön a két auto margót.</li><li>Cseréld le a margókat <code>margin: 0 auto;</code> sorra.</li><li>Vizsgálat / Inspect → válaszd ki a <code>div.container</code> elemet. A dobozmodellben ellenőrizd a 800 px tartalmi szélességet és az egyenlő oldalsó margókat, amikor a szülő ennél szélesebb.</li><li>Változtasd az ablak szélességét: az oldalsó margók változnak, a konténer szélessége marad.</li><li>Ideiglenesen próbálj ki 600 px szélességet, majd állítsd vissza 800 px-re.</li></ol><div class="important rounded-3 p-3">Ha a rendelkezésre álló hely 800 px-nél keskenyebb, a fix szélességű konténer túlnyúlik rajta, és vízszintes görgetés jelenhet meg. Az auto margó nem zsugorítja a konténert. A reszponzív szélességgel később foglalkozunk.</div></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">7. Önálló gyakorlati feladat</h2><div class="task rounded-3 p-3"><ol class="mb-0"><li>Dolgozz a saját magazinoldaladon vagy a kezdőcsomagon.</li><li>Hozz létre egy <code>div class="container"</code> elemet a body-n belül.</li><li>A fejléc, a cikk és az aside teljes egészében ezen belül legyen; igazítsd a behúzásokat.</li><li>A CSS végén add meg a 800 px szélességet és külön a két auto margót.</li><li>Ments és ellenőrizd az eredményt, majd használd a <code>margin: 0 auto;</code> rövidítést.</li><li>Őrizd meg a 9. óra belső térközeit, listaformázását és elemek közötti margóit.</li><li>DevToolsban ellenőrizd a konténert, majd nézd meg az oldalt 800 px-nél keskenyebb ablakban is.</li></ol></div><h3 class="h5 mt-4">Mini kihívás</h3><p>A konténer kapjon 30 px felső és alsó margót, miközben vízszintesen középen marad. Egyetlen margin deklarációval oldd meg! Mennyi az oldalsó margó egy 1400 px széles szülőben az eredeti 800 px-es konténernél?</p><details class="task rounded-3 p-3"><summary>Mintamegoldás és ellenőrzés</summary><pre><code>.container {
+  width: 800px;
+  margin: 0 auto;
+}</code></pre><p>Mini kihívás: <code>margin: 30px auto;</code>. Az oldalsó margó: <strong>(1400 − 800) / 2 = 300 px</strong>. A kész HTML-ben mindhárom tartalmi egység a konténer gyermeke.</p><a class="btn btn-outline-success me-2" href="megoldas/index.html">Mintamegoldás megnyitása</a><a class="btn btn-outline-success" download="" href="megoldas.zip">Megoldás letöltése</a></details></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">8. Ellenőrző kérdések</h2><ol><li>Miért tesszük közös konténerbe a tartalmat?</li><li>Mit csinál önmagában a container osztálynév?</li><li>Mit állít be a width: 800px?</li><li>Miért kell mindkét oldalon auto margó?</li><li>Mit jelent a margin: 0 auto két értéke?</li><li>Mi a különbség a text-align: center és a konténer középre igazítása között?</li><li>Mi történik 800 px-nél keskenyebb helyen?</li></ol><details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol class="mt-3 mb-0"><li>Együtt szabályozhatjuk az oldaltartalom szélességét és elhelyezését.</li><li>Stílusszabály nélkül semmilyen külön megjelenést nem ad.</li><li>Alapértelmezett méretezésnél a tartalmi szélességet.</li><li>Így egyenlően oszlik el a szabad vízszintes hely.</li><li>Fent-lent nulla, bal-jobb automatikus margó.</li><li>Az első a belső szöveget, a második a doboz helyét szabályozza.</li><li>A fix szélességű doboz túlnyúlik a rendelkezésre álló helyen.</li></ol></details></div></section>
+<nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between"><a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a><a class="btn btn-outline-secondary btn-lg" href="../9_ora/index.html">Előző: térközök és méretezés</a><a class="btn btn-primary btn-lg" href="../11_ora/index.html">Következő: block, inline és inline-block</a></nav></main></body></html>

@@ -1,0 +1,27 @@
+/* CSS öröklődés és univerzális szelektor */
+
+body {
+  color: #444;
+  font-family: sans-serif;
+}
+
+/* A címsorok közvetlenül kapnak színt,
+   ezért ez felülírja a body-ból örökölt színt. */
+h1,
+h2,
+h3 {
+  color: #1098ad;
+}
+
+/* Az öröklődés kisebb egységen belül is működik. */
+nav {
+  font-size: 18px;
+}
+
+/* Kísérlet az univerzális szelektorral:
+   minden elemet közvetlenül kijelöl. */
+/*
+* {
+  border-top: 1px solid blue;
+}
+*/

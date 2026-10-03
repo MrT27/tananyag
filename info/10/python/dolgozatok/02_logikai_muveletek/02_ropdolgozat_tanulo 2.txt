@@ -1,0 +1,37 @@
+# PYTHON RÖPDOLGOZAT 2. – LOGIKAI MŰVELETEK
+# Idő: 20 perc                     Összpontszám: 20 pont
+#
+# A fájlt nevezd át erre: 02_rovid_dolgozat.py
+# A feladatokat egymás alá készítsd el ebben a fájlban.
+# Minden eredményt érthető szöveggel írj ki.
+
+
+# 1. FELADAT – KORHATÁR (5 pont)
+# Kérj be egy életkort!
+# Az and operátor használatával vizsgáld meg,
+# hogy az életkor 14 és 18 év közé esik-e, a határokat is beleértve!
+# Írd ki a vizsgálat eredményét!
+
+
+
+# 2. FELADAT – HÉTVÉGE (5 pont)
+# Kérd be egy nap nevét kisbetűvel!
+# Az or operátor használatával vizsgáld meg,
+# hogy a megadott nap szombat vagy vasárnap-e!
+# Írd ki a vizsgálat eredményét!
+
+
+
+# 3. FELADAT – NEM ÜRES SZÖVEG (5 pont)
+# Kérj be egy szöveget!
+# A not operátor használatával vizsgáld meg,
+# hogy a felhasználó nem üres szöveget adott-e meg!
+# Írd ki a vizsgálat eredményét!
+
+
+
+# 4. FELADAT – BELÉPÉS (5 pont)
+# Kérd be a felhasználónevet és a jelszót!
+# A belépés akkor sikeres, ha a felhasználónév: diak
+# ÉS a jelszó: python10
+# Írd ki: Sikeres belépés. vagy Sikertelen belépés.

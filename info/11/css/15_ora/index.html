@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CSS 15. óra – Flexbox igazítás és térközök</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#f1f8ff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+    summary { cursor:pointer; font-weight:600; }
+  </style>
+</head>
+<body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+<span class="badge text-bg-primary">11. évfolyam</span>
+<span class="badge text-bg-info">CSS</span>
+<span class="badge text-bg-dark">15. óra</span>
+<h1 class="display-6 fw-bold mt-3">Flexbox igazítás és térközök</h1>
+<p class="lead mb-0">A flex elemek igazítása, egyetlen elem külön beállítása, a sorrend módosítása és a <code>gap</code> használata.</p>
+</section><div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Esti ismétlés Jonas kurzusából:</strong><span>53. videó – Spacing and Aligning Flex Items</span></div>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">Az óra célja</h2>
+<ul>
+<li>A főtengely és a kereszttengely szerepének megértése.</li>
+<li>A <code>justify-content</code> és az <code>align-items</code> biztos használata.</li>
+<li>Egyetlen flex elem külön igazítása <code>align-self</code> segítségével.</li>
+<li>A flex elemek sorrendjének módosítása az <code>order</code> tulajdonsággal.</li>
+<li>Egységes térköz létrehozása a flex elemek között a <code>gap</code> segítségével.</li>
+</ul>
+<a class="btn btn-primary" download="" href="kezdo.zip">Kezdőcsomag letöltése</a>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">1. Ismétlés: két tengely</h2>
+<p>Alapértelmezésben a flex elemek egy sorban helyezkednek el. Ilyenkor a <strong>főtengely vízszintes</strong>, a <strong>kereszttengely függőleges</strong>.</p>
+<div class="callout rounded-3 p-3"><strong>Gyakorlati szabály:</strong><br/>
+<code>justify-content</code> → igazítás a főtengely mentén<br/>
+<code>align-items</code> → igazítás a kereszttengely mentén</div>
+<pre><code>.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre>
+<div class="important rounded-3 p-3"><strong>Most még maradunk a normál, vízszintes flex elrendezésnél.</strong> A tengelyek irányának megváltoztatását később vesszük elő.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">2. Egyetlen elem külön igazítása – <code>align-self</code></h2>
+<p>Az <code>align-items</code> minden flex elemre egyszerre hat. Ha viszont csak <strong>egy elemet</strong> szeretnénk másképp igazítani, akkor az <code>align-self</code> tulajdonságot használjuk.</p>
+<pre><code>.container {
+  display: flex;
+  align-items: center;
+}
+
+.elem-1 {
+  align-self: flex-start;
+}</code></pre>
+<p>Így minden elem középen marad, az első viszont a konténer tetejéhez igazodik.</p>
+<p>Hasznos értékek: <code>flex-start</code>, <code>center</code>, <code>flex-end</code>, <code>stretch</code>.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">3. Sorrend módosítása – <code>order</code></h2>
+<p>A flex elemek alapértelmezett <code>order</code> értéke <strong>0</strong>. Kisebb érték előrébb, nagyobb érték hátrébb helyezi az elemet.</p>
+<pre><code>.elem-6 {
+  order: -1;
+}</code></pre>
+<p>Az elem így a többi, <code>order: 0</code> értékű elem elé kerül.</p>
+<pre><code>.elem-5 {
+  order: 1;
+}</code></pre>
+<p>Ez az elem a többi után jelenik meg.</p>
+<div class="important rounded-3 p-3"><strong>Fontos:</strong> az <code>order</code> csak a vizuális sorrendet módosítja. A HTML-ben az elemek eredeti sorrendje nem változik meg. Emiatt csak indokolt esetben használjuk.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">4. Térköz a flex elemek között – <code>gap</code></h2>
+<p>Régebben gyakran margókkal hoztunk létre helyet az elemek között:</p>
+<pre><code>.elem {
+  margin-right: 30px;
+}</code></pre>
+<p>Ennek hátránya, hogy az utolsó elem után is marad margó, amit külön kellene eltávolítani.</p>
+<p>Flexboxnál egyszerűbb megoldás:</p>
+<pre><code>.container {
+  display: flex;
+  gap: 30px;
+}</code></pre>
+<div class="callout rounded-3 p-3"><strong>A <code>gap</code> a flex elemek közé tesz helyet.</strong> Nem kell külön az egyes elemek margóival foglalkoznunk.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">5. <code>justify-content</code> és <code>gap</code> nem ugyanaz</h2>
+<p>A két megoldás gyakran együtt szerepel, de más feladatuk van:</p>
+<div class="table-responsive"><table class="table table-striped align-middle"><thead><tr><th>Tulajdonság</th><th>Feladata</th></tr></thead><tbody>
+<tr><td><code>justify-content</code></td><td>A konténerben rendelkezésre álló szabad hely elosztását és az elemek főtengely menti igazítását szabályozza.</td></tr>
+<tr><td><code>gap</code></td><td>Konkrét, állandó távolságot ad a szomszédos flex elemek közé.</td></tr>
+</tbody></table></div>
+<pre><code>.container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}</code></pre>
+<p class="mb-0">Ebben az esetben az egész elemsor középre kerül, az egyes elemek között pedig 30 px távolság lesz.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">6. Órai gyakorlat</h2>
+<ol>
+<li>Nyisd meg a kezdőcsomagot.</li>
+<li>Állítsd be: <code>justify-content: center;</code>.</li>
+<li>Próbáld ki ugyanezt <code>space-between</code> értékkel is, majd állítsd vissza <code>flex-start</code>-ra.</li>
+<li>Az első elemet igazítsd külön a konténer tetejéhez: <code>align-self: flex-start;</code>.</li>
+<li>A hatodik elemet helyezd a sor elejére <code>order: -1;</code> segítségével.</li>
+<li>Adj <code>30px</code> távolságot az elemek közé a <code>gap</code> tulajdonsággal.</li>
+<li>Módosítsd az ablak méretét, és figyeld meg az eredményt.</li>
+</ol>
+<details class="task rounded-3 p-3"><summary>Az óra végére elérendő lényeg</summary><pre><code>.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+.elem-1 {
+  align-self: flex-start;
+}
+
+.elem-6 {
+  order: -1;
+}</code></pre>
+<a class="btn btn-outline-success me-2" href="megoldas/index.html">Mintamegoldás megnyitása</a><a class="btn btn-outline-success" download="" href="megoldas.zip">Megoldás letöltése</a></details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">7. Mini feladat – navigáció</h2>
+<p>Készíts négy linkből álló navigációt. A linkek legyenek egy sorban, függőlegesen középre igazítva, és legyen közöttük <strong>24 px</strong> távolság.</p>
+<pre><code>&lt;nav class="menu"&gt;
+  &lt;a href="#"&gt;Kezdőlap&lt;/a&gt;
+  &lt;a href="#"&gt;Cikkek&lt;/a&gt;
+  &lt;a href="#"&gt;Rólunk&lt;/a&gt;
+  &lt;a href="#"&gt;Kapcsolat&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+<details class="callout rounded-3 p-3"><summary>Segítség</summary><pre><code>.menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}</code></pre></details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">8. Ellenőrző kérdések</h2>
+<ol>
+<li>Melyik tulajdonság igazítja az elemeket a főtengely mentén?</li>
+<li>Melyik tulajdonság igazítja az összes flex elemet a kereszttengely mentén?</li>
+<li>Hogyan tudunk csak egyetlen flex elemet külön igazítani?</li>
+<li>Mi az alapértelmezett <code>order</code> érték?</li>
+<li>Mit csinál az <code>order: -1</code>?</li>
+<li>Miért kényelmesebb a <code>gap</code>, mint minden flex elemre külön margót tenni?</li>
+</ol>
+<details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol>
+<li><code>justify-content</code>.</li>
+<li><code>align-items</code>.</li>
+<li>Az adott flex elemen az <code>align-self</code> tulajdonsággal.</li>
+<li><code>0</code>.</li>
+<li>A többi, 0 értékű elem elé helyezi az elemet.</li>
+<li>A távolságot a konténeren adjuk meg, csak az elemek közé kerül, és nem kell az utolsó elem margóját külön kezelni.</li>
+</ol></details>
+</div></section>
+<nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between">
+<a class="btn btn-outline-secondary btn-lg" href="../14_ora/index.html">Előző: Flexbox alapok</a>
+<a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a>
+<a class="btn btn-primary btn-lg" href="../16_ora/index.html">Következő: Flex elemek méretezése</a>
+</nav>
+</main></body></html>

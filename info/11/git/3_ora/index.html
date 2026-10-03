@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Git 3. óra – Közös munka GitHubon</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#eef5ff 100%);border:1px solid #e6e9ef}
+.section-card{border:0;box-shadow:0 .25rem .8rem rgba(0,0,0,.05)} pre{background:#212529;color:#f8f9fa;border-radius:.75rem;padding:1rem;overflow-x:auto}
+code{color:#c7254e}pre code{color:inherit}.callout{border-left:.35rem solid #0d6efd;background:#eef5ff}.important{border-left:.35rem solid #ffc107;background:#fff8e1}.task{border-left:.35rem solid #198754;background:#edf8f1}.rule{font-size:1.25rem}
+</style></head><body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+<span class="badge text-bg-dark">GitHub</span> <span class="badge text-bg-primary">11. évfolyam</span> <span class="badge text-bg-info">3. óra</span>
+<h1 class="display-6 fw-bold mt-3">Közös munka GitHubon – Collaborator</h1>
+<p class="lead mb-0">Ketten dolgozunk ugyanazon a repositoryn: meghívás, clone, pull, commit és push.</p></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">1. Hogyan dolgozhat két ember ugyanazon a projekten?</h2>
+<p>A repository tulajdonosa hozzáadhat egy másik GitHub-felhasználót <strong>Collaboratorként</strong>. Ezután mindketten dolgozhatnak ugyanazon a repositoryn, és feltölthetik a saját commitjaikat.</p>
+<div class="callout rounded-3 p-3"><strong>A közös pont a GitHub.</strong> Nem egymásnak küldözgetjük a fájlokat. Mindkét fejlesztő a saját gépén dolgozik, a változásokat pedig a közös repositoryn keresztül adják át egymásnak.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">2. Collaborator meghívása</h2>
+<p>A páros egyik tagja hozza létre a repositoryt. Ezután a repository beállításainál hívja meg a társát Collaboratorként.</p>
+<ol><li>Nyisd meg a repositoryt GitHubon.</li><li>Nyisd meg a <strong>Settings</strong> menüt.</li><li>Keresd meg a Collaborators / hozzáférések kezelésére szolgáló részt.</li><li>Add hozzá a párod GitHub-felhasználónevét.</li><li>A meghívott tanuló fogadja el a meghívást.</li></ol>
+<div class="important rounded-3 p-3">A meghívás elfogadása után a társad már jogosultságot kaphat arra, hogy a közös repositoryba pusholjon.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">3. Mindketten klónozzátok a repositoryt</h2>
+<p>Mindkét tanuló a saját gépére klónozza ugyanazt a repositoryt:</p>
+<pre><code>git clone https://github.com/felhasznalo/repo.git
+cd repo
+code .</code></pre>
+<p class="mb-0">Innentől mindkét gépen van egy helyi munkapéldány, amelyek ugyanahhoz a GitHub repositoryhoz kapcsolódnak.</p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">4. A közös munka alapszabálya</h2>
+<div class="important rounded-3 p-4 text-center rule"><strong>MUNKA ELŐTT: PULL &nbsp;&nbsp; • &nbsp;&nbsp; MUNKA UTÁN: PUSH</strong></div>
+<p class="mt-4">Mielőtt módosítasz valamit, töltsd le a társad legfrissebb változtatásait:</p>
+<pre><code>git pull</code></pre>
+<p>Dolgozz a VS Code-ban, majd:</p>
+<pre><code>git status
+git add .
+git commit -m "értelmes commit üzenet"
+git push</code></pre>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">5. Munkamegosztás</h2>
+<div class="row g-3"><div class="col-md-6"><div class="border rounded-3 p-3 h-100"><h3 class="h5">A tanuló – HTML</h3><p class="mb-0">Elsősorban az <code>index.html</code> szerkezetén dolgozik: címsorok, szövegek, lista, kép, link és a CSS bekötése.</p></div></div>
+<div class="col-md-6"><div class="border rounded-3 p-3 h-100"><h3 class="h5">B tanuló – CSS</h3><p class="mb-0">Elsősorban a <code>style.css</code> fájlon dolgozik: háttér, betűk, címsorok, kép, class szelektorok és az oldal megjelenése.</p></div></div></div>
+<p class="mt-3 mb-0">A felosztás segít abban, hogy az első közös munkánál ne ugyanazt a fájlrészletet módosítsátok egyszerre.</p>
+</div></section>
+
+<section class="task rounded-4 p-4 mb-4"><h2 class="h3">Páros feladat – Közös weboldal</h2>
+<p>Dolgozzatok <strong>2 fős csapatokban</strong>, és készítsetek közösen egy egyszerű, formázott weboldalt. A témát ti választhatjátok meg.</p>
+<h3 class="h5 mt-4">Repository</h3><ul><li>Az egyik tanuló hozzon létre egy GitHub repositoryt.</li><li>Hívja meg a párját Collaboratorként.</li><li>A másik tanuló fogadja el a meghívást.</li><li>Mindketten klónozzátok le ugyanazt a repositoryt.</li></ul>
+<h3 class="h5 mt-4">A weboldal tartalma</h3><ul><li><code>index.html</code> megfelelő HTML-alapszerkezettel</li><li>címsor és több bekezdés</li><li>felsorolás</li><li>legalább egy kép</li><li>legalább egy hivatkozás</li><li>bekötött <code>style.css</code></li><li>háttér és szövegformázás</li><li>címsorok formázása</li><li>kép formázása</li><li>legalább egy class szelektor használata</li></ul>
+<h3 class="h5 mt-4">Git/GitHub követelmények</h3><ul><li>Legyen <strong>legalább 5 commit</strong> a repositoryban.</li><li>Mindkét tanulótól legyen <strong>legalább 2 saját commit</strong>.</li><li>A commitüzenetekből derüljön ki, mi változott.</li><li>A munka során használjátok a <code>git pull</code> és <code>git push</code> parancsokat.</li><li>Ne küldjétek egymásnak külön a HTML- vagy CSS-fájlokat: a változások GitHubon keresztül kerüljenek át a másik gépére.</li></ul>
+</section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">6. Milyen legyen egy commit üzenete?</h2>
+<div class="row g-3"><div class="col-md-6"><div class="border rounded-3 p-3 h-100"><h3 class="h5 text-success">Jó példák</h3><pre class="mb-0"><code>HTML alapstruktúra elkészítése
+Navigáció hozzáadása
+Alap CSS formázás
+Kép formázása
+Oldal véglegesítése</code></pre></div></div>
+<div class="col-md-6"><div class="border rounded-3 p-3 h-100"><h3 class="h5 text-danger">Nem megfelelő</h3><pre class="mb-0"><code>asd
+valami
+1
+kész</code></pre></div></div></div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">7. Beadás</h2>
+<p>A feladat végén <strong>a GitHub repository linkjét</strong> kell elküldeni.</p>
+<ul class="mb-0"><li>Mindkét tanuló neve szerepeljen a beadásban.</li><li>Nem ZIP-fájlt kérünk.</li><li>Nem külön HTML- és CSS-fájlt kérünk.</li><li>A repositoryban legyen látható a kész projekt és a commitok története.</li></ul>
+</div></section>
+
+<div class="important rounded-3 p-3 mb-4"><strong>Következő lépés:</strong> mi történik akkor, ha mindketten ugyanazt a fájlt – akár ugyanazt a sort – módosítjátok? A következő részben szándékosan előidézünk egy ütközést, és eljutunk a <strong>merge conflicthoz</strong>.</div>
+<div class="d-flex gap-2 flex-wrap"><a href="../4_ora/index.html" class="btn btn-primary">Következő: konfliktusok feloldása</a><a href="../index.html" class="btn btn-secondary">Vissza a Git órákhoz</a><a href="../../index.html" class="btn btn-outline-secondary">11. évfolyam</a></div>
+</main></body></html>

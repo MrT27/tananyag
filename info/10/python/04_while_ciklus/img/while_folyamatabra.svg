@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">A while ciklus működésének folyamatábrája</title>
+  <desc id="desc">Kezdés után a program megvizsgálja a feltételt. Igaz feltételnél végrehajtja a ciklusmagot, majd visszatér a feltételhez. Hamis feltételnél kilép a ciklusból.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#212529"/>
+    </marker>
+  </defs>
+  <rect width="900" height="620" fill="#f8f9fa" rx="24"/>
+  <text x="450" y="48" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#212529">A while ciklus működése</text>
+
+  <rect x="330" y="80" width="240" height="70" rx="35" fill="#cfe2ff" stroke="#0d6efd" stroke-width="3"/>
+  <text x="450" y="123" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#212529">Kezdés</text>
+
+  <line x1="450" y1="150" x2="450" y2="195" stroke="#212529" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <polygon points="450,195 620,285 450,375 280,285" fill="#fff3cd" stroke="#ffc107" stroke-width="3"/>
+  <text x="450" y="276" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#212529">Igaz a</text>
+  <text x="450" y="307" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#212529">feltétel?</text>
+
+  <line x1="620" y1="285" x2="735" y2="285" stroke="#212529" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="668" y="266" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#198754">nem</text>
+  <rect x="735" y="245" width="130" height="80" rx="40" fill="#f8d7da" stroke="#dc3545" stroke-width="3"/>
+  <text x="800" y="294" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" fill="#212529">Kilépés</text>
+
+  <line x1="450" y1="375" x2="450" y2="425" stroke="#212529" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="478" y="405" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#198754">igen</text>
+  <rect x="315" y="425" width="270" height="85" rx="12" fill="#d1e7dd" stroke="#198754" stroke-width="3"/>
+  <text x="450" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#212529">Ciklusmag</text>
+  <text x="450" y="491" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#212529">utasítások végrehajtása</text>
+
+  <path d="M315 468 H190 V285 H276" fill="none" stroke="#212529" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="205" y="445" font-family="Arial, sans-serif" font-size="18" fill="#212529">vissza a</text>
+  <text x="205" y="469" font-family="Arial, sans-serif" font-size="18" fill="#212529">feltételhez</text>
+
+  <text x="450" y="575" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#495057">A ciklus addig ismétlődik, amíg a feltétel igaz.</text>
+</svg>

@@ -1,0 +1,37 @@
+# 9. ÉRTÉKELÉS – FÁJLKEZELÉS
+# GYAKORLATI DOLGOZAT: DOLGOZÓI ADATOK
+# Idő: 45 perc
+# Összesen: 40 pont
+#
+# A programot ebben a fájlban készítsd el!
+# A fájlt nevezd át erre: 09_fajlkezeles.py
+# A dolgozok.txt fájlt másold a program mellé!
+#
+# A fájl sorainak felépítése:
+# név;részleg;fizetés;hiányzások száma
+
+# 1. FELADAT – BEOLVASÁS (10 pont)
+# Olvasd be a dolgozok.txt fájl adatait!
+# Az adatokat szótárak listájában tárold!
+# A fizetést és a hiányzások számát alakítsd egész számmá!
+# Írd ki, hány dolgozó adatait olvastad be!
+
+
+# 2. FELADAT – ÁTLAGFIZETÉS (8 pont)
+# Számítsd ki a dolgozók átlagfizetését!
+# Írd ki az eredményt egész forintra kerekítve!
+# Képlet: átlag = fizetések összege / dolgozók száma
+
+
+# 3. FELADAT – LEGMAGASABB FIZETÉS (9 pont)
+# Keresd meg a legmagasabb fizetésű dolgozót!
+# Írd ki a nevét, részlegét és fizetését!
+# Ne használd a max() függvényt!
+
+
+# 4. FELADAT – EREDMÉNYFÁJL (13 pont)
+# Készíts hianyzasok.txt nevű fájlt!
+# Írd bele azoknak a dolgozóknak a nevét és hiányzásainak számát,
+# akiknek 10-nél több hiányzásuk van!
+# Egy dolgozó egy sorba kerüljön, pontosvesszővel elválasztva!
+# A végén írd ki a képernyőre, hány dolgozó került a fájlba!

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CSS 13. óra – box-sizing: border-box</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#eefaff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+    .danger-note { border-left:.35rem solid #dc3545; background:#fff1f2; }
+    .box-demo { width:300px; padding:40px; border:5px solid #1098ad; background:#e7f5ff; margin:1rem 0; }
+    .box-demo.borderbox { box-sizing:border-box; }
+    .ruler { max-width:420px; border-top:3px solid #212529; text-align:center; font-weight:700; padding-top:.35rem; }
+    summary { cursor:pointer; font-weight:600; }
+  </style>
+</head>
+<body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+<span class="badge text-bg-primary">11. évfolyam</span>
+<span class="badge text-bg-info">CSS</span>
+<span class="badge text-bg-dark">13. óra</span>
+<h1 class="display-6 fw-bold mt-3">Kiszámítható méretezés – <code>box-sizing: border-box</code></h1>
+<p class="lead mb-0">Miért lesz egy 300 px széles doboz valójában szélesebb, ha paddinget adunk hozzá – és hogyan oldjuk meg ezt egyetlen CSS-szabállyal?</p>
+</section><div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Esti ismétlés Jonas kurzusából:</strong><span>49. videó – box-sizing: border-box</span></div>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">Az óra célja</h2>
+<ul>
+<li>Az alapértelmezett <code>content-box</code> méretszámítás felidézése.</li>
+<li>Annak megértése, miért növeli a padding és a border a doboz teljes méretét.</li>
+<li>A <code>box-sizing: border-box</code> használata.</li>
+<li>A globális CSS-reset kiegészítése a <code>box-sizing</code> szabállyal.</li>
+<li>A DevTools dobozmodelljének használata ellenőrzéshez.</li>
+</ul>
+<p>A kezdőcsomag a korábbi magazinoldalra épül. Az oldalsáv 300 px széles, de 40 px paddinget is kap – itt fogjuk megfigyelni a problémát.</p>
+<a class="btn btn-primary" download="" href="kezdo.zip">Kezdőcsomag letöltése</a>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">1. Gyors ismétlés: mit jelent a width?</h2>
+<p>Korábban megtanultuk a dobozmodellt: <strong>content → padding → border → margin</strong>. Alapértelmezésben a CSS-ben megadott <code>width</code> csak a <strong>tartalmi terület</strong> szélességét jelenti.</p>
+<pre><code>.doboz {
+  width: 300px;
+  padding: 40px;
+}</code></pre>
+<div class="important rounded-3 p-3">Alapértelmezett <code>box-sizing: content-box</code> mellett a padding hozzáadódik a megadott szélességhez.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">2. A probléma: a 300 px nem mindig 300 px</h2>
+<p>Ha egy elem 300 px széles, és mindkét oldalán 40 px padding van, akkor keret nélkül is:</p>
+<pre><code>300 + 40 + 40 = 380 px</code></pre>
+<p>Ha még 5–5 px keretet is adunk hozzá:</p>
+<pre><code>300 + 40 + 40 + 5 + 5 = 390 px</code></pre>
+<div class="box-demo">content-box<br/><strong>width: 300px</strong><br/>+ padding + border</div>
+<div class="ruler">A teljes doboz szélesebb 300 px-nél</div>
+<p class="mt-3">Nagyobb elrendezéseknél ez könnyen azt eredményezi, hogy egy elem már nem fér el ott, ahová terveztük.</p>
+<div class="task rounded-3 p-3"><strong>Próba:</strong> nyisd meg a kezdőcsomagot, vizsgáld meg az <code>aside</code> elemet DevToolsban, és nézd meg a Box Model ábrán a tartalom, padding és border értékeit.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">3. A megoldás: <code>box-sizing: border-box</code></h2>
+<p>A <code>border-box</code> megváltoztatja a méretszámítást:</p>
+<pre><code>.doboz {
+  width: 300px;
+  padding: 40px;
+  border: 5px solid #1098ad;
+  box-sizing: border-box;
+}</code></pre>
+<p>Most a megadott <strong>300 px már a teljes doboz külső szélessége</strong>: a content, a padding és a border együtt fér bele ebbe a méretbe.</p>
+<div class="box-demo borderbox">border-box<br/><strong>teljes szélesség: 300 px</strong></div>
+<div class="ruler" style="max-width:300px">300 px</div>
+<div class="callout rounded-3 p-3 mt-3"><strong>Fontos:</strong> a padding nem tűnik el. A böngésző a tartalmi területet csökkenti, hogy a teljes doboz továbbra is 300 px maradjon.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">4. Content-box és border-box összehasonlítása</h2>
+<div class="table-responsive"><table class="table table-striped align-middle">
+<thead><tr><th></th><th><code>content-box</code></th><th><code>border-box</code></th></tr></thead>
+<tbody>
+<tr><th>A <code>width</code> mire vonatkozik?</th><td>csak a contentre</td><td>a content + padding + border teljes méretére</td></tr>
+<tr><th>A padding növeli a teljes szélességet?</th><td>igen</td><td>nem</td></tr>
+<tr><th>A border növeli a teljes szélességet?</th><td>igen</td><td>nem</td></tr>
+<tr><th>Melyik kiszámíthatóbb layoutnál?</th><td>kevésbé</td><td><strong>border-box</strong></td></tr>
+</tbody></table></div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">5. Alkalmazzuk az oldalsávon</h2>
+<p>A kezdőcsomagban az oldalsáv ilyen:</p>
+<pre><code>aside {
+  width: 300px;
+  padding: 40px;
+  border-top: 5px solid #1098ad;
+  border-bottom: 5px solid #1098ad;
+}</code></pre>
+<p>Add hozzá:</p>
+<pre><code>aside {
+  box-sizing: border-box;
+}</code></pre>
+<p>DevToolsban figyeld meg, hogy a teljes szélesség most már pontosan 300 px. A tartalmi rész lesz keskenyebb, nem maga a teljes doboz nagyobb.</p>
+<div class="task rounded-3 p-3"><strong>Kísérlet:</strong> kapcsold ki-be DevToolsban a <code>box-sizing: border-box</code> sort. Figyeld meg, melyik szám változik: a teljes szélesség vagy a content szélessége?</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">6. Ne csak egy elemre: legyen ez az alapértelmezés</h2>
+<p>A <code>box-sizing</code> nem öröklődik automatikusan a <code>body</code>-ból, ezért egyszerűen az univerzális szelektorhoz adjuk:</p>
+<pre><code>* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}</code></pre>
+<p>Ezzel minden elem kiszámíthatóbban méretezhető. A korábbi resetünket tehát egyetlen új sorral egészítjük ki.</p>
+<div class="important rounded-3 p-3"><strong>Érdemes megjegyezni:</strong> ezt a szabályt a legtöbb modern projekt elején használhatod. Innentől a <code>width</code> és <code>height</code> kezelése sokkal egyszerűbb lesz.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">7. Órai feladat</h2>
+<ol>
+<li>Nyisd meg a kezdőcsomagot.</li>
+<li>Az <code>aside</code> szélességét állítsd <code>300px</code>-re.</li>
+<li>Adj neki <code>40px</code> paddinget.</li>
+<li>DevToolsban mérd meg a teljes szélességét <code>border-box</code> nélkül.</li>
+<li>Add hozzá az <code>aside</code>-hoz a <code>box-sizing: border-box;</code> szabályt.</li>
+<li>Újra ellenőrizd a méretet.</li>
+<li>Végül vedd ki az <code>aside</code>-ból a szabályt, és tedd az univerzális <code>*</code> szelektorba.</li>
+</ol>
+<details class="task rounded-3 p-3"><summary>Végleges CSS-részlet</summary><pre><code>* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+aside {
+  width: 300px;
+  padding: 40px;
+}</code></pre>
+<a class="btn btn-outline-success me-2" href="megoldas/index.html">Mintamegoldás megnyitása</a><a class="btn btn-outline-success" download="" href="megoldas.zip">Megoldás letöltése</a></details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">8. Mini kihívás</h2>
+<p>Készíts egy új <code>.kartya</code> elemet:</p>
+<pre><code>.kartya {
+  width: 250px;
+  padding: 25px;
+  border: 5px solid #333;
+}</code></pre>
+<ol>
+<li>Számold ki előre, mekkora lesz a teljes szélessége <code>content-box</code> esetén.</li>
+<li>Ellenőrizd DevToolsban.</li>
+<li>Kapcsold be a <code>box-sizing: border-box</code> szabályt.</li>
+<li>Mi lett most a teljes szélesség?</li>
+</ol>
+<details class="callout rounded-3 p-3"><summary>Megoldás</summary><p class="mb-0"><code>content-box</code>: 250 + 25 + 25 + 5 + 5 = <strong>310 px</strong>. <code>border-box</code>: a teljes doboz <strong>250 px</strong>.</p></details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">9. Ellenőrző kérdések</h2>
+<ol>
+<li>Mi az alapértelmezett <code>box-sizing</code> érték?</li>
+<li><code>content-box</code> esetén mire vonatkozik a <code>width</code>?</li>
+<li>Mi történik a teljes szélességgel, ha paddinget adunk hozzá?</li>
+<li>Mit változtat meg a <code>border-box</code>?</li>
+<li>Miért praktikus a szabályt a <code>*</code> szelektorban megadni?</li>
+</ol>
+<details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol>
+<li><code>content-box</code>.</li>
+<li>Csak a tartalmi területre.</li>
+<li>A padding és a border hozzáadódik, ezért a teljes doboz nagyobb lesz.</li>
+<li>A megadott width/height a teljes, borderig tartó doboz mérete lesz.</li>
+<li>Így minden elemre egyszerre alkalmazzuk a kiszámíthatóbb méretszámítást.</li>
+</ol></details>
+</div></section>
+<nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between">
+<a class="btn btn-outline-secondary btn-lg" href="../12_ora/index.html">Előző: absolute pozicionálás</a>
+<a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a>
+<a class="btn btn-primary btn-lg" href="../14_ora/index.html">Következő: Flexbox alapok</a>
+</nav>
+</main></body></html>

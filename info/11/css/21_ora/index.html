@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CSS 21. óra – Grid oszlopok és sorok méretezése</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#f4f0ff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+    summary { cursor:pointer; font-weight:600; }
+  </style>
+</head>
+<body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+<span class="badge text-bg-primary">11. évfolyam</span>
+<span class="badge text-bg-info">CSS</span>
+<span class="badge text-bg-dark">21. óra</span>
+<h1 class="display-6 fw-bold mt-3">CSS Grid – oszlopok és sorok méretezése</h1>
+<p class="lead mb-0">A fix pixelek után rugalmas rácsokat készítünk az <code>fr</code>, az <code>auto</code> és a <code>repeat()</code> használatával.</p>
+</section><div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Esti ismétlés Jonas kurzusából:</strong><span>60. videó – Sizing Grid Columns and Rows</span></div>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">Az óra célja</h2>
+<ul>
+<li>Megérteni, miért előnyös az <code>fr</code> a fix pixelméretekkel szemben.</li>
+<li>Azonos és eltérő arányú oszlopokat létrehozni.</li>
+<li>Használni az <code>auto</code> értéket.</li>
+<li>Rövidebben megadni ismétlődő oszlopokat a <code>repeat()</code> segítségével.</li>
+<li>Megkülönböztetni az explicit és implicit sorokat.</li>
+</ul>
+<a class="btn btn-primary" download="" href="kezdo.zip">Kezdőcsomag letöltése</a>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">1. Mi a gond a fix pixelekkel?</h2>
+<pre><code>.container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px;
+}</code></pre>
+<p>A négy oszlop mindig 200 pixel széles marad. Ha a rendelkezésre álló hely kisebb, a rács könnyen túlcsordulhat.</p>
+<div class="important rounded-3 p-3"><strong>A Grid egyik nagy ereje:</strong> nem kell minden oszlop szélességét kézzel kiszámolnunk.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">2. Az <code>fr</code> egység</h2>
+<p>Az <code>fr</code> a rendelkezésre álló hely egy részét jelenti.</p>
+<pre><code>grid-template-columns: 1fr 1fr 1fr 1fr;</code></pre>
+<p>Ebben az esetben a rendelkezésre álló hely négy egyenlő részre oszlik.</p>
+<p>Ha az első oszlop kétszer akkora részt kapjon:</p>
+<pre><code>grid-template-columns: 2fr 1fr 1fr 1fr;</code></pre>
+<div class="callout rounded-3 p-3"><strong>Fontos:</strong> a <code>2fr</code> nem azt jelenti, hogy az oszlop mindig pontosan kétszer olyan széles. A rendelkezésre álló szabad helyből kap kétszeres részt.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">3. <code>repeat()</code> – ne írjuk le ugyanazt négyszer</h2>
+<p>Ezt:</p>
+<pre><code>grid-template-columns: 1fr 1fr 1fr 1fr;</code></pre>
+<p>rövidebben így írhatjuk:</p>
+<pre><code>grid-template-columns: repeat(4, 1fr);</code></pre>
+<p>A <code>repeat(4, 1fr)</code> jelentése: hozz létre négy darab, egyenlő arányú oszlopot.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">4. Az <code>auto</code> érték</h2>
+<p>Az <code>auto</code> használatakor az adott sáv alapvetően a tartalmához igazodik.</p>
+<pre><code>grid-template-columns: 1fr 1fr 1fr auto;</code></pre>
+<p>Ez hasznos lehet például akkor, ha az utolsó oszlopnak csak annyi hely kell, amennyit a tartalma elfoglal.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">5. Sorok méretezése <code>fr</code>-rel</h2>
+<p>Az <code>fr</code> soroknál is használható, de akkor látványos igazán, ha a grid konténernek van megadott magassága.</p>
+<pre><code>.container {
+  height: 600px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}</code></pre>
+<p>A két sor ilyenkor azonos arányban osztozik a rendelkezésre álló magasságon.</p>
+<pre><code>grid-template-rows: 2fr 1fr;</code></pre>
+<p>Az első sor kétszeres részt kap a szabad magasságból.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">6. Explicit és implicit sorok</h2>
+<p>Ha egy sort mi magunk megadunk a <code>grid-template-rows</code> segítségével, az <strong>explicit</strong> sor.</p>
+<p>Ha elfogy a hely, és a böngésző automatikusan új sort hoz létre a további elemeknek, az <strong>implicit</strong> sor.</p>
+<div class="important rounded-3 p-3">Egyelőre elég felismerni a különbséget. Az implicit sorok külön formázásával most még nem foglalkozunk.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">7. Órai gyakorlat</h2>
+<ol>
+<li>Nyisd meg a kezdőcsomagot.</li>
+<li>A négy fix, 200 pixeles oszlop helyett készíts négy egyenlő oszlopot <code>fr</code> használatával.</li>
+<li>Írd át a megoldást <code>repeat()</code> használatára.</li>
+<li>Ezután legyen az első oszlop kétszeres, a másik három egyszeres arányú.</li>
+<li>Adj a konténernek legalább 400px magasságot.</li>
+<li>A második sor legyen <code>auto</code>, az első pedig töltse ki a maradék helyet.</li>
+<li>Méretezd át a böngészőablakot, és figyeld meg, hogyan reagál a rács.</li>
+</ol>
+<details class="task rounded-3 p-3"><summary>Mintamegoldás</summary>
+<pre><code>.container {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  grid-template-rows: 1fr auto;
+  gap: 20px;
+  min-height: 420px;
+}</code></pre>
+<a class="btn btn-outline-success me-2" href="megoldas/index.html">Mintamegoldás megnyitása</a><a class="btn btn-outline-success" download="" href="megoldas.zip">Megoldás letöltése</a>
+</details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">8. Mit vigyél el ebből az órából?</h2>
+<ul>
+<li>A pixel fix, az <code>fr</code> rugalmas.</li>
+<li>Az azonos <code>fr</code> értékek azonos arányt jelentenek.</li>
+<li>A nagyobb <code>fr</code> érték nagyobb részt kap a rendelkezésre álló helyből.</li>
+<li><code>repeat()</code> segítségével rövidebben írhatunk ismétlődő oszlopokat vagy sorokat.</li>
+<li><code>auto</code> esetén a sáv a tartalomhoz igazodhat.</li>
+<li>A böngésző szükség esetén implicit sorokat hoz létre.</li>
+</ul>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">9. Ellenőrző kérdések</h2>
+<ol>
+<li>Miért rugalmasabb az <code>fr</code>, mint a pixel?</li>
+<li>Mit jelent a <code>repeat(4, 1fr)</code>?</li>
+<li>Mit jelent a <code>2fr 1fr 1fr</code>?</li>
+<li>Mire használható az <code>auto</code>?</li>
+<li>Mi a különbség az explicit és az implicit sor között?</li>
+</ol>
+<details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol>
+<li>Az <code>fr</code> a rendelkezésre álló helyhez igazodik, a pixel fix méret.</li>
+<li>Négy egyenlő arányú oszlop létrehozását.</li>
+<li>Az első oszlop kétszeres részt kap a szabad helyből a másik kettőhöz képest.</li>
+<li>Olyan sávhoz, amely a tartalmához igazodjon.</li>
+<li>Az explicit sort mi adjuk meg, az implicit sort a böngésző hozza létre automatikusan.</li>
+</ol></details>
+</div></section>
+<nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between">
+<a class="btn btn-outline-secondary btn-lg" href="../20_ora/index.html">Előző: Grid fogalmak</a>
+<a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a>
+<a class="btn btn-primary btn-lg" href="../22_ora/index.html">Következő: Grid elhelyezés</a>
+</nav>
+</main></body></html>

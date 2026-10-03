@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanári GitHub munkamenet – VS Code + terminál</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#f0fff5 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; margin-bottom:1rem; }
+    code { color:#c7254e; }
+    pre code { color:inherit; }
+    .callout { border-left:.35rem solid #198754; background:#eefbf3; }
+    .warn { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .danger-note { border-left:.35rem solid #dc3545; background:#fff1f2; }
+    .routine { border:2px solid #198754; background:#fff; }
+    .cmd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+  </style>
+</head>
+<body>
+<main class="container py-5">
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-dark">Tanári segédlet</span>
+    <span class="badge text-bg-success">Git / GitHub</span>
+    <span class="badge text-bg-primary">VS Code + terminál</span>
+    <h1 class="display-6 fw-bold mt-3">Tanári GitHub munkamenet</h1>
+    <p class="lead mb-2">A <strong>kod-magazin-tanari</strong> projekt biztonságos kezelése több tanteremben.</p>
+    <p class="mb-0 text-secondary">Cél: óra elején mindig a legfrissebb állapotból indulni, óra végén pedig feltölteni azt, ameddig az adott csoporttal eljutottál.</p>
+  </section>
+
+  <section class="routine rounded-4 p-4 mb-4">
+    <h2 class="h3">A két rutin, amit ténylegesen meg kell jegyezni</h2>
+    <div class="row g-4 mt-1">
+      <div class="col-md-6">
+        <h3 class="h5">Óra elején</h3>
+        <pre><code>git status
+git pull</code></pre>
+        <p class="mb-0">Ellenőrzés, majd a GitHubon lévő legfrissebb állapot letöltése.</p>
+      </div>
+      <div class="col-md-6">
+        <h3 class="h5">Óra végén</h3>
+        <pre><code>git status
+git add .
+git status
+git commit -m "CSS 6. óra - aktuális állapot"
+git push</code></pre>
+        <p class="mb-0">Ellenőrzés, mentés a Git történetébe, majd feltöltés GitHubra.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. A rendszer logikája</h2>
+    <p>A GitHub repository a tanári projekt központi példánya. Minden tanteremben ugyanazt a repositoryt használod.</p>
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle mb-0">
+        <thead class="table-dark"><tr><th>Hely</th><th>Feladat</th><th>Fő parancs</th></tr></thead>
+        <tbody>
+          <tr><td>Saját gép</td><td>Anyag előkészítése és módosítása</td><td class="cmd">git pull / git push</td></tr>
+          <tr><td>1. tanterem</td><td>Az ottani óra folytatása</td><td class="cmd">git pull / git push</td></tr>
+          <tr><td>2. tanterem</td><td>Ugyanonnan folytatás</td><td class="cmd">git pull / git push</td></tr>
+          <tr><td>Diák gép</td><td>Tanári állapot letöltése</td><td class="cmd">git clone / git pull</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout rounded-3 p-3 mt-3">
+      <strong>Lényeg:</strong> mielőtt egy gépen dolgozni kezdesz, <code>git pull</code>; mielőtt otthagyod a gépet, <code>git push</code>.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. Első alkalom egy tanári gépen</h2>
+    <p>Ha a gépen még nincs meg a projekt, VS Code-ban jelentkezz be az <strong>ungitamas</strong> GitHub-fiókba. Ezután a terminálban klónozd a publikus repót:</p>
+    <pre><code>git clone https://github.com/ungitamas/kod-magazin-tanari.git
+cd kod-magazin-tanari
+code .</code></pre>
+    <p>A klónozás után ellenőrizd:</p>
+    <pre><code>git status
+git remote -v</code></pre>
+    <p class="mb-0">A <code>remote -v</code> kimenetében a <strong>ungitamas/kod-magazin-tanari</strong> repositorynak kell szerepelnie.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. Óra eleji ellenőrzés</h2>
+    <p>Nyisd meg a projekt mappáját VS Code-ban, majd:</p>
+    <pre><code>git status</code></pre>
+    <p>Az ideális állapot:</p>
+    <pre><code>On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean</code></pre>
+    <p>Ezután:</p>
+    <pre><code>git pull</code></pre>
+    <div class="warn rounded-3 p-3">
+      Ha a <code>git status</code> módosított fájlokat jelez még az óra megkezdése előtt, ne fusson automatikusan a <code>git pull</code>. Előbb nézd meg, mi maradt a gépen az előző alkalomról.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. Óra közben</h2>
+    <p>Git szempontból nincs külön teendő. Dolgozz a HTML- és CSS-fájlokon, és mentsd őket a megszokott módon.</p>
+    <pre><code>Cmd + S   # macOS
+Ctrl + S  # Windows / Linux</code></pre>
+    <p class="mb-0">Óra közben nem szükséges minden apró változtatást commitolni. A tanórai állapotot elég az óra végén elmenteni.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. Óra végi mentés és feltöltés</h2>
+    <h3 class="h5 mt-3">1. Nézd meg, mi változott</h3>
+    <pre><code>git status</code></pre>
+    <h3 class="h5">2. Készítsd elő a módosításokat</h3>
+    <pre><code>git add .</code></pre>
+    <h3 class="h5">3. Ellenőrizd még egyszer</h3>
+    <pre><code>git status</code></pre>
+    <h3 class="h5">4. Készíts commitot</h3>
+    <pre><code>git commit -m "CSS 6. óra - prioritás"</code></pre>
+    <h3 class="h5">5. Töltsd fel</h3>
+    <pre><code>git push</code></pre>
+    <div class="callout rounded-3 p-3">
+      Ha a <code>git push</code> sikeres, a következő tanteremben egy <code>git pull</code> után ugyanebből az állapotból tudsz tovább dolgozni.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. Jó commitüzenetek órán</h2>
+    <p>A commitüzenetből később legyen egyértelmű, hol tartottál.</p>
+    <div class="row g-3">
+      <div class="col-md-6"><pre class="mb-0"><code>git commit -m "CSS 6. óra - prioritás"</code></pre></div>
+      <div class="col-md-6"><pre class="mb-0"><code>git commit -m "11.A - cikk fejléc kész"</code></pre></div>
+      <div class="col-md-6"><pre class="mb-0"><code>git commit -m "11.B - linkek formázása"</code></pre></div>
+      <div class="col-md-6"><pre class="mb-0"><code>git commit -m "Kód magazin - aktuális állapot"</code></pre></div>
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. A CSS 6. óra példája</h2>
+    <p>A jelenlegi 11. évfolyamos anyagban a CSS 6. óra témája az ütköző CSS-szabályok és a prioritás. Az órai munkamenet így nézhet ki:</p>
+    <ol>
+      <li><code>git status</code>, majd <code>git pull</code>;</li>
+      <li>nyisd meg a <code>11/css/6_ora/</code> anyagot;</li>
+      <li>mutasd be a szelektorok prioritását és a DevTools Styles paneljét;</li>
+      <li>a <code>pelda/</code> projektben kapcsold ki egymás után a szabályokat;</li>
+      <li>az óra végén ellenőrzés, commit és push.</li>
+    </ol>
+    <a href="../../css/6_ora/index.html" class="btn btn-outline-primary">CSS 6. óra megnyitása</a>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. Gyors hibakezelés</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle">
+        <thead class="table-dark"><tr><th>Helyzet</th><th>Mit tegyél?</th></tr></thead>
+        <tbody>
+          <tr><td>Nem tudod, melyik repóban vagy.</td><td><code>pwd</code>, majd <code>git remote -v</code></td></tr>
+          <tr><td>Nem tudod, maradt-e módosítás.</td><td><code>git status</code></td></tr>
+          <tr><td>A <code>git commit</code> azt írja, nincs mit commitolni.</td><td>Valószínűleg nincs változás, vagy előtte kimaradt a <code>git add .</code>.</td></tr>
+          <tr><td>A <code>git push</code> hitelesítést kér.</td><td>Ellenőrizd, hogy VS Code-ban a megfelelő GitHub-fiókkal vagy-e belépve.</td></tr>
+          <tr><td>A <code>git pull</code> konfliktust jelez.</td><td>Ne írj felül semmit vaktában. Előbb <code>git status</code>, és nézd meg az érintett fájlokat.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="danger-note rounded-3 p-3">
+      <strong>Ne használd rutinból:</strong> <code>git reset --hard</code>, <code>git clean -fd</code> vagy <code>git push --force</code>. Ezekkel könnyű munkát elveszíteni.
+    </div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. Ha több csoport különböző tempóban halad</h2>
+    <p>Ha a csoportok ugyanazon a projekten dolgoznak, de más állapotig jutnak, a commitüzenetben jelöld a csoportot. Így a Git történetben később is látod, melyik állapot melyik órához tartozott.</p>
+    <pre><code>git commit -m "11.A - CSS prioritás kész"
+git commit -m "11.B - DevTools példa kész"</code></pre>
+    <p class="mb-0">Ha később szükség lesz teljesen külön ágakra, azt külön lépésként érdemes bevezetni; az alap munkamenethez egyelőre a <code>main</code> ág is elég.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">10. Egyperces puska</h2>
+    <pre><code># ÓRA ELEJE
+git status
+git pull
+
+# ÓRA VÉGE
+git status
+git add .
+git status
+git commit -m "rövid, értelmes üzenet"
+git push</code></pre>
+    <div class="callout rounded-3 p-3 mb-0">
+      <strong>Alapszabály:</strong> <em>pull, mielőtt dolgozol; push, mielőtt elmész.</em>
+    </div>
+  </div></section>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+    <a href="../index.html" class="btn btn-secondary btn-lg">Vissza a tanári segédletekhez</a>
+    <a href="../../css/6_ora/index.html" class="btn btn-outline-primary btn-lg">CSS 6. óra</a>
+  </div>
+</main>
+</body>
+</html>

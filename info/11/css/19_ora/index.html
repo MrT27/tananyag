@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CSS 19. óra – CSS Grid alapok</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#f4f0ff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+    summary { cursor:pointer; font-weight:600; }
+    .mini-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:.5rem; }
+    .mini-grid div { background:#dee2e6; padding:1rem; text-align:center; border-radius:.5rem; font-weight:700; }
+  </style>
+</head>
+<body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+<span class="badge text-bg-primary">11. évfolyam</span>
+<span class="badge text-bg-info">CSS</span>
+<span class="badge text-bg-dark">19. óra</span>
+<h1 class="display-6 fw-bold mt-3">CSS Grid alapok</h1>
+<p class="lead mb-0">A Flexbox után megismerjük a CSS Gridet: sorokból és oszlopokból álló, kétdimenziós elrendezéseket építünk.</p>
+</section><div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Esti ismétlés Jonas kurzusából:</strong><span>58. videó – Introduction to CSS Grid</span></div>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">Az óra célja</h2>
+<ul>
+<li>Megérteni a <strong>grid container</strong> és <strong>grid item</strong> fogalmát.</li>
+<li>Rács létrehozása <code>display: grid</code> segítségével.</li>
+<li>Oszlopok és sorok megadása.</li>
+<li>A <code>gap</code>, <code>column-gap</code> és <code>row-gap</code> használata.</li>
+<li>Észrevenni a Flexbox és a Grid közötti alapvető különbséget.</li>
+</ul>
+<a class="btn btn-primary" download="" href="kezdo.zip">Kezdőcsomag letöltése</a>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">1. Flexbox vagy Grid?</h2>
+<p>A Flexbox elsősorban egy irányban rendez elemeket: sorban vagy oszlopban. A CSS Grid ezzel szemben <strong>két dimenzióban</strong> dolgozik: egyszerre kezelhetünk sorokat és oszlopokat.</p>
+<div class="callout rounded-3 p-3"><strong>Egyszerűen:</strong> Flexbox = egy tengely, Grid = sorok + oszlopok.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">2. Grid container és grid item</h2>
+<p>Ugyanaz a gondolkodás, mint a Flexboxnál: kiválasztunk egy szülőelemet, és abból rácskonténert készítünk.</p>
+<pre><code>.container {
+  display: grid;
+}</code></pre>
+<p>A közvetlen gyermekelemek innentől <strong>grid itemek</strong>. A <code>display: grid</code> önmagában még nem feltétlenül változtat látványosan az oldalon: meg kell mondanunk a rács szerkezetét is.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">3. Oszlopok létrehozása</h2>
+<p>A <code>grid-template-columns</code> mondja meg, hány oszlop legyen és milyen szélességűek legyenek.</p>
+<pre><code>.container {
+  display: grid;
+  grid-template-columns: 250px 150px;
+}</code></pre>
+<p>Ez két oszlopot hoz létre: az első 250, a második 150 pixel széles.</p>
+<p>Négy azonos szélességű oszlophoz:</p>
+<pre><code>grid-template-columns: repeat(4, 1fr);</code></pre>
+<div class="mini-grid mb-3"><div>1</div><div>2</div><div>3</div><div>4</div></div>
+<div class="important rounded-3 p-3"><strong><code>1fr</code></strong> a rendelkezésre álló hely egy részét jelenti. Négy darab <code>1fr</code> esetén a hely négy egyenlő részre oszlik.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">4. A Grid automatikusan új sorokat hoz létre</h2>
+<p>Ha négy oszlopunk van, de nyolc elemünk, akkor az első négy elem az első sorba, a következő négy a második sorba kerül. Nem szükséges minden sort előre megadni.</p>
+<pre><code>.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}</code></pre>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">5. Sorok méretezése</h2>
+<p>Ha a sorok magasságát is meg akarjuk adni, a <code>grid-template-rows</code> használható:</p>
+<pre><code>.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 180px 120px;
+}</code></pre>
+<p>Az első sor 180 pixel, a második 120 pixel magas lesz.</p>
+<div class="callout rounded-3 p-3">Ha nem adunk meg sormagasságot, a böngésző a tartalom alapján hozza létre a szükséges sorokat.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">6. Térköz a rácsban: gap</h2>
+<pre><code>.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}</code></pre>
+<p>A <code>gap</code> egyszerre ad távolságot a sorok és az oszlopok között.</p>
+<p>Külön is megadhatjuk őket:</p>
+<pre><code>column-gap: 30px;
+row-gap: 60px;</code></pre>
+<div class="important rounded-3 p-3"><strong>Gridnél a rácselemek közötti térközhöz a <code>gap</code> a természetes megoldás.</strong> Ne kezdjük az elemeket körbemargózni.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">7. Órai gyakorlat</h2>
+<ol>
+<li>Nyisd meg a kezdőcsomagot.</li>
+<li>A <code>.container</code> legyen grid konténer.</li>
+<li>Készíts négy egyenlő szélességű oszlopot <code>repeat(4, 1fr)</code> segítségével.</li>
+<li>Az első sor legyen 180px, a második 120px magas.</li>
+<li>Az oszlopok között legyen 30px, a sorok között 60px távolság.</li>
+<li>Próbáld ki, mi történik, ha kitörlöd a <code>grid-template-rows</code> sort.</li>
+</ol>
+<details class="task rounded-3 p-3"><summary>Mintamegoldás</summary>
+<pre><code>.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 180px 120px;
+  column-gap: 30px;
+  row-gap: 60px;
+}</code></pre>
+<a class="btn btn-outline-success me-2" href="megoldas/index.html">Mintamegoldás megnyitása</a><a class="btn btn-outline-success" download="" href="megoldas.zip">Megoldás letöltése</a>
+</details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">8. Mit vigyél el ebből az órából?</h2>
+<ul>
+<li><code>display: grid</code> hozza létre a grid konténert.</li>
+<li><code>grid-template-columns</code> az oszlopokat adja meg.</li>
+<li><code>grid-template-rows</code> a sorokat méretezi.</li>
+<li><code>repeat()</code> segítségével rövidebben írhatunk ismétlődő oszlopokat.</li>
+<li><code>fr</code> a rendelkezésre álló hely arányos felosztására használható.</li>
+<li><code>gap</code> a rács elemei közötti térköz.</li>
+</ul>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">9. Ellenőrző kérdések</h2>
+<ol>
+<li>Mi a grid container?</li>
+<li>Mit csinál a <code>grid-template-columns</code>?</li>
+<li>Mit jelent a <code>repeat(4, 1fr)</code>?</li>
+<li>Mi történik, ha több grid item van, mint ahány oszlop?</li>
+<li>Mi a különbség a <code>gap</code>, <code>column-gap</code> és <code>row-gap</code> között?</li>
+</ol>
+<details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol>
+<li>Az a szülőelem, amelyen <code>display: grid</code> van.</li>
+<li>Megadja a rács oszlopainak számát és szélességét.</li>
+<li>Négy azonos, a rendelkezésre álló helyet egyenlően felosztó oszlopot.</li>
+<li>A böngésző új sort hoz létre.</li>
+<li>A <code>gap</code> mindkét irányra, a másik kettő csak oszlopokra vagy sorokra hat.</li>
+</ol></details>
+</div></section>
+<nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between">
+<a class="btn btn-outline-secondary btn-lg" href="../18_ora/index.html">Előző: Teljes oldal Flexboxszal</a>
+<a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a>
+<a class="btn btn-primary btn-lg" href="../20_ora/index.html">Következő: Grid fogalmak</a>
+</nav>
+</main></body></html>

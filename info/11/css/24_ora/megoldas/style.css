@@ -1,0 +1,84 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { color: #444; font-family: sans-serif; }
+.container { width: 900px; margin: 0 auto; }
+.main-header {
+  background-color: #f7f7f7;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav { font-size: 18px; }
+nav a:link, nav a:visited {
+  display: inline-block;
+  margin-right: 24px;
+}
+nav a:last-child { margin-right: 0; }
+article { margin-bottom: 0; }
+.post-header { margin-bottom: 40px; position: relative; }
+.author-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.author { margin-bottom: 0; }
+.post-img { width: 100%; height: auto; }
+aside {
+  background-color: #f7f7f7;
+  border-top: 5px solid #1098ad;
+  border-bottom: 5px solid #1098ad;
+  padding: 30px;
+  width: auto;
+  margin-bottom: 0;
+}
+h1, h2, h3, h4 { color: #1098ad; }
+h2 { margin-bottom: 30px; }
+h3 { margin-top: 40px; margin-bottom: 20px; }
+h4 { margin-bottom: 24px; }
+p { margin-bottom: 15px; }
+ul { margin-left: 40px; margin-bottom: 20px; }
+li { margin-bottom: 12px; }
+li:last-child { margin-bottom: 0; }
+.like-button {
+  padding: 8px 12px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.related { list-style: none; margin-left: 0; }
+.related-post {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.related-author {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: italic;
+}
+.related-link:link, .related-link:visited {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 17px;
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+/* 24. óra – a teljes oldal fő elrendezése CSS Griddel */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  column-gap: 75px;
+  row-gap: 60px;
+  align-items: start;
+}
+
+.main-header,
+footer {
+  grid-column: 1 / -1;
+}

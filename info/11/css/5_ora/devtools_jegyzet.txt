@@ -1,0 +1,12 @@
+/* DevTools gyakorló jegyzet */
+
+/*
+1. Nyisd meg a fejlesztői eszközöket.
+2. Válaszd az Elements fület.
+3. Jelölj ki egy HTML-elemet.
+4. Vizsgáld meg a Styles panelen az alkalmazott szabályokat.
+5. Kapcsold ki/be az egyes CSS deklarációkat.
+6. Adj hozzá ideiglenesen új tulajdonságot.
+7. Próbáld ki a :hover és :active állapot kényszerítését.
+8. Frissítsd újra az oldalt, és figyeld meg, hogy a DevToolsban végzett módosítások eltűnnek.
+*/

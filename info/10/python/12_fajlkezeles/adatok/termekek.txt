@@ -1,0 +1,8 @@
+monitor;74990;8
+billentyűzet;18990;24
+egér;12990;31
+laptop;329990;5
+nyomtató;89990;7
+webkamera;24990;16
+fejhallgató;31990;12
+pendrive;6990;40

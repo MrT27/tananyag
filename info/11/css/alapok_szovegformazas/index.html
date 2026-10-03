@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS alapok – Betű- és szövegformázás</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>
+      body { background: #f8f9fa; }
+      .hero {
+        background: linear-gradient(135deg, #ffffff 0%, #eefaff 100%);
+        border: 1px solid #e6e9ef;
+      }
+      .section-card {
+        border: 0;
+        box-shadow: 0 .25rem .8rem rgba(0,0,0,.05);
+      }
+      pre {
+        background: #212529;
+        color: #f8f9fa;
+        border-radius: .75rem;
+        padding: 1rem;
+        overflow-x: auto;
+        margin-bottom: 0;
+      }
+      code { color: #c7254e; }
+      pre code { color: inherit; }
+      .callout {
+        border-left: .35rem solid #0dcaf0;
+        background: #eefbff;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container py-5">
+      <section class="hero rounded-4 p-4 p-md-5 mb-4">
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span class="badge text-bg-primary">11. évfolyam</span>
+          <span class="badge text-bg-info">CSS</span>
+          <span class="badge text-bg-dark">Alapok</span>
+        </div>
+        <h1 class="display-6 fw-bold">Betű- és szövegformázás CSS-ben</h1>
+        <p class="lead mb-0">
+          A képernyőképeken szereplő alapvető CSS-tulajdonságok leírva,
+          rövid magyarázattal.
+        </p>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">A teljes kód</h2>
+          <p>
+            Az alábbi CSS a képeken látható szabályokat foglalja össze.
+          </p>
+          <pre><code>h1 {
+  font-size: 26px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+h2 {
+  font-size: 40px;
+  font-family: sans-serif;
+}
+
+h3 {
+  font-size: 30px;
+  font-family: sans-serif;
+}
+
+h4 {
+  font-size: 20px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+p {
+  font-size: 22px;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+li {
+  font-size: 20px;
+  font-family: sans-serif;
+}
+</code></pre>
+          <div class="mt-3">
+            <a href="pelda.css" download class="btn btn-outline-primary">
+              CSS-kód letöltése
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">Mit csinálnak ezek a tulajdonságok?</h2>
+          <div class="table-responsive">
+            <table class="table align-middle mb-0">
+              <thead>
+                <tr>
+                  <th>Tulajdonság</th>
+                  <th>Jelentése</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>font-size</code></td>
+                  <td>A betű méretét állítja be.</td>
+                </tr>
+                <tr>
+                  <td><code>font-family</code></td>
+                  <td>A használt betűcsaládot adja meg.</td>
+                </tr>
+                <tr>
+                  <td><code>text-transform: uppercase</code></td>
+                  <td>A megjelenő szöveget nagybetűssé alakítja.</td>
+                </tr>
+                <tr>
+                  <td><code>font-style: italic</code></td>
+                  <td>Dőlt betűs megjelenítést állít be.</td>
+                </tr>
+                <tr>
+                  <td><code>text-align: center</code></td>
+                  <td>Középre igazítja a szöveget.</td>
+                </tr>
+                <tr>
+                  <td><code>line-height: 1.5</code></td>
+                  <td>A sorok közötti távolságot a betűméret másfélszeresére állítja.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">Elemekre bontva</h2>
+
+          <h3 class="h5"><code>h1</code></h3>
+          <pre><code>h1 {
+  font-size: 26px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-style: italic;
+}</code></pre>
+
+          <h3 class="h5 mt-4"><code>h2</code></h3>
+          <pre><code>h2 {
+  font-size: 40px;
+  font-family: sans-serif;
+}</code></pre>
+
+          <h3 class="h5 mt-4"><code>h3</code></h3>
+          <pre><code>h3 {
+  font-size: 30px;
+  font-family: sans-serif;
+}</code></pre>
+
+          <h3 class="h5 mt-4"><code>h4</code></h3>
+          <pre><code>h4 {
+  font-size: 20px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+}</code></pre>
+
+          <h3 class="h5 mt-4"><code>p</code></h3>
+          <pre><code>p {
+  font-size: 22px;
+  font-family: sans-serif;
+  line-height: 1.5;
+}</code></pre>
+
+          <h3 class="h5 mt-4"><code>li</code></h3>
+          <pre><code>li {
+  font-size: 20px;
+  font-family: sans-serif;
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">Fontos megfigyelés</h2>
+          <div class="callout rounded-3 p-3">
+            A <code>font-family: sans-serif;</code> több szabályban is ismétlődik.
+            Ez vezet át a következő CSS-témához: hogyan tudjuk a szelektorokat
+            kombinálni, és ugyanazt a szabályt egyszerre több elemre alkalmazni.
+          </div>
+        </div>
+      </section>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+        <a href="../index.html" class="btn btn-secondary btn-lg">
+          Vissza a CSS főoldalra
+        </a>
+        <a href="../1_ora/index.html" class="btn btn-outline-primary btn-lg">
+          Tovább: szelektorok kombinálása
+        </a>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  color: #444;
+  font-family: sans-serif;
+}
+h1, h2, h3 { color: #1098ad; }
+.main-header {
+  background-color: #f7f7f7;
+  padding: 20px 40px;
+  margin-bottom: 30px;
+}
+article { margin-bottom: 30px; }
+h1, h2, h3, p { margin-bottom: 15px; }
+ul, ol { padding-left: 24px; }
+li { margin-bottom: 10px; }
+li:last-child { margin-bottom: 0; }
+aside {
+  background-color: #f7f7f7;
+  border-top: 5px solid #1098ad;
+  border-bottom: 5px solid #1098ad;
+  padding: 20px;
+}
+
+/* A teljes oldaltartalom közös konténere */
+.container {
+  width: 800px;
+  margin: 0 auto;
+}

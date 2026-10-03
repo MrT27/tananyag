@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CSS 16. óra – Flex elemek méretezése</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#f1f8ff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+    summary { cursor:pointer; font-weight:600; }
+  </style>
+</head>
+<body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+<span class="badge text-bg-primary">11. évfolyam</span>
+<span class="badge text-bg-info">CSS</span>
+<span class="badge text-bg-dark">16. óra</span>
+<h1 class="display-6 fw-bold mt-3">Flex elemek méretezése – a <code>flex</code> tulajdonság</h1>
+<p class="lead mb-0">Hogyan nőhetnek, zsugorodhatnak és oszthatják el a rendelkezésre álló helyet a flex elemek?</p>
+</section><div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Esti ismétlés Jonas kurzusából:</strong><span>54. videó – The flex Property</span></div>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">Az óra célja</h2>
+<ul>
+<li>A <code>flex-basis</code>, <code>flex-shrink</code> és <code>flex-grow</code> szerepének megértése.</li>
+<li>Annak felismerése, hogy Flexboxban a méretek rugalmasan változhatnak.</li>
+<li>A rövidített <code>flex</code> tulajdonság használata.</li>
+<li>Az egyszerű és gyakori <code>flex: 1</code> megoldás megértése.</li>
+</ul>
+<a class="btn btn-primary" download="" href="kezdo.zip">Kezdőcsomag letöltése</a>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">1. A flex elemek mérete nem mindig merev</h2>
+<p>A Flexbox egyik fontos tulajdonsága, hogy az elemek mérete képes alkalmazkodni a rendelkezésre álló helyhez.</p>
+<p>Ehhez három fogalom tartozik:</p>
+<div class="table-responsive"><table class="table table-striped align-middle"><thead><tr><th>Tulajdonság</th><th>Mit szabályoz?</th><th>Alapérték</th></tr></thead><tbody>
+<tr><td><code>flex-grow</code></td><td>Nőhet-e az elem, és mennyit kaphat a szabad helyből?</td><td><code>0</code></td></tr>
+<tr><td><code>flex-shrink</code></td><td>Zsugorodhat-e az elem, ha kevés a hely?</td><td><code>1</code></td></tr>
+<tr><td><code>flex-basis</code></td><td>Mi legyen az elem kiinduló mérete?</td><td><code>auto</code></td></tr>
+</tbody></table></div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">2. <code>flex-basis</code> – kiinduló méret</h2>
+<p>Flex elemeknél gyakran a <code>flex-basis</code> segítségével adunk meg kiinduló szélességet.</p>
+<pre><code>.elem {
+  flex-basis: 200px;
+}</code></pre>
+<p>Ez nem feltétlenül jelent pontosan 200 pixelt. Ha a konténerben nincs elég hely, az elemek alapértelmezés szerint összezsugorodhatnak.</p>
+<div class="callout rounded-3 p-3"><strong>Fontos gondolat:</strong> a <code>flex-basis</code> inkább kiinduló méret, nem mindig merev végleges szélesség.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">3. <code>flex-shrink</code> – zsugorodás</h2>
+<p>Alapértelmezés szerint:</p>
+<pre><code>flex-shrink: 1;</code></pre>
+<p>Ez azt jelenti, hogy ha a flex elemek együtt túl szélesek lennének, a böngésző csökkentheti a méretüket, hogy elférjenek.</p>
+<p>Ha ezt megtiltjuk:</p>
+<pre><code>.elem {
+  flex-shrink: 0;
+  flex-basis: 200px;
+}</code></pre>
+<p>akkor az elemek ragaszkodnak a 200 pixeles mérethez, és akár ki is lóghatnak a konténerből.</p>
+<div class="important rounded-3 p-3"><strong>Nem az a cél, hogy mindig kikapcsoljuk a zsugorodást.</strong> A legtöbbször az alapértelmezett viselkedés hasznos.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">4. <code>flex-grow</code> – a szabad hely kitöltése</h2>
+<p>Alapértelmezésben a flex elemek nem nőnek meg csak azért, mert maradt üres hely:</p>
+<pre><code>flex-grow: 0;</code></pre>
+<p>Ha minden elemre ezt írjuk:</p>
+<pre><code>.elem {
+  flex-grow: 1;
+}</code></pre>
+<p>akkor az elemek felosztják egymás között a rendelkezésre álló szabad helyet.</p>
+<div class="callout rounded-3 p-3"><strong>Ha minden elem ugyanazt a <code>flex-grow</code> értéket kapja, az üres helyből azonos arányban részesednek.</strong></div>
+<p>Ha csak egyetlen elem kap <code>flex-grow: 1</code>-et, akkor az az elem tölti ki a megmaradó helyet.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">5. A rövidített <code>flex</code> tulajdonság</h2>
+<p>A három tulajdonság egyetlen sorban is megadható:</p>
+<pre><code>flex: grow shrink basis;</code></pre>
+<p>Példa:</p>
+<pre><code>.elem {
+  flex: 0 0 200px;
+}</code></pre>
+<p>Ez azt jelenti:</p>
+<ul>
+<li><code>flex-grow: 0</code> – ne nőjön,</li>
+<li><code>flex-shrink: 0</code> – ne zsugorodjon,</li>
+<li><code>flex-basis: 200px</code> – 200 px legyen a kiinduló méret.</li>
+</ul>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">6. A leggyakoribb egyszerű forma – <code>flex: 1</code></h2>
+<pre><code>.elem {
+  flex: 1;
+}</code></pre>
+<p>Gyakorlati értelemben ezzel azt mondjuk: <strong>az elemek osszák el egymás között a rendelkezésre álló helyet</strong>.</p>
+<p>Ha minden flex elem <code>flex: 1</code>-et kap, akkor azonos arányban részesednek a helyből.</p>
+<div class="important rounded-3 p-3"><strong>11. évfolyamon ezt érdemes megjegyezni:</strong> ha azonos szélességű, rugalmas elemeket szeretnénk egy sorban, a <code>flex: 1</code> nagyon gyakori megoldás.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">7. Órai gyakorlat</h2>
+<ol>
+<li>Nyisd meg a kezdőcsomagot.</li>
+<li>Adj minden elemnek <code>flex-basis: 200px;</code> értéket.</li>
+<li>Csökkentsd a böngészőablak szélességét. Figyeld meg, hogyan zsugorodnak az elemek.</li>
+<li>Állítsd be ideiglenesen: <code>flex-shrink: 0;</code>. Mi történik?</li>
+<li>Távolítsd el ezeket, majd adj minden elemnek <code>flex-grow: 1;</code> értéket.</li>
+<li>Végül egyszerűsítsd a kódot erre: <code>flex: 1;</code>.</li>
+</ol>
+<details class="task rounded-3 p-3"><summary>Az óra végére elérendő egyszerű megoldás</summary><pre><code>.container {
+  display: flex;
+  gap: 12px;
+}
+
+.elem {
+  flex: 1;
+}</code></pre>
+<a class="btn btn-outline-success me-2" href="megoldas/index.html">Mintamegoldás megnyitása</a><a class="btn btn-outline-success" download="" href="megoldas.zip">Megoldás letöltése</a></details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">8. Mini feladat – három egyforma kártya</h2>
+<p>Készíts három kártyát egy flex konténerben. A kártyák töltsék ki a teljes sort, legyenek azonos szélességűek, és legyen közöttük 20 px távolság.</p>
+<pre><code>&lt;div class="cards"&gt;
+  &lt;div class="card-box"&gt;HTML&lt;/div&gt;
+  &lt;div class="card-box"&gt;CSS&lt;/div&gt;
+  &lt;div class="card-box"&gt;Flexbox&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<details class="callout rounded-3 p-3"><summary>Segítség</summary><pre><code>.cards {
+  display: flex;
+  gap: 20px;
+}
+
+.card-box {
+  flex: 1;
+}</code></pre></details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">9. Ellenőrző kérdések</h2>
+<ol>
+<li>Mit szabályoz a <code>flex-basis</code>?</li>
+<li>Mi a <code>flex-shrink</code> alapértéke?</li>
+<li>Mi történik <code>flex-shrink: 0</code> esetén?</li>
+<li>Mit csinál a <code>flex-grow: 1</code>?</li>
+<li>Mit jelent nagy vonalakban a <code>flex: 1</code>?</li>
+<li>Mit jelent a <code>flex: 0 0 200px</code> három értéke?</li>
+</ol>
+<details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol>
+<li>A flex elem kiinduló méretét.</li>
+<li><code>1</code>.</li>
+<li>Az elem nem zsugorodhat a helyhiány miatt.</li>
+<li>Az elem részt vesz a megmaradó szabad hely kitöltésében.</li>
+<li>Az elem rugalmasan részt vesz a hely elosztásában; azonos <code>flex: 1</code> esetén az elemek azonos arányban osztoznak.</li>
+<li><code>grow = 0</code>, <code>shrink = 0</code>, <code>basis = 200px</code>.</li>
+</ol></details>
+</div></section>
+<nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between">
+<a class="btn btn-outline-secondary btn-lg" href="../15_ora/index.html">Előző: Flexbox igazítás és térközök</a>
+<a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a>
+<a class="btn btn-primary btn-lg" href="../17_ora/index.html">Következő: Flexbox a gyakorlatban</a>
+</nav>
+</main></body></html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CSS 17. óra – Flexbox a gyakorlatban</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#f1f8ff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+    summary { cursor:pointer; font-weight:600; }
+  </style>
+</head>
+<body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+<span class="badge text-bg-primary">11. évfolyam</span>
+<span class="badge text-bg-info">CSS</span>
+<span class="badge text-bg-dark">17. óra</span>
+<h1 class="display-6 fw-bold mt-3">Flexbox a gyakorlatban – komponensek elrendezése</h1>
+<p class="lead mb-0">A már ismert Flexbox tulajdonságokat most valódi weboldalrészeken használjuk: fejléc, szerzői blokk és kapcsolódó bejegyzések.</p>
+</section><div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Esti ismétlés Jonas kurzusából:</strong><span>55. videó – Adding Flexbox to Our Project</span></div>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">Az óra célja</h2>
+<ul>
+<li>Felismerni, melyik elem legyen a <strong>flex konténer</strong>.</li>
+<li>A <code>display: flex</code>, <code>align-items</code>, <code>justify-content</code> és <code>gap</code> gyakorlati használata.</li>
+<li>Szükség esetén új szülőelem létrehozása a HTML-ben.</li>
+<li>Régi, kézzel beállított margók egyszerűsítése Flexbox segítségével.</li>
+</ul>
+<a class="btn btn-primary" download="" href="kezdo.zip">Kezdőcsomag letöltése</a>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">1. A legfontosabb kérdés: melyik legyen a flex konténer?</h2>
+<p>Ha két vagy több elemet egymás mellé szeretnénk rendezni, először meg kell keresnünk a <strong>közös szülőelemüket</strong>.</p>
+<div class="important rounded-3 p-3"><strong>Szabály:</strong> a <code>display: flex</code> mindig arra a szülőelemre kerül, amelynek közvetlen gyermekelemeit el akarjuk rendezni.</div>
+<pre><code>&lt;header class="main-header"&gt;
+  &lt;h1&gt;Webes magazin&lt;/h1&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+<p>Itt a <code>h1</code> és a <code>nav</code> közös szülője a <code>.main-header</code>, ezért ez lesz a flex konténer.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">2. Fejléc: cím balra, navigáció jobbra</h2>
+<pre><code>.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}</code></pre>
+<ul>
+<li><code>display: flex</code> – a közvetlen gyermekeket flex elemekké teszi.</li>
+<li><code>align-items: center</code> – függőlegesen középre igazítja őket.</li>
+<li><code>justify-content: space-between</code> – az egyik elemet balra, a másikat jobbra tolja.</li>
+</ul>
+<div class="callout rounded-3 p-3"><strong>Miért jobb?</strong> Nem kell kézzel margókkal próbálgatni, hogy a cím és a navigáció ugyanabba a sorba kerüljön.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">3. Ha nincs megfelelő közös szülő</h2>
+<p>A szerző képe és a szerző neve legyen egymás mellett. Ehhez célszerű őket egy közös <code>div</code>-be csomagolni:</p>
+<pre><code>&lt;div class="author-box"&gt;
+  &lt;img class="author-img" src="img/laura-jones.jpg" alt="Szerző"&gt;
+  &lt;p class="author"&gt;Közzétette: Laura Jones&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<pre><code>.author-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}</code></pre>
+<p>A <code>gap</code> itt sokkal tisztább megoldás, mint külön <code>margin-left</code> értéket adni a szövegnek.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">4. Kapcsolódó bejegyzés mint komponens</h2>
+<p>Egy kis komponensben a kép legyen bal oldalon, a cím és a szerző pedig jobb oldalon.</p>
+<pre><code>&lt;li class="related-post"&gt;
+  &lt;img src="img/related-1.jpg" alt="Kapcsolódó bejegyzés"&gt;
+  &lt;div&gt;
+    &lt;a class="related-link" href="#"&gt;A CSS dobozmodell&lt;/a&gt;
+    &lt;p class="related-author"&gt;Szerző: Anna&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/li&gt;</code></pre>
+<pre><code>.related-post {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}</code></pre>
+<div class="important rounded-3 p-3"><strong>Figyeld meg:</strong> a jobb oldali linket és szerzőt egy külön <code>div</code> fogja össze. Így a <code>.related-post</code>-nak csak két közvetlen flex eleme van: a kép és a szöveges doboz.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">5. Régi margók ütközhetnek az új elrendezéssel</h2>
+<p>Amikor egy korábbi oldalt alakítunk át Flexboxra, maradhatnak benne olyan margók, amelyeket már nincs értelme megtartani.</p>
+<pre><code>.author {
+  margin-bottom: 0;
+}</code></pre>
+<p>Érdemes a böngésző fejlesztői eszközeiben megnézni, mi okozza a váratlan eltolást.</p>
+<div class="callout rounded-3 p-3"><strong>Jó munkamódszer:</strong> először alakítsd ki az elrendezést Flexboxszal, majd töröld vagy írd felül a feleslegessé vált régi margókat.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">6. Inline elem és függőleges margó</h2>
+<p>A link alapértelmezés szerint inline elem. Ha például alsó margót szeretnénk használni rajta, célszerű blokkszintűvé tenni:</p>
+<pre><code>.related-link:link,
+.related-link:visited {
+  display: block;
+  margin-bottom: 5px;
+}</code></pre>
+<p>Ez jó ismétlése a korábban tanult <code>block</code>, <code>inline</code> és <code>inline-block</code> doboztípusoknak.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">7. Órai gyakorlat</h2>
+<ol>
+<li>Töltsd le és nyisd meg a kezdőcsomagot.</li>
+<li>A <code>.main-header</code> legyen flex konténer.</li>
+<li>Igazítsd középre függőlegesen a címet és a navigációt.</li>
+<li>A <code>justify-content: space-between</code> segítségével tedd őket a fejléc két oldalára.</li>
+<li>Az <code>.author-box</code> elemeit helyezd egymás mellé, és használj <code>gap: 15px</code>-t.</li>
+<li>A <code>.related-post</code> elemeknél a kép és a szöveges doboz kerüljön egy sorba.</li>
+<li>Adj közöttük <code>gap: 20px</code>-t.</li>
+<li>Távolítsd el azokat a margókat, amelyek már zavarják az igazítást.</li>
+</ol>
+<details class="task rounded-3 p-3"><summary>Mintamegoldás</summary>
+<pre><code>.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.author-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.related-post {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}</code></pre>
+<a class="btn btn-outline-success me-2" href="megoldas/index.html">Mintamegoldás megnyitása</a><a class="btn btn-outline-success" download="" href="megoldas.zip">Megoldás letöltése</a>
+</details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">8. Mit vigyél el ebből az órából?</h2>
+<div class="important rounded-3 p-3 mb-3"><strong>A Flexbox nem csak „egymás mellé rakás”.</strong> A legfontosabb készség annak felismerése, hogy melyik közös szülőből kell flex konténert készíteni.</div>
+<ul>
+<li>Két oldalra rendezés: <code>justify-content: space-between</code>.</li>
+<li>Függőleges igazítás: <code>align-items: center</code>.</li>
+<li>Elemek közötti távolság: <code>gap</code>.</li>
+<li>Ha nincs megfelelő közös szülő: hozz létre egy új, egyszerű <code>div</code>-et.</li>
+</ul>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">9. Ellenőrző kérdések</h2>
+<ol>
+<li>Hová kerül a <code>display: flex</code>?</li>
+<li>Mit csinál a <code>justify-content: space-between</code>?</li>
+<li>Miért használunk <code>align-items: center</code>-t?</li>
+<li>Mire jó a <code>gap</code>?</li>
+<li>Mit tehetünk, ha két elemnek nincs olyan közös szülője, amelyet flex konténerré szeretnénk tenni?</li>
+<li>Miért érdemes a régi margókat ellenőrizni Flexboxra átálláskor?</li>
+</ol>
+<details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol>
+<li>Arra a szülőelemre, amelynek közvetlen gyermekeit el szeretnénk rendezni.</li>
+<li>A maradék helyet az elemek közé teszi; két elem esetén a két szélre tolja őket.</li>
+<li>A flex elemek kereszttengely menti, itt függőleges középre igazítására.</li>
+<li>A flex elemek közötti egyenletes távolság megadására.</li>
+<li>Létrehozhatunk egy közös szülő <code>div</code>-et.</li>
+<li>Mert a korábbi margók eltolhatják az elemeket és feleslegessé válhatnak.</li>
+</ol></details>
+</div></section>
+<nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between">
+<a class="btn btn-outline-secondary btn-lg" href="../16_ora/index.html">Előző: Flex elemek méretezése</a>
+<a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a>
+<a class="btn btn-primary btn-lg" href="../18_ora/index.html">Következő: Teljes oldal Flexboxszal</a>
+</nav>
+</main></body></html>

@@ -1,0 +1,11 @@
+services:
+  tananyag:
+    image: nginx:alpine
+    container_name: tananyag
+    restart: unless-stopped
+
+    ports:
+      - "8085:80"
+
+    volumes:
+      - ./:/usr/share/nginx/html:ro

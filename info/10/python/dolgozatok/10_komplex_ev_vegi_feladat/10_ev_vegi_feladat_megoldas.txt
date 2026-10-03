@@ -1,0 +1,99 @@
+# 10. ÉRTÉKELÉS – KOMPLEX ÉV VÉGI FELADAT
+# MEGOLDÁS: WEBÁRUHÁZI RENDELÉSEK
+
+
+def rendelesek_beolvasasa(fajlnev):
+    rendelesek = []
+    with open(fajlnev, "r", encoding="UTF-8") as bemenet:
+        for sor in bemenet:
+            adat = sor.strip().split(";")
+            rendelesek.append({
+                "azonosito": adat[0],
+                "vevo": adat[1],
+                "termek": adat[2],
+                "kategoria": adat[3],
+                "darab": int(adat[4]),
+                "egysegar": int(adat[5]),
+                "teljesitve": adat[6]
+            })
+    return rendelesek
+
+
+def rendeles_erteke(rendeles):
+    return rendeles["darab"] * rendeles["egysegar"]
+
+
+def legnagyobb_rendeles(rendelesek):
+    legnagyobb = rendelesek[0]
+    for rendeles in rendelesek:
+        if rendeles_erteke(rendeles) > rendeles_erteke(legnagyobb):
+            legnagyobb = rendeles
+    return legnagyobb
+
+
+def kategoria_statisztika(rendelesek):
+    statisztika = {}
+    for rendeles in rendelesek:
+        kategoria = rendeles["kategoria"]
+        if kategoria in statisztika:
+            statisztika[kategoria] += rendeles["darab"]
+        else:
+            statisztika[kategoria] = rendeles["darab"]
+    return statisztika
+
+
+def vevo_rendelesei(rendelesek, keresett_vevo):
+    talalatok = []
+    for rendeles in rendelesek:
+        if rendeles["vevo"].lower() == keresett_vevo.lower():
+            talalatok.append(rendeles)
+    return talalatok
+
+
+def teljesitesre_varok_mentese(rendelesek, fajlnev):
+    darab = 0
+    with open(fajlnev, "w", encoding="UTF-8") as kimenet:
+        for rendeles in rendelesek:
+            if rendeles["teljesitve"] == "nem":
+                kimenet.write(
+                    f'{rendeles["azonosito"]};{rendeles["vevo"]};'
+                    f'{rendeles["termek"]};{rendeles_erteke(rendeles)}\n'
+                )
+                darab += 1
+    return darab
+
+
+rendelesek = rendelesek_beolvasasa("rendelesek.txt")
+print(f"Beolvasott rendelések száma: {len(rendelesek)}")
+
+osszes_ertek = 0
+for rendeles in rendelesek:
+    osszes_ertek += rendeles_erteke(rendeles)
+print(f"A rendelések együttes értéke: {osszes_ertek} Ft")
+
+legnagyobb = legnagyobb_rendeles(rendelesek)
+print(
+    f'A legnagyobb rendelés: {legnagyobb["azonosito"]}, '
+    f'{legnagyobb["vevo"]}, {rendeles_erteke(legnagyobb)} Ft'
+)
+
+print("Kategóriánként rendelt darabszám:")
+statisztika = kategoria_statisztika(rendelesek)
+for kategoria, darab in statisztika.items():
+    print(f"{kategoria}: {darab} db")
+
+keresett_vevo = input("Kérem a vevő nevét: ")
+talalatok = vevo_rendelesei(rendelesek, keresett_vevo)
+
+if len(talalatok) == 0:
+    print("Nincs ilyen nevű vevő.")
+else:
+    print(f"{keresett_vevo} rendelései:")
+    for rendeles in talalatok:
+        print(f'{rendeles["azonosito"]}: {rendeles_erteke(rendeles)} Ft')
+
+mentett_darab = teljesitesre_varok_mentese(
+    rendelesek,
+    "teljesitesre_var.txt"
+)
+print(f"A teljesitesre_var.txt fájlba {mentett_darab} rendelés került.")

@@ -1,0 +1,10 @@
+Anna;szakértő;520000;2014
+Béla;fizikai;385000;2009
+Csilla;adminisztrátor;410000;2018
+Dávid;fizikai;435000;2012
+Eszter;szakértő;610000;2007
+Ferenc;fizikai;398000;2020
+Gabriella;vezető;720000;2005
+Hunor;fizikai;455000;2016
+Ilona;adminisztrátor;395000;2011
+József;szakértő;575000;2019

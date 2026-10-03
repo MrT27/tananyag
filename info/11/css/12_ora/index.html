@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CSS 12. óra – Relative és absolute pozicionálás</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#eefaff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+    .danger-note { border-left:.35rem solid #dc3545; background:#fff1f2; }
+    .flow-demo { min-height:150px; border:2px dashed #adb5bd; background:#fff; position:relative; }
+    .flow-box { display:inline-block; padding:.5rem .8rem; margin:.4rem; background:#e7f5ff; border:1px solid #74c0fc; }
+    .abs-box { position:absolute; top:15px; right:15px; padding:.5rem .8rem; background:#fff3bf; border:1px solid #f59f00; }
+    .diagram-parent { position:relative; min-height:220px; border:3px solid #1098ad; background:#eefbff; border-radius:1rem; padding:1rem; }
+    .diagram-child { position:absolute; top:70px; left:120px; background:#ffe8cc; border:3px solid #f76707; padding:1rem; border-radius:.75rem; }
+    summary { cursor:pointer; font-weight:600; }
+  </style>
+</head>
+<body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+<span class="badge text-bg-primary">11. évfolyam</span>
+<span class="badge text-bg-info">CSS</span>
+<span class="badge text-bg-dark">12. óra</span>
+<h1 class="display-6 fw-bold mt-3">Relative és absolute pozicionálás</h1>
+<p class="lead mb-0">Hogyan emelhetünk ki egy elemet a normál dokumentumfolyamból, és hogyan helyezhetjük pontosan egy szülőelemhez képest?</p>
+</section><div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Esti ismétlés Jonas kurzusából:</strong><span>39. videó – CSS Theory #5: Absolute Positioning</span></div>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">Az óra célja</h2>
+<ul>
+<li>A normál dokumentumfolyam fogalmának megértése.</li>
+<li>A <code>position: absolute</code> hatásának megfigyelése.</li>
+<li>A <code>top</code>, <code>right</code>, <code>bottom</code> és <code>left</code> használata.</li>
+<li>A <code>position: relative</code> szerepének megértése a szülőelemen.</li>
+<li>Annak felismerése, mikor jó ötlet az abszolút pozicionálás – és mikor nem.</li>
+</ul>
+<p>A mai feladat a 11. óra magazinoldalára épül. A kezdőcsomagban már szerepel egy <strong>Tetszik</strong> gomb, de még a normál dokumentumfolyamban van.</p>
+<a class="btn btn-primary" download="" href="kezdo.zip">Kezdőcsomag letöltése</a>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">1. Normál dokumentumfolyam</h2>
+<p>Alapértelmezésben a böngésző az elemeket a HTML-ben megadott sorrend alapján helyezi el. Ezt nevezzük <strong>normál dokumentumfolyamnak</strong> (normal flow).</p>
+<pre><code>&lt;h2&gt;A weboldal három alapja&lt;/h2&gt;
+&lt;button&gt;❤️ Tetszik&lt;/button&gt;
+&lt;img ...&gt;</code></pre>
+<p>A gomb a címsor után jelenik meg, mert ott szerepel a HTML-ben. Helyet foglal, ezért a többi elem elhelyezkedésére is hatással van.</p>
+<div class="flow-demo rounded-3 p-3"><span class="flow-box">1. címsor</span><span class="flow-box">2. gomb</span><span class="flow-box">3. kép</span></div>
+<div class="task rounded-3 p-3 mt-3"><strong>Próba:</strong> nyisd meg a kezdőoldalt, majd DevToolsban jelöld ki a gombot. Figyeld meg, hol helyezkedik el, és hogy a törlése megváltoztatja-e a környező elemek helyét.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">2. Az elem kivétele a normál folyamból</h2>
+<p>Állítsuk a gombot abszolút pozicionálásúra:</p>
+<pre><code>.like-button {
+  position: absolute;
+}</code></pre>
+<p>Az elem ezzel <strong>kikerül a normál dokumentumfolyamból</strong>. A környező elemek úgy rendeződnek, mintha a gomb nem foglalna helyet. Emiatt az abszolút pozicionált elem akár más elemek fölé is kerülhet.</p>
+<div class="flow-demo rounded-3 p-3"><span class="flow-box">1. címsor</span><span class="flow-box">3. kép</span><span class="abs-box">2. gomb – absolute</span></div>
+<div class="important rounded-3 p-3 mt-3"><strong>Fontos:</strong> a <code>position: absolute</code> nem egyszerűen „odébb tolja” az elemet. Megváltoztatja az elem részvételét az oldal elrendezésében.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">3. top, right, bottom, left</h2>
+<p>Az abszolút pozicionált elem helyét négy irányból adhatjuk meg:</p>
+<pre><code>.like-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}</code></pre>
+<ul>
+<li><code>top</code> – távolság felülről</li>
+<li><code>right</code> – távolság jobbról</li>
+<li><code>bottom</code> – távolság alulról</li>
+<li><code>left</code> – távolság balról</li>
+</ul>
+<div class="task rounded-3 p-3"><strong>Kísérlet:</strong> próbáld ki külön a <code>top: 50px; left: 50px;</code>, majd a <code>bottom: 0; right: 0;</code> beállítást. Mindig csak azt a két irányt használd, amelyre ténylegesen szükséged van.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">4. De mihez képest számoljuk a távolságot?</h2>
+<p>Ez az abszolút pozicionálás kulcskérdése. Ha nincs megfelelő pozicionált ős, a böngésző nem feltétlenül ahhoz az elemhez igazít, amelyhez elsőre várnánk.</p>
+<p>A gyakori megoldás: annak a szülőnek, amelyhez képest pozicionálni szeretnénk a gyerekelemet, adjunk <code>position: relative</code> értéket.</p>
+<pre><code>.post-header {
+  position: relative;
+}
+
+.like-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}</code></pre>
+<div class="diagram-parent mt-3"><strong>.post-header<br/>position: relative</strong><div class="diagram-child"><strong>.like-button</strong><br/>position: absolute<br/>top: 70px; left: 120px;</div></div>
+<p class="mt-3">Az abszolút pozicionált elem a hozzá legközelebbi olyan őshöz igazodik, amelynek <code>position</code> értéke nem <code>static</code>. A mai példában ezt tudatosan <code>relative</code>-val hozzuk létre.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">5. Miért adunk relative-ot a szülőnek?</h2>
+<p>A <code>position: relative</code> önmagában nem veszi ki az elemet a normál dokumentumfolyamból. Ha nem adunk mellé eltolást, a szülő ugyanott marad, ahol eddig volt.</p>
+<p>Viszont ezzel létrehozunk egy jól használható <strong>viszonyítási alapot</strong> az abszolút pozicionált gyerekelemeknek.</p>
+<div class="callout rounded-3 p-3"><strong>Megjegyzendő páros:</strong><br/><code>szülő: position: relative;</code><br/><code>gyerek: position: absolute;</code></div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">6. Órai feladat – Tetszik gomb a cikk fejlécében</h2>
+<ol>
+<li>Nyisd meg a kezdőcsomagot.</li>
+<li>Nézd meg a <code>.like-button</code> gomb helyét a normál dokumentumfolyamban.</li>
+<li>Adj a gombnak <code>position: absolute;</code> szabályt.</li>
+<li>Próbáld ki a <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> tulajdonságokat.</li>
+<li>Állítsd a <code>.post-header</code> elemet <code>position: relative;</code> értékre.</li>
+<li>Helyezd a gombot a cikk fejlécének jobb felső sarkába: <code>top: 0; right: 0;</code>.</li>
+<li>DevToolsban kapcsold ki-be a <code>position: relative</code> sort, és figyeld meg, hogyan változik a viszonyítási alap.</li>
+</ol>
+<details class="task rounded-3 p-3"><summary>Végleges CSS</summary><pre><code>.post-header {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.like-button {
+  padding: 8px 12px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+}</code></pre><a class="btn btn-outline-success me-2" href="megoldas/index.html">Mintamegoldás megnyitása</a><a class="btn btn-outline-success" download="" href="megoldas.zip">Megoldás letöltése</a></details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">7. Mikor használjuk?</h2>
+<p>Az abszolút pozicionálás jó választás lehet kisebb, egyértelműen egy másik elemhez kötődő részleteknél:</p>
+<ul><li>sarokban lévő ikon vagy jelvény,</li><li>kártyán elhelyezett gomb,</li><li>képre helyezett felirat,</li><li>kis dekorációs elem.</li></ul>
+<div class="danger-note rounded-3 p-3"><strong>Ne ebből építs teljes oldalelrendezést.</strong> Menüket, többoszlopos oldalakat és nagyobb szerkezeteket nem érdemes sok <code>top</code>/<code>left</code> értékkel „kézzel odarakni”. Ezekre később Flexboxot és CSS Gridet használunk.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">8. Mini kihívás</h2>
+<p>Helyezz egy <strong>„ÚJ”</strong> feliratot a kapcsolódó bejegyzések dobozának jobb felső sarkába.</p>
+<ol><li>Adj az <code>aside</code> elemnek megfelelő pozicionálást.</li><li>Tegyél bele egy <code>&lt;span class="badge-new"&gt;ÚJ&lt;/span&gt;</code> elemet.</li><li>A jelvényt abszolút pozicionáld.</li><li>Állítsd a helyét <code>top</code> és <code>right</code> segítségével.</li></ol>
+<details class="callout rounded-3 p-3"><summary>Egy lehetséges megoldás</summary><pre><code>aside {
+  position: relative;
+}
+
+.badge-new {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}</code></pre></details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">9. Ellenőrző kérdések</h2>
+<ol>
+<li>Mit jelent a normál dokumentumfolyam?</li>
+<li>Mi történik egy elemmel <code>position: absolute</code> esetén?</li>
+<li>Mire használjuk a <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> tulajdonságokat?</li>
+<li>Miért teszünk gyakran <code>position: relative</code>-ot a szülőre?</li>
+<li>Kikerül-e a normál folyamból a <code>position: relative</code> elem?</li>
+<li>Miért nem érdemes teljes weboldalelrendezést abszolút pozicionálással készíteni?</li>
+</ol>
+<details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol>
+<li>Az elemek alapértelmezett elrendezése a HTML sorrendje és doboztípusaik szerint.</li>
+<li>Kikerül a normál folyamból, ezért nem foglal helyet úgy, mint korábban, és átfedhet más elemeket.</li>
+<li>Az abszolút pozicionált elem helyét adjuk meg velük a viszonyítási alaphoz képest.</li>
+<li>Hogy az abszolút pozicionált gyerek ehhez a szülőhöz igazodjon.</li>
+<li>Nem, alaphelyzetben továbbra is részt vesz a normál elrendezésben.</li>
+<li>Mert törékeny, nehezen reszponzív elrendezést eredményez; nagyobb layoutokra Flexbox és Grid való.</li>
+</ol></details>
+</div></section>
+<nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between">
+<a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a>
+<a class="btn btn-outline-secondary btn-lg" href="../11_ora/index.html">Előző: block, inline és inline-block</a>
+<a class="btn btn-primary btn-lg" href="../13_ora/index.html">Következő: box-sizing</a>
+</nav>
+</main></body></html>

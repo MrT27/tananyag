@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. kihívás – Converse termékkártya</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>
+      body { background: #f8f9fa; }
+      .hero {
+        background: linear-gradient(135deg, #ffffff 0%, #fff8e1 100%);
+        border: 1px solid #e6e9ef;
+      }
+      .section-card {
+        border: 0;
+        box-shadow: 0 .25rem .8rem rgba(0,0,0,.05);
+      }
+      pre {
+        background: #212529;
+        color: #f8f9fa;
+        border-radius: .75rem;
+        padding: 1rem;
+        overflow-x: auto;
+        margin-bottom: 0;
+      }
+      code { color: #c7254e; }
+      pre code { color: inherit; }
+      .task {
+        border-left: .35rem solid #198754;
+        background: #edf8f1;
+      }
+      .hint {
+        border-left: .35rem solid #0d6efd;
+        background: #eef5ff;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container py-5">
+      <section class="hero rounded-4 p-4 p-md-5 mb-4">
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span class="badge text-bg-primary">11. évfolyam</span>
+          <span class="badge text-bg-success">HTML</span>
+          <span class="badge text-bg-warning">2. kihívás</span>
+        </div>
+        <h1 class="display-6 fw-bold">Converse termékkártya</h1>
+        <p class="lead mb-0">
+          Készíts el önállóan egy egyszerű termékoldal-részletet az eddig tanult
+          HTML-elemek felhasználásával.
+        </p>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">A feladat</h2>
+          <div class="task rounded-3 p-3">
+            <p>
+              Készíts egy <code>article</code> elemet, amely egy Converse cipő
+              adatait tartalmazza.
+            </p>
+            <p class="mb-0">
+              A cél most nem a kinézet, hanem a helyes és logikus HTML-szerkezet.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">A szükséges tartalom</h2>
+          <ul>
+            <li>Terméknév: <strong>Converse Chuck Taylor All Star Low Top</strong></li>
+            <li>Ár: <strong>65,00 $</strong></li>
+            <li>Szállítás: <strong>Ingyenes szállítás</strong></li>
+            <li>
+              Leírás:
+              <em>Ez a klasszikus vászon Converse cipő könnyen kombinálható elegánsabb és hétköznapi ruhákkal is, így a mindennapi ruhatár alapdarabja lehet.</em>
+            </li>
+            <li>Link szövege: <strong>További információ →</strong></li>
+            <li>Alcím: <strong>Termékjellemzők</strong></li>
+            <li>Három termékjellemző felsorolásban</li>
+            <li>Gomb: <strong>Kosárba</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">A kép adatai</h2>
+          <pre><code>src="https://i.ibb.co/Jr7Wh1d/challenges.jpg"
+alt="Converse Chuck Taylor All Star cipő"
+width="250"
+height="250"</code></pre>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">Lépések</h2>
+          <ol>
+            <li>Hozz létre egy <code>article</code> elemet.</li>
+            <li>Tedd bele a termék nevét <code>h2</code> címsorral.</li>
+            <li>Helyezd el a termékképet <code>img</code> elemmel.</li>
+            <li>Az árat tedd egy bekezdésbe, és emeld ki <code>strong</code> elemmel.</li>
+            <li>Készíts külön bekezdést a szállítási információnak.</li>
+            <li>Írd be a termék rövid leírását egy újabb <code>p</code> elembe.</li>
+            <li>Készíts hivatkozást a Converse weboldalára <code>a</code> elemmel.</li>
+            <li>Készíts <code>h3</code> alcímet a termékjellemzőknek.</li>
+            <li>Hozz létre egy rendezetlen listát három <code>li</code> elemmel.</li>
+            <li>A végén készíts egy <code>button</code> elemet.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">A termékjellemzők</h2>
+          <ul>
+            <li>Könnyű, tartós vászon tornacipő</li>
+            <li>Enyhén párnázott talpbetét a nagyobb kényelemért</li>
+            <li>Jellegzetes Chuck Taylor bokaembléma</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">Ellenőrzőlista</h2>
+          <ul>
+            <li>Az egész termék egy <code>article</code> elemen belül van.</li>
+            <li>A terméknév <code>h2</code>.</li>
+            <li>A kép rendelkezik <code>src</code> és <code>alt</code> attribútummal.</li>
+            <li>Az ár <code>strong</code> elemmel van kiemelve.</li>
+            <li>A linknek van megfelelő <code>href</code> attribútuma.</li>
+            <li>A termékjellemzők <code>ul</code> listában vannak.</li>
+            <li>Három <code>li</code> készült.</li>
+            <li>A végén található egy <code>button</code>.</li>
+            <li>A kód behúzása rendezett és áttekinthető.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card section-card mb-4">
+        <div class="card-body p-4">
+          <h2 class="h3">Megoldás</h2>
+          <p>
+            Először próbáld meg önállóan elkészíteni a feladatot, és csak utána
+            ellenőrizd a teljes megoldást.
+          </p>
+          <a href="megoldas.html" download class="btn btn-outline-primary mb-3">
+            Megoldás letöltése
+          </a>
+          <pre><code>&lt;article&gt;
+  &lt;h2&gt;Converse Chuck Taylor All Star Low Top&lt;/h2&gt;
+
+  &lt;img
+    src=&quot;https://i.ibb.co/Jr7Wh1d/challenges.jpg&quot;
+    alt=&quot;Converse Chuck Taylor All Star cipő&quot;
+    height=&quot;250&quot;
+    width=&quot;250&quot;
+  /&gt;
+
+  &lt;p&gt;&lt;strong&gt;65,00 $&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;Ingyenes szállítás&lt;/p&gt;
+
+  &lt;p&gt;
+    Ez a klasszikus vászon Converse cipő könnyen kombinálható elegánsabb és
+    hétköznapi ruhákkal is, így a mindennapi ruhatár alapdarabja lehet.
+  &lt;/p&gt;
+
+  &lt;a href=&quot;https://www.converse.com&quot;&gt;További információ &amp;rarr;&lt;/a&gt;
+
+  &lt;h3&gt;Termékjellemzők&lt;/h3&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;Könnyű, tartós vászon tornacipő&lt;/li&gt;
+    &lt;li&gt;Enyhén párnázott talpbetét a nagyobb kényelemért&lt;/li&gt;
+    &lt;li&gt;Jellegzetes Chuck Taylor bokaembléma&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;button&gt;Kosárba&lt;/button&gt;
+&lt;/article&gt;
+</code></pre>
+        </div>
+      </section>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+        <a href="../index.html" class="btn btn-secondary btn-lg">
+          Vissza a HTML főoldalra
+        </a>
+      </div>
+    </main>
+  </body>
+</html>

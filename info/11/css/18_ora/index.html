@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CSS 18. óra – Teljes oldal elrendezése Flexboxszal</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#f1f8ff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+    summary { cursor:pointer; font-weight:600; }
+  </style>
+</head>
+<body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+<span class="badge text-bg-primary">11. évfolyam</span>
+<span class="badge text-bg-info">CSS</span>
+<span class="badge text-bg-dark">18. óra</span>
+<h1 class="display-6 fw-bold mt-3">Teljes oldal elrendezése Flexboxszal</h1>
+<p class="lead mb-0">A Flexboxot most már nemcsak kisebb komponenseken használjuk: a cikket és az oldalsávot is közös, rugalmas oldalelrendezésbe rendezzük.</p>
+</section><div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Esti ismétlés Jonas kurzusából:</strong><span>56. videó – Building a Simple Flexbox Layout</span></div>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">Az óra célja</h2>
+<ul>
+<li>Megtalálni vagy létrehozni a megfelelő <strong>közös flex konténert</strong>.</li>
+<li>A teljes fő tartalom két oszlopba rendezése.</li>
+<li>Az oldalsáv fix méretezése <code>flex</code> segítségével.</li>
+<li>A fő cikk rugalmas méretezése <code>flex: 1</code>-gyel.</li>
+<li>A <code>stretch</code> alapértelmezett viselkedés felismerése és módosítása.</li>
+</ul>
+<a class="btn btn-primary" download="" href="kezdo.zip">Kezdőcsomag letöltése</a>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">1. Nem mindig a meglévő konténer a jó flex konténer</h2>
+<p>A teljes <code>.container</code> nem lehet a fő kétoszlopos layout flex konténere, mert annak nemcsak a cikk és az oldalsáv, hanem a fejléc és a lábléc is közvetlen gyermeke.</p>
+<div class="important rounded-3 p-3"><strong>Fontos:</strong> csak azok legyenek közvetlen flex elemek, amelyeket ténylegesen egymás mellé szeretnénk rendezni.</div>
+<p>Ezért az <code>article</code> és az <code>aside</code> köré létrehozunk egy új közös szülőt:</p>
+<pre><code>&lt;div class="row"&gt;
+  &lt;article&gt;...&lt;/article&gt;
+  &lt;aside&gt;...&lt;/aside&gt;
+&lt;/div&gt;</code></pre>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">2. A két oszlop egymás mellé rendezése</h2>
+<pre><code>.row {
+  display: flex;
+  gap: 75px;
+}</code></pre>
+<p>Ennyi már elég ahhoz, hogy a cikk és az oldalsáv egymás mellé kerüljön. A <code>gap</code> a két oszlop közötti távolságot adja meg.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">3. Az oldalsáv legyen pontosan 300 pixel</h2>
+<p>Flex elemnél a méretet nem feltétlenül <code>width</code>-del érdemes rögzíteni. A korábban tanult rövidített <code>flex</code> tulajdonsággal pontosan megadhatjuk, hogy ne nőjön és ne zsugorodjon:</p>
+<pre><code>.row aside {
+  flex: 0 0 300px;
+}</code></pre>
+<ul>
+<li>első <code>0</code>: ne nőjön (<code>flex-grow</code>)</li>
+<li>második <code>0</code>: ne zsugorodjon (<code>flex-shrink</code>)</li>
+<li><code>300px</code>: alapméret (<code>flex-basis</code>)</li>
+</ul>
+<div class="callout rounded-3 p-3"><strong>Eredmény:</strong> az oldalsáv pontosan 300 pixel széles marad.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">4. A cikk töltse ki a maradék helyet</h2>
+<p>Nem érdemes kézzel kiszámolni a cikk szélességét. Hagyjuk, hogy a Flexbox ossza ki a fennmaradó helyet:</p>
+<pre><code>.row article {
+  flex: 1;
+}</code></pre>
+<p>A <code>flex: 1</code> azt eredményezi, hogy a cikk felveszi a rendelkezésre álló maradék helyet.</p>
+<div class="important rounded-3 p-3"><strong>Ez a Flexbox egyik nagy előnye:</strong> nem kell kézzel összeadnunk az oszlopszélességeket és a közöttük lévő rést.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">5. Miért nyúlik meg az oldalsáv?</h2>
+<p>A Flexbox alapértelmezett <code>align-items</code> értéke <code>stretch</code>. Emiatt a rövidebb flex elem a kereszttengely mentén megnyúlik a magasabb elem méretéig.</p>
+<pre><code>.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 75px;
+}</code></pre>
+<p>A <code>flex-start</code> hatására mindkét elem csak akkora magasságú lesz, amekkorára a saját tartalmának szüksége van.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">6. A külső térköz kerüljön a közös konténerre</h2>
+<p>Korábban a cikk alatt lehetett külön margó. Most logikusabb, ha a teljes kétoszlopos sor alatt adunk helyet:</p>
+<pre><code>.row {
+  margin-bottom: 60px;
+}
+
+.row article,
+.row aside {
+  margin-bottom: 0;
+}</code></pre>
+<p>Így az elrendezéshez tartozó külső térközt maga az elrendezési konténer kezeli.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">7. Órai gyakorlat</h2>
+<ol>
+<li>Nyisd meg a kezdőcsomagot.</li>
+<li>Hozz létre egy <code>&lt;div class="row"&gt;</code> elemet, amely az <code>article</code> és az <code>aside</code> közös szülője.</li>
+<li>A <code>.row</code> legyen flex konténer.</li>
+<li>Adj <code>75px</code> rést a két oszlop közé.</li>
+<li>Az oldalsáv legyen <code>flex: 0 0 300px</code>.</li>
+<li>A cikk legyen <code>flex: 1</code>.</li>
+<li>Állítsd a <code>.row</code> elemnél az <code>align-items</code> értékét <code>flex-start</code>-ra.</li>
+<li>Az egész sor alatt legyen <code>60px</code> hely.</li>
+</ol>
+<details class="task rounded-3 p-3"><summary>Mintamegoldás</summary>
+<pre><code>.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 75px;
+  margin-bottom: 60px;
+}
+
+.row article {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.row aside {
+  flex: 0 0 300px;
+  margin-bottom: 0;
+}</code></pre>
+<a class="btn btn-outline-success me-2" href="megoldas/index.html">Mintamegoldás megnyitása</a><a class="btn btn-outline-success" download="" href="megoldas.zip">Megoldás letöltése</a>
+</details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">8. Mit vigyél el ebből az órából?</h2>
+<ul>
+<li>A flex konténer kiválasztása a layout egyik legfontosabb lépése.</li>
+<li>Néha új HTML-szülőelemet kell létrehozni az elrendezéshez.</li>
+<li>Fix oldalsávhoz használható: <code>flex: 0 0 300px</code>.</li>
+<li>Rugalmas fő tartalomhoz gyakori: <code>flex: 1</code>.</li>
+<li>A Flexbox alapértelmezett kereszttengely-igazítása <code>stretch</code>.</li>
+</ul>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">9. Ellenőrző kérdések</h2>
+<ol>
+<li>Miért nem jó a teljes <code>.container</code> elemet flex konténerré tenni ebben a példában?</li>
+<li>Mit jelent a <code>flex: 0 0 300px</code>?</li>
+<li>Mit csinál a <code>flex: 1</code>?</li>
+<li>Mi a Flexbox alapértelmezett <code>align-items</code> értéke?</li>
+<li>Mikor érdemes új közös szülőelemet létrehozni?</li>
+</ol>
+<details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol>
+<li>Mert akkor a fejléc, a cikk, az oldalsáv és a lábléc is egymás mellé kerülne.</li>
+<li>Az elem nem nő, nem zsugorodik, és az alapmérete 300 pixel.</li>
+<li>Az elem rugalmasan kitölti a rendelkezésre álló helyet.</li>
+<li><code>stretch</code>.</li>
+<li>Amikor csak bizonyos elemeket szeretnénk egy közös Flexbox-elrendezésben kezelni.</li>
+</ol></details>
+</div></section>
+<nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between">
+<a class="btn btn-outline-secondary btn-lg" href="../17_ora/index.html">Előző: Flexbox a gyakorlatban</a>
+<a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a>
+<a class="btn btn-primary btn-lg" href="../19_ora/index.html">Következő: CSS Grid alapok</a>
+</nav>
+</main></body></html>

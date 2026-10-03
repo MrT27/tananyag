@@ -1,0 +1,65 @@
+# 8. ÉRTÉKELÉS – MEGOLDÁS
+# ÖSSZETETT ADATSZERKEZETEK ÉS SZÓTÁRAK
+# MINI PROJEKT: ISKOLAI KÖNYVTÁR
+
+konyvek = [
+    {"cim": "A Pál utcai fiúk", "szerzo": "Molnár Ferenc", "kategoria": "regény", "oldal": 176, "elerheto": True},
+    {"cim": "Egri csillagok", "szerzo": "Gárdonyi Géza", "kategoria": "regény", "oldal": 544, "elerheto": False},
+    {"cim": "Tüskevár", "szerzo": "Fekete István", "kategoria": "regény", "oldal": 368, "elerheto": True},
+    {"cim": "Python kezdőknek", "szerzo": "Kód Elek", "kategoria": "informatika", "oldal": 240, "elerheto": True},
+    {"cim": "A világűr titkai", "szerzo": "Csillag Áron", "kategoria": "ismeretterjesztő", "oldal": 312, "elerheto": False},
+    {"cim": "Robotok világa", "szerzo": "Gép Anna", "kategoria": "informatika", "oldal": 198, "elerheto": True}
+]
+
+# 1. feladat
+print("Könyvek:")
+for konyv in konyvek:
+    print(f'{konyv["cim"]} – {konyv["szerzo"]} ({konyv["kategoria"]})')
+
+# 2. feladat
+elerheto_db = 0
+for konyv in konyvek:
+    if konyv["elerheto"]:
+        elerheto_db += 1
+print(f"Jelenleg {elerheto_db} könyv kölcsönözhető.")
+
+# 3. feladat
+keresett_szerzo = input("Kérem a szerző nevét: ")
+talalt = False
+for konyv in konyvek:
+    if konyv["szerzo"].lower() == keresett_szerzo.lower():
+        print(konyv["cim"])
+        talalt = True
+if not talalt:
+    print("Nincs ilyen szerző.")
+
+# 4. feladat
+leghosszabb = konyvek[0]
+for konyv in konyvek:
+    if konyv["oldal"] > leghosszabb["oldal"]:
+        leghosszabb = konyv
+print(f'A leghosszabb könyv: {leghosszabb["cim"]} ({leghosszabb["oldal"]} oldal)')
+
+# 5. feladat
+kategoriak = {}
+for konyv in konyvek:
+    kategoria = konyv["kategoria"]
+    kategoriak[kategoria] = kategoriak.get(kategoria, 0) + 1
+
+print("Kategóriák:")
+for kategoria, darab in kategoriak.items():
+    print(f"{kategoria}: {darab} db")
+
+# 6. feladat
+def kolcsonoz(konyvek, cim):
+    for konyv in konyvek:
+        if konyv["cim"].lower() == cim.lower() and konyv["elerheto"]:
+            konyv["elerheto"] = False
+            return True
+    return False
+
+keresett_cim = input("Melyik könyvet szeretnéd kikölcsönözni? ")
+if kolcsonoz(konyvek, keresett_cim):
+    print("Sikeres kölcsönzés.")
+else:
+    print("A kölcsönzés sikertelen.")

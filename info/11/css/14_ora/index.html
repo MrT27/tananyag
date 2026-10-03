@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CSS 14. óra – Flexbox alapok</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#f1f8ff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+    .flex-demo { display:flex; gap:.4rem; align-items:center; background:#ddd; padding:.75rem; border-radius:.75rem; overflow-x:auto; }
+    .flex-demo span { padding:.6rem .8rem; font-weight:700; white-space:nowrap; }
+    .a{background:#d0bfff}.b{background:#ffa94d}.c{background:#69db7c;height:85px;display:flex;align-items:center}.d{background:#ffd43b}.e{background:#faa2c1}
+    summary { cursor:pointer; font-weight:600; }
+  </style>
+</head>
+<body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+<span class="badge text-bg-primary">11. évfolyam</span>
+<span class="badge text-bg-info">CSS</span>
+<span class="badge text-bg-dark">14. óra</span>
+<h1 class="display-6 fw-bold mt-3">Flexbox alapok</h1>
+<p class="lead mb-0">Egyetlen <code>display: flex</code> szabállyal egymás mellé rendezhetjük az elemeket, majd nagyon egyszerűen igazíthatjuk őket.</p>
+</section><div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Esti ismétlés Jonas kurzusából:</strong><span>51. videó – Introduction to Flexbox</span></div>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">Az óra célja</h2>
+<ul>
+<li>Megérteni, mi a <strong>flex konténer</strong> és a <strong>flex elem</strong>.</li>
+<li>A <code>display: flex</code> használata.</li>
+<li>Az elemek függőleges igazítása <code>align-items</code> segítségével.</li>
+<li>Az elemek vízszintes elhelyezése <code>justify-content</code> segítségével.</li>
+<li>Megtapasztalni, miért egyszerűbb a Flexbox a régi elrendezési trükköknél.</li>
+</ul>
+<a class="btn btn-primary" download="" href="kezdo.zip">Kezdőcsomag letöltése</a>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">1. Miért kell a Flexbox?</h2>
+<p>Ha több elemet egymás mellé szeretnénk tenni, igazítani és a közöttük maradó helyet elosztani, a Flexbox ezt néhány CSS-sorral megoldja.</p>
+<div class="important rounded-3 p-3"><strong>Fontos:</strong> a Flexbox elsősorban elemek egy sorban vagy egy oszlopban történő elrendezésére és igazítására való.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">2. Flex konténer és flex elemek</h2>
+<p>A Flexboxot mindig egy <strong>szülőelemen</strong> kapcsoljuk be:</p>
+<pre><code>.container {
+  display: flex;
+}</code></pre>
+<p>Ettől a konténer közvetlen gyermekei <strong>flex elemekké</strong> válnak.</p>
+<div class="callout rounded-3 p-3"><strong>Flex konténer:</strong> az az elem, amelyen <code>display: flex</code> van.<br/><strong>Flex elemek:</strong> a konténer közvetlen gyermekei.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">3. Az első látványos változás</h2>
+<p>A kezdőfájlban a színes elemek egymás alatt jelennek meg. Add hozzá:</p>
+<pre><code>.container {
+  display: flex;
+}</code></pre>
+<p>A gyermekelemek azonnal egymás mellé kerülnek.</p>
+<div class="flex-demo"><span class="a">HTML</span><span class="b">és</span><span class="c">CSS</span><span class="d">nagyon</span><span class="e">jó</span></div>
+<p class="mt-3 mb-0">Alapértelmezésben az elemek vízszintesen sorakoznak fel.</p>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">4. Függőleges igazítás – <code>align-items</code></h2>
+<p>Ha az egyik elem magasabb, alapértelmezésben a többi elem is megnyúlik. Az alapérték:</p>
+<pre><code>align-items: stretch;</code></pre>
+<p>Az elemeket középre igazíthatjuk:</p>
+<pre><code>.container {
+  display: flex;
+  align-items: center;
+}</code></pre>
+<p>További fontos értékek:</p>
+<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Érték</th><th>Hatás</th></tr></thead><tbody>
+<tr><td><code>stretch</code></td><td>Alapértelmezés: az elemek megnyúlnak.</td></tr>
+<tr><td><code>center</code></td><td>Függőlegesen középre igazít.</td></tr>
+<tr><td><code>flex-start</code></td><td>A konténer elejéhez igazít.</td></tr>
+<tr><td><code>flex-end</code></td><td>A konténer végéhez igazít.</td></tr>
+</tbody></table></div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">5. Vízszintes elhelyezés – <code>justify-content</code></h2>
+<p>A <code>justify-content</code> azt szabályozza, hogyan helyezkedjenek el az elemek a konténerben vízszintesen.</p>
+<pre><code>.container {
+  display: flex;
+  justify-content: center;
+}</code></pre>
+<p>Az órán két fontos értéket próbálunk ki:</p>
+<ul>
+<li><code>center</code> – az elemeket középre rendezi.</li>
+<li><code>space-between</code> – a fennmaradó helyet egyenletesen az elemek közé osztja.</li>
+</ul>
+<pre><code>justify-content: space-between;</code></pre>
+<div class="important rounded-3 p-3">A <code>space-between</code> esetén az első elem a konténer elején, az utolsó a végén helyezkedik el, a köztes hely pedig eloszlik a flex elemek között.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">6. Órai gyakorlat</h2>
+<ol>
+<li>Nyisd meg a kezdőcsomagot.</li>
+<li>Add a <code>.container</code>-hez a <code>display: flex;</code> szabályt.</li>
+<li>Próbáld ki az <code>align-items</code> értékeit: <code>stretch</code>, <code>flex-start</code>, <code>center</code>, <code>flex-end</code>.</li>
+<li>Végül hagyd <code>center</code> értéken.</li>
+<li>Próbáld ki a <code>justify-content: center;</code> beállítást.</li>
+<li>Ezután változtasd <code>space-between</code>-re.</li>
+<li>Méretezd át a böngészőablakot, és figyeld meg, hogyan alkalmazkodik az elrendezés.</li>
+</ol>
+<details class="task rounded-3 p-3"><summary>Az óra végére elérendő CSS</summary><pre><code>.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}</code></pre>
+<a class="btn btn-outline-success me-2" href="megoldas/index.html">Mintamegoldás megnyitása</a><a class="btn btn-outline-success" download="" href="megoldas.zip">Megoldás letöltése</a></details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">7. Mini kihívás</h2>
+<p>Készíts egy egyszerű navigációs sávot három linkkel:</p>
+<pre><code>&lt;nav class="menu"&gt;
+  &lt;a href="#"&gt;Kezdőlap&lt;/a&gt;
+  &lt;a href="#"&gt;Cikkek&lt;/a&gt;
+  &lt;a href="#"&gt;Kapcsolat&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+<p>A cél: a linkek legyenek egy sorban, függőlegesen középre igazítva, és a rendelkezésre álló hely oszoljon el közöttük.</p>
+<details class="callout rounded-3 p-3"><summary>Segítség</summary><pre><code>.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}</code></pre></details>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">8. Ellenőrző kérdések</h2>
+<ol>
+<li>Melyik elemen kell megadni a <code>display: flex</code> szabályt?</li>
+<li>Mit nevezünk flex elemnek?</li>
+<li>Mire használjuk az <code>align-items</code> tulajdonságot?</li>
+<li>Mit csinál az <code>align-items: center</code>?</li>
+<li>Mit csinál a <code>justify-content: space-between</code>?</li>
+</ol>
+<details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol>
+<li>A szülő-, vagyis flex konténeren.</li>
+<li>A flex konténer közvetlen gyermekét.</li>
+<li>Az elemek keresztirányú, ebben a példában függőleges igazítására.</li>
+<li>Középre igazítja a flex elemeket a konténer magasságán belül.</li>
+<li>A szabad helyet egyenletesen az elemek közé osztja.</li>
+</ol></details>
+</div></section>
+<nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between">
+<a class="btn btn-outline-secondary btn-lg" href="../13_ora/index.html">Előző: box-sizing</a>
+<a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a>
+<a class="btn btn-primary btn-lg" href="../15_ora/index.html">Következő: igazítás és térközök</a>
+</nav>
+</main></body></html>

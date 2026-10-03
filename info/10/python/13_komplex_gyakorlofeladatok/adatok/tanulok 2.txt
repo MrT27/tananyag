@@ -1,0 +1,10 @@
+Kiss Anna;10.A;78;84;81;4
+Nagy Bence;10.A;45;52;48;12
+Tóth Csilla;10.B;91;88;94;2
+Varga Dávid;10.B;67;73;70;8
+Farkas Emma;10.A;86;90;89;6
+Szabó Gergő;10.B;39;44;41;15
+Kovács Hanna;10.A;72;76;80;3
+Molnár István;10.B;82;79;85;11
+Balogh Júlia;10.A;95;92;96;1
+Lakatos Márk;10.B;58;62;55;9

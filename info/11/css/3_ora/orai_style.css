@@ -1,0 +1,37 @@
+/* Pszeudo-osztályok */
+
+/* Minden lista első eleme */
+li:first-child {
+  font-weight: bold;
+}
+
+/* Minden lista utolsó eleme */
+li:last-child {
+  font-style: italic;
+}
+
+/* Egy konkrét sorszámú elem */
+li:nth-child(2) {
+  color: red;
+}
+
+/* Páros elemek */
+li:nth-child(even) {
+  color: red;
+}
+
+/* Páratlan elemek */
+li:nth-child(odd) {
+  color: red;
+}
+
+/* Fontos: ez csak akkor működik,
+   ha a p valóban az article első gyermeke */
+article p:first-child {
+  color: red;
+}
+
+/* Ez akkor működik, ha a p az article utolsó gyermeke */
+article p:last-child {
+  color: red;
+}

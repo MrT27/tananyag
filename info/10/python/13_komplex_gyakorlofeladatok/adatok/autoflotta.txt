@@ -1,0 +1,8 @@
+ABC-123;Ford;kék;186500;42
+DEF-456;Toyota;fehér;94500;18
+GHI-789;Suzuki;piros;212300;76
+JKL-012;Ford;fekete;158900;65
+MNO-345;Opel;szürke;132400;29
+PQR-678;Toyota;zöld;77400;91
+STU-901;Mazda;kék;109800;54
+VWX-234;Ford;fehér;243100;103

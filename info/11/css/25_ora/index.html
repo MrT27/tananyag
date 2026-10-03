@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CSS 25. óra – Reszponzív webdesign alapjai</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#eef7ff 100%);border:1px solid #e6e9ef}.section-card{border:0;box-shadow:0 .25rem .8rem rgba(0,0,0,.05)}pre{background:#212529;color:#f8f9fa;border-radius:.75rem;padding:1rem;overflow-x:auto}code{color:#c7254e}pre code{color:inherit}.callout{border-left:.35rem solid #0dcaf0;background:#eefbff}.important{border-left:.35rem solid #ffc107;background:#fff8e1}.task{border-left:.35rem solid #198754;background:#edf8f1}.compare{border-left:.35rem solid #6f42c1;background:#f5f0ff}.pill{display:inline-block;padding:.3rem .65rem;border-radius:999px;background:#e9ecef;margin:.15rem;font-weight:600}summary{cursor:pointer;font-weight:600}
+</style>
+</head>
+<body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+<span class="badge text-bg-primary">11. évfolyam</span> <span class="badge text-bg-success">Reszponzív webdesign</span> <span class="badge text-bg-dark">25. óra</span>
+<h1 class="display-6 fw-bold mt-3">Reszponzív webdesign alapjai</h1>
+<p class="lead mb-0">Mitől lesz egy weboldal jól használható asztali gépen, tableten és mobilon is?</p>
+</section>
+<div data-jonas-ref="1" class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4"><strong>Esti ismétlés Jonas kurzusából:</strong><span>104. videó – Responsive Design Principles</span></div>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">Az óra célja</h2>
+<ul>
+<li>Megérteni a reszponzív webdesign fogalmát.</li>
+<li>Megismerni a reszponzív oldalak négy fontos építőelemét.</li>
+<li>Megérteni, miért nem külön technológia a reszponzív webdesign.</li>
+<li>Különbséget tenni a desktop-first és a mobile-first megközelítés között.</li>
+<li>Felkészülni a következő órák <code>rem</code>, <code>max-width</code> és media query témáira.</li>
+</ul>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">1. Mit jelent az, hogy reszponzív?</h2>
+<p>A reszponzív weboldal elrendezése és megjelenése alkalmazkodik az aktuális <strong>nézetablak</strong> méretéhez. Nem csak az eszköz számít: ugyanazon a számítógépen is lehet keskeny vagy széles a böngészőablak.</p>
+<div class="callout rounded-3 p-3"><strong>Cél:</strong> ugyanaz az oldal maradjon jól olvasható és használható asztali gépen, tableten és telefonon is.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">2. Nem egy új technológia</h2>
+<p>A reszponzív webdesign nem egy külön nyelv vagy új CSS-rendszer. A már ismert HTML- és CSS-eszközöket használjuk úgy, hogy az oldal képes legyen alkalmazkodni.</p>
+<p><span class="pill">Flexbox</span><span class="pill">Grid</span><span class="pill">%</span><span class="pill">rem</span><span class="pill">max-width</span><span class="pill">media query</span></p>
+<div class="important rounded-3 p-3">A Flexbox és a Grid már önmagában is sokkal rugalmasabbá teszi az elrendezést, mint a kizárólag fix pixeles méretezés.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">3. A reszponzív webdesign négy fő eleme</h2>
+<div class="table-responsive"><table class="table table-bordered align-middle">
+<thead><tr><th>Elem</th><th>Lényege</th><th>Példa</th></tr></thead>
+<tbody>
+<tr><td><strong>Folyékony elrendezés</strong></td><td>Az elrendezés alkalmazkodik a rendelkezésre álló szélességhez.</td><td>százalékok, Flexbox, Grid, <code>max-width</code></td></tr>
+<tr><td><strong>Reszponzív egységek</strong></td><td>Nem minden méretet fix pixelben adunk meg.</td><td><code>rem</code>, <code>%</code>, <code>fr</code></td></tr>
+<tr><td><strong>Rugalmas képek</strong></td><td>A képek ne lógjanak ki a rendelkezésre álló helyből.</td><td><code>max-width: 100%</code></td></tr>
+<tr><td><strong>Media query</strong></td><td>Bizonyos képernyőszélességnél megváltoztathatjuk a CSS-szabályokat.</td><td><code>@media (...)</code></td></tr>
+</tbody></table></div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">4. Folyékony elrendezés</h2>
+<p>Korábban sokszor fix szélességet használtunk:</p>
+<pre><code>.container {
+  width: 1200px;
+}</code></pre>
+<p>Ez nagy képernyőn működhet, de egy keskeny kijelzőn könnyen kilóghat. Reszponzív oldalon gyakran a rendelkezésre álló helyhez igazítjuk az elemeket.</p>
+<pre><code>.container {
+  width: 90%;
+  max-width: 1200px;
+}</code></pre>
+<div class="callout rounded-3 p-3">A <code>max-width</code> működését a következő Jonas-videóban és a következő órán részletesen megnézzük.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">5. Rugalmas képek</h2>
+<p>Egy nagy kép fix mérete könnyen szélesebb lehet a mobil kijelzőjénél. Gyakori alapbeállítás:</p>
+<pre><code>img {
+  max-width: 100%;
+}</code></pre>
+<p>Így a kép legfeljebb akkora lesz, amekkora hely a szülőelemben rendelkezésre áll, de nem kényszerítjük feleslegesen nagyobbra.</p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">6. Media query – egyelőre csak az ötlet</h2>
+<p>A media query segítségével megmondhatjuk: <em>ha a nézetablak elér egy adott szélességet, használj más CSS-szabályokat.</em></p>
+<pre><code>@media (max-width: 700px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}</code></pre>
+<div class="important rounded-3 p-3">A media queryt most még nem kell megtanulni. Külön órán fogjuk gyakorolni.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">7. Töréspont – breakpoint</h2>
+<p>Azt a szélességet, ahol az oldal elrendezésén vagy stílusán változtatunk, <strong>töréspontnak</strong> nevezzük.</p>
+<p>Például lehet, hogy három kártya szépen elfér egymás mellett nagy képernyőn, de keskenyebb ablaknál már egy oszlopba kell őket rendezni.</p>
+<div class="callout rounded-3 p-3">A töréspontot nem azért választjuk, mert „ez egy iPhone szélessége”, hanem azért, mert <strong>ott kezd rosszul működni az adott elrendezés</strong>.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">8. Desktop-first és mobile-first</h2>
+<div class="row g-3">
+<div class="col-md-6"><div class="compare rounded-3 p-3 h-100"><h3 class="h5">Desktop-first</h3><p>Először a nagy képernyős változat készül el, majd media querykkel igazítjuk kisebb képernyőkre.</p><p class="mb-0"><strong>Jonas ebben a projektben ezt használja.</strong></p></div></div>
+<div class="col-md-6"><div class="compare rounded-3 p-3 h-100"><h3 class="h5">Mobile-first</h3><p>Először a kis képernyős változat készül el, majd media querykkel bővítjük nagyobb képernyőkre.</p><p class="mb-0">Modern projektekben nagyon gyakori megközelítés.</p></div></div>
+</div>
+<p class="mt-3 mb-0">Mindkettővel lehet jó reszponzív oldalt készíteni. A lényeg az, hogy értsük az alkalmazkodó elrendezés működését.</p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">9. Gyors vizsgálat a böngészőben</h2>
+<ol>
+<li>Nyiss meg egy általad készített oldalt.</li>
+<li>Nyisd meg a DevTools-t.</li>
+<li>Kapcsold be az eszköznézetet / responsive módot.</li>
+<li>Fokozatosan szűkítsd a nézetet.</li>
+<li>Figyeld meg, melyik résznél kezd szétesni az oldal.</li>
+</ol>
+<div class="task rounded-3 p-3"><strong>Feladat:</strong> jegyezz fel legalább három problémát, amely keskeny képernyőn jelentkezik. Például: kilógó tartalom, túl nagy betű, egymásra csúszó elemek, túl széles navigáció vagy kép.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">10. Ellenőrző kérdések</h2>
+<ol>
+<li>Mit jelent az, hogy egy weboldal reszponzív?</li>
+<li>Mi a különbség az eszköz képernyőmérete és a böngésző nézetablaka között?</li>
+<li>Melyik négy nagy összetevőből áll a reszponzív webdesign?</li>
+<li>Miért lehet problémás egy fix <code>1200px</code> szélesség?</li>
+<li>Mire jó a <code>max-width</code>?</li>
+<li>Mi a media query feladata?</li>
+<li>Mit nevezünk töréspontnak?</li>
+<li>Mi a desktop-first és a mobile-first közötti alapvető különbség?</li>
+</ol>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">Mit vigyél el ebből az órából?</h2>
+<ul>
+<li>A reszponzív webdesign célja, hogy az oldal különböző nézetablakokon is jól használható legyen.</li>
+<li>Nem külön technológia, hanem több CSS-technika együttese.</li>
+<li>A négy fontos elem: folyékony layout, reszponzív egységek, rugalmas képek és media queryk.</li>
+<li>A Flexbox és a Grid már jó alapot ad a rugalmas elrendezéshez.</li>
+<li>A következő lépés a <code>rem</code> és a <code>max-width</code> részletes megértése.</li>
+</ul>
+</div></section>
+
+<nav class="d-grid gap-2 d-md-flex justify-content-md-between"><a href="../24_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző: Teljes oldal CSS Griddel</a><a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a></nav>
+</main></body></html>

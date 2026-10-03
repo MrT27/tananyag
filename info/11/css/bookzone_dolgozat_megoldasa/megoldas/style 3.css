@@ -1,0 +1,78 @@
+body {
+  color: #374151;
+  font-family: sans-serif;
+}
+
+/* FŐ FEJLÉC */
+.main-header {
+  background-color: #ecfdf5;
+}
+
+/* CÍMSOROK */
+h1,
+h2,
+h3 {
+  color: #047857;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 26px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+/* SZÖVEGEK */
+p {
+  font-size: 20px;
+}
+
+li {
+  font-size: 18px;
+}
+
+/* AJÁNLOTT KÖNYVEK */
+aside {
+  background-color: #ecfdf5;
+  border-top: 5px solid #047857;
+  border-bottom: 5px solid #047857;
+}
+
+/* PSZEUDO-OSZTÁLYOK */
+li:first-child {
+  font-weight: bold;
+}
+
+li:nth-child(even) {
+  color: #b45309;
+}
+
+/* LINKEK – LVHA */
+a:link {
+  color: #047857;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #047857;
+}
+
+a:hover {
+  color: #b45309;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+a:active {
+  background-color: #111827;
+  font-style: italic;
+}

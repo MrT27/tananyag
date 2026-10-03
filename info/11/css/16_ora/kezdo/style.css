@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  margin: 40px;
+  padding: 16px;
+  background-color: #ddd;
+  font-size: 32px;
+
+  display: flex;
+  gap: 12px;
+}
+
+.elem {
+  padding: 8px;
+
+  /* A MAI FLEX MÉRETEZÉSI SZABÁLYOK IDE JÖNNEK */
+}
+
+.elem-1 { background-color: blueviolet; }
+.elem-2 { background-color: orangered; }
+.elem-3 { background-color: green; }
+.elem-4 { background-color: goldenrod; }
+.elem-5 { background-color: palevioletred; }

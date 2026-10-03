@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10. Komplex év végi feladat</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body><div class="container py-5">
+  <div class="mb-4"><a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a></div>
+  <h1 class="text-center mb-3">10. Komplex év végi feladat</h1>
+  <p class="lead text-center mb-5">Webáruházi rendelések feldolgozása – 90 perc, 60 pont</p>
+  <div class="alert alert-primary">A tanulói fájlt nevezd át <code>.py</code> kiterjesztésre, a <code>rendelesek.txt</code> adatfájlt pedig másold mellé ugyanabba a mappába.</div>
+  <h2 class="mt-5">Letölthető fájlok</h2>
+  <div class="list-group mb-4">
+    <a class="list-group-item list-group-item-action" href="10_ev_vegi_feladat_tanulo.txt" download><strong>10_ev_vegi_feladat_tanulo.txt</strong> – tanulói változat</a>
+    <a class="list-group-item list-group-item-action" href="rendelesek.txt" download><strong>rendelesek.txt</strong> – bemeneti adatfájl</a>
+    <a class="list-group-item list-group-item-action" href="10_ev_vegi_feladat_megoldas.txt" download><strong>10_ev_vegi_feladat_megoldas.txt</strong> – teljes megoldás</a>
+  </div>
+  <h2 class="mt-5">Feladatok és pontozás</h2>
+  <div class="table-responsive"><table class="table table-bordered align-middle">
+    <thead><tr><th>Feladat</th><th>Tartalom</th><th>Pont</th></tr></thead><tbody>
+    <tr><td>1.</td><td>Adatfájl beolvasása szótárak listájába</td><td>12</td></tr>
+    <tr><td>2.</td><td>Rendelési érték és összegzés függvénnyel</td><td>8</td></tr>
+    <tr><td>3.</td><td>Legnagyobb rendelés megkeresése</td><td>10</td></tr>
+    <tr><td>4.</td><td>Kategóriánkénti statisztika szótárral</td><td>10</td></tr>
+    <tr><td>5.</td><td>Vevő keresése és találatok kiírása</td><td>8</td></tr>
+    <tr><td>6.</td><td>Szűrt adatok mentése eredményfájlba</td><td>12</td></tr>
+    </tbody><tfoot><tr><th colspan="2">Összesen</th><th>60</th></tr></tfoot></table></div>
+  <details class="card mt-5"><summary class="card-header fw-semibold">Teljes megoldás megtekintése</summary><div class="card-body"><pre class="bg-light p-3 rounded"><code># 10. ÉRTÉKELÉS – KOMPLEX ÉV VÉGI FELADAT
+# MEGOLDÁS: WEBÁRUHÁZI RENDELÉSEK
+
+
+def rendelesek_beolvasasa(fajlnev):
+    rendelesek = []
+    with open(fajlnev, &quot;r&quot;, encoding=&quot;UTF-8&quot;) as bemenet:
+        for sor in bemenet:
+            adat = sor.strip().split(&quot;;&quot;)
+            rendelesek.append({
+                &quot;azonosito&quot;: adat[0],
+                &quot;vevo&quot;: adat[1],
+                &quot;termek&quot;: adat[2],
+                &quot;kategoria&quot;: adat[3],
+                &quot;darab&quot;: int(adat[4]),
+                &quot;egysegar&quot;: int(adat[5]),
+                &quot;teljesitve&quot;: adat[6]
+            })
+    return rendelesek
+
+
+def rendeles_erteke(rendeles):
+    return rendeles[&quot;darab&quot;] * rendeles[&quot;egysegar&quot;]
+
+
+def legnagyobb_rendeles(rendelesek):
+    legnagyobb = rendelesek[0]
+    for rendeles in rendelesek:
+        if rendeles_erteke(rendeles) &gt; rendeles_erteke(legnagyobb):
+            legnagyobb = rendeles
+    return legnagyobb
+
+
+def kategoria_statisztika(rendelesek):
+    statisztika = {}
+    for rendeles in rendelesek:
+        kategoria = rendeles[&quot;kategoria&quot;]
+        if kategoria in statisztika:
+            statisztika[kategoria] += rendeles[&quot;darab&quot;]
+        else:
+            statisztika[kategoria] = rendeles[&quot;darab&quot;]
+    return statisztika
+
+
+def vevo_rendelesei(rendelesek, keresett_vevo):
+    talalatok = []
+    for rendeles in rendelesek:
+        if rendeles[&quot;vevo&quot;].lower() == keresett_vevo.lower():
+            talalatok.append(rendeles)
+    return talalatok
+
+
+def teljesitesre_varok_mentese(rendelesek, fajlnev):
+    darab = 0
+    with open(fajlnev, &quot;w&quot;, encoding=&quot;UTF-8&quot;) as kimenet:
+        for rendeles in rendelesek:
+            if rendeles[&quot;teljesitve&quot;] == &quot;nem&quot;:
+                kimenet.write(
+                    f&#x27;{rendeles[&quot;azonosito&quot;]};{rendeles[&quot;vevo&quot;]};&#x27;
+                    f&#x27;{rendeles[&quot;termek&quot;]};{rendeles_erteke(rendeles)}\n&#x27;
+                )
+                darab += 1
+    return darab
+
+
+rendelesek = rendelesek_beolvasasa(&quot;rendelesek.txt&quot;)
+print(f&quot;Beolvasott rendelések száma: {len(rendelesek)}&quot;)
+
+osszes_ertek = 0
+for rendeles in rendelesek:
+    osszes_ertek += rendeles_erteke(rendeles)
+print(f&quot;A rendelések együttes értéke: {osszes_ertek} Ft&quot;)
+
+legnagyobb = legnagyobb_rendeles(rendelesek)
+print(
+    f&#x27;A legnagyobb rendelés: {legnagyobb[&quot;azonosito&quot;]}, &#x27;
+    f&#x27;{legnagyobb[&quot;vevo&quot;]}, {rendeles_erteke(legnagyobb)} Ft&#x27;
+)
+
+print(&quot;Kategóriánként rendelt darabszám:&quot;)
+statisztika = kategoria_statisztika(rendelesek)
+for kategoria, darab in statisztika.items():
+    print(f&quot;{kategoria}: {darab} db&quot;)
+
+keresett_vevo = input(&quot;Kérem a vevő nevét: &quot;)
+talalatok = vevo_rendelesei(rendelesek, keresett_vevo)
+
+if len(talalatok) == 0:
+    print(&quot;Nincs ilyen nevű vevő.&quot;)
+else:
+    print(f&quot;{keresett_vevo} rendelései:&quot;)
+    for rendeles in talalatok:
+        print(f&#x27;{rendeles[&quot;azonosito&quot;]}: {rendeles_erteke(rendeles)} Ft&#x27;)
+
+mentett_darab = teljesitesre_varok_mentese(
+    rendelesek,
+    &quot;teljesitesre_var.txt&quot;
+)
+print(f&quot;A teljesitesre_var.txt fájlba {mentett_darab} rendelés került.&quot;)
+</code></pre></div></details>
+  <div class="alert alert-success mt-5"><strong>Lezárás:</strong> ez a feladat az egész éves tananyag fő elemeit egyetlen programban kapcsolja össze.</div>
+  <div class="d-flex flex-column flex-md-row gap-3 justify-content-between mt-5">
+    <a href="../09_fajlkezeles/index.html" class="btn btn-outline-secondary btn-lg">← Előző értékelés</a>
+    <a href="../index.html" class="btn btn-secondary btn-lg">Dolgozatok</a>
+  </div>
+</div></body></html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webes magazin – Flexbox gyakorlás</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <header class="main-header">
+    <h1>📘 Webes magazin</h1>
+    <nav>
+      <a href="#cikk">Cikk</a>
+      <a href="#html">HTML</a>
+      <a href="#tanulas">Tanulás</a>
+      <a href="#kapcsolodo">Kapcsolódó</a>
+    </nav>
+  </header>
+
+  <article id="cikk">
+    <header class="post-header">
+      <h2>A weboldal három alapja</h2>
+      <button class="like-button">❤️ Tetszik</button>
+
+      <div class="author-box">
+        <img class="author-img" src="img/laura-jones.jpg" alt="A cikk szerzőjének portréja" width="50" height="50">
+        <p class="author">Közzétette: <strong>Laura Jones</strong></p>
+      </div>
+
+      <img class="post-img" src="img/post-img.jpg" alt="HTML-kód egy képernyőn" width="500" height="200">
+    </header>
+
+    <p>A modern weboldalak három alapvető technológiára épülnek.</p>
+    <p>A HTML írja le a tartalom szerkezetét.</p>
+    <h3 id="html">Mi a HTML?</h3>
+    <p>A HTML jelölőnyelv: megmondja, milyen szerepet töltenek be a tartalom részei.</p>
+    <h3 id="tanulas">Mit tanulunk most?</h3>
+    <ul>
+      <li>Flex konténer és flex elemek</li>
+      <li>Igazítás</li>
+      <li>Térközök</li>
+    </ul>
+  </article>
+
+  <aside id="kapcsolodo">
+    <h4>Kapcsolódó bejegyzések</h4>
+    <ul class="related">
+      <li class="related-post">
+        <img src="img/related-1.jpg" alt="Kapcsolódó bejegyzés képe" width="75" height="75">
+        <div>
+          <a class="related-link" href="#">A CSS dobozmodell</a>
+          <p class="related-author">Szerző: Anna</p>
+        </div>
+      </li>
+      <li class="related-post">
+        <img src="img/related-2.jpg" alt="Kapcsolódó bejegyzés képe" width="75" height="75">
+        <div>
+          <a class="related-link" href="#">Padding és margin</a>
+          <p class="related-author">Szerző: Bence</p>
+        </div>
+      </li>
+      <li class="related-post">
+        <img src="img/related-3.jpg" alt="Kapcsolódó bejegyzés képe" width="75" height="75">
+        <div>
+          <a class="related-link" href="#">Fejlesztői eszközök</a>
+          <p class="related-author">Szerző: Csilla</p>
+        </div>
+      </li>
+    </ul>
+  </aside>
+
+  <footer><p>© Webes magazin</p></footer>
+</div>
+</body>
+</html>

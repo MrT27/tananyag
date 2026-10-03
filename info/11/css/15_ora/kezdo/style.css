@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  margin: 40px;
+  background-color: #ddd;
+  font-size: 32px;
+  min-height: 220px;
+
+  display: flex;
+  align-items: center;
+
+  /* A MAI FLEXBOX SZABÁLYOK IDE JÖNNEK */
+}
+
+.elem {
+  padding: 8px;
+}
+
+.elem-1 { background-color: blueviolet; }
+.elem-2 { background-color: orangered; }
+.elem-3 { background-color: green; height: 150px; }
+.elem-4 { background-color: goldenrod; }
+.elem-5 { background-color: palevioletred; }
+.elem-6 { background-color: steelblue; }

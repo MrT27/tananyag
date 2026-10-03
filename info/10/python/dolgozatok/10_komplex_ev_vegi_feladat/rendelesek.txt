@@ -1,0 +1,12 @@
+R001;Kiss Anna;vezeték nélküli egér;informatika;2;7490;igen
+R002;Nagy Péter;irodai szék;bútor;1;54990;nem
+R003;Tóth Eszter;füzetcsomag;írószer;4;1890;igen
+R004;Kiss Anna;USB memória;informatika;3;4990;nem
+R005;Szabó Márk;asztali lámpa;lakberendezés;2;12990;igen
+R006;Varga Dóra;billentyűzet;informatika;1;18990;igen
+R007;Nagy Péter;monitorállvány;bútor;2;15990;nem
+R008;Farkas Bence;golyóstoll;írószer;10;490;igen
+R009;Tóth Eszter;hátizsák;iskolaszer;1;22990;nem
+R010;Kovács Lili;rajzkészlet;iskolaszer;2;8490;igen
+R011;Szabó Márk;polcrendszer;bútor;1;67990;igen
+R012;Kiss Anna;webkamera;informatika;1;24990;nem

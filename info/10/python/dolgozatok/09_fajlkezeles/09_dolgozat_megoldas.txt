@@ -1,0 +1,47 @@
+# 9. ÉRTÉKELÉS – FÁJLKEZELÉS
+# MEGOLDÁS: DOLGOZÓI ADATOK
+
+# 1. feladat
+dolgozok = []
+
+with open("dolgozok.txt", "r", encoding="UTF-8") as bemenet:
+    for sor in bemenet:
+        adat = sor.strip().split(";")
+        dolgozok.append({
+            "nev": adat[0],
+            "reszleg": adat[1],
+            "fizetes": int(adat[2]),
+            "hianyzas": int(adat[3])
+        })
+
+print(f"Beolvasott dolgozók száma: {len(dolgozok)}")
+
+# 2. feladat
+fizetesek_osszege = 0
+for dolgozo in dolgozok:
+    fizetesek_osszege += dolgozo["fizetes"]
+
+atlagfizetes = fizetesek_osszege / len(dolgozok)
+print(f"Az átlagfizetés: {round(atlagfizetes)} Ft")
+
+# 3. feladat
+legmagasabb = dolgozok[0]
+for dolgozo in dolgozok:
+    if dolgozo["fizetes"] > legmagasabb["fizetes"]:
+        legmagasabb = dolgozo
+
+print(
+    f'A legmagasabb fizetésű dolgozó: {legmagasabb["nev"]}, '
+    f'{legmagasabb["reszleg"]}, {legmagasabb["fizetes"]} Ft'
+)
+
+# 4. feladat
+hianyzo_dolgozok = 0
+
+with open("hianyzasok.txt", "w", encoding="UTF-8") as kimenet:
+    for dolgozo in dolgozok:
+        if dolgozo["hianyzas"] > 10:
+            kimenet.write(f'{dolgozo["nev"]};{dolgozo["hianyzas"]}\n')
+            hianyzo_dolgozok += 1
+
+print(f"A hianyzasok.txt fájlba {hianyzo_dolgozok} dolgozó került.")

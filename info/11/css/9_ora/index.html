@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CSS 9. óra – Térközök és méretezés a gyakorlatban</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body { background:#f8f9fa; }
+    .hero { background:linear-gradient(135deg,#fff 0%,#eefaff 100%); border:1px solid #e6e9ef; }
+    .section-card { border:0; box-shadow:0 .25rem .8rem rgba(0,0,0,.05); }
+    pre { background:#212529; color:#f8f9fa; border-radius:.75rem; padding:1rem; overflow-x:auto; }
+    code { color:#c7254e; } pre code { color:inherit; }
+    .callout { border-left:.35rem solid #0dcaf0; background:#eefbff; }
+    .important { border-left:.35rem solid #ffc107; background:#fff8e1; }
+    .task { border-left:.35rem solid #198754; background:#edf8f1; }
+  
+    .box-diagram { max-width:680px; margin:1.5rem auto; text-align:center; color:#212529; }
+    .box-margin { padding:16px; background:#fff0cf; border:2px dashed #956000; }
+    .box-border { padding:10px; background:#73502d; color:white; }
+    .box-padding { padding:18px; background:#d6efcf; color:#20361c; }
+    .box-content { padding:24px 8px; background:#d5edff; border:1px dashed #28618c; color:#163c59; }
+    .layer-label { display:block; font-weight:700; margin-bottom:10px; }
+    .formula { font-size:1.15rem; font-weight:600; }
+    summary { cursor:pointer; font-weight:600; }
+    @media (max-width:400px) { .box-margin,.box-padding { padding:10px; } }
+  </style>
+</head>
+<body><main class="container py-5"><section class="hero rounded-4 p-4 p-md-5 mb-4"><span class="badge text-bg-primary">11. évfolyam</span> <span class="badge text-bg-info">CSS</span> <span class="badge text-bg-dark">9. óra · Gyakorlat</span><h1 class="display-6 fw-bold mt-3">Térközök és méretezés a gyakorlatban</h1><p class="lead mb-0">A dobozmodell teljes gyakorlati alkalmazása: padding, margin, margóösszevonás, width, height és arányos képméretezés.</p></section><div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Esti ismétlés Jonas kurzusából:</strong><span>34–35. videó – Using Margins and Paddings + Adding Dimensions</span></div>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Az óra célja és előkészületek</h2><ul><li>Belső térköz beállítása és rövidített megadása.</li><li>Listaelemek közötti margó kialakítása.</li><li>A böngésző térközeinek visszaállítása és a specifikusság megfigyelése.</li><li>A dobozmodell ellenőrzése DevTools segítségével.</li></ul><p>Folytasd a korábbi magazinoldalt. A külső fejléc kapjon <code>class="main-header"</code> attribútumot; az <code>aside</code> lesz a kapcsolódó bejegyzések doboza. Ha nincs kéznél az oldalad, töltsd le és csomagold ki a kezdőcsomagot: képeket is tartalmaz. A cikk belső fejlécét és fő képét külön fogjuk kijelölni. Nyisd meg az index.html-t Live Serverrel. Az anyag két nagy részből áll; a térközök után következik a méretezés.</p><a class="btn btn-primary me-2" download="" href="kezdo.zip">Teljes kezdőcsomag</a><a class="btn btn-outline-primary me-2" download="" href="kezdo/index.html">Kezdő HTML letöltése</a><a class="btn btn-outline-primary" download="" href="kezdo/style.css">Kezdő CSS letöltése</a></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">1. Padding a fejlécen</h2><p><strong>Padding = hely a tartalom és a keret között.</strong> A háttérszín a padding területét is kitölti, ezért jól látható a változás. A meglévő szabályt egészítsd ki:</p><pre><code>.main-header {
+  background-color: #f7f7f7;
+  padding: 20px;
+}</code></pre><div class="task rounded-3 p-3">Próbáld ki az 5 px és 40 px értéket, majd állítsd vissza 20 px-re. A fejléc címsorának saját margója miatt a látható távolság nagyobb lehet a paddingnél; ezt hamarosan megvizsgáljuk.</div></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">2. Oldalankénti padding és shorthand</h2><p>Felül és alul maradjon 20 px, bal és jobb oldalon legyen 40 px:</p><pre><code>padding-top: 20px;
+padding-right: 40px;
+padding-bottom: 20px;
+padding-left: 40px;</code></pre><p>A négy sort cseréld egyetlen rövidített megadásra:</p><pre><code>padding: 20px 40px;</code></pre><div class="table-responsive"><table class="table table-bordered"><thead><tr><th>Megadás</th><th>Sorrend / jelentés</th></tr></thead><tbody><tr><td><code>20px</code></td><td>Mind a négy oldal.</td></tr><tr><td><code>20px 40px</code></td><td>Fent-lent; bal-jobb.</td></tr><tr><td><code>10px 20px 30px</code></td><td>Fent; bal-jobb; lent.</td></tr><tr><td><code>10px 20px 30px 40px</code></td><td>Fent; jobb; lent; bal (óramutató járása szerint).</td></tr></tbody></table></div><p class="mb-0">A shorthand minden oldalt beállít. Ne hagyj utána véletlenül egy régi, oldalankénti értéket, amely módosítja az eredményt.</p></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">3. DevTools: mitől ekkora a térköz?</h2><ol><li>Jobb kattintás a fejlécen → <strong>Vizsgálat / Inspect</strong>.</li><li>Az Elements panelen a <code>header.main-header</code> elemet válaszd ki.</li><li>A Styles vagy Computed panel dobozmodell-ábráján keresd a content, padding, border és margin rétegeket.</li><li>Ellenőrizd: fent-lent 20, bal-jobb 40 px padding.</li><li>Válaszd ki külön a fejléc <code>h1</code> elemét: ennek saját margója is lehet. A Styles panelen keresd a böngésző szabályait (<em>user agent stylesheet</em>).</li></ol><div class="callout rounded-3 p-3">A kiemelés színei böngészőnként eltérhetnek; az ábra feliratait és számait olvasd. A DevToolsban végzett módosításokat a CSS-fájlba is írd be, mert az oldal újratöltésekor elveszhetnek.</div></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">4. Margin és az utolsó listaelem</h2><p><strong>Margin = külső térköz.</strong> A <code>margin: 10px;</code> minden oldalra adna margót. Most csak a listaelemek alá szeretnénk 10 px-t. A meglévő <code>li</code> szabályba írd:</p><pre><code>li {
+  margin-bottom: 10px;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}</code></pre><p>A <code>li:last-child</code> azt a listaelemet választja ki, amely a szülője utolsó gyermekeleme. A gyakorló listákban az utolsó gyermek is <code>li</code>, így csak az elemek között marad margó. A nulla hosszértékhez nem kell mértékegység; a <code>0px</code> is érvényes.</p><div class="task rounded-3 p-3">Vizsgálj meg egy köztes és egy utolsó listaelemet: a margin-bottom értéke 10 px, illetve 0 legyen. Ez a listaelem margóját törli; a lista saját margója még megmaradhat.</div></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">5. A böngésző alapértelmezett térközei</h2><p>A böngésző a body, címsorok, bekezdések és listák számára is adhat alapértelmezett margót; a listáknál belső térközt, például behúzást is. A pontos értékeket DevToolsban nézd meg.</p><pre><code>body {
+  margin: 0;
+  padding: 0;
+}</code></pre><p>Próbáld ki: a body külső térköze eltűnik, de a címsorok és listák saját térközei megmaradnak. <strong>A margin és a padding alapértelmezésben nem öröklődik.</strong> A body beállítása ezért nem reseteli a gyermekeket.</p></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">6. Globális reset és specifikusság</h2><p>A saját gyakorlóoldal <strong>style.css fájljának elejére</strong> kerüljön:</p><pre><code>* {
+  margin: 0;
+  padding: 0;
+}</code></pre><p>Az univerzális szelektor minden elemet közvetlenül kijelöl. Ez egy egyszerű térköz-reset: nem az összes böngészőstílust törli. Ezután tudatosan visszaadjuk a szükséges térközöket.</p><div class="important rounded-3 p-3">A resetet a gyakorlóoldalba írd, ne ennek a Bootstrap-alapú tananyagoldalnak a stílusai közé!</div><p class="mt-3">Azonos eredetű, fontosságú és kaszkádrétegű szabályok között a specifikusabb szelektor nyer:</p><ul><li><code>*</code>: (0, 0, 0)</li><li><code>li</code>: (0, 0, 1)</li><li><code>.main-header</code>: (0, 1, 0)</li><li><code>li:last-child</code>: (0, 1, 1)</li></ul><p>A fejléc paddingje és a listaelemek margója ezért megmarad a reset mellett. Ez közvetlen kijelölés, nem öröklődés. Azonos specifikusságnál a későbbi szabály dönt. DevToolsban a felülírt deklarációt áthúzva látod.</p><p>A listák behúzása is eltűnik. A videó példáját követve az <code>ul, ol</code> szabályban <code>margin-left: 50px;</code> értéket adunk vissza, hogy a jelölőknek legyen helyük. Másik megoldás lehetne a bal padding visszaadása; most a margós változatot használjuk.</p></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">7. Az aside paddingje: 50px 0</h2><p>A kapcsolódó bejegyzések dobozának háttérszíne és szegélye van. Belső térközzel távolítjuk el a tartalmat a felső és alsó kerettől. Először külön állítsd be:</p><pre><code>aside {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}</code></pre><p>A reset miatt az oldalsó padding nulla. A két sort ezután cseréld le:</p><pre><code>aside {
+  padding: 50px 0;
+}</code></pre><p>Fent-lent 50 px, bal-jobb nulla. A teljes oldalankénti megadás megmaradó háttér- és keretszabályait ne töröld. Az oldalsó térközt egy későbbi lépésben tovább alakíthatjuk.</p></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">8. A teljes oldal térközeinek kialakítása</h2><p>A nagyobb befoglaló elemek szabályait érdemes a CSS elején, a body után tartani: fő fejléc, navigáció, cikk, aside. Ez áttekinthetőségi szokás; a forrássorrend azonos specifikusságú ütközéseknél továbbra is számít.</p><p>A fő fejléc és a cikk alá 60 px-t adunk. A cikken belüli fejléc kapjon <code>class="post-header"</code> attribútumot: ez a címet, a szerző adatait és a fő képet fogja össze. A külső fejléc marad <code>main-header</code>.</p><pre><code>.main-header { margin-bottom: 60px; }
+article { margin-bottom: 60px; }
+.post-header { margin-bottom: 40px; }
+h2 { margin-bottom: 30px; }
+p { margin-bottom: 15px; }
+ul, ol {
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+h3 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}</code></pre><p>A listák bal margója helyet hagy a számoknak és felsorolásjeleknek, amelyek a reset után az oldal szélén kívülre kerülhettek. A listák alsó margója a következő elemtől választja el őket, míg a li margója az egyes listaelemeket választja el egymástól.</p><div class="callout rounded-3 p-3">Függőleges térközöknél következetesen használj például alsó margót. A h3 felső margója itt szándékos kivétel a következő kísérlethez. A példában szereplő pixelszámok tervezési döntések; később egységes térközrendszert is használhatunk.</div></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">9. Függőleges margók összevonása (margin collapsing)</h2><p>A gyakorló cikkben egy bekezdés után h3 címsor következik. A bekezdés alsó margója 15 px, a h3 felső margója 40 px. A normál blokkfolyamban ezek a szomszédos függőleges margók összevonódnak: a távolság <strong>40 px, nem 55 px</strong>.</p><pre><code>p { margin-bottom: 15px; }
+h3 { margin-top: 40px; }</code></pre><div class="table-responsive"><table class="table table-bordered"><thead><tr><th>p alsó margó</th><th>h3 felső margó</th><th>Tényleges térköz</th></tr></thead><tbody><tr><td>15 px</td><td>40 px</td><td>40 px</td></tr><tr><td>40 px</td><td>40 px</td><td>40 px, nem 80</td></tr><tr><td>100 px</td><td>40 px</td><td>100 px, nem 140</td></tr></tbody></table></div><div class="task rounded-3 p-3">DevToolsban válaszd ki külön a p és h3 elemet. Mindkettő saját margóértéke látható, mégis közös térközt alkotnak. Próbáld ki mindhárom sort, majd állítsd vissza a bekezdés alsó margóját 15 px-re.</div><p class="mt-3">A nagyobb érték szabálya itt két pozitív margóra igaz. Az összevonás nem minden elrendezésben történik meg: például flex- és grid-elemek margói nem vonódnak így össze, és a vízszintes margók sem. Negatív margóknál más a számítás. Szülő és gyermek, illetve üres blokkok margói is összevonódhatnak bizonyos feltételekkel; ebben az órában a szomszédos blokkok példáját vizsgáljuk.</p></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">10. Szélesség beállítása: width</h2><p>Az aside később oldalsáv lehet, ezért most a teljes oldalnál keskenyebbre állítjuk:</p><pre><code>aside {
+  width: 500px;
+}</code></pre><p>A meglévő aside szabályba írd, a paddinget, háttérszínt és szegélyeket megtartva. Alapértelmezett content-box méretezésben az 500 px a tartalmi szélesség. Itt nincs oldalsó padding és oldalsó keret, ezért a doboz kerettel együtt mért szélessége is 500 px. A fix méret keskeny ablakban túlnyúlhat a rendelkezésre álló helyen.</p></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">11. Magasság és a dobozmodell: height</h2><p>Ideiglenesen add a fő fejléchez:</p><pre><code>.main-header {
+  padding: 20px 40px;
+  height: 80px;
+}</code></pre><p>DevToolsban a fejléc egészét válaszd ki, ne egy benne lévő linket. A tartalmi magasság 80 px, a felső és alsó padding 20–20 px. Felső és alsó keret nélkül a teljes dobozmagasság <strong>80 + 20 + 20 = 120 px</strong>. A margin ezen kívül van.</p><p>A height nem igazítja függőlegesen középre a tartalmat. Egyenlő felső és alsó padding mellett, automatikus magasságnál kiegyensúlyozott térköz látszhat; a rögzített magasság viszont további helyet hagyhat alul, vagy túlcsordulhat a tartalom.</p><div class="task rounded-3 p-3">A kísérlet után töröld vagy kommentáld ki a <code>height: 80px;</code> sort. A kész oldalon a fejléc magasságát a tartalom határozza meg. Később a border-box méretezést és a függőleges igazítást is megismerjük.</div></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">12. Képméretezés és az eredeti képarány</h2><p>A cikk fő képe kapjon <code>class="post-img"</code> attribútumot. Figyelj rá, hogy a nagy cikkképet jelöld ki, ne a szerző portréját! A kezdő HTML-ben a fő képen <code>width="500" height="200"</code> szerepel.</p><pre><code>&lt;img class="post-img" src="img/post-img.jpg"
+     alt="HTML-kód egy képernyőn" width="500" height="200"&gt;</code></pre><p>Először csak a CSS-szélességet állítsd át:</p><pre><code>.post-img {
+  width: 800px;
+}</code></pre><p>A CSS-szélesség felülírja a HTML width attribútumából származó méretet, de a rögzített 200 px magasság megmarad. A kép torzulhat. A másik méretet automatikusra állítva visszaáll az eredeti képarány:</p><pre><code>.post-img {
+  width: 800px;
+  height: auto;
+}</code></pre><p>Próbálj ki 300 px szélességet is: a magasság vele arányosan változik. Ha a másik méretet sem HTML-attribútum, sem CSS-szabály nem rögzíti, akkor az alapértelmezett auto érték miatt rendszerint külön deklaráció nélkül is követi a kép eredeti arányát. A <code>height: auto;</code> itt tudatosan felülírja a meglévő magasságot. Gyakori, hogy a megjelenítési méretet CSS-ben szabályozzuk; a HTML méretattribútumoknak ettől még lehet szerepük.</p></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">13. Százalékos szélesség: 100% és 50%</h2><pre><code>.post-img {
+  width: 100%;
+  height: auto;
+}</code></pre><p>A mi normál elrendezésünkben a százalékos szélesség a befoglaló blokk tartalmi szélességéhez viszonyul. A fő kép a <code>header.post-header</code> belsejében van: 100%-nál annak teljes rendelkezésre álló tartalmi szélességét kitölti.</p><div class="task rounded-3 p-3">Méretezd át az ablakot: a kép a szülő szélességével együtt változik. Próbáld ki az <code>50%</code>-ot: a szülő tartalmi szélességének felét tölti ki. Végül állítsd vissza 100%-ra.</div><p class="mt-3">A százalék nem feltétlenül a teljes böngészőablak százaléka. Ha a szülő szélessége később fix lesz, az ablak átméretezése önmagában nem változtatja meg ezt a kép szélességét. A százalékos méretezés a reszponzív oldalak egyik alapja, de nem tesz automatikusan minden elemet reszponzívvá.</p></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">14. Önálló gyakorlati feladat</h2><div class="task rounded-3 p-3"><ol><li>A kezdőoldalon jelöld ki külön a fő fejlécet, a cikk fejlécét és a fő képet a main-header, post-header és post-img osztályokkal.</li><li>Helyezd a resetet a CSS elejére. A fő fejléc paddingje legyen 20px 40px, az aside-é 50px 0.</li><li>A fő fejléc és a cikk alá 60 px, a cikk fejléce alá 40 px margó kerüljön.</li><li>A h2 alá 30 px; a h3 fölé 40 px és alá 20 px; a bekezdések alá 15 px margót állíts be.</li><li>A listák bal margója 50 px, alsó margója 20 px legyen. A li alá 10 px kerüljön, az utolsó alá nulla.</li><li>Vizsgáld meg a 15/40, 40/40 és 100/40 px margópárokat, majd állítsd vissza a 15/40 px-t.</li><li>Az aside tartalmi szélessége legyen 500 px.</li><li>Próbáld ki a fő fejléc 80 px-es magasságát, ellenőrizd a 120 px dobozmagasságot, majd kapcsold ki a height deklarációt.</li><li>A fő képen először próbálj ki 800 px szélességet rögzített HTML-magassággal, majd javítsd az arányt height: auto segítségével. Próbáld ki a 300 px-t is.</li><li>Teszteld a kép 100% és 50% szélességét ablakátméretezés mellett. A kész megoldásban 100% és height: auto maradjon.</li><li>Mentsd a fájlokat, frissíts, és ellenőrizd a dobozmodellt, a listajelölőket és a kép torzulásmentességét.</li></ol></div><h3 class="h5 mt-4">Mini kihívás</h3><p>Írj egyetlen padding deklarációt 10 px felső, 20 px jobb, 30 px alsó és 40 px bal értékkel! Mit változtatna, ha margin lenne helyette?</p><details class="task rounded-3 p-3"><summary>Teljes CSS-mintamegoldás</summary><pre><code>/* Térköz-reset: minden elemet közvetlenül kijelöl */
+* { margin: 0; padding: 0; }
+body { color: #444; font-family: sans-serif; }
+/* A nagyobb befoglaló elemek szabályai */
+.main-header {
+  background-color: #f7f7f7;
+  padding: 20px 40px;
+  margin-bottom: 60px;
+  /* height: 80px; csak az órai kísérlethez */
+}
+nav { font-size: 18px; }
+article { margin-bottom: 60px; }
+.post-header { margin-bottom: 40px; }
+aside {
+  background-color: #f7f7f7;
+  border-top: 5px solid #1098ad;
+  border-bottom: 5px solid #1098ad;
+  padding: 50px 0;
+  width: 500px;
+}
+h1, h2, h3, h4 { color: #1098ad; }
+h2 { margin-bottom: 30px; }
+h3 { margin-top: 40px; margin-bottom: 20px; }
+p { margin-bottom: 15px; }
+ul, ol { margin-left: 50px; margin-bottom: 20px; }
+li { margin-bottom: 10px; }
+li:last-child { margin-bottom: 0; }
+.post-img { width: 100%; height: auto; }
+</code></pre><p>A mini kihívás: <code>padding: 10px 20px 30px 40px;</code>. A padding belül, a margin kívül hoz létre helyet.</p><a class="btn btn-outline-success me-2" href="megoldas/index.html">Mintamegoldás megnyitása</a><a class="btn btn-outline-success" download="" href="megoldas.zip">Teljes megoldás letöltése</a></details></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">15. Ellenőrző kérdések</h2><ol><li>Mit jelent a padding: 20px 40px?</li><li>Miért nem elég a body margóját nullázni?</li><li>Miért marad meg a fejléc paddingje a reset után?</li><li>Mit jelöl ki a li:last-child?</li><li>Hol ellenőrzöd a térközök eredetét?</li><li>Mekkora térköz lesz a példában 15 és 40 px találkozásakor?</li><li>Miért lesz 120 px a fejléc magassága?</li><li>Középre igazítja-e a height a szöveget?</li><li>Mire való a height: auto a képen?</li><li>Mihez viszonyul itt a kép 50%-os szélessége?</li><li>Mi marad a kész megoldásban a kísérletekből?</li></ol><details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol class="mt-3 mb-0"><li>Fent-lent 20 px, bal-jobb 40 px.</li><li>A gyermekek saját margói megmaradnak; a margin nem öröklődik alapértelmezésben.</li><li>Az osztályszelektor specifikusabb az univerzális szelektornál.</li><li>Azt a li elemet, amely a szülője utolsó gyermeke.</li><li>Az adott elem Styles / Computed paneljén és dobozmodell-ábráján.</li><li>40 px: a pozitív függőleges margók összevonódnak.</li><li>80 px tartalom + 20 px felső + 20 px alsó padding, keret nélkül.</li><li>Nem, csak a magasságot szabályozza.</li><li>A rögzített magasságot felülírva lehetővé teszi az eredeti képarány követését.</li><li>A befoglaló blokk tartalmi szélességéhez.</li><li>500 px-es aside, automatikus fejlécmagasság, 100% széles kép height: auto mellett.</li></ol></details></div></section>
+<nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between"><a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a><a class="btn btn-outline-secondary btn-lg" href="../8_ora/index.html">Előző: a CSS dobozmodell</a><a class="btn btn-primary btn-lg" href="../10_ora/index.html">Következő: konténer és középre igazítás</a></nav></main></body></html>
