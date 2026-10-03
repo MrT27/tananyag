@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CSS 26. óra – rem és max-width</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#f3efff 100%);border:1px solid #e6e9ef}.section-card{border:0;box-shadow:0 .25rem .8rem rgba(0,0,0,.05)}pre{background:#212529;color:#f8f9fa;border-radius:.75rem;padding:1rem;overflow-x:auto}code{color:#c7254e}pre code{color:inherit}.callout{border-left:.35rem solid #0dcaf0;background:#eefbff}.important{border-left:.35rem solid #ffc107;background:#fff8e1}.task{border-left:.35rem solid #198754;background:#edf8f1}.access{border-left:.35rem solid #6f42c1;background:#f5f0ff}summary{cursor:pointer;font-weight:600}
+</style>
+</head>
+<body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+<span class="badge text-bg-primary">11. évfolyam</span> <span class="badge text-bg-success">Reszponzív webdesign</span> <span class="badge text-bg-dark">26. óra</span>
+<h1 class="display-6 fw-bold mt-3"><code>rem</code> és <code>max-width</code></h1>
+<p class="lead mb-0">Rugalmas méretezés úgy, hogy az oldal alkalmazkodjon a rendelkezésre álló helyhez és a felhasználó beállításaihoz.</p>
+</section>
+<div data-jonas-ref="1" class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4"><strong>Esti ismétlés Jonas kurzusából:</strong><span>105. videó – How rem and max-width Work</span></div>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Az óra célja</h2><ul>
+<li>Megérteni a <code>width</code> és a <code>max-width</code> közötti különbséget.</li>
+<li>Megérteni, mit jelent a <code>rem</code> egység.</li>
+<li>Látni, hogyan függ a <code>rem</code> a gyökérelem betűméretétől.</li>
+<li>Megismerni a <code>62.5%</code>-os gyökér-betűméret technikát.</li>
+<li>Gyakorlatban rugalmasabb konténert és méretezést készíteni.</li>
+</ul></div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">1. Mi a gond a fix <code>width</code>-del?</h2>
+<pre><code>.test {
+  width: 1000px;
+}</code></pre>
+<p>Az elem akkor is 1000 pixel széles marad, ha a rendelkezésre álló hely ennél kisebb. Emiatt a tartalom kilóghat a nézetablakból.</p>
+<div class="important rounded-3 p-3"><strong>Fix szélesség:</strong> jó lehet bizonyos helyzetekben, de reszponzív layout fő konténerénél könnyen problémát okozhat.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">2. A <code>max-width</code> működése</h2>
+<pre><code>.test {
+  max-width: 1000px;
+}</code></pre>
+<p>A <code>max-width</code> azt mondja: az elem <strong>legfeljebb</strong> 1000 pixel széles lehet.</p>
+<ul><li>Ha a szülő ennél szélesebb, az elem 1000 px marad.</li><li>Ha a szülő keskenyebb, az elem hozzá igazodik.</li></ul>
+<div class="callout rounded-3 p-3"><strong>Röviden:</strong> a <code>max-width</code> felső korlátot ad, de engedi, hogy az elem kisebb legyen.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">3. Mi az a <code>rem</code>?</h2>
+<p>A <code>rem</code> a dokumentum gyökérelemének, vagyis a <code>html</code> elemnek a betűméretéhez viszonyított egység.</p>
+<p>Ha nem állítunk be mást, a böngésző alapértelmezett betűmérete általában 16 px:</p>
+<pre><code>1rem = 16px
+2rem = 32px
+4rem = 64px</code></pre>
+<p>Például:</p>
+<pre><code>.box {
+  max-width: 50rem;
+  padding: 4rem;
+  font-size: 2rem;
+}</code></pre>
+<p>Alapértelmezett 16 px-es gyökérméretnél ez 800 px maximális szélességet, 64 px paddinget és 32 px betűméretet jelent.</p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">4. Miért hasznos a <code>rem</code>?</h2>
+<p>Ha sok méretet <code>rem</code>-ben adunk meg, akkor a gyökér-betűméret változtatása egyszerre több méretet is arányosan módosít.</p>
+<pre><code>html {
+  font-size: 20px;
+}</code></pre>
+<p>Ekkor <code>1rem = 20px</code>, tehát minden <code>rem</code>-ben megadott érték nagyobb lesz.</p>
+<div class="callout rounded-3 p-3">Ezért a <code>rem</code> jól használható reszponzív méretezéshez: a méretek egymással arányban maradnak.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">5. A 62.5%-os technika</h2>
+<p>Jonas azt a gyakori trükköt használja, hogy a gyökér betűméretét 62.5%-ra állítja:</p>
+<pre><code>html {
+  font-size: 62.5%;
+}</code></pre>
+<p>Ha a böngésző alapértéke 16 px, akkor:</p>
+<pre><code>16px × 0.625 = 10px</code></pre>
+<p>Így a számolás egyszerűvé válik:</p>
+<pre><code>1rem = 10px
+1.6rem = 16px
+2.4rem = 24px
+5rem = 50px</code></pre>
+<div class="access rounded-3 p-3"><strong>Miért százalék és nem fix 10px?</strong> Így a beállítás továbbra is a felhasználó böngészőben választott alap-betűméretéhez viszonyul.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">6. Együtt használva</h2>
+<pre><code>html {
+  font-size: 62.5%;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}</code></pre>
+<p>A konténer legfeljebb 1200 px széles, kisebb nézetablaknál azonban össze tud húzódni. A belső térközök is <code>rem</code>-ben vannak megadva.</p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">7. Órai gyakorlat</h2>
+<p>Töltsd le a kezdőcsomagot, majd alakítsd át a merev dobozt rugalmasabbá.</p>
+<ol><li>Próbáld ki először a <code>width: 1000px</code> beállítást.</li><li>Szűkítsd a böngészőablakot, és figyeld meg a problémát.</li><li>Cseréld <code>max-width: 1000px</code>-re.</li><li>Állítsd be a <code>html { font-size: 62.5%; }</code> szabályt.</li><li>A szélességet, paddinget és betűméretet írd át <code>rem</code>-re.</li><li>Szűkítsd újra a böngészőt, és hasonlítsd össze az eredményt.</li></ol>
+<div class="task rounded-3 p-3"><strong>Cél:</strong> a doboz nagy képernyőn ne nőjön egy megadott méret fölé, kis képernyőn pedig ne lógjon ki.</div>
+<p class="mt-3"><a href="kezdo.zip" download class="btn btn-outline-primary me-2">Kezdőcsomag letöltése</a><a href="megoldas.zip" download class="btn btn-outline-success">Megoldás letöltése</a></p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">8. Ellenőrző kérdések</h2><ol>
+<li>Mi a különbség a <code>width</code> és a <code>max-width</code> között?</li>
+<li>Mihez viszonyul a <code>rem</code>?</li>
+<li>Alapértelmezett 16 px-es gyökérméretnél hány pixel a <code>2rem</code>?</li>
+<li>Miért használ Jonas <code>62.5%</code>-ot a <code>html</code> betűméreténél?</li>
+<li>Miért jobb ebből a szempontból a százalékos gyökérméret, mint a fix <code>10px</code>?</li>
+<li>Mitől lesz a <code>max-width</code>-es konténer rugalmas?</li>
+</ol></div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Mit vigyél el ebből az órából?</h2><ul>
+<li>A <code>max-width</code> maximális szélességet ad, de engedi az elemet összemenni.</li>
+<li>A <code>rem</code> a gyökérelem betűméretéhez viszonyul.</li>
+<li>A <code>62.5%</code>-os technikával alapbeállítás mellett könnyen számolhatóvá válik: <code>1rem ≈ 10px</code>.</li>
+<li>A százalékos gyökérméret megtartja a kapcsolatot a böngésző alap-betűméretével.</li>
+<li>A <code>max-width</code> és a <code>rem</code> fontos alapjai a reszponzív oldalaknak.</li>
+</ul></div></section>
+<nav class="d-grid gap-2 d-md-flex justify-content-md-between"><a href="../25_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző: Reszponzív alapok</a><a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a></nav>
+</main></body></html>

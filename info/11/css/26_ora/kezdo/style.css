@@ -1,0 +1,14 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.test {
+  width: 1000px;
+  padding: 64px;
+  font-size: 32px;
+  background: #dbeafe;
+  margin: 40px auto;
+}
