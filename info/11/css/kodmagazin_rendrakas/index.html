@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CSS – Kód Magazin rendrakás</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#eef8f4 100%);border:1px solid #e6e9ef}.section-card{border:0;box-shadow:0 .25rem .8rem rgba(0,0,0,.05)}pre{background:#212529;color:#f8f9fa;border-radius:.75rem;padding:1rem;overflow-x:auto}code{color:#c7254e}pre code{color:inherit}.callout{border-left:.35rem solid #0dcaf0;background:#eefbff}.important{border-left:.35rem solid #ffc107;background:#fff8e1}.task{border-left:.35rem solid #198754;background:#edf8f1}.danger-note{border-left:.35rem solid #dc3545;background:#fff1f2}.phase{border-left:.35rem solid #6f42c1;background:#f7f3ff}.checklist li{margin-bottom:.55rem}
+</style>
+</head>
+<body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4">
+<span class="badge text-bg-primary">11. évfolyam</span> <span class="badge text-bg-success">Rendrakás / összefoglalás</span> <span class="badge text-bg-dark">13–14. óra között</span>
+<h1 class="display-6 fw-bold mt-3">Kód Magazin – rendrakás a Flexbox előtt</h1>
+<p class="lead mb-0">A CSS-alapok végére értünk. Mielőtt belevágunk a Flexboxba, megtisztítjuk és egységesítjük a több órán keresztül épített Kód Magazin projektet.</p>
+</section>
+
+<div class="alert alert-secondary mb-4"><strong>Számozatlan összefoglaló óra.</strong> Nincs hozzá külön Jonas-videó. Csak olyan megoldásokat használunk, amelyeket a 13. óráig már megtanultunk: szelektorok, öröklődés, dobozmodell, térközök, konténer, block/inline, abszolút pozicionálás és <code>box-sizing</code>.</div>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">Miért pont most?</h2>
+<p>A projektet sok külön órán módosítottuk. Ez természetes, de közben maradtak benne demonstrációs szabályok, túl általános szelektorok és olyan részek, amelyek működnek ugyan, de már nem elég áttekinthetők.</p>
+<p>A következő órától Flexboxot tanulunk. Ahhoz jó kiindulópont kell: világos HTML-szerkezet, beszédes classok és rendezett CSS.</p>
+<div class="important rounded-3 p-3"><strong>Cél:</strong> ne új technikát tanuljunk, hanem az eddigi tudásunkkal tegyük rendbe a projektet.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">0. Kiinduló állapot</h2>
+<p>A kezdőcsomag az eddig felépített Kód Magazin. Nem nulláról indulunk, hanem meglévő kódot olvasunk, értékelünk és javítunk.</p>
+<p class="mb-0"><a href="kezdo.zip" download class="btn btn-outline-primary">Kezdőcsomag letöltése</a></p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">1. HTML-szerkezet ellenőrzése</h2>
+<div class="phase rounded-3 p-3 mb-3"><strong>Elv:</strong> először a HTML legyen logikus. CSS-sel ne próbáljunk rossz szerkezetet elfedni.</div>
+<h3 class="h5">1.1. Az <code>aside</code> az <code>article</code> testvére legyen</h3>
+<pre><code>&lt;article&gt;
+  ...
+&lt;/article&gt;
+
+&lt;aside&gt;
+  ...
+&lt;/aside&gt;</code></pre>
+<p>A kapcsolódó bejegyzések kiegészítő tartalmat jelentenek. Ez ráadásul jó alap lesz ahhoz, hogy később az <code>article</code> és az <code>aside</code> egymás mellé kerülhessen.</p>
+<h3 class="h5">1.2. A felsorolás valóban lista legyen</h3>
+<p>A „nyitó tag – záró tag – tartalom” három pontja maradjon <code>ol</code>, mert ez valóban sorrendezett felsorolás.</p>
+<h3 class="h5">1.3. Az MDN szöveg legyen valódi link</h3>
+<pre><code>&lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTML"
+   target="_blank"&gt;MDN Web Docs&lt;/a&gt;</code></pre>
+<h3 class="h5">1.4. Javítsuk az elírásokat</h3>
+<p><code>Miér nagyszerű a JavaScript?</code> → <strong>Miért nagyszerű a JavaScript?</strong></p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">2. Beszédes classok a fontos elemeknek</h2>
+<p>Ahol egy elemnek külön szerepe van, ne hosszú és törékeny szelektorokkal célozzuk meg.</p>
+<pre><code>&lt;img class="author-img" ...&gt;
+&lt;p class="author"&gt;...&lt;/p&gt;
+
+&lt;ul class="related"&gt;
+  ...
+  &lt;p class="related-author"&gt;...&lt;/p&gt;
+&lt;/ul&gt;
+
+&lt;button class="like-btn" type="button"&gt;❤️ Like&lt;/button&gt;</code></pre>
+<p>Ezek a nevek rögtön elmondják, hogy az adott elem milyen szerepet tölt be.</p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">3. Korábbi demonstrációk kiszedése</h2>
+<p>Tanulás közben hasznosak voltak, de a rendezett projektben már csak zajt okoznak:</p>
+<pre><code>ol li:nth-child(even) {
+  color: red;
+}
+
+article p:first-child {
+  font-weight: bold;
+}
+
+article header p {
+  font-style: italic;
+}
+
+header p {
+  font-style: italic;
+}</code></pre>
+<p>A szerző bekezdését inkább a <code>.author</code> class formázza.</p>
+<div class="danger-note rounded-3 p-3"><strong>Rendrakási szabály:</strong> ami csak egy korábbi bemutató kedvéért van a CSS-ben, de a kész oldalnak nincs rá szüksége, azt töröljük.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">4. Alapbeállítások egységesítése</h2>
+<pre><code>* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #444;
+  font-family: sans-serif;
+  border-top: 10px solid #1098ad;
+}</code></pre>
+<ul>
+<li>A <code>box-sizing: border-box</code> most már bekerül a globális alapbeállításba.</li>
+<li>A <code>font-family</code> a <code>body</code>-n van, mert öröklődik.</li>
+<li>Nem írjuk ki ugyanazt öt külön elemhez.</li>
+</ul>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">5. A konténer marad a már tanult formában</h2>
+<pre><code>.container {
+  width: 800px;
+  margin: 0 auto;
+}</code></pre>
+<p>Ebben a rendrakási órában még <strong>nem</strong> használunk <code>max-width</code>-et és <code>rem</code>-et, mert azok csak jóval később következnek. Most a 10. órán megtanult középre igazított konténert tartjuk meg.</p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">6. Tipográfiai hierarchia rendbetétele</h2>
+<pre><code>h1 { font-size: 26px; }
+h2 { font-size: 40px; }
+h3 { font-size: 30px; }
+h4 { font-size: 20px; }
+
+p {
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+li {
+  font-size: 20px;
+}</code></pre>
+<p>A különböző címsorszintek láthatóan különbözzenek, a hosszabb bekezdések pedig kapjanak kényelmes sorközt.</p>
+<pre><code>.author,
+.related-author {
+  font-size: 18px;
+}
+
+footer p {
+  font-size: 16px;
+}</code></pre>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">7. Navigáció és linkek</h2>
+<p>A már megtanult linkállapotokat megtartjuk. A navigációs linkek azonban kapjanak külön térközt:</p>
+<pre><code>nav {
+  font-size: 18px;
+}
+
+nav a:link {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 30px;
+}
+
+nav a:link:last-child {
+  margin-right: 0;
+}</code></pre>
+<p>Itt az <code>inline-block</code> is visszaköszön a 11. órából.</p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">8. Képek és kapcsolódó bejegyzések</h2>
+<pre><code>.author-img {
+  width: 50px;
+  height: 50px;
+}
+
+.post-img {
+  width: 100%;
+  height: auto;
+}
+
+.related {
+  list-style: none;
+}
+
+.related img {
+  width: 75px;
+  height: 75px;
+}</code></pre>
+<p>Az oldalsávnál maradhat az egyszerű, már ismert fix szélesség:</p>
+<pre><code>aside {
+  width: 500px;
+  ...
+}</code></pre>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">9. Like gomb – az abszolút pozicionálás rendes használata</h2>
+<p>A gomb a cikk fejlécéhez tartozik, ezért a <code>.post-header</code> legyen a viszonyítási alap:</p>
+<pre><code>.post-header {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.like-btn {
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+}</code></pre>
+<div class="callout rounded-3 p-3"><strong>Miért nem kell a <code>body</code>-ra vagy a <code>.container</code>-re <code>position: relative</code>?</strong> Mert a Like gombot a <code>.post-header</code>-hez akarjuk igazítani. Az abszolút elem a legközelebbi pozicionált őshöz igazodik.</div>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">10. CSS rendezése logikai blokkokba</h2>
+<ol>
+<li>Alapbeállítások</li>
+<li>Oldalszerkezet</li>
+<li>Tipográfia</li>
+<li>Linkek és navigáció</li>
+<li>Képek és kapcsolódó tartalom</li>
+<li>Like gomb</li>
+</ol>
+<p>A stylesheet ne azt mutassa, milyen sorrendben tanultuk a CSS-t, hanem azt, hogyan épül fel a projekt.</p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">11. Mit nem használunk még?</h2>
+<ul>
+<li>nincs Flexbox;</li>
+<li>nincs Grid;</li>
+<li>nincs <code>rem</code>;</li>
+<li>nincs <code>max-width</code>;</li>
+<li>nincs media query;</li>
+<li>nincs <code>::before</code>/<code>::after</code> díszítés.</li>
+</ul>
+<p>Így a projekt pontosan az eddig megtanult CSS-alapokra épül. Innen tisztán indulhat a 14. óra, a Flexbox.</p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">12. Órai rendrakási ellenőrzőlista</h2>
+<ol class="checklist">
+<li>Az <code>aside</code> az <code>article</code> után, testvérként áll.</li>
+<li>Az <code>ol</code> és az MDN-link megvan.</li>
+<li>Az elírás javítva.</li>
+<li>Van <code>author-img</code>, <code>author</code>, <code>related</code>, <code>related-author</code>, <code>like-btn</code> class.</li>
+<li>A régi demonstrációs CSS-szabályok eltűntek.</li>
+<li>A reset tartalmazza a <code>box-sizing: border-box</code>-ot.</li>
+<li>A <code>font-family</code> a <code>body</code>-n van.</li>
+<li>A konténer továbbra is <code>width: 800px</code> és <code>margin: 0 auto</code>.</li>
+<li>A címsorok és szövegek méretei következetesek.</li>
+<li>A navigációs linkek között van térköz.</li>
+<li>A kapcsolódó lista nem mutat bulletpontokat.</li>
+<li>A Like gomb a <code>.post-header</code>-hez képest abszolút pozicionált.</li>
+<li>A CSS logikai blokkokba van rendezve.</li>
+</ol>
+<div class="task rounded-3 p-3"><strong>Óra végi cél:</strong> egy tiszta CSS Fundamentals végállapot, amelyből a következő órán már nyugodtan elindulhatunk a Flexbox felé.</div>
+<p class="mt-3"><a href="megoldas.zip" download class="btn btn-outline-success">Rendezett megoldás letöltése</a></p>
+</div></section>
+
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">13. Tanári visszakérdezés</h2>
+<ol>
+<li>Miért jobb a <code>body</code>-n megadni a <code>font-family</code>-t?</li>
+<li>Miért az <code>article</code> testvére az <code>aside</code>?</li>
+<li>Miért kell <code>position: relative</code> a <code>.post-header</code>-re?</li>
+<li>Mely szabályokat töröltük azért, mert csak korábbi demonstrációk voltak?</li>
+<li>Miért jobb beszédes classokat használni?</li>
+<li>Miért hasznos a CSS-t funkció szerint csoportosítani?</li>
+</ol>
+</div></section>
+
+<nav class="d-grid gap-2 d-md-flex justify-content-md-between">
+<a href="../13_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző: box-sizing</a>
+<a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a>
+<a href="../14_ora/index.html" class="btn btn-primary btn-lg">Következő: Flexbox alapok</a>
+</nav>
+</main></body></html>
