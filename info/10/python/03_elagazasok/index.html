@@ -152,7 +152,49 @@ if eletkor &gt;= 14:
 else:
     print("Csak 14 éves kortól látogatható.")</code></pre>
 
-      <h2 class="mt-5">10. Gyakorlófeladatok</h2>
+      <h2 class="mt-5">10. Példa – Szökőév ellenőrzése</h2>
+      <p>Kérjünk be egy pozitív egész évszámot, és döntsük el, hogy az adott év szökőév-e! Szökőévben február 29 napos, az év pedig 366 napból áll.</p>
+      <p>A Gergely-naptár szerint egy év akkor szökőév, ha:</p>
+      <ul>
+        <li>osztható 400-zal, <strong>vagy</strong></li>
+        <li>osztható 4-gyel, <strong>de nem</strong> osztható 100-zal.</li>
+      </ul>
+      <p>A <code>%</code> operátor az osztási maradékot adja meg. Például az <code>ev % 4 == 0</code> azt vizsgálja, hogy az évszám maradék nélkül osztható-e 4-gyel.</p>
+      <h3 class="mt-4 h5">Megoldás if–elif–else elágazással</h3>
+      <pre class="bg-light p-3 rounded"><code>ev = int(input("Adj meg egy pozitív egész évszámot: "))
+
+if ev % 400 == 0:
+    print("Szökőév.")
+elif ev % 100 == 0:
+    print("Nem szökőév.")
+elif ev % 4 == 0:
+    print("Szökőév.")
+else:
+    print("Nem szökőév.")</code></pre>
+      <div class="alert alert-warning">
+        <strong>A sorrend számít!</strong> Először a 400-zal való oszthatóságot vizsgáljuk. Így például 2000 szökőév, pedig 100-zal is osztható. A 100-zal osztható, de 400-zal nem osztható évek (például 1900 és 2100) nem szökőévek.
+      </div>
+      <h3 class="mt-4 h5">Ugyanez összetett feltétellel</h3>
+      <pre class="bg-light p-3 rounded"><code>ev = int(input("Adj meg egy pozitív egész évszámot: "))
+
+if ev % 400 == 0 or (ev % 4 == 0 and ev % 100 != 0):
+    print("Szökőév.")
+else:
+    print("Nem szökőév.")</code></pre>
+      <p>Az <code>and</code> két feltétel együttes teljesülését kéri, az <code>or</code> esetén pedig elég, ha az egyik feltétel igaz. A zárójel segít átlátni az összetartozó feltételeket.</p>
+      <h3 class="mt-4 h5">Próbáld ki ezekkel az évszámokkal!</h3>
+      <table class="table table-bordered">
+        <thead><tr><th>Év</th><th>Eredmény</th><th>Indoklás</th></tr></thead>
+        <tbody>
+          <tr><td>2024</td><td>Szökőév</td><td>Osztható 4-gyel, de 100-zal nem.</td></tr>
+          <tr><td>2025</td><td>Nem szökőév</td><td>Nem osztható 4-gyel.</td></tr>
+          <tr><td>1900</td><td>Nem szökőév</td><td>Osztható 100-zal, de 400-zal nem.</td></tr>
+          <tr><td>2000</td><td>Szökőév</td><td>Osztható 400-zal.</td></tr>
+          <tr><td>2100</td><td>Nem szökőév</td><td>Osztható 100-zal, de 400-zal nem.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 class="mt-5">11. Gyakorlófeladatok</h2>
 
       <div class="card mb-4"><div class="card-body">
         <h3 class="card-title h5">1. Szó hossza</h3>
@@ -179,7 +221,7 @@ else:
         <p>Kérj be egy hónapszámot és egy napot! Írd ki, hogy a megadott dátum lehetséges-e! A szökőévet egyelőre nem kell kezelni.</p>
       </div></div>
 
-      <h2 class="mt-5">11. Lehetséges megoldások</h2>
+      <h2 class="mt-5">12. Lehetséges megoldások</h2>
       <details class="card mb-3">
         <summary class="card-header fw-semibold">1–2. feladat megoldása</summary>
         <div class="card-body">
