@@ -21,6 +21,11 @@
     .abs-box { position:absolute; top:15px; right:15px; padding:.5rem .8rem; background:#fff3bf; border:1px solid #f59f00; }
     .diagram-parent { position:relative; min-height:220px; border:3px solid #1098ad; background:#eefbff; border-radius:1rem; padding:1rem; }
     .diagram-child { position:absolute; top:70px; left:120px; background:#ffe8cc; border:3px solid #f76707; padding:1rem; border-radius:.75rem; }
+    .ancestor-demo { width:min(100%,560px); min-height:320px; margin:1.25rem auto; background:#12dfe3; padding:2rem; border-radius:.75rem; position:relative; }
+    .ancestor-second { width:75%; min-height:220px; margin:0 auto; background:#ffab00; padding:2rem; border-radius:.65rem; position:relative; }
+    .ancestor-third { width:60%; min-height:130px; margin:0 auto; background:#8a2be2; padding:1rem; border-radius:.55rem; position:relative; color:white; }
+    .ancestor-button { position:absolute; top:0; left:0; padding:.6rem 1rem; border:1px solid crimson; background:#fff; color:#212529; }
+    .ancestor-tree { font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; background:#f8f9fa; border:1px solid #dee2e6; border-radius:.75rem; padding:1rem 1.25rem; line-height:1.8; }
     summary { cursor:pointer; font-weight:600; }
   </style>
 </head>
@@ -97,13 +102,72 @@
 <p class="mt-3">Az abszolút pozicionált elem a hozzá legközelebbi olyan őshöz igazodik, amelynek <code>position</code> értéke nem <code>static</code>. A mai példában ezt tudatosan <code>relative</code>-val hozzuk létre.</p>
 </div></section>
 <section class="card section-card mb-4"><div class="card-body p-4">
-<h2 class="h3">5. Miért adunk relative-ot a szülőnek?</h2>
+<h2 class="h3">5. Hogyan keresi meg az absolute elem a viszonyítási alapot?</h2>
+<p>Itt érdemes pontosítani egy nagyon fontos szabályt. Az abszolút pozicionált elem <strong>nem kívülről befelé</strong> keresi a megfelelő szülőt, hanem saját magától indulva <strong>belülről kifelé halad az őselemek között</strong>.</p>
+<p>A böngésző addig megy felfelé a HTML-hierarchiában, amíg meg nem találja a <strong>legközelebbi olyan őselemet</strong>, amelynek <code>position</code> értéke nem <code>static</code>. Amint ilyet talál, megáll, és az lesz a viszonyítási alap.</p>
+<div class="ancestor-tree my-3">
+button – position: absolute<br/>
+↑<br/>
+.harmadik – position: relative ← <strong>itt megáll</strong><br/>
+↑<br/>
+.masodik – position: relative<br/>
+↑<br/>
+.elso – position: relative<br/>
+↑<br/>
+body
+</div>
+<p>Vegyük ezt a példát:</p>
+<pre><code>&lt;div class="elso"&gt;
+  &lt;div class="masodik"&gt;
+    &lt;div class="harmadik"&gt;
+      &lt;button&gt;like&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<pre><code>button {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.elso {
+  position: relative;
+}
+
+.masodik {
+  position: relative;
+}
+
+.harmadik {
+  position: relative;
+}</code></pre>
+<div class="ancestor-demo">
+  <div class="ancestor-second">
+    <div class="ancestor-third">
+      .harmadik
+      <button class="ancestor-button" type="button">like</button>
+    </div>
+  </div>
+</div>
+<p>A gomb azért a lila <code>.harmadik</code> doboz bal felső sarkában marad, mert az a hozzá <strong>legközelebbi pozicionált ős</strong>. A <code>top: 0; left: 0;</code> tehát ennek a doboznak a bal felső sarkát jelenti.</p>
+<div class="important rounded-3 p-3 mt-3"><strong>Fontos különbség:</strong> a <code>position: absolute</code> kiveszi a gombot a normál dokumentumfolyamból, de <strong>nem változtatja meg a HTML-hierarchiát</strong>. A gomb továbbra is a <code>.harmadik</code> gyereke marad.</div>
+<h3 class="h5 mt-4">Mi történik, ha kivesszük a relative-ot?</h3>
+<ol>
+<li>Ha a <code>.harmadik</code> már nem pozicionált, a böngésző továbbmegy felfelé, és a <code>.masodik</code> lesz a viszonyítási alap.</li>
+<li>Ha a <code>.masodik</code>-ból is kivesszük, akkor az <code>.elso</code> lesz az.</li>
+<li>Ha egyik őselem sem pozicionált, akkor a gomb a kezdeti viszonyítási rendszerhez, gyakorlatilag az oldal/viewport koordinátarendszeréhez igazodik.</li>
+</ol>
+<div class="callout rounded-3 p-3"><strong>Legjobb megjegyzendő mondat:</strong> Az abszolút pozicionált elem belülről kifelé keres, és a hozzá legközelebbi pozicionált őselemhez igazodik.</div>
+<div class="task rounded-3 p-3 mt-3"><strong>Kísérlet:</strong> készíts három egymásba ágyazott dobozt. Mindhárom kapjon <code>position: relative</code>-ot. A legbelsőbe tegyél egy <code>position: absolute</code> gombot <code>top: 0; left: 0;</code> értékekkel. Ezután egyesével kapcsold ki a <code>position: relative</code> sorokat belülről kifelé, és figyeld meg, melyik dobozhoz ugrik a gomb.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">6. Miért adunk relative-ot a szülőnek?</h2>
 <p>A <code>position: relative</code> önmagában nem veszi ki az elemet a normál dokumentumfolyamból. Ha nem adunk mellé eltolást, a szülő ugyanott marad, ahol eddig volt.</p>
 <p>Viszont ezzel létrehozunk egy jól használható <strong>viszonyítási alapot</strong> az abszolút pozicionált gyerekelemeknek.</p>
 <div class="callout rounded-3 p-3"><strong>Megjegyzendő páros:</strong><br/><code>szülő: position: relative;</code><br/><code>gyerek: position: absolute;</code></div>
 </div></section>
 <section class="card section-card mb-4"><div class="card-body p-4">
-<h2 class="h3">6. Órai feladat – Tetszik gomb a cikk fejlécében</h2>
+<h2 class="h3">7. Órai feladat – Tetszik gomb a cikk fejlécében</h2>
 <ol>
 <li>Nyisd meg a kezdőcsomagot.</li>
 <li>Nézd meg a <code>.like-button</code> gomb helyét a normál dokumentumfolyamban.</li>
@@ -127,13 +191,13 @@
 }</code></pre><a class="btn btn-outline-success me-2" href="megoldas/index.html">Mintamegoldás megnyitása</a><a class="btn btn-outline-success" download="" href="megoldas.zip">Megoldás letöltése</a></details>
 </div></section>
 <section class="card section-card mb-4"><div class="card-body p-4">
-<h2 class="h3">7. Mikor használjuk?</h2>
+<h2 class="h3">8. Mikor használjuk?</h2>
 <p>Az abszolút pozicionálás jó választás lehet kisebb, egyértelműen egy másik elemhez kötődő részleteknél:</p>
 <ul><li>sarokban lévő ikon vagy jelvény,</li><li>kártyán elhelyezett gomb,</li><li>képre helyezett felirat,</li><li>kis dekorációs elem.</li></ul>
 <div class="danger-note rounded-3 p-3"><strong>Ne ebből építs teljes oldalelrendezést.</strong> Menüket, többoszlopos oldalakat és nagyobb szerkezeteket nem érdemes sok <code>top</code>/<code>left</code> értékkel „kézzel odarakni”. Ezekre később Flexboxot és CSS Gridet használunk.</div>
 </div></section>
 <section class="card section-card mb-4"><div class="card-body p-4">
-<h2 class="h3">8. Mini kihívás</h2>
+<h2 class="h3">9. Mini kihívás</h2>
 <p>Helyezz egy <strong>„ÚJ”</strong> feliratot a kapcsolódó bejegyzések dobozának jobb felső sarkába.</p>
 <ol><li>Adj az <code>aside</code> elemnek megfelelő pozicionálást.</li><li>Tegyél bele egy <code>&lt;span class="badge-new"&gt;ÚJ&lt;/span&gt;</code> elemet.</li><li>A jelvényt abszolút pozicionáld.</li><li>Állítsd a helyét <code>top</code> és <code>right</code> segítségével.</li></ol>
 <details class="callout rounded-3 p-3"><summary>Egy lehetséges megoldás</summary><pre><code>aside {
@@ -147,12 +211,13 @@
 }</code></pre></details>
 </div></section>
 <section class="card section-card mb-4"><div class="card-body p-4">
-<h2 class="h3">9. Ellenőrző kérdések</h2>
+<h2 class="h3">10. Ellenőrző kérdések</h2>
 <ol>
 <li>Mit jelent a normál dokumentumfolyam?</li>
 <li>Mi történik egy elemmel <code>position: absolute</code> esetén?</li>
 <li>Mire használjuk a <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> tulajdonságokat?</li>
 <li>Miért teszünk gyakran <code>position: relative</code>-ot a szülőre?</li>
+<li>Milyen irányban keresi az abszolút elem a pozicionált őst, és hol áll meg?</li>
 <li>Kikerül-e a normál folyamból a <code>position: relative</code> elem?</li>
 <li>Miért nem érdemes teljes weboldalelrendezést abszolút pozicionálással készíteni?</li>
 </ol>
@@ -161,6 +226,7 @@
 <li>Kikerül a normál folyamból, ezért nem foglal helyet úgy, mint korábban, és átfedhet más elemeket.</li>
 <li>Az abszolút pozicionált elem helyét adjuk meg velük a viszonyítási alaphoz képest.</li>
 <li>Hogy az abszolút pozicionált gyerek ehhez a szülőhöz igazodjon.</li>
+<li>Belülről kifelé halad az őselemek között, és a hozzá legközelebbi olyan ősnél áll meg, amelynek <code>position</code> értéke nem <code>static</code>.</li>
 <li>Nem, alaphelyzetben továbbra is részt vesz a normál elrendezésben.</li>
 <li>Mert törékeny, nehezen reszponzív elrendezést eredményez; nagyobb layoutokra Flexbox és Grid való.</li>
 </ol></details>
