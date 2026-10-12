@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dolgozat – Elágazások és while ciklus</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>body{font-family:system-ui,sans-serif;margin:0;color:#212529;background:#fff}.container{max-width:960px;margin:auto;padding:32px 20px}a{color:#0d6efd}h1{margin-top:24px}.card{border:1px solid #dee2e6;border-radius:8px;margin:20px 0}.card-body{padding:20px}.description{font:inherit;white-space:pre-wrap;line-height:1.6}pre{overflow:auto}details pre{padding:16px;background:#f8f9fa}summary{cursor:pointer;font-weight:600}.downloads{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}.downloads a{padding:12px;border:1px solid #0d6efd;border-radius:6px;text-decoration:none}table{width:100%;border-collapse:collapse}th,td{padding:10px;border-bottom:1px solid #dee2e6;text-align:left}</style>
+</head><body><main class="container">
+<nav><a href="../index.html">← Dolgozatok és megoldások</a> · <a href="../../index.html">Python-tananyag</a></nav>
+<h1>Dolgozat – Elágazások és while ciklus</h1>
+<p class="lead">10. évfolyam · 45 perc · 20 pont · 5 gyakorlati feladat</p>
+<p>A megoldásokat a letöltött feladatlapba, a feladatleírások alá írd! Az adatbekérések és a kiírások legyenek érthetők. Feltételezheted, hogy a felhasználó a megadott típusú adatot írja be. A ciklusos feladatokat <code>while</code> ciklussal oldd meg!</p>
+<div class="downloads"><a href="python_if_while_dolgozat.py" download>Feladatlap letöltése (.py)</a><a href="python_if_while_megoldas.py" download>Megoldás letöltése (.py)</a></div>
+<h2>Feladatok és megoldások</h2>
+<section class="card mb-4"><div class="card-body"><h2 class="h4">1. feladat – Egy szám vizsgálata – 3 pont</h2><pre class="description">Kérj be egy egész számot!
+Írd ki, hogy a szám pozitív, negatív vagy nulla!</pre>
+<details><summary>Megoldás megjelenítése</summary><pre class="bg-light p-3 rounded mt-3"><code>szam = int(input(&quot;Adj meg egy egész számot: &quot;))
+
+if szam &gt; 0:
+    print(&quot;Pozitív.&quot;)
+elif szam &lt; 0:
+    print(&quot;Negatív.&quot;)
+else:
+    print(&quot;Nulla.&quot;)</code></pre></details></div></section>
+<section class="card mb-4"><div class="card-body"><h2 class="h4">2. feladat – Kedvezményes vásárlás – 3 pont</h2><pre class="description">Kérd be egy vásárlás összegét egész forintban!
+Ha az összeg legalább 10 000 Ft, a vásárló 10% kedvezményt kap.
+Egyébként nem jár kedvezmény.
+Írd ki a fizetendő összeget!
+
+Példák:
+12 000 Ft-os vásárlás esetén a fizetendő összeg 10 800 Ft.
+8 000 Ft-os vásárlás esetén a fizetendő összeg 8 000 Ft.</pre>
+<details><summary>Megoldás megjelenítése</summary><pre class="bg-light p-3 rounded mt-3"><code>osszeg = int(input(&quot;Add meg a vásárlás összegét egész forintban: &quot;))
+
+if osszeg &gt;= 10000:
+    fizetendo = osszeg * 0.9
+else:
+    fizetendo = osszeg
+
+print(&quot;A fizetendő összeg:&quot;, fizetendo, &quot;Ft&quot;)</code></pre></details></div></section>
+<section class="card mb-4"><div class="card-body"><h2 class="h4">3. feladat – Visszaszámlálás – 4 pont</h2><pre class="description">Kérj be egy pozitív egész számot!
+While ciklussal írd ki a számokat a megadott számtól 1-ig,
+csökkenő sorrendben, mindegyiket külön sorba!
+A visszaszámlálás után írd ki: Indulás!
+
+Például, ha a megadott szám 3:
+3
+2
+1
+Indulás!</pre>
+<details><summary>Megoldás megjelenítése</summary><pre class="bg-light p-3 rounded mt-3"><code>szam = int(input(&quot;Adj meg egy pozitív egész számot: &quot;))
+
+while szam &gt;= 1:
+    print(szam)
+    szam = szam - 1
+
+print(&quot;Indulás!&quot;)</code></pre></details></div></section>
+<section class="card mb-4"><div class="card-body"><h2 class="h4">4. feladat – Megfelelő szám bekérése – 4 pont</h2><pre class="description">Kérj be egy egész számot!
+Ha a szám kisebb mint 1 vagy nagyobb mint 10, írd ki:
+Hibás érték!
+Ezután kérj be új számot!
+A bekérést addig ismételd, amíg 1 és 10 közötti számot nem kapsz.
+Az 1 és a 10 is elfogadható.
+Az első megfelelő szám megadásakor a ciklus álljon le,
+és ne kérj be több számot!
+A ciklus után írd ki: Elfogadott szám:
+majd a szám értékét!
+
+Példa:
+Adj meg egy számot: 15
+Hibás érték!
+Adj meg egy számot: -2
+Hibás érték!
+Adj meg egy számot: 7
+Elfogadott szám: 7</pre>
+<details><summary>Megoldás megjelenítése</summary><pre class="bg-light p-3 rounded mt-3"><code>szam = int(input(&quot;Adj meg egy számot: &quot;))
+
+while szam &lt; 1 or szam &gt; 10:
+    print(&quot;Hibás érték!&quot;)
+    szam = int(input(&quot;Adj meg egy számot: &quot;))
+
+print(&quot;Elfogadott szám:&quot;, szam)</code></pre></details></div></section>
+<section class="card mb-4"><div class="card-body"><h2 class="h4">5. feladat – Páros számok számlálása – 6 pont</h2><pre class="description">Kérj be egész számokat egymás után!
+Az adatbekérés addig tartson, amíg a felhasználó 0-t nem ír be.
+A program számolja meg, hogy a megadott számok közül hány volt páros!
+A lezáró 0-t ne számold bele!
+A végén írd ki a páros számok darabszámát!
+Ha az első megadott szám 0, az eredmény 0.
+
+Példa:
+Adj meg egy számot: 5
+Adj meg egy számot: 8
+Adj meg egy számot: -4
+Adj meg egy számot: 7
+Adj meg egy számot: 0
+A páros számok darabszáma: 2</pre>
+<details><summary>Megoldás megjelenítése</summary><pre class="bg-light p-3 rounded mt-3"><code>paros_db = 0
+szam = int(input(&quot;Adj meg egy számot: &quot;))
+
+while szam != 0:
+    if szam % 2 == 0:
+        paros_db = paros_db + 1
+    szam = int(input(&quot;Adj meg egy számot: &quot;))
+
+print(&quot;A páros számok darabszáma:&quot;, paros_db)</code></pre></details></div></section>
+<h2>Pontozás</h2><table><thead><tr><th>Feladat</th><th>Pont</th></tr></thead><tbody>
+<tr><td>1. Egy szám vizsgálata</td><td>3</td></tr>
+<tr><td>2. Kedvezményes vásárlás</td><td>3</td></tr>
+<tr><td>3. Visszaszámlálás</td><td>4</td></tr>
+<tr><td>4. Megfelelő szám bekérése</td><td>4</td></tr>
+<tr><td>5. Páros számok számlálása</td><td>6</td></tr>
+<tr><th>Összesen</th><th>20</th></tr></tbody></table>
+<p class="mt-4"><a href="../../04_while_ciklus/index.html">Vissza a while ciklus tananyagához</a></p>
+</main></body></html>
