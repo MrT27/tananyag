@@ -190,12 +190,41 @@
   align-items: center;
   gap: 20px;
 }</code></pre>
-          <div class="important rounded-3 p-3">
+          <div class="important rounded-3 p-3 mb-3">
             <strong>Figyeld meg:</strong> a jobb oldali linket és szerzőt egy
             külön <code>div</code> fogja össze. Így a
             <code>.related-post</code>-nak csak két közvetlen flex eleme van: a
             kép és a szöveges doboz.
           </div>
+          <h3 class="h5">A kapcsolódó bejegyzések finomhangolása</h3>
+          <p>
+            Jonas példájában a Flexbox beállítása után a szöveges részeket is
+            hozzáigazítjuk az új elrendezéshez.
+          </p>
+          <pre><code>.related-author {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+h4 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.related-link:link {
+  font-size: 17px;
+  font-weight: bold;
+  font-style: normal;
+  margin-bottom: 5px;
+}</code></pre>
+          <p>
+            A <code>.related-author</code> kisebb és dőlt betűvel jelenik meg,
+            a kapcsolódó bejegyzések címe pedig hangsúlyosabb lesz. A
+            <code>h4</code> középre kerül és nagybetűs megjelenést kap.
+          </p>
         </div>
       </section>
       <section class="card section-card mb-4">
@@ -206,7 +235,7 @@
             olyan margók, amelyeket már nincs értelme megtartani.
           </p>
           <pre><code>.author {
-  margin-bottom: 0;
+  margin: 0;
 }</code></pre>
           <p>
             Érdemes a böngésző fejlesztői eszközeiben megnézni, mi okozza a
@@ -258,6 +287,21 @@
             </li>
             <li>Adj közöttük <code>gap: 20px</code>-t.</li>
             <li>
+              A <code>.author</code> elem margóját állítsd <code>0</code>-ra.
+            </li>
+            <li>
+              Formázd a <code>.related-author</code> elemet 14 px-es, normál
+              vastagságú, dőlt szöveggé.
+            </li>
+            <li>
+              A <code>h4</code> címet igazítsd középre, legyen nagybetűs és
+              kapjon 30 px alsó margót.
+            </li>
+            <li>
+              A <code>.related-link</code> legyen 17 px-es, félkövér, normál
+              betűstílusú, 5 px alsó margóval.
+            </li>
+            <li>
               Távolítsd el azokat a margókat, amelyek már zavarják az igazítást.
             </li>
           </ol>
@@ -273,12 +317,37 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  margin-bottom: 15px;
+}
+
+.author {
+  margin: 0;
 }
 
 .related-post {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.related-author {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+h4 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.related-link:link {
+  font-size: 17px;
+  font-weight: bold;
+  font-style: normal;
+  margin-bottom: 5px;
 }</code></pre>
             <a class="btn btn-outline-success me-2" href="megoldas/index.html"
               >Mintamegoldás megnyitása</a

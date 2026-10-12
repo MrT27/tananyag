@@ -22,9 +22,9 @@ article { margin-bottom: 50px; }
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
-.author { margin-bottom: 0; }
+.author { margin: 0; }
 .post-img { width: 100%; height: auto; }
 aside {
   background-color: #f7f7f7;
@@ -37,7 +37,11 @@ aside {
 h1, h2, h3, h4 { color: #1098ad; }
 h2 { margin-bottom: 30px; }
 h3 { margin-top: 40px; margin-bottom: 20px; }
-h4 { margin-bottom: 24px; }
+h4 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
 p { margin-bottom: 15px; }
 ul { margin-left: 40px; margin-bottom: 20px; }
 li { margin-bottom: 12px; }
