@@ -58,8 +58,9 @@
 <section class="card section-card mb-4"><div class="card-body p-4">
 <h2 class="h3">3. Az oldalsáv legyen pontosan 300 pixel</h2>
 <p>Flex elemnél a méretet nem feltétlenül <code>width</code>-del érdemes rögzíteni. A korábban tanult rövidített <code>flex</code> tulajdonsággal pontosan megadhatjuk, hogy ne nőjön és ne zsugorodjon:</p>
-<pre><code>.row aside {
+<pre><code>aside {
   flex: 0 0 300px;
+  /* alapértelmezett stretch */
 }</code></pre>
 <ul>
 <li>első <code>0</code>: ne nőjön (<code>flex-grow</code>)</li>
@@ -70,9 +71,12 @@
 </div></section>
 <section class="card section-card mb-4"><div class="card-body p-4">
 <h2 class="h3">4. A cikk töltse ki a maradék helyet</h2>
+<div class="callout rounded-3 p-3 mb-3"><strong>Jonas videójában:</strong> először kipróbálható a <code>flex: 0 0 825px</code>, majd ezt kikommentelve a <code>flex: 1</code> teszi rugalmassá a cikket.</div>
 <p>Nem érdemes kézzel kiszámolni a cikk szélességét. Hagyjuk, hogy a Flexbox ossza ki a fennmaradó helyet:</p>
-<pre><code>.row article {
+<pre><code>article {
+  /* flex: 0 0 825px; */
   flex: 1;
+  margin-bottom: 0;
 }</code></pre>
 <p>A <code>flex: 1</code> azt eredményezi, hogy a cikk felveszi a rendelkezésre álló maradék helyet.</p>
 <div class="important rounded-3 p-3"><strong>Ez a Flexbox egyik nagy előnye:</strong> nem kell kézzel összeadnunk az oszlopszélességeket és a közöttük lévő rést.</div>
@@ -82,8 +86,9 @@
 <p>A Flexbox alapértelmezett <code>align-items</code> értéke <code>stretch</code>. Emiatt a rövidebb flex elem a kereszttengely mentén megnyúlik a magasabb elem méretéig.</p>
 <pre><code>.row {
   display: flex;
-  align-items: flex-start;
   gap: 75px;
+  margin-bottom: 60px;
+  align-items: flex-start;
 }</code></pre>
 <p>A <code>flex-start</code> hatására mindkét elem csak akkora magasságú lesz, amekkorára a saját tartalmának szüksége van.</p>
 </div></section>
@@ -94,8 +99,7 @@
   margin-bottom: 60px;
 }
 
-.row article,
-.row aside {
+article {
   margin-bottom: 0;
 }</code></pre>
 <p>Így az elrendezéshez tartozó külső térközt maga az elrendezési konténer kezeli.</p>
@@ -115,19 +119,20 @@
 <details class="task rounded-3 p-3"><summary>Mintamegoldás</summary>
 <pre><code>.row {
   display: flex;
-  align-items: flex-start;
   gap: 75px;
   margin-bottom: 60px;
+  align-items: flex-start;
 }
 
-.row article {
+article {
+  /* flex: 0 0 825px; */
   flex: 1;
   margin-bottom: 0;
 }
 
-.row aside {
+aside {
   flex: 0 0 300px;
-  margin-bottom: 0;
+  /* alapértelmezett stretch */
 }</code></pre>
 <a class="btn btn-outline-success me-2" href="megoldas/index.html">Mintamegoldás megnyitása</a><a class="btn btn-outline-success" download="" href="megoldas.zip">Megoldás letöltése</a>
 </details>
