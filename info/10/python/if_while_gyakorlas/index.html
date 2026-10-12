@@ -1,0 +1,112 @@
+<!doctype html><html lang="hu"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Felkészülés – Elágazások és while ciklus</title><style>body{font-family:system-ui,sans-serif;color:#212529;margin:0;line-height:1.6}.container{max-width:960px;margin:auto;padding:32px 20px}a{color:#0d6efd}.card{border:1px solid #dee2e6;border-radius:8px;padding:20px;margin:24px 0}h2{font-size:1.4rem}.description{font:inherit;white-space:pre-wrap}pre{overflow:auto}details{margin:12px 0}details pre{background:#f8f9fa;padding:16px}summary{cursor:pointer;font-weight:600}.downloads{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}.downloads a{border:1px solid #0d6efd;border-radius:6px;padding:12px;text-decoration:none}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px;border-bottom:1px solid #dee2e6}</style></head><body><main class="container">
+<nav><a href="../index.html">← Python-tananyag</a></nav>
+<h1>Felkészülés a dolgozatra – Elágazások és while ciklus</h1>
+<p>10. évfolyam · 45 perc · 5 gyakorlófeladat</p>
+<p>A dolgozathoz hasonló feladatokkal gyakoroljuk az elágazásokat, a ciklusfeltételt, a változó módosítását, az ismételt adatbekérést és a számlálást.</p>
+<p>Először önállóan próbáld megoldani a feladatot! Ha elakadsz, nyisd le a segítséget. A megoldást az elkészült programod ellenőrzésére használd. A ciklusos feladatokat <code>while</code> ciklussal oldd meg!</p>
+<div class="downloads"><a href="python_if_while_gyakorlas.py" download>Gyakorló feladatlap (.py)</a><a href="python_if_while_gyakorlas_megoldas.py" download>Gyakorlófeladatok megoldása (.py)</a></div>
+<details class="card"><summary>Javasolt óramenet – 45 perc</summary>
+<table><thead><tr><th>Idő</th><th>Tevékenység</th></tr></thead><tbody>
+<tr><td>0–5. perc</td><td>Közös ismétlés: if–elif–else, behúzás, while feltétele, változó módosítása.</td></tr>
+<tr><td>5–13. perc</td><td>1–2. feladat: önálló megoldás, majd a határértékek közös ellenőrzése.</td></tr>
+<tr><td>13–21. perc</td><td>3. feladat: számolás felfelé. A ciklus első két körének és leállásának közös követése.</td></tr>
+<tr><td>21–30. perc</td><td>4. feladat: hibás adatok ismételt bekérése, az első megfelelő adat elfogadása.</td></tr>
+<tr><td>30–40. perc</td><td>5. feladat: számláló, végjel és elágazás a cikluson belül.</td></tr>
+<tr><td>40–45. perc</td><td>Közös ellenőrzés: elsőre megfelelő adat, határértékek, elsőként megadott 0. Rövid megbeszélés arról, mit kell még gyakorolni.</td></tr>
+</tbody></table></details>
+<section class="card"><h2>1. feladat – Hőmérséklet vizsgálata</h2><pre class="description">Kérj be egy egész számmal megadott hőmérsékletet!
+Ha a hőmérséklet 0 alatt van, írd ki: Fagy!
+Ha pontosan 0, írd ki: Fagypont!
+Ha 0 felett van, írd ki: Fagypont felett!
+
+Próbáld ki ezekkel az értékekkel: -5, 0, 12.</pre><details><summary>Segítség</summary><p>Három esetet kell elkülönítened. Gondold végig, mi történjen pontosan 0-nál!</p></details><details><summary>Megoldás</summary><pre><code>homerseklet = int(input(&quot;Add meg a hőmérsékletet: &quot;))
+
+if homerseklet &lt; 0:
+    print(&quot;Fagy!&quot;)
+elif homerseklet == 0:
+    print(&quot;Fagypont!&quot;)
+else:
+    print(&quot;Fagypont felett!&quot;)</code></pre></details></section><section class="card"><h2>2. feladat – Szállítási díj</h2><pre class="description">Kérd be egy rendelés összegét egész forintban!
+Ha a rendelés összege legalább 15 000 Ft, a szállítás ingyenes.
+Egyébként a szállítás díja 1 500 Ft.
+Írd ki a szállítással együtt fizetendő teljes összeget!
+
+Példák:
+12 000 Ft-os rendelés esetén a fizetendő összeg 13 500 Ft.
+15 000 Ft-os rendelés esetén a fizetendő összeg 15 000 Ft.
+Próbáld ki 20 000 Ft-tal is!</pre><details><summary>Segítség</summary><p>Két eset van. A 15 000 Ft-os rendelésnél már ingyenes a szállítás.</p></details><details><summary>Megoldás</summary><pre><code>osszeg = int(input(&quot;Add meg a rendelés összegét egész forintban: &quot;))
+
+if osszeg &gt;= 15000:
+    fizetendo = osszeg
+else:
+    fizetendo = osszeg + 1500
+
+print(&quot;A fizetendő összeg:&quot;, fizetendo, &quot;Ft&quot;)</code></pre></details></section><section class="card"><h2>3. feladat – Számolás felfelé</h2><pre class="description">Kérj be egy pozitív egész számot!
+While ciklussal írd ki a számokat 1-től a megadott számig,
+a megadott számot is beleértve, mindegyiket külön sorba!
+A ciklus után írd ki: Kész!
+
+Például, ha a megadott szám 4:
+1
+2
+3
+4
+Kész!
+Próbáld ki az 1-et is!</pre><details><summary>Segítség</summary><p>Melyik változó tárolja a felső határt, és melyik változik minden körben?</p></details><details><summary>Megoldás</summary><pre><code>felso_hatar = int(input(&quot;Adj meg egy pozitív egész számot: &quot;))
+szam = 1
+
+while szam &lt;= felso_hatar:
+    print(szam)
+    szam = szam + 1
+
+print(&quot;Kész!&quot;)</code></pre></details></section><section class="card"><h2>4. feladat – Megfelelő életkor bekérése</h2><pre class="description">Kérj be egy egész számmal megadott életkort!
+A program 14 és 18 közötti életkort fogadjon el.
+A 14 és a 18 is elfogadható.
+Ha a megadott életkor kisebb mint 14 vagy nagyobb mint 18,
+írd ki: Hibás életkor!
+Ezután kérj be új életkort!
+A bekérést addig ismételd, amíg megfelelő életkort nem kapsz!
+Az első megfelelő életkor megadásakor a ciklus álljon le,
+és ne kérj be több adatot!
+A ciklus után írd ki: Elfogadott életkor:
+majd az életkor értékét!
+
+Példa:
+Add meg az életkort: 12
+Hibás életkor!
+Add meg az életkort: 20
+Hibás életkor!
+Add meg az életkort: 16
+Elfogadott életkor: 16
+Próbáld ki úgy is, hogy az első megadott életkor 14 vagy 18!</pre><details><summary>Segítség</summary><p>A ciklus addig fusson, amíg az adat hibás. Mindkét hibás esetet ellenőrizd!</p></details><details><summary>Megoldás</summary><pre><code>eletkor = int(input(&quot;Add meg az életkort: &quot;))
+
+while eletkor &lt; 14 or eletkor &gt; 18:
+    print(&quot;Hibás életkor!&quot;)
+    eletkor = int(input(&quot;Add meg az életkort: &quot;))
+
+print(&quot;Elfogadott életkor:&quot;, eletkor)</code></pre></details></section><section class="card"><h2>5. feladat – Pozitív számok számlálása</h2><pre class="description">Kérj be egész számokat egymás után!
+Az adatbekérés addig tartson, amíg a felhasználó 0-t nem ír be!
+Számold meg, hány pozitív számot adott meg!
+A negatív számokat és a lezáró 0-t ne számold bele!
+A végén írd ki a pozitív számok darabszámát!
+Ha az első megadott szám 0, az eredmény 0.
+
+Példa:
+Adj meg egy számot: 5
+Adj meg egy számot: -8
+Adj meg egy számot: 4
+Adj meg egy számot: -7
+Adj meg egy számot: 0
+A pozitív számok darabszáma: 2
+Próbáld ki csak negatív számokkal, majd lezáró 0-val is!</pre><details><summary>Segítség</summary><p>A számláló csak megfelelő számnál nőjön. Az újabb adatbekérés minden körben történjen meg!</p></details><details><summary>Megoldás</summary><pre><code>pozitiv_db = 0
+szam = int(input(&quot;Adj meg egy számot: &quot;))
+
+while szam != 0:
+    if szam &gt; 0:
+        pozitiv_db = pozitiv_db + 1
+    szam = int(input(&quot;Adj meg egy számot: &quot;))
+
+print(&quot;A pozitív számok darabszáma:&quot;, pozitiv_db)</code></pre></details></section>
+<section class="card"><h2>Ellenőrizd a munkádat!</h2><ul><li>Minden lehetséges esetet kezelsz az elágazásban?</li><li>A határértékeknél is helyes az eredmény?</li><li>A ciklusban változik az az adat, amelytől a feltétel függ?</li><li>A megfelelő adat vagy a lezáró 0 megállítja a bekérést?</li><li>A számláló csak a megfelelő számoknál nő?</li><li>A behúzások jelzik, mi van a cikluson és az elágazáson belül?</li></ul></section>
+<p><a href="../dolgozatok/if_es_while/index.html">A kapcsolódó dolgozat és megoldása →</a></p>
+</main></body></html>
