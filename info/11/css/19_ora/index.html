@@ -57,10 +57,10 @@
 <p>A <code>grid-template-columns</code> mondja meg, hány oszlop legyen és milyen szélességűek legyenek.</p>
 <pre><code>.container {
   display: grid;
-  grid-template-columns: 250px 150px;
+  grid-template-columns: 200px 200px 100px 100px;
 }</code></pre>
-<p>Ez két oszlopot hoz létre: az első 250, a második 150 pixel széles.</p>
-<p>Négy azonos szélességű oszlophoz:</p>
+<p>Ez négy oszlopot hoz létre: az első kettő 200 px, a következő kettő 100 px széles. Így jól látszik, hogy a Gridben az oszlopok szélességét egymástól függetlenül is megadhatjuk.</p>
+<p>Később rövidebb és rugalmasabb megoldást is használhatunk. Négy azonos szélességű oszlophoz például:</p>
 <pre><code>grid-template-columns: repeat(4, 1fr);</code></pre>
 <div class="mini-grid mb-3"><div>1</div><div>2</div><div>3</div><div>4</div></div>
 <div class="important rounded-3 p-3"><strong><code>1fr</code></strong> a rendelkezésre álló hely egy részét jelenti. Négy darab <code>1fr</code> esetén a hely négy egyenlő részre oszlik.</div>
@@ -78,40 +78,53 @@
 <p>Ha a sorok magasságát is meg akarjuk adni, a <code>grid-template-rows</code> használható:</p>
 <pre><code>.container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 180px 120px;
+  grid-template-columns: 200px 200px 100px 100px;
+  grid-template-rows: 300px 200px;
 }</code></pre>
-<p>Az első sor 180 pixel, a második 120 pixel magas lesz.</p>
+<p>Az első sor 300 px, a második 200 px magas lesz.</p>
 <div class="callout rounded-3 p-3">Ha nem adunk meg sormagasságot, a böngésző a tartalom alapján hozza létre a szükséges sorokat.</div>
 </div></section>
 <section class="card section-card mb-4"><div class="card-body p-4">
 <h2 class="h3">6. Térköz a rácsban: gap</h2>
 <pre><code>.container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  grid-template-columns: 200px 200px 100px 100px;
+  grid-template-rows: 300px 200px;
+
+  /* gap: 30px; */
+  column-gap: 30px;
+  row-gap: 60px;
 }</code></pre>
-<p>A <code>gap</code> egyszerre ad távolságot a sorok és az oszlopok között.</p>
-<p>Külön is megadhatjuk őket:</p>
-<pre><code>column-gap: 30px;
-row-gap: 60px;</code></pre>
+<p>A <code>gap</code> egyszerre ad távolságot a sorok és az oszlopok között. A fenti példában ezt kikommenteljük, és külön adjuk meg a két irány térközét.</p>
+<p><code>column-gap: 30px</code> az oszlopok közötti, <code>row-gap: 60px</code> pedig a sorok közötti távolságot állítja.</p>
 <div class="important rounded-3 p-3"><strong>Gridnél a rácselemek közötti térközhöz a <code>gap</code> a természetes megoldás.</strong> Ne kezdjük az elemeket körbemargózni.</div>
 </div></section>
 <section class="card section-card mb-4"><div class="card-body p-4">
-<h2 class="h3">7. Órai gyakorlat</h2>
+<h2 class="h3">7. Egy korábbi példa ideiglenes elrejtése: <code>display: none</code></h2>
+<p>Gyakorlás közben előfordulhat, hogy egy korábbi elrendezést ideiglenesen nem szeretnénk megjeleníteni. Ilyenkor használható a <code>display: none</code>:</p>
+<pre><code>.flexbox {
+  display: none;
+}</code></pre>
+<p>Az elem ilyenkor nem jelenik meg az oldalon, és helyet sem foglal. Ez <strong>nem Grid-tulajdonság</strong>, csak egy hasznos CSS-megoldás arra, hogy egy példát átmenetileg elrejtsünk.</p>
+<div class="important rounded-3 p-3"><strong>Fontos:</strong> a <code>display: none</code> nem törli az elemet a HTML-ből. Csak a megjelenítését kapcsolja ki.</div>
+</div></section>
+<section class="card section-card mb-4"><div class="card-body p-4">
+<h2 class="h3">8. Órai gyakorlat</h2>
 <ol>
 <li>Nyisd meg a kezdőcsomagot.</li>
 <li>A <code>.container</code> legyen grid konténer.</li>
-<li>Készíts négy egyenlő szélességű oszlopot <code>repeat(4, 1fr)</code> segítségével.</li>
-<li>Az első sor legyen 180px, a második 120px magas.</li>
+<li>Készíts négy oszlopot: <code>200px 200px 100px 100px</code>.</li>
+<li>Az első sor legyen 300px, a második 200px magas.</li>
 <li>Az oszlopok között legyen 30px, a sorok között 60px távolság.</li>
 <li>Próbáld ki, mi történik, ha kitörlöd a <code>grid-template-rows</code> sort.</li>
 </ol>
 <details class="task rounded-3 p-3"><summary>Mintamegoldás</summary>
 <pre><code>.container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 180px 120px;
+  grid-template-columns: 200px 200px 100px 100px;
+  grid-template-rows: 300px 200px;
+
+  /* gap: 30px; */
   column-gap: 30px;
   row-gap: 60px;
 }</code></pre>
@@ -119,7 +132,7 @@ row-gap: 60px;</code></pre>
 </details>
 </div></section>
 <section class="card section-card mb-4"><div class="card-body p-4">
-<h2 class="h3">8. Mit vigyél el ebből az órából?</h2>
+<h2 class="h3">9. Mit vigyél el ebből az órából?</h2>
 <ul>
 <li><code>display: grid</code> hozza létre a grid konténert.</li>
 <li><code>grid-template-columns</code> az oszlopokat adja meg.</li>
@@ -127,16 +140,18 @@ row-gap: 60px;</code></pre>
 <li><code>repeat()</code> segítségével rövidebben írhatunk ismétlődő oszlopokat.</li>
 <li><code>fr</code> a rendelkezésre álló hely arányos felosztására használható.</li>
 <li><code>gap</code> a rács elemei közötti térköz.</li>
+<li><code>display: none</code> segítségével egy elemet ideiglenesen elrejthetünk.</li>
 </ul>
 </div></section>
 <section class="card section-card mb-4"><div class="card-body p-4">
-<h2 class="h3">9. Ellenőrző kérdések</h2>
+<h2 class="h3">10. Ellenőrző kérdések</h2>
 <ol>
 <li>Mi a grid container?</li>
 <li>Mit csinál a <code>grid-template-columns</code>?</li>
 <li>Mit jelent a <code>repeat(4, 1fr)</code>?</li>
 <li>Mi történik, ha több grid item van, mint ahány oszlop?</li>
 <li>Mi a különbség a <code>gap</code>, <code>column-gap</code> és <code>row-gap</code> között?</li>
+<li>Mit csinál a <code>display: none</code>?</li>
 </ol>
 <details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol>
 <li>Az a szülőelem, amelyen <code>display: grid</code> van.</li>
@@ -144,6 +159,7 @@ row-gap: 60px;</code></pre>
 <li>Négy azonos, a rendelkezésre álló helyet egyenlően felosztó oszlopot.</li>
 <li>A böngésző új sort hoz létre.</li>
 <li>A <code>gap</code> mindkét irányra, a másik kettő csak oszlopokra vagy sorokra hat.</li>
+<li>Elrejti az elemet, és az elem helyet sem foglal az oldalon.</li>
 </ol></details>
 </div></section>
 <nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between">
