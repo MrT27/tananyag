@@ -1,2 +1,59 @@
-<!doctype html><html lang="hu"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Grid igazítás – kezdő</title><style>
-*{box-sizing:border-box}body{font-family:Arial,sans-serif;margin:0;padding:30px;background:#f5f6f8}.container{width:min(700px,95vw);height:500px;margin:auto;background:#222;display:grid;grid-template-columns:125px 200px 125px;grid-template-rows:160px 100px;gap:0}.item{padding:12px;font-size:28px;font-weight:700;border:2px solid #333;border-radius:10px}.item-1{background:#ffd6d6}.item-2{background:#d6e8ff}.item-3{background:#dcf7dc;width:90px;height:70px}.item-4{background:#fff1bf}.item-5{background:#eadcff}.item-6{background:#ffdff1}</style></head><body><div class="container"><div class="item item-1">1</div><div class="item item-2">2</div><div class="item item-3">3</div><div class="item item-4">4</div><div class="item item-5">5</div><div class="item item-6">6</div></div></body></html>
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Grid igazítás – kezdő</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .container--2 {
+      /* ALAP */
+      display: grid;
+      font-family: sans-serif;
+      background-color: black;
+      font-size: 40px;
+      margin: 40px;
+
+      width: 700px;
+      height: 600px;
+      grid-template-columns: 125px 200px 125px;
+      grid-template-rows: 250px 100px;
+      gap: 50px;
+      justify-content: center;
+      /* justify-content: space-between; */
+
+      align-content: center;
+    }
+
+    .el {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .el--1 { background-color: #f8b4b4; }
+    .el--2 { background-color: #fbd38d; }
+    .el--3 { background-color: #faf089; }
+    .el--4 { background-color: #9ae6b4; }
+    .el--5 { background-color: #90cdf4; }
+    .el--6 { background-color: #d6bcfa; }
+  </style>
+</head>
+<body>
+  <div class="container--2">
+    <div class="el el--1">1</div>
+    <div class="el el--2">2</div>
+    <div class="el el--3">3</div>
+    <div class="el el--4">4</div>
+    <div class="el el--5">5</div>
+    <div class="el el--6">6</div>
+  </div>
+</body>
+</html>
