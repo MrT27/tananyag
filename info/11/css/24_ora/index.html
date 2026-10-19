@@ -3,31 +3,59 @@
 <div data-jonas-ref="1" class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4"><strong>Esti ismétlés Jonas kurzusából:</strong><span>63. videó – Building a Simple CSS Grid Layout</span></div>
 <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Az óra célja</h2><ul><li>Megérteni, hogy a Flexbox és a Grid nem egymás helyett, hanem együtt használható.</li><li>A teljes oldal fő szerkezetét Gridre átépíteni.</li><li><code>1fr 300px</code> oszlopszerkezetet létrehozni.</li><li>A fejlécet és láblécet a teljes rácsszélességre kiterjeszteni.</li><li>A vízszintes és függőleges távolságokat <code>column-gap</code> és <code>row-gap</code> segítségével kezelni.</li></ul><a href="kezdo.zip" download class="btn btn-primary">Kezdőcsomag letöltése</a></div></section>
 <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">1. Flexbox vagy Grid? Mindkettő.</h2><p>A navigáció, a szerzői sor és a kapcsolódó bejegyzések továbbra is egyszerű, egydimenziós komponensek. Ezekhez megtartjuk a Flexboxot.</p><div class="important rounded-3 p-3"><strong>Az oldal nagy szerkezete viszont kétdimenziós:</strong> fejléc, fő cikk, oldalsáv és lábléc. Erre most Gridet használunk.</div></div></section>
-<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">2. A megfelelő grid container</h2><p>A <code>.container</code> közvetlen gyermekei legyenek:</p><pre><code>&lt;div class="container"&gt;
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">2. A régi <code>.row</code> wrapper eltávolítása</h2><p>A 18. órában az <code>article</code> és az <code>aside</code> egy <code>.row</code> elemben volt, mert ezt használtuk Flexbox konténerként. A teljes oldal Gridre alakításakor erre már nincs szükség.</p><p><strong>Korábban:</strong></p><pre><code>&lt;div class="row"&gt;
+  &lt;article&gt;...&lt;/article&gt;
+  &lt;aside&gt;...&lt;/aside&gt;
+&lt;/div&gt;</code></pre><p><strong>Gridnél:</strong></p><pre><code>&lt;div class="container"&gt;
   &lt;header class="main-header"&gt;...&lt;/header&gt;
   &lt;article&gt;...&lt;/article&gt;
   &lt;aside&gt;...&lt;/aside&gt;
   &lt;footer&gt;...&lt;/footer&gt;
-&lt;/div&gt;</code></pre><p>A korábbi, Flexboxhoz létrehozott <code>.row</code> wrapperre már nincs szükség.</p></div></section>
-<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">3. Két oszlop létrehozása</h2><pre><code>.container {
+&lt;/div&gt;</code></pre><div class="callout rounded-3 p-3"><strong>Lényeg:</strong> az <code>article</code> és az <code>aside</code> most közvetlenül a <code>.container</code> gyermekei lesznek, így maga a <code>.container</code> tudja őket Gridben elhelyezni.</div></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">3. A régi Flexbox-layout szabályainak kikapcsolása</h2><p>Mielőtt bekapcsoljuk a Gridet, a korábbi teljes oldalas Flexbox-layout néhány szabályát ki kell kapcsolni, különben összeakadnának az új elrendezéssel.</p><pre><code>.main-header {
+  /* margin-bottom: 60px; */
+}
+
+aside {
+  /* width: 500px; */
+}
+
+/* article {
+  margin-bottom: 60px;
+} */</code></pre><p>A 18. órában használt <code>.row</code> Flexbox-layoutot is kikommenteljük:</p><pre><code>/* .row {
+  display: flex;
+  gap: 75px;
+  margin-bottom: 60px;
+  align-items: flex-start;
+}
+
+aside {
+  flex: 0 0 300px;
+}
+
+article {
+  margin-bottom: 0;
+  flex: 1;
+} */</code></pre><div class="important rounded-3 p-3"><strong>Miért fontos az <code>aside</code> fix szélességének kikapcsolása?</strong> A Grid második oszlopa később pontosan <code>300px</code> lesz. Ha az <code>aside</code> közben továbbra is <code>500px</code> széles, kilógna a saját Grid-oszlopából.</div></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">4. Két oszlop létrehozása</h2><pre><code>.container {
   display: grid;
   grid-template-columns: 1fr 300px;
 }</code></pre><p>A fő cikk megkapja a fennmaradó helyet, az oldalsáv pedig 300 pixel széles marad.</p><div class="callout rounded-3 p-3">Nem kell kiszámolnunk a cikk szélességét. A <code>1fr</code> ezt automatikusan megoldja.</div></div></section>
-<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">4. Fejléc és lábléc teljes szélességen</h2><p>Alapból minden grid item egy cellát foglal el. A fejlécnek és láblécnek azonban mindkét oszlopon át kell érnie.</p><pre><code>.main-header,
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">5. Fejléc és lábléc teljes szélességen</h2><p>Alapból minden grid item egy cellát foglal el. A fejlécnek és láblécnek azonban mindkét oszlopon át kell érnie.</p><pre><code>.main-header,
 footer {
   grid-column: 1 / -1;
 }</code></pre><p>A <code>-1</code> az utolsó rácsvonalat jelenti, ezért ez akkor is működik, ha később változik az oszlopok száma.</p></div></section>
-<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">5. A távolságokat a rács kezelje</h2><pre><code>.container {
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">6. A távolságokat a rács kezelje</h2><pre><code>.container {
   display: grid;
   grid-template-columns: 1fr 300px;
   column-gap: 75px;
   row-gap: 60px;
 }</code></pre><p>Ahelyett, hogy külön elemekre raknánk sok <code>margin-bottom</code>-ot, az oldal nagyobb térközeit a grid containerben tartjuk. Így a layout kódja egy helyen áttekinthető.</p></div></section>
-<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">6. Az oldalsáv ne nyúljon le</h2><p>A grid itemek alapértelmezésben megnyúlhatnak a sor teljes magasságára. Ha az oldalsáv csak akkora legyen, amekkora a tartalma:</p><pre><code>.container {
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">7. Az oldalsáv ne nyúljon le</h2><p>A grid itemek alapértelmezésben megnyúlhatnak a sor teljes magasságára. Ha az oldalsáv csak akkora legyen, amekkora a tartalma:</p><pre><code>.container {
   align-items: start;
 }</code></pre><p>Gridben az érték neve <code>start</code>, nem <code>flex-start</code>.</p></div></section>
-<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">7. A kész fő layout</h2><pre><code>.container {
-  width: 900px;
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">8. A kész fő layout</h2><pre><code>.container {
+  width: 1200px;
   margin: 0 auto;
 
   display: grid;
@@ -37,11 +65,22 @@ footer {
   align-items: start;
 }
 
-.main-header,
+.main-header {
+  grid-column: 1 / -1;
+}
+
+article {
+  /* automatikusan az első oszlopba kerül */
+}
+
 footer {
   grid-column: 1 / -1;
-}</code></pre><div class="important rounded-3 p-3">A belső komponensekben továbbra is használhatunk Flexboxot. A Grid és a Flexbox együtt a leghasznosabb.</div></div></section>
-<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">8. Órai feladat</h2><ol><li>Töltsd le és csomagold ki a kezdőcsomagot.</li><li>Távolítsd el az <code>article</code> és <code>aside</code> körüli <code>.row</code> elemet.</li><li>A <code>.container</code> legyen grid container.</li><li>Hozz létre egy rugalmas fő oszlopot és egy 300 pixeles oldalsávot.</li><li>A fejléc és a lábléc érjen végig mindkét oszlopon.</li><li>Állíts be 75 pixeles oszloprést és 60 pixeles sorrést.</li><li>Az oldalsáv igazodjon a sor tetejére, ne nyúljon a cikk teljes magasságára.</li><li>Ellenőrizd DevTools Grid overlay segítségével a két oszlopot és a rácsvonalakat.</li></ol><details class="task rounded-3 p-3"><summary>Mintamegoldás</summary><pre><code>.container {
+}
+
+aside {
+  /* automatikusan a második oszlopba kerül */
+}</code></pre><div class="important rounded-3 p-3">A belső komponensekben továbbra is használhatunk Flexboxot. A Grid és a Flexbox együtt a leghasznosabb. Az üres <code>article</code> és <code>aside</code> blokkok csak azt szemléltetik, hogy ezen a ponton nincs szükség külön Grid-elhelyezési szabályra: a böngésző automatikusan a megfelelő cellákba teszi őket.</div></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">9. Órai feladat</h2><ol><li>Töltsd le és csomagold ki a kezdőcsomagot.</li><li>Távolítsd el vagy kommenteld ki az <code>article</code> és <code>aside</code> körüli <code>.row</code> elemet.</li><li>Kapcsold ki a korábbi <code>.row</code> Flexbox-layout szabályait.</li><li>Kapcsold ki a <code>.main-header</code> és az <code>article</code> korábbi alsó margóját.</li><li>Kapcsold ki az <code>aside</code> korábbi fix <code>width: 500px</code> szélességét.</li><li>A <code>.container</code> legyen grid container.</li><li>Hozz létre egy <code>1fr</code> széles fő oszlopot és egy <code>300px</code> széles oldalsávot.</li><li>A fejléc és a lábléc érjen végig mindkét oszlopon.</li><li>Állíts be <code>75px</code> oszloprést és <code>60px</code> sorrést.</li><li>Használd az <code>align-items: start</code> beállítást, hogy az oldalsáv ne nyúljon a cikk teljes magasságára.</li><li>Ellenőrizd DevTools Grid overlay segítségével a két oszlopot és a rácsvonalakat.</li></ol><details class="task rounded-3 p-3"><summary>Mintamegoldás</summary><pre><code>.container {
   display: grid;
   grid-template-columns: 1fr 300px;
   column-gap: 75px;
@@ -49,10 +88,19 @@ footer {
   align-items: start;
 }
 
-.main-header,
+.main-header {
+  grid-column: 1 / -1;
+}
+
+article {
+}
+
 footer {
   grid-column: 1 / -1;
+}
+
+aside {
 }</code></pre><a href="megoldas/index.html" class="btn btn-outline-success me-2">Mintamegoldás megnyitása</a><a href="megoldas.zip" download class="btn btn-outline-success">Megoldás letöltése</a></details></div></section>
-<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">9. Mit vigyél el ebből az órából?</h2><ul><li>A Flexbox kiváló kisebb, egydimenziós komponensekhez.</li><li>A Grid kiváló az oldal nagyobb, kétdimenziós szerkezetéhez.</li><li><code>1fr</code> leveszi rólunk a kézi szélességszámolást.</li><li><code>grid-column: 1 / -1</code> végignyújt egy elemet a teljes rácson.</li><li>A layout térközeit érdemes a grid containerben, <code>gap</code>-ekkel kezelni.</li></ul></div></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">10. Mit vigyél el ebből az órából?</h2><ul><li>A Flexbox kiváló kisebb, egydimenziós komponensekhez.</li><li>A Grid kiváló az oldal nagyobb, kétdimenziós szerkezetéhez.</li><li><code>1fr</code> leveszi rólunk a kézi szélességszámolást.</li><li><code>grid-column: 1 / -1</code> végignyújt egy elemet a teljes rácson.</li><li>A layout térközeit érdemes a grid containerben, <code>gap</code>-ekkel kezelni.</li><li>Flexboxról Gridre váltáskor a korábbi fix szélességeket, margókat és layout-szabályokat ki kell kapcsolni, ha már a Grid veszi át a szerepüket.</li></ul></div></section>
 <nav class="d-grid gap-2 d-md-flex justify-content-md-between"><a href="../23_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző: Grid igazítás</a><a href="../25_ora/index.html" class="btn btn-primary btn-lg">Következő: Reszponzív webdesign alapjai</a><a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a></nav>
 </main></body></html>
