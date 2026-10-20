@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A web működése és a HTML szerepe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>
+      code { color: #b02a37; }
+      pre { background: #212529; color: #f8f9fa; padding: 1rem; border-radius: .5rem; overflow-x: auto; }
+      pre code { color: inherit; }
+      .step-number { display: inline-flex; width: 2rem; height: 2rem; align-items: center; justify-content: center; border-radius: 50%; background: #0d6efd; color: white; font-weight: 700; margin-right: .5rem; }
+    </style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4"><a class="btn btn-secondary btn-lg" href="../index.html">Vissza</a></div>
+
+      <h1 class="text-center mb-4">1. A web működése és a HTML szerepe</h1>
+      <p class="lead text-center mb-4">Mi történik a háttérben, amikor megnyitunk egy weboldalt?</p>
+
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+        <span class="badge text-bg-primary fs-6">ICDL Webszerkesztés</span>
+        <span class="badge text-bg-success fs-6">Ágazati alapozás</span>
+        <span class="badge text-bg-secondary fs-6">Kezdő szint</span>
+      </div>
+
+      <div class="alert alert-primary" role="alert">
+        <h2 class="h4">Mit fogsz megtanulni?</h2>
+        <ul class="mb-0">
+          <li>mi a különbség az internet és a World Wide Web között,</li>
+          <li>mi a kliens, a szerver, a böngésző, az URL és a HTTP,</li>
+          <li>mi történik egy weboldal megnyitásakor,</li>
+          <li>mit jelent a HTML, és mire használjuk,</li>
+          <li>hogyan nézheted meg egy weboldal forrását,</li>
+          <li>mit módosítunk valójában a böngésző fejlesztőeszközével,</li>
+          <li>miért nem tekinthető egy képernyőkép önmagában hiteles bizonyítéknak.</li>
+        </ul>
+      </div>
+
+      <h2 class="mt-5">1. Internet és World Wide Web</h2>
+      <p>Az <strong>internet</strong> számítógépek és más eszközök világméretű hálózata. Sok különböző szolgáltatás működik rajta, például az e-mail, a fájlátvitel, az üzenetküldés és a web.</p>
+      <p>A <strong>World Wide Web</strong>, röviden <strong>WWW</strong> vagy web, az internet egyik szolgáltatása. Egymással összekapcsolt weboldalakból és webhelyekből áll, amelyeket böngészővel érünk el.</p>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+          <thead class="table-light"><tr><th>Fogalom</th><th>Egyszerű magyarázat</th><th>Hasonlat</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Internet</strong></td><td>Az eszközöket összekapcsoló világméretű hálózat.</td><td>A teljes úthálózat.</td></tr>
+            <tr><td><strong>Web</strong></td><td>Az interneten elérhető weboldalak rendszere.</td><td>Az úthálózaton működő egyik szolgáltatás.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="alert alert-info">Az internet és a web nem ugyanaz. A web használja az internetet, de az interneten a weben kívül más szolgáltatások is működnek.</div>
+
+      <h2 class="mt-5">2. A kliens és a szerver</h2>
+      <p>Amikor megnyitsz egy weboldalt, két fontos szereplő kommunikál egymással:</p>
+      <div class="row g-3 mt-2">
+        <div class="col-md-6"><div class="card h-100 border-primary"><div class="card-body"><h3 class="h5">Kliens</h3><p class="mb-0">A szolgáltatást kérő eszköz vagy program. Webezéskor általában a számítógépeden vagy telefonodon futó böngésző a kliens.</p></div></div></div>
+        <div class="col-md-6"><div class="card h-100 border-success"><div class="card-body"><h3 class="h5">Szerver</h3><p class="mb-0">Olyan számítógép és rajta futó program, amely fogadja a kéréseket, és elküldi a weboldalhoz szükséges fájlokat.</p></div></div></div>
+      </div>
+
+      <h2 class="mt-5">3. Mi történik egy weboldal megnyitásakor?</h2>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><span class="step-number">1</span>Beírsz egy webcímet a böngésző címsorába.</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><span class="step-number">2</span>A böngésző kérést küld a webhelyet kiszolgáló szervernek.</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><span class="step-number">3</span>A szerver válaszként elküldi a szükséges fájlokat.</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><span class="step-number">4</span>A böngésző értelmezi a fájlokat, és megjeleníti a weboldalt.</p></div></div>
+      <p>A szerver többféle fájlt is küldhet:</p>
+      <ul>
+        <li><strong>HTML:</strong> a tartalom és a szerkezet,</li>
+        <li><strong>CSS:</strong> a megjelenés,</li>
+        <li><strong>JavaScript:</strong> a működés és az interaktivitás,</li>
+        <li><strong>képek, videók és betűkészletek:</strong> a médiaelemek.</li>
+      </ul>
+
+      <h2 class="mt-5">4. A böngésző feladata</h2>
+      <p>A <strong>böngésző</strong> olyan program, amely weboldalakat kér le, értelmezi a kapott fájlokat, majd megjeleníti az eredményt.</p>
+      <p>Gyakran használt böngészők: Google Chrome, Microsoft Edge, Mozilla Firefox és Safari.</p>
+      <div class="alert alert-warning">A Google nem böngésző, hanem elsősorban keresőszolgáltatás. A Google Chrome a böngésző.</div>
+
+      <h2 class="mt-5">5. URL és HTTP</h2>
+      <p>Az <strong>URL</strong> egy interneten elérhető erőforrás címe. Ilyen erőforrás lehet egy weboldal, egy kép vagy egy letölthető fájl.</p>
+      <pre><code>https://www.example.com/tananyag/index.html</code></pre>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+          <thead class="table-light"><tr><th>Rész</th><th>Jelentés</th></tr></thead>
+          <tbody>
+            <tr><td><code>https://</code></td><td>A kommunikációhoz használt biztonságos protokoll.</td></tr>
+            <tr><td><code>www.example.com</code></td><td>A webhely domainneve.</td></tr>
+            <tr><td><code>/tananyag/index.html</code></td><td>Az erőforrás elérési útja a webhelyen belül.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A <strong>HTTP</strong> a böngésző és a webszerver kommunikációjának egyik alapvető szabályrendszere. A <strong>HTTPS</strong> ennek titkosított, biztonságosabb változata.</p>
+
+      <h2 class="mt-5">6. Mi a HTML?</h2>
+      <p>A <strong>HTML</strong> a <em>HyperText Markup Language</em> rövidítése, magyarul hiperszöveges jelölőnyelv.</p>
+      <p>A HTML-lel leírjuk a weboldal <strong>tartalmát és szerkezetét</strong>. Megjelöljük például, hogy egy szöveg főcím, bekezdés vagy hivatkozás, illetve hol található kép vagy lista.</p>
+      <div class="alert alert-warning"><strong>A HTML nem programozási nyelv.</strong> Nem algoritmusokat és számításokat írunk le vele, hanem a weboldal tartalmának szerkezetét és jelentését.</div>
+
+      <h2 class="mt-5">7. A HTML mint megállapodás</h2>
+      <p>A HTML-re úgy is gondolhatunk, mint a weboldal készítője és a böngésző közötti megállapodásra:</p>
+      <ul>
+        <li>a webfejlesztő szabályos HTML-kódot ír,</li>
+        <li>a böngésző felismeri a jelöléseket,</li>
+        <li>a böngésző ezek alapján felépíti és megjeleníti az oldalt.</li>
+      </ul>
+      <p>Például a következő kód egy bekezdést ír le:</p>
+      <pre><code>&lt;p&gt;Ez egy bekezdés.&lt;/p&gt;</code></pre>
+      <p>A böngészőben csak a tartalom jelenik meg:</p>
+      <div class="border rounded bg-light p-3">Ez egy bekezdés.</div>
+
+      <h2 class="mt-5">8. Forráskód és megjelenített oldal</h2>
+      <p>A HTML-kód a böngésző számára leírja a tartalom szerkezetét. A felhasználó ehelyett a böngésző által elkészített, megjelenített oldalt látja.</p>
+      <div class="row g-3">
+        <div class="col-md-6"><div class="card h-100"><div class="card-body"><h3 class="h5">Forráskód</h3><pre class="mb-0"><code>&lt;h1&gt;Iskolai hírek&lt;/h1&gt;
+&lt;p&gt;Megjelent az új cikk.&lt;/p&gt;</code></pre></div></div></div>
+        <div class="col-md-6"><div class="card h-100"><div class="card-body"><h3 class="h5">Megjelenített oldal</h3><div class="border rounded bg-light p-3"><p class="h3">Iskolai hírek</p><p class="mb-0">Megjelent az új cikk.</p></div></div></div></div>
+      </div>
+
+      <h2 class="mt-5">9. Egy weboldal forrásának megtekintése</h2>
+      <ol>
+        <li>Nyiss meg egy egyszerű weboldalt!</li>
+        <li>Kattints az oldalon a jobb egérgombbal!</li>
+        <li>Válaszd az <strong>Oldal forrásának megtekintése</strong> lehetőséget!</li>
+        <li>Keress a kódban ismerős szövegrészleteket!</li>
+      </ol>
+      <p>Chrome és Edge böngészőben a forrás általában a <kbd>Ctrl</kbd> + <kbd>U</kbd> billentyűkkel is megnyitható. Macen ennek megfelelője az <kbd>⌘</kbd> + <kbd>Option</kbd> + <kbd>U</kbd>.</p>
+
+      <h2 class="mt-5">10. Kísérletezés a fejlesztőeszközzel</h2>
+      <p>A böngésző fejlesztőeszközeivel megvizsgálhatjuk az oldal felépítését, és ideiglenesen módosíthatjuk a böngészőben megjelenő példányt.</p>
+      <ol>
+        <li>Nyiss meg egy gyakorláshoz választott weboldalt!</li>
+        <li>Kattints jobb gombbal egy címsorra, majd válaszd a <strong>Vizsgálat</strong> vagy <strong>Inspect</strong> lehetőséget!</li>
+        <li>A megjelenő HTML-ben kattints duplán a címsor szövegére!</li>
+        <li>Írd át erre: <strong>Az első HTML-kísérletem</strong>!</li>
+        <li>Frissítsd az oldalt, és figyeld meg, mi történik!</li>
+      </ol>
+      <div class="alert alert-info">A módosítás csak a te böngésződben, csak átmenetileg látható. A valódi webhely és a szerveren lévő fájl nem változik meg. Frissítéskor a böngésző ismét lekéri az eredeti tartalmat.</div>
+      <div class="alert alert-danger">A fejlesztőeszközzel ne készíts és ne terjessz megtévesztő képernyőképeket! A helyileg átírt hír, üzenet vagy adat nem válik valódivá.</div>
+
+      <h2 class="mt-5">11. Esettanulmány – Hihetünk-e egy képernyőképnek?</h2>
+      <p>A fejlesztőeszközben néhány másodperc alatt átírható egy híroldal címe vagy egy közösségi bejegyzés szövege. Az átírt oldalról ezután olyan képernyőkép készíthető, amely első pillantásra hitelesnek tűnik.</p>
+      <div class="card border-warning mb-3">
+        <div class="card-body">
+          <h3 class="h5">Gondolkodjunk forráskritikusan!</h3>
+          <p class="mb-2">Ha egy meglepő bejegyzést csak képernyőképen látsz, ellenőrizd:</p>
+          <ul class="mb-0">
+            <li>megtalálható-e az eredeti bejegyzés a valódi webhelyen vagy fiókban,</li>
+            <li>helyes-e a webcím és valóban a hivatalos oldalhoz tartozik-e,</li>
+            <li>beszámol-e róla több, egymástól független és megbízható forrás,</li>
+            <li>nem hiányzik-e a képről a dátum, a szerző vagy a szövegkörnyezet,</li>
+            <li>található-e rajta szerkesztésre vagy manipulációra utaló jel.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="alert alert-info"><strong>Következtetés:</strong> a képernyőkép azt bizonyítja, hogy valaki ilyen képet készített. Önmagában nem bizonyítja, hogy a tartalom valóban megjelent az eredeti webhelyen.</div>
+
+      <h2 class="mt-5">12. Közös gyakorlás</h2>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">1. feladat – Rakd sorrendbe!</h3><p>Tedd helyes sorrendbe az eseményeket!</p><ul class="mb-0"><li>A szerver elküldi a szükséges fájlokat.</li><li>A böngésző megjeleníti az oldalt.</li><li>A felhasználó beírja a webcímet.</li><li>A böngésző kérést küld a szervernek.</li></ul></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">2. feladat – Melyik fogalom?</h3><ol class="mb-0"><li>A weboldalt megjelenítő program.</li><li>A szolgáltatást kérő program vagy eszköz.</li><li>A kéréseket fogadó és fájlokat küldő számítógép.</li><li>Egy webes erőforrás címe.</li><li>A weboldal tartalmát és szerkezetét leíró jelölőnyelv.</li></ol></div></div>
+      <details class="border rounded p-3 mb-4"><summary class="fw-semibold">Tanári megoldás</summary><p class="mt-3 mb-2"><strong>1. feladat:</strong> webcím beírása → kérés küldése → fájlok elküldése → az oldal megjelenítése.</p><p class="mb-0"><strong>2. feladat:</strong> böngésző; kliens; szerver; URL; HTML.</p></details>
+
+      <h2 class="mt-5">13. Önálló feladat</h2>
+      <div class="card border-primary mb-4"><div class="card-body"><h3 class="h5">Weboldalnyomozás</h3><p>Válassz egy egyszerű, iskolai használatra alkalmas weboldalt, és végezd el a következőket!</p><ol><li>Írd le az oldal URL-jét!</li><li>Azonosítsd a protokollt és a domainnevet!</li><li>Nyisd meg az oldal forrását!</li><li>Keress benne egy, az oldalon is látható szövegrészletet!</li><li>A fejlesztőeszközzel ideiglenesen módosíts egy címsort!</li><li>Frissítsd az oldalt, majd egy mondatban magyarázd meg, miért tűnt el a módosítás!</li></ol></div></div>
+
+      <h2 class="mt-5">14. Ellenőrizd magad!</h2>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>1.</strong> Mi a különbség az internet és a web között?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>2.</strong> Mi a kliens és mi a szerver feladata?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>3.</strong> Mit nevezünk URL-nek?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>4.</strong> Mire használjuk a HTML-t?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>5.</strong> Miért nem változik meg a valódi webhely az Inspect segítségével végzett módosítástól?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>6.</strong> Hogyan ellenőriznél egy csak képernyőképen látott, meglepő közösségi bejegyzést?</p></div></div>
+
+      <div class="alert alert-success mt-4"><strong>Összefoglalás:</strong> a böngésző kliensként kérést küld a webszervernek. A szerver elküldi a weboldal fájljait, a böngésző pedig értelmezi és megjeleníti őket. A HTML a weboldal tartalmát és szerkezetét leíró jelölőnyelv. A fejlesztőeszközben végzett módosítás csak helyi és ideiglenes.</div>
+
+      <div class="d-flex justify-content-between gap-3 mt-5"><span></span><a class="btn btn-secondary" href="../index.html">Tartalomjegyzék</a><a class="btn btn-outline-secondary" href="../02_elso_html_oldal/index.html">2. Az első HTML-oldal →</a></div>
+    </div>
+  </body>
+</html>

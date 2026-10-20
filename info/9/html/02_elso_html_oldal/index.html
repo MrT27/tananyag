@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Az első HTML-oldal elkészítése</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>
+      code { color: #b02a37; }
+      pre { background: #212529; color: #f8f9fa; padding: 1rem; border-radius: .5rem; overflow-x: auto; }
+      pre code { color: inherit; }
+    </style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4"><a class="btn btn-secondary btn-lg" href="../index.html">Vissza</a></div>
+
+      <h1 class="text-center mb-4">2. Az első HTML-oldal elkészítése</h1>
+      <p class="lead text-center mb-4">Projektmappát készítünk, létrehozzuk az <code>index.html</code> fájlt, és kézzel megírjuk a korszerű HTML5-alapvázat.</p>
+
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+        <span class="badge text-bg-primary fs-6">ICDL Webszerkesztés</span>
+        <span class="badge text-bg-success fs-6">Ágazati alapvizsga</span>
+        <span class="badge text-bg-secondary fs-6">Gyakorlati óra</span>
+      </div>
+
+      <div class="alert alert-primary">
+        <h2 class="h4">Mit fogsz megtanulni?</h2>
+        <ul class="mb-0">
+          <li>hogyan készíts projektmappát és nyisd meg VS Code-ban,</li>
+          <li>hogyan nevezz el szabályosan egy webes fájlt,</li>
+          <li>miért a <code>index.html</code> a kezdőoldal szokásos neve,</li>
+          <li>miből áll a HTML5-dokumentum alapváza,</li>
+          <li>mi a <code>head</code>, a <code>title</code> és a <code>body</code> feladata,</li>
+          <li>hogyan mentsd el és nyisd meg az oldalt böngészőben.</li>
+        </ul>
+      </div>
+
+      <h2 class="mt-5">1. A projektmappa</h2>
+      <p>Egy webhelyhez több fájl is tartozhat: HTML-dokumentumok, CSS-fájlok, képek és később JavaScript-fájlok. Ezeket egy közös <strong>projektmappában</strong> tároljuk.</p>
+      <ol>
+        <li>Hozz létre egy új mappát <code>elso-weboldalam</code> néven!</li>
+        <li>Indítsd el a Visual Studio Code-ot!</li>
+        <li>Válaszd a <strong>File → Open Folder</strong> menüpontot!</li>
+        <li>Nyisd meg az <code>elso-weboldalam</code> mappát!</li>
+      </ol>
+      <div class="alert alert-info">Mindig a teljes projektmappát nyisd meg a VS Code-ban, ne csak egy különálló fájlt! Így később a képek, hivatkozások és CSS-fájlok elérési útjai is átláthatók maradnak.</div>
+
+      <h2 class="mt-5">2. Webes fájlok elnevezése</h2>
+      <p>A fájl neve legyen rövid, egyszerű és egyértelmű.</p>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+          <thead class="table-light"><tr><th>Jó fájlnév</th><th>Kerülendő fájlnév</th><th>Miért?</th></tr></thead>
+          <tbody>
+            <tr><td><code>index.html</code></td><td><code>Első oldalam.html</code></td><td>Ne használj szóközt és ékezetet!</td></tr>
+            <tr><td><code>kapcsolat.html</code></td><td><code>KAPCSOLAT!.HTML</code></td><td>Kerüld a fölösleges nagybetűket és különleges jeleket!</td></tr>
+            <tr><td><code>iskolai-hirek.html</code></td><td><code>iskolai_hírek végleges 2.html</code></td><td>Több szóból álló névnél használj kötőjelet!</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A fájlnév végén álló <code>.html</code> a <strong>fájlkiterjesztés</strong>. Ez jelzi, hogy HTML-dokumentumról van szó.</p>
+
+      <h2 class="mt-5">3. Miért <code>index.html</code>?</h2>
+      <p>Egy mappa kezdőoldalának szokásos neve <code>index.html</code>. A webszerverek általában ezt a fájlt keresik először, amikor valaki csak a mappa vagy a webhely címét nyitja meg.</p>
+      <pre><code>elso-weboldalam/
+└── index.html</code></pre>
+      <p>A VS Code oldalsávjában kattints az <strong>Új fájl</strong> ikonra, majd hozd létre az <code>index.html</code> fájlt!</p>
+
+      <h2 class="mt-5">4. Az első mentés és próba</h2>
+      <p>Első lépésként írj a fájlba egy egyszerű mondatot:</p>
+      <pre><code>Ez az első weboldalam.</code></pre>
+      <ol>
+        <li>Mentsd el a fájlt a <kbd>Ctrl</kbd> + <kbd>S</kbd> billentyűkkel! Macen: <kbd>⌘</kbd> + <kbd>S</kbd>.</li>
+        <li>Keresd meg az <code>index.html</code> fájlt a projektmappában!</li>
+        <li>Nyisd meg dupla kattintással egy böngészőben!</li>
+      </ol>
+      <p>A böngésző megjeleníti a szöveget, bár még nem írtunk szabályos HTML-szerkezetet. A böngészők sok hibát megpróbálnak kijavítani, de nekünk mindig szabályos kódot kell készítenünk.</p>
+
+      <h2 class="mt-5">5. A HTML5-dokumentum alapváza</h2>
+      <p>Töröld az előző próbaszöveget, majd gépeld be kézzel a következő kódot:</p>
+      <pre><code>&lt;!doctype html&gt;
+&lt;html lang="hu"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Az első weboldalam&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Ez az első weboldalam.
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      <div class="alert alert-warning"><strong>Most ne használd a <code>!</code> + Tab rövidítést!</strong> Az első alkalommal kézzel írjuk be az alapvázat, hogy megértsük és megjegyezzük a részeit.</div>
+
+      <h2 class="mt-5">6. A <code>&lt;!doctype html&gt;</code> deklaráció</h2>
+      <pre><code>&lt;!doctype html&gt;</code></pre>
+      <p>A dokumentum első sora közli a böngészővel, hogy korszerű HTML-dokumentumot használunk.</p>
+      <div class="alert alert-info">A <code>&lt;!doctype html&gt;</code> nem HTML-elem, ezért nincs záró tagje.</div>
+
+      <h2 class="mt-5">7. A <code>html</code> elem és a dokumentum nyelve</h2>
+      <pre><code>&lt;html lang="hu"&gt;
+  ...
+&lt;/html&gt;</code></pre>
+      <p>A <code>html</code> elem fogja közre a teljes dokumentumot. A <code>lang="hu"</code> attribútum jelzi, hogy az oldal elsődleges nyelve magyar. Ez segíti a keresőket, a képernyőolvasókat és a böngészőt.</p>
+
+      <h2 class="mt-5">8. A <code>head</code> rész</h2>
+      <p>A <code>head</code> az oldalra vonatkozó háttér-információkat tartalmazza. Ezek többsége nem jelenik meg a weboldal látható tartalmában.</p>
+      <pre><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Az első weboldalam&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+
+      <h3 class="mt-4"><code>charset</code></h3>
+      <p>A <code>charset="UTF-8"</code> gondoskodik arról, hogy a magyar ékezetes karakterek és más írásrendszerek jelei megfelelően jelenjenek meg.</p>
+
+      <h3 class="mt-4"><code>viewport</code></h3>
+      <p>A viewport-beállítás segít, hogy az oldal mobiltelefonon is a készülék szélességéhez igazodjon. Később a reszponzív oldalaknál részletesen visszatérünk rá.</p>
+
+      <h3 class="mt-4"><code>title</code></h3>
+      <p>A <code>title</code> tartalma a böngésző lapfülén jelenik meg:</p>
+      <pre><code>&lt;title&gt;Az első weboldalam&lt;/title&gt;</code></pre>
+
+      <h2 class="mt-5">9. A <code>body</code> rész</h2>
+      <p>A <code>body</code> tartalmazza a weboldalon látható tartalmat: szövegeket, címsorokat, képeket, listákat, táblázatokat és hivatkozásokat.</p>
+      <pre><code>&lt;body&gt;
+  Ez az első weboldalam.
+&lt;/body&gt;</code></pre>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+          <thead class="table-light"><tr><th>Rész</th><th>Feladata</th><th>Hol látható?</th></tr></thead>
+          <tbody>
+            <tr><td><code>head</code></td><td>Az oldalra vonatkozó információk.</td><td>Általában nem az oldal tartalmi részén.</td></tr>
+            <tr><td><code>title</code></td><td>Az oldal címe.</td><td>A böngésző lapfülén.</td></tr>
+            <tr><td><code>body</code></td><td>A weboldal tartalma.</td><td>A böngészőablakban.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="mt-5">10. HTML-elemek és tagek</h2>
+      <p>A legtöbb HTML-elem nyitó tagből, tartalomból és záró tagből áll:</p>
+      <pre><code>&lt;title&gt;Az első weboldalam&lt;/title&gt;</code></pre>
+      <ul>
+        <li>nyitó tag: <code>&lt;title&gt;</code>,</li>
+        <li>tartalom: <code>Az első weboldalam</code>,</li>
+        <li>záró tag: <code>&lt;/title&gt;</code>.</li>
+      </ul>
+      <p>A záró tagben az elem neve előtt perjel (<code>/</code>) található.</p>
+      <div class="alert alert-warning"><strong>Nem minden elemnek van záró tagje.</strong> A <code>meta</code> és a később megismert <code>img</code> úgynevezett üres elem, mert nem fog közre tartalmat.</div>
+
+      <h2 class="mt-5">11. Egymásba ágyazás és behúzás</h2>
+      <p>Az alapváz elemei egymásba vannak ágyazva:</p>
+      <ul>
+        <li>a <code>head</code> és a <code>body</code> a <code>html</code> elemen belül található,</li>
+        <li>a két <code>meta</code> elem és a <code>title</code> a <code>head</code> belsejében található.</li>
+      </ul>
+      <p>A belső elemeket behúzzuk, hogy a szerkezet könnyen áttekinthető legyen. A böngészőnek általában nincs szüksége ezekre a szóközökre, az olvashatóság miatt mégis fontosak.</p>
+
+      <h2 class="mt-5">12. Mentés és frissítés</h2>
+      <ol>
+        <li>Mentsd el a fájlt!</li>
+        <li>Nyisd meg vagy frissítsd a böngészőben!</li>
+        <li>Ellenőrizd a lapfülön az oldal címét!</li>
+        <li>Ellenőrizd a böngészőablakban a <code>body</code> tartalmát!</li>
+        <li>Írd át külön a <code>title</code> és a <code>body</code> szövegét, majd figyeld meg a különbséget!</li>
+      </ol>
+      <div class="alert alert-info">Ha a böngészőben nem látszik a változás, először ellenőrizd, hogy elmentetted-e a fájlt, majd frissítsd az oldalt!</div>
+
+      <h2 class="mt-5">13. Gyakori hibák</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+          <thead class="table-light"><tr><th>Hiba</th><th>Javítás</th></tr></thead>
+          <tbody>
+            <tr><td>A fájl neve <code>index.html.txt</code>.</td><td>Kapcsold be a fájlkiterjesztések megjelenítését, és nevezd át <code>index.html</code>-re.</td></tr>
+            <tr><td>A módosítás nem látható.</td><td>Mentsd el a fájlt, majd frissítsd a böngészőt.</td></tr>
+            <tr><td>A <code>title</code> szövege nem jelenik meg az oldalon.</td><td>A <code>title</code> a lapfülön látható; az oldal tartalmát a <code>body</code> elembe írd.</td></tr>
+            <tr><td>Hiányzik egy záró tag.</td><td>Ellenőrizd a nyitó és záró tagek párjait.</td></tr>
+            <tr><td>Az elemek áttekinthetetlenek.</td><td>Használj következetes behúzást.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="mt-5">14. Közös gyakorlás</h2>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">1. feladat – Melyik részben?</h3><p>Döntsd el, hogy a következő tartalmak a <code>head</code> vagy a <code>body</code> részbe kerülnek!</p><ul class="mb-0"><li>a böngésző lapfülének címe,</li><li>a dokumentum karakterkódolása,</li><li>az oldalon megjelenő bemutatkozó szöveg,</li><li>a mobileszközökhöz szükséges viewport-beállítás.</li></ul></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">2. feladat – Keresd meg a hibát!</h3><pre class="mb-2"><code>&lt;!doctype html&gt;
+&lt;html lang="hu"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Az oldalam
+  &lt;/head&gt;
+  &lt;body&gt;
+    Üdvözöllek!
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre><p class="mb-0">Melyik záró tag hiányzik?</p></div></div>
+      <details class="border rounded p-3 mb-4"><summary class="fw-semibold">Tanári megoldás</summary><p class="mt-3 mb-2"><strong>1. feladat:</strong> <code>head</code>: title, karakterkódolás, viewport. <code>body</code>: bemutatkozó szöveg.</p><p class="mb-0"><strong>2. feladat:</strong> hiányzik a <code>&lt;/title&gt;</code> záró tag.</p></details>
+
+      <h2 class="mt-5">15. Önálló feladat</h2>
+      <div class="card border-primary mb-4"><div class="card-body"><h3 class="h5">Saját első oldal</h3><ol><li>Hozz létre egy <code>sajat-oldal</code> nevű projektmappát!</li><li>Nyisd meg a mappát VS Code-ban!</li><li>Hozz létre benne egy <code>index.html</code> fájlt!</li><li>Írd be kézzel a teljes HTML5-alapvázat!</li><li>A dokumentum nyelve legyen magyar!</li><li>A lapfül címe legyen <strong>Bemutatkozó oldalam</strong>!</li><li>A <code>body</code> tartalma legyen: <strong>Üdvözöllek a weboldalamon!</strong></li><li>Mentsd el, majd nyisd meg böngészőben!</li></ol></div></div>
+
+      <h2 class="mt-5">16. Ellenőrizd magad!</h2>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>1.</strong> Mit jelent a <code>.html</code> fájlkiterjesztés?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>2.</strong> Miért használjuk kezdőoldalnál az <code>index.html</code> nevet?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>3.</strong> Mi a <code>head</code> és a <code>body</code> közötti különbség?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>4.</strong> Hol jelenik meg a <code>title</code> tartalma?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>5.</strong> Miért fontos a <code>charset="UTF-8"</code>?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>6.</strong> Van-e minden HTML-elemnek záró tagje?</p></div></div>
+
+      <div class="alert alert-success mt-4"><strong>Összefoglalás:</strong> egy webhely fájljait projektmappában tároljuk, kezdőoldalának szokásos neve <code>index.html</code>. A HTML5-alapvázban a <code>head</code> az oldalra vonatkozó információkat, a <code>body</code> pedig a látható tartalmat tartalmazza.</div>
+
+      <div class="d-flex justify-content-between gap-3 mt-5"><a class="btn btn-outline-secondary" href="../01_bevezetes/index.html">← 1. A web működése</a><a class="btn btn-secondary" href="../index.html">Tartalomjegyzék</a><a class="btn btn-outline-secondary" href="../03_cimsorok/index.html">3. Címsorok →</a></div>
+    </div>
+  </body>
+</html>

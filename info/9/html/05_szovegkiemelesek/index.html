@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jelentéssel bíró szövegkiemelések</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>code{color:#b02a37}pre{background:#212529;color:#f8f9fa;padding:1rem;border-radius:.5rem;overflow-x:auto}pre code{color:inherit}</style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4"><a class="btn btn-secondary btn-lg" href="../index.html">Vissza</a></div>
+      <h1 class="text-center mb-4">5. Jelentéssel bíró szövegkiemelések</h1>
+      <p class="lead text-center mb-4">Nemcsak a szöveg kinézetét, hanem annak jelentését is leírjuk HTML-ben.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5"><span class="badge text-bg-primary fs-6">ICDL Webszerkesztés</span><span class="badge text-bg-success fs-6">Ágazati alapvizsga</span><span class="badge text-bg-secondary fs-6">HTML</span></div>
+
+      <div class="alert alert-primary"><h2 class="h4">Mit fogsz megtanulni?</h2><ul class="mb-0"><li>mi a különbség a megjelenés és a jelentés között,</li><li>hogyan jelölünk fontos részt a <code>strong</code> elemmel,</li><li>hogyan jelölünk hangsúlyt az <code>em</code> elemmel,</li><li>mire használható a <code>b</code>, <code>i</code> és <code>u</code>,</li><li>hogyan ágyazunk szövegelemet egy bekezdésbe.</li></ul></div>
+
+      <h2 class="mt-5">1. Kiemelés vagy puszta formázás?</h2>
+      <p>A HTML elsődleges feladata a tartalom <strong>jelentésének és szerkezetének</strong> leírása. Ezért először azt kérdezzük: miért szeretnénk kiemelni egy szövegrészt?</p>
+      <div class="table-responsive"><table class="table table-bordered align-middle"><thead class="table-light"><tr><th>Szándék</th><th>Ajánlott elem</th></tr></thead><tbody><tr><td>A szövegrész különösen fontos.</td><td><code>strong</code></td></tr><tr><td>A mondatban hangsúlyt kap egy szó vagy kifejezés.</td><td><code>em</code></td></tr><tr><td>Csak a látványt szeretnénk megváltoztatni.</td><td>Később CSS</td></tr></tbody></table></div>
+      <div class="alert alert-info">A böngésző a <code>strong</code> elemet többnyire félkövéren, az <code>em</code> elemet többnyire dőlten jeleníti meg. A lényeg azonban az általuk közölt jelentés.</div>
+
+      <h2 class="mt-5">2. Fontos tartalom: <code>strong</code></h2>
+      <p>A <code>strong</code> olyan részt jelöl, amelynek komoly jelentősége vagy sürgőssége van.</p>
+      <pre><code>&lt;p&gt;&lt;strong&gt;Fontos:&lt;/strong&gt; a feladatot péntekig kell beadni.&lt;/p&gt;</code></pre>
+      <div class="border rounded bg-light p-3"><strong>Fontos:</strong> a feladatot péntekig kell beadni.</div>
+
+      <h2 class="mt-5">3. Hangsúly: <code>em</code></h2>
+      <p>Az <code>em</code> hangsúlyt ad egy szónak vagy kifejezésnek. A hangsúly akár a mondat értelmét is módosíthatja.</p>
+      <pre><code>&lt;p&gt;Ezt a feladatot &lt;em&gt;önállóan&lt;/em&gt; kell elkészíteni.&lt;/p&gt;</code></pre>
+      <div class="border rounded bg-light p-3">Ezt a feladatot <em>önállóan</em> kell elkészíteni.</div>
+
+      <h2 class="mt-5">4. Elemek egymásba ágyazása</h2>
+      <p>A kiemelés általában egy bekezdésen belül jelenik meg. Az elemeket helyesen kell egymásba ágyazni: amelyik elem később nyílik meg, annak előbb kell bezáródnia.</p>
+      <pre><code>&lt;p&gt;
+  A dolgozat &lt;strong&gt;&lt;em&gt;nagyon fontos&lt;/em&gt;&lt;/strong&gt;.
+&lt;/p&gt;</code></pre>
+      <div class="row g-3"><div class="col-md-6"><div class="card h-100 border-success"><div class="card-body"><h3 class="h5 text-success">Helyes</h3><code>&lt;p&gt;&lt;strong&gt;Fontos&lt;/strong&gt; üzenet.&lt;/p&gt;</code></div></div></div><div class="col-md-6"><div class="card h-100 border-danger"><div class="card-body"><h3 class="h5 text-danger">Hibás</h3><code>&lt;p&gt;&lt;strong&gt;Fontos&lt;/p&gt;&lt;/strong&gt;</code></div></div></div></div>
+
+      <h2 class="mt-5">5. Mit jelent a <code>b</code>, <code>i</code> és <code>u</code>?</h2>
+      <p>A videó félkövérítésként, dőltté tételként és aláhúzásként mutatja be ezeket. A modern HTML-ben pontosabb jelentésük van:</p>
+      <div class="table-responsive"><table class="table table-bordered align-middle"><thead class="table-light"><tr><th>Elem</th><th>Mai szerepe</th><th>Példa</th></tr></thead><tbody><tr><td><code>b</code></td><td>Figyelemfelkeltő szöveg különösebb fontosság nélkül, például kulcsszó egy összefoglalóban.</td><td><code>&lt;b&gt;HTML&lt;/b&gt;</code></td></tr><tr><td><code>i</code></td><td>Eltérő hangvételű rész, szakkifejezés vagy idegen nyelvű kifejezés.</td><td><code>&lt;i lang="la"&gt;carpe diem&lt;/i&gt;</code></td></tr><tr><td><code>u</code></td><td>Nem szöveges jellegű megjegyzés, például hibásan írt szó jelölése.</td><td><code>&lt;u&gt;hibásszó&lt;/u&gt;</code></td></tr></tbody></table></div>
+      <div class="alert alert-warning"><strong>Kezdő szabály:</strong> fontossághoz használj <code>strong</code>, hangsúlyhoz <code>em</code> elemet! A puszta látványt CSS-sel alakítjuk. Az aláhúzás könnyen összetéveszthető a hivatkozásokkal, ezért ritkán használd.</div>
+
+      <h2 class="mt-5">6. Miért számít a jelentés?</h2>
+      <p>A szemantikus elemek segítik a böngészőt, a keresőt és a segítő technológiákat a tartalom értelmezésében. Egy képernyőolvasó például a hangsúlyt nem pusztán vizuális változásként kezelheti.</p>
+      <p>Ezért a <code>strong</code> és az <code>em</code> nem egyszerűen a <code>b</code> és az <code>i</code> „új neve”: más szándékot fejeznek ki.</p>
+
+      <h2 class="mt-5">7. Az oldal bővítése</h2>
+      <p>Egészítsd ki az előző órán készített bemutatkozó oldal egyik bekezdését:</p>
+      <pre><code>&lt;h2&gt;Rólam&lt;/h2&gt;
+&lt;p&gt;
+  A nevem Anna. &lt;strong&gt;Szeretek új dolgokat tanulni&lt;/strong&gt;,
+  és különösen &lt;em&gt;érdekel a webfejlesztés&lt;/em&gt;.
+&lt;/p&gt;</code></pre>
+      <p>Ne tegyél egy teljes bekezdést félkövérré vagy dőltté indok nélkül! Csak azt a részt jelöld, amely valóban fontos vagy hangsúlyos.</p>
+
+      <h2 class="mt-5">8. Gyakori hibák</h2>
+      <ul><li>A tanuló csak a kívánt kinézet alapján választ elemet.</li><li>Az egész hosszú bekezdést kiemeli, ezért a kiemelés elveszíti a szerepét.</li><li>Rosszul zárja le az egymásba ágyazott elemeket.</li><li>Címsort <code>em</code> vagy <code>b</code> elemmel próbál címsorrá alakítani.</li><li>Aláhúzást használ díszítésként, amely hivatkozásnak tűnhet.</li></ul>
+
+      <h2 class="mt-5">9. Közös gyakorlás</h2>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">1. feladat – Válaszd ki az elemet!</h3><p class="mb-0">Melyik elem illik a kijelölt részhez: „<strong>Vigyázat!</strong> A padló nedves.”; „A munkát <em>ma</em> kell befejezni.”; egy idegen nyelvű szakkifejezés?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">2. feladat – Javítsd az ágyazást!</h3><pre class="mb-0"><code>&lt;p&gt;Ez &lt;strong&gt;nagyon &lt;em&gt;fontos&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;</code></pre></div></div>
+      <details class="border rounded p-3 mb-4"><summary class="fw-semibold">Tanári megoldás</summary><p class="mt-3"><strong>1.</strong> <code>strong</code>; <code>em</code>; az adott szándéktól függően rendszerint <code>i</code> a megfelelő <code>lang</code> attribútummal.</p><pre class="mb-0"><code>&lt;p&gt;Ez &lt;strong&gt;nagyon &lt;em&gt;fontos&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;</code></pre></details>
+
+      <h2 class="mt-5">10. Önálló feladat</h2>
+      <div class="card border-primary mb-4"><div class="card-body"><h3 class="h5">Tudatos szövegkiemelés</h3><ol><li>Írj két új bekezdést a bemutatkozó oldaladhoz!</li><li>Jelölj bennük egy valóban fontos részt <code>strong</code> elemmel!</li><li>Jelölj egy hangsúlyos szót vagy kifejezést <code>em</code> elemmel!</li><li>Legalább egyszer ágyazz kiemelőelemet <code>p</code> elembe!</li><li>Ellenőrizd a nyitó és záró tagek sorrendjét!</li></ol></div></div>
+
+      <h2 class="mt-5">11. Ellenőrizd magad!</h2>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>1.</strong> Mi a különbség a <code>strong</code> és a puszta félkövér megjelenés között?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>2.</strong> Milyen jelentést hordoz az <code>em</code> elem?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>3.</strong> Miért lehet félreérthető az aláhúzás egy weboldalon?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>4.</strong> Milyen sorrendben zárjuk le az egymásba ágyazott elemeket?</p></div></div>
+      <div class="alert alert-success mt-4"><strong>Összefoglalás:</strong> fontos tartalomhoz <code>strong</code>, hangsúlyhoz <code>em</code> elemet használunk. A <code>b</code>, <code>i</code> és <code>u</code> elemeknek is van saját, szűkebb jelentésük; a puszta megjelenést később CSS-sel szabályozzuk.</div>
+      <div class="d-flex justify-content-between gap-3 mt-5"><a class="btn btn-outline-secondary" href="../04_bekezdesek/index.html">← 4. Bekezdések</a><a class="btn btn-secondary" href="../index.html">Tartalomjegyzék</a><span></span></div>
+    </div>
+  </body>
+</html>

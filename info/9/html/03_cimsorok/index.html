@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Címsorok és címsorhierarchia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>
+      code { color: #b02a37; }
+      pre { background: #212529; color: #f8f9fa; padding: 1rem; border-radius: .5rem; overflow-x: auto; }
+      pre code { color: inherit; }
+    </style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4"><a class="btn btn-secondary btn-lg" href="../index.html">Vissza</a></div>
+
+      <h1 class="text-center mb-4">3. Címsorok és címsorhierarchia</h1>
+      <p class="lead text-center mb-4">A címsorok segítségével logikus és áttekinthető szerkezetet adunk a weboldal tartalmának.</p>
+
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+        <span class="badge text-bg-primary fs-6">ICDL Webszerkesztés</span>
+        <span class="badge text-bg-success fs-6">Ágazati alapvizsga</span>
+        <span class="badge text-bg-secondary fs-6">HTML</span>
+      </div>
+
+      <div class="alert alert-primary">
+        <h2 class="h4">Mit fogsz megtanulni?</h2>
+        <ul class="mb-0">
+          <li>mire használjuk a HTML-címsorokat,</li>
+          <li>mi a különbség a <code>h1</code>–<code>h6</code> szintek között,</li>
+          <li>hogyan alakítunk ki helyes címsorhierarchiát,</li>
+          <li>hogyan írunk nyitó és záró taget,</li>
+          <li>miért nem a betűméret alapján választunk címsorszintet,</li>
+          <li>hogyan segítik a címsorok az olvasókat, a keresőket és a segítő technológiákat.</li>
+        </ul>
+      </div>
+
+      <h2 class="mt-5">1. Mire valók a címsorok?</h2>
+      <p>A címsorok megnevezik az oldal és az egyes tartalmi részek témáját. Segítenek gyorsan áttekinteni, miről szól a weboldal, és hogyan kapcsolódnak egymáshoz a részei.</p>
+      <p>Egy tankönyvben is van könyvcím, fejezetcím és alcím. A HTML-címsorok ugyanezt a szerkezetet adják meg egy weboldalon.</p>
+      <div class="alert alert-info"><strong>Terminológia:</strong> a <code>h1</code>–<code>h6</code> elemeket címsorelemeknek nevezzük. Nem azonosak a szemantikus <code>header</code> elemmel, amelyet később tanulunk.</div>
+
+      <h2 class="mt-5">2. A hat címsorszint</h2>
+      <p>A HTML-ben hat címsorszint áll rendelkezésre:</p>
+      <pre><code>&lt;h1&gt;Első szintű címsor&lt;/h1&gt;
+&lt;h2&gt;Második szintű címsor&lt;/h2&gt;
+&lt;h3&gt;Harmadik szintű címsor&lt;/h3&gt;
+&lt;h4&gt;Negyedik szintű címsor&lt;/h4&gt;
+&lt;h5&gt;Ötödik szintű címsor&lt;/h5&gt;
+&lt;h6&gt;Hatodik szintű címsor&lt;/h6&gt;</code></pre>
+      <div class="border rounded bg-light p-4">
+        <p class="h1">Első szintű címsor</p>
+        <p class="h2">Második szintű címsor</p>
+        <p class="h3">Harmadik szintű címsor</p>
+        <p class="h4">Negyedik szintű címsor</p>
+        <p class="h5">Ötödik szintű címsor</p>
+        <p class="h6 mb-0">Hatodik szintű címsor</p>
+      </div>
+      <p class="mt-3">A böngésző alapértelmezés szerint különböző méretben jeleníti meg őket, de a számozás elsősorban nem a méretet, hanem a címsor <strong>helyét és rangját</strong> jelöli a tartalom szerkezetében.</p>
+
+      <h2 class="mt-5">3. A címsorhierarchia</h2>
+      <p>A <strong>hierarchia</strong> rangsort és egymás alá rendeltséget jelent:</p>
+      <ul>
+        <li><code>h1</code>: az egész oldal főcíme,</li>
+        <li><code>h2</code>: az oldal nagyobb fejezeteinek címe,</li>
+        <li><code>h3</code>: egy <code>h2</code> fejezeten belüli alfejezet címe,</li>
+        <li><code>h4</code>–<code>h6</code>: további alárendelt szintek.</li>
+      </ul>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h3 class="h5">Példa egy iskolai újság szerkezetére</h3>
+          <pre class="mb-0"><code>&lt;h1&gt;Iskolai újság&lt;/h1&gt;
+
+&lt;h2&gt;Iskolai hírek&lt;/h2&gt;
+&lt;h3&gt;Megújult a könyvtár&lt;/h3&gt;
+&lt;h3&gt;Elindult a diákönkormányzati választás&lt;/h3&gt;
+
+&lt;h2&gt;Sport&lt;/h2&gt;
+&lt;h3&gt;Győzött a kézilabdacsapat&lt;/h3&gt;</code></pre>
+        </div>
+      </div>
+
+      <h2 class="mt-5">4. Egyetlen főcím</h2>
+      <p>Kezdőként kövessük azt a jól áttekinthető gyakorlatot, hogy egy oldalon <strong>egy darab <code>h1</code></strong> legyen. Ez nevezze meg az egész oldal fő témáját.</p>
+      <p>A további nagy részekhez <code>h2</code>, az azokon belüli alrészekhez <code>h3</code> címsort használjunk.</p>
+      <div class="alert alert-warning">Ne azért használj több <code>h1</code> elemet, mert nagy és félkövér szöveget szeretnél! A megjelenést később CSS-sel alakítjuk ki.</div>
+
+      <h2 class="mt-5">5. Ne a kinézet alapján válassz!</h2>
+      <p>A következő gondolkodás hibás:</p>
+      <blockquote class="blockquote border-start border-4 ps-3">„Ez a méret tetszik, ezért <code>h3</code>-at használok.”</blockquote>
+      <p>A helyes kérdés:</p>
+      <blockquote class="blockquote border-start border-4 border-success ps-3">„Ez az oldal főcíme, fejezetcíme vagy egy fejezeten belüli alcím?”</blockquote>
+      <p>A címsorszint a tartalom jelentését írja le. A betűméretet, színt és betűtípust majd CSS-sel változtatjuk meg.</p>
+
+      <h2 class="mt-5">6. Nyitó és záró tag</h2>
+      <pre><code>&lt;h1&gt;Az első weboldalam&lt;/h1&gt;</code></pre>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+          <thead class="table-light"><tr><th>Rész</th><th>Példa</th><th>Feladata</th></tr></thead>
+          <tbody>
+            <tr><td>Nyitó tag</td><td><code>&lt;h1&gt;</code></td><td>Jelzi a címsorelem kezdetét és szintjét.</td></tr>
+            <tr><td>Tartalom</td><td><code>Az első weboldalam</code></td><td>A címsor szövege.</td></tr>
+            <tr><td>Záró tag</td><td><code>&lt;/h1&gt;</code></td><td>Jelzi a címsorelem végét.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Ha megváltoztatod a címsor szintjét, a nyitó és a záró tagben is ugyanazt a számot kell használnod:</p>
+      <pre><code>&lt;h2&gt;A hobbijaim&lt;/h2&gt;</code></pre>
+
+      <h2 class="mt-5">7. Címsor hozzáadása az oldalhoz</h2>
+      <p>Nyisd meg az előző órán elkészített <code>index.html</code> fájlt, és módosítsd a <code>body</code> részt:</p>
+      <pre><code>&lt;body&gt;
+  &lt;h1&gt;Az első weboldalam&lt;/h1&gt;
+&lt;/body&gt;</code></pre>
+      <ol>
+        <li>Mentsd el a fájlt!</li>
+        <li>Frissítsd az oldalt a böngészőben!</li>
+        <li>Írd át a címsort saját főcímre!</li>
+        <li>Adj hozzá két nagyobb részt <code>h2</code> elemmel!</li>
+      </ol>
+      <pre><code>&lt;body&gt;
+  &lt;h1&gt;Bemutatkozó oldalam&lt;/h1&gt;
+  &lt;h2&gt;Rólam&lt;/h2&gt;
+  &lt;h2&gt;A hobbijaim&lt;/h2&gt;
+&lt;/body&gt;</code></pre>
+
+      <h2 class="mt-5">8. Címsorok és keresők</h2>
+      <p>A címsorok segítenek a keresőmotoroknak megérteni az oldal tartalmi szerkezetét. A jó címsor röviden és pontosan megnevezi a következő tartalmi részt.</p>
+      <p>A címsorok ugyanakkor nem kizárólag a keresők miatt fontosak: az olvasóknak és a képernyőolvasót használó embereknek is segítenek eligazodni.</p>
+      <div class="alert alert-info">A jó címsor legyen értelmes és leíró. Ne töltsd meg fölöslegesen kulcsszavakkal, és ne válassz címsorszintet pusztán keresőoptimalizálási trükk miatt.</div>
+
+      <h2 class="mt-5">9. Címsorok tartalomkezelő rendszerben</h2>
+      <p>Sok webhelyet tartalomkezelő rendszerrel, például WordPress segítségével szerkesztenek. Ilyenkor a szerkesztőfelület legördülő menüjéből is kiválasztható, hogy egy szöveg bekezdés, <code>h2</code> vagy <code>h3</code> címsor legyen.</p>
+      <p>A tartalomkezelő a háttérben ugyanúgy HTML-kódot készít:</p>
+      <pre><code>&lt;h2&gt;Az Essential Graphics panel használata&lt;/h2&gt;</code></pre>
+      <div class="alert alert-warning">
+        <strong>Fontos szakmai szabály:</strong> ne változtass egy alcímet <code>h1</code>-re csak azért, mert nagyobb betűt vagy jobb keresőtalálatot szeretnél! Ha a cikk vagy az oldal címe már <code>h1</code>, a cikken belüli nagyobb részekhez <code>h2</code>, azok alrészeihez <code>h3</code> tartozik.
+      </div>
+      <p>A kulcsszó szerepelhet egy pontos, természetes címsorban, de a keresőoptimalizálás nem írhatja felül a tartalom logikus szerkezetét.</p>
+
+      <h2 class="mt-5">10. Címsorok vizsgálata valódi weboldalon</h2>
+      <ol>
+        <li>Nyiss meg egy egyszerű híroldalt vagy iskolai weboldalt!</li>
+        <li>Kattints jobb gombbal az egyik címsorra, majd válaszd a <strong>Vizsgálat</strong> lehetőséget!</li>
+        <li>Nézd meg, milyen címsorelemet használtak!</li>
+        <li>Keress további <code>h1</code>, <code>h2</code> és <code>h3</code> elemeket!</li>
+        <li>Próbáld meg felrajzolni az oldal címsorhierarchiáját!</li>
+      </ol>
+
+      <h2 class="mt-5">11. Gyakori hibák</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+          <thead class="table-light"><tr><th>Hiba</th><th>Miért probléma?</th><th>Javítás</th></tr></thead>
+          <tbody>
+            <tr><td>Több főcím használata.</td><td>Nem egyértelmű az oldal fő témája.</td><td>Válassz egy <code>h1</code> főcímet!</td></tr>
+            <tr><td><code>h1</code> után rögtön <code>h4</code>.</td><td>Indokolatlanul kimaradnak hierarchiaszintek.</td><td>Használj logikus sorrendet!</td></tr>
+            <tr><td>Címsor használata csak a nagy betűméret miatt.</td><td>A HTML-szerkezet nem tükrözi a tartalom jelentését.</td><td>A szintet jelentés, a kinézetet CSS alapján válaszd!</td></tr>
+            <tr><td><code>&lt;h2&gt;Cím&lt;/h3&gt;</code></td><td>A nyitó és záró tag nem tartozik össze.</td><td>Mindkét helyen ugyanazt a szintet használd!</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="mt-5">12. Közös gyakorlás</h2>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">1. feladat – Állítsd össze a hierarchiát!</h3><p>Rendelj megfelelő címsorszintet a következőkhöz:</p><ul class="mb-0"><li>Állatvilág magazin</li><li>Madarak</li><li>Emlősök</li><li>A vörösbegy</li><li>A barna medve</li></ul></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">2. feladat – Javítsd a kódot!</h3><pre class="mb-2"><code>&lt;h2&gt;Sporthírek&lt;/h3&gt;
+&lt;h1&gt;Labdarúgás&lt;/h1&gt;
+&lt;h1&gt;Kézilabda&lt;/h1&gt;</code></pre><p class="mb-0">Az oldal témája Sporthírek, a labdarúgás és a kézilabda pedig ezen belüli fejezetek.</p></div></div>
+      <details class="border rounded p-3 mb-4"><summary class="fw-semibold">Tanári megoldás</summary><p class="mt-3 mb-2"><strong>1. feladat:</strong> <code>h1</code>: Állatvilág magazin; <code>h2</code>: Madarak és Emlősök; <code>h3</code>: A vörösbegy és A barna medve.</p><pre class="mb-0"><code>&lt;h1&gt;Sporthírek&lt;/h1&gt;
+&lt;h2&gt;Labdarúgás&lt;/h2&gt;
+&lt;h2&gt;Kézilabda&lt;/h2&gt;</code></pre></details>
+
+      <h2 class="mt-5">13. Önálló feladat</h2>
+      <div class="card border-primary mb-4"><div class="card-body"><h3 class="h5">Saját tartalomjegyzék</h3><p>Bővítsd az előző órán készített oldaladat!</p><ol><li>Adj az oldalnak egyetlen <code>h1</code> főcímet!</li><li>Készíts három <code>h2</code> fejezetcímet!</li><li>Legalább az egyik fejezethez adj két <code>h3</code> alcímet!</li><li>Ügyelj a nyitó és záró tagekre!</li><li>Mentsd el, frissítsd a böngészőt, és ellenőrizd az eredményt!</li></ol><p class="mb-0"><strong>Lehetséges témák:</strong> kedvenc játékok, sportok, filmek, ételek vagy utazási célpontok.</p></div></div>
+
+      <h2 class="mt-5">14. Ellenőrizd magad!</h2>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>1.</strong> Hány címsorszint létezik a HTML-ben?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>2.</strong> Mit jelöl a <code>h1</code> elem?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>3.</strong> Mi alapján választjuk ki a címsor szintjét?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>4.</strong> Mi a különbség a <code>h1</code> és a később tanulandó <code>header</code> elem között?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>5.</strong> Mi a hiba ebben: <code>&lt;h2&gt;Cím&lt;/h3&gt;</code>?</p></div></div>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>6.</strong> Miért hibás egy cikken belüli alcímet csak a nagyobb méret vagy egy SEO-jelzés miatt <code>h1</code>-re változtatni?</p></div></div>
+
+      <div class="alert alert-success mt-4"><strong>Összefoglalás:</strong> a <code>h1</code>–<code>h6</code> elemekkel a tartalom hierarchiáját írjuk le. A <code>h1</code> az oldal főcíme, a további szintek az egymás alá rendezett fejezeteket és alfejezeteket jelölik. A címsorszintet nem a betűméret, hanem a tartalom szerkezete alapján választjuk ki.</div>
+
+      <div class="d-flex justify-content-between gap-3 mt-5"><a class="btn btn-outline-secondary" href="../02_elso_html_oldal/index.html">← 2. Az első HTML-oldal</a><a class="btn btn-secondary" href="../index.html">Tartalomjegyzék</a><a class="btn btn-outline-secondary" href="../04_bekezdesek/index.html">4. Bekezdések →</a></div>
+    </div>
+  </body>
+</html>
