@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 32. óra – Reszponzív ellenőrzés és Lighthouse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#eef7ff 100%);border:1px solid #e6e9ef}.section-card{border:0;box-shadow:0 .25rem .8rem rgba(0,0,0,.05)}pre{background:#212529;color:#f8f9fa;border-radius:.75rem;padding:1rem;overflow-x:auto}code{color:#c7254e}pre code{color:inherit}.callout{border-left:.35rem solid #0dcaf0;background:#eefbff}.important{border-left:.35rem solid #ffc107;background:#fff8e1}.task{border-left:.35rem solid #198754;background:#edf8f1}summary{cursor:pointer;font-weight:600}</style>
+</head>
+<body><main class="container py-5">
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-primary">11. évfolyam</span>
+    <span class="badge text-bg-success">Tesztelés és optimalizálás</span>
+    <span class="badge text-bg-dark">32. óra</span>
+    <h1 class="display-6 fw-bold mt-3">Reszponzív ellenőrzés és Lighthouse-audit</h1>
+    <p class="lead mb-0">Kézzel ellenőrizzük a közlekedési oldal három nézetét, majd a Chrome Lighthouse jelentésével feltárjuk a teljesítményi, akadálymentességi és SEO-problémákat.</p>
+  </section>
+
+  <div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Jonas kurzusából feldolgozva:</strong><span>143. videó – Testing Performance With Lighthouse</span></div>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra célja</h2>
+    <ul><li>A reszponzív oldal kézi ellenőrzése több szélességen.</li><li>Lighthouse-jelentés készítése Chrome DevToolsban.</li><li>A négy fő kategória értelmezése.</li><li>A jelentés hibáinak és javaslatainak megvizsgálása.</li><li>Két egyszerű HTML-javítás elvégzése.</li><li>A későbbi meta- és képoptimalizálási feladatok azonosítása.</li></ul>
+    <a class="btn btn-primary me-2" href="kezdo.zip" download>Kezdőcsomag letöltése</a><a class="btn btn-outline-success" href="megoldas.zip" download>Megoldás letöltése</a>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. Először kézi ellenőrzés</h2>
+    <p>Az automatizált eszköz nem helyettesíti azt, hogy saját szemmel végignézzük az oldalt.</p>
+    <div class="task rounded-3 p-3"><ol class="mb-0"><li>Nyisd meg a kezdőprojektet Live Serverrel.</li><li>Vizsgáld meg 1400, 1200, 944, 700, 544, 430 és 360 px szélességen.</li><li>Ellenőrizd, hogy nincs vízszintes görgetés.</li><li>Próbáld ki a navigáció hivatkozásait.</li><li>Nézd meg, olvasható-e a táblázat és nem fed-e rá a gomb a címre.</li><li>Szűkítsd lassan az ablakot a megadott értékek között is.</li></ol></div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. Mi a Lighthouse?</h2>
+    <p>A Lighthouse a Chrome-ba épített automatizált auditáló eszköz. Megvizsgálja a weboldalt, jelentést készít, és megmutatja a lehetséges javítási területeket.</p>
+    <div class="important rounded-3 p-3"><strong>A pontszám nem osztályzat.</strong> A futtatási környezet, a gép terhelése és a böngésző beállításai is befolyásolhatják. A sikertelen auditokat meg kell vizsgálni, de az eszköz javaslatait mindig értelmezni kell.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. Lighthouse-jelentés készítése</h2>
+    <ol><li>Nyisd meg az oldalt Google Chrome-ban Live Serverrel.</li><li>Nyisd meg a DevTools ablakot.</li><li>Válaszd a <strong>Lighthouse</strong> panelt; ha nem látszik, keresd a további panelek között.</li><li>Válaszd a <strong>Navigation</strong> módot.</li><li>Először válaszd a <strong>Desktop</strong>, majd külön futtatásban a <strong>Mobile</strong> eszközt.</li><li>Hagyd bekapcsolva a négy fő kategóriát.</li><li>Kattints az <strong>Analyze page load</strong> gombra.</li></ol>
+    <div class="callout rounded-3 p-3">A helyi oldal teljesítménye kedvezőbbnek tűnhet, mert a fájlok a saját számítógépről töltődnek be. Közzététel után újra lefuttatjuk az auditot.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. A négy fő kategória</h2>
+    <div class="table-responsive"><table class="table table-bordered align-middle"><thead><tr><th>Kategória</th><th>Mit vizsgál?</th><th>Példa a projektünkből</th></tr></thead><tbody>
+      <tr><td>Performance</td><td>Betöltési sebesség és megjelenítés</td><td>A nagyméretű közlekedési kép</td></tr>
+      <tr><td>Accessibility</td><td>Hozzáférhetőség és olvashatóság</td><td>Alternatív szöveg, színkontraszt, szerkezet</td></tr>
+      <tr><td>Best Practices</td><td>Általános webes bevált gyakorlatok</td><td>Biztonságos és helyes HTML-használat</td></tr>
+      <tr><td>SEO</td><td>Alapvető keresőbarát beállítások</td><td>Cím, viewport és a még hiányzó meta description</td></tr>
+    </tbody></table></div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. Amit már jól csináltunk</h2>
+    <ul><li>A dokumentum nyelve meg van adva: <code>&lt;html lang="hu"&gt;</code>.</li><li>Van értelmes <code>&lt;title&gt;</code> elem.</li><li>Szerepel a viewport metaelem.</li><li>A képhez tartozik leíró <code>alt</code> szöveg.</li><li>A felsorolások valódi listaelemekből állnak.</li><li>Az oldal szemantikus elemeket használ: header, nav, main/article, aside és footer.</li></ul>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. Két most elvégezhető javítás</h2>
+    <h3 class="h5">A kép méretének megadása</h3>
+    <pre><code>&lt;img
+  class="post-img"
+  src="img/varosi-kozlekedes.png"
+  alt="Villamos, elektromos busz, kerékpárosok és gyalogosok egy városi úton"
+  width="1939"
+  height="811"&gt;</code></pre>
+    <p>A böngésző így már betöltés előtt lefoglalhatja a kép helyét. A CSS-ben lévő <code>width: 100%</code> és <code>height: auto</code> továbbra is reszponzívan jeleníti meg.</p>
+    <h3 class="h5">A gomb típusának megadása</h3>
+    <pre><code>&lt;button class="like-button" type="button"&gt;💚 Hasznos&lt;/button&gt;</code></pre>
+    <p class="mb-0">A <code>type="button"</code> egyértelművé teszi, hogy ez nem űrlapot elküldő gomb.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. Amit most még nem javítunk</h2>
+    <ul><li><strong>Hiányzó meta description:</strong> a következő SEO-órán készítjük el.</li><li><strong>Nagyméretű PNG:</strong> a képoptimalizálási órán méretezzük át és alakítjuk korszerű formátumra.</li><li><strong>Helyi teljesítményeredmény:</strong> a közzétett oldalon újra megmérjük.</li><li><strong>Pontszámok eltérése:</strong> nem próbálunk mindenáron 100 pontot elérni; az indokolt hibákat javítjuk.</li></ul>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. Valós példa – az iskolai honlap Lighthouse-jelentése</h2>
+    <div class="important rounded-3 p-3 mb-4"><strong>Ennek a résznek nem célja az iskolai honlap kijavítása.</strong> A jelentést olvasási és értelmezési példaként használjuk: megfigyeljük, mit mér a Lighthouse, és milyen következtetéseket lehet levonni az eredményekből.</div>
+    <img class="img-fluid rounded border mb-4" src="img/lighthouse-iskolai-pelda/01-eredmenyek.png" alt="Az iskolai honlap Lighthouse-eredményei és teljesítménymérőszámai">
+    <div class="table-responsive"><table class="table table-bordered align-middle"><thead><tr><th>Terület</th><th>Pont</th><th>Mit látunk?</th></tr></thead><tbody>
+      <tr><td>Performance</td><td>85</td><td>Jó eredmény, de a képek, a gyorsítótárazás és a kezdeti betöltés fejleszthető.</td></tr>
+      <tr><td>Accessibility</td><td>81</td><td>A jelentés több szemantikai és olvashatósági problémát talált.</td></tr>
+      <tr><td>Best Practices</td><td>73</td><td>Ez a legalacsonyabb pontszám; biztonsági és böngészőkonzolban megjelenő jelzések is vannak.</td></tr>
+      <tr><td>SEO</td><td>83</td><td>Technikai keresőoptimalizálási hiányosságok láthatók.</td></tr>
+    </tbody></table></div>
+
+    <h3 class="h5 mt-4">A betöltés stabil, de nem minden jelenik meg gyorsan</h3>
+    <ul><li><code>First Contentful Paint: 2,4 s</code> – az első tartalom megjelenése még javítható.</li><li><code>Largest Contentful Paint: 3,8 s</code> – a legnagyobb látható tartalom viszonylag későn jelenik meg.</li><li><code>Total Blocking Time: 40 ms</code> – kevés blokkolás, ez jó eredmény.</li><li><code>Cumulative Layout Shift: 0</code> – betöltés közben nem ugrál az elrendezés.</li></ul>
+    <p>Érdekes következtetés: egy oldal lehet stabil és gyorsan használható úgy is, hogy a legnagyobb tartalmi elem még lassan töltődik be.</p>
+
+    <h3 class="h5 mt-4">A teljesítményre ható jelzések</h3>
+    <img class="img-fluid rounded border mb-3" src="img/lighthouse-iskolai-pelda/02-teljesitmeny.png" alt="A Lighthouse teljesítménnyel kapcsolatos javaslatai az iskolai honlapon">
+    <ul><li>A gyorsítótár beállításainál közel 2 MB becsült megtakarítás jelenik meg.</li><li>A képek hatékonyabb kiszolgálásával több mint 1 MB takarítható meg.</li><li>A dokumentumkérés és a renderelést blokkoló fájlok késleltetik a megjelenést.</li><li>A cache-beállítás gyakran szerveroldali feladat, tehát nem minden jelzés oldható meg pusztán a HTML átírásával.</li></ul>
+
+    <h3 class="h5 mt-4">Egy hiba több kategóriában is megjelenhet</h3>
+    <img class="img-fluid rounded border mb-3" src="img/lighthouse-iskolai-pelda/03-akadalymentesseg.png" alt="Az iskolai honlap akadálymentességi Lighthouse-jelzései">
+    <p>A hiányzó képleírás egyszerre ronthatja az Accessibility és a SEO eredményét. A címke nélküli űrlapelem, a felismerhető név nélküli link és a gyenge színkontraszt elsősorban a felhasználók számára okozhat nehézséget. A jelentés azt is jelzi, hogy az automatikus vizsgálat csak a problémák egy részét képes felismerni.</p>
+    <div class="callout rounded-3 p-3 mb-4"><strong>Színkontraszt külön ellenőrzése:</strong> a Lighthouse jelzését a Coolors Contrast Checker segítségével is megvizsgálhatjuk. A megadott példában a <code>#112a46</code> és a <code>#acc8e5</code> színpárt hasonlítjuk össze.<br><a class="btn btn-outline-primary mt-3" href="https://coolors.co/contrast-checker/112a46-acc8e5" target="_blank" rel="noopener">Coolors Contrast Checker megnyitása</a></div>
+
+    <h3 class="h5 mt-4">A legalacsonyabb pontszám: Best Practices</h3>
+    <img class="img-fluid rounded border mb-3" src="img/lighthouse-iskolai-pelda/04-bevalt-gyakorlatok.png" alt="HTTPS-probléma az iskolai honlap Lighthouse-jelentésében">
+    <p>Két kép HTTP-címmel szerepel, amelyeket a böngésző automatikusan HTTPS-re frissített. Ez jó példa arra, hogy a böngésző képes elfedni egy forráskódban vagy beállításban maradt hibát, miközben az audit továbbra is jelzi azt. A jelentés ezenkívül konzol- és Issues-panelen megjelenő problémákat is talált.</p>
+
+    <h3 class="h5 mt-4">A SEO-pontszám nem a Google-helyezést jelenti</h3>
+    <img class="img-fluid rounded border mb-3" src="img/lighthouse-iskolai-pelda/05-seo.png" alt="Az iskolai honlap SEO Lighthouse-eredménye">
+    <p>A 83 pontos SEO-érték technikai alapellenőrzés. A képernyőképen nem bejárható linkek és <code>alt</code> nélküli képek szerepelnek. Ez a szám nem mondja meg, hogy az oldal hányadik helyen jelenik meg a Google találatai között.</p>
+
+    <div class="callout rounded-3 p-3"><strong>A példa legfontosabb tanulsága:</strong> nem a négy pontszámot kell önmagában nézni. A jelentés sorait kell értelmezni, majd megkülönböztetni a tartalmi, HTML-es, teljesítményi, biztonsági és szerveroldali jelzéseket.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. Órai jegyzőkönyv</h2>
+    <div class="task rounded-3 p-3"><ol class="mb-0"><li>Írd fel a Desktop audit négy pontszámát.</li><li>Írd fel a Mobile audit négy pontszámát.</li><li>Válassz ki kategóriánként egy jelzést.</li><li>Írd le saját szavaiddal, mit jelent.</li><li>Döntsd el: most javítható, későbbi óra témája, vagy ellenőrzést igénylő jelzés?</li><li>Végezd el a kép méretattribútumainak és a gomb típusának javítását.</li><li>Futtasd újra az auditot, és hasonlítsd össze az eredményt.</li></ol></div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">10. Ellenőrző kérdések</h2>
+    <ol><li>Miért végzünk kézi ellenőrzést a Lighthouse előtt?</li><li>Melyik négy fő kategóriát vizsgáljuk?</li><li>Miért lehet félrevezető a helyi teljesítménypontszám?</li><li>Miért hasznos a képen a width és height attribútum?</li><li>Miért nem kell minden Lighthouse-jelzést gondolkodás nélkül elfogadni?</li></ol>
+    <details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol class="mt-3 mb-0"><li>Mert az automatizált teszt nem lát minden vizuális és használhatósági problémát.</li><li>Performance, Accessibility, Best Practices és SEO.</li><li>Mert a fájlok a saját gépről, hálózati letöltés nélkül érkeznek.</li><li>A böngésző előre lefoglalhatja a kép helyét, így kisebb az elrendezés elmozdulása.</li><li>Mert a jelzés környezetfüggő vagy téves is lehet; előbb meg kell vizsgálni az okát.</li></ol></details>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Mit vigyél el ebből az órából?</h2><ul class="mb-0"><li>A reszponzív tesztelés kézi és automatizált ellenőrzésből áll.</li><li>A Lighthouse problémákat és fejlesztési lehetőségeket jelez.</li><li>A pontszám önmagában nem cél; a jelentés okait kell megérteni.</li><li>A helyi és a közzétett oldal eredménye eltérhet.</li><li>A következő lépés a metaelemek és a SEO-alapok rendezése.</li></ul></div></section>
+
+  <nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between"><a class="btn btn-outline-secondary btn-lg" href="../31_ora/index.html">Előző: mobiltelefonos elrendezés</a><a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a><a class="btn btn-primary btn-lg" href="../33_ora/index.html">Következő: metaelemek és SEO-alapok</a></nav>
+</main></body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML/CSS 33. óra – Meta description, oldalcím és favicon</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#eef7ff 100%);border:1px solid #e6e9ef}.section-card{border:0;box-shadow:0 .25rem .8rem rgba(0,0,0,.05)}pre{background:#212529;color:#f8f9fa;border-radius:.75rem;padding:1rem;overflow-x:auto}code{color:#c7254e}pre code{color:inherit}.callout{border-left:.35rem solid #0dcaf0;background:#eefbff}.important{border-left:.35rem solid #ffc107;background:#fff8e1}.task{border-left:.35rem solid #198754;background:#edf8f1}summary{cursor:pointer;font-weight:600}.favicon-preview{width:64px;height:64px}</style>
+</head>
+<body><main class="container py-5">
+  <section class="hero rounded-4 p-4 p-md-5 mb-4"><span class="badge text-bg-primary">11. évfolyam</span> <span class="badge text-bg-success">SEO-alapok</span> <span class="badge text-bg-dark">33. óra</span><h1 class="display-6 fw-bold mt-3">Meta description, oldalcím és favicon</h1><p class="lead mb-0">Kiegészítjük a közlekedési oldal head részét egy pontos címmel, rövid oldalleírással és saját böngészőikonnal.</p></section>
+
+  <div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Jonas kurzusából feldolgozva:</strong><span>144. videó – Adding Favicon and Meta Description</span></div>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Az óra célja</h2><ul><li>Megérteni, mire való a dokumentum <code>&lt;head&gt;</code> része.</li><li>Egyedi és pontos <code>&lt;title&gt;</code> megadása.</li><li>Oldalspecifikus meta description készítése.</li><li>Saját favicon összekapcsolása a HTML-dokumentummal.</li><li>A változtatások ellenőrzése a böngészőben és a Lighthouse-ban.</li></ul><a class="btn btn-primary me-2" href="kezdo.zip" download>Kezdőcsomag letöltése</a><a class="btn btn-outline-success" href="megoldas.zip" download>Megoldás letöltése</a></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">1. Mi kerül a head részbe?</h2><p>A <code>&lt;head&gt;</code> olyan adatokat tartalmaz a dokumentumról, amelyek többsége nem az oldal látható tartalmaként jelenik meg. Ide kerül többek között a karakterkódolás, a viewport, az oldalcím, a leírás, a favicon és a CSS-fájl hivatkozása.</p><pre><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;...&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">2. Pontos és egyedi oldalcím</h2><p>A cím jelenik meg a böngészőlapon, a könyvjelzőkben, és a kereső is felhasználhatja a találat címéhez.</p><pre><code>&lt;title&gt;Közlekedési magazin – Fenntartható városi közlekedés&lt;/title&gt;</code></pre><div class="callout rounded-3 p-3">A jó cím rövid, érthető, az adott oldalra jellemző, és nem kulcsszavak felsorolása.</div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">3. Meta description</h2><p>A meta description rövid, embernek szóló összefoglaló az oldal tartalmáról. A <code>name</code> mondja meg az adat típusát, a <code>content</code> pedig magát a leírást tartalmazza.</p><pre><code>&lt;meta
+  name="description"
+  content="Ismerd meg a fenntartható városi közlekedés lehetőségeit: villamos, autóbusz, kerékpár és gyaloglás egy közlekedési magazinban."&gt;</code></pre><div class="important rounded-3 p-3"><strong>Pontosítás:</strong> a Google felhasználhatja ezt a szöveget a találati kivonatban, de nem köteles mindig ezt megjeleníteni. A kereséshez jobban illő szöveget az oldal látható tartalmából is kiválaszthatja.</div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">4. Milyen a jó meta leírás?</h2><ul><li>Valóban összefoglalja az adott oldal tartalmát.</li><li>Rövid, természetes és könnyen érthető.</li><li>Nem megtévesztő, és nem csak kulcsszavakból áll.</li><li>Az oldal legfontosabb információit emeli ki.</li><li>Többoldalas webhelyen lehetőleg minden oldalhoz egyedi.</li></ul><div class="task rounded-3 p-3"><strong>Összehasonlítás:</strong><p class="mb-1 mt-2"><strong>Gyenge:</strong> „közlekedés, busz, villamos, bicikli, város, utazás”</p><p class="mb-0"><strong>Jobb:</strong> „Ismerd meg a fenntartható városi közlekedés lehetőségeit: villamos, autóbusz, kerékpár és gyaloglás egy közlekedési magazinban.”</p></div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">5. Mi a favicon?</h2><div class="d-flex align-items-center gap-3 mb-3"><img class="favicon-preview" src="megoldas/img/favicon.svg" alt="A közlekedési magazin zöld, járművet ábrázoló faviconja"><p class="mb-0">A favicon a webhely kis ikonja. Megjelenhet a böngészőlapon, a könyvjelzők mellett és más böngészőfelületeken.</p></div><p>A kezdőcsomag már tartalmazza az <code>img/favicon.svg</code> fájlt. A feladat nem az SVG megrajzolása, hanem a meglévő ikon helyes összekapcsolása a dokumentummal:</p><pre><code>&lt;link rel="icon" href="img/favicon.svg" type="image/svg+xml"&gt;</code></pre><ul class="mb-0"><li><code>rel="icon"</code>: a kapcsolt fájl a dokumentum ikonja.</li><li><code>href</code>: az ikon elérési útja.</li><li><code>type</code>: a fájl formátuma.</li></ul></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">6. A head elkészült részlete</h2><pre><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta name="description" content="Ismerd meg a fenntartható városi közlekedés lehetőségeit: villamos, autóbusz, kerékpár és gyaloglás egy közlekedési magazinban."&gt;
+  &lt;title&gt;Közlekedési magazin – Fenntartható városi közlekedés&lt;/title&gt;
+  &lt;link rel="icon" href="img/favicon.svg" type="image/svg+xml"&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+  &lt;link rel="stylesheet" href="queries.css"&gt;
+&lt;/head&gt;</code></pre><p class="mb-0">A meta description és a favicon nem változtatja meg az oldal törzsében látható elrendezést.</p></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">7. Apple-ikon és webmanifest – kitekintés</h2><p>A webhely kezdőképernyőre mentéséhez külön Apple touch ikon és webmanifest is használható. Ezek több ikonméretet és további alkalmazásadatokat írhatnak le.</p><pre><code>&lt;link rel="apple-touch-icon" href="apple-touch-icon.png"&gt;
+&lt;link rel="manifest" href="site.webmanifest"&gt;</code></pre><div class="important rounded-3 p-3"><strong>Ebben a projektben nem kötelező.</strong> A hagyományos böngészőfavicon, a cím és a meta description elegendő a mostani tanulási célhoz.</div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">8. Ellenőrzés</h2><ol><li>Mentsd el az index.html fájlt, majd töltsd újra az oldalt.</li><li>Nézd meg a böngészőlap címét és ikonját.</li><li>A DevTools Elements paneljén keresd meg a head elemeit.</li><li>Futtasd újra a Lighthouse SEO-auditját.</li><li>Ellenőrizd, hogy eltűnt-e a hiányzó meta description jelzése.</li><li>Ne várd, hogy a Google találata azonnal vagy garantáltan megváltozzon.</li></ol></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">9. Önálló feladat</h2><div class="task rounded-3 p-3"><ol class="mb-0"><li>Írj pontosabb címet a közlekedési oldalnak.</li><li>Készíts egy mondatos, egyedi meta leírást.</li><li>Kapcsold a dokumentumhoz a kapott favicont.</li><li>Ellenőrizd mindhárom elemet a head részben.</li><li>Futtasd le újra a Lighthouse SEO-kategóriáját.</li><li>Hasonlítsd össze a korábbi és az új jelentést.</li></ol></div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">10. Ellenőrző kérdések</h2><ol><li>Hol jelenhet meg a title tartalma?</li><li>Melyik attribútumba kerül a meta leírás szövege?</li><li>Garantáltan a meta description jelenik meg a Google-ban?</li><li>Mire való a favicon?</li><li>Mit jelent a link elem rel attribútumának icon értéke?</li><li>Kötelező-e most webmanifestet készítenünk?</li></ol><details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol class="mt-3 mb-0"><li>A böngészőlapon, a könyvjelzőben és keresési találat címeként is felhasználható.</li><li>A content attribútumba.</li><li>Nem. A Google az oldal tartalmából is készíthet kivonatot.</li><li>A webhelyet azonosító kis ikon.</li><li>A kapcsolt erőforrás a dokumentum ikonja.</li><li>Nem, ez csak kitekintés.</li></ol></details></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Mit vigyél el ebből az órából?</h2><ul class="mb-0"><li>Minden oldalnak legyen pontos és egyedi címe.</li><li>A meta description az oldal rövid, embernek szóló összefoglalója.</li><li>A kereső nem garantáltan a megadott leírást jeleníti meg.</li><li>A favicon a webhely vizuális azonosítója a böngészőben.</li><li>A következő lépés a nagyméretű képek optimalizálása.</li></ul></div></section>
+
+  <nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between"><a class="btn btn-outline-secondary btn-lg" href="../32_ora/index.html">Előző: Lighthouse-audit</a><a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a><span class="btn btn-outline-primary btn-lg disabled" aria-disabled="true">Következő: képoptimalizálás</span></nav>
+</main></body>
+</html>

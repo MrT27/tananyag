@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  color: #212529;
+  background: #f8f9fa;
+  font-family: Arial, sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.main-header {
+  padding: 8rem 0;
+  color: white;
+  background: #087f5b;
+}
+
+.eyebrow {
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: .15rem;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: 5.2rem;
+  line-height: 1.1;
+}
+
+.lead {
+  max-width: 70rem;
+  margin: 0;
+}
+
+.related {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem;
+  padding: 6.4rem 0;
+}
+
+.related-post {
+  padding: 3.2rem;
+  background: white;
+  border-radius: 1.2rem;
+  box-shadow: 0 .4rem 1.6rem rgb(0 0 0 / 8%);
+}
+
+.related-post h2 {
+  margin-top: 0;
+}
+
+/* A media queryk az órai feladat során ide kerülnek. */

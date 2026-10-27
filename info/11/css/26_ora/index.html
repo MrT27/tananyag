@@ -57,6 +57,20 @@ body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#f3efff 
 <p>Alapértelmezett 16 px-es gyökérméretnél ez 800 px maximális szélességet, 64 px paddinget és 32 px betűméretet jelent.</p>
 </div></section>
 
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">DevTools-kísérlet: valóban 16 px az alapérték?</h2>
+<p>A 16 px gyakori böngésző-alapbeállítás, de ezt nem kell bemondásra elfogadni: a számított értéket a DevToolsban is ellenőrizheted.</p>
+<ol>
+<li>Nyisd meg a fejlesztői eszközöket, majd az <strong>Elements</strong> panelen jelöld ki a legfelső <code>&lt;html&gt;</code> elemet.</li>
+<li>Nyisd meg a <strong>Computed</strong> fület, és keress rá a <code>font-size</code> tulajdonságra.</li>
+<li>Ha az oldalon aktív a <code>html { font-size: 62.5%; }</code> szabály, a számított érték várhatóan <strong>10 px</strong>.</li>
+<li>A <strong>Styles</strong> panelen ideiglenesen kapcsold ki a <code>font-size: 62.5%;</code> deklarációt.</li>
+<li>Térj vissza a Computed panelhez: szokásos böngészőbeállítás mellett az érték <strong>16 px</strong>-re változik.</li>
+<li>Kapcsold vissza a deklarációt, és ellenőrizd, hogy ismét 10 px jelenik meg.</li>
+</ol>
+<pre><code>16px × 62.5% = 10px</code></pre>
+<div class="access rounded-3 p-3"><strong>Fontos:</strong> a 16 px nem megváltoztathatatlan törvény. A felhasználó módosíthatja a böngésző alap-betűméretét. Éppen ezért használunk százalékos gyökérméretet fix <code>10px</code> helyett.</div>
+</div></section>
+
 <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">4. Miért hasznos a <code>rem</code>?</h2>
 <p>Ha sok méretet <code>rem</code>-ben adunk meg, akkor a gyökér-betűméret változtatása egyszerre több méretet is arányosan módosít.</p>
 <pre><code>html {
@@ -104,6 +118,7 @@ body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#f3efff 
 <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">8. Ellenőrző kérdések</h2><ol>
 <li>Mi a különbség a <code>width</code> és a <code>max-width</code> között?</li>
 <li>Mihez viszonyul a <code>rem</code>?</li>
+<li>Hol ellenőrizhető a <code>html</code> elem számított betűmérete a DevToolsban?</li>
 <li>Alapértelmezett 16 px-es gyökérméretnél hány pixel a <code>2rem</code>?</li>
 <li>Miért használ Jonas <code>62.5%</code>-ot a <code>html</code> betűméreténél?</li>
 <li>Miért jobb ebből a szempontból a százalékos gyökérméret, mint a fix <code>10px</code>?</li>
@@ -117,5 +132,5 @@ body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#f3efff 
 <li>A százalékos gyökérméret megtartja a kapcsolatot a böngésző alap-betűméretével.</li>
 <li>A <code>max-width</code> és a <code>rem</code> fontos alapjai a reszponzív oldalaknak.</li>
 </ul></div></section>
-<nav class="d-grid gap-2 d-md-flex justify-content-md-between"><a href="../25_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző: Reszponzív alapok</a><a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a><span class="btn btn-outline-primary btn-lg disabled" aria-disabled="true">Következő: Media query-k – Jonas 129</span></nav>
+<nav class="d-grid gap-2 d-md-flex justify-content-md-between"><a href="../25_ora/index.html" class="btn btn-outline-secondary btn-lg">Előző: Reszponzív alapok</a><a href="../index.html" class="btn btn-secondary btn-lg">Vissza a CSS főoldalra</a><a href="../27_ora/index.html" class="btn btn-primary btn-lg">Következő: Media query-k</a></nav>
 </main></body></html>

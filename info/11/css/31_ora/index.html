@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 31. óra – Mobiltelefonos elrendezés</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#eef7ff 100%);border:1px solid #e6e9ef}.section-card{border:0;box-shadow:0 .25rem .8rem rgba(0,0,0,.05)}pre{background:#212529;color:#f8f9fa;border-radius:.75rem;padding:1rem;overflow-x:auto}code{color:#c7254e}pre code{color:inherit}.callout{border-left:.35rem solid #0dcaf0;background:#eefbff}.important{border-left:.35rem solid #ffc107;background:#fff8e1}.task{border-left:.35rem solid #198754;background:#edf8f1}summary{cursor:pointer;font-weight:600}
+  </style>
+</head>
+<body><main class="container py-5">
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-primary">11. évfolyam</span>
+    <span class="badge text-bg-success">Közlekedési projekt</span>
+    <span class="badge text-bg-dark">31. óra</span>
+    <h1 class="display-6 fw-bold mt-3">Mobiltelefonos elrendezés</h1>
+    <p class="lead mb-0">Elkészítjük a közlekedési oldal harmadik nézetét: 34em alatt a navigáció, a kapcsolódó témák és a sűrűbb tartalmak is telefonhoz igazodnak.</p>
+  </section>
+
+  <div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1">
+    <strong>Jonas kurzusából feldolgozva:</strong><span>136. videó – Responding to Phones</span>
+  </div>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra célja</h2>
+    <ul>
+      <li>A harmadik, telefonos töréspont kiválasztása a design hibája alapján.</li>
+      <li>A <code>34em</code>-es media query elkészítése.</li>
+      <li>A navigáció egyszerű, JavaScript nélküli átrendezése.</li>
+      <li>A táblázat, a gomb, a térközök és a kapcsolódó témák telefonos igazítása.</li>
+      <li>A három nézet ellenőrzése: laptop, tablet és mobiltelefon.</li>
+    </ul>
+    <a class="btn btn-primary me-2" href="kezdo.zip" download>Kezdőcsomag letöltése</a>
+    <a class="btn btn-outline-success" href="megoldas.zip" download>Megoldás letöltése</a>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. Kiindulási állapot</h2>
+    <p>A kezdőcsomag a 30. óra kész megoldása. Már működik benne a <code>75em</code>-es kisebb laptopos és az <code>59em</code>-es tabletes media query.</p>
+    <div class="callout rounded-3 p-3"><strong>Fontos:</strong> nem egy konkrét telefon típusához készítünk szabályt. Addig szűkítjük a nézetablakot, amíg a saját tartalmunk elrendezése problémássá válik.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. Miért 34em?</h2>
+    <p>Körülbelül 550 px környékén a navigáció, a táblázat és a kapcsolódó témák már túl szűkek. A töréspontot <code>em</code>-ben adjuk meg:</p>
+    <pre><code>544 ÷ 16 = 34
+
+@media (max-width: 34em) {
+  /* telefonos felülírások */
+}</code></pre>
+    <p class="mb-0">A <code>34em</code> a media queryben körülbelül 544 px-nek felel meg.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. A külső térközök csökkentése</h2>
+    <pre><code>@media (max-width: 34em) {
+  .container {
+    width: 94%;
+    margin: 15px auto;
+    row-gap: 30px;
+  }
+
+  .main-header {
+    padding: 20px;
+  }
+}</code></pre>
+    <p>A telefonon kisebb külső margó és kisebb függőleges hézag elegendő, így több hely marad a tartalomnak.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. Egyszerű mobilnavigáció hamburgerikon nélkül</h2>
+    <pre><code>@media (max-width: 34em) {
+  nav a:link,
+  nav a:visited {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}</code></pre>
+    <p>A hivatkozások egymás alá kerülnek. Ehhez nem kell hamburgerikon és JavaScript.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. A címsor és a „Hasznos” gomb</h2>
+    <pre><code>@media (max-width: 34em) {
+  h2 {
+    font-size: 28px;
+  }
+
+  .like-button {
+    position: static;
+    margin-bottom: 20px;
+  }
+}</code></pre>
+    <p>A kisebb főcím könnyebben törik sorokra. A gomb kikerül az abszolút pozícióból, ezért nem tud ráfedni a címre.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. A táblázat és az oldalsáv igazítása</h2>
+    <pre><code>@media (max-width: 34em) {
+  th,
+  td {
+    padding: 8px 4px;
+    font-size: 14px;
+  }
+
+  aside {
+    padding: 25px 20px;
+  }
+}</code></pre>
+    <p>A táblázat cellái kevesebb helyet foglalnak, az oldalsáv belső térköze pedig illeszkedik a keskeny nézethez.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. Kapcsolódó témák egy oszlopban</h2>
+    <pre><code>@media (max-width: 34em) {
+  .related {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .related-post {
+    flex-direction: row;
+  }
+}</code></pre>
+    <p>A tabletes három oszlop helyett egyetlen oszlop marad. Egy témán belül az ikon és a szöveg ismét egymás mellé kerül.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. A három media query együtt</h2>
+    <div class="table-responsive"><table class="table table-bordered align-middle">
+      <thead><tr><th>Nézet</th><th>Szélesség</th><th>Elrendezés</th></tr></thead>
+      <tbody>
+        <tr><td>Nagy képernyő</td><td>1200 px felett</td><td>Az alapértelmezett, kéthasábos oldal</td></tr>
+        <tr><td>Kisebb laptop</td><td>75em alatt</td><td>Keskenyebb kéthasábos elrendezés</td></tr>
+        <tr><td>Tablet</td><td>59em alatt</td><td>Egyoszlopos fő Grid, három kapcsolódó téma</td></tr>
+        <tr><td>Mobiltelefon</td><td>34em alatt</td><td>Függőleges navigáció és egyoszlopos kapcsolódó rész</td></tr>
+      </tbody>
+    </table></div>
+    <div class="important rounded-3 p-3">500 px-en mindhárom media query érvényes. A későbbi 34em-es blokk csak azokat a tulajdonságokat írja felül, amelyeket újra megadunk.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. DevTools-ellenőrzés</h2>
+    <ol>
+      <li>Nyisd meg az oldalt Responsive módban.</li>
+      <li>Vizsgáld meg 1200, 944, 544, 543, 430 és 360 px szélességen.</li>
+      <li>Kapcsold be a media queryk megjelenítését, ha a böngésződ támogatja.</li>
+      <li>Ellenőrizd, hogy nincs vízszintes görgetősáv.</li>
+      <li>Nézd meg, hogy a navigáció minden hivatkozása olvasható és kattintható marad-e.</li>
+      <li>DevToolsban keresd meg, mely tulajdonságok érkeznek a 34em-es blokkból.</li>
+    </ol>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">10. Önálló feladat</h2>
+    <div class="task rounded-3 p-3"><ol class="mb-0">
+      <li>A <code>queries.css</code> végén készítsd el a <code>34em</code>-es media queryt.</li>
+      <li>Csökkentsd a konténer és a fejléc térközeit.</li>
+      <li>Rendezd egymás alá a navigáció hivatkozásait.</li>
+      <li>Akadályozd meg, hogy a „Hasznos” gomb ráfedjen a címre.</li>
+      <li>Tedd tömörebbé a táblázatot.</li>
+      <li>Rendezd egy oszlopba a kapcsolódó témákat.</li>
+      <li>Teszteld az oldalt legalább három telefonszélességen.</li>
+    </ol></div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">11. Ellenőrző kérdések</h2>
+    <ol>
+      <li>Miért nem készítettünk automatikusan 600 px-es töréspontot?</li>
+      <li>Körülbelül hány pixel a 34em?</li>
+      <li>Miért érvényes 500 px-en a 75em-es és az 59em-es query is?</li>
+      <li>Miért állítjuk a gomb pozícióját <code>static</code> értékre?</li>
+      <li>Miért nincs szükség hamburgerikonra ezen az oldalon?</li>
+    </ol>
+    <details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol class="mt-3 mb-0">
+      <li>Mert ott még nem hibásodott meg a saját elrendezésünk; a tartalom alapján választunk töréspontot.</li>
+      <li>Körülbelül 544 px.</li>
+      <li>Mert 500 mindkét maximumértéknél kisebb.</li>
+      <li>Így visszakerül a normál dokumentumfolyamba, és nem fed rá a címre.</li>
+      <li>A kevés hivatkozás egymás alatt is jól használható, így nincs szükség JavaScriptre.</li>
+    </ol></details>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Mit vigyél el ebből az órából?</h2>
+    <ul class="mb-0">
+      <li>A töréspontot a saját design hibája alapján választjuk ki.</li>
+      <li>Telefonon az összetett elrendezések gyakran egy oszlopra váltanak.</li>
+      <li>A térközöket, betűméreteket és kezelőszerveket is ellenőrizni kell.</li>
+      <li>Egyszerű webhelyen a mobilnavigáció JavaScript nélkül is megoldható.</li>
+      <li>A közlekedési projekt most már nagy képernyőn, tableten és telefonon is használható.</li>
+    </ul>
+  </div></section>
+
+  <nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between">
+    <a class="btn btn-outline-secondary btn-lg" href="../30_ora/index.html">Előző: tabletes elrendezés</a>
+    <a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a>
+    <a class="btn btn-primary btn-lg" href="../32_ora/index.html">Következő: reszponzív ellenőrzés és Lighthouse</a>
+  </nav>
+</main></body>
+</html>

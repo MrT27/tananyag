@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 29. óra – Az első valódi töréspont</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#edf8f2 100%);border:1px solid #e6e9ef}.section-card{border:0;box-shadow:0 .25rem .8rem rgba(0,0,0,.05)}pre{background:#212529;color:#f8f9fa;border-radius:.75rem;padding:1rem;overflow-x:auto}code{color:#c7254e}pre code{color:inherit}.callout{border-left:.35rem solid #0dcaf0;background:#eefbff}.important{border-left:.35rem solid #ffc107;background:#fff8e1}.task{border-left:.35rem solid #198754;background:#edf8f1}.check{border-left:.35rem solid #6f42c1;background:#f5f0ff}summary{cursor:pointer;font-weight:600}
+  </style>
+</head>
+<body><main class="container py-5">
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-primary">11. évfolyam</span>
+    <span class="badge text-bg-success">Közlekedési projekt</span>
+    <span class="badge text-bg-dark">29. óra</span>
+    <h1 class="display-6 fw-bold mt-3">Az első valódi töréspont</h1>
+    <p class="lead mb-0">A Közlekedési magazin fix, 1200 px-es oldalából elkészítjük a kisebb laptopokon is használható változatot.</p>
+  </section>
+
+  <div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Jonas-alap:</strong><span>131–132. videó releváns részei – viewport, külön CSS-fájl, <code>em</code> és kisebb laptopos töréspont</span></div>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra célja</h2>
+    <ul><li>A viewport metaelem szerepének megértése.</li><li>Külön <code>queries.css</code> fájl létrehozása és bekötése.</li><li>A pixelben meghatározott töréspont átváltása <code>em</code>-re.</li><li>Az oldal vizsgálata a töréspont teljes tartományában.</li><li>A fő Grid, a térközök, a navigáció és a címsor módosítása.</li></ul>
+    <a class="btn btn-primary me-2" href="kezdo.zip" download>Kezdőcsomag letöltése</a><a class="btn btn-outline-success" href="megoldas.zip" download>Megoldás letöltése</a>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. A kiinduló probléma</h2>
+    <pre><code>.container {
+  width: 1200px;
+  grid-template-columns: 1fr 300px;
+  column-gap: 75px;
+}</code></pre>
+    <p>A fix 1200 px széles konténer keskenyebb böngészőben nem tud összemenni. A tartalom kilóg, és vízszintes görgetés jelenik meg. Az oldalsáv és a 75 px-es oszlopköz is túl sok helyet foglal.</p>
+    <div class="task rounded-3 p-3">Nyisd meg a kezdőoldalt Responsive módban! Indulj 1400 px-ről, majd lassan szűkítsd 1100 px-ig. Jegyezd fel, mikor jelenik meg a vízszintes görgetés.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. A viewport metaelem ellenőrzése</h2>
+    <pre><code>&lt;meta name="viewport"
+      content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+    <p>A <code>width=device-width</code> azt kéri, hogy a CSS-nézetablak szélessége igazodjon az eszköz szélességéhez. Az <code>initial-scale=1.0</code> kezdeti 100%-os nagyítást ad.</p>
+    <div class="important rounded-3 p-3">A sor már szerepel a projektben. Most nem hozzáadjuk, hanem felismerjük és megértjük. Fizikai mobileszközön nélküle a reszponzív oldal nem a várt módon jelenhet meg.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. Külön <code>queries.css</code> fájl</h2>
+    <p>A normál megjelenés marad a <code>style.css</code> fájlban. A media queryket külön fájlban gyűjtjük:</p>
+    <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;
+&lt;link rel="stylesheet" href="queries.css"&gt;</code></pre>
+    <p>A sorrend fontos: a <code>queries.css</code> később töltődik be, így azonos erősségű szelektorokkal felülírhatja az alapbeállításokat.</p>
+    <div class="callout rounded-3 p-3">Több CSS-fájl használata nem kötelező. Ennél a projektnél azért hasznos, mert jól elkülönülnek az alapstílusok és a reszponzív módosítások.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. A töréspont átváltása <code>em</code>-re</h2>
+    <p>Az első töréspontot 1200 px környékén választjuk. Media queryben a számításhoz 16 px-es böngésző-alapmérettel dolgozunk:</p>
+    <pre><code>1200 ÷ 16 = 75
+
+@media (max-width: 75em) {
+  /* 1200 px-en és alatta */
+}</code></pre>
+    <div class="important rounded-3 p-3">A media queryben az <code>em</code> számítása nem a projekt esetleges <code>html</code> betűméretéből indul. Itt <code>75em</code> normál beállítás mellett körülbelül 1200 px.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. A konténer és a fő Grid javítása</h2>
+    <pre><code>@media (max-width: 75em) {
+  .container {
+    width: 94%;
+    grid-template-columns: 1fr 260px;
+    column-gap: 40px;
+    row-gap: 40px;
+  }
+}</code></pre>
+    <ul><li>A százalékos szélesség engedi a konténert összemenni.</li><li>A 300 px-es oldalsáv 260 px-re csökken.</li><li>A 75 px-es oszlopköz 40 px-re csökken.</li><li>A sorköz is kisebb lesz.</li></ul>
+    <div class="callout rounded-3 p-3">Ezen a törésponton még nem bontjuk egy oszlopra az oldalt. A cikk és az oldalsáv továbbra is egymás mellett marad.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. Finomhangolás ugyanabban a media queryben</h2>
+    <pre><code>@media (max-width: 75em) {
+  .main-header {
+    padding: 20px 30px;
+  }
+
+  nav a:link,
+  nav a:visited {
+    margin-right: 16px;
+  }
+
+  h2 {
+    font-size: 34px;
+  }
+
+  aside {
+    padding: 35px 20px;
+  }
+}</code></pre>
+    <p>Nem minden elemet méretezünk át. Csak azokat módosítjuk, amelyek ezen a tartományon már túl sok helyet foglalnak.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. Ellenőrzés a teljes tartományban</h2>
+    <ol><li>Állítsd a Responsive módot pontosan 1200 px-re.</li><li>Ellenőrizd, hogy a media query érvényes.</li><li>Próbáld ki 1201 px-en: a media query kapcsoljon ki.</li><li>Vizsgáld meg az oldalt 1150, 1050 és 950 px-en is.</li><li>Figyeld a navigációt, a címsort, a táblázatot és az oldalsávot.</li><li>Ne adj új breakpointot minden apró esztétikai eltéréshez.</li></ol>
+    <div class="check rounded-3 p-3"><strong>Az óra végállapota:</strong> az oldal kisebb laptopon már nem lóg ki, de tableten még szándékosan szűkös. Ezt a következő töréspont oldja meg.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. Önálló feladat</h2>
+    <div class="task rounded-3 p-3"><ol class="mb-0"><li>Hozd létre a <code>queries.css</code> fájlt.</li><li>Kösd be a <code>style.css</code> után.</li><li>Írd meg a <code>75em</code>-es media queryt.</li><li>Alakítsd rugalmasra a konténert.</li><li>Csökkentsd az oldalsávot, a réseket, a navigáció margóját, a főcím méretét és az aside paddingjét.</li><li>DevToolsban ellenőrizd 1200, 1201, 1050 és 950 px-en.</li></ol></div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. Ellenőrző kérdések</h2>
+    <ol><li>Miért fontos a viewport metaelem?</li><li>Miért töltjük be a <code>queries.css</code> fájlt a <code>style.css</code> után?</li><li>Hogyan lesz 1200 px-ből 75em?</li><li>Miért okozott problémát a fix 1200 px-es szélesség?</li><li>Miért nem tesszük még egyoszlopossá a fő Gridet?</li><li>Miért kell a breakpoint alatti teljes tartományt ellenőrizni?</li></ol>
+    <details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol class="mt-3 mb-0"><li>A mobileszköz CSS-nézetablakát az eszköz szélességéhez igazítja.</li><li>Így az azonos erősségű reszponzív szabályok később felülírhatják az alapstílusokat.</li><li>1200-at elosztjuk 16-tal.</li><li>Nem tudott a rendelkezésre álló helynél keskenyebbre zsugorodni.</li><li>Ezen a szélességen még használható a kéthasábos elrendezés.</li><li>Mert a media query nem csak egyetlen pixelszélességen működik.</li></ol></details>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Mit vigyél el ebből az órából?</h2><ul class="mb-0"><li>A viewport metaelem a fizikai mobilnézet alapfeltétele.</li><li>A reszponzív szabályok külön CSS-fájlban is tarthatók.</li><li>A media query töréspontját <code>em</code>-ben adjuk meg.</li><li>A breakpointnál csak a problémás tulajdonságokat írjuk felül.</li><li>Egy media query teljes szélességtartományban működik.</li></ul></div></section>
+
+  <nav class="d-grid gap-2 d-md-flex justify-content-md-between"><a class="btn btn-outline-secondary btn-lg" href="../28_ora/index.html">Előző: töréspontok kiválasztása</a><a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a><a class="btn btn-primary btn-lg" href="../30_ora/index.html">Következő: tabletes elrendezés</a></nav>
+</main></body>
+</html>

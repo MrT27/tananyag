@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 27. óra – Media query-k alapjai</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#eef7ff 100%);border:1px solid #e6e9ef}.section-card{border:0;box-shadow:0 .25rem .8rem rgba(0,0,0,.05)}pre{background:#212529;color:#f8f9fa;border-radius:.75rem;padding:1rem;overflow-x:auto}code{color:#c7254e}pre code{color:inherit}.callout{border-left:.35rem solid #0dcaf0;background:#eefbff}.important{border-left:.35rem solid #ffc107;background:#fff8e1}.task{border-left:.35rem solid #198754;background:#edf8f1}.danger-note{border-left:.35rem solid #dc3545;background:#fff1f2}summary{cursor:pointer;font-weight:600}
+  </style>
+</head>
+<body><main class="container py-5">
+  <section class="hero rounded-4 p-4 p-md-5 mb-4">
+    <span class="badge text-bg-primary">11. évfolyam</span>
+    <span class="badge text-bg-success">Reszponzív webdesign</span>
+    <span class="badge text-bg-dark">27. óra</span>
+    <h1 class="display-6 fw-bold mt-3">Media query-k alapjai</h1>
+    <p class="lead mb-0">Megírjuk az első media queryt, megvizsgáljuk a <code>max-width</code> feltételt, és megnézzük, mi történik, amikor több media query egyszerre érvényes.</p>
+  </section>
+
+  <div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1">
+    <strong>Esti ismétlés Jonas kurzusából:</strong><span>129. videó – How Media Queries Work</span>
+  </div>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Az óra célja</h2>
+    <ul>
+      <li>Megérteni, hogy a media query egy feltételes CSS-blokk.</li>
+      <li>Használni a desktop-first <code>max-width</code> feltételt.</li>
+      <li>Megfigyelni a globális CSS és a media queryben lévő felülírás kapcsolatát.</li>
+      <li>Megérteni, hogy több media query egyszerre is érvényes lehet.</li>
+      <li>Responsive módban pontosan ellenőrizni a töréspontot.</li>
+    </ul>
+    <a class="btn btn-primary me-2" href="kezdo.zip" download>Kezdőcsomag letöltése</a>
+    <a class="btn btn-outline-success" href="megoldas.zip" download>Megoldás letöltése</a>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">1. Mi a media query?</h2>
+    <p>A media query egy CSS-feltétel. A benne lévő szabályokat a böngésző csak akkor alkalmazza, ha a feltétel igaz.</p>
+    <pre><code>@media (max-width: 600px) {
+  .main-header {
+    background-color: blue;
+  }
+}</code></pre>
+    <p>A feltétel kérdése: <strong>a nézetablak szélessége legfeljebb 600 px?</strong> Ha igen, a szabály érvényes; ha nem, a böngésző nem alkalmazza.</p>
+    <div class="callout rounded-3 p-3"><strong>Nézetablak:</strong> a böngészőoldal számára rendelkezésre álló látható terület. Nem feltétlenül azonos az eszköz teljes képernyőjével.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">2. Desktop-first és <code>max-width</code></h2>
+    <p>Ebben a projektben először a nagy képernyős változat készül el. Ezután <code>max-width</code> media querykkel módosítjuk az oldalt a keskenyebb nézetekhez.</p>
+    <pre><code>/* A közlekedési oldal nagy képernyős fejléce */
+.main-header {
+  background-color: #087f5b;
+}
+
+/* 1200 px-en és alatta */
+@media (max-width: 1200px) {
+  .main-header {
+    background-color: orangered;
+  }
+}</code></pre>
+    <div class="important rounded-3 p-3"><code>max-width: 1200px</code> esetén a media query 1200 px-en még működik, 1201 px-en már nem.</div>
+    <p class="mt-3 mb-0">Mobile-first megközelítésnél gyakran <code>min-width</code> feltételeket használunk. Ezt most csak összehasonlításként jegyezzük meg.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">3. Nem cseréljük le a teljes CSS-t</h2>
+    <p>A media queryben csak azt írjuk felül, aminek az adott szélességnél változnia kell. Minden más globális szabály továbbra is érvényes.</p>
+    <pre><code>.related-post {
+  padding: 32px;
+  background-color: white;
+}
+
+@media (max-width: 600px) {
+  .related-post {
+    padding: 20px;
+  }
+}</code></pre>
+    <p>600 px-en és alatta csak a padding változik. A fehér háttér megmarad, mert azt a media query nem írja felül.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">4. Két media query egyszerre</h2>
+    <pre><code>@media (max-width: 1200px) {
+  .main-header { background-color: orangered; }
+}
+
+@media (max-width: 600px) {
+  .main-header {
+    background-color: blue;
+    border: 8px solid lightblue;
+  }
+}</code></pre>
+    <div class="table-responsive"><table class="table table-bordered align-middle">
+      <thead><tr><th>Nézetablak</th><th>1200-as query</th><th>600-as query</th><th>Eredmény</th></tr></thead>
+      <tbody>
+        <tr><td>1300 px</td><td>nem</td><td>nem</td><td>globális háttér</td></tr>
+        <tr><td>1000 px</td><td>igen</td><td>nem</td><td>narancsvörös háttér</td></tr>
+        <tr><td>400 px</td><td>igen</td><td>igen</td><td>kék háttér és világoskék keret</td></tr>
+      </tbody>
+    </table></div>
+    <p>400 px mindkét maximumértéknél kisebb, ezért mindkét media query szabályai alkalmazhatók.</p>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">5. Mi történik ütközéskor?</h2>
+    <p>Ha két egyszerre érvényes media query azonos szelektorral ugyanazt a tulajdonságot állítja, a kaszkád szabályai döntenek. Azonos eredet, fontosság és specifikusság esetén a CSS-ben később szereplő deklaráció nyer.</p>
+    <div class="important rounded-3 p-3">Nem azért nyer a 600 px-es szabály, mert kisebb a száma, hanem azért, mert ebben a példában később szerepel a kódban és azonos erősségű.</div>
+    <div class="task rounded-3 p-3 mt-3"><strong>Kísérlet:</strong> cseréld fel a két media query sorrendjét! Figyeld meg, hogy a közös <code>background-color</code> eredménye megváltozik, de a csak egy helyen megadott keret továbbra is látszik.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">6. Első közös kísérlet</h2>
+    <ol>
+      <li>Nyisd meg a kezdőcsomagot Live Serverrel.</li>
+      <li>A CSS végére írj egy <code>max-width: 1200px</code> media queryt.</li>
+      <li>Változtasd a <code>.main-header</code> hátterét narancsvörösre.</li>
+      <li>Írj alá egy <code>max-width: 600px</code> media queryt.</li>
+      <li>Adj a közlekedési oldal fejlécének kék hátteret és feltűnő keretet.</li>
+      <li>Méretezd át az ablakot, és figyeld meg a két határértéket.</li>
+      <li>DevToolsban ellenőrizd, mely deklaráció aktív és melyik van áthúzva.</li>
+    </ol>
+    <div class="danger-note rounded-3 p-3">A feltűnő színek most kizárólag a működés szemléltetésére szolgálnak. A kész Közlekedési magazinban a töréspontoknál az elrendezést módosítjuk, nem ilyen színeket használunk.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">7. DevTools Responsive mód</h2>
+    <ol>
+      <li>Nyisd meg a fejlesztői eszközöket.</li>
+      <li>Kapcsold be az eszköznézetet / Toggle device toolbar módot.</li>
+      <li>Az eszközlistán válaszd a <strong>Responsive</strong> lehetőséget.</li>
+      <li>Írj be pontosan 600 px szélességet: a 600-as query érvényes.</li>
+      <li>Írj be 601 px-et: a 600-as query már nem érvényes.</li>
+      <li>Próbáld ki ugyanezt 1200 és 1201 px-en.</li>
+    </ol>
+    <div class="callout rounded-3 p-3">A Responsive módot használjuk az elrendezés vizsgálatára. A következő órán tanuljuk meg, hogyan választunk valódi töréspontokat; a 600 és 1200 px most szemléltető érték.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">8. Önálló feladat – valódi elrendezési változás</h2>
+    <div class="task rounded-3 p-3"><ol class="mb-0">
+      <li>A 600 px-es media queryben rendezd a három közlekedési témát egyetlen oszlopba.</li>
+      <li>Csökkentsd a főcím méretét és a fejléc függőleges térközét.</li>
+      <li>Csökkentsd a konténer oldalsó paddingjét.</li>
+      <li>Ellenőrizd, hogy 600 px-en a mobilos szabályok érvényesek, 601 px-en pedig nem.</li>
+      <li>DevToolsban keresd meg a globális és a felülíró deklarációkat.</li>
+    </ol></div>
+    <details class="callout rounded-3 p-3 mt-3"><summary>Segítség</summary><pre><code>@media (max-width: 600px) {
+  .related {
+    grid-template-columns: 1fr;
+  }
+}</code></pre></details>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">9. Ellenőrző kérdések</h2>
+    <ol>
+      <li>Mit vizsgál a <code>@media (max-width: 600px)</code> feltétel?</li>
+      <li>Érvényes-e a feltétel pontosan 600 px-en? És 601 px-en?</li>
+      <li>Mi történik a media queryn kívüli szabályokkal?</li>
+      <li>400 px-en melyik érvényes a 600 és 1200 px-es queryk közül?</li>
+      <li>Mi dönt azonos erősségű, ütköző deklarációknál?</li>
+      <li>Mire használjuk a DevTools Responsive módját?</li>
+      <li>Miért csak példák most a 600 és 1200 px-es értékek?</li>
+    </ol>
+    <details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol class="mt-3 mb-0">
+      <li>Azt, hogy a nézetablak szélessége legfeljebb 600 px-e.</li><li>600 px-en igen, 601 px-en nem.</li><li>Továbbra is érvényesek, ha nem írjuk felül őket.</li><li>Mindkettő.</li><li>Azonos specifikusságnál a később szereplő deklaráció.</li><li>Különböző nézetablak-szélességek pontos vizsgálatára.</li><li>Mert a valódi töréspontot az elrendezés tartalma alapján választjuk ki; ezt a következő órán tanuljuk.</li>
+    </ol></details>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4">
+    <h2 class="h3">Mit vigyél el ebből az órából?</h2>
+    <ul class="mb-0">
+      <li>A media query feltételesen alkalmaz CSS-szabályokat.</li>
+      <li>A <code>max-width</code> desktop-first megközelítésben a megadott szélességen és az alatt érvényes.</li>
+      <li>Több media query egyszerre is működhet.</li>
+      <li>A media querykben célzottan felülírjuk a globális CSS egy részét.</li>
+      <li>Az ütközéseket továbbra is a kaszkád és a specifikusság szabályai döntik el.</li>
+      <li>A következő lépés a megfelelő töréspontok kiválasztása.</li>
+    </ul>
+  </div></section>
+
+  <nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between">
+    <a class="btn btn-outline-secondary btn-lg" href="../26_ora/index.html">Előző: rem és max-width</a>
+    <a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a>
+    <a class="btn btn-primary btn-lg" href="../28_ora/index.html">Következő: töréspontok kiválasztása</a>
+  </nav>
+</main></body>
+</html>

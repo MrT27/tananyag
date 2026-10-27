@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 30. óra – Tabletes elrendezés</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#edf8f2 100%);border:1px solid #e6e9ef}.section-card{border:0;box-shadow:0 .25rem .8rem rgba(0,0,0,.05)}pre{background:#212529;color:#f8f9fa;border-radius:.75rem;padding:1rem;overflow-x:auto}code{color:#c7254e}pre code{color:inherit}.callout{border-left:.35rem solid #0dcaf0;background:#eefbff}.important{border-left:.35rem solid #ffc107;background:#fff8e1}.task{border-left:.35rem solid #198754;background:#edf8f1}.check{border-left:.35rem solid #6f42c1;background:#f5f0ff}summary{cursor:pointer;font-weight:600}</style>
+</head>
+<body><main class="container py-5">
+  <section class="hero rounded-4 p-4 p-md-5 mb-4"><span class="badge text-bg-primary">11. évfolyam</span> <span class="badge text-bg-success">Közlekedési projekt</span> <span class="badge text-bg-dark">30. óra</span><h1 class="display-6 fw-bold mt-3">Tabletes elrendezés</h1><p class="lead mb-0">A második töréspontnál megszüntetjük a szűk kéthasábos elrendezést, és a rendelkezésre álló helyhez igazítjuk a fejlécet és a kapcsolódó témákat.</p></section>
+
+  <div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Jonas-alap:</strong><span>133. videó – Responding to Tablets, a Közlekedési magazin egyszerűsített szerkezetére alkalmazva</span></div>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Az óra célja</h2><ul><li>A második, <code>59em</code>-es töréspont elkészítése.</li><li>A kéthasábos fő Grid egyoszlopossá alakítása.</li><li>A fejléc elemeinek egymás alá rendezése.</li><li>A kapcsolódó témák helyének kihasználása egy belső Griddel.</li><li>A két media query együttes működésének ellenőrzése.</li></ul><a class="btn btn-primary me-2" href="kezdo.zip" download>Kezdőcsomag letöltése</a><a class="btn btn-outline-success" href="megoldas.zip" download>Megoldás letöltése</a></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">1. A kezdőállapot</h2><p>A kezdőcsomag már tartalmazza a 29. óra <code>75em</code>-es media queryjét. Kisebb laptopon az oldal jól használható, de tabletes szélességen a cikk és a 260 px-es oldalsáv túlságosan összenyomja egymást.</p><pre><code>@media (max-width: 75em) {
+  .container {
+    width: 94%;
+    grid-template-columns: 1fr 260px;
+    column-gap: 40px;
+  }
+}</code></pre><div class="task rounded-3 p-3">Responsive módban vizsgáld meg az oldalt 1000, 950, 900 és 850 px-en! Figyeld meg a címsort, a táblázatot, a cikk szélességét és az oldalsávot.</div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">2. A második töréspont</h2><p>A tabletes átalakítást körülbelül 944 px-nél végezzük el:</p><pre><code>944 ÷ 16 = 59
+
+@media (max-width: 59em) {
+  /* Tabletes módosítások */
+}</code></pre><div class="important rounded-3 p-3">944 px csak a számítás kiindulópontja. A döntés oka az, hogy ezen a tartományon a kéthasábos elrendezés tartalma már túl keskennyé válik.</div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">3. A fő Grid egy oszlopra vált</h2><pre><code>@media (max-width: 59em) {
+  .container {
+    width: 92%;
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 40px;
+  }
+}</code></pre><p>A cikk és az <code>aside</code> a HTML-ben egymás után következik. Amikor a konténernek már csak egy oszlopa van, automatikusan egymás alá kerülnek.</p><div class="callout rounded-3 p-3">Nem kell külön megadni az article és az aside helyét. A Grid automatikus elhelyezése követi a HTML sorrendjét.</div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">4. A fejléc átrendezése Flexboxszal</h2><p>A logó és a navigáció egymás mellett már szűkössé válik. A már ismert <code>flex-direction</code> segítségével egymás alá tesszük őket:</p><pre><code>@media (max-width: 59em) {
+  .main-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+}</code></pre><p>A navigáció ezen az órán még látható marad. A mobilmenüt később készítjük el.</p></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">5. Címsor és oldalsáv</h2><pre><code>@media (max-width: 59em) {
+  h2 {
+    font-size: 32px;
+  }
+
+  aside {
+    padding: 30px;
+  }
+}</code></pre><p>A címsor kisebb helyet foglal, az aside pedig az új, teljes szélességű helyzetében kevésbé nagy belső térközt kap.</p></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">6. A kapcsolódó témák belső Gridje</h2><p>Az oldalsáv a cikk alatt már sokkal szélesebb. Ezt kihasználva a három kapcsolódó témát három oszlopba rendezzük:</p><pre><code>@media (max-width: 59em) {
+  .related {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .related-post {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+}</code></pre><p>A <code>.related</code> Grid-konténer lesz. A három <code>.related-post</code> a három oszlopba kerül. A kártyákon belül az ikon és a szöveg egymás alá rendeződik.</p></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">7. A media queryk együtt működnek</h2><p>900 px-en mindkét feltétel igaz:</p><pre><code>@media (max-width: 75em) { /* érvényes */ }
+@media (max-width: 59em) { /* szintén érvényes */ }</code></pre><p>A 75em-es szabályok továbbra is érvényesek. A később szereplő 59em-es blokk csak azokat a tulajdonságokat írja felül, amelyeket újra megadunk.</p><div class="check rounded-3 p-3"><strong>Példa:</strong> a 75em-es szabály 40 px-es oszlopközt ad, de a 59em-es szabály ezt <code>0</code>-ra írja felül. A navigáció 16 px-es margója viszont megmarad, mert azt a második media query nem módosítja.</div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">8. Önálló feladat és ellenőrzés</h2><div class="task rounded-3 p-3"><ol class="mb-0"><li>A 75em-es blokk alá készíts <code>59em</code>-es media queryt.</li><li>Alakítsd egyoszlopossá a fő Gridet.</li><li>Rendezd egymás alá a fejléc elemeit.</li><li>Csökkentsd a címsort és az aside paddingjét.</li><li>Rendezd háromoszlopos Gridbe a kapcsolódó témákat.</li><li>Ellenőrizd az oldalt 944, 945, 900, 800 és 720 px-en.</li><li>DevToolsban vizsgáld meg, melyik deklaráció melyik media queryből érkezik.</li></ol></div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">9. Ellenőrző kérdések</h2><ol><li>Miért választottunk új töréspontot?</li><li>Hogyan számítjuk ki az 59em körülbelüli pixelértékét?</li><li>Miért kerül automatikusan az aside a cikk alá?</li><li>Mit csinál a <code>flex-direction: column</code> a fejlécben?</li><li>Miért lehet háromoszlopos a kapcsolódó rész, amikor a fő oldal már egyoszlopos?</li><li>900 px-en mely media queryk érvényesek?</li></ol><details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol class="mt-3 mb-0"><li>A kéthasábos tartalom tableten túl keskennyé vált.</li><li>59-et megszorozzuk 16-tal: 944 px.</li><li>Az egyoszlopos Grid automatikusan a HTML sorrendjében helyezi el a gyermekeket.</li><li>Egymás alá rendezi a logót és a navigációt.</li><li>Mert az aside a fő Grid teljes szélességét megkapja, és azon belül külön Gridet hozhatunk létre.</li><li>A 75em-es és az 59em-es is.</li></ol></details></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Mit vigyél el ebből az órából?</h2><ul class="mb-0"><li>A második media query az elsővel együtt működik.</li><li>A fő Grid egyszerűen átalakítható egyoszlopossá.</li><li>A HTML helyes sorrendje segíti a reszponzív elrendezést.</li><li>Egy elem új helyzetében új belső elrendezést is kaphat.</li><li>A következő órán elkészítjük a telefonos nézetet és az egyszerű, JavaScript nélküli navigációt.</li></ul></div></section>
+
+  <nav class="d-grid gap-2 d-md-flex justify-content-md-between"><a class="btn btn-outline-secondary btn-lg" href="../29_ora/index.html">Előző: első valódi töréspont</a><a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a><a class="btn btn-primary btn-lg" href="../31_ora/index.html">Következő: mobiltelefonos elrendezés</a></nav>
+</main></body>
+</html>

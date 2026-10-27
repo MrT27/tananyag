@@ -1,0 +1,26 @@
+/* Kisebb laptopok és fekvő táblagépek – 1200px alatt */
+@media (max-width: 75em) {
+  .container {
+    width: 94%;
+    grid-template-columns: 1fr 260px;
+    column-gap: 40px;
+    row-gap: 40px;
+  }
+
+  .main-header {
+    padding: 20px 30px;
+  }
+
+  nav a:link,
+  nav a:visited {
+    margin-right: 16px;
+  }
+
+  h2 {
+    font-size: 34px;
+  }
+
+  aside {
+    padding: 35px 20px;
+  }
+}

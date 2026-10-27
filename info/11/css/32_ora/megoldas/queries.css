@@ -1,0 +1,110 @@
+/* Kisebb laptopok és fekvő táblagépek – 1200px alatt */
+@media (max-width: 75em) {
+  .container {
+    width: 94%;
+    grid-template-columns: 1fr 260px;
+    column-gap: 40px;
+    row-gap: 40px;
+  }
+
+  .main-header {
+    padding: 20px 30px;
+  }
+
+  nav a:link,
+  nav a:visited {
+    margin-right: 16px;
+  }
+
+  h2 {
+    font-size: 34px;
+  }
+
+  aside {
+    padding: 35px 20px;
+  }
+}
+
+/* Tabletek – 944px alatt */
+@media (max-width: 59em) {
+  .container {
+    width: 92%;
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 40px;
+  }
+
+  .main-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  aside {
+    padding: 30px;
+  }
+
+  .related {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .related-post {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+}
+
+/* Mobiltelefonok – 544px alatt */
+@media (max-width: 34em) {
+  .container {
+    width: 94%;
+    margin: 15px auto;
+    row-gap: 30px;
+  }
+
+  .main-header {
+    padding: 20px;
+  }
+
+  nav a:link,
+  nav a:visited {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  .like-button {
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  th,
+  td {
+    padding: 8px 4px;
+    font-size: 14px;
+  }
+
+  aside {
+    padding: 25px 20px;
+  }
+
+  .related {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .related-post {
+    flex-direction: row;
+  }
+}
