@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML/CSS 34. óra – Képoptimalizálás és WebP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#eef7ff 100%);border:1px solid #e6e9ef}.section-card{border:0;box-shadow:0 .25rem .8rem rgba(0,0,0,.05)}pre{background:#212529;color:#f8f9fa;border-radius:.75rem;padding:1rem;overflow-x:auto}code{color:#c7254e}pre code{color:inherit}.callout{border-left:.35rem solid #0dcaf0;background:#eefbff}.important{border-left:.35rem solid #ffc107;background:#fff8e1}.task{border-left:.35rem solid #198754;background:#edf8f1}summary{cursor:pointer;font-weight:600}</style>
+</head>
+<body><main class="container py-5">
+  <section class="hero rounded-4 p-4 p-md-5 mb-4"><span class="badge text-bg-primary">11. évfolyam</span> <span class="badge text-bg-success">Optimalizálás</span> <span class="badge text-bg-dark">34. óra</span><h1 class="display-6 fw-bold mt-3">Képoptimalizálás és WebP</h1><p class="lead mb-0">Megvizsgáljuk a kép megjelenített és valódi méretét, csökkentjük a fájlméretet, majd a WebP-változatot tartalék PNG-vel használjuk.</p></section>
+  <div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Jonas kurzusából feldolgozva:</strong><span>145. videó – Image Optimizations</span></div>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Az óra célja</h2><ul><li>Különbséget tenni a megjelenített méret, a képpontméret és a fájlméret között.</li><li>DevToolsban megvizsgálni egy kép renderelt és belső méretét.</li><li>A képet a szükséges legnagyobb megjelenítéshez méretezni.</li><li>WebP-változatot készíteni a Squoosh segítségével.</li><li>A <code>&lt;picture&gt;</code> és <code>&lt;source&gt;</code> elemek használata.</li><li>A fájlméret és a képminőség közötti egyensúly megértése.</li></ul><a class="btn btn-primary me-2" href="kezdo.zip" download>Kezdőcsomag letöltése</a><a class="btn btn-outline-success" href="megoldas.zip" download>Megoldás letöltése</a></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">1. Három különböző méret</h2><div class="table-responsive"><table class="table table-bordered align-middle"><thead><tr><th>Fogalom</th><th>Jelentés</th></tr></thead><tbody><tr><td>Megjelenített méret</td><td>Amekkora helyet a kép a weboldalon elfoglal, például 825 px szélesség.</td></tr><tr><td>Belső képméret</td><td>A képfájl tényleges képpontmérete, például 1939 × 811 px.</td></tr><tr><td>Fájlméret</td><td>A letöltendő adatmennyiség, például 2,9 MB vagy 227 KB.</td></tr></tbody></table></div><p class="mb-0">Egy kép lehet megfelelő szélességű, mégis túl nagy fájlméretű; és lehet kis fájlméretű, de láthatóan rossz minőségű.</p></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">2. A szükséges képpontméret meghatározása</h2><ol><li>Nyisd meg a kész közlekedési oldalt a legszélesebb elrendezésben.</li><li>DevToolsban jelöld ki a <code>.post-img</code> képet.</li><li>Jegyezd fel a renderelt és a belső méretet.</li><li>A legnagyobb megjelenített szélességből indulj ki.</li></ol><div class="callout rounded-3 p-3"><strong>Nagy pixelsűrűségű kijelzők:</strong> éles megjelenítéshez gyakran a legnagyobb CSS-ben megjelenített szélesség körülbelül kétszeresével számolunk. A mi képünk legnagyobb szélessége körülbelül 825 px, ezért az optimalizált változat 1650 px széles.</div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">3. A közlekedési kép előtte és utána</h2><div class="table-responsive"><table class="table table-bordered"><thead><tr><th>Változat</th><th>Méret</th><th>Fájlméret</th><th>Szerepe</th></tr></thead><tbody><tr><td>Eredeti PNG</td><td>1939 × 811 px</td><td>kb. 2,9 MB</td><td>Tartalék, széles körben kezelhető kép</td></tr><tr><td>Optimalizált WebP</td><td>1650 × 691 px</td><td>kb. 227 KB</td><td>Elsődlegesen letöltött, kisebb változat</td></tr></tbody></table></div><p>A WebP ebben a példában a PNG fájlméretének kevesebb mint tizede, miközben a weboldalon továbbra is megfelelő minőségű.</p><div class="important rounded-3 p-3"><strong>Nincs univerzális minőségi érték.</strong> Mindig nagyításban és a weboldalon is meg kell nézni az eredményt. A túl erős tömörítés homályosodást és részletvesztést okozhat.</div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">4. WebP készítése Squooshban</h2><ol><li>Nyisd meg a <a href="https://squoosh.app/" target="_blank" rel="noopener">Squoosh alkalmazást</a>.</li><li>Töltsd be a <code>varosi-kozlekedes.png</code> képet.</li><li>Kapcsold be az átméretezést, és állítsd a szélességet 1650 px-re.</li><li>Válaszd a WebP kimenetet.</li><li>Állítsd a minőséget úgy, hogy ne legyen látható zavaró romlás.</li><li>Hasonlítsd össze az eredetit és a tömörített változatot.</li><li>Mentsd <code>varosi-kozlekedes.webp</code> néven az <code>img</code> mappába.</li></ol><p class="mb-0">A Squoosh a képet helyben, a böngészőben dolgozza fel; az órai cél az eljárás megértése, nem egyetlen kötelező minőségi szám bemagolása.</p></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">5. A picture elem</h2><p>A <code>&lt;picture&gt;</code> lehetővé teszi, hogy több képforrást adjunk meg. A böngésző az első támogatott <code>&lt;source&gt;</code> elemet választja, az <code>&lt;img&gt;</code> pedig tartalék és egyben a kép tényleges megjelenítő eleme.</p><pre><code>&lt;picture&gt;
+  &lt;source
+    srcset="img/varosi-kozlekedes.webp"
+    type="image/webp"&gt;
+
+  &lt;img
+    class="post-img"
+    src="img/varosi-kozlekedes.png"
+    alt="Villamos, elektromos busz, kerékpárosok és gyalogosok egy városi úton"
+    width="1939"
+    height="811"&gt;
+&lt;/picture&gt;</code></pre><div class="callout rounded-3 p-3 mb-4">Az osztály, az alt szöveg és a méretattribútumok továbbra is az <code>&lt;img&gt;</code> elemen maradnak. A <code>&lt;source&gt;</code> csak egy választható képforrást ad meg.</div>
+    <h3 class="h5">Böngészőtámogatás ellenőrzése a Can I use oldalon</h3>
+    <p>A <strong>Can I use</strong> megmutatja, hogy egy webes technológiát mely böngészők és mely verziók támogatnak. A táblázatban a zöld teljes, a sárgászöld részleges, a piros pedig hiányzó támogatást jelent.</p>
+    <a class="btn btn-outline-primary mb-3" href="https://caniuse.com/webp" target="_blank" rel="noopener">WebP-támogatás megnyitása a Can I use oldalon</a>
+    <ol><li>Keresd meg a WebP formátumot.</li><li>Nézd végig a Chrome, Edge, Firefox és Safari oszlopát.</li><li>Figyeld meg, hogy a mai böngészőkben széles körű a támogatás.</li><li>Keresd meg azokat a régebbi böngészőverziókat, amelyek nem támogatják.</li><li>Fogalmazd meg, miért hasznos ezek mellett is a PNG tartalék.</li></ol>
+    <div class="important rounded-3 p-3"><strong>Az adatok idővel változnak.</strong> Nem a százalékot vagy a verziószámokat kell megtanulni, hanem azt, hogyan ellenőrizzük egy technológia aktuális támogatottságát.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">6. A DevTools Network panel használata</h2>
+    <p>A Network panel megmutatja, milyen fájlokat kér le a böngésző, mekkorák ezek a fájlok, és mennyi ideig tart a letöltésük. A panel csak a megnyitása után történő kéréseket rögzíti, ezért az oldalt újra kell tölteni.</p>
+    <h3 class="h5">A mérés előkészítése</h3>
+    <ol><li>Nyisd meg az oldalt Chrome-ban Live Serverrel.</li><li>Nyisd meg a DevTools ablakot, majd válaszd a <strong>Network</strong> panelt.</li><li>Ellenőrizd, hogy a bal felső rögzítésjelző aktív.</li><li>Kapcsold be a <strong>Disable cache</strong> jelölőnégyzetet.</li><li>Töltsd újra az oldalt.</li></ol>
+    <div class="important rounded-3 p-3 mb-4"><strong>Miért kapcsoljuk ki a cache-t?</strong> Ismételt megnyitáskor a böngésző a fájlt a saját gyorsítótárából is előveheti. A Disable cache egy első látogatóhoz hasonló betöltést segít vizsgálni, amíg a DevTools nyitva van.</div>
+
+    <h3 class="h5">A kérések szűrése</h3>
+    <p>Az <strong>All</strong> nézet minden kérést mutat. Képek vizsgálatához válaszd az <strong>Img</strong> szűrőt, vagy írj a Filter mezőbe egy fájlnévrészletet, például:</p>
+    <pre><code>varosi-kozlekedes</code></pre>
+    <p>Az optimalizált megoldásban a listában a <code>varosi-kozlekedes.webp</code> fájlt kell látnod. A PNG szerepel a HTML-ben tartalékként, de egy WebP-t támogató böngészőnek nem kell mindkettőt letöltenie.</p>
+
+    <h3 class="h5">A legfontosabb oszlopok</h3>
+    <div class="table-responsive"><table class="table table-bordered align-middle"><thead><tr><th>Oszlop</th><th>Mit mutat?</th><th>Mit figyelünk?</th></tr></thead><tbody>
+      <tr><td>Name</td><td>A lekért fájl neve</td><td>WebP vagy PNG töltődött-e le?</td></tr>
+      <tr><td>Status</td><td>A kérés eredménye, például 200 vagy 404</td><td>Sikeresen megtalálta-e a böngésző a fájlt?</td></tr>
+      <tr><td>Type</td><td>Az erőforrás típusa</td><td>A kép típusa valóban WebP-e?</td></tr>
+      <tr><td>Initiator</td><td>Mi indította a kérést?</td><td>Melyik HTML- vagy CSS-rész hivatkozott rá?</td></tr>
+      <tr><td>Size</td><td>A hálózaton átvitt adatmennyiség</td><td>Mennyivel kisebb az optimalizált fájl?</td></tr>
+      <tr><td>Time</td><td>A kérés teljes ideje</td><td>Mennyi ideig tartott a betöltés?</td></tr>
+      <tr><td>Waterfall</td><td>A kérés időbeli lefutása</td><td>Mikor indult, mennyit várt és meddig töltődött?</td></tr>
+    </tbody></table></div>
+
+    <h3 class="h5">Egy kérés részletes vizsgálata</h3>
+    <p>Kattints a kép sorára. A megnyíló részletekben többek között ezeket érdemes megkeresni:</p>
+    <ul><li><strong>Headers:</strong> a teljes URL, a státuszkód és a tartalomtípus.</li><li><strong>Preview:</strong> a letöltött kép előnézete.</li><li><strong>Timing:</strong> a kérés várakozási és letöltési szakaszai.</li></ul>
+    <div class="callout rounded-3 p-3 mb-4"><strong>Az oldal alján lévő összesítés:</strong> a Network panel megmutatja a kérések számát, az összes átvitt adatmennyiséget és a betöltött erőforrások teljes méretét. Csak a panel megnyitása óta rögzített kérések számítanak bele.</div>
+
+    <h3 class="h5">Lassabb hálózat kipróbálása</h3>
+    <ol><li>A <strong>No throttling</strong> listából válassz lassabb mobilkapcsolatot, például Slow 4G vagy 3G beállítást.</li><li>Töltsd újra az oldalt kikapcsolt cache mellett.</li><li>Figyeld meg, mikor jelenik meg a nagy kép.</li><li>Hasonlítsd össze az eredeti PNG-t használó kezdőcsomagot az optimalizált megoldással.</li><li>A kísérlet után állítsd vissza a <strong>No throttling</strong> értéket.</li></ol>
+    <div class="task rounded-3 p-3"><strong>Mini mérési feladat:</strong> készíts két sort egy táblázatban az eredeti PNG és az optimalizált WebP számára. Jegyezd fel a fájl nevét, típusát, Size és Time értékét, valamint azt, hogy milyen hálózati beállítással mérted.</div>
+  </div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">7. Mikor melyik formátum?</h2><ul><li><strong>JPEG:</strong> fényképekhez használható, de nem támogat átlátszóságot.</li><li><strong>PNG:</strong> átlátszóságot vagy veszteségmentes tárolást igénylő grafikákhoz; fényképnél nagy lehet.</li><li><strong>WebP:</strong> fényképekhez és webes képekhez jó tömörítés, átlátszóságot is támogathat.</li><li><strong>SVG:</strong> logókhoz, ikonokhoz és egyszerű vektorgrafikákhoz.</li></ul><div class="important rounded-3 p-3">A formátumot nem divat alapján választjuk: a kép típusa, az átlátszóság, a kívánt minőség és a fájlméret együtt dönt.</div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">8. Órai feladat</h2><div class="task rounded-3 p-3"><ol class="mb-0"><li>Mérd meg az eredeti kép képpont- és fájlméretét.</li><li>DevToolsban állapítsd meg a legnagyobb megjelenített szélességet.</li><li>Készíts 1650 px széles WebP-változatot Squooshban.</li><li>Jegyezd fel az új fájlméretet.</li><li>Hasonlítsd össze a képminőséget 100%-os nagyításban.</li><li>Építsd be a képet <code>&lt;picture&gt;</code> segítségével.</li><li>A Network panelen igazold, hogy a WebP töltődik le.</li><li>Futtasd újra a Lighthouse Performance auditját.</li></ol></div></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">9. Ellenőrző kérdések</h2><ol><li>Mi a különbség a renderelt méret és a fájlméret között?</li><li>Miért készítünk a megjelenítettnél nagyobb képet nagy pixelsűrűségű kijelzőhöz?</li><li>Miért nem elég csak a képpontméretet csökkenteni?</li><li>Mire való a picture elem?</li><li>Hol marad az alt attribútum?</li><li>Miért töltjük újra az oldalt a Network panel megnyitása után?</li><li>Mire szolgál a Disable cache?</li><li>Mit mutat a Status, a Size és a Time oszlop?</li><li>Hogyan ellenőrizhető a ténylegesen letöltött kép?</li></ol><details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol class="mt-3 mb-0"><li>A renderelt méret a képernyőn elfoglalt hely, a fájlméret a letöltendő adatmennyiség.</li><li>Hogy a kép nagy pixelsűrűségű kijelzőn is éles maradjon.</li><li>Mert a fájl kódolása és tömörítése továbbra is lehet pazarló.</li><li>Több képforrás megadására, amelyek közül a böngésző választhat.</li><li>Az img elemen.</li><li>Mert a panel csak a megnyitása után történő kéréseket rögzíti.</li><li>Megakadályozza, hogy az ismételt méréskor a böngésző a saját gyorsítótárából szolgálja ki a fájlokat.</li><li>A kérés eredményét, az átvitt adatmennyiséget és a teljes betöltési időt.</li><li>A Network panelen, illetve a currentSrc vizsgálatával.</li></ol></details></div></section>
+
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Mit vigyél el ebből az órából?</h2><ul class="mb-0"><li>A képet a legnagyobb tényleges megjelenítéshez kell méretezni.</li><li>A felbontás és a fájlméret külön optimalizálandó.</li><li>A jó tömörítés megtartja a szükséges vizuális minőséget.</li><li>A picture elemmel modern és tartalék formátum is megadható.</li><li>A Network panel és a Lighthouse megmutatja az eredményt.</li></ul></div></section>
+
+  <nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between"><a class="btn btn-outline-secondary btn-lg" href="../33_ora/index.html">Előző: metaelemek és favicon</a><a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a><a class="btn btn-primary btn-lg" href="../35_ora/index.html">Következő: közzététel</a></nav>
+</main></body></html>

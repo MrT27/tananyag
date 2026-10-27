@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ismerd meg a fenntartható városi közlekedés lehetőségeit: villamos, autóbusz, kerékpár és gyaloglás egy közlekedési magazinban.">
+  <title>Közlekedési magazin – Fenntartható városi közlekedés</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="queries.css">
+</head>
+<body>
+  <div class="container">
+    <header class="main-header">
+      <h1>🚋 Közlekedési magazin</h1>
+      <nav>
+        <a href="#cikk">Cikk</a>
+        <a href="#lehetosegek">Lehetőségek</a>
+        <a href="#menetrend">Menetrend</a>
+        <a href="#kapcsolodo">Kapcsolódó</a>
+      </nav>
+    </header>
+
+    <article id="cikk">
+      <header class="post-header">
+        <h2>Fenntartható közlekedés a városban</h2>
+        <button class="like-button" type="button">💚 Hasznos</button>
+        <div class="author-box">
+          <p class="author">Készítette: <strong>a 11. évfolyam</strong></p>
+        </div>
+        <picture>
+          <source srcset="img/varosi-kozlekedes.webp" type="image/webp">
+          <img class="post-img" src="img/varosi-kozlekedes.png" alt="Villamos, elektromos busz, kerékpárosok és gyalogosok egy városi úton" width="1939" height="811">
+        </picture>
+      </header>
+
+      <p>A városi közlekedés mindennapjaink része. Nem mindegy azonban, hogy egy rövid utazáshoz autót, közösségi közlekedést, kerékpárt vagy gyaloglást választunk.</p>
+      <p>A tudatos közlekedési döntés csökkentheti a forgalmat, a zajt és a levegő szennyezését.</p>
+
+      <h3 id="lehetosegek">Milyen lehetőségeink vannak?</h3>
+      <ul>
+        <li>A villamos és az autóbusz egyszerre sok embert tud szállítani.</li>
+        <li>A kerékpár rövid és közepes távolságon gyors megoldás lehet.</li>
+        <li>A gyaloglás rövid utaknál egyszerű és egészséges választás.</li>
+      </ul>
+
+      <h3 id="menetrend">Reggeli közlekedési lehetőségek</h3>
+      <table>
+        <thead><tr><th>Közlekedési mód</th><th>Indulás</th><th>Menetidő</th></tr></thead>
+        <tbody>
+          <tr><td>Villamos</td><td>7:05</td><td>24 perc</td></tr>
+          <tr><td>Autóbusz</td><td>7:12</td><td>31 perc</td></tr>
+          <tr><td>Kerékpár</td><td>bármikor</td><td>28 perc</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Biztonságos közlekedés</h3>
+      <p>Mindig figyeljünk a többi közlekedőre, tartsuk be a szabályokat, és sötétben gondoskodjunk a megfelelő láthatóságról.</p>
+    </article>
+
+    <aside id="kapcsolodo">
+      <h4>Kapcsolódó témák</h4>
+      <ul class="related">
+        <li class="related-post"><div class="related-icon">🚲</div><div><a class="related-link" href="#">Kerékpáros közlekedés</a><p class="related-text">Felszerelés és biztonság</p></div></li>
+        <li class="related-post"><div class="related-icon">🚌</div><div><a class="related-link" href="#">Közösségi közlekedés</a><p class="related-text">Menetrend és átszállás</p></div></li>
+        <li class="related-post"><div class="related-icon">🚶</div><div><a class="related-link" href="#">Gyalogos közlekedés</a><p class="related-text">Biztonságos útvonalak</p></div></li>
+      </ul>
+    </aside>
+
+    <footer><p>© Közlekedési magazin – tanórai projekt</p></footer>
+  </div>
+</body>
+</html>
