@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HTML/CSS 38. óra – CSS-effektek és mozgás</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"><style>body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#eef7ff 100%);border:1px solid #e6e9ef}.section-card{border:0;box-shadow:0 .25rem .8rem rgba(0,0,0,.05)}pre{background:#212529;color:#f8f9fa;border-radius:.75rem;padding:1rem;overflow-x:auto}code{color:#c7254e}pre code{color:inherit}.callout{border-left:.35rem solid #0dcaf0;background:#eefbff}.important{border-left:.35rem solid #ffc107;background:#fff8e1}.task{border-left:.35rem solid #198754;background:#edf8f1}summary{cursor:pointer;font-weight:600}</style></head>
+<body><main class="container py-5">
+<section class="hero rounded-4 p-4 p-md-5 mb-4"><span class="badge text-bg-primary">11. évfolyam</span> <span class="badge text-bg-success">HTML/CSS lezárás</span> <span class="badge text-bg-dark">38. óra</span><h1 class="display-6 fw-bold mt-3">CSS-effektek és mozgás</h1><p class="lead mb-0">Állapotváltozásokat teszünk láthatóvá úgy, hogy a mozgás segítse, ne zavarja a használatot.</p></section>
+<section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Az óra célja</h2><ul><li>Az <code>opacity</code> és <code>outline</code> szerepe.</li><li>Finom átmenetek készítése <code>transition</code> segítségével.</li><li>Mozgatás és méretezés <code>transform</code> használatával.</li><li>Egyszerű <code>@keyframes</code> animáció és csökkentett mozgás.</li></ul><a class="btn btn-primary" href="kezdo.zip" download>Kezdőcsomag letöltése</a></div></section><section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">1. opacity</h2><pre><code>.halvany { opacity: 0.55; }</code></pre><p>A 0 teljesen átlátszó, az 1 teljesen látható. Az érték az elemre és gyermekeire is hat.</p><div class="important rounded-3 p-3">Az <code>opacity: 0</code> nem távolítja el az elemet: továbbra is helyet foglalhat és fókuszálható lehet.</div></div></section><section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">2. outline és billentyűzetes fókusz</h2><pre><code>a:focus {
+  outline: 3px solid #f08c00;
+  outline-offset: 4px;
+}</code></pre><p>Az outline nem növeli a doboz méretét. A fókuszjelzést ne tüntessük el anélkül, hogy legalább ilyen jól látható jelzést adnánk helyette.</p></div></section><section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">3. transition</h2><pre><code>.kartya {
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.kartya:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}</code></pre><p>Az átmenetet az alapállapotba írjuk, így oda-vissza működik. <code>all</code> helyett a valóban változó tulajdonságokat soroljuk fel.</p></div></section><section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">4. transform</h2><pre><code>.ikon:hover { transform: rotate(8deg) scale(1.08); }
+.gomb:active { transform: scale(0.97); }</code></pre><ul><li><code>translate()</code>: eltolás;</li><li><code>scale()</code>: méretezés;</li><li><code>rotate()</code>: forgatás.</li></ul><p>A transzformáció nem rendezi át úgy a környező elemeket, mint a margin módosítása.</p></div></section><section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">5. @keyframes</h2><pre><code>@keyframes jelzes {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.allapotjelzo {
+  animation: jelzes 1.5s ease-in-out 3;
+}</code></pre><p>A kulcskockák az animáció állomásai. A példában az animáció csak háromszor fut le.</p></div></section><section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">6. Csökkentett mozgás</h2><pre><code>@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+    transition: none;
+  }
+}</code></pre><p>A felhasználó kérheti a mozgások csökkentését. Az oldal ehhez médiakérdéssel alkalmazkodhat.</p></div></section><section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">7. Órai feladat</h2><div class="task rounded-3 p-3"><ol class="mb-0"><li>A kártyák két tulajdonsága kapjon transitiont.</li><li>Hover állapotban emelkedjenek 6 pixelt és kapjanak árnyékot.</li><li>A gomb aktív állapotban legyen kissé kisebb.</li><li>A fókusz kapjon jól látható outline-t.</li><li>Egy jelzőn készíts háromszor lefutó opacity animációt.</li><li>Adj <code>prefers-reduced-motion</code> szabályt.</li><li>Tab billentyűvel és egérrel is ellenőrizd.</li></ol></div></div></section><section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">8. Kitekintés: preprocesszor</h2><p>A Sass/SCSS kényelmi lehetőségeket ad, majd hagyományos CSS-t készít.</p><pre><code>// SCSS – a böngésző ezt nem közvetlenül olvassa
+$kiemelo: #e8590c;
+.gomb { background-color: $kiemelo; }
+
+/* Elkészített CSS */
+.gomb { background-color: #e8590c; }</code></pre><div class="callout rounded-3 p-3">Nem telepítünk preprocesszort; a fogalom felismerése a cél.</div></div></section><section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Ellenőrző kérdések</h2><ol><li>Miért maradhat kattintható egy <code>opacity: 0</code> elem?</li><li>Mire szolgál az outline?</li><li>Mi a transition és a transform közötti különbség?</li><li>Miért használjuk a <code>prefers-reduced-motion</code> feltételt?</li></ol><p class="mb-0">Háttéranyag: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions" target="_blank" rel="noopener">MDN – transitions</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transforms/Using_CSS_transforms" target="_blank" rel="noopener">transforms</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations" target="_blank" rel="noopener">animations</a>.</p></div></section>
+<nav aria-label="Órák közötti navigáció" class="d-grid gap-2 d-md-flex justify-content-md-between"><a class="btn btn-outline-secondary btn-lg" href="../37_ora/index.html">Előző óra</a><a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a><a class="btn btn-primary btn-lg" href="../39_ora/index.html">Következő óra</a></nav>
+</main></body></html>
