@@ -68,6 +68,8 @@ body{background:#f8f9fa}.hero{background:linear-gradient(135deg,#fff 0%,#f3efff 
 <li>Kapcsold vissza a deklarációt, és ellenőrizd, hogy ismét 10 px jelenik meg.</li>
 </ol>
 <pre><code>16px × 62.5% = 10px</code></pre>
+<p><strong>Miért nem feltétlenül látjuk a 16 px-et a Styles panelen?</strong> Mert ez lehet a böngésző saját alapbeállítása, nem pedig az oldal CSS-fájljában szereplő deklaráció. A ténylegesen kiszámított értéket ezért a <strong>Computed</strong> panelen kell keresni.</p>
+<p>A Chrome alap-betűmérete külön is ellenőrizhető a <strong>Beállítások → Megjelenés → Betűméret</strong> részen. A szokásos <strong>Közepes</strong> beállítás általában 16 px-es alapméretet jelent.</p>
 <div class="access rounded-3 p-3"><strong>Fontos:</strong> a 16 px nem megváltoztathatatlan törvény. A felhasználó módosíthatja a böngésző alap-betűméretét. Éppen ezért használunk százalékos gyökérméretet fix <code>10px</code> helyett.</div>
 </div></section>
 
