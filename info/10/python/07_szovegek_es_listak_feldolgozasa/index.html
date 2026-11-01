@@ -11,7 +11,7 @@
     <div class="container py-5">
       <div class="mb-4"><a href="../index.html" class="btn btn-secondary btn-lg">Vissza</a></div>
       <h1 class="text-center mb-4">7. Szövegek és listák feldolgozása</h1>
-      <p class="lead text-center mb-5">A szövegeket karakterenként vagy szavanként is feldolgozhatjuk, a kiválasztott adatokat pedig új listába gyűjthetjük.</p>
+      <p class="lead text-center mb-5">Megállóneveket, járatjelzéseket és utastájékoztató üzeneteket dolgozunk fel. A szövegekből listát készítünk, majd a megfelelő közlekedési adatokat kiválogatjuk. A példák kitalált adatokat használnak.</p>
 
       <div class="alert alert-primary">
         <h2 class="h4">Mit fogsz megtanulni?</h2>
@@ -27,26 +27,26 @@
 
       <h2 class="mt-5">1. A szöveg mint karaktersorozat</h2>
       <p>A Python a szöveget karakterek rendezett sorozataként kezeli. Emiatt indexelhető, szeletelhető és ciklussal bejárható.</p>
-      <pre class="bg-light p-3 rounded"><code>szo = "programozás"
+      <pre class="bg-light p-3 rounded"><code>szo = "villamos"
 
-print(szo[0])    # p
+print(szo[0])    # v
 print(szo[-1])   # s
-print(szo[0:7])  # program</code></pre>
+print(szo[0:5])  # villa</code></pre>
       <div class="alert alert-warning"><strong>Fontos:</strong> a szöveg karaktereit nem módosíthatjuk közvetlenül. Egy változtatáshoz új szöveget kell létrehozni.</div>
 
       <h2 class="mt-5">2. Szöveg bejárása</h2>
-      <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy szót: ")
+      <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy járatjelzést (például 12A): ")
 
 for karakter in szo:
     print(karakter)</code></pre>
       <p>Indexes bejárást akkor használunk, ha a karakter helyére is szükségünk van.</p>
-      <pre class="bg-light p-3 rounded"><code>szo = "Python"
+      <pre class="bg-light p-3 rounded"><code>szo = "12A"
 
 for i in range(len(szo)):
     print(f"{i}. index: {szo[i]}")</code></pre>
 
       <h2 class="mt-5">3. Kis- és nagybetűk kezelése</h2>
-      <pre class="bg-light p-3 rounded"><code>nev = input("Add meg a neved: ")
+      <pre class="bg-light p-3 rounded"><code>nev = input("Add meg egy megálló nevét: ")
 
 print(nev.lower())       # minden betű kicsi
 print(nev.upper())       # minden betű nagy
@@ -55,7 +55,7 @@ print(nev.title())       # minden szó első betűje nagy</code></pre>
       <p>Keresés előtt gyakran egységesítjük a szöveget, hogy a kis- és nagybetűk ne befolyásolják az eredményt.</p>
 
       <h2 class="mt-5">4. Felesleges szóközök eltávolítása</h2>
-      <pre class="bg-light p-3 rounded"><code>szoveg = "   Python tananyag   "
+      <pre class="bg-light p-3 rounded"><code>szoveg = "   Vasútállomás   "
 
 print(szoveg.strip())   # mindkét oldalról
 print(szoveg.lstrip())  # bal oldalról
@@ -63,47 +63,47 @@ print(szoveg.rstrip())  # jobb oldalról</code></pre>
       <div class="alert alert-secondary">A <code>strip()</code> különösen hasznos fájlból beolvasott sorok és felhasználói adatok tisztításakor.</div>
 
       <h2 class="mt-5">5. Keresés szövegben</h2>
-      <pre class="bg-light p-3 rounded"><code>mondat = "A Python könnyen tanulható nyelv."
+      <pre class="bg-light p-3 rounded"><code>mondat = "A busz az iskola előtt áll."
 
-if "Python" in mondat:
+if "busz" in mondat:
     print("A keresett szó szerepel a mondatban.")
 
 print(mondat.count("a"))
 print(mondat.startswith("A"))
-print(mondat.endswith("nyelv."))</code></pre>
+print(mondat.endswith("áll."))</code></pre>
 
       <h2 class="mt-5">6. Szöveg cseréje</h2>
-      <pre class="bg-light p-3 rounded"><code>mondat = "A macska a széken ül."
-uj_mondat = mondat.replace("macska", "kutya")
+      <pre class="bg-light p-3 rounded"><code>mondat = "A busz a Főtéren áll meg."
+uj_mondat = mondat.replace("Főtéren", "Pályaudvaron")
 
 print(uj_mondat)</code></pre>
       <p>A <code>replace()</code> nem az eredeti szöveget módosítja, hanem egy új szöveget ad vissza.</p>
 
       <h2 class="mt-5">7. Mondat felbontása szavakra: split()</h2>
       <p>A <code>split()</code> egy szövegből listát készít. Alapértelmezés szerint a szóközöknél darabol.</p>
-      <pre class="bg-light p-3 rounded"><code>mondat = input("Írj be egy mondatot: ")
+      <pre class="bg-light p-3 rounded"><code>mondat = input("Írj be egy utastájékoztató mondatot: ")
 szavak = mondat.split()
 
 print(szavak)
 print(f"A mondat {len(szavak)} szóból áll.")</code></pre>
       <p>Más elválasztójelet is megadhatunk.</p>
-      <pre class="bg-light p-3 rounded"><code>adat = "alma;körte;szilva;barack"
-gyumolcsok = adat.split(";")
+      <pre class="bg-light p-3 rounded"><code>adat = "Vasútállomás;Iskola;Főtér;Uszoda"
+megallok = adat.split(";")
 
-print(gyumolcsok)</code></pre>
+print(megallok)</code></pre>
 
       <h2 class="mt-5">8. Lista összefűzése szöveggé: join()</h2>
-      <pre class="bg-light p-3 rounded"><code>szavak = ["A", "Python", "jól", "tanulható"]
+      <pre class="bg-light p-3 rounded"><code>szavak = ["A", "busz", "hamarosan", "indul."]
 mondat = " ".join(szavak)
 
 print(mondat)</code></pre>
       <p>Az idézőjelek között megadott szöveg kerül az elemek közé.</p>
-      <pre class="bg-light p-3 rounded"><code>nevek = ["Anna", "Béla", "Csilla"]
+      <pre class="bg-light p-3 rounded"><code>nevek = ["Iskola", "Főtér", "Uszoda"]
 print(", ".join(nevek))</code></pre>
 
       <h2 class="mt-5">9. Karakterek megszámlálása</h2>
-      <p>Számoljuk meg, hány magánhangzó szerepel egy szóban!</p>
-      <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy szót: ").lower()
+      <p>Számoljuk meg, hány magánhangzó szerepel egy megálló nevében!</p>
+      <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy megállónevet: ").lower()
 maganhangzok = "aáeéiíoóöőuúüű"
 darab = 0
 
@@ -114,8 +114,8 @@ for karakter in szo:
 print(f"A magánhangzók száma: {darab}")</code></pre>
 
       <h2 class="mt-5">10. Szavak keresése és szűrése</h2>
-      <p>Gyűjtsük ki azokat a szavakat, amelyek legalább öt karakterből állnak!</p>
-      <pre class="bg-light p-3 rounded"><code>mondat = input("Írj be egy mondatot: ")
+      <p>Gyűjtsük ki egy utastájékoztató mondat legalább öt karakterből álló szavait!</p>
+      <pre class="bg-light p-3 rounded"><code>mondat = input("Írj be egy utastájékoztató mondatot: ")
 szavak = mondat.split()
 hosszu_szavak = []
 
@@ -127,7 +127,7 @@ print(hosszu_szavak)</code></pre>
       <div class="alert alert-info"><strong>Ez a szűrés alapgondolata:</strong> végigjárjuk az adatokat, megvizsgálunk egy feltételt, és a megfelelő elemeket új listába tesszük.</div>
 
       <h2 class="mt-5">11. Szöveg megfordítása</h2>
-      <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy szót: ")
+      <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy járatjelzést (például 12A): ")
 forditott = ""
 
 for karakter in szo:
@@ -138,8 +138,8 @@ print(forditott)</code></pre>
       <pre class="bg-light p-3 rounded"><code>print(szo[::-1])</code></pre>
 
       <h2 class="mt-5">12. Palindrom vizsgálata</h2>
-      <p>A palindrom olyan szó vagy szöveg, amely visszafelé olvasva is ugyanaz.</p>
-      <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy szót: ").lower()
+      <p>A palindrom visszafelé olvasva is ugyanaz. Vizsgáljunk kitalált járatjelzéseket: a 121 és az ABA palindrom, a 12A nem az. Ez szöveges jelzésvizsgálat, nem egy útvonal megfordítása.</p>
+      <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy járatjelzést (például 121): ").lower()
 
 if szo == szo[::-1]:
     print("Palindrom.")
@@ -148,23 +148,23 @@ else:
 
       <h2 class="mt-5">13. Gyakorlófeladatok</h2>
       <ol class="list-group list-group-numbered mb-4">
-        <li class="list-group-item">Kérj be egy szót, majd írd ki a karaktereit külön sorokba!</li>
-        <li class="list-group-item">Kérj be egy mondatot, és írd ki, hány karakterből, illetve hány szóból áll!</li>
-        <li class="list-group-item">Kérj be egy szöveget, majd számold meg benne az „a” betűket kis- és nagybetűtől függetlenül!</li>
-        <li class="list-group-item">Kérj be egy mondatot, és írd ki csak a négy karakternél hosszabb szavakat!</li>
-        <li class="list-group-item">Kérj be öt nevet egy listába, majd írd ki azokat, amelyek „A” betűvel kezdődnek!</li>
-        <li class="list-group-item">Kérj be vesszővel elválasztott egész számokat, alakítsd őket számlistává, majd írd ki a páros számokat!</li>
-        <li class="list-group-item">Kérj be egy mondatot, fordítsd meg a szavak sorrendjét, majd írd ki az eredményt!</li>
+        <li class="list-group-item">Kérj be egy járatjelzést, majd írd ki a karaktereit külön sorokba!</li>
+        <li class="list-group-item">Kérj be egy utastájékoztató mondatot, és írd ki, hány karakterből (szóközökkel együtt), illetve hány szóból áll!</li>
+        <li class="list-group-item">Kérj be egy közlekedési tájékoztatót, majd számold meg benne az „a” betűket kis- és nagybetűtől függetlenül!</li>
+        <li class="list-group-item">Kérj be egy utastájékoztató mondatot, és írd ki csak a négy karakternél hosszabb szavakat!</li>
+        <li class="list-group-item">Kérj be öt megállónevet egy listába, majd írd ki azokat, amelyek „A” betűvel kezdődnek!</li>
+        <li class="list-group-item">Kérj be vesszővel elválasztott, egész számként megadott járatszámokat, alakítsd őket számlistává, majd írd ki a páros járatszámokat!</li>
+        <li class="list-group-item">Kérj be egy utastájékoztató mondatot, fordítsd meg a szavak sorrendjét, majd írd ki az eredményt! Ez szöveges gyakorlat, a megfordított mondat jelentése megváltozhat.</li>
       </ol>
 
       <details class="card mb-3">
         <summary class="card-header fw-semibold">1–2. feladat megoldása</summary>
         <div class="card-body">
-          <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy szót: ")
+          <pre class="bg-light p-3 rounded"><code>szo = input("Adj meg egy járatjelzést (például 12A): ")
 
 for karakter in szo:
     print(karakter)</code></pre>
-          <pre class="bg-light p-3 rounded mb-0"><code>mondat = input("Írj be egy mondatot: ")
+          <pre class="bg-light p-3 rounded mb-0"><code>mondat = input("Írj be egy utastájékoztató mondatot: ")
 szavak = mondat.split()
 
 print(f"Karakterek száma: {len(mondat)}")
@@ -175,7 +175,7 @@ print(f"Szavak száma: {len(szavak)}")</code></pre>
       <details class="card mb-3">
         <summary class="card-header fw-semibold">3–4. feladat megoldása</summary>
         <div class="card-body">
-          <pre class="bg-light p-3 rounded"><code>szoveg = input("Adj meg egy szöveget: ").lower()
+          <pre class="bg-light p-3 rounded"><code>szoveg = input("Adj meg egy közlekedési tájékoztatót: ").lower()
 darab = 0
 
 for karakter in szoveg:
@@ -183,7 +183,7 @@ for karakter in szoveg:
         darab += 1
 
 print(f"Az a betűk száma: {darab}")</code></pre>
-          <pre class="bg-light p-3 rounded mb-0"><code>mondat = input("Írj be egy mondatot: ")
+          <pre class="bg-light p-3 rounded mb-0"><code>mondat = input("Írj be egy utastájékoztató mondatot: ")
 szavak = mondat.split()
 
 for szo in szavak:
@@ -198,12 +198,12 @@ for szo in szavak:
           <pre class="bg-light p-3 rounded"><code>nevek = []
 
 for i in range(5):
-    nevek.append(input(f"Add meg a(z) {i + 1}. nevet: ").strip())
+    nevek.append(input(f"Add meg a(z) {i + 1}. megálló nevét: ").strip())
 
 for nev in nevek:
     if nev.lower().startswith("a"):
         print(nev)</code></pre>
-          <pre class="bg-light p-3 rounded mb-0"><code>adat = input("Adj meg egész számokat vesszővel elválasztva: ")
+          <pre class="bg-light p-3 rounded mb-0"><code>adat = input("Adj meg egész járatszámokat vesszővel elválasztva (pl. 12, 7, 24): ")
 szoveges_szamok = adat.split(",")
 szamok = []
 
@@ -219,7 +219,7 @@ for szam in szamok:
       <details class="card mb-4">
         <summary class="card-header fw-semibold">7. feladat megoldása</summary>
         <div class="card-body">
-          <pre class="bg-light p-3 rounded mb-0"><code>mondat = input("Írj be egy mondatot: ")
+          <pre class="bg-light p-3 rounded mb-0"><code>mondat = input("Írj be egy utastájékoztató mondatot: ")
 szavak = mondat.split()
 szavak.reverse()
 

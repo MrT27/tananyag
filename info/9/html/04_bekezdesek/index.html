@@ -13,49 +13,52 @@
       <div class="mb-4"><a class="btn btn-secondary btn-lg" href="../index.html">Vissza</a></div>
       <h1 class="text-center mb-4">4. Bekezdések, szóközök és sortörések</h1>
       <p class="lead text-center mb-4">Megtanuljuk, hogyan kezeli a böngésző a fehértereket, és hogyan tagoljuk helyesen a folyó szöveget.</p>
-      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5"><span class="badge text-bg-primary fs-6">ICDL Webszerkesztés</span><span class="badge text-bg-success fs-6">Ágazati alapvizsga</span><span class="badge text-bg-secondary fs-6">HTML</span></div>
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5"><span class="badge text-bg-primary fs-6">ICDL Webszerkesztés</span><span class="badge text-bg-success fs-6">Ágazati alapvizsga</span><span class="badge text-bg-secondary fs-6">HTML</span><span class="badge text-bg-warning fs-6">Jelenségalapú hét: közlekedés</span></div>
 
       <div class="alert alert-primary"><h2 class="h4">Mit fogsz megtanulni?</h2><ul class="mb-0"><li>mit nevezünk fehértérnek,</li><li>miért nem jelenik meg minden szóköz és Enter a böngészőben,</li><li>hogyan készítünk bekezdést a <code>p</code> elemmel,</li><li>mikor használható a <code>br</code> sortörés,</li><li>miért nem használunk több <code>br</code> elemet térköz készítésére.</li></ul></div>
 
+      <div class="card border-success mt-4"><div class="card-body"><h2 class="h4">Közös jelenség: az iskolába vezető út</h2><p>A következő két órán egy közlekedési tájékoztató weboldalt építünk. Először bekezdésekre és tartalmi egységekre bontjuk a nyers szöveget, a következő órán pedig jelentéssel bíró kiemelésekkel tesszük érthetőbbé.</p><div class="d-flex flex-wrap gap-2"><a class="btn btn-success" href="../forrasok/kozlekedes_alapszoveg.txt" download>Alapszöveg letöltése</a><a class="btn btn-outline-success" href="../forrasok/kozlekedes_kerekpar.txt" download>Kerékpáros szöveg</a><a class="btn btn-outline-success" href="../forrasok/kozlekedes_kozossegi.txt" download>Közösségi közlekedés</a></div></div></div>
+
       <h2 class="mt-5">1. Mi történik a szóközökkel?</h2>
       <p>A HTML-forrásban található szóközöket, tabulátorokat és sortöréseket összefoglaló néven <strong>fehértereknek</strong> nevezzük. A böngésző ezek sorozatát általában egyetlen szóközként jeleníti meg.</p>
-      <pre><code>Helló,     a nevem Anna.
-Szeretek weboldalakat készíteni.</code></pre>
+      <pre><code>Az iskolába     kerékpárral indulok.
+A biztonságosabb útvonalat választom.</code></pre>
       <p>A böngészőben ez egy folyamatos sor lehet:</p>
-      <div class="border rounded bg-light p-3">Helló, a nevem Anna. Szeretek weboldalakat készíteni.</div>
+      <div class="border rounded bg-light p-3">Az iskolába kerékpárral indulok. A biztonságosabb útvonalat választom.</div>
       <div class="alert alert-info mt-3">A kódban használt behúzás az olvashatóságot javítja, de önmagában nem alakítja az oldal elrendezését.</div>
 
       <h2 class="mt-5">2. Bekezdés a <code>p</code> elemmel</h2>
       <p>A <code>p</code> az angol <em>paragraph</em>, vagyis bekezdés szó rövidítése. Minden önálló gondolati egységet külön <code>p</code> elembe írunk.</p>
-      <pre><code>&lt;p&gt;A nevem Anna, és most tanulok weboldalt készíteni.&lt;/p&gt;
+      <pre><code>&lt;p&gt;A legrövidebb út nem mindig a legbiztonságosabb.&lt;/p&gt;
 
-&lt;p&gt;A kedvenc hobbim a fényképezés.&lt;/p&gt;</code></pre>
+&lt;p&gt;Sötétben különösen fontos, hogy jól láthatók legyünk.&lt;/p&gt;</code></pre>
       <p>A böngésző a két bekezdést külön blokkban jeleníti meg, és alapértelmezett térközt hagy közöttük.</p>
 
       <h2 class="mt-5">3. A címsor és a bekezdés különbsége</h2>
-      <div class="table-responsive"><table class="table table-bordered align-middle"><thead class="table-light"><tr><th>Elem</th><th>Feladata</th><th>Példa</th></tr></thead><tbody><tr><td><code>h1</code>–<code>h6</code></td><td>Egy oldal vagy tartalmi rész megnevezése.</td><td><code>&lt;h2&gt;A hobbijaim&lt;/h2&gt;</code></td></tr><tr><td><code>p</code></td><td>Összefüggő folyó szöveg jelölése.</td><td><code>&lt;p&gt;Szabadidőmben futok.&lt;/p&gt;</code></td></tr></tbody></table></div>
+      <div class="table-responsive"><table class="table table-bordered align-middle"><thead class="table-light"><tr><th>Elem</th><th>Feladata</th><th>Példa</th></tr></thead><tbody><tr><td><code>h1</code>–<code>h6</code></td><td>Egy oldal vagy tartalmi rész megnevezése.</td><td><code>&lt;h2&gt;A biztonságos útvonal&lt;/h2&gt;</code></td></tr><tr><td><code>p</code></td><td>Összefüggő folyó szöveg jelölése.</td><td><code>&lt;p&gt;Átkelés előtt mindkét irányba körülnézek.&lt;/p&gt;</code></td></tr></tbody></table></div>
       <div class="alert alert-warning">Ne használj címsorelemet egyszerű szöveg nagyítására, és ne használj bekezdést fejezetcím helyett!</div>
 
-      <h2 class="mt-5">4. Az oldal bővítése bekezdésekkel</h2>
-      <p>Egészítsd ki az előző órán készített oldal <code>body</code> részét:</p>
+      <h2 class="mt-5">4. A közlekedési oldal felépítése</h2>
+      <p>Töltsd le az alapszöveget, majd másold az <code>index.html</code> fájl <code>body</code> részébe. A szöveg még nem HTML: neked kell felismerned a főcímet, a fejezetcímeket és a bekezdéseket.</p>
       <pre><code>&lt;body&gt;
-  &lt;h1&gt;Bemutatkozó oldalam&lt;/h1&gt;
+  &lt;h1&gt;Biztonságosan az iskolába&lt;/h1&gt;
 
-  &lt;h2&gt;Rólam&lt;/h2&gt;
-  &lt;p&gt;A nevem Anna, és kilencedik osztályos tanuló vagyok.&lt;/p&gt;
+  &lt;h2&gt;Miért fontos, hogyan közlekedünk?&lt;/h2&gt;
+  &lt;p&gt;Minden tanítási napon sok száz diák indul el egyszerre az iskolába...&lt;/p&gt;
 
-  &lt;h2&gt;A hobbijaim&lt;/h2&gt;
-  &lt;p&gt;Szabadidőmben fényképezek és zenét hallgatok.&lt;/p&gt;
+  &lt;h2&gt;A biztonságos útvonal&lt;/h2&gt;
+  &lt;p&gt;A legrövidebb út nem mindig a legbiztonságosabb...&lt;/p&gt;
 &lt;/body&gt;</code></pre>
       <p>A kódban hagyott üres sorok csak az áttekinthetőséget szolgálják. A tartalmi tagolást a HTML-elemek adják.</p>
 
       <h2 class="mt-5">5. Sortörés a <code>br</code> elemmel</h2>
       <p>A <code>br</code> egy soron belüli kötelező sortörést jelöl. Nincs tartalma és nincs záró tagje.</p>
       <pre><code>&lt;p&gt;
-  Petőfi Sándor&lt;br&gt;
-  Nemzeti dal
+  Találkozóhely: az iskola főbejárata&lt;br&gt;
+  Gyülekezés: 7:30&lt;br&gt;
+  Indulás: 7:35
 &lt;/p&gt;</code></pre>
-      <p>Indokolt lehet például verssoroknál, postai címnél vagy dalszöveg sorainál, amikor a sortörés a tartalom része.</p>
+      <p>Indokolt lehet például egy menetrendi adat, találkozási információ vagy útvonal egymáshoz tartozó sorainál, amikor a sorváltás a tartalom része.</p>
       <div class="alert alert-warning"><strong>Ne használj több <code>&lt;br&gt;</code> elemet függőleges térköz készítésére!</strong> A térközök kialakítása a CSS feladata.</div>
 
       <h2 class="mt-5">6. Mikor <code>p</code>, és mikor <code>br</code>?</h2>
@@ -65,13 +68,13 @@ Szeretek weboldalakat készíteni.</code></pre>
       <ul><li>Csak Enterrel próbálnak új bekezdést készíteni.</li><li>Több szóközzel próbálják igazítani a szöveget.</li><li>Üres bekezdéseket vagy sok <code>br</code> elemet használnak térköznek.</li><li>Lehagyják a <code>p</code> záró tagjét.</li><li><code>&lt;br&gt;&lt;/br&gt;</code> formát írnak, pedig a <code>br</code>-nek nincs záró tagje.</li></ul>
 
       <h2 class="mt-5">8. Közös gyakorlás</h2>
-      <div class="card mb-3"><div class="card-body"><h3 class="h5">1. feladat – Mi jelenik meg?</h3><pre><code>&lt;p&gt;Első mondat.       Második mondat.
-Harmadik mondat.&lt;/p&gt;</code></pre><p class="mb-0">Beszéljétek meg, hány bekezdés és hány látható sortörés keletkezik!</p></div></div>
-      <div class="card mb-3"><div class="card-body"><h3 class="h5">2. feladat – Válassz elemet!</h3><p class="mb-0">Döntsd el, hogy külön <code>p</code> elem vagy <code>br</code> szükséges: két külön bemutatkozó gondolat; egy postai cím sorai; két külön hírbekezdés; egy vers négy sora.</p></div></div>
-      <details class="border rounded p-3 mb-4"><summary class="fw-semibold">Tanári megoldás</summary><p class="mt-3 mb-2"><strong>1.</strong> Egy bekezdés keletkezik, a fehérterek egyetlen szóközzé állnak össze.</p><p class="mb-0"><strong>2.</strong> Bekezdések: két gondolat, két hírbekezdés. Sortörés: postai cím és vers sorai.</p></details>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">1. feladat – Mi jelenik meg?</h3><pre><code>&lt;p&gt;A busz 7:08-kor indul.       A megállóban figyelünk egymásra.
+Az iskolához 7:42-kor érkezik.&lt;/p&gt;</code></pre><p class="mb-0">Beszéljétek meg, hány bekezdés és hány látható sortörés keletkezik!</p></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">2. feladat – Válassz elemet!</h3><p class="mb-0">Döntsd el, hogy külön <code>p</code> elem vagy <code>br</code> szükséges: a gyalogos és a kerékpáros közlekedés külön gondolatai; egy járat indulási adatai; két külön biztonsági tanács; egy találkozási pont címe és időpontja.</p></div></div>
+      <details class="border rounded p-3 mb-4"><summary class="fw-semibold">Tanári megoldás</summary><p class="mt-3 mb-2"><strong>1.</strong> Egy bekezdés keletkezik, a fehérterek egyetlen szóközzé állnak össze.</p><p class="mb-0"><strong>2.</strong> Külön bekezdések: az eltérő közlekedési módok és a különálló biztonsági tanácsok. Sortörés: egy járat összetartozó adatai, valamint a találkozási hely és időpont sorai.</p></details>
 
       <h2 class="mt-5">9. Önálló feladat</h2>
-      <div class="card border-primary mb-4"><div class="card-body"><h3 class="h5">Bemutatkozó tartalom</h3><ol><li>Az oldaladon legyen egy <code>h1</code> főcím!</li><li>Készíts három <code>h2</code> fejezetet!</li><li>Minden fejezet alatt legyen legalább egy <code>p</code> bekezdés!</li><li>Az egyik bekezdésben használj indokolt <code>br</code> sortörést!</li><li>Ne használj több szóközt vagy több <code>br</code> elemet elrendezéshez!</li></ol></div></div>
+      <div class="card border-primary mb-4"><div class="card-body"><h3 class="h5">Biztonságosan az iskolába</h3><ol><li>Töltsd le és másold be az alapszöveget!</li><li>A dokumentum címe legyen <code>h1</code>, a nagyobb részek címei <code>h2</code> elemek!</li><li>Minden önálló gondolat kerüljön külön <code>p</code> elembe!</li><li>A találkozási pont három adatát egy bekezdésen belül, indokolt <code>br</code> sortörésekkel jelenítsd meg!</li><li>Ne használj több szóközt vagy több <code>br</code> elemet elrendezéshez!</li><li>A gondolkodtató kérdésre írj saját, legalább kétmondatos választ egy új bekezdésben!</li></ol><p class="mb-0"><strong>Ha hamarabb elkészülsz:</strong> válassz egy rövidebb kiegészítő szöveget, és azt is alakítsd szabályos HTML-tartalommá!</p></div></div>
 
       <h2 class="mt-5">10. Ellenőrizd magad!</h2>
       <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>1.</strong> Hogyan kezeli a böngésző az egymás utáni fehértereket?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>2.</strong> Mire használjuk a <code>p</code> elemet?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>3.</strong> Mikor indokolt a <code>br</code> használata?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>4.</strong> Miért nem használunk több <code>br</code> elemet térköz készítésére?</p></div></div>

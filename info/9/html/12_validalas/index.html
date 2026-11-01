@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML-validálás és hibakeresés</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>code{color:#b02a37}pre{background:#212529;color:#f8f9fa;padding:1rem;border-radius:.5rem;overflow-x:auto}pre code{color:inherit}</style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4"><a class="btn btn-secondary btn-lg" href="../index.html">Vissza</a></div>
+      <h1 class="text-center mb-4">12. HTML-validálás és hibakeresés</h1>
+      <p class="lead text-center mb-4">Nem találgatunk: módszeresen megkeressük, értelmezzük és javítjuk a HTML-hibákat.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5"><span class="badge text-bg-primary fs-6">ICDL Webszerkesztés</span><span class="badge text-bg-success fs-6">Ágazati alapvizsga</span><span class="badge text-bg-secondary fs-6">DevTools</span></div>
+
+      <div class="alert alert-primary"><h2 class="h4">Mit fogsz megtanulni?</h2><ul class="mb-0"><li>mit jelent a HTML validálása,</li><li>miért jelenhet meg egy hibás oldal mégis a böngészőben,</li><li>hogyan használjuk a W3C HTML Checkert,</li><li>hogyan értelmezzük az első valódi hibát,</li><li>hogyan vizsgáljuk meg az oldalt a Chrome DevTools segítségével,</li><li>mi a különbség a forrásfájl és a böngésző által felépített DOM között,</li><li>hogyan ellenőrizzük a fájlutakat és hivatkozásokat.</li></ul></div>
+
+      <div class="card border-success mt-4"><div class="card-body"><h2 class="h4">Hibajavító műhely</h2><p>Egy szándékosan elrontott miniwebhelyet javítunk ki. A feladat nem új oldal készítése, hanem a hibák módszeres feltárása.</p><a class="btn btn-success" href="../forrasok/12_validalas_kezdofajlok.zip" download>Kezdőfájlok letöltése</a></div></div>
+
+      <h2 class="mt-5">1. Mit jelent a validálás?</h2>
+      <p>A validálás során egy ellenőrzőprogram összeveti a dokumentum jelölőkódját a HTML szabályaival. Segít megtalálni például a hibás egymásba ágyazást, a hiányzó kötelező attribútumot, a rossz helyen lévő elemet vagy az ismétlődő azonosítót.</p>
+      <div class="alert alert-warning"><strong>A „megjelenik” nem ugyanaz, mint a „helyes”.</strong> A böngészők sok hibát megpróbálnak automatikusan kijavítani, ezért egy szabálytalan oldal is látszólag működhet.</div>
+
+      <h2 class="mt-5">2. Mit nem bizonyít a validátor?</h2>
+      <p>A hibamentes validálás fontos, de nem jelenti automatikusan azt, hogy az oldal tartalmilag jó, könnyen használható vagy minden hivatkozása működik.</p>
+      <div class="table-responsive"><table class="table table-bordered"><thead class="table-light"><tr><th>Validátor segíthet</th><th>Külön is ellenőrizni kell</th></tr></thead><tbody><tr><td>HTML-szintaxis, elemkapcsolatok, kötelező attribútumok</td><td>Szöveg helyessége, címsorok értelmes sorrendje</td></tr><tr><td>Ismétlődő <code>id</code> értékek</td><td>Minden belső és külső hivatkozás működése</td></tr><tr><td>Hibásan egymásba ágyazott elemek</td><td>Képek tényleges betöltése és az <code>alt</code> minősége</td></tr></tbody></table></div>
+
+      <h2 class="mt-5">3. A W3C HTML Checker használata</h2>
+      <ol><li>Mentsd el az ellenőrizendő HTML-fájlt!</li><li>Nyisd meg a <a href="https://validator.w3.org/nu/" target="_blank" rel="noopener">W3C HTML Checkert (új lapon)</a>!</li><li>Válaszd a fájlfeltöltés lehetőségét, majd töltsd fel a HTML-fájlt!</li><li>Indítsd el az ellenőrzést!</li><li>Mindig a lista elején található hibával kezdd a javítást!</li><li>Mentsd a módosítást, majd ellenőrizd újra a fájlt!</li></ol>
+      <p>Egy korai szerkezeti hiba sok további üzenetet okozhat. Ha az első hibát kijavítod, több későbbi jelzés magától eltűnhet.</p>
+
+      <h2 class="mt-5">4. Hiba, figyelmeztetés, információ</h2>
+      <ul><li><strong>Error:</strong> szabálytalanság, amelyet javítani kell.</li><li><strong>Warning:</strong> valószínű probléma vagy kerülendő megoldás; értelmezni kell.</li><li><strong>Info:</strong> kiegészítő tájékoztatás.</li></ul>
+      <p>Ne csak az üzenet színét nézd! Olvasd el a megjelölt sort és az üzenetben szereplő elem nevét is.</p>
+
+      <h2 class="mt-5">5. Gyakori szerkezeti hibák</h2>
+      <div class="table-responsive"><table class="table table-bordered align-middle"><thead class="table-light"><tr><th>Hibás részlet</th><th>Probléma</th></tr></thead><tbody><tr><td><code>&lt;p&gt;Fontos &lt;strong&gt;szöveg&lt;/p&gt;</code></td><td>A <code>strong</code> nincs lezárva a bekezdés vége előtt.</td></tr><tr><td><code>&lt;img src="kep.svg"&gt;</code></td><td>Hiányzik az <code>alt</code> attribútum.</td></tr><tr><td><code>&lt;h1&gt;Cím&lt;/h2&gt;</code></td><td>A nyitó és záró tag nem egyezik.</td></tr><tr><td><code>id="adat"</code> kétszer</td><td>Az <code>id</code> értékének egyedinek kell lennie az oldalon.</td></tr><tr><td><code>&lt;tr&gt;</code> a <code>table</code> elemen kívül</td><td>A táblázatsor rossz szülőelemben van.</td></tr></tbody></table></div>
+
+      <h2 class="mt-5">6. A Chrome DevTools megnyitása</h2>
+      <ul><li>Jobb kattintás egy elemen → <strong>Vizsgálat / Inspect</strong>.</li><li>Windows és Linux: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>.</li><li>macOS: <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>C</kbd>.</li></ul>
+      <p>Az Elements panelben kiválaszthatod a böngészőben megjelenő elemet, megvizsgálhatod a DOM-beli helyét, attribútumait és később a rá vonatkozó CSS-szabályokat.</p>
+
+      <h2 class="mt-5">7. Forráskód és DOM</h2>
+      <p>A HTML-fájl az általad mentett <strong>forráskód</strong>. A böngésző ebből felépíti a <strong>DOM</strong>-ot, vagyis a dokumentum értelmezett faszerkezetét. Hibás HTML esetén a böngésző a DOM felépítése közben módosíthatja a szerkezetet.</p>
+      <div class="alert alert-danger"><strong>A DevToolsban végzett módosítás nem menti át a HTML-fájlt.</strong> Frissítéskor általában eltűnik. A végleges javítást mindig a VS Code-ban kell elvégezni és elmenteni.</div>
+
+      <h2 class="mt-5">8. Hibás fájlutak keresése</h2>
+      <p>Ha egy kép nem jelenik meg vagy egy link nem működik:</p>
+      <ol><li>ellenőrizd a fájl és a mappa pontos nevét;</li><li>figyelj a kis- és nagybetűkre;</li><li>vizsgáld meg, melyik fájlból indul az útvonal;</li><li>ellenőrizd, szükséges-e almappa vagy <code>../</code>;</li><li>nyisd meg a DevTools Console vagy Network paneljét, és keresd a piros, például 404-es hibát.</li></ol>
+
+      <h2 class="mt-5">9. Javasolt hibakeresési sorrend</h2>
+      <ol><li>Mentsd a fájlt.</li><li>Nézd meg böngészőben, és fogalmazd meg pontosan a hibajelenséget.</li><li>Ellenőrizd a VS Code-ban a problémás rész környezetét.</li><li>Futtasd a HTML-validátort.</li><li>Az első hiba javítása után validálj újra.</li><li>Próbáld ki külön a képeket és hivatkozásokat.</li><li>Használd a DevToolst a DOM és a betöltési hibák vizsgálatához.</li><li>Frissítsd az oldalt, és ellenőrizd a végleges eredményt.</li></ol>
+
+      <h2 class="mt-5">10. Önálló hibajavító feladat</h2>
+      <div class="card border-primary mb-4"><div class="card-body"><ol><li>Töltsd le és csomagold ki a kezdőfájlokat!</li><li>Nyisd meg a <code>hibas_oldal.html</code> fájlt böngészőben és VS Code-ban!</li><li>Írd le legalább három észlelt hibajelenséget!</li><li>Ellenőrizd a fájlt a W3C HTML Checkerrel!</li><li>Javítsd a hibákat mindig az első üzenettől indulva!</li><li>Ellenőrizd a képet és a két hivatkozást!</li><li>A DevToolsban ideiglenesen módosítsd a főcímet, majd frissítsd az oldalt! Fogalmazd meg, mi történt.</li><li>Addig dolgozz, amíg a validátor nem jelez HTML-hibát, és minden helyi hivatkozás működik!</li></ol><p class="mb-0"><strong>Beadandó:</strong> a javított projektmappa és a kitöltött <code>hibanaplo.txt</code>.</p></div></div>
+
+      <h2 class="mt-5">11. ICDL-mini – 12 perc</h2>
+      <div class="card border-danger mb-4"><div class="card-body"><p><strong>Segédeszköz nélkül javítsd a tanár által kijelölt másolatot!</strong></p><ol><li>Javítsd a dokumentum nyelvi beállítását és karakterkódolását!</li><li>Állítsd helyre a címsorok helyes nyitó és záró tagjeit!</li><li>Javítsd a hibás relatív hivatkozást!</li><li>Adj a képhez megfelelő alternatív szöveget!</li><li>Mentsd a fájlt, majd ellenőrizd böngészőben!</li></ol></div></div>
+
+      <h2 class="mt-5">12. Ellenőrizd magad!</h2>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>1.</strong> Miért jelenhet meg egy hibás HTML-oldal a böngészőben?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>2.</strong> Melyik validátorüzenettel érdemes kezdeni a javítást?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>3.</strong> Mi a különbség a HTML-forrás és a DOM között?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>4.</strong> Miért tűnik el a DevToolsban végzett változtatás frissítéskor?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>5.</strong> Milyen lépésekkel keresnél meg egy hibás képútvonalat?</p></div></div>
+      <div class="alert alert-success mt-4"><strong>Összefoglalás:</strong> a validátor a HTML szabályosságát, a DevTools a böngésző által felépített DOM-ot és a betöltési folyamatot segít vizsgálni. A végleges javítást mindig a forrásfájlban végezzük el.</div>
+      <div class="d-flex justify-content-between gap-3 mt-5"><a class="btn btn-outline-secondary" href="../11_tablazatok/index.html">← 11. Táblázatok</a><a class="btn btn-secondary" href="../index.html">Tartalomjegyzék</a><a class="btn btn-outline-primary" href="../13_szemantikus_szerkezet/index.html">13. Szemantikus szerkezet →</a></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Szemantikus HTML-oldalszerkezet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>code{color:#b02a37}pre{background:#212529;color:#f8f9fa;padding:1rem;border-radius:.5rem;overflow-x:auto}pre code{color:inherit}.structure span{display:block;border:2px solid #6c757d;border-radius:.4rem;padding:.55rem;margin:.4rem;background:#f8f9fa}.structure .inner{margin-left:1.5rem;background:#e9f5ff}</style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4"><a class="btn btn-secondary btn-lg" href="../index.html">Vissza</a></div>
+      <h1 class="text-center mb-4">13. Szemantikus HTML-oldalszerkezet</h1>
+      <p class="lead text-center mb-4">A böngésző és az olvasó számára is érthetően nevezzük meg az oldal nagy tartalmi egységeit.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5"><span class="badge text-bg-primary fs-6">ICDL Webszerkesztés</span><span class="badge text-bg-success fs-6">Ágazati alapvizsga</span><span class="badge text-bg-secondary fs-6">HTML5</span></div>
+
+      <div class="alert alert-primary"><h2 class="h4">Mit fogsz megtanulni?</h2><ul class="mb-0"><li>mit jelent a szemantikus HTML,</li><li>mire használjuk a <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>aside</code> és <code>footer</code> elemet,</li><li>hogyan kapcsolódik a <code>figure</code> és a <code>figcaption</code> egy képhez,</li><li>mikor indokolt a <code>div</code> és a <code>span</code>,</li><li>hogyan alakítunk át egy működő, de jelentés nélküli szerkezetet.</li></ul></div>
+
+      <div class="card border-success mt-4"><div class="card-body"><h2 class="h4">Gyakorlóprojekt</h2><p>Egy digitális alkotóműhely weboldalának tartalmát rendezzük szemantikus oldalszerkezetbe.</p><a class="btn btn-success" href="../forrasok/13_szemantikus_szerkezet_kezdofajlok.zip" download>Kezdőfájlok letöltése</a></div></div>
+
+      <h2 class="mt-5">1. Mit jelent a szemantika?</h2>
+      <p>A szemantika jelentést jelent. A <code>div</code> csak általános tároló, a <code>nav</code> viszont azt is közli, hogy navigációt tartalmaz. A szemantikus elemek segíthetik a kód olvasását, a keresőket és a segítő technológiákat.</p>
+      <div class="row g-3"><div class="col-md-6"><div class="card h-100 border-danger"><div class="card-body"><h3 class="h5">Kevés jelentés</h3><pre class="mb-0"><code>&lt;div&gt;
+  &lt;div&gt;Menü&lt;/div&gt;
+  &lt;div&gt;Tartalom&lt;/div&gt;
+&lt;/div&gt;</code></pre></div></div></div><div class="col-md-6"><div class="card h-100 border-success"><div class="card-body"><h3 class="h5">Beszédes szerkezet</h3><pre class="mb-0"><code>&lt;header&gt;...&lt;/header&gt;
+&lt;nav&gt;...&lt;/nav&gt;
+&lt;main&gt;...&lt;/main&gt;
+&lt;footer&gt;...&lt;/footer&gt;</code></pre></div></div></div></div>
+
+      <h2 class="mt-5">2. Az oldal fő szerkezete</h2>
+      <div class="structure"><span><code>header</code> – bevezető fejléc</span><span><code>nav</code> – fontos navigáció</span><span><code>main</code> – az oldal egyedi fő tartalma<span class="inner"><code>section</code> vagy <code>article</code></span><span class="inner"><code>aside</code> – kapcsolódó kiegészítés</span></span><span><code>footer</code> – lábléc</span></div>
+      <pre><code>&lt;body&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+  &lt;main&gt;
+    &lt;section&gt;...&lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+
+      <h2 class="mt-5">3. <code>header</code> – fejléc</h2>
+      <p>A <code>header</code> bevezető tartalmat fog össze: például címet, logót, rövid leírást. Nem azonos a láthatatlan <code>head</code> elemmel.</p>
+      <pre><code>&lt;header&gt;
+  &lt;h1&gt;Digitális alkotóműhely&lt;/h1&gt;
+  &lt;p&gt;Programozás, robotika és webfejlesztés.&lt;/p&gt;
+&lt;/header&gt;</code></pre>
+
+      <h2 class="mt-5">4. <code>nav</code> – navigáció</h2>
+      <p>A <code>nav</code> az oldal vagy a webhely fontos navigációs hivatkozásait tartalmazza. Gyakran számozatlan listával együtt használjuk.</p>
+      <pre><code>&lt;nav aria-label="Fő navigáció"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="index.html"&gt;Kezdőlap&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="programok.html"&gt;Programok&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+      <h2 class="mt-5">5. <code>main</code> – fő tartalom</h2>
+      <p>A <code>main</code> az oldal egyedi központi tartalmát fogja össze. Egy oldalon rendszerint egy látható <code>main</code> elem legyen. A minden oldalon ismétlődő fejléc, navigáció és lábléc nem ide kerül.</p>
+
+      <h2 class="mt-5">6. <code>section</code> és <code>article</code></h2>
+      <p>A <code>section</code> egy témához tartozó fejezet. Általában saját címsora van. Az <code>article</code> önállóan is értelmezhető tartalmi egység, például hír, blogbejegyzés vagy programajánló.</p>
+      <pre><code>&lt;section&gt;
+  &lt;h2&gt;Foglalkozásaink&lt;/h2&gt;
+  &lt;article&gt;
+    &lt;h3&gt;Robotika kezdőknek&lt;/h3&gt;
+    &lt;p&gt;Építs és programozz egyszerű robotot!&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/section&gt;</code></pre>
+      <div class="alert alert-info">Ne használj <code>section</code> elemet csak azért, mert „kell még egy doboz”. Ha nincs önálló témája vagy címsora, lehet, hogy egy általános <code>div</code> megfelelőbb.</div>
+
+      <h2 class="mt-5">7. <code>aside</code> – kapcsolódó kiegészítés</h2>
+      <p>Az <code>aside</code> a környező tartalomhoz kapcsolódik, de nem annak központi része: például tipp, fogalommagyarázat vagy kapcsolódó program.</p>
+      <pre><code>&lt;aside&gt;
+  &lt;h2&gt;Tipp&lt;/h2&gt;
+  &lt;p&gt;A foglalkozásra saját fejhallgatót is hozhatsz.&lt;/p&gt;
+&lt;/aside&gt;</code></pre>
+
+      <h2 class="mt-5">8. <code>footer</code> – lábléc</h2>
+      <p>A <code>footer</code> lezáró információkat tartalmazhat: például szerzőt, kapcsolódó hivatkozást vagy frissítési időpontot.</p>
+      <pre><code>&lt;footer&gt;
+  &lt;p&gt;Digitális alkotóműhely – iskolai tanulóprojekt&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+      <h2 class="mt-5">9. Kép és képaláírás</h2>
+      <p>A <code>figure</code> önálló ábrát, képet vagy más illusztrációt foghat össze. A <code>figcaption</code> a hozzá tartozó képaláírás.</p>
+      <pre><code>&lt;figure&gt;
+  &lt;img src="images/robot.svg" alt="Diákok oktatási robotot programoznak"&gt;
+  &lt;figcaption&gt;Robotikai foglalkozás a digitális műhelyben.&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+      <p>Az <code>alt</code> és a képaláírás nem feltétlenül ugyanaz: az alternatív szöveg a kép jelentését helyettesíti, a képaláírás pedig látható kiegészítő információ.</p>
+
+      <h2 class="mt-5">10. <code>div</code> és <code>span</code></h2>
+      <p>A <code>div</code> jelentés nélküli blokk-szintű tároló, a <code>span</code> pedig szövegen belüli általános tároló. Akkor használjuk őket, ha nincs pontosabb szemantikus elem, és később CSS-sel vagy JavaScripttel szeretnénk hivatkozni a részre.</p>
+      <pre><code>&lt;div class="programkartya"&gt;
+  &lt;h3&gt;Webfejlesztés&lt;/h3&gt;
+  &lt;p&gt;Kezdés: &lt;span class="idopont"&gt;15:00&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      <div class="alert alert-warning">A <code>div</code> és <code>span</code> önmagában nem teszi szebbé az oldalt. A megjelenést később CSS adja.</div>
+
+      <h2 class="mt-5">11. Gyakori hibák</h2>
+      <div class="table-responsive"><table class="table table-bordered"><thead class="table-light"><tr><th>Hiba</th><th>Javítás</th></tr></thead><tbody><tr><td>A <code>head</code> és <code>header</code> összekeverése.</td><td>A <code>head</code> metaadat, a <code>header</code> látható tartalmi fejléc.</td></tr><tr><td>Több, egymással versengő <code>main</code>.</td><td>Az oldal egyedi fő tartalmát egyetlen <code>main</code> fogja össze.</td></tr><tr><td>Minden elem <code>div</code>.</td><td>Használj pontosabb szemantikus elemet, ha van.</td></tr><tr><td>Címsor nélküli <code>section</code>.</td><td>Adj értelmes címsort, vagy gondold át, valóban fejezet-e.</td></tr><tr><td>A menü linkjei nem <code>nav</code>-ban vannak.</td><td>A fontos navigációt fogd össze <code>nav</code> elemmel.</td></tr></tbody></table></div>
+
+      <h2 class="mt-5">12. Önálló feladat</h2>
+      <div class="card border-primary mb-4"><div class="card-body"><ol><li>Töltsd le a kezdőfájlokat!</li><li>A meglévő tartalmat rendezd <code>header</code>, <code>nav</code>, <code>main</code> és <code>footer</code> elemekbe!</li><li>A programokat fogd össze egy címsorral rendelkező <code>section</code> elemben!</li><li>Minden program legyen külön <code>article</code>!</li><li>A felszerelési tipp kerüljön <code>aside</code> elembe!</li><li>A képet és képaláírását rendezd <code>figure</code> és <code>figcaption</code> elemekbe!</li><li>Ellenőrizd a címsorhierarchiát és a hivatkozásokat!</li><li>Validáld a kész oldalt!</li></ol><p class="mb-0"><strong>Pluszfeladat:</strong> használj <code>span</code> elemet az időpontok későbbi formázásának előkészítésére!</p></div></div>
+
+      <h2 class="mt-5">13. Ellenőrizd magad!</h2>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>1.</strong> Mi a különbség a <code>head</code> és a <code>header</code> között?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>2.</strong> Mi kerül a <code>main</code> elembe?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>3.</strong> Mikor választanál <code>article</code> elemet?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>4.</strong> Mire szolgál a <code>figcaption</code>?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>5.</strong> Mikor indokolt a <code>div</code> használata?</p></div></div>
+      <div class="alert alert-success mt-4"><strong>Összefoglalás:</strong> a szemantikus elemek megnevezik az oldal tartalmi szerepeit. A <code>div</code> és <code>span</code> általános tároló, ezért csak akkor használjuk őket, ha nincs pontosabb jelentésű elem.</div>
+      <div class="d-flex justify-content-between gap-3 mt-5"><a class="btn btn-outline-secondary" href="../12_validalas/index.html">← 12. Validálás</a><a class="btn btn-secondary" href="../index.html">Tartalomjegyzék</a><span></span></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+ROBOTIKA SZAKKÖR – NYÍLT NAP
+
+FŐOLDAL SZÖVEGE
+
+Ismerd meg a robotika szakkör munkáját!
+
+A foglalkozásokon programozható eszközökkel, érzékelőkkel és egyszerű oktatási robotokkal dolgozunk. A nyílt napon az érdeklődők rövid feladatokon keresztül próbálhatják ki a szakkör legérdekesebb eszközeit.
+
+Nem szükséges előzetes programozási tapasztalat. A legfontosabb a kíváncsiság és az együttműködés.
+
+A nyílt nap célja
+
+A résztvevők megismerik a robotok irányításának alapjait, és közösen oldanak meg egy rövid programozási feladatot.
+
+Hivatkozásszöveg a részletek oldalára: A robotikaszakkör részletes tudnivalói
+
+RÉSZLETEK OLDALÁNAK SZÖVEGE
+
+Robotikaszakkör – részletes tudnivalók
+
+Időpont és helyszín
+
+Időpont: csütörtök 15:00–16:30.
+Helyszín: informatika szaktanterem.
+Szükséges felszerelés: füzet és íróeszköz.
+
+Házirend
+
+A résztvevők párokban dolgoznak. Az eszközöket csak tanári engedéllyel szabad bekapcsolni. A foglalkozás végén minden alkatrészt vissza kell tenni a kijelölt helyére.
+
+Külső hivatkozás címe: https://microbit.org/
+Javasolt hivatkozásszöveg: A micro:bit hivatalos weboldala
+
+Visszahivatkozás szövege: Vissza a robotikaszakkör főoldalára

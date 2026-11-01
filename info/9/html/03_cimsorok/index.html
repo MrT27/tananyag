@@ -23,6 +23,7 @@
         <span class="badge text-bg-primary fs-6">ICDL Webszerkesztés</span>
         <span class="badge text-bg-success fs-6">Ágazati alapvizsga</span>
         <span class="badge text-bg-secondary fs-6">HTML</span>
+        <span class="badge text-bg-warning fs-6">Jelenségalapú hét: közlekedés</span>
       </div>
 
       <div class="alert alert-primary">
@@ -70,15 +71,15 @@
       </ul>
       <div class="card mb-3">
         <div class="card-body">
-          <h3 class="h5">Példa egy iskolai újság szerkezetére</h3>
-          <pre class="mb-0"><code>&lt;h1&gt;Iskolai újság&lt;/h1&gt;
+          <h3 class="h5">Példa egy közlekedési tájékoztató szerkezetére</h3>
+          <pre class="mb-0"><code>&lt;h1&gt;Biztonságosan az iskolába&lt;/h1&gt;
 
-&lt;h2&gt;Iskolai hírek&lt;/h2&gt;
-&lt;h3&gt;Megújult a könyvtár&lt;/h3&gt;
-&lt;h3&gt;Elindult a diákönkormányzati választás&lt;/h3&gt;
+&lt;h2&gt;Gyalogos közlekedés&lt;/h2&gt;
+&lt;h3&gt;Biztonságos átkelés az úttesten&lt;/h3&gt;
+&lt;h3&gt;Láthatóság sötétben&lt;/h3&gt;
 
-&lt;h2&gt;Sport&lt;/h2&gt;
-&lt;h3&gt;Győzött a kézilabdacsapat&lt;/h3&gt;</code></pre>
+&lt;h2&gt;Kerékpáros közlekedés&lt;/h2&gt;
+&lt;h3&gt;A kerékpár ellenőrzése indulás előtt&lt;/h3&gt;</code></pre>
         </div>
       </div>
 
@@ -95,35 +96,35 @@
       <p>A címsorszint a tartalom jelentését írja le. A betűméretet, színt és betűtípust majd CSS-sel változtatjuk meg.</p>
 
       <h2 class="mt-5">6. Nyitó és záró tag</h2>
-      <pre><code>&lt;h1&gt;Az első weboldalam&lt;/h1&gt;</code></pre>
+      <pre><code>&lt;h1&gt;Biztonságosan az iskolába&lt;/h1&gt;</code></pre>
       <div class="table-responsive">
         <table class="table table-bordered align-middle">
           <thead class="table-light"><tr><th>Rész</th><th>Példa</th><th>Feladata</th></tr></thead>
           <tbody>
             <tr><td>Nyitó tag</td><td><code>&lt;h1&gt;</code></td><td>Jelzi a címsorelem kezdetét és szintjét.</td></tr>
-            <tr><td>Tartalom</td><td><code>Az első weboldalam</code></td><td>A címsor szövege.</td></tr>
+            <tr><td>Tartalom</td><td><code>Biztonságosan az iskolába</code></td><td>A címsor szövege.</td></tr>
             <tr><td>Záró tag</td><td><code>&lt;/h1&gt;</code></td><td>Jelzi a címsorelem végét.</td></tr>
           </tbody>
         </table>
       </div>
       <p>Ha megváltoztatod a címsor szintjét, a nyitó és a záró tagben is ugyanazt a számot kell használnod:</p>
-      <pre><code>&lt;h2&gt;A hobbijaim&lt;/h2&gt;</code></pre>
+      <pre><code>&lt;h2&gt;A biztonságos útvonal&lt;/h2&gt;</code></pre>
 
       <h2 class="mt-5">7. Címsor hozzáadása az oldalhoz</h2>
       <p>Nyisd meg az előző órán elkészített <code>index.html</code> fájlt, és módosítsd a <code>body</code> részt:</p>
       <pre><code>&lt;body&gt;
-  &lt;h1&gt;Az első weboldalam&lt;/h1&gt;
+  &lt;h1&gt;Biztonságosan az iskolába&lt;/h1&gt;
 &lt;/body&gt;</code></pre>
       <ol>
         <li>Mentsd el a fájlt!</li>
         <li>Frissítsd az oldalt a böngészőben!</li>
-        <li>Írd át a címsort saját főcímre!</li>
-        <li>Adj hozzá két nagyobb részt <code>h2</code> elemmel!</li>
+        <li>Ellenőrizd, hogy a főcím az egész közlekedési oldal témáját megnevezi!</li>
+        <li>Adj hozzá két közlekedési témájú részt <code>h2</code> elemmel!</li>
       </ol>
       <pre><code>&lt;body&gt;
-  &lt;h1&gt;Bemutatkozó oldalam&lt;/h1&gt;
-  &lt;h2&gt;Rólam&lt;/h2&gt;
-  &lt;h2&gt;A hobbijaim&lt;/h2&gt;
+  &lt;h1&gt;Biztonságosan az iskolába&lt;/h1&gt;
+  &lt;h2&gt;A biztonságos útvonal&lt;/h2&gt;
+  &lt;h2&gt;Fenntarthatóbb utazás&lt;/h2&gt;
 &lt;/body&gt;</code></pre>
 
       <h2 class="mt-5">8. Címsorok és keresők</h2>
@@ -134,7 +135,7 @@
       <h2 class="mt-5">9. Címsorok tartalomkezelő rendszerben</h2>
       <p>Sok webhelyet tartalomkezelő rendszerrel, például WordPress segítségével szerkesztenek. Ilyenkor a szerkesztőfelület legördülő menüjéből is kiválasztható, hogy egy szöveg bekezdés, <code>h2</code> vagy <code>h3</code> címsor legyen.</p>
       <p>A tartalomkezelő a háttérben ugyanúgy HTML-kódot készít:</p>
-      <pre><code>&lt;h2&gt;Az Essential Graphics panel használata&lt;/h2&gt;</code></pre>
+      <pre><code>&lt;h2&gt;Biztonságos kerékpározás az iskolába&lt;/h2&gt;</code></pre>
       <div class="alert alert-warning">
         <strong>Fontos szakmai szabály:</strong> ne változtass egy alcímet <code>h1</code>-re csak azért, mert nagyobb betűt vagy jobb keresőtalálatot szeretnél! Ha a cikk vagy az oldal címe már <code>h1</code>, a cikken belüli nagyobb részekhez <code>h2</code>, azok alrészeihez <code>h3</code> tartozik.
       </div>
@@ -142,7 +143,7 @@
 
       <h2 class="mt-5">10. Címsorok vizsgálata valódi weboldalon</h2>
       <ol>
-        <li>Nyiss meg egy egyszerű híroldalt vagy iskolai weboldalt!</li>
+        <li>Nyiss meg egy közlekedési vállalat, kerékpáros szervezet vagy közlekedésbiztonsági program weboldalát!</li>
         <li>Kattints jobb gombbal az egyik címsorra, majd válaszd a <strong>Vizsgálat</strong> lehetőséget!</li>
         <li>Nézd meg, milyen címsorelemet használtak!</li>
         <li>Keress további <code>h1</code>, <code>h2</code> és <code>h3</code> elemeket!</li>
@@ -163,16 +164,16 @@
       </div>
 
       <h2 class="mt-5">12. Közös gyakorlás</h2>
-      <div class="card mb-3"><div class="card-body"><h3 class="h5">1. feladat – Állítsd össze a hierarchiát!</h3><p>Rendelj megfelelő címsorszintet a következőkhöz:</p><ul class="mb-0"><li>Állatvilág magazin</li><li>Madarak</li><li>Emlősök</li><li>A vörösbegy</li><li>A barna medve</li></ul></div></div>
-      <div class="card mb-3"><div class="card-body"><h3 class="h5">2. feladat – Javítsd a kódot!</h3><pre class="mb-2"><code>&lt;h2&gt;Sporthírek&lt;/h3&gt;
-&lt;h1&gt;Labdarúgás&lt;/h1&gt;
-&lt;h1&gt;Kézilabda&lt;/h1&gt;</code></pre><p class="mb-0">Az oldal témája Sporthírek, a labdarúgás és a kézilabda pedig ezen belüli fejezetek.</p></div></div>
-      <details class="border rounded p-3 mb-4"><summary class="fw-semibold">Tanári megoldás</summary><p class="mt-3 mb-2"><strong>1. feladat:</strong> <code>h1</code>: Állatvilág magazin; <code>h2</code>: Madarak és Emlősök; <code>h3</code>: A vörösbegy és A barna medve.</p><pre class="mb-0"><code>&lt;h1&gt;Sporthírek&lt;/h1&gt;
-&lt;h2&gt;Labdarúgás&lt;/h2&gt;
-&lt;h2&gt;Kézilabda&lt;/h2&gt;</code></pre></details>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">1. feladat – Állítsd össze a hierarchiát!</h3><p>Rendelj megfelelő címsorszintet a következőkhöz:</p><ul class="mb-0"><li>Közlekedés az iskola körül</li><li>Gyalogosan</li><li>Kerékpárral</li><li>Átkelés az úttesten</li><li>A kerékpár kötelező felszerelései</li></ul></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">2. feladat – Javítsd a kódot!</h3><pre class="mb-2"><code>&lt;h2&gt;Biztonságosan az iskolába&lt;/h3&gt;
+&lt;h1&gt;Gyalogos közlekedés&lt;/h1&gt;
+&lt;h1&gt;Kerékpáros közlekedés&lt;/h1&gt;</code></pre><p class="mb-0">Az oldal témája a biztonságos iskolába járás, a gyalogos és a kerékpáros közlekedés pedig ezen belüli fejezetek.</p></div></div>
+      <details class="border rounded p-3 mb-4"><summary class="fw-semibold">Tanári megoldás</summary><p class="mt-3 mb-2"><strong>1. feladat:</strong> <code>h1</code>: Közlekedés az iskola körül; <code>h2</code>: Gyalogosan és Kerékpárral; <code>h3</code>: Átkelés az úttesten és A kerékpár kötelező felszerelései.</p><pre class="mb-0"><code>&lt;h1&gt;Biztonságosan az iskolába&lt;/h1&gt;
+&lt;h2&gt;Gyalogos közlekedés&lt;/h2&gt;
+&lt;h2&gt;Kerékpáros közlekedés&lt;/h2&gt;</code></pre></details>
 
       <h2 class="mt-5">13. Önálló feladat</h2>
-      <div class="card border-primary mb-4"><div class="card-body"><h3 class="h5">Saját tartalomjegyzék</h3><p>Bővítsd az előző órán készített oldaladat!</p><ol><li>Adj az oldalnak egyetlen <code>h1</code> főcímet!</li><li>Készíts három <code>h2</code> fejezetcímet!</li><li>Legalább az egyik fejezethez adj két <code>h3</code> alcímet!</li><li>Ügyelj a nyitó és záró tagekre!</li><li>Mentsd el, frissítsd a böngészőt, és ellenőrizd az eredményt!</li></ol><p class="mb-0"><strong>Lehetséges témák:</strong> kedvenc játékok, sportok, filmek, ételek vagy utazási célpontok.</p></div></div>
+      <div class="card border-primary mb-4"><div class="card-body"><h3 class="h5">A közlekedési oldal váza</h3><p>Készítsd elő a következő két órán továbbfejlesztett oldalt!</p><ol><li>Az oldal egyetlen <code>h1</code> főcíme legyen: Biztonságosan az iskolába!</li><li>Készíts legalább három <code>h2</code> fejezetcímet!</li><li>Legalább az egyik fejezethez adj két <code>h3</code> alcímet!</li><li>A címekből derüljön ki, hogy gyalogos, kerékpáros vagy közösségi közlekedésről van szó!</li><li>Ügyelj a nyitó és záró tagekre, majd ellenőrizd a címsorhierarchiát!</li></ol></div></div>
 
       <h2 class="mt-5">14. Ellenőrizd magad!</h2>
       <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>1.</strong> Hány címsorszint létezik a HTML-ben?</p></div></div>

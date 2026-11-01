@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Számozatlan és számozott listák</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>code{color:#b02a37}pre{background:#212529;color:#f8f9fa;padding:1rem;border-radius:.5rem;overflow-x:auto}pre code{color:inherit}</style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <div class="mb-4"><a class="btn btn-secondary btn-lg" href="../index.html">Vissza</a></div>
+      <h1 class="text-center mb-4">10. Számozatlan és számozott listák</h1>
+      <p class="lead text-center mb-4">Megtanuljuk, hogyan jelölünk összetartozó felsorolásokat és sorrendhez kötött lépéseket HTML-ben.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5"><span class="badge text-bg-primary fs-6">ICDL Webszerkesztés</span><span class="badge text-bg-success fs-6">Ágazati alapvizsga</span><span class="badge text-bg-secondary fs-6">HTML</span></div>
+
+      <div class="alert alert-primary"><h2 class="h4">Mit fogsz megtanulni?</h2><ul class="mb-0"><li>mikor használunk számozatlan és mikor számozott listát,</li><li>hogyan épül fel a <code>ul</code>, <code>ol</code> és <code>li</code> elem,</li><li>hogyan választunk listatípust a tartalom jelentése alapján,</li><li>hogyan készítünk egymásba ágyazott listát,</li><li>hogyan használható a <code>start</code> és a <code>reversed</code> attribútum,</li><li>milyen gyakori szerkezeti hibákat kell elkerülni.</li></ul></div>
+
+      <div class="card border-success mt-4"><div class="card-body"><h2 class="h4">Gyakorlóprojekt</h2><p>Egy formázatlan receptoldal hozzávalóit számozatlan, elkészítési lépéseit pedig számozott listává alakítjuk.</p><a class="btn btn-success" href="../forrasok/10_listak_kezdofajlok.zip" download>Kezdőfájlok letöltése</a></div></div>
+
+      <h2 class="mt-5">1. Mikor használunk listát?</h2>
+      <p>Listát akkor használunk, amikor több, egymással összetartozó elemet szeretnénk csoportként megjeleníteni. A lista HTML-szerkezete a kapcsolatot is közli, nem csupán felsorolásjelet vagy sorszámot rajzol.</p>
+      <div class="table-responsive"><table class="table table-bordered align-middle"><thead class="table-light"><tr><th>Kérdés</th><th>Elem</th><th>Példák</th></tr></thead><tbody><tr><td>Megváltozik a jelentés, ha felcseréljük az elemeket?</td><td>Igen: <code>ol</code></td><td>Recept lépései, helyezési sorrend, használati utasítás.</td></tr><tr><td>Az elemek sorrendje nem lényeges?</td><td>Igen: <code>ul</code></td><td>Hozzávalók, felszerelések, kedvelt tantárgyak.</td></tr></tbody></table></div>
+
+      <h2 class="mt-5">2. Számozatlan lista: <code>ul</code></h2>
+      <p>A <code>ul</code> az angol <em>unordered list</em> rövidítése. Az ágazati alapvizsga feladatai ezt <strong>számozatlan listának</strong> nevezik; a rendezetlen lista elnevezéssel is találkozhatsz. Akkor használjuk, ha az elemek sorrendjének megváltoztatása nem módosítja érdemben a jelentést.</p>
+      <pre><code>&lt;h2&gt;Hozzávalók&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;liszt&lt;/li&gt;
+  &lt;li&gt;tojás&lt;/li&gt;
+  &lt;li&gt;tej&lt;/li&gt;
+  &lt;li&gt;szódavíz&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      <div class="border rounded bg-light p-3"><h3 class="h5">Hozzávalók</h3><ul class="mb-0"><li>liszt</li><li>tojás</li><li>tej</li><li>szódavíz</li></ul></div>
+
+      <h2 class="mt-5">3. Számozott lista: <code>ol</code></h2>
+      <p>Az <code>ol</code> az angol <em>ordered list</em> rövidítése. Az ágazati alapvizsga feladatai ezt <strong>számozott listának</strong> nevezik; a rendezett lista elnevezéssel is találkozhatsz. Olyan esetben használjuk, amikor a sorrend a tartalom része.</p>
+      <pre><code>&lt;h2&gt;Elkészítés&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Keverd össze az alapanyagokat.&lt;/li&gt;
+  &lt;li&gt;Pihentesd a tésztát.&lt;/li&gt;
+  &lt;li&gt;Forrósítsd fel a serpenyőt.&lt;/li&gt;
+  &lt;li&gt;Süsd meg a palacsintákat.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+      <div class="border rounded bg-light p-3"><h3 class="h5">Elkészítés</h3><ol class="mb-0"><li>Keverd össze az alapanyagokat.</li><li>Pihentesd a tésztát.</li><li>Forrósítsd fel a serpenyőt.</li><li>Süsd meg a palacsintákat.</li></ol></div>
+
+      <h2 class="mt-5">4. Listaelem: <code>li</code></h2>
+      <p>Minden listaelem <code>li</code> elembe kerül. Az <code>li</code> az angol <em>list item</em> rövidítése.</p>
+      <pre><code>&lt;ul&gt;
+  &lt;li&gt;Első listaelem&lt;/li&gt;
+  &lt;li&gt;Második listaelem&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      <div class="alert alert-warning">A <code>ul</code> vagy <code>ol</code> közvetlen gyermekei listaelemek legyenek. Ne írj egyszerű szöveget vagy külön <code>p</code> elemet az <code>li</code> elemek közé!</div>
+
+      <h2 class="mt-5">5. Nem a kinézet dönt</h2>
+      <p>A számozatlan lista rendszerint felsorolásjelekkel, a számozott lista számokkal jelenik meg. A választást azonban nem pusztán a kívánt jelölő, hanem a tartalom jelentése dönti el.</p>
+      <blockquote class="blockquote border-start border-4 border-danger ps-3">„Számokat szeretnék látni, ezért <code>ol</code>-t használok.”</blockquote>
+      <blockquote class="blockquote border-start border-4 border-success ps-3">„A lépések sorrendje számít, ezért <code>ol</code>-t használok.”</blockquote>
+      <p>A felsorolásjelek és számozás megjelenését később CSS-sel is alakíthatjuk.</p>
+
+      <h2 class="mt-5">6. Egymásba ágyazott listák</h2>
+      <p>Egy listaelem további listát is tartalmazhat. A belső listát mindig ahhoz az <code>li</code> elemhez ágyazzuk, amelyhez tartozik.</p>
+      <pre><code>&lt;ul&gt;
+  &lt;li&gt;Gyümölcsök
+    &lt;ul&gt;
+      &lt;li&gt;alma&lt;/li&gt;
+      &lt;li&gt;banán&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Zöldségek&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      <div class="alert alert-info">Az egymásba ágyazott lista új hierarchiaszintet jelent. Csak valódi alárendeltség esetén használd!</div>
+
+      <h2 class="mt-5">7. A számozott lista hasznos attribútumai</h2>
+      <p>A számozás más értékről is indulhat:</p>
+      <pre><code>&lt;ol start="4"&gt;
+  &lt;li&gt;Negyedik lépés&lt;/li&gt;
+  &lt;li&gt;Ötödik lépés&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+      <p>A <code>reversed</code> logikai attribútum visszafelé számoz:</p>
+      <pre><code>&lt;ol reversed&gt;
+  &lt;li&gt;Bronzérem&lt;/li&gt;
+  &lt;li&gt;Ezüstérem&lt;/li&gt;
+  &lt;li&gt;Aranyérem&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+      <p>Kezdő feladatokban általában az alapértelmezett számozás elegendő, de fontos felismerni ezeket az attribútumokat.</p>
+
+      <h2 class="mt-5">8. Miért nem kell <code>br</code> a lista elé?</h2>
+      <p>A videó két <code>br</code> elemmel készít helyet a lista előtt. A címsor, a bekezdés és a lista önálló blokkok, ezért megfelelő HTML-szerkezet mellett nincs szükség mesterséges sortörésekre.</p>
+      <pre><code>&lt;h2&gt;Hozzávalók&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;liszt&lt;/li&gt;
+  &lt;li&gt;tojás&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      <p>A nagyobb térközöket később CSS-sel adjuk meg.</p>
+
+      <h2 class="mt-5">9. Gyakori hibák</h2>
+      <div class="table-responsive"><table class="table table-bordered align-middle"><thead class="table-light"><tr><th>Hiba</th><th>Javítás</th></tr></thead><tbody><tr><td>Azt állítják, hogy a <code>ul</code> ordered list.</td><td>A <code>ul</code> unordered, az <code>ol</code> ordered list.</td></tr><tr><td><code>&lt;ul&gt;alma, banán&lt;/ul&gt;</code></td><td>Minden elem külön <code>li</code> elembe kerüljön!</td></tr><tr><td><code>&lt;li&gt;</code> lista nélkül.</td><td>Az <code>li</code> elemet <code>ul</code> vagy <code>ol</code> elemen belül használd!</td></tr><tr><td>Az elkészítési lépések <code>ul</code> listában vannak.</td><td>Ha a sorrend számít, használj <code>ol</code> elemet!</td></tr><tr><td>Két <code>br</code> készíti a térközt.</td><td>Használj szabályos blokkszerkezetet, később pedig CSS-t!</td></tr></tbody></table></div>
+
+      <h2 class="mt-5">10. Közös gyakorlás</h2>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">1. feladat – <code>ul</code> vagy <code>ol</code>?</h3><p class="mb-0">Válasszatok listatípust: iskolatáska tartalma; számítógép bekapcsolásának lépései; verseny helyezettjei; kedvenc filmek; elsősegélynyújtás lépései.</p></div></div>
+      <div class="card mb-3"><div class="card-body"><h3 class="h5">2. feladat – Javítsd a szerkezetet!</h3><pre class="mb-0"><code>&lt;ol&gt;
+  Liszt
+  &lt;p&gt;Tojás&lt;/p&gt;
+  &lt;li&gt;Tej&lt;/li&gt;
+&lt;/ol&gt;</code></pre></div></div>
+      <details class="border rounded p-3 mb-4"><summary class="fw-semibold">Tanári megoldás</summary><p class="mt-3"><strong>1.</strong> <code>ul</code>: iskolatáska tartalma, kedvenc filmek. <code>ol</code>: bekapcsolási lépések, helyezettek, elsősegélynyújtás lépései.</p><pre class="mb-0"><code>&lt;ul&gt;
+  &lt;li&gt;Liszt&lt;/li&gt;
+  &lt;li&gt;Tojás&lt;/li&gt;
+  &lt;li&gt;Tej&lt;/li&gt;
+&lt;/ul&gt;</code></pre></details>
+
+      <h2 class="mt-5">11. Önálló feladat</h2>
+      <div class="card border-primary mb-4"><div class="card-body"><h3 class="h5">Palacsintarecept listákkal</h3><ol><li>Töltsd le és csomagold ki a kezdőfájlokat!</li><li>A hozzávalók külön bekezdéseit alakítsd egyetlen számozatlan listává!</li><li>Az elkészítés lépéseit alakítsd számozott listává!</li><li>A „tej” listaelemhez készíts belső számozatlan listát két választható helyettesítővel!</li><li>Ne használj <code>br</code> elemet térköz készítésére!</li><li>Ellenőrizd, hogy minden <code>li</code> a megfelelő listán belül található!</li></ol><p class="mb-0"><strong>Pluszfeladat:</strong> készíts külön „Tálalási ötletek” számozatlan listát, majd adj hozzá legalább egy hivatkozást egy korábban tanult <code>a</code> elemmel!</p></div></div>
+
+      <h2 class="mt-5">12. Ellenőrizd magad!</h2>
+      <div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>1.</strong> Mit jelent a <code>ul</code> rövidítés?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>2.</strong> Mikor használunk <code>ol</code> elemet?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>3.</strong> Mi az <code>li</code> elem feladata?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>4.</strong> Hová kell helyezni egy belső listát?</p></div></div><div class="card mb-3"><div class="card-body"><p class="mb-0"><strong>5.</strong> Mire szolgál a <code>start</code> attribútum?</p></div></div>
+      <div class="alert alert-success mt-4"><strong>Összefoglalás:</strong> a <code>ul</code> számozatlan, az <code>ol</code> számozott listát jelöl, elemeik pedig <code>li</code> elemek. A listatípust annak alapján választjuk ki, hogy az elemek sorrendje változtat-e a tartalom jelentésén.</div>
+      <div class="d-flex justify-content-between gap-3 mt-5"><a class="btn btn-outline-secondary" href="../09_kattinthato_kepek/index.html">← 9. Képes navigáció</a><a class="btn btn-secondary" href="../index.html">Tartalomjegyzék</a><a class="btn btn-outline-primary" href="../11_tablazatok/index.html">11. Táblázatok →</a></div>
+    </div>
+  </body>
+</html>

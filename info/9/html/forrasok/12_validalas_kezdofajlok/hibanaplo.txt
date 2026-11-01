@@ -1,0 +1,19 @@
+HTML HIBANAPLÓ
+
+Név:
+
+1. hiba vagy hibajelenség:
+Javítás:
+
+2. hiba vagy hibajelenség:
+Javítás:
+
+3. hiba vagy hibajelenség:
+Javítás:
+
+4. hiba vagy hibajelenség:
+Javítás:
+
+Mit tapasztaltál, amikor a DevToolsban módosítottad a főcímet, majd frissítetted az oldalt?
+
+Validálás eredménye a javítás végén:
