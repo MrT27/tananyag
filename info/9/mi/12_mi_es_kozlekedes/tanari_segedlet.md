@@ -1,219 +1,219 @@
-# Tanári segédlet – MI és Google Térkép
-## Honnan tudja a térkép, mikor érek oda?
+# Tanári segédlet – MI a közlekedésben
+## Szövegértéstől az utazástervezésig
 
-**Évfolyam:** 9. osztály  
-**Időtartam:** 45 perc  
-**Kapcsolódás:** közlekedési témahét; hogyan tanul az MI; az adatok szerepe; forráskritika.  
-**Óra jellege:** tanári bemutató, irányított beszélgetés, rövid páros vizsgálat. Külön tanulói munkalap és Gemini-fiók nem szükséges.
+**9. évfolyam · közlekedési témahét · 45 perc**
 
-### Az óra célja
+Az óra sorrendje: **diasor és tokenizálás; közlekedési jelentés feldolgozása a Geminivel; menetrendek vizsgálata; ugyanaz az utazási feladat a Google Térképen.**
 
-A tanulók értsék meg, hogy a gépi tanulás nem csak szöveges chatbotot jelent. A Google Térkép példáján különítsék el a térképi és menetrendi adatokat, az útvonalkeresést és a menetidő előrejelzését. Tudjanak megnevezni tanulási adatokat, valamint egy okot, amiért az előrejelzés eltérhet a valóságtól.
+A segédlet tanári használatra készült. Tanári bemutatóval és közös kérdezéssel végigvezethető, külön diákfiók vagy munkalap nem szükséges.
 
-Ez az óra a korábbi Google Maps-órád folytatása. A nézeteket, a Street View-t, a mentést és a megosztást most csak szükség esetén idézd fel. A hangsúly az indulási idő beállításán és a várható menetidő értelmezésén van. A tokenizálás nem célja ennek az órának.
+## Az óra célja
 
-## Óra előtti előkészítés
+A diákok megismerik a szöveg tokenekre bontásának alapgondolatát, kipróbálják a nyelvi modell információkinyerését, majd összehasonlítják a chatbotot egy célzott utazástervezővel. A fő kérdés: **melyik eszköz milyen feladatra használható, és miből tudjuk, hogy helyes a válasz?**
 
-- Nyisd meg a Google Térképet: https://www.google.com/maps
-- Próbáld ki számítógépen az autós útvonaltervezést Kisújszállás vasútállomás és Debrecen Nagyállomás között. Ellenőrizd a kiválasztott helyeket.
-- Válassz egy következő hétköznapot. Próbáld ki az indulási idő átállítását reggel 7:00-ra és este 21:00-ra. A felület elnevezése és az elérhető beállítás eszközönként eltérhet.
-- Ments képernyőképet a két keresésről arra az esetre, ha az iskolai hálózaton nem működne a bemutató.
-- Próbálj ki egy tömegközlekedési keresést ugyanezekkel az állomásokkal, ugyanarra a kiválasztott napra, 14:00 utáni indulással. Ellenőrzéshez nyisd meg a https://mavplusz.hu/ oldalt.
-- Ne építs arra, hogy a két autós időpont feltétlenül eltérő eredményt ad. Ha nincs különbség, az is értelmezhető eredmény.
+A közlekedési szöveg és a menetrend is szöveges bemenet lehet, de másféle feldolgozást igényel. A tokenizálás önmagában nem magyarázza meg, miért sikerül vagy hibás egy konkrét válasz.
 
-**Szükséges eszköz:** tanári számítógép, projektor, internet. A páros rész tanulói gépekkel is végezhető, de az egész óra megtartható közös kivetítéssel és szóbeli válaszokkal.
+## Előkészítés
 
-## 0–5. perc – Ráhangolás
+Óra előtt nyisd meg:
 
-**Ezt mondd:**
+- A meglévő „MI a szövegelemzésben” diasort.
+- Az Esti Hírlap 2026. október 29-i közlekedési körképét: https://estihirlap.hu/kozlekedesi-korkep-2026-oktober-29-orszagos-budapest/
+- A Geminit: https://gemini.google.com/
+- A feltöltendő kisújszállási menetrendeket.
+- A Google Térképet: https://www.google.com/maps
+- Ellenőrzéshez a MÁVPluszt: https://mavplusz.hu/
 
-> A Google Térkép azt írja, hogy 80 perc múlva odaérek Debrecenbe. Honnan tudhatja ezt, ha még el sem indultam?
+Másold ki előre a cikk törzsszövegét, a címtől a forrásfelsorolásig. A menüket, reklámokat és ajánlott cikkeket hagyd ki. A cikk országos és budapesti híreket, továbbá reggeli, nappali és éjszakai változásokat is tartalmaz. Ez hasznos az időbeli szűrés gyakorlásához. Nem kizárólag reggeli pillanatkép.
 
-Gyűjts néhány választ a táblára. Várható ötletek: távolság, sebesség, útvonal, forgalom, korábbi utazások, GPS.
+A cikk egy adott napon megjelent sajtóösszefoglaló. Az órán a benne szereplő állítások feldolgozását vizsgáljátok, nem tekintitek mai, élő utazási tájékoztatásnak.
 
-**Következő kérdés:**
+A menetrendekből keress ki előre egy ellenőrzött választ ugyanarra az utazási kérdésre, amelyet a Gemininek felteszel. A dátum, a közlekedési nap, az irány és a pontos megálló egyezzen. Készíts képernyőképet vagy jelöld meg a forrás sorát. A Google Térképen is próbáld ki a keresést, és ments képernyőképet tartaléknak.
 
-> Ha az út hossza ugyanannyi, miért tarthat tovább reggel, mint este?
+## 0–10. perc – Diasor: természetes nyelvfeldolgozás és tokenizálás
 
-**Várható válasz:** torlódás, több jármű, lassabb haladás. Ha a diákok időjárást vagy balesetet említenek, fogadd el mint lehetséges befolyásoló tényezőt, de ne állítsd, hogy a bemutatott modell minden ilyen adatot közvetlenül felhasznál.
+### Menet
 
-**Átvezetés:**
+1. A diasor hiányos mondatos feladatával indíts. Kérj több lehetséges folytatást.
+2. Röviden mondd el, hogy a természetes nyelvfeldolgozás szövegekkel és beszéddel kapcsolatos feladatokkal foglalkozik.
+3. Mutasd meg a tokenizálásról szóló diákat.
+4. A sok szövegből tanulást és a lehetséges tévedést foglald össze, a hosszabb beszélgetést hagyd a gyakorlati példákra.
 
-> A térképnek a távolságon kívül azt is meg kell becsülnie, milyen gyorsan tudunk majd haladni. Ebben segíthet a korábbi adatokból tanuló MI.
+### Ezt mondd a tokenizálásnál
 
-## 5–13. perc – Milyen MI van a Google Térképben?
+> A modell a szöveget tokeneknek nevezett darabokkal dolgozza fel. Egy token lehet teljes szó, szórész vagy írásjel. A darabolás a használt tokenizálótól függ. A dián látható szavankénti bontás szemléltető példa.
 
-Írd fel ezt a három kifejezést: **adat – útvonalkeresés – előrejelzés**.
+Ne kérd a Geminitől a saját pontos tokenizálásának kiírását, és ne mutasd a kapott szótagolást valódi tokenizálási eredményként.
 
-### 1. Adat
+### Ezt mondd a folytatás előrejelzésénél
 
-**Magyarázat:**
+> A nyelvi modell a szövegkörnyezet és tanult mintázatok alapján állítja elő a következő tokeneket. A gördülékeny válasz önmagában nem bizonyítja, hogy a benne szereplő adat helyes.
 
-> A térképen szerepelnek utak és megállók. A menetrendben szerepel, hogy egy járatnak mikor kell indulnia. Ezeket az adatokat a rendszer felhasználja.
+A „nem érti, csak mintázatokat keres” megfogalmazás helyett ezt a működésre és ellenőrizhetőségre összpontosító magyarázatot használd.
 
-A tárolt adat önmagában nem MI. A busz 14:35-ös menetrendi indulását nem a nyelvi modell találja ki.
+### Átvezetés
 
-### 2. Útvonalkeresés
+> Nézzük meg, mit tud kezdeni egy ilyen rendszer egy hosszabb, valódi közlekedési jelentéssel!
 
-**Magyarázat:**
+## 10–23. perc – Közlekedési körkép feldolgozása a Geminivel
 
-> A rendszer megkeresi, milyen összeköttetéseken juthatunk el a célhoz. Tömegközlekedésnél számít az indulás, az érkezés és az átszállás is.
+### A forrás átadása
 
-Az útvonalkereséshez hagyományos kereső és optimalizáló algoritmusok is használhatók. Ne nevezd automatikusan MI-nek az összes útvonalkeresést.
+Indíts új beszélgetést. Add át a linket, és ellenőrizd, hogy a Gemini valóban hozzáfért-e a cikkhez. Ha nem, vagy nem egyértelmű, másold be az előkészített törzsszöveget. A puszta link megléte nem bizonyítja, hogy a modell elolvasta az oldalt.
 
-### 3. Előrejelzés gépi tanulással
+### Kezdő utasítás – másolható
 
-**Ezt mondd:**
+> Az alábbi, 2026. október 29-i közlekedési körképből fogok kérdezni. Kizárólag a megadott szövegre támaszkodj. Minden válaszhoz idézz egy rövid bizonyító szövegrészt, vagy nevezd meg a megfelelő alcímet. Figyelj az időpontokra és az irányokra. Ha nincs elég információ, mondd meg, mi hiányzik. Ne egészítsd ki a jelentést kitalált útvonalakkal vagy időadatokkal.
 
-> Sok korábbi utazásból rendelkezésre áll, hogy egy adott útszakaszon, egy adott időpontban mennyi idő alatt haladtak végig a járművek. A modell ezekből összefüggéseket tanul. Új helyzetben a rendelkezésre álló adatok alapján menetidőt becsül.
+A szöveg bemásolása után az alábbiakból négy kérdést válassz. Minden kérdés előtt kérj rövid tanulói tippet, utána együtt keressétek meg a forrásban az ellenőrző részletet.
 
-A Google nyilvános leírása szerint a forgalom előrejelzésében korábbi forgalmi mintázatokat és aktuális forgalmi adatokat is felhasználnak.
+### 1. kérdés – Egy konkrét utas helyzete
 
-**A tanulás bemutatása, egyszerűen:**
+> Október 29-én reggel 8-kor az Örs vezér teréről Gödöllőre indulnék. Milyen változásra kell készülnöm a jelentés alapján?
 
-1. Bemenet: például útszakasz, napszak és forgalmi jellemzők.
-2. Ismert eredmény a tanításkor: a ténylegesen megfigyelt menetidő.
-3. A tanítás során a becslés hibája alapján módosítják a modellt.
-4. A betanított modell új helyzetre is készít becslést.
+**Ellenőrzési szempont:** a cikk szerint a H8/H9 helyett Örs vezér tere és Cinkota között pótlóbusz jár, a H8 Gödöllő és Cinkota között közlekedik. Pontos indulási időt a cikk nem ad; ilyet ne fogadjatok el belőle levezetett adatként.
 
-**Ha megkérdezik a modell nevét:**
+### 2. kérdés – Időbeli csapda
 
-A Google és a DeepMind dokumentált gráfneurális hálózatot alkalmazó forgalom-előrejelzést. A gráf összekapcsolódó elemek hálózata: itt az útszakaszok kapcsolatai is fontosak. Egy torlódás a kapcsolódó utak haladását is befolyásolhatja. A szakkifejezés megtanulását ne kérd számon.
+> Este 22 órakor a 4–6-ossal utaznék. A jelentés szerint már a teljes vonalon éjszakai pótlóbusz jár? Indokold!
 
-**Pontossági megjegyzés neked:** ezek nyilvánosan bemutatott technológiák, nem a Google Térkép teljes jelenlegi rendszerének leírásai. Nem igazolt, hogy egy konkrét kisújszállási busz késését ez a modell becsüli. Az autós menetidő vizsgálatából a diákok nem tudják elkülönítve megmérni az MI hozzájárulását.
+**Ellenőrzési szempont:** a cikkben az éjszakai pótlás kezdete 23:50, tehát a 22 órás időpontra ezt nem szabad alkalmazni. A nappali rendet a cikk külön írja le.
 
-## 13–25. perc – Tanári bemutató: ugyanaz az út, más időpont
+### 3. kérdés – Fontos fogalmi különbség
 
-### Kivetítendő keresés
+> Ha a jelentés szerint egy metróállomás nem akadálymentes, abból következik, hogy a metró nem áll meg ott?
 
-- Kiindulás: Kisújszállás, vasútállomás.
-- Cél: Debrecen, Nagyállomás.
-- Közlekedési mód: autó.
+**Elvárt gondolat:** nem. Az akadálymentes elérés korlátozása és a metró megállásának elmaradása külön állítás. Kérj példát a cikkből az irányhoz kötött korlátozásra is.
 
-### A bemutató lépései
+### 4. kérdés – Kérdezzen vissza!
 
-1. Mutasd meg az azonnali indulásra kapott útvonalat és a menetidőt.
-2. Kérj jóslatot: „Mit vártok, mit mutat majd egy hétköznap reggel 7 órás indulásnál?”
-3. Állítsd be a kiválasztott hétköznapot és a 7:00-s indulást.
-4. Írd fel a kijelzett időt vagy teljes időtartományt, a távolságot és az útvonal főbb útjait.
-5. Ugyanarra a napra állíts be 21:00-s indulást, és rögzítsd az eredményt.
-6. Ellenőrizd, hogy ugyanazt az útvonalat hasonlítjátok-e össze. Ha változik, ezt külön is beszéljétek meg.
+> A jelentés alapján biztosan elérem a vonatomat a Keletiben? Mielőtt válaszolsz, kérdezd meg tőlem a szükséges adatokat!
 
-### Kérdések és elvárt gondolatok
+**Elvárt gondolat:** indulóhely, utazási nap/idő és a vonat indulása nélkül nem dönthető el. A cikk önmagában a pontos eljutás kiszámításához sem ad teljes menetrendet.
 
-**„Mi változott a képernyőn?”**  
-A diákok a ténylegesen látott adatokat nevezzék meg. Például: más menetidőtartomány vagy más útvonal.
+### Tartalék kérdések, ha marad idő
 
-**„Mi lehet a változás oka?”**  
-Lehetséges magyarázat a napszaktól függő forgalom vagy az eltérő útvonal. Ez feltételezés, amíg nincs külön bizonyíték.
+- „Válogasd ki a reggel 8-kor Budapesten utazókat érintő információkat! Különítsd el a később kezdődő és a bizonytalan időbeliségű változásokat.”
+- „Ugyanebből a szövegből emelj ki két fontos hírt egy autósnak és kettőt egy kerekesszékes utasnak! Indokold a választást!”
+- „A megállási tilalom azt jelenti, hogy az adott útszakaszra behajtani is tilos?”
 
-**„Miért adhat időtartományt?”**  
-A jövőbeli menetidő bizonytalan, a tényleges körülmények eltérhetnek.
+### Rövid következtetés
 
-**„Biztos, hogy pontosan ennyi idő lesz?”**  
-Nem. A becslés eltérhet a tényleges eredménytől, például váratlan torlódás miatt.
+> Itt a szükséges információt többnyire mondatokból kellett kikeresni, majd a kérdés időpontjára és helyzetére alkalmazni. A válasz akkor használható, ha a forrás alátámasztja.
 
-**Ha nincs különbség:**
+Ha hibázik, nevezzétek meg a hibát. Ha helyesen válaszol, ezt rögzítsétek eredményként.
 
-> Ennél az útvonalnál és ezeknél a beállításoknál a kijelzett eredmény azonos. Ebből nem következik, hogy a rendszer nem használ előrejelzést. Most nem látunk különbséget.
+## 23–33. perc – Menetrendek: boldogul-e az összetett feladattal?
 
-**Ha nincs megfelelő időpontválasztó:** használd az előre mentett képernyőképeket. Ne tölts hosszú időt a felület keresésével.
+Indíts külön beszélgetést, hogy a cikk korábbi állításai ne keveredjenek a menetrendekkel. Töltsd fel az előkészített táblázatokat és jelmagyarázatukat. Ez az óra néhány percét igénybe veheti, ezért a fájlok legyenek kéznél.
 
-## 25–35. perc – Alkalmazás: utazás megadott feltételekkel
+### A feladat megadása
 
-**Ezt a helyzetet add szóban vagy vetítsd ki:**
+Használj egy konkrét, előre kiválasztott, a menetrendek érvényességébe eső tanítási napot. Írd ki a dátumot a táblára. A szögletes zárójeleket a kérdés feltevése előtt töltsd ki.
 
-> A kiválasztott hétköznapon Kisújszállás vasútállomástól Debrecen Nagyállomásig utazunk. Legkorábban 14:00-kor indulhatunk, és 17:00-ra szeretnénk megérkezni. Melyik tömegközlekedési lehetőséget választanátok?
+> A feltöltött menetrendek alapján [pontos dátum]-án Kisújszállás, autóbusz-állomás megállóból Túrkeve, autóbusz-állomás megállóba utaznék. Legkorábban 14:20-kor indulhatok. Melyik a következő közvetlen járat? Add meg a vonalszámot, az indulást, az érkezést és a közlekedési nap jelölését. Nevezd meg a dokumentumot, amelyből dolgoztál. Ha valamelyik adat hiányzik vagy nem olvasható biztosan, jelezd.
 
-### Ha vannak tanulói gépek
+Ha az általad feltöltött dokumentumokból ez az út nem ellenőrizhető, válassz másik, a fájlokban ténylegesen szereplő útvonalat. Az állomási indulási jegyzék önmagában nem feltétlenül adja meg a célállomási érkezést.
 
-A párok keressenek egy megfelelő utazást. Jegyezzék fel füzetbe:
+### Közös ellenőrzés
 
-- az utazás dátumát;
-- a járat azonosítóját és a pontos megállókat;
-- az indulást és az érkezést;
-- az átszállást és a gyaloglást, ha van;
-- egy mondatot arról, miért megfelelő a lehetőség.
+- A megfelelő induló- és célmegállót használta?
+- A keresett napon közlekedik a járat? Helyesen olvasta a napjelölést és a lábjegyzetet?
+- A járat 14:20-kor vagy később indul?
+- Az indulás és az érkezés ugyanahhoz a járathoz tartozik?
+- A forrásban valóban szerepel minden kiírt adat?
 
-Ha több ajánlat van, hasonlítsanak össze kettőt. Ha nincs találat, ezt jelezzék, ne találjanak ki utazást.
+### Nehezítés, ha az első válasz jó
 
-### Ha csak tanári gép van
+> Mi változik, ha ugyanezt az utazást a kiválasztott vasárnapon tervezem?
 
-Válts tömegközlekedésre, kérd meg a diákokat, hogy diktálják a szükséges beállításokat. Két látható lehetőséget közösen értékeljetek. Ha csak egy van, azt vizsgáljátok.
+Vagy:
 
-### Ellenőrzés
+> Ha ezt a járatot lekésem, mikor indul a következő, és mennyivel később érkezem meg?
 
-A kiválasztott járatot keresd meg a MÁVPluszban ugyanarra a dátumra, azonos megállókkal és iránnyal. Egyezés és eltérés egyaránt megbeszélhető.
+Az új nap is konkrét dátum legyen, a menetrend érvényességén belül.
 
-**Kérdezd meg:**
+### Mit mondj az eredményről?
 
-> Amit most látunk, az menetrendi idő vagy kifejezetten jelölt élő előrejelzés?
+Hiba esetén:
 
-A felületen látható jelölés alapján válaszoljatok. Ha nem egyértelmű, mondjátok ki, hogy nem tudjátok biztosan. Egy késési adat megjelenése önmagában nem bizonyítja, hogy azt a Google saját MI-je számolta.
+> A dokumentumban ott lehet minden szükséges adat, de a táblázat helyes olvasása, a napjelölés és az összetartozó időpontok kezelése külön feladat. A feltöltés még nem garantál helyes utazási tervet.
 
-**Tanári következtetés:** a tömegközlekedési keresés elsősorban a menetrendi adatok gyakorlati felhasználását mutatja. Az MI-ről szóló magyarázatot az előző, forgalmi előrejelzési rész alapozza meg.
+Helyes válasz esetén:
 
-## 35–41. perc – Kapcsolat a Gemini-próbával
+> Ezt a próbát megoldotta. Ebből még nem tudjuk, hogy minden más napot, járatot és csatlakozást is helyesen kezelne.
 
-Idézd fel a korábbi, feltöltött menetrendes próbát. Ha az adott osztály még nem végezte el, rövid gondolatkísérletként mondd el: „Egy chatbotnak átadtuk a menetrendeket, és megkérdeztük, mivel utazzunk.”
+Ne rendezd meg előre a kudarcot. A cél a teljesítmény vizsgálata, nem annak bizonyítása, hogy a Gemini minden menetrendes feladatra alkalmatlan. Egyetlen hibából az okot sem lehet biztosan azonosítani.
+
+## 33–42. perc – Ugyanaz az utazási kérdés a Google Térképen
+
+### Első rész: célzott útvonalkeresés · kb. 5 perc
+
+1. Add meg ugyanazt a kisújszállási indulómegállót és túrkevei célmegállót.
+2. Válaszd a tömegközlekedést.
+3. Állítsd be ugyanazt a konkrét dátumot és a 14:20-s indulást.
+4. Nyisd le az ajánlat részleteit: megállók, járat, indulás, érkezés, gyaloglás és átszállás.
+5. Hasonlítsátok össze a Gemini válaszával és az előre ellenőrzött menetrenddel. Ellenőrzéshez használhatod a MÁVPluszt.
+
+Ha nincs megfelelő találat, ezt jelezd. Használd az előre elmentett példát, és ne minősítsd a találathiányt a járat biztos hiányának.
 
 **Kérdés:**
 
-> Miért segíthet egy erre a feladatra készült útvonaltervező, ha egy chatbot már megkapta ugyanazokat a táblázatokat?
+> Miben segít, hogy ez az eszköz kifejezetten megállók, járatok és csatlakozások kezelésére készült?
 
-**Várható szempontok:**
+**Várható válasz:** célzottan kezeli a közlekedési hálózatot, az időpontokat és az átszállásokat. Az eredménye ugyanakkor az adatok frissességétől és teljességétől is függ.
 
-- A menetrendben a járatot, az irányt és a közlekedési napot egyszerre kell helyesen kezelni.
-- Az útvonaltervező a megállók és járatok kapcsolatait célzottan kezeli.
-- A chatbot tévesen olvashat egy táblázatot vagy rosszul kapcsolhat össze adatokat.
-- A célzott utazástervező is függ az adatok frissességétől és teljességétől.
-
-**Ne ezt vond le:** „A Gemini alkalmatlan, a Térkép mindig igazat mond.”
+### Második rész: hol van ebben az MI? · kb. 4 perc
 
 **Ezt mondd:**
 
-> A feladathoz megfelelő eszközt választunk. A nyelvi modell segíthet a kérés megfogalmazásában és a lehetőségek elmagyarázásában. A menetrendi összeköttetéseket célzott útvonaltervezővel keressük, és ellenőrizzük az utazás napját meg az adatokat.
+> A Google Térkép több rendszer együttese. A menetrendi adatbázis és az útvonalkeresés önmagában nem bizonyít MI-használatot. A Google dokumentáltan gépi tanulást is használ a forgalom és a menetidő előrejelzésében.
 
-**Rövid összekötés:** a chatbot a következő szövegelemet is előrejelzi, a forgalmi modell menetidőt becsül. Mindkettő használhat tanult mintázatokat, de más a feladata, a bemenete és a kimenete.
+Ha belefér, mutass egy autós útvonalat Kisújszállás és Debrecen között, jövőbeli indulási idővel. A kijelzett menetidő vagy időtartomány szemlélteti a becslés fogalmát. Nem szükséges két időpont hosszú összehasonlítása.
 
-## 41–45. perc – Lezárás és értékelés
+**Rövid magyarázat:**
 
-Kérj három rövid választ szóban vagy füzetbe:
+> Sok korábbi út példájából rendelkezésre áll, hogy különböző körülmények között mennyi lett a menetidő. A modell tanításkor a becsléseit összeveti a tényleges eredményekkel. Új körülményekre is tud menetidőt becsülni, korábbi mintázatok és elérhető aktuális adatok alapján. A váratlan események miatt tévedhet.
 
-1. Mondj egy példát olyan adatra, amelyből a menetidőt becslő modell tanulhat!
-2. Mi a különbség a menetrendi indulás és az előrejelzett érkezés között?
-3. Miért térhet el a becslés a tényleges utazási időtől?
+**Ha megkérdezik, milyen modell:** a Google és a DeepMind nyilvánosan bemutatott gráfneurális hálózatot alkalmazó forgalom-előrejelzést. A gráf az összekapcsolódó útszakaszok hálózatát írhatja le; a kapcsolódó utak forgalma is számít. A név megtanulása nem követelmény.
 
-### Elfogadható válaszok
+**Tanári pontosság:** a dokumentált technológia nem a teljes mai rendszer leírása. Nem állíthatjuk, hogy az előbb látott kisújszállási buszajánlatot vagy késési adatot ez a modell állította elő. A megjelenített élő adat érkezhet a szolgáltatótól is.
 
-1. Korábbi tényleges menetidő, útszakasz, napszak, forgalmi jellemzők.
-2. A menetrend tervezett időt rögzít; az előrejelzés a várható teljesülést becsüli.
-3. Például váratlan torlódás, útlezárás, megváltozott körülmény vagy hiányos adat.
+## 42–45. perc – Lezárás
 
-### Javasolt „Megfelelt” feltétel
+Kérj három gyors választ:
 
-A tanuló részt vesz az útvonal vizsgálatában, legalább egy konkrét adattal indokolja a választást, megkülönbözteti a menetrendi adatot az előrejelzéstől, és megnevez egy okot a becslési hibára. A felület technikai hibáját ne értékeld tanulói teljesítményhibaként.
+1. Mi az a token? **Elfogadható:** a szöveg feldolgozásához használt darab; lehet szó, szórész vagy írásjel.
+2. Miért nem elég az, hogy a chatbotnak minden dokumentumot feltöltöttünk? **Elfogadható:** helyesen kell kinyernie és összekapcsolnia az adatokat, kezelnie az időbeli feltételeket; ebben hibázhat.
+3. Mire használ gépi tanulást a Google Térkép a bemutatott magyarázat szerint? **Elfogadható:** a forgalom és a várható menetidő előrejelzésére.
 
-## Tartalék megoldás internetkimaradásra
+### Zárómondat
 
-Elsősorban az előre mentett képernyőképekkel dolgozz. Ha ezek sem állnak rendelkezésre, mutasd be ezt a **kitalált tanítási példát**, amely nem valódi Google- vagy menetrendi adat:
+> A jól megfogalmazott válasz még nem bizonyítja a helyességet. A feladathoz megfelelő eszközt választunk, és ellenőrizzük az eredményt.
 
-| Korábbi út | Indulás | Forgalmi helyzet | Tényleges menetidő |
-|---|---|---|---|
-| 1. | Hétköznap 7:00 | Erős forgalom | 90 perc |
-| 2. | Hétköznap 7:10 | Erős forgalom | 86 perc |
-| 3. | Hétköznap 21:00 | Gyenge forgalom | 68 perc |
-| 4. | Hétköznap 21:10 | Gyenge forgalom | 70 perc |
+### Javasolt értékelés: Megfelelt
 
-Kérdezd meg: „Mit tippelnétek egy újabb hétköznap reggeli útra? Miért bizonytalan a válasz?”
+A tanuló részt vesz a források ellenőrzésében, meg tud nevezni egy tokenizálással kapcsolatos alapfogalmat, és felismeri, hogy a nyelvi modell válaszát, a menetrendi adatot és az előrejelzést külön kell kezelni. A technikai elérési hibákat ne értékeld tanulói teljesítményhibaként.
 
-Nincs egyetlen kötelező számszerű megoldás. A négy példa kevés, és nem tudjuk az összes körülményt. Ez csak a példákból következtetés szemléltetése; a valódi modell sokkal összetettebb, és nem egyszerűen ezt a négy értéket átlagolja.
+## Ha csúszik az óra
 
-## Háttérforrások a tanárnak
+- A cikkhez négy helyett három kérdést tegyél fel.
+- A menetrendnél egy utazási helyzetet ellenőrizzetek, ne kezdjetek több átszállásos tervezésbe.
+- A Google Térkép mögötti MI-t magyarázd el szóban; a külön autós bemutató elhagyható.
+- A lezárásra mindenképpen maradjon két perc.
 
-- Google Maps 101 – forgalmi mintázatok, aktuális adatok és gépi tanulás: https://blog.google/products-and-platforms/products/maps/google-maps-101-how-ai-helps-predict-traffic-and-determine-routes/
-- DeepMind – dokumentált gráfneurális hálózat a forgalom előrejelzésében: https://deepmind.google/blog/traffic-prediction-with-advanced-graph-neural-networks/
-- Google Research – buszkésések becslésének dokumentált példája: https://research.google/blog/predicting-bus-delays-with-machine-learning/
-- Google Térkép útmutató: https://support.google.com/maps/answer/144339?hl=hu
+## Tartalék technikai terv
 
-A technológiai források 2019–2020-as nyilvános ismertetők. A leírt módszerek létezését támasztják alá, nem minden mai funkció részletes működését. A felületek és az adott helyen elérhető szolgáltatások változhatnak.
+- Ha a Gemini nem nyitja meg a linket: másold be a cikk előre kimásolt szövegét.
+- Ha a menetrendi feltöltés nem működik: mutasd meg az előre mentett választ és az ellenőrző menetrendi sort. Egyértelműen jelezd, hogy ez korábbi próba.
+- Ha nincs internet: a mentett cikkrészletekkel, válaszokkal és térképes képernyőképekkel vezess közös ellenőrzést. Ne állítsd élő demonstrációnak.
+
+## Források
+
+- Feldolgozandó szöveg: Esti Hírlap, Közlekedési körkép – 2026. október 29.: https://estihirlap.hu/kozlekedesi-korkep-2026-oktober-29-orszagos-budapest/
+- Google: a gépi tanulás szerepe a forgalom előrejelzésében: https://blog.google/products-and-platforms/products/maps/google-maps-101-how-ai-helps-predict-traffic-and-determine-routes/
+- DeepMind: gráfneurális hálózatokkal készített forgalom-előrejelzés: https://deepmind.google/blog/traffic-prediction-with-advanced-graph-neural-networks/
+- Google Research: buszkésések becslésének dokumentált példája: https://research.google/blog/predicting-bus-delays-with-machine-learning/
+- Google Térkép használati útmutató: https://support.google.com/maps/answer/144339?hl=hu
+
+A technológiai háttérforrások 2019–2020-as ismertetők: dokumentált módszereket mutatnak be, nem minden mai funkció részletes működését. Az órai kérdésekhez a jelentés szövege az ellenőrzés alapja, utazáshoz az aktuális hivatalos tájékoztatás szükséges.
