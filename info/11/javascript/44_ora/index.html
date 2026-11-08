@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>44. óra – Értékek és változók</title>
+  <title>44. óra – Változók és konstansok</title>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
@@ -25,8 +25,8 @@
 <body>
   <main>
     <header>
-      <p class="label">11TC SZFT · Webprogramozás · 44. óra · 1. rész</p>
-      <h1>Értékek és változók</h1>
+      <p class="label">11TC SZFT · Webprogramozás · 44. óra</p>
+      <h1>Változók és konstansok</h1>
       <p>Tárolj egy nevet változóban, használd fel több helyen, majd próbáld ki, mi történik, ha módosítod.</p>
     </header>
 
@@ -78,10 +78,58 @@ console.log(firstName);</code></pre>
       </details>
     </section>
 
+    <section>
+      <h2>Mikor használjuk a let, const és var kulcsszót?</h2>
+      <p>A <code>let</code> akkor kell, ha később új értéket adunk a változónak. A <code>const</code> esetén a létrehozáskor kötelező kezdőértéket adni, és utána nincs új értékadás. Jonas példájában az életkor frissül, a születési év ugyanaz marad.</p>
+      <pre><code>let age = 30;
+age = 31;
+console.log(age); // 31
+
+const birthYear = 1991;
+console.log(birthYear); // 1991
+
+var job = "programozó";
+job = "tanár";
+console.log(job); // tanár</code></pre>
+      <p>A <code>var</code> régebbi kódokban gyakori, és vele is lehet új értéket adni egy változónak. Új kódban indulj <code>const</code>-tal, és válts <code>let</code>-re, ha későbbi értékadásra van szükség. Új változó létrehozásakor mindig írd ki a megfelelő kulcsszót.</p>
+      <details>
+        <summary>Mi történik, ha átírom a birthYear értékét?</summary>
+        <p>Ha az előző példa végére beírod, hogy <code>birthYear = 1992;</code>, futás közben <code>TypeError</code> keletkezik. Próbáld ki, majd töröld a hibás sort.</p>
+      </details>
+    </section>
+
+    <section>
+      <h2>Hol látható egy változó?</h2>
+      <p>A kapcsos zárójelek itt egy blokkot határolnak. A blokkon belül létrehozott <code>let</code> és <code>const</code> csak ott használható. A <code>var</code> láthatóságát ez a blokk nem korlátozza. Ha egy függvényben hozunk létre <code>var</code> változót, annak láthatósága a függvényhez kötődik.</p>
+      <pre><code>{
+  let currentAge = 31;
+  const yearOfBirth = 1991;
+  var currentJob = "tanár";
+
+  console.log(currentAge, yearOfBirth, currentJob);
+}
+
+console.log(currentJob); // tanár
+// console.log(currentAge);  // ReferenceError
+// console.log(yearOfBirth); // ReferenceError</code></pre>
+      <p>Futtasd külön a példát. Vedd le az egyik utolsó sor elejéről a <code>//</code> jelet, és nézd meg, melyik nevet nem találja a JavaScript. A másik sort külön futtatással próbáld ki.</p>
+    </section>
+
+    <section class="practice">
+      <h2>Rövid ellenőrzés</h2>
+      <ol>
+        <li>Az előző feladatban a keresztnév állandó, az életkor és a foglalkozás változik. Melyikhez választanál <code>const</code>-ot, és melyikhez <code>let</code>-et? Írd át a deklarációkat, és futtasd a kódot.</li>
+        <li>Tippeld meg, mi történik, ha a blokkos példában a <code>var currentJob</code> helyére <code>let currentJob</code> kerül. Ellenőrizd a tippedet a konzolban.</li>
+      </ol>
+    </section>
+
     <aside>
-      <h2>Kapcsolódó videó</h2>
-      <p><strong>9. Values and Variables</strong> · <a href="https://www.udemy.com/course/the-complete-javascript-course/">Jonas Schmedtmann Udemy-kurzusa</a></p>
-      <p>A 44. óra folytatásában a <code>let</code>, a <code>const</code> és a <code>var</code> közötti különbségeket, valamint a változók láthatóságát nézzük meg.</p>
+      <h2>Kapcsolódó videók</h2>
+      <p><a href="https://www.udemy.com/course/the-complete-javascript-course/">Jonas Schmedtmann Udemy-kurzusa</a></p>
+      <ul>
+        <li><strong>9. Values and Variables</strong></li>
+        <li><strong>12. let, const and var</strong></li>
+      </ul>
     </aside>
     <nav aria-label="Tananyag navigáció">
       <a href="../index.html">Vissza a JavaScript tananyaghoz</a>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>45. óra – Elemi és összetett adattípusok</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · Webprogramozás · 45. óra</p>
+      <h1>Elemi és összetett adattípusok</h1>
+      <p>Mi a különbség a <code>23</code> és a <code>"23"</code> között? Miben tárolnád egy ember adatait vagy a barátai nevét?</p>
+    </header>
+
+    <section>
+      <h2>Elemi értékek és a typeof</h2>
+      <ul>
+        <li><strong>Number:</strong> szám, például <code>23</code> vagy <code>3.5</code>.</li>
+        <li><strong>String:</strong> szöveg, például <code>"Jonas"</code> vagy <code>"23"</code>.</li>
+        <li><strong>Boolean:</strong> logikai érték, amely <code>true</code> vagy <code>false</code> lehet.</li>
+        <li><strong>undefined:</strong> például egy <code>let</code> változó értéke, ha még nem adtunk neki értéket.</li>
+        <li><strong>null:</strong> külön érték, amellyel például szándékosan jelezhetjük egy adat hiányát.</li>
+      </ul>
+      <p>A <code>typeof</code> operátor megmondja, milyen típusú értéket kapott. Először tippeld meg az eredményeket, majd futtasd a kódot.</p>
+      <pre><code>console.log(typeof 23);      // number
+console.log(typeof "23");    // string
+console.log(typeof true);    // boolean
+console.log(typeof "true");  // string</code></pre>
+    </section>
+
+    <section>
+      <h2>A változóban tárolt érték típusa változhat</h2>
+      <p>Jonas példájában ugyanaz a <code>let</code> változó először logikai értéket, utána szöveget kap. A JavaScriptben a típus az értékhez tartozik. Ezt hívjuk <strong>dinamikus típusosságnak</strong>.</p>
+      <pre><code>let javascriptIsFun = true;
+console.log(typeof javascriptIsFun); // boolean
+
+javascriptIsFun = "Igen!";
+console.log(typeof javascriptIsFun); // string
+
+let year;
+console.log(year, typeof year); // undefined undefined
+
+year = 1991;
+console.log(year, typeof year); // 1991 number
+
+let middleName = null;
+console.log(middleName, typeof middleName); // null object</code></pre>
+      <p>A <code>null</code> elemi érték. A <code>typeof null</code> történeti okból az <code>"object"</code> szöveget adja.</p>
+    </section>
+
+    <section>
+      <h2>Négy adatszerkezet több értékhez</h2>
+      <ul>
+        <li><strong>Array (tömb):</strong> rendezett lista. Az első elem indexe <code>0</code>.</li>
+        <li><strong>Object (objektum):</strong> névvel ellátott tulajdonságok egy helyen, például egy személy adatai.</li>
+        <li><strong>Map:</strong> kulcsokhoz rendel értékeket. A kulcs például szám is lehet. A <code>get()</code> a kulcshoz tartozó értéket adja vissza.</li>
+        <li><strong>Set:</strong> egyedi értékek gyűjteménye. Ha egy név többször szerepel, egyszer kerül bele.</li>
+      </ul>
+      <pre><code>const friends = ["Michael", "Peter", "Steven"];
+console.log(friends[0]); // Michael
+
+const person = { firstName: "Jonas", job: "tanár" };
+console.log(person.job); // tanár
+
+const namesById = new Map([[101, "Michael"], [102, "Peter"]]);
+console.log(namesById.get(102)); // Peter
+
+const uniqueNames = new Set(["Michael", "Peter", "Michael"]);
+console.log(uniqueNames.size); // 2</code></pre>
+      <p>A négy adatszerkezetre a <code>typeof</code> egyaránt <code>"object"</code>-et ad. Egy értékről az <code>Array.isArray(friends)</code> segítségével ellenőrizheted, hogy tömb-e. A példákban a <code>const</code> miatt a változóhoz nem rendelünk másik értéket. Ettől a gyűjtemény tartalma még módosítható.</p>
+    </section>
+
+    <section class="practice">
+      <h2>Önálló feladat – tippelj, majd ellenőrizd</h2>
+      <ol>
+        <li>Adj egy <code>age</code> változónak <code>"23"</code> értéket. Írd ki a típusát, majd adj neki <code>23</code> értéket, és írd ki újra a típusát.</li>
+        <li>Hozz létre egy <code>job</code> változót kezdőérték nélkül. Nézd meg a konzolban az értékét. Adj neki <code>null</code> értéket, ha szándékosan jelölöd, hogy az adat hiányzik.</li>
+        <li>Válassz a négy adatszerkezet közül az alábbi helyzetekhez. Indokold a választásodat. Egy személy neve és foglalkozása. Három barát neve sorrendben. Egy névlista ismétlések nélkül. Azonosítókhoz rendelt nevek.</li>
+      </ol>
+      <details>
+        <summary>Ellenőrzés</summary>
+        <p>Az életkor először <code>string</code>, majd <code>number</code>. A foglalkozás értéke először <code>undefined</code>, majd <code>null</code>. A négy helyzethez sorrendben az <code>Object</code>, <code>Array</code>, <code>Set</code> és <code>Map</code> illik.</p>
+      </details>
+    </section>
+
+    <aside>
+      <h2>Kapcsolódó videó</h2>
+      <p><strong>11. Data Types</strong> · <a href="https://www.udemy.com/course/the-complete-javascript-course/">Jonas Schmedtmann Udemy-kurzusa</a></p>
+      <p>Jonas két további elemi típust is megemlít. A <code>BigInt</code> nagy egész számok pontos tárolására is használható. A <code>Symbol</code> egyedi értéket ad. A fenti adatszerkezeteket a 45. óra tanmeneti követelményeihez vettük hozzá.</p>
+    </aside>
+    <nav aria-label="Tananyag navigáció">
+      <a href="../index.html">Vissza a JavaScript tananyaghoz</a>
+    </nav>
+  </main>
+</body>
+</html>
