@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>44. óra – Értékek és változók</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · Webprogramozás · 44. óra · 1. rész</p>
+      <h1>Értékek és változók</h1>
+      <p>Tárolj egy nevet változóban, használd fel több helyen, majd próbáld ki, mi történik, ha módosítod.</p>
+    </header>
+
+    <section>
+      <h2>Szöveges és numerikus értékek</h2>
+      <p>A <code>"Jonas"</code> egy szöveges érték, a <code>23</code> egy szám. Egy kifejezés eredménye is érték. A <code>40 + 8 + 23 - 10</code> eredménye például <code>61</code>.</p>
+      <pre><code>console.log("Jonas");
+console.log(23);
+console.log(40 + 8 + 23 - 10);</code></pre>
+      <p>Futtasd a kódot. A konzol sorban az <strong>Jonas</strong>, a <strong>23</strong> és a <strong>61</strong> értéket írja ki.</p>
+    </section>
+
+    <section>
+      <h2>Adjunk nevet az értékeknek</h2>
+      <p>A <code>let</code> kulcsszóval létrehozunk egy változót, és az <code>=</code> jellel kezdőértéket adunk neki. Később a változó nevével férünk hozzá az aktuális értékéhez. Próbáld ki a 41. órán használt HTML–JavaScript mintához hasonlóan, egy külön <code>script.js</code> fájlban.</p>
+      <pre><code>let firstName = "Jonas";
+console.log(firstName);
+console.log(firstName);
+
+firstName = "Matilda";
+console.log(firstName);</code></pre>
+      <p>Az első két kiírásban a <strong>Jonas</strong>, az utolsóban a <strong>Matilda</strong> jelenik meg. Az új érték megadásakor ugyanazt a változót használjuk, ezért az értékadás előtt nem írunk újra <code>let</code>-et. A már kiírt sorok szövege nem változik meg.</p>
+      <details>
+        <summary>Mi változik, ha idézőjelbe teszem a nevet?</summary>
+        <p>A <code>console.log(firstName)</code> a változó értékét írja ki. A <code>console.log("firstName")</code> magát a <strong>firstName</strong> szót írja ki.</p>
+      </details>
+    </section>
+
+    <section>
+      <h2>Beszédes változónevek</h2>
+      <p>A <code>firstName</code> és az <code>currentJob</code> elárulja, milyen adatot tárolunk. A <code>currentJob</code> például pontosabb név, mint a <code>job2</code>. A <em>camelCase</em> írásmódnál kisbetűvel kezdünk, és az egybeírt név minden következő szava nagybetűvel indul.</p>
+      <ul>
+        <li>A név nem kezdődhet számmal, és szóközt sem tartalmazhat. A <code>3years</code> helyett használhatod a <code>years</code> nevet.</li>
+        <li>Foglalt kulcsszó, például a <code>new</code>, nem lehet változónév. Az <code>newJob</code> használható.</li>
+        <li>A JavaScript különbséget tesz kis- és nagybetű között. A <code>firstName</code> és a <code>firstname</code> két külön név.</li>
+      </ul>
+    </section>
+
+    <section class="practice">
+      <h2>Önálló feladat – név, életkor és foglalkozás</h2>
+      <ol>
+        <li>Hozz létre három változót egy kitalált személy keresztnevéhez, életkorához és foglalkozásához. Használd a <code>firstName</code>, <code>age</code> és <code>currentJob</code> neveket.</li>
+        <li>Írd ki mindhárom változó értékét külön sorba. Ellenőrizd, hogy az értékek látszanak a konzolon.</li>
+        <li>Adj új értéket a <code>currentJob</code> változónak, és írd ki újra. Az eredeti kiírás után az új foglalkozás is jelenjen meg.</li>
+      </ol>
+      <details>
+        <summary>Ha hamarabb elkészültél</summary>
+        <p>Növeld az életkort eggyel az <code>age = age + 1;</code> sorral, majd írd ki az új értéket.</p>
+      </details>
+    </section>
+
+    <aside>
+      <h2>Kapcsolódó videó</h2>
+      <p><strong>9. Values and Variables</strong> · <a href="https://www.udemy.com/course/the-complete-javascript-course/">Jonas Schmedtmann Udemy-kurzusa</a></p>
+      <p>A 44. óra folytatásában a <code>let</code>, a <code>const</code> és a <code>var</code> közötti különbségeket, valamint a változók láthatóságát nézzük meg.</p>
+    </aside>
+    <nav aria-label="Tananyag navigáció">
+      <a href="../index.html">Vissza a JavaScript tananyaghoz</a>
+    </nav>
+  </main>
+</body>
+</html>

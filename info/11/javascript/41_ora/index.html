@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>41. óra – Bevezetés a JavaScriptbe</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · Webprogramozás · 41. óra</p>
+      <h1>Bevezetés a JavaScriptbe</h1>
+      <p>Írd meg az első JavaScript-fájlodat, és nézd meg, hogyan fut le a böngészőben.</p>
+    </header>
+
+    <section>
+      <h2>Mit csinál a JavaScript a weboldalon?</h2>
+      <p>A <strong>HTML</strong> adja az oldal tartalmát és szerkezetét. A <strong>CSS</strong> határozza meg, hogyan néz ki. A <strong>JavaScript</strong> segítségével az oldal reagálhat a felhasználóra, például megjeleníthet egy üzenetet, amikor valaki egy gombra kattint.</p>
+      <p>Ma az első JavaScript-fájlt kapcsoljuk hozzá egy HTML-oldalhoz, és ellenőrizzük, hogy lefutott-e.</p>
+    </section>
+
+    <section>
+      <h2>Közös példa – az első JavaScript-fájl</h2>
+      <p>Készíts egy mappát. Ebben hozz létre két fájlt a VS Code-ban. Az <code>index.html</code> tartalma legyen:</p>
+      <pre><code>&lt;!doctype html&gt;
+&lt;html lang="hu"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;JavaScript-alapok&lt;/title&gt;
+  &lt;script src="script.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;JavaScript-alapok&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      <p>A mellé mentett <code>script.js</code> tartalma:</p>
+      <pre><code>console.log("Szia, JavaScript!");</code></pre>
+      <p>A <code>src</code> adja meg, melyik fájlt töltse be a böngésző. A <code>defer</code> miatt a kód a HTML feldolgozása után fut le.</p>
+      <ol>
+        <li>Mentsd mindkét fájlt, és nyisd meg az <code>index.html</code> fájlt a böngészőben.</li>
+        <li>Nyisd meg a fejlesztői eszközöket jobb kattintással az oldalon, majd válaszd a <strong>Vizsgálat / Inspect</strong> lehetőséget. Válts a <strong>Console</strong> fülre, és frissítsd az oldalt.</li>
+        <li>A címsor a weboldalon látszik. Az üzenet a böngésző konzoljában jelenik meg, mert a <code>console.log()</code> oda ír.</li>
+      </ol>
+      <p><a href="pelda/index.html">A működő példa megnyitása</a></p>
+      <details>
+        <summary>Mini kísérlet – mikor jelenik meg a számítás eredménye?</summary>
+        <p>Jonas példájában egy számítással ellenőrzi a kód futását. Írd a <code>script.js</code> végére az alábbi két sort, majd mentsd a fájlt és frissítsd az oldalt.</p>
+        <pre><code>40 + 8 + 23 - 10;
+console.log(40 + 8 + 23 - 10);</code></pre>
+        <p>A konzolban egyszer jelenik meg a <strong>61</strong>. A fájlban mindkét sor kiszámítja az összeget. A második sor a <code>console.log()</code> segítségével ki is írja. Ha a konzol a kiírás mellett fájlnevet és sorszámot mutat, arra kattintva megkeresheted a kiírást a forráskódban.</p>
+      </details>
+      <details>
+        <summary>Nem jelenik meg az üzenet?</summary>
+        <p>Ellenőrizd, hogy a két fájl ugyanabban a mappában van-e, a fájlnevek pontosan egyeznek-e, és mentés után frissítetted-e az oldalt. Nézd meg a konzol hibaüzenetét is. Ha fájlnevet és sorszámot mutat, ott kezdd a keresést. Ha a konzol szűrve van, töröld a szűrőt.</p>
+      </details>
+      <details>
+        <summary>Miért máshol van a script sor Jonas mintafájljában?</summary>
+        <p>Jonas mintájában a <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code> sor a <code>&lt;/body&gt;</code> előtt van, így a böngésző addigra már feldolgozta az előtte álló elemeket. A mi példánkban a sor a <code>&lt;head&gt;</code> részben van, és a <code>defer</code> késlelteti a futtatást. Mindkét esetben a böngésző egy külön <code>script.js</code> fájlt tölt be.</p>
+      </details>
+    </section>
+
+    <section class="practice">
+      <h2>Önálló feladat – üzenet és számítás</h2>
+      <ol>
+        <li>Írd át a weboldal címsorát erre: <strong>Az első JavaScript-oldalam</strong>.</li>
+        <li>Az első <code>console.log()</code> írja ki a <strong>Szia! Ez az első JavaScript-programom.</strong> szöveget. Egy második <code>console.log()</code> számítsa ki a <code>25 + 7 - 2</code> értékét, és írja ki az eredményt.</li>
+        <li>Ments, frissíts, majd mutasd meg, hol látszik a címsor és hol látszik az üzenet és a <strong>30</strong>.</li>
+      </ol>
+      <details>
+        <summary>Ha hamarabb elkészültél</summary>
+        <p>A HTML-ben írd át a <code>src</code> értékét <code>scripts.js</code>-re, és frissíts. Mi történt a címsorral és az üzenetekkel? Javítsd vissza a fájlnevet, majd ellenőrizd, hogy az üzenet és a szám újra megjelenik.</p>
+      </details>
+    </section>
+
+    <section>
+      <h2>Óra végi ellenőrzés</h2>
+      <ol>
+        <li>Mi a HTML, a CSS és a JavaScript szerepe egy weboldalon?</li>
+        <li>Melyik HTML-sor tölti be a JavaScript-fájlt?</li>
+        <li>Hol keresed a <code>console.log()</code> kimenetét?</li>
+      </ol>
+      <p>A 42. órán a konzolba közvetlenül is írunk és futtatunk JavaScript-kódot.</p>
+    </section>
+
+    <aside>
+      <h2>Kapcsolódó videók</h2>
+      <p><a href="https://www.udemy.com/course/the-complete-javascript-course/">Jonas Schmedtmann Udemy-kurzusa</a>, <em>JavaScript Fundamentals – Part 1</em> fejezet.</p>
+      <ul>
+        <li><strong>7.</strong> <em>A Brief Introduction to JavaScript</em> – a JavaScript szerepe a weben.</li>
+        <li><strong>8.</strong> <em>Linking a JavaScript File</em> – a fájl bekötése. Az órán a fenti saját mintával gyakorolunk.</li>
+      </ul>
+      <p>Jonas fejezet-összefoglalójában ezt a két témát a 2. és 3. PDF-oldal tárgyalja. A <em>Hello World!</em> videó a 42. óra konzolos gyakorlatához kapcsolódik.</p>
+    </aside>
+    <nav aria-label="Tananyag navigáció">
+      <a href="../index.html">Vissza a JavaScript tananyaghoz</a>
+    </nav>
+  </main>
+</body>
+</html>
