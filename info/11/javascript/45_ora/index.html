@@ -31,24 +31,53 @@
     </header>
 
     <section>
-      <h2>Elemi értékek és a typeof</h2>
+      <h2>Megjegyzések a JavaScript-kódban</h2>
+      <p>A megjegyzés magyarázatot adhat az olvasónak, vagy ideiglenesen kikapcsolhat egy kódrészletet. A JavaScript a megjegyzést nem futtatja.</p>
       <ul>
-        <li><strong>Number:</strong> szám, például <code>23</code> vagy <code>3.5</code>.</li>
+        <li>A <code>//</code> jeltől a sor végéig tart az egysoros megjegyzés. A jel állhat egy külön sor elején vagy egy utasítás után is.</li>
+        <li>A <code>/*</code> és a <code>*/</code> közötti megjegyzés több soron át tarthat. Jonas így hagyja meg a korábbi leckék kódját a <code>script.js</code>-ben, miközben az új példán dolgozik.</li>
+      </ul>
+      <pre><code>// A korábbi óra számítása
+console.log(40 + 8 + 23 - 10); // 61
+
+/*
+console.log("Jonas");
+console.log(23);
+*/</code></pre>
+      <p>Futtasd a példát. Csak a <strong>61</strong> jelenik meg. Tegyél <code>//</code> jelet a számítást kiíró sor elé, mentsd a fájlt, és frissítsd az oldalt. Az új futás már nem írja ki a 61-et. Vedd le a jelet, és próbáld újra. A VS Code-ban a sor megjegyzéssé alakítását a <kbd>⌘</kbd> + <kbd>/</kbd> (Mac), illetve a <kbd>Ctrl</kbd> + <kbd>/</kbd> (Windows, Linux) kapcsolja ki és be.</p>
+    </section>
+
+    <section>
+      <h2>Elemi értékek és a typeof</h2>
+      <p>A JavaScriptben minden érték vagy <strong>elemi (primitív) érték</strong>, vagy <strong>objektum</strong>. Hét elemi típus van. Az objektumok közé tartoznak az óra második felében bemutatott tömbök, <code>Map</code> és <code>Set</code> gyűjtemények is.</p>
+      <ul>
+        <li><strong>Number:</strong> lebegőpontos szám, például <code>23</code> vagy <code>3.5</code>. A <code>23</code> és a <code>23.0</code> ugyanazt a számértéket jelöli.</li>
         <li><strong>String:</strong> szöveg, például <code>"Jonas"</code> vagy <code>"23"</code>.</li>
-        <li><strong>Boolean:</strong> logikai érték, amely <code>true</code> vagy <code>false</code> lehet.</li>
+        <li><strong>Boolean:</strong> logikai érték, amely <code>true</code> vagy <code>false</code> lehet. Az 55. órán ilyen értékek alapján döntünk majd az <code>if</code> utasításban.</li>
         <li><strong>undefined:</strong> például egy <code>let</code> változó értéke, ha még nem adtunk neki értéket.</li>
         <li><strong>null:</strong> külön érték, amellyel például szándékosan jelezhetjük egy adat hiányát.</li>
+        <li><strong>Symbol:</strong> az ES2015-ben bevezetett típus. A <code>Symbol()</code> minden híváskor egyedi értéket hoz létre.</li>
+        <li><strong>BigInt:</strong> az ES2020-ban bevezetett egészszámtípus. Akkor is pontos egész számot tárolhatunk vele, amikor a <code>Number</code> pontossága már kevés. Példa: <code>9007199254740993n</code>.</li>
       </ul>
-      <p>A <code>typeof</code> operátor megmondja, milyen típusú értéket kapott. Először tippeld meg az eredményeket, majd futtasd a kódot.</p>
+      <p>Pythonban a <code>23</code> típusa <code>int</code>, a <code>3.5</code> típusa <code>float</code>. JavaScriptben mindkettő <code>Number</code> típusú, ezért a <code>typeof</code> mindkettőre <code>"number"</code>-t ad.</p>
+      <p>A <code>typeof</code> operátor eredménye egy szöveg, amely megnevezi a vizsgált érték típusát. A konzol megjelenése eltérhet böngészőnként. A típust a <code>typeof</code> eredményéből olvasd le. Először tippeld meg az eredményeket, majd futtasd a kódot.</p>
       <pre><code>console.log(typeof 23);      // number
+console.log(typeof 3.5);     // number
 console.log(typeof "23");    // string
 console.log(typeof true);    // boolean
 console.log(typeof "true");  // string</code></pre>
+      <h3>Az idézőjel itt a jelentést változtatja meg</h3>
+      <pre><code>console.log("Jonas");
+console.log('Jonas');
+// console.log(Jonas); // ReferenceError, ha nincs Jonas nevű változó</code></pre>
+      <p>A szöveg két végén azonos idézőjelet használj. Az idézőjelek nélküli <code>Jonas</code> névként értelmeződik. Ha ilyen változót nem hoztál létre, a harmadik sor bekapcsolása hivatkozási hibát (<code>ReferenceError</code>) eredményez.</p>
     </section>
 
     <section>
       <h2>A változóban tárolt érték típusa változhat</h2>
-      <p>Jonas példájában ugyanaz a <code>let</code> változó először logikai értéket, utána szöveget kap. A JavaScriptben a típus az értékhez tartozik. Ezt hívjuk <strong>dinamikus típusosságnak</strong>.</p>
+      <p>Változó létrehozásakor <strong>nem kell megadnod az adattípust</strong>. A <code>let year = 1991;</code> sorban a JavaScript az <code>1991</code> értékből tudja, hogy számot tárolunk. A típus az értékhez tartozik. A <code>let</code> változóba később más típusú értéket is tehetsz. Ezt hívjuk <strong>dinamikus típusosságnak</strong>.</p>
+      <p>Jonas példájában a <code>javascriptIsFun</code> változó először a <code>true</code> logikai értéket kapja, később az <code>"Igen!"</code> szöveget. A <code>typeof</code> mindig az éppen tárolt érték típusát mutatja. Hibát okozhat, ha a kód szöveget kap ott, ahol számmal szeretnénk számolni.</p>
+      <p>A példában az utasítások fentről lefelé futnak le. A <code>let javascriptIsFun</code> deklaráció után használjuk a nevet. Ha a kiírást a deklaráció elé teszed, <code>ReferenceError</code> keletkezik. Az új értéket a változó nevével és az <code>=</code> jellel adjuk meg, második <code>let</code> nélkül.</p>
       <pre><code>let javascriptIsFun = true;
 console.log(typeof javascriptIsFun); // boolean
 
@@ -63,6 +92,7 @@ console.log(year, typeof year); // 1991 number
 
 let middleName = null;
 console.log(middleName, typeof middleName); // null object</code></pre>
+      <p>A <code>let year;</code> után az érték maga <code>undefined</code>, a <code>typeof year</code> eredménye pedig az <code>"undefined"</code> szöveg. Az <code>1991</code> értékadás után az eredmény <code>"number"</code>.</p>
       <p>A <code>null</code> elemi érték. A <code>typeof null</code> történeti okból az <code>"object"</code> szöveget adja.</p>
     </section>
 
@@ -104,7 +134,7 @@ console.log(uniqueNames.size); // 2</code></pre>
     <aside>
       <h2>Kapcsolódó videó</h2>
       <p><strong>11. Data Types</strong> · <a href="https://www.udemy.com/course/the-complete-javascript-course/">Jonas Schmedtmann Udemy-kurzusa</a></p>
-      <p>Jonas két további elemi típust is megemlít. A <code>BigInt</code> nagy egész számok pontos tárolására is használható. A <code>Symbol</code> egyedi értéket ad. A fenti adatszerkezeteket a 45. óra tanmeneti követelményeihez vettük hozzá.</p>
+      <p>A videó az elemi típusokat, a kommentelést és a <code>typeof</code> használatát mutatja be. A tömb, az objektum, a <code>Map</code> és a <code>Set</code> példái a tanmenethez tartozó kiegészítések.</p>
     </aside>
     <nav aria-label="Tananyag navigáció">
       <a href="../index.html">Vissza a JavaScript tananyaghoz</a>
