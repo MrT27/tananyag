@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>43. óra – Adatok bekérése és kiírása</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · Webprogramozás · 43. óra</p>
+      <h1>Adatok bekérése és kiírása</h1>
+      <p>Kérj be egy nevet a böngészőben, majd köszönj a felhasználónak.</p>
+    </header>
+
+    <section>
+      <h2>Első példa – köszönés név szerint</h2>
+      <p>Másold a két sort a böngésző konzoljába, és futtasd együtt. A <code>prompt()</code> megnyit egy ablakot, ahol beírhatod a válaszodat.</p>
+      <pre><code>const firstName = prompt("Mi a keresztneved?");
+console.log("Szia, " + firstName + "!");</code></pre>
+      <p>Ha <strong>Matilda</strong> nevet írsz be, a konzolban ez jelenik meg: <strong>Szia, Matilda!</strong> A <code>firstName</code> néven érjük el a beírt választ. A <code>+</code> egymás mellé fűzi a szövegrészeket.</p>
+      <p>A <code>console.log()</code> a konzolba ír. Ha felugró ablakban szeretnéd megmutatni az üzenetet, a második sorban használj <code>alert("Szia, " + firstName + "!");</code> utasítást.</p>
+    </section>
+
+    <section>
+      <h2>Mit ad vissza a prompt()?</h2>
+      <ul>
+        <li>Az <strong>OK</strong> gombbal a beírt választ szövegként kapod meg. Ha <code>23</code>-at írsz be, a kapott érték <code>"23"</code>.</li>
+        <li>Ha üresen nyomsz <strong>OK</strong>-t, az eredmény üres szöveg (<code>""</code>). Ha a <strong>Mégse</strong> gombot választod, az eredmény <code>null</code>.</li>
+      </ul>
+      <p>Próbáld ki mindhárom esetet a <code>console.log(prompt("Írj be valamit!"));</code> sorral. Ha a válasszal számolni szeretnél, előbb számmá kell alakítanod. Erre az adattípusok után térünk vissza.</p>
+    </section>
+
+    <section class="practice">
+      <h2>Önálló feladat</h2>
+      <p>Kérdezd meg a felhasználótól a kedvenc színét. Tárold a választ <code>favoriteColor</code> néven, majd írd ki a konzolba. Ha <strong>kék</strong> a válasz, a kimenet legyen: <strong>A kedvenc színed: kék.</strong></p>
+    </section>
+
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+    </nav>
+  </main>
+</body>
+</html>
