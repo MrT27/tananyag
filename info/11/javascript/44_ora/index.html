@@ -20,6 +20,17 @@
     a { color: #154d8a; }
     summary { cursor: pointer; font-weight: 700; }
     .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
   </style>
 </head>
 <body>
@@ -105,7 +116,9 @@ let new = 27;</code></pre>
       </details>
     </section>
 
-    <p>Jonas következő leckéje a <a href="../45_ora/index.html">11. Data Types</a>. Az adattípusok után térj vissza a 12. videóhoz.</p>
+    <nav aria-label="Tovább az adattípusokhoz">
+      <a class="lesson-button" href="../45_ora/index.html">Következő: 11. Data Types</a>
+    </nav>
 
     <section>
       <h2 id="video-12">Mikor használjuk a let, const és var kulcsszót?</h2>
@@ -181,7 +194,7 @@ console.log(lastName);</code></pre>
       </ul>
     </aside>
     <nav aria-label="Tananyag navigáció">
-      <a href="../index.html">Vissza a JavaScript tananyaghoz</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
     </nav>
   </main>
 </body>
