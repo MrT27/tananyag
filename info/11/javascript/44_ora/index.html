@@ -56,13 +56,40 @@ console.log(firstName);</code></pre>
     </section>
 
     <section>
-      <h2>Beszédes változónevek</h2>
-      <p>A <code>firstName</code> és az <code>currentJob</code> elárulja, milyen adatot tárolunk. A <code>currentJob</code> például pontosabb név, mint a <code>job2</code>. A <em>camelCase</em> írásmódnál kisbetűvel kezdünk, és az egybeírt név minden következő szava nagybetűvel indul.</p>
+      <h2>A változónevek szabályai és szokásai</h2>
+      <h3>Mit enged meg a JavaScript?</h3>
       <ul>
-        <li>A név nem kezdődhet számmal, és szóközt sem tartalmazhat. A <code>3years</code> helyett használhatod a <code>years</code> nevet.</li>
-        <li>Foglalt kulcsszó, például a <code>new</code>, nem lehet változónév. Az <code>newJob</code> használható.</li>
+        <li>A példáinkban a név betűvel, aláhúzásjellel (<code>_</code>) vagy dollárjellel (<code>$</code>) kezdődhet. Számjegy csak az első karakter után állhat. A <code>3years</code> hibás, a <code>years3</code> érvényes.</li>
+        <li>A névben nem lehet szóköz vagy <code>&amp;</code> jel. A <code>jonas&amp;matilda</code> hibás, a <code>jonas_matilda</code> érvényes.</li>
+        <li>Foglalt kulcsszót önmagában nem használhatunk névként. A <code>new</code> és a <code>function</code> hibás, a <code>$function</code> és a <code>newJob</code> érvényes.</li>
         <li>A JavaScript különbséget tesz kis- és nagybetű között. A <code>firstName</code> és a <code>firstname</code> két külön név.</li>
       </ul>
+      <pre><code>let years3 = 3;
+let jonas_matilda = "JM";
+let $function = 27;</code></pre>
+
+      <h3>Hogyan érdemes nevet választani?</h3>
+      <ul>
+        <li>A JavaScriptben bevett a <strong>camelCase</strong>. Az első szó kisbetűvel kezdődik, a további szavak első betűje nagy, például <code>firstName</code>. A <code>first_name</code> is érvényes.</li>
+        <li>A hétköznapi változók nevét kisbetűvel kezdjük. A <code>Person</code> szabályos név, de ezt az írásmódot gyakran osztályoknál és konstruktoroknál látod. Itt a <code>person</code> a szokásos forma.</li>
+        <li>Az olyan rögzített értékeket, mint a pi, gyakran nagybetűvel írjuk, például <code>const PI = 3.1415;</code>. Egy <code>const</code>-tal létrehozott név lehet camelCase is, ahogy a lecke későbbi <code>birthYear</code> példájában.</li>
+        <li>A <code>name</code> érvényes név. A böngészőben azonban a <code>window.name</code> már létező tulajdonság, és a <code>firstName</code> azt is pontosabban elmondja, milyen nevet tárolunk.</li>
+      </ul>
+      <pre><code>let myFirstJob = "programozó";
+let myCurrentJob = "tanár";
+
+let job1 = "programozó";
+let job2 = "tanár";</code></pre>
+      <p>Mindkét névpár szabályos. A <code>myFirstJob</code> és a <code>myCurrentJob</code> megmutatja, melyik az első munka és melyik a jelenlegi.</p>
+
+      <details>
+        <summary>Próbáld ki Jonas hibás példáit</summary>
+        <p>Külön-külön írj be egy sort a <code>script.js</code> fájlba, mentsd el, majd frissítsd az oldalt.</p>
+        <pre><code>let 3years = 3;
+let jonas&amp;matilda = "JM";
+let new = 27;</code></pre>
+        <p>A VS Code jelezheti a hibát, a böngésző konzoljában pedig <code>SyntaxError</code> jelenik meg. A konzol mutatja a fájlt és a sorszámot. A hiba kiírásához nem kell <code>console.log()</code>. Javítsd a nevet, és frissíts újra, mielőtt a következő sort kipróbálod.</p>
+      </details>
     </section>
 
     <section class="practice">
