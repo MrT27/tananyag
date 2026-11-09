@@ -107,7 +107,8 @@ let new = 27;</code></pre>
 
     <section>
       <h2>Mikor használjuk a let, const és var kulcsszót?</h2>
-      <p>A <code>let</code> akkor kell, ha később új értéket adunk a változónak. A <code>const</code> esetén a létrehozáskor kötelező kezdőértéket adni, és utána nincs új értékadás. Jonas példájában az életkor frissül, a születési év ugyanaz marad.</p>
+      <p>A <code>var</code> a régebbi deklarációs forma. A <code>let</code> és a <code>const</code> az ES2015-ben, más néven ES6-ban jelent meg, amelyről a 41. órán beszéltünk.</p>
+      <p>A <code>let</code> akkor kell, ha később új értéket adunk a változónak. A <code>let age = 30;</code> létrehozza a változót, az <code>age = 31;</code> pedig új értéket ad neki. A videóban Jonas ezt a változó módosításának, azaz mutációjának is nevezi. A <code>const</code> esetén a létrehozáskor kötelező kezdőértéket adni, és utána nincs új értékadás. Jonas példájában az életkor frissül, a születési év ugyanaz marad.</p>
       <pre><code>let age = 30;
 age = 31;
 console.log(age); // 31
@@ -118,10 +119,18 @@ console.log(birthYear); // 1991
 var job = "programozó";
 job = "tanár";
 console.log(job); // tanár</code></pre>
-      <p>A <code>var</code> régebbi kódokban gyakori, és vele is lehet új értéket adni egy változónak. Új kódban indulj <code>const</code>-tal, és válts <code>let</code>-re, ha későbbi értékadásra van szükség. Új változó létrehozásakor mindig írd ki a megfelelő kulcsszót.</p>
+      <p>A <code>var</code> régebbi kódokban gyakori, és vele is lehet új értéket adni egy változónak. Új kódban válassz <code>const</code>-ot, ha a változóhoz egyszer rendelsz értéket. Az <code>age</code> is lehet <code>const</code>, ha a program csak kiolvassa az életkort. Így egy véletlen új értékadásnál rögtön hibát kapsz. <code>let</code>-et akkor használj, ha az értékadás később történik, vagy a program később átírja az értéket.</p>
+      <h3>Mi van, ha csak később tudjuk meg az értéket?</h3>
+      <pre><code>let year;
+console.log(year); // undefined
+
+year = 1991;
+console.log(year); // 1991</code></pre>
+      <p>A <code>let</code> kezdőérték nélkül is használható. Például előre létrehozhatjuk a változót, majd egy későbbi feltétel alapján adhatunk neki értéket. Az <code>undefined</code> jelentését a 45. órán vizsgáljuk meg közelebbről.</p>
       <details>
-        <summary>Mi történik, ha átírom a birthYear értékét?</summary>
-        <p>Ha az előző példa végére beírod, hogy <code>birthYear = 1992;</code>, futás közben <code>TypeError</code> keletkezik. Próbáld ki, majd töröld a hibás sort.</p>
+        <summary>Próbáld ki a két hibás const példát</summary>
+        <p><strong>Új értékadás:</strong> az előző példa végén a <code>birthYear = 1990;</code> sor futás közben <code>TypeError</code>-t okoz. A konzolban például az <code>Assignment to constant variable</code> üzenetet látod. Kommentezd ki a hibás sort, mielőtt továbbmész.</p>
+        <p><strong>Hiányzó kezdőérték:</strong> a <code>const job;</code> már a kód beolvasásakor <code>SyntaxError</code>-t okoz. A <code>Missing initializer in const declaration</code> üzenet azt jelenti, hogy már a deklaráció sorában meg kell adnod egy kezdőértéket. Ezt a sort külön fájlban próbáld ki, mert a közös példában már van <code>job</code> nevű változó.</p>
       </details>
     </section>
 
@@ -142,6 +151,14 @@ console.log(currentJob); // tanár
       <p>Futtasd külön a példát. Vedd le az egyik utolsó sor elejéről a <code>//</code> jelet, és nézd meg, melyik nevet nem találja a JavaScript. A másik sort külön futtatással próbáld ki.</p>
     </section>
 
+    <section>
+      <h2>Mi történik, ha lemarad a deklaráció?</h2>
+      <p>Jonas megmutatja, hogy a <code>lastName = "Schmedtmann";</code> egy hagyományos, nem szigorú böngészős szkriptben látszólag működhet. Ha a név még nem létezik, az értékadás tulajdonságot hozhat létre a globális objektumon, a böngészőben a <code>window</code> objektumon. Szigorú módban ugyanez <code>ReferenceError</code>-t okoz.</p>
+      <pre><code>const lastName = "Schmedtmann";
+console.log(lastName);</code></pre>
+      <p>Új változót mindig deklarálj. A fenti példában <code>const</code> illik a vezetéknévhez, mert a program egyszer ad neki értéket.</p>
+    </section>
+
     <section class="practice">
       <h2>Rövid ellenőrzés</h2>
       <ol>
@@ -156,6 +173,7 @@ console.log(currentJob); // tanár
       <ul>
         <li><strong>9. Values and Variables</strong></li>
         <li><strong>12. let, const and var</strong></li>
+        <li>A láthatóság működését Jonas később a <em>How JavaScript Works Behind the Scenes</em> fejezetben bontja ki. A fenti blokkos példa a mi tanmenetünk szerint már a 44. órához tartozik.</li>
       </ul>
     </aside>
     <nav aria-label="Tananyag navigáció">
