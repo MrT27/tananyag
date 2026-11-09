@@ -33,7 +33,41 @@
     <section>
       <h2>Mit csinál a JavaScript a weboldalon?</h2>
       <p>A <strong>HTML</strong> adja az oldal tartalmát és szerkezetét. A <strong>CSS</strong> határozza meg, hogyan néz ki. A <strong>JavaScript</strong> segítségével az oldal reagálhat a felhasználóra, például megjeleníthet egy üzenetet, amikor valaki egy gombra kattint.</p>
-      <p>Ma az első JavaScript-fájlt kapcsoljuk hozzá egy HTML-oldalhoz, és ellenőrizzük, hogy lefutott-e.</p>
+      <p>JavaScripttel például megmutathatunk egy űrlaphibát gépelés közben, megnyithatunk egy menüt vagy kiszámíthatjuk egy rendelés végösszegét. A kódot a böngésző futtatja, így az eredményt már egy egyszerű HTML-oldalon vagy a konzolban is kipróbálhatjuk. JavaScript böngészőn kívül is futtatható, például Node.js segítségével egy szerveren.</p>
+      <details>
+        <summary>Mi futtatja a JavaScript-kódot?</summary>
+        <p>A kódot a JavaScript-motor értelmezi és futtatja. A Chrome motorja a <strong>V8</strong>, a Firefoxé a <strong>SpiderMonkey</strong>. A Node.js szintén a V8-at használja, böngészőn kívül.</p>
+        <p>A futtatási környezet határozza meg, mihez fér hozzá a program. A böngészőben a kód elérheti például az oldal gombjait és címsorait. Ezzel a DOM-nál foglalkozunk. A Node.js-ben a kód például fájlokat olvashat vagy szerverkérésekre válaszolhat.</p>
+      </details>
+    </section>
+
+    <section>
+      <h2>Miből épül fel egy JavaScript-program?</h2>
+      <p>Egy kvíz példáján már most látszik, mire szolgálnak a következő órákon tanult építőelemek:</p>
+      <ul>
+        <li>Az <strong>értékek és változók</strong> tárolják a játékos nevét, válaszát és pontszámát.</li>
+        <li>A <strong>műveletek és elágazások</strong> ellenőrzik a választ, és jó megoldás esetén növelik a pontszámot.</li>
+        <li>A <strong>ciklusok</strong> végigjárhatják a kérdéseket, a <strong>függvények</strong> pedig újra felhasználhatóvá teszik például a válasz ellenőrzését.</li>
+        <li>A <strong>tömbökben és objektumokban</strong> együtt kezelhetjük a kérdéseket, a válaszlehetőségeket és a helyes válaszokat.</li>
+      </ul>
+      <p>A JavaScript magas szintű nyelv. A kvíz készítésekor például azzal foglalkozunk, hogyan ellenőrizzük a választ, miközben a memória kezeléséről a futtatókörnyezet gondoskodik. A nyelv többféle programozási stílust támogat. A feladatokat lépések sorozataként is leírhatjuk, vagy összetartozó adatokat és műveleteket objektumokba rendezhetünk.</p>
+    </section>
+
+    <section>
+      <h2>Mit hozott a 2015-ös frissítés?</h2>
+      <p>Az <strong>ECMAScript</strong> a JavaScript nyelvi szabványa. A 2015-ben megjelent <strong>ES2015</strong>, más néven <strong>ES6</strong>, többek között bevezette a <code>let</code> és <code>const</code> kulcsszót, valamint a nyílfüggvényeket. A <code>let</code> és a <code>const</code> használatát a 44. órán gyakoroljuk. Régebbi példákban gyakran találkozunk majd a <code>var</code> kulcsszóval is.</p>
+      <details>
+        <summary>Honnan jött a JavaScript, és miért látni többféle ES-számot?</summary>
+        <p>Brendan Eich 1995-ben, a Netscape-nél készítette el a nyelv első változatát. A fejlesztés során Mocha, majd LiveScript néven szerepelt, végül JavaScript lett a neve. A hasonló név ellenére a Java és a JavaScript két külön programozási nyelv.</p>
+        <p>Az ES5 2009-ben jelent meg, az ES2015 pedig nagy bővítést hozott. Azóta az ECMAScript új kiadásait évente adják ki. Ezért utalhat egy oktatóanyag egy adott évre, például ES2020-ra, amikor egy új nyelvi lehetőséget mutat be.</p>
+      </details>
+      <p>Most elkészítjük az első JavaScript-fájlunkat, és ellenőrizzük a futását a böngészőben.</p>
+    </section>
+
+    <section>
+      <h2>Letölthető kezdőcsomag</h2>
+      <p>Ha kész fájlokból szeretnél indulni, csomagold ki a ZIP-et, és nyisd meg a mappáját a VS Code-ban. Az <code>index.html</code> és a <code>script.js</code> már össze van kapcsolva. Ha lépésenként szeretnéd elkészíteni a két fájlt, kövesd az alábbi közös példát.</p>
+      <p><a href="../javascript-alapok-kezdo.zip" download>Kezdőcsomag letöltése (ZIP)</a> · <a href="../kezdo/index.html">Kezdőoldal megnyitása</a></p>
     </section>
 
     <section>
@@ -96,6 +130,7 @@ console.log(40 + 8 + 23 - 10);</code></pre>
         <li>Mi a HTML, a CSS és a JavaScript szerepe egy weboldalon?</li>
         <li>Melyik HTML-sor tölti be a JavaScript-fájlt?</li>
         <li>Hol keresed a <code>console.log()</code> kimenetét?</li>
+        <li>Melyik két változódeklaráló kulcsszót hozta az ES2015?</li>
       </ol>
       <p>A 42. órán a konzolba közvetlenül is írunk és futtatunk JavaScript-kódot.</p>
     </section>
@@ -104,7 +139,7 @@ console.log(40 + 8 + 23 - 10);</code></pre>
       <h2>Kapcsolódó videók</h2>
       <p><a href="https://www.udemy.com/course/the-complete-javascript-course/">Jonas Schmedtmann Udemy-kurzusa</a>, <em>JavaScript Fundamentals – Part 1</em> fejezet.</p>
       <ul>
-        <li><strong>7.</strong> <em>A Brief Introduction to JavaScript</em> – a JavaScript szerepe a weben.</li>
+        <li><strong>7.</strong> <em>A Brief Introduction to JavaScript</em> – a JavaScript felhasználása, jellemzői és fejlődése.</li>
         <li><strong>8.</strong> <em>Linking a JavaScript File</em> – a fájl bekötése. Az órán a fenti saját mintával gyakorolunk.</li>
       </ul>
       <p>Jonas fejezet-összefoglalójában ezt a két témát a 2. és 3. PDF-oldal tárgyalja. A <em>Hello World!</em> videó a 42. óra konzolos gyakorlatához kapcsolódik.</p>
