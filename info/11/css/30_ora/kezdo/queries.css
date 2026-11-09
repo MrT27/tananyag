@@ -1,5 +1,5 @@
 /* Kisebb laptopok és fekvő táblagépek – 1200px alatt */
-@media (max-width: 75em) {
+@media (max-width: 75rem) {
   .container {
     width: 94%;
     grid-template-columns: 1fr 260px;

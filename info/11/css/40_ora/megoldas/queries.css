@@ -1,5 +1,5 @@
 /* Kisebb laptopok – 1200px alatt */
-@media (max-width: 75em) {
+@media (max-width: 75rem) {
   header,
   main,
   footer {
@@ -13,7 +13,7 @@
 }
 
 /* Tabletek – 944px alatt */
-@media (max-width: 59em) {
+@media (max-width: 59rem) {
   header {
     align-items: flex-start;
     flex-direction: column;
@@ -25,7 +25,7 @@
 }
 
 /* Mobiltelefonok – 544px alatt */
-@media (max-width: 34em) {
+@media (max-width: 34rem) {
   header,
   main,
   footer {

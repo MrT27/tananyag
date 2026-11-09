@@ -12,9 +12,9 @@
 
   <div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Jonas-alap:</strong><span>133. videó – Responding to Tablets, a Közlekedési magazin egyszerűsített szerkezetére alkalmazva</span></div>
 
-  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Az óra célja</h2><ul><li>A második, <code>59em</code>-es töréspont elkészítése.</li><li>A kéthasábos fő Grid egyoszlopossá alakítása.</li><li>A fejléc elemeinek egymás alá rendezése.</li><li>A kapcsolódó témák helyének kihasználása egy belső Griddel.</li><li>A két media query együttes működésének ellenőrzése.</li></ul><a class="btn btn-primary me-2" href="kezdo.zip" download>Kezdőcsomag letöltése</a><a class="btn btn-outline-success" href="megoldas.zip" download>Megoldás letöltése</a></div></section>
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Az óra célja</h2><ul><li>A második, <code>59rem</code>-es töréspont elkészítése.</li><li>A kéthasábos fő Grid egyoszlopossá alakítása.</li><li>A fejléc elemeinek egymás alá rendezése.</li><li>A kapcsolódó témák helyének kihasználása egy belső Griddel.</li><li>A két media query együttes működésének ellenőrzése.</li></ul><a class="btn btn-primary me-2" href="kezdo.zip" download>Kezdőcsomag letöltése</a><a class="btn btn-outline-success" href="megoldas.zip" download>Megoldás letöltése</a></div></section>
 
-  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">1. A kezdőállapot</h2><p>A kezdőcsomag már tartalmazza a 29. óra <code>75em</code>-es media queryjét. Kisebb laptopon az oldal jól használható, de tabletes szélességen a cikk és a 260 px-es oldalsáv túlságosan összenyomja egymást.</p><pre><code>@media (max-width: 75em) {
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">1. A kezdőállapot</h2><p>A kezdőcsomag már tartalmazza a 29. óra <code>75rem</code>-es media queryjét. Kisebb laptopon az oldal jól használható, de tabletes szélességen a cikk és a 260 px-es oldalsáv túlságosan összenyomja egymást.</p><pre><code>@media (max-width: 75rem) {
   .container {
     width: 94%;
     grid-template-columns: 1fr 260px;
@@ -24,11 +24,11 @@
 
   <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">2. A második töréspont</h2><p>A tabletes átalakítást körülbelül 944 px-nél végezzük el:</p><pre><code>944 ÷ 16 = 59
 
-@media (max-width: 59em) {
+@media (max-width: 59rem) {
   /* Tabletes módosítások */
 }</code></pre><div class="important rounded-3 p-3">944 px csak a számítás kiindulópontja. A döntés oka az, hogy ezen a tartományon a kéthasábos elrendezés tartalma már túl keskennyé válik.</div></div></section>
 
-  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">3. A fő Grid egy oszlopra vált</h2><pre><code>@media (max-width: 59em) {
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">3. A fő Grid egy oszlopra vált</h2><pre><code>@media (max-width: 59rem) {
   .container {
     width: 92%;
     grid-template-columns: 1fr;
@@ -37,7 +37,7 @@
   }
 }</code></pre><p>A cikk és az <code>aside</code> a HTML-ben egymás után következik. Amikor a konténernek már csak egy oszlopa van, automatikusan egymás alá kerülnek.</p><div class="callout rounded-3 p-3">Nem kell külön megadni az article és az aside helyét. A Grid automatikus elhelyezése követi a HTML sorrendjét.</div></div></section>
 
-  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">4. A fejléc átrendezése Flexboxszal</h2><p>A logó és a navigáció egymás mellett már szűkössé válik. A már ismert <code>flex-direction</code> segítségével egymás alá tesszük őket:</p><pre><code>@media (max-width: 59em) {
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">4. A fejléc átrendezése Flexboxszal</h2><p>A logó és a navigáció egymás mellett már szűkössé válik. A már ismert <code>flex-direction</code> segítségével egymás alá tesszük őket:</p><pre><code>@media (max-width: 59rem) {
   .main-header {
     align-items: flex-start;
     flex-direction: column;
@@ -45,7 +45,7 @@
   }
 }</code></pre><p>A navigáció ezen az órán még látható marad. A mobilmenüt később készítjük el.</p></div></section>
 
-  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">5. Címsor és oldalsáv</h2><pre><code>@media (max-width: 59em) {
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">5. Címsor és oldalsáv</h2><pre><code>@media (max-width: 59rem) {
   h2 {
     font-size: 32px;
   }
@@ -55,7 +55,7 @@
   }
 }</code></pre><p>A címsor kisebb helyet foglal, az aside pedig az új, teljes szélességű helyzetében kevésbé nagy belső térközt kap.</p></div></section>
 
-  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">6. A kapcsolódó témák belső Gridje</h2><p>Az oldalsáv a cikk alatt már sokkal szélesebb. Ezt kihasználva a három kapcsolódó témát három oszlopba rendezzük:</p><pre><code>@media (max-width: 59em) {
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">6. A kapcsolódó témák belső Gridje</h2><p>Az oldalsáv a cikk alatt már sokkal szélesebb. Ezt kihasználva a három kapcsolódó témát három oszlopba rendezzük:</p><pre><code>@media (max-width: 59rem) {
   .related {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -69,12 +69,12 @@
   }
 }</code></pre><p>A <code>.related</code> Grid-konténer lesz. A három <code>.related-post</code> a három oszlopba kerül. A kártyákon belül az ikon és a szöveg egymás alá rendeződik.</p></div></section>
 
-  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">7. A media queryk együtt működnek</h2><p>900 px-en mindkét feltétel igaz:</p><pre><code>@media (max-width: 75em) { /* érvényes */ }
-@media (max-width: 59em) { /* szintén érvényes */ }</code></pre><p>A 75em-es szabályok továbbra is érvényesek. A később szereplő 59em-es blokk csak azokat a tulajdonságokat írja felül, amelyeket újra megadunk.</p><div class="check rounded-3 p-3"><strong>Példa:</strong> a 75em-es szabály 40 px-es oszlopközt ad, de a 59em-es szabály ezt <code>0</code>-ra írja felül. A navigáció 16 px-es margója viszont megmarad, mert azt a második media query nem módosítja.</div></div></section>
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">7. A media queryk együtt működnek</h2><p>900 px-en mindkét feltétel igaz:</p><pre><code>@media (max-width: 75rem) { /* érvényes */ }
+@media (max-width: 59rem) { /* szintén érvényes */ }</code></pre><p>A 75rem-es szabályok továbbra is érvényesek. A később szereplő 59rem-es blokk csak azokat a tulajdonságokat írja felül, amelyeket újra megadunk.</p><div class="check rounded-3 p-3"><strong>Példa:</strong> a 75rem-es szabály 40 px-es oszlopközt ad, de a 59rem-es szabály ezt <code>0</code>-ra írja felül. A navigáció 16 px-es margója viszont megmarad, mert azt a második media query nem módosítja.</div></div></section>
 
-  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">8. Önálló feladat és ellenőrzés</h2><div class="task rounded-3 p-3"><ol class="mb-0"><li>A 75em-es blokk alá készíts <code>59em</code>-es media queryt.</li><li>Alakítsd egyoszlopossá a fő Gridet.</li><li>Rendezd egymás alá a fejléc elemeit.</li><li>Csökkentsd a címsort és az aside paddingjét.</li><li>Rendezd háromoszlopos Gridbe a kapcsolódó témákat.</li><li>Ellenőrizd az oldalt 944, 945, 900, 800 és 720 px-en.</li><li>DevToolsban vizsgáld meg, melyik deklaráció melyik media queryből érkezik.</li></ol></div></div></section>
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">8. Önálló feladat és ellenőrzés</h2><div class="task rounded-3 p-3"><ol class="mb-0"><li>A 75rem-es blokk alá készíts <code>59rem</code>-es media queryt.</li><li>Alakítsd egyoszlopossá a fő Gridet.</li><li>Rendezd egymás alá a fejléc elemeit.</li><li>Csökkentsd a címsort és az aside paddingjét.</li><li>Rendezd háromoszlopos Gridbe a kapcsolódó témákat.</li><li>Ellenőrizd az oldalt 944, 945, 900, 800 és 720 px-en.</li><li>DevToolsban vizsgáld meg, melyik deklaráció melyik media queryből érkezik.</li></ol></div></div></section>
 
-  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">9. Ellenőrző kérdések</h2><ol><li>Miért választottunk új töréspontot?</li><li>Hogyan számítjuk ki az 59em körülbelüli pixelértékét?</li><li>Miért kerül automatikusan az aside a cikk alá?</li><li>Mit csinál a <code>flex-direction: column</code> a fejlécben?</li><li>Miért lehet háromoszlopos a kapcsolódó rész, amikor a fő oldal már egyoszlopos?</li><li>900 px-en mely media queryk érvényesek?</li></ol><details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol class="mt-3 mb-0"><li>A kéthasábos tartalom tableten túl keskennyé vált.</li><li>59-et megszorozzuk 16-tal: 944 px.</li><li>Az egyoszlopos Grid automatikusan a HTML sorrendjében helyezi el a gyermekeket.</li><li>Egymás alá rendezi a logót és a navigációt.</li><li>Mert az aside a fő Grid teljes szélességét megkapja, és azon belül külön Gridet hozhatunk létre.</li><li>A 75em-es és az 59em-es is.</li></ol></details></div></section>
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">9. Ellenőrző kérdések</h2><ol><li>Miért választottunk új töréspontot?</li><li>Hogyan számítjuk ki az 59rem körülbelüli pixelértékét?</li><li>Miért kerül automatikusan az aside a cikk alá?</li><li>Mit csinál a <code>flex-direction: column</code> a fejlécben?</li><li>Miért lehet háromoszlopos a kapcsolódó rész, amikor a fő oldal már egyoszlopos?</li><li>900 px-en mely media queryk érvényesek?</li></ol><details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol class="mt-3 mb-0"><li>A kéthasábos tartalom tableten túl keskennyé vált.</li><li>59-et megszorozzuk 16-tal: 944 px.</li><li>Az egyoszlopos Grid automatikusan a HTML sorrendjében helyezi el a gyermekeket.</li><li>Egymás alá rendezi a logót és a navigációt.</li><li>Mert az aside a fő Grid teljes szélességét megkapja, és azon belül külön Gridet hozhatunk létre.</li><li>A 75rem-es és az 59rem-es is.</li></ol></details></div></section>
 
   <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Mit vigyél el ebből az órából?</h2><ul class="mb-0"><li>A második media query az elsővel együtt működik.</li><li>A fő Grid egyszerűen átalakítható egyoszlopossá.</li><li>A HTML helyes sorrendje segíti a reszponzív elrendezést.</li><li>Egy elem új helyzetében új belső elrendezést is kaphat.</li><li>A következő órán elkészítjük a telefonos nézetet és az egyszerű, JavaScript nélküli navigációt.</li></ul></div></section>
 

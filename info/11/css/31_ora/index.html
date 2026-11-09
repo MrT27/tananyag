@@ -15,7 +15,7 @@
     <span class="badge text-bg-success">Közlekedési projekt</span>
     <span class="badge text-bg-dark">31. óra</span>
     <h1 class="display-6 fw-bold mt-3">Mobiltelefonos elrendezés</h1>
-    <p class="lead mb-0">Elkészítjük a közlekedési oldal harmadik nézetét: 34em alatt a navigáció, a kapcsolódó témák és a sűrűbb tartalmak is telefonhoz igazodnak.</p>
+    <p class="lead mb-0">Elkészítjük a közlekedési oldal harmadik nézetét: 34rem alatt a navigáció, a kapcsolódó témák és a sűrűbb tartalmak is telefonhoz igazodnak.</p>
   </section>
 
   <div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1">
@@ -26,7 +26,7 @@
     <h2 class="h3">Az óra célja</h2>
     <ul>
       <li>A harmadik, telefonos töréspont kiválasztása a design hibája alapján.</li>
-      <li>A <code>34em</code>-es media query elkészítése.</li>
+      <li>A <code>34rem</code>-es media query elkészítése.</li>
       <li>A navigáció egyszerű, JavaScript nélküli átrendezése.</li>
       <li>A táblázat, a gomb, a térközök és a kapcsolódó témák telefonos igazítása.</li>
       <li>A három nézet ellenőrzése: laptop, tablet és mobiltelefon.</li>
@@ -37,24 +37,24 @@
 
   <section class="card section-card mb-4"><div class="card-body p-4">
     <h2 class="h3">1. Kiindulási állapot</h2>
-    <p>A kezdőcsomag a 30. óra kész megoldása. Már működik benne a <code>75em</code>-es kisebb laptopos és az <code>59em</code>-es tabletes media query.</p>
+    <p>A kezdőcsomag a 30. óra kész megoldása. Már működik benne a <code>75rem</code>-es kisebb laptopos és az <code>59rem</code>-es tabletes media query.</p>
     <div class="callout rounded-3 p-3"><strong>Fontos:</strong> nem egy konkrét telefon típusához készítünk szabályt. Addig szűkítjük a nézetablakot, amíg a saját tartalmunk elrendezése problémássá válik.</div>
   </div></section>
 
   <section class="card section-card mb-4"><div class="card-body p-4">
-    <h2 class="h3">2. Miért 34em?</h2>
-    <p>Körülbelül 550 px környékén a navigáció, a táblázat és a kapcsolódó témák már túl szűkek. A töréspontot <code>em</code>-ben adjuk meg:</p>
+    <h2 class="h3">2. Miért 34rem?</h2>
+    <p>Körülbelül 550 px környékén a navigáció, a táblázat és a kapcsolódó témák már túl szűkek. A töréspontot <code>rem</code>-ben adjuk meg:</p>
     <pre><code>544 ÷ 16 = 34
 
-@media (max-width: 34em) {
+@media (max-width: 34rem) {
   /* telefonos felülírások */
 }</code></pre>
-    <p class="mb-0">A <code>34em</code> a media queryben körülbelül 544 px-nek felel meg.</p>
+    <p class="mb-0">A <code>34rem</code> a media queryben körülbelül 544 px-nek felel meg.</p>
   </div></section>
 
   <section class="card section-card mb-4"><div class="card-body p-4">
     <h2 class="h3">3. A külső térközök csökkentése</h2>
-    <pre><code>@media (max-width: 34em) {
+    <pre><code>@media (max-width: 34rem) {
   .container {
     width: 94%;
     margin: 15px auto;
@@ -70,7 +70,7 @@
 
   <section class="card section-card mb-4"><div class="card-body p-4">
     <h2 class="h3">4. Egyszerű mobilnavigáció hamburgerikon nélkül</h2>
-    <pre><code>@media (max-width: 34em) {
+    <pre><code>@media (max-width: 34rem) {
   nav a:link,
   nav a:visited {
     display: block;
@@ -83,7 +83,7 @@
 
   <section class="card section-card mb-4"><div class="card-body p-4">
     <h2 class="h3">5. A címsor és a „Hasznos” gomb</h2>
-    <pre><code>@media (max-width: 34em) {
+    <pre><code>@media (max-width: 34rem) {
   h2 {
     font-size: 28px;
   }
@@ -98,7 +98,7 @@
 
   <section class="card section-card mb-4"><div class="card-body p-4">
     <h2 class="h3">6. A táblázat és az oldalsáv igazítása</h2>
-    <pre><code>@media (max-width: 34em) {
+    <pre><code>@media (max-width: 34rem) {
   th,
   td {
     padding: 8px 4px;
@@ -114,7 +114,7 @@
 
   <section class="card section-card mb-4"><div class="card-body p-4">
     <h2 class="h3">7. Kapcsolódó témák egy oszlopban</h2>
-    <pre><code>@media (max-width: 34em) {
+    <pre><code>@media (max-width: 34rem) {
   .related {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -133,12 +133,12 @@
       <thead><tr><th>Nézet</th><th>Szélesség</th><th>Elrendezés</th></tr></thead>
       <tbody>
         <tr><td>Nagy képernyő</td><td>1200 px felett</td><td>Az alapértelmezett, kéthasábos oldal</td></tr>
-        <tr><td>Kisebb laptop</td><td>75em alatt</td><td>Keskenyebb kéthasábos elrendezés</td></tr>
-        <tr><td>Tablet</td><td>59em alatt</td><td>Egyoszlopos fő Grid, három kapcsolódó téma</td></tr>
-        <tr><td>Mobiltelefon</td><td>34em alatt</td><td>Függőleges navigáció és egyoszlopos kapcsolódó rész</td></tr>
+        <tr><td>Kisebb laptop</td><td>75rem alatt</td><td>Keskenyebb kéthasábos elrendezés</td></tr>
+        <tr><td>Tablet</td><td>59rem alatt</td><td>Egyoszlopos fő Grid, három kapcsolódó téma</td></tr>
+        <tr><td>Mobiltelefon</td><td>34rem alatt</td><td>Függőleges navigáció és egyoszlopos kapcsolódó rész</td></tr>
       </tbody>
     </table></div>
-    <div class="important rounded-3 p-3">500 px-en mindhárom media query érvényes. A későbbi 34em-es blokk csak azokat a tulajdonságokat írja felül, amelyeket újra megadunk.</div>
+    <div class="important rounded-3 p-3">500 px-en mindhárom media query érvényes. A későbbi 34rem-es blokk csak azokat a tulajdonságokat írja felül, amelyeket újra megadunk.</div>
   </div></section>
 
   <section class="card section-card mb-4"><div class="card-body p-4">
@@ -149,14 +149,14 @@
       <li>Kapcsold be a media queryk megjelenítését, ha a böngésződ támogatja.</li>
       <li>Ellenőrizd, hogy nincs vízszintes görgetősáv.</li>
       <li>Nézd meg, hogy a navigáció minden hivatkozása olvasható és kattintható marad-e.</li>
-      <li>DevToolsban keresd meg, mely tulajdonságok érkeznek a 34em-es blokkból.</li>
+      <li>DevToolsban keresd meg, mely tulajdonságok érkeznek a 34rem-es blokkból.</li>
     </ol>
   </div></section>
 
   <section class="card section-card mb-4"><div class="card-body p-4">
     <h2 class="h3">10. Önálló feladat</h2>
     <div class="task rounded-3 p-3"><ol class="mb-0">
-      <li>A <code>queries.css</code> végén készítsd el a <code>34em</code>-es media queryt.</li>
+      <li>A <code>queries.css</code> végén készítsd el a <code>34rem</code>-es media queryt.</li>
       <li>Csökkentsd a konténer és a fejléc térközeit.</li>
       <li>Rendezd egymás alá a navigáció hivatkozásait.</li>
       <li>Akadályozd meg, hogy a „Hasznos” gomb ráfedjen a címre.</li>
@@ -170,8 +170,8 @@
     <h2 class="h3">11. Ellenőrző kérdések</h2>
     <ol>
       <li>Miért nem készítettünk automatikusan 600 px-es töréspontot?</li>
-      <li>Körülbelül hány pixel a 34em?</li>
-      <li>Miért érvényes 500 px-en a 75em-es és az 59em-es query is?</li>
+      <li>Körülbelül hány pixel a 34rem?</li>
+      <li>Miért érvényes 500 px-en a 75rem-es és az 59rem-es query is?</li>
       <li>Miért állítjuk a gomb pozícióját <code>static</code> értékre?</li>
       <li>Miért nincs szükség hamburgerikonra ezen az oldalon?</li>
     </ol>
@@ -188,7 +188,7 @@
     <h2 class="h3">A teljes <code>queries.css</code> egyben</h2>
     <p>Az alábbi kód tartalmazza a három egymásra épülő töréspont teljes megoldását. Így egy helyen is áttekinthető, hogy melyik szabály melyik nézethez tartozik.</p>
     <pre><code>/* Kisebb laptopok és fekvő táblagépek – 1200px alatt */
-@media (max-width: 75em) {
+@media (max-width: 75rem) {
   .container {
     width: 94%;
     grid-template-columns: 1fr 260px;
@@ -215,7 +215,7 @@
 }
 
 /* Tabletek – 944px alatt */
-@media (max-width: 59em) {
+@media (max-width: 59rem) {
   .container {
     width: 92%;
     grid-template-columns: 1fr;
@@ -251,7 +251,7 @@
 }
 
 /* Mobiltelefonok – 544px alatt */
-@media (max-width: 34em) {
+@media (max-width: 34rem) {
   .container {
     width: 94%;
     margin: 15px auto;
@@ -297,7 +297,7 @@
     flex-direction: row;
   }
 }</code></pre>
-    <div class="callout rounded-3 p-3"><strong>Olvasási sorrend:</strong> nagy képernyőn az alap <code>style.css</code> érvényesül. A képernyő szűkítésével először a <code>75em</code>, majd az <code>59em</code>, végül a <code>34em</code> feltételei is igazak lesznek.</div>
+    <div class="callout rounded-3 p-3"><strong>Olvasási sorrend:</strong> nagy képernyőn az alap <code>style.css</code> érvényesül. A képernyő szűkítésével először a <code>75rem</code>, majd az <code>59rem</code>, végül a <code>34rem</code> feltételei is igazak lesznek.</div>
   </div></section>
 
   <section class="card section-card mb-4"><div class="card-body p-4">

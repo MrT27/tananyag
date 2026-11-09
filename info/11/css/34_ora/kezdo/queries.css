@@ -1,5 +1,5 @@
 /* Kisebb laptopok és fekvő táblagépek – 1200px alatt */
-@media (max-width: 75em) {
+@media (max-width: 75rem) {
   .container {
     width: 94%;
     grid-template-columns: 1fr 260px;
@@ -26,7 +26,7 @@
 }
 
 /* Tabletek – 944px alatt */
-@media (max-width: 59em) {
+@media (max-width: 59rem) {
   .container {
     width: 92%;
     grid-template-columns: 1fr;
@@ -62,7 +62,7 @@
 }
 
 /* Mobiltelefonok – 544px alatt */
-@media (max-width: 34em) {
+@media (max-width: 34rem) {
   .container {
     width: 94%;
     margin: 15px auto;

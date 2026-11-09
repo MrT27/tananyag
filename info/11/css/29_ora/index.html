@@ -18,11 +18,11 @@
     <p class="lead mb-0">A Közlekedési magazin fix, 1200 px-es oldalából elkészítjük a kisebb laptopokon is használható változatot.</p>
   </section>
 
-  <div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Jonas-alap:</strong><span>131–132. videó releváns részei – viewport, külön CSS-fájl, <code>em</code> és kisebb laptopos töréspont</span></div>
+  <div class="alert alert-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4" data-jonas-ref="1"><strong>Jonas-alap:</strong><span>131–132. videó releváns részei – viewport, külön CSS-fájl, <code>rem</code> és kisebb laptopos töréspont</span></div>
 
   <section class="card section-card mb-4"><div class="card-body p-4">
     <h2 class="h3">Az óra célja</h2>
-    <ul><li>A viewport metaelem szerepének megértése.</li><li>Külön <code>queries.css</code> fájl létrehozása és bekötése.</li><li>A pixelben meghatározott töréspont átváltása <code>em</code>-re.</li><li>Az oldal vizsgálata a töréspont teljes tartományában.</li><li>A fő Grid, a térközök, a navigáció és a címsor módosítása.</li></ul>
+    <ul><li>A viewport metaelem szerepének megértése.</li><li>Külön <code>queries.css</code> fájl létrehozása és bekötése.</li><li>A pixelben meghatározott töréspont átváltása <code>rem</code>-re.</li><li>Az oldal vizsgálata a töréspont teljes tartományában.</li><li>A fő Grid, a térközök, a navigáció és a címsor módosítása.</li></ul>
     <a class="btn btn-primary me-2" href="kezdo.zip" download>Kezdőcsomag letöltése</a><a class="btn btn-outline-success" href="megoldas.zip" download>Megoldás letöltése</a>
   </div></section>
 
@@ -55,19 +55,19 @@
   </div></section>
 
   <section class="card section-card mb-4"><div class="card-body p-4">
-    <h2 class="h3">4. A töréspont átváltása <code>em</code>-re</h2>
+    <h2 class="h3">4. A töréspont átváltása <code>rem</code>-re</h2>
     <p>Az első töréspontot 1200 px környékén választjuk. Media queryben a számításhoz 16 px-es böngésző-alapmérettel dolgozunk:</p>
     <pre><code>1200 ÷ 16 = 75
 
-@media (max-width: 75em) {
+@media (max-width: 75rem) {
   /* 1200 px-en és alatta */
 }</code></pre>
-    <div class="important rounded-3 p-3">A media queryben az <code>em</code> számítása nem a projekt esetleges <code>html</code> betűméretéből indul. Itt <code>75em</code> normál beállítás mellett körülbelül 1200 px.</div>
+    <div class="important rounded-3 p-3">A media queryben az <code>rem</code> számítása nem a projekt esetleges <code>html</code> betűméretéből indul. Itt <code>75rem</code> normál beállítás mellett körülbelül 1200 px.</div>
   </div></section>
 
   <section class="card section-card mb-4"><div class="card-body p-4">
     <h2 class="h3">5. A konténer és a fő Grid javítása</h2>
-    <pre><code>@media (max-width: 75em) {
+    <pre><code>@media (max-width: 75rem) {
   .container {
     width: 94%;
     grid-template-columns: 1fr 260px;
@@ -81,7 +81,7 @@
 
   <section class="card section-card mb-4"><div class="card-body p-4">
     <h2 class="h3">6. Finomhangolás ugyanabban a media queryben</h2>
-    <pre><code>@media (max-width: 75em) {
+    <pre><code>@media (max-width: 75rem) {
   .main-header {
     padding: 20px 30px;
   }
@@ -110,16 +110,16 @@
 
   <section class="card section-card mb-4"><div class="card-body p-4">
     <h2 class="h3">8. Önálló feladat</h2>
-    <div class="task rounded-3 p-3"><ol class="mb-0"><li>Hozd létre a <code>queries.css</code> fájlt.</li><li>Kösd be a <code>style.css</code> után.</li><li>Írd meg a <code>75em</code>-es media queryt.</li><li>Alakítsd rugalmasra a konténert.</li><li>Csökkentsd az oldalsávot, a réseket, a navigáció margóját, a főcím méretét és az aside paddingjét.</li><li>DevToolsban ellenőrizd 1200, 1201, 1050 és 950 px-en.</li></ol></div>
+    <div class="task rounded-3 p-3"><ol class="mb-0"><li>Hozd létre a <code>queries.css</code> fájlt.</li><li>Kösd be a <code>style.css</code> után.</li><li>Írd meg a <code>75rem</code>-es media queryt.</li><li>Alakítsd rugalmasra a konténert.</li><li>Csökkentsd az oldalsávot, a réseket, a navigáció margóját, a főcím méretét és az aside paddingjét.</li><li>DevToolsban ellenőrizd 1200, 1201, 1050 és 950 px-en.</li></ol></div>
   </div></section>
 
   <section class="card section-card mb-4"><div class="card-body p-4">
     <h2 class="h3">9. Ellenőrző kérdések</h2>
-    <ol><li>Miért fontos a viewport metaelem?</li><li>Miért töltjük be a <code>queries.css</code> fájlt a <code>style.css</code> után?</li><li>Hogyan lesz 1200 px-ből 75em?</li><li>Miért okozott problémát a fix 1200 px-es szélesség?</li><li>Miért nem tesszük még egyoszlopossá a fő Gridet?</li><li>Miért kell a breakpoint alatti teljes tartományt ellenőrizni?</li></ol>
+    <ol><li>Miért fontos a viewport metaelem?</li><li>Miért töltjük be a <code>queries.css</code> fájlt a <code>style.css</code> után?</li><li>Hogyan lesz 1200 px-ből 75rem?</li><li>Miért okozott problémát a fix 1200 px-es szélesség?</li><li>Miért nem tesszük még egyoszlopossá a fő Gridet?</li><li>Miért kell a breakpoint alatti teljes tartományt ellenőrizni?</li></ol>
     <details class="callout rounded-3 p-3"><summary>Válaszok</summary><ol class="mt-3 mb-0"><li>A mobileszköz CSS-nézetablakát az eszköz szélességéhez igazítja.</li><li>Így az azonos erősségű reszponzív szabályok később felülírhatják az alapstílusokat.</li><li>1200-at elosztjuk 16-tal.</li><li>Nem tudott a rendelkezésre álló helynél keskenyebbre zsugorodni.</li><li>Ezen a szélességen még használható a kéthasábos elrendezés.</li><li>Mert a media query nem csak egyetlen pixelszélességen működik.</li></ol></details>
   </div></section>
 
-  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Mit vigyél el ebből az órából?</h2><ul class="mb-0"><li>A viewport metaelem a fizikai mobilnézet alapfeltétele.</li><li>A reszponzív szabályok külön CSS-fájlban is tarthatók.</li><li>A media query töréspontját <code>em</code>-ben adjuk meg.</li><li>A breakpointnál csak a problémás tulajdonságokat írjuk felül.</li><li>Egy media query teljes szélességtartományban működik.</li></ul></div></section>
+  <section class="card section-card mb-4"><div class="card-body p-4"><h2 class="h3">Mit vigyél el ebből az órából?</h2><ul class="mb-0"><li>A viewport metaelem a fizikai mobilnézet alapfeltétele.</li><li>A reszponzív szabályok külön CSS-fájlban is tarthatók.</li><li>A media query töréspontját <code>rem</code>-ben adjuk meg.</li><li>A breakpointnál csak a problémás tulajdonságokat írjuk felül.</li><li>Egy media query teljes szélességtartományban működik.</li></ul></div></section>
 
   <nav class="d-grid gap-2 d-md-flex justify-content-md-between"><a class="btn btn-outline-secondary btn-lg" href="../28_ora/index.html">Előző: töréspontok kiválasztása</a><a class="btn btn-secondary btn-lg" href="../index.html">Vissza a CSS főoldalra</a><a class="btn btn-primary btn-lg" href="../30_ora/index.html">Következő: tabletes elrendezés</a></nav>
 </main></body>
