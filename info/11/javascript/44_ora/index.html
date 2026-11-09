@@ -31,7 +31,7 @@
     </header>
 
     <section>
-      <h2>Szöveges és numerikus értékek</h2>
+      <h2 id="video-9">Szöveges és numerikus értékek</h2>
       <p>A <code>"Jonas"</code> egy szöveges érték, a <code>23</code> egy szám. Egy kifejezés eredménye is érték. A <code>40 + 8 + 23 - 10</code> eredménye például <code>61</code>.</p>
       <pre><code>console.log("Jonas");
 console.log(23);
@@ -57,6 +57,7 @@ console.log(firstName);</code></pre>
 
     <section>
       <h2>A változónevek szabályai és szokásai</h2>
+      <p>A JavaScriptben bevett a <strong>camelCase</strong>. Az első szó kisbetűvel kezdődik, a további szavak első betűje nagy, például <code>firstName</code>. A <code>first_name</code> is érvényes.</p>
       <h3>Mit enged meg a JavaScript?</h3>
       <ul>
         <li>A példáinkban a név betűvel, aláhúzásjellel (<code>_</code>) vagy dollárjellel (<code>$</code>) kezdődhet. Számjegy csak az első karakter után állhat. A <code>3years</code> hibás, a <code>years3</code> érvényes.</li>
@@ -70,7 +71,6 @@ let $function = 27;</code></pre>
 
       <h3>Hogyan érdemes nevet választani?</h3>
       <ul>
-        <li>A JavaScriptben bevett a <strong>camelCase</strong>. Az első szó kisbetűvel kezdődik, a további szavak első betűje nagy, például <code>firstName</code>. A <code>first_name</code> is érvényes.</li>
         <li>A hétköznapi változók nevét kisbetűvel kezdjük. A <code>Person</code> szabályos név, de ezt az írásmódot gyakran osztályoknál és konstruktoroknál látod. Itt a <code>person</code> a szokásos forma.</li>
         <li>Az olyan rögzített értékeket, mint a pi, gyakran nagybetűvel írjuk, például <code>const PI = 3.1415;</code>. Egy <code>const</code>-tal létrehozott név lehet camelCase is, ahogy a lecke későbbi <code>birthYear</code> példájában.</li>
         <li>A <code>name</code> érvényes név. A böngészőben azonban a <code>window.name</code> már létező tulajdonság, és a <code>firstName</code> azt is pontosabban elmondja, milyen nevet tárolunk.</li>
@@ -105,21 +105,15 @@ let new = 27;</code></pre>
       </details>
     </section>
 
+    <p>Jonas következő leckéje a <a href="../45_ora/index.html">11. Data Types</a>. Az adattípusok után térj vissza a 12. videóhoz.</p>
+
     <section>
-      <h2>Mikor használjuk a let, const és var kulcsszót?</h2>
+      <h2 id="video-12">Mikor használjuk a let, const és var kulcsszót?</h2>
       <p>A <code>var</code> a régebbi deklarációs forma. A <code>let</code> és a <code>const</code> az ES2015-ben, más néven ES6-ban jelent meg, amelyről a 41. órán beszéltünk.</p>
-      <p>A <code>let</code> akkor kell, ha később új értéket adunk a változónak. A <code>let age = 30;</code> létrehozza a változót, az <code>age = 31;</code> pedig új értéket ad neki. A videóban Jonas ezt a változó módosításának, azaz mutációjának is nevezi. A <code>const</code> esetén a létrehozáskor kötelező kezdőértéket adni, és utána nincs új értékadás. Jonas példájában az életkor frissül, a születési év ugyanaz marad.</p>
+      <p>A <code>let</code> akkor kell, ha később új értéket adunk a változónak. A videóban Jonas ezt módosításnak, azaz mutációnak is nevezi.</p>
       <pre><code>let age = 30;
 age = 31;
-console.log(age); // 31
-
-const birthYear = 1991;
-console.log(birthYear); // 1991
-
-var job = "programozó";
-job = "tanár";
-console.log(job); // tanár</code></pre>
-      <p>A <code>var</code> régebbi kódokban gyakori, és vele is lehet új értéket adni egy változónak. Új kódban válassz <code>const</code>-ot, ha a változóhoz egyszer rendelsz értéket. Az <code>age</code> is lehet <code>const</code>, ha a program csak kiolvassa az életkort. Így egy véletlen új értékadásnál rögtön hibát kapsz. <code>let</code>-et akkor használj, ha az értékadás később történik, vagy a program később átírja az értéket.</p>
+console.log(age); // 31</code></pre>
       <h3>Mi van, ha csak később tudjuk meg az értéket?</h3>
       <pre><code>let year;
 console.log(year); // undefined
@@ -127,11 +121,21 @@ console.log(year); // undefined
 year = 1991;
 console.log(year); // 1991</code></pre>
       <p>A <code>let</code> kezdőérték nélkül is használható. Például előre létrehozhatjuk a változót, majd egy későbbi feltétel alapján adhatunk neki értéket. Az <code>undefined</code> jelentését a 45. órán vizsgáljuk meg közelebbről.</p>
+      <h3>Állandó érték a const segítségével</h3>
+      <p>A <code>const</code> deklarációhoz kezdőérték kell, és később nem adhatunk új értéket a változónak. Jonas példájában az életkor frissül, a születési év ugyanaz marad.</p>
+      <pre><code>const birthYear = 1991;
+console.log(birthYear); // 1991</code></pre>
       <details>
         <summary>Próbáld ki a két hibás const példát</summary>
-        <p><strong>Új értékadás:</strong> az előző példa végén a <code>birthYear = 1990;</code> sor futás közben <code>TypeError</code>-t okoz. A konzolban például az <code>Assignment to constant variable</code> üzenetet látod. Kommentezd ki a hibás sort, mielőtt továbbmész.</p>
-        <p><strong>Hiányzó kezdőérték:</strong> a <code>const job;</code> már a kód beolvasásakor <code>SyntaxError</code>-t okoz. A <code>Missing initializer in const declaration</code> üzenet azt jelenti, hogy már a deklaráció sorában meg kell adnod egy kezdőértéket. Ezt a sort külön fájlban próbáld ki, mert a közös példában már van <code>job</code> nevű változó.</p>
+        <p><strong>Új értékadás:</strong> a születési éves példa végén a <code>birthYear = 1990;</code> sor futás közben <code>TypeError</code>-t okoz. A konzolban például az <code>Assignment to constant variable</code> üzenetet látod. Kommentezd ki a hibás sort, mielőtt továbbmész.</p>
+        <p><strong>Hiányzó kezdőérték:</strong> a <code>const job;</code> már a kód beolvasásakor <code>SyntaxError</code>-t okoz. A <code>Missing initializer in const declaration</code> üzenet azt jelenti, hogy már a deklaráció sorában meg kell adnod egy kezdőértéket. Ezt a sort külön fájlban próbáld ki, így csak ezt az egy hibát vizsgálod.</p>
       </details>
+      <p>Új kódban válassz <code>const</code>-ot, ha a változóhoz egyszer rendelsz értéket. Az <code>age</code> is lehet <code>const</code>, ha a program csak kiolvassa az életkort. Így egy véletlen új értékadásnál rögtön hibát kapsz. <code>let</code>-et akkor használj, ha az értékadás később történik, vagy a program később átírja az értéket.</p>
+      <h3>A régebbi var kulcsszó</h3>
+      <p>A <code>var</code>-ral létrehozott változónak is adhatunk új értéket. Ezzel főként régebbi kódban találkozunk.</p>
+      <pre><code>var job = "programozó";
+job = "tanár";
+console.log(job); // tanár</code></pre>
     </section>
 
     <section>

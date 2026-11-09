@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>42. óra – Hello World!</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · Webprogramozás · 42. óra · Jonas 6. videója</p>
+      <h1>Hello World!</h1>
+      <p>Az első JavaScript-parancsok a böngésző konzoljában.</p>
+    </header>
+
+    <section>
+      <h2>Nyisd meg a konzolt</h2>
+      <p>Nyisd meg a <a href="../kezdo/index.html">kezdőoldalt</a> a böngészőben. Az oldalon jobb kattintással válaszd a <strong>Vizsgálat / Inspect</strong> lehetőséget, majd a <strong>Console</strong> fület. Írd be a következő sort, és nyomj Entert.</p>
+      <pre><code>alert("Szia, világ!");</code></pre>
+      <p>A böngésző felugró ablakban jeleníti meg az üzenetet. Bezárás után folytathatod a gépelést.</p>
+    </section>
+
+    <section>
+      <h2>Egy változó és egy döntés</h2>
+      <p>Jonas a következő példával mutatja meg, hogy a konzolban több utasítást is kipróbálhatsz. Írd be a két sort egymás után, mindkét sor végén Enterrel.</p>
+      <pre><code>const javascript = "nagyszerű";
+if (javascript === "nagyszerű") alert("Tanuljunk JavaScriptet!");</code></pre>
+      <p>A <code>javascript</code> névhez szöveget rendelünk. A második sor csak akkor mutatja az üzenetet, ha az érték megegyezik a megadott szöveggel. A változókat a 9. és 12. videónál, az elágazást később vesszük részletesen.</p>
+    </section>
+
+    <section>
+      <h2>A konzol kiszámítja a kifejezés értékét</h2>
+      <pre><code>40 + 8 + 23 - 10</code></pre>
+      <p>Az Enter után megjelenik a <strong>61</strong>. A konzol közvetlenül mutatja a beírt kifejezés értékét. A 8. videóban ugyanezt fájlból is futtatjuk majd.</p>
+      <pre><code>const totalHours = 40 + 8 + 23 - 10;
+totalHours</code></pre>
+      <p>Az első sor eltárolja az eredményt. A második sorral lekérdezzük, így ismét a 61-et kapjuk.</p>
+    </section>
+
+    <section class="practice">
+      <h2>Önálló próba</h2>
+      <ol>
+        <li>Jeleníts meg egy saját üdvözlést az <code>alert()</code> segítségével.</li>
+        <li>Számítsd ki a konzolban a <code>25 + 7 - 2</code> értékét. Ellenőrizd, hogy <strong>30</strong> jelenik meg.</li>
+        <li>Tárold ugyanezt a számítást egy <code>result</code> nevű változóban, majd írd be a konzolba a változó nevét.</li>
+      </ol>
+    </section>
+
+    <nav aria-label="Tananyag navigáció">
+      <a href="../index.html">Vissza a JavaScript tananyaghoz</a><br>
+      <a href="../41_ora/index.html#video-7">Következő: 7. A Brief Introduction to JavaScript</a>
+    </nav>
+  </main>
+</body>
+</html>

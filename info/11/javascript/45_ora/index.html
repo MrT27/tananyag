@@ -31,6 +31,22 @@
     </header>
 
     <section>
+      <h2>Elemi értékek és dinamikus típusosság</h2>
+      <p>A JavaScriptben minden érték vagy <strong>elemi (primitív) érték</strong>, vagy <strong>objektum</strong>. Hét elemi típus van. Az objektumok közé tartoznak az óra második felében bemutatott tömbök, <code>Map</code> és <code>Set</code> gyűjtemények is.</p>
+      <ul>
+        <li><strong>Number:</strong> lebegőpontos szám, például <code>23</code> vagy <code>3.5</code>. A <code>23</code> és a <code>23.0</code> ugyanazt a számértéket jelöli.</li>
+        <li><strong>String:</strong> szöveg, például <code>"Jonas"</code> vagy <code>"23"</code>.</li>
+        <li><strong>Boolean:</strong> logikai érték, amely <code>true</code> vagy <code>false</code> lehet. Az 55. órán ilyen értékek alapján döntünk majd az <code>if</code> utasításban.</li>
+        <li><strong>undefined:</strong> például egy <code>let</code> változó értéke, ha még nem adtunk neki értéket.</li>
+        <li><strong>null:</strong> külön érték, amellyel például szándékosan jelezhetjük egy adat hiányát.</li>
+        <li><strong>Symbol:</strong> az ES2015-ben bevezetett típus. A <code>Symbol()</code> minden híváskor egyedi értéket hoz létre.</li>
+        <li><strong>BigInt:</strong> az ES2020-ban bevezetett egészszámtípus. Akkor is pontos egész számot tárolhatunk vele, amikor a <code>Number</code> pontossága már kevés. Példa: <code>9007199254740993n</code>.</li>
+      </ul>
+      <p>Pythonban a <code>23</code> típusa <code>int</code>, a <code>3.5</code> típusa <code>float</code>. JavaScriptben mindkettő <code>Number</code> típusú, ezért a <code>typeof</code> mindkettőre <code>"number"</code>-t ad.</p>
+      <p>Változó létrehozásakor <strong>nem kell megadnod az adattípust</strong>. A <code>let year = 1991;</code> sorban a JavaScript az <code>1991</code> értékből tudja, hogy számot tárolunk. A típus az értékhez tartozik. A <code>let</code> változóba később más típusú értéket is tehetsz. Ezt hívjuk <strong>dinamikus típusosságnak</strong>.</p>
+    </section>
+
+    <section>
       <h2>Megjegyzések a JavaScript-kódban</h2>
       <p>A megjegyzés magyarázatot adhat az olvasónak, vagy ideiglenesen kikapcsolhat egy kódrészletet. A JavaScript a megjegyzést nem futtatja.</p>
       <ul>
@@ -48,18 +64,7 @@ console.log(23);
     </section>
 
     <section>
-      <h2>Elemi értékek és a typeof</h2>
-      <p>A JavaScriptben minden érték vagy <strong>elemi (primitív) érték</strong>, vagy <strong>objektum</strong>. Hét elemi típus van. Az objektumok közé tartoznak az óra második felében bemutatott tömbök, <code>Map</code> és <code>Set</code> gyűjtemények is.</p>
-      <ul>
-        <li><strong>Number:</strong> lebegőpontos szám, például <code>23</code> vagy <code>3.5</code>. A <code>23</code> és a <code>23.0</code> ugyanazt a számértéket jelöli.</li>
-        <li><strong>String:</strong> szöveg, például <code>"Jonas"</code> vagy <code>"23"</code>.</li>
-        <li><strong>Boolean:</strong> logikai érték, amely <code>true</code> vagy <code>false</code> lehet. Az 55. órán ilyen értékek alapján döntünk majd az <code>if</code> utasításban.</li>
-        <li><strong>undefined:</strong> például egy <code>let</code> változó értéke, ha még nem adtunk neki értéket.</li>
-        <li><strong>null:</strong> külön érték, amellyel például szándékosan jelezhetjük egy adat hiányát.</li>
-        <li><strong>Symbol:</strong> az ES2015-ben bevezetett típus. A <code>Symbol()</code> minden híváskor egyedi értéket hoz létre.</li>
-        <li><strong>BigInt:</strong> az ES2020-ban bevezetett egészszámtípus. Akkor is pontos egész számot tárolhatunk vele, amikor a <code>Number</code> pontossága már kevés. Példa: <code>9007199254740993n</code>.</li>
-      </ul>
-      <p>Pythonban a <code>23</code> típusa <code>int</code>, a <code>3.5</code> típusa <code>float</code>. JavaScriptben mindkettő <code>Number</code> típusú, ezért a <code>typeof</code> mindkettőre <code>"number"</code>-t ad.</p>
+      <h2>Az érték típusának ellenőrzése</h2>
       <p>A <code>typeof</code> operátor eredménye egy szöveg, amely megnevezi a vizsgált érték típusát. A konzol megjelenése eltérhet böngészőnként. A típust a <code>typeof</code> eredményéből olvasd le. Először tippeld meg az eredményeket, majd futtasd a kódot.</p>
       <pre><code>console.log(typeof 23);      // number
 console.log(typeof 3.5);     // number
@@ -75,7 +80,6 @@ console.log('Jonas');
 
     <section>
       <h2>A változóban tárolt érték típusa változhat</h2>
-      <p>Változó létrehozásakor <strong>nem kell megadnod az adattípust</strong>. A <code>let year = 1991;</code> sorban a JavaScript az <code>1991</code> értékből tudja, hogy számot tárolunk. A típus az értékhez tartozik. A <code>let</code> változóba később más típusú értéket is tehetsz. Ezt hívjuk <strong>dinamikus típusosságnak</strong>.</p>
       <p>Jonas példájában a <code>javascriptIsFun</code> változó először a <code>true</code> logikai értéket kapja, később az <code>"Igen!"</code> szöveget. A <code>typeof</code> mindig az éppen tárolt érték típusát mutatja. Hibát okozhat, ha a kód szöveget kap ott, ahol számmal szeretnénk számolni.</p>
       <p>A példában az utasítások fentről lefelé futnak le. A <code>let javascriptIsFun</code> deklaráció után használjuk a nevet. Ha a kiírást a deklaráció elé teszed, <code>ReferenceError</code> keletkezik. Az új értéket a változó nevével és az <code>=</code> jellel adjuk meg, második <code>let</code> nélkül.</p>
       <pre><code>let javascriptIsFun = true;
@@ -137,7 +141,8 @@ console.log(uniqueNames.size); // 2</code></pre>
       <p>A videó az elemi típusokat, a kommentelést és a <code>typeof</code> használatát mutatja be. A tömb, az objektum, a <code>Map</code> és a <code>Set</code> példái a tanmenethez tartozó kiegészítések.</p>
     </aside>
     <nav aria-label="Tananyag navigáció">
-      <a href="../index.html">Vissza a JavaScript tananyaghoz</a>
+      <a href="../index.html">Vissza a JavaScript tananyaghoz</a><br>
+      <a href="../44_ora/index.html#video-12">Következő: 12. let, const and var</a>
     </nav>
   </main>
 </body>

@@ -31,7 +31,7 @@
     </header>
 
     <section>
-      <h2>Mit csinál a JavaScript a weboldalon?</h2>
+      <h2 id="video-7">Mit csinál a JavaScript a weboldalon?</h2>
       <p>A <strong>HTML</strong> adja az oldal tartalmát és szerkezetét. A <strong>CSS</strong> határozza meg, hogyan néz ki. A <strong>JavaScript</strong> segítségével az oldal reagálhat a felhasználóra, például megjeleníthet egy üzenetet, amikor valaki egy gombra kattint.</p>
       <p>JavaScripttel például megmutathatunk egy űrlaphibát gépelés közben, megnyithatunk egy menüt vagy kiszámíthatjuk egy rendelés végösszegét. A kódot a böngésző futtatja, így az eredményt már egy egyszerű HTML-oldalon vagy a konzolban is kipróbálhatjuk. JavaScript böngészőn kívül is futtatható, például Node.js segítségével egy szerveren.</p>
       <details>
@@ -71,7 +71,12 @@
     </section>
 
     <section>
-      <h2>Közös példa – az első JavaScript-fájl</h2>
+      <h2 id="video-8">Közös példa – az első JavaScript-fájl</h2>
+      <p>Jonas először közvetlenül a HTML-ben, egy <code>&lt;script&gt;</code> elemben próbálja ki a kódot, majd külön fájlba költözteti. Egy rövid próba így néz ki a HTML törzsében:</p>
+      <pre><code>&lt;script&gt;
+  console.log(40 + 8 + 23 - 10);
+&lt;/script&gt;</code></pre>
+      <p>A konzolban 61 jelenik meg. A következő példához cseréld le ezt a blokkot a külön JavaScript-fájlt betöltő sorra.</p>
       <p>Készíts egy mappát. Ebben hozz létre két fájlt a VS Code-ban. Az <code>index.html</code> tartalma legyen:</p>
       <pre><code>&lt;!doctype html&gt;
 &lt;html lang="hu"&gt;
@@ -132,7 +137,7 @@ console.log(40 + 8 + 23 - 10);</code></pre>
         <li>Hol keresed a <code>console.log()</code> kimenetét?</li>
         <li>Melyik két változódeklaráló kulcsszót hozta az ES2015?</li>
       </ol>
-      <p>A 42. órán a konzolba közvetlenül is írunk és futtatunk JavaScript-kódot.</p>
+      <p>A fájl bekötése után Jonas az <a href="../44_ora/index.html#video-9">értékekkel és változókkal</a> folytatja.</p>
     </section>
 
     <aside>
