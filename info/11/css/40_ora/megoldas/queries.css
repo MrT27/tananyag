@@ -1,0 +1,50 @@
+/* Kisebb laptopok – 1200px alatt */
+@media (max-width: 75em) {
+  header,
+  main,
+  footer {
+    width: 94%;
+    padding: 24px;
+  }
+
+  .jaratok {
+    gap: 20px;
+  }
+}
+
+/* Tabletek – 944px alatt */
+@media (max-width: 59em) {
+  header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .jaratok {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobiltelefonok – 544px alatt */
+@media (max-width: 34em) {
+  header,
+  main,
+  footer {
+    width: 100%;
+    padding: 16px;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .jaratok {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .kartya,
+  #tippek {
+    padding: 18px;
+  }
+}
