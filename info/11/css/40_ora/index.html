@@ -15,7 +15,7 @@
     <section class="hero rounded-4 p-4 p-md-5 mb-4">
       <span class="badge text-bg-primary">11. évfolyam</span> <span class="badge text-bg-success">HTML/CSS lezárás</span> <span class="badge text-bg-dark">40. óra</span>
       <h1 class="display-6 fw-bold mt-3">HTML/CSS gyakorlati számonkérés</h1>
-      <p class="lead mb-0">Készíts reszponzív közlekedési információs oldalt a kapott kezdőcsomagból.</p>
+      <p class="lead mb-0">Készíts reszponzív, európai úti célokat bemutató oldalt a kapott kezdőcsomagból.</p>
     </section>
     <section class="card section-card mb-4">
       <div class="card-body p-4">
@@ -26,24 +26,57 @@
           <li><strong>Beadandó:</strong> teljes projektmappa ZIP-ben.</li>
           <li><strong>Használható:</strong> VS Code, böngésző és DevTools.</li>
           <li><strong>Nem használható:</strong> más tanuló megoldása vagy kész sablon.</li>
-        </ul><a class="btn btn-danger me-2" href="feladat.zip" download="">Feladatcsomag letöltése</a><a class="btn btn-outline-success" href="megoldas.zip" download="">Tanári megoldás letöltése</a>
+        </ul><a class="btn btn-danger me-2 mb-2" href="europai-uti-celok-kezdo.zip" download="">Kezdőcsomag letöltése</a><a class="btn btn-outline-success me-2 mb-2" href="europai-uti-celok-megoldas.zip" download="">Tanári megoldás letöltése</a><a class="btn btn-primary mb-2" href="tanari_segedlet/index.html">Tanári segédlet</a>
       </div>
     </section>
     <section class="card section-card mb-4">
       <div class="card-body p-4">
-        <h2 class="h3">Feladat – Városi közlekedési információk</h2>
-        <p>Egészítsd ki a kapott HTML-t és formázd áttekinthető, reszponzív oldallá.</p>
+        <h2 class="h3">Feladat – Hat európai úti cél</h2>
+        <p>A kezdőcsomag tartalmazza a szövegeket, a képeket, a favicont és a két CSS-fájlt. Alakítsd át a nyers oldalt szemantikus, áttekinthető és reszponzív weboldallá.</p>
+
+        <h3 class="h5 mt-4">1. HTML-szerkezet</h3>
         <ol>
-          <li>Kapcsold a dokumentumhoz a feladatcsomagban található <code>favicon.svg</code> fájlt.</li>
-          <li>Használj szemantikus <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>footer</code> elemeket.</li>
-          <li>A tartalom legnagyobb szélessége 1200px legyen, keskenyebb képernyőn férjen el.</li>
-          <li>A járatkártyák Gridben: telefonon 1, tableten 2, nagy képernyőn 3 oszlop.</li>
-          <li>A navigáció Flexboxszal: telefonon függőleges, nagyobb képernyőn vízszintes.</li>
-          <li>A <code>queries.css</code> fájlban készíts <code>75rem</code>-es töréspontot: a konténer legyen rugalmasabb, a térközök pedig csökkenjenek.</li>
-          <li>Készíts <code>59rem</code>-es töréspontot: a járatkártyák három helyett két oszlopban jelenjenek meg.</li>
-          <li>Készíts <code>34rem</code>-es töréspontot: a kártyák kerüljenek egy oszlopba, a navigáció hivatkozásai pedig egymás alá.</li>
-          <li>A képek ne lógjanak ki, és legyen értelmes alt szövegük.</li>
-          <li>Ellenőrizd a töréspontokat körülbelül 1200, 944 és 544 px szélességnél, valamint telefonos nézetben.</li>
+          <li>Kapcsold a dokumentumhoz az <code>img/favicon-96x96.png</code> fájlt faviconként.</li>
+          <li>A <code>fejlec</code> osztályú <code>div</code> helyett használj <code>header</code> elemet.</li>
+          <li>A <code>navigacio</code> osztályú <code>div</code> helyett használj <code>nav</code> elemet.</li>
+          <li>Az <code>uti-celok</code> osztályú <code>div</code> helyett használj <code>main</code> elemet.</li>
+          <li>Mind a hat <code>kartya</code> osztályú <code>div</code> elemet alakítsd <code>article</code> elemmé.</li>
+          <li>A <code>lablec</code> osztályú <code>div</code> helyett használj <code>footer</code> elemet.</li>
+        </ol>
+
+        <h3 class="h5 mt-4">2. Alapformázás és dobozmodell</h3>
+        <ol>
+          <li>Készíts globális alaphelyzetbe állítást: minden elem margója és belső térköze legyen 0, a méretezéshez pedig használj <code>border-box</code> értéket.</li>
+          <li>A <code>body</code> használjon Arial betűtípust, jól olvasható sormagasságot, sötét szövegszínt és világos háttérszínt.</li>
+          <li>A fejléc, a fő tartalom és a lábléc legnagyobb szélessége legyen <code>1200px</code>, és kerüljenek vízszintesen középre.</li>
+          <li>Adj megfelelő belső térközt, háttérszínt és szövegszínt a fejlécnek, a kártyáknak és a láblécnek.</li>
+          <li>A képek töltsék ki a kártyák szélességét, de ne torzuljanak és ne lógjanak ki.</li>
+        </ol>
+
+        <h3 class="h5 mt-4">3. Flexbox és Grid</h3>
+        <ol>
+          <li>A fejlécben Flexbox segítségével kerüljön a cím balra, a navigáció jobbra.</li>
+          <li>A navigáció hivatkozásai is Flexboxszal, megfelelő <code>gap</code> használatával jelenjenek meg.</li>
+          <li>A fő tartalomban a hat kártyát CSS Griddel rendezd el.</li>
+          <li>Nagy képernyőn három egyforma szélességű oszlop legyen: <code>repeat(3, 1fr)</code>.</li>
+          <li>A kártyák között legyen jól látható, egyenletes térköz.</li>
+        </ol>
+
+        <h3 class="h5 mt-4">4. Reszponzív töréspontok</h3>
+        <p>A médiakérdéseket a <code>queries.css</code> fájlban készítsd el.</p>
+        <ol>
+          <li><strong><code>75rem</code> alatt:</strong> a fejléc, a fő tartalom és a lábléc szélessége legyen rugalmasabb, a belső térköz és a Grid térköze pedig csökkenjen.</li>
+          <li><strong><code>59rem</code> alatt:</strong> a fejléc elemei kerüljenek egymás alá, a kártyák pedig két oszlopban jelenjenek meg.</li>
+          <li><strong><code>34rem</code> alatt:</strong> a kártyák kerüljenek egy oszlopba, a navigáció hivatkozásai pedig egymás alá.</li>
+          <li>Mobilnézetben csökkentsd tovább a külső és belső térközöket, hogy a tartalom kényelmesen elférjen.</li>
+        </ol>
+
+        <h3 class="h5 mt-4">5. Ellenőrzés</h3>
+        <ol class="mb-0">
+          <li>Nyisd meg a Chrome DevTools reszponzív nézetét.</li>
+          <li>Ellenőrizd az oldalt nagy képernyőn, tabletes nézetben és mobiltelefonos nézetben.</li>
+          <li>Győződj meg róla, hogy a kártyák 3, majd 2, végül 1 oszlopban jelennek meg.</li>
+          <li>Az oldalon sehol ne legyen vízszintes túlcsordulás vagy hiányzó kép.</li>
         </ol>
       </div>
     </section>
@@ -62,23 +95,23 @@
             <tbody>
               <tr>
                 <td>HTML-alapok</td>
-                <td>Favicon, szemantika, címsorrend</td>
-                <td>5</td>
+                <td>Favicon; header, nav, main, article és footer helyes használata</td>
+                <td>6</td>
               </tr>
               <tr>
                 <td>Alapformázás</td>
-                <td>Tipográfia, színek, térközök, dobozmodell</td>
-                <td>5</td>
+                <td>Alaphelyzetbe állítás, tipográfia, színek, térközök és rugalmas képek</td>
+                <td>6</td>
               </tr>
               <tr>
                 <td>Flexbox</td>
-                <td>Navigáció iránya és térközei</td>
-                <td>4</td>
+                <td>A fejléc és a navigáció elrendezése, igazítása és térközei</td>
+                <td>5</td>
               </tr>
               <tr>
                 <td>Grid</td>
-                <td>1/2/3 oszlopos kártyarendszer</td>
-                <td>6</td>
+                <td>Háromoszlopos alaprács, egyforma oszlopok és megfelelő gap</td>
+                <td>8</td>
               </tr>
               <tr>
                 <td>75rem-es töréspont</td>
@@ -87,23 +120,13 @@
               </tr>
               <tr>
                 <td>59rem-es töréspont</td>
-                <td>Kétoszlopos tabletes kártyarendszer</td>
+                <td>Kétoszlopos tabletes kártyarendszer és átrendezett fejléc</td>
                 <td>5</td>
               </tr>
               <tr>
                 <td>34rem-es töréspont</td>
                 <td>Egyoszlopos kártyák és függőleges navigáció</td>
                 <td>5</td>
-              </tr>
-              <tr>
-                <td>Ellenőrzés</td>
-                <td>Nincs túlcsordulás, a három töréspont megfelelően működik</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>Kódminőség</td>
-                <td>Behúzás, osztálynevek, működés</td>
-                <td>2</td>
               </tr>
               <tr class="table-dark">
                 <th colspan="2">Összesen</th>
@@ -166,10 +189,10 @@
         <ul class="mb-0">
           <li>Az index.html és a CSS megnyitható.</li>
           <li>Nincs hiányzó kép vagy hibás útvonal.</li>
-          <li>A navigáció működik.</li>
+          <li>A favicon és a navigáció működik.</li>
           <li>Telefonon sincs vízszintes görgetés.</li>
           <li>A kártyák 1, 2, majd 3 oszlopba rendeződnek.</li>
-          <li>A fókusz Tab billentyűvel látható.</li>
+          <li>A DevToolsban ellenőriztem a nagy, a tabletes és a mobilnézetet.</li>
           <li>A ZIP a teljes projektet tartalmazza.</li>
         </ul>
       </div>
