@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Egyenlőségi operátorok</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript · Jonas 22. videója</p>
+      <h1>Egyenlőségi operátorok</h1>
+      <p>Hogyan vizsgáljuk meg, hogy két érték megegyezik-e, és hogyan kezelünk több lehetséges választ?</p>
+    </header>
+
+    <section>
+      <h2>Pontosan 18 éves?</h2>
+      <pre><code>const age = 18;
+if (age === 18) console.log("Most lettél nagykorú!");</code></pre>
+      <p>A <code>===</code> eredménye logikai érték. A <code>18 === 18</code> igaz, a <code>19 === 18</code> hamis. Írd át az életkort 19-re, és futtasd újra. A feltétel pontosan 18-at keres. Egyetlen utasításnál a kapcsos zárójelek elhagyhatók. Több utasítást közös blokkba írunk.</p>
+    </section>
+
+    <section>
+      <h2>Szigorú és laza egyenlőség</h2>
+      <p>A <code>===</code> típusátalakítás nélkül hasonlít össze. A <code>==</code> bizonyos esetekben átalakítja az értékeket. A következő példában a laza összehasonlítás számmá alakítja a <code>"18"</code> szöveget.</p>
+      <pre><code>console.log(18 === 18);   // true
+console.log(18 == 18);    // true
+console.log("18" === 18); // false
+console.log("18" == 18);  // true</code></pre>
+      <p>Jonas a <code>===</code> használatát javasolja. Ha egy beírt számmal szeretnél összehasonlítani, a típusátalakítást külön is megadhatod, hogy a kódból látszódjon a szándékod.</p>
+    </section>
+
+    <section>
+      <h2>A kedvenc szám bekérése</h2>
+      <pre><code>const favourite = prompt("Mi a kedvenc számod?");
+console.log(favourite, typeof favourite);
+
+if (favourite == 23) {
+  console.log("A 23 nagyszerű szám!");
+}</code></pre>
+      <p>Írj be 23-at. A <code>prompt()</code> szövegként adja vissza. Ha <code>===</code>-re cseréled a <code>==</code>-t, a feltétel hamis lesz. A szigorú összehasonlításhoz használd a <code>Number(prompt("Mi a kedvenc számod?"))</code> kifejezést. Ekkor a beírt <code>"23"</code> számmá alakul, és a feltétel igaz lesz. A következő próbákhoz adj meg számot.</p>
+    </section>
+
+    <section>
+      <h2>Több válasz az else if segítségével</h2>
+      <p>Cseréld le az előző példát erre. A program felülről lefelé vizsgálja a feltételeket, és az első igaz feltétel ágát futtatja. Ha egyik feltétel sem igaz, az <code>else</code> ág következik.</p>
+      <pre><code>const favourite = Number(prompt("Mi a kedvenc számod?"));
+
+if (favourite === 23) {
+  console.log("A 23 nagyszerű szám!");
+} else if (favourite === 7) {
+  console.log("A 7 is jó szám!");
+} else if (favourite === 9) {
+  console.log("A 9 is jó szám!");
+} else {
+  console.log("Más számot választottál.");
+}
+
+if (favourite !== 23) {
+  console.log("Miért nem a 23?");
+}</code></pre>
+      <p>A <code>!==</code> a szigorú különbözőséget vizsgálja. A laza változata <code>!=</code>. Jonas itt is a szigorú operátort használja. Az utolsó <code>if</code> külön utasítás, így 9 esetén a számhoz tartozó üzenet és a „Miért nem a 23?” is megjelenik.</p>
+    </section>
+
+    <section class="practice">
+      <h2>Önálló próba</h2>
+      <p>Tippeld meg a kiírást 23, 7, 9 és 8 esetén, majd futtasd mind a négy változatot. Melyik próbánál marad ki az utolsó üzenet?</p>
+    </section>
+
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="truthy-falsy.html">Előző · 21. Truthy and Falsy Values</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+    </nav>
+  </main>
+</body>
+</html>
