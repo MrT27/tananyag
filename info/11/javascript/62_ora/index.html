@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>62. óra – A switch utasítás</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript · 62. óra · Jonas 26. videója</p>
+      <h1>A switch utasítás</h1>
+      <p>Jonas a hét napjaihoz rendel feladatokat. A program a nap értéke alapján választ közülük.</p>
+    </header>
+    <section>
+      <h2>Egy érték, több eset</h2>
+      <p>A <code>switch (day)</code> megkeresi az egyező <code>case</code> címkét. Az egyezés szigorú, mint a <code>day === "hétfő"</code> összehasonlítás. A címke után kettőspont áll. A <code>break</code> kilép a <code>switch</code>-ből, a <code>default</code> pedig az egyező eset nélkül érkező értékeket kezeli.</p>
+      <pre><code>const day = "hétfő";
+
+switch (day) {
+  case "hétfő":
+    console.log("Megtervezem a kurzus felépítését.");
+    console.log("Elmegyek egy programozói találkozóra.");
+    break;
+  case "kedd":
+    console.log("Előkészítem az elméleti videókat.");
+    break;
+  case "szerda":
+  case "csütörtök":
+    console.log("Kódpéldákat írok.");
+    break;
+  case "péntek":
+    console.log("Videókat veszek fel.");
+    break;
+  case "szombat":
+  case "vasárnap":
+    console.log("Pihenek a hétvégén.");
+    break;
+  default:
+    console.log("Érvénytelen nap.");
+}</code></pre>
+      <p>A szerda és a csütörtök közös utasításokat kap, ahogy a szombat és a vasárnap is. Próbáld ki a <code>"csütörtök"</code> és az <code>"ünnepnap"</code> értéket is.</p>
+    </section>
+    <section>
+      <h2>Mi történik a break nélkül?</h2>
+      <p>Állítsd vissza a <code>day</code> értékét hétfőre, és vedd ki csak az első <code>break</code>-et. A hétfő két feladata után a keddi feladat is megjelenik. Ha egyszer elindult egy eset, a futás a következő címke utáni utasításokra is átmegy a következő <code>break</code>-ig vagy a blokk végéig. Ez teszi lehetővé a szerdai és csütörtöki eset összevonását is. A próba után tedd vissza az első <code>break</code>-et.</p>
+    </section>
+    <section class="practice">
+      <h2>Ugyanez if és else if utasításokkal</h2>
+      <p>Írd át a feladatot <code>if / else if / else</code> szerkezetre. Szerdán <em>vagy</em> csütörtökön kell kódpéldát írni, ezért itt <code>||</code> kapcsolja össze a két összehasonlítást.</p>
+      <details>
+        <summary>Megoldás megnyitása</summary>
+        <p>A korábban megadott <code>day</code> változót használd. Ha a két megoldás egymás alatt van, ugyanazok az üzenetek kétszer jelennek meg.</p>
+        <pre><code>if (day === "hétfő") {
+  console.log("Megtervezem a kurzus felépítését.");
+  console.log("Elmegyek egy programozói találkozóra.");
+} else if (day === "kedd") {
+  console.log("Előkészítem az elméleti videókat.");
+} else if (day === "szerda" || day === "csütörtök") {
+  console.log("Kódpéldákat írok.");
+} else if (day === "péntek") {
+  console.log("Videókat veszek fel.");
+} else if (day === "szombat" || day === "vasárnap") {
+  console.log("Pihenek a hétvégén.");
+} else {
+  console.log("Érvénytelen nap.");
+}</code></pre>
+      </details>
+      <p>A <code>switch</code> jól illik egy érték konkrét eseteihez. Az <code>if</code> akkor is használható, ha például tartományt vizsgálsz a <code>&gt;=</code> operátorral.</p>
+    </section>
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="../45_ora/logikai-operatorok.html">Előző · 24. Logical Operators</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+    </nav>
+  </main>
+</body>
+</html>
