@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boole-logika</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript · Jonas 23. videója</p>
+      <h1>Boole-logika</h1>
+      <p>Hogyan hozunk döntést több feltétel alapján?</p>
+    </header>
+
+    <section>
+      <h2>ÉS, VAGY, NEM</h2>
+      <p>A Boole-logika igaz és hamis értékekkel dolgozik. Ahogyan a számtani operátorokkal számokat kapcsolunk össze, logikai operátorokkal feltételeket kapcsolhatunk össze. Ugyanezek a szabályok más programozási nyelvekben is érvényesek, bár a jelölés eltérhet.</p>
+      <p>Jonas példájában <strong>A</strong> azt jelenti, hogy Sarah-nak van jogosítványa, <strong>B</strong> pedig azt, hogy jó a látása.</p>
+      <ul>
+        <li><strong>ÉS (<code>&amp;&amp;</code>)</strong> akkor igaz, ha Sarah-nak van jogosítványa és jól is lát. Több feltételnél mindegyiknek teljesülnie kell.</li>
+        <li><strong>VAGY (<code>||</code>)</strong> akkor igaz, ha a két feltétel közül legalább az egyik teljesül. Ha mindkettő igaz, az eredmény szintén igaz. Több feltételnél is elég egy igaz érték.</li>
+        <li><strong>NEM (<code>!</code>)</strong> egyetlen feltételt fordít meg. Ha <code>A</code> igaz, <code>!A</code> hamis. Ha <code>A</code> hamis, <code>!A</code> igaz.</li>
+      </ul>
+      <table cellpadding="8">
+        <caption>Az ÉS és a VAGY igazságtáblája</caption>
+        <thead><tr><th scope="col">A</th><th scope="col">B</th><th scope="col">A ÉS B</th><th scope="col">A VAGY B</th></tr></thead>
+        <tbody>
+          <tr><td>hamis</td><td>hamis</td><td>hamis</td><td>hamis</td></tr>
+          <tr><td>hamis</td><td>igaz</td><td>hamis</td><td>igaz</td></tr>
+          <tr><td>igaz</td><td>hamis</td><td>hamis</td><td>igaz</td></tr>
+          <tr><td>igaz</td><td>igaz</td><td>igaz</td><td>igaz</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Jonas életkoros példája</h2>
+      <p>Legyen az életkor 16. Az <strong>A</strong> feltétel, hogy az életkor legalább 20, ezért hamis. A <strong>B</strong> feltétel, hogy az életkor 30 alatt van, ezért igaz.</p>
+      <pre><code>const age = 16;
+const a = age &gt;= 20;
+const b = age &lt; 30;
+
+console.log(!a);      // true
+console.log(a &amp;&amp; b);  // false
+console.log(a || b);  // true
+console.log(!a &amp;&amp; b); // true
+console.log(a || !b); // false</code></pre>
+      <p>A <code>!</code> erősebben köt az ÉS-nél és a VAGY-nál. A <code>!a &amp;&amp; b</code> ezért <code>(!a) &amp;&amp; b</code>. Itt az igaz és az igaz eredménye igaz. Az <code>a || !b</code> pedig <code>a || (!b)</code>. Mindkét oldal hamis, így az eredmény hamis.</p>
+    </section>
+
+    <section class="practice">
+      <h2>Önálló próba</h2>
+      <p>Írd át az életkort 20-ra, majd 30-ra. Minden futtatás előtt tippeld meg az öt kifejezés eredményét. Külön figyeld meg, hogy a <code>20</code> még megfelel az első, a <code>30</code> viszont már nem felel meg a második feltételnek.</p>
+    </section>
+
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="egyenloseg.html">Előző · 22. Equality Operators</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+    </nav>
+  </main>
+</body>
+</html>
