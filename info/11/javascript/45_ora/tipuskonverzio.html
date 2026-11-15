@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Típuskonverzió és típuskényszerítés</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript · Jonas 20. videója</p>
+      <h1>Típuskonverzió és típuskényszerítés</h1>
+      <p>Számoláshoz a beírt szöveget gyakran számmá kell alakítani.</p>
+    </header>
+
+    <section>
+      <h2>Kifejezett típuskonverzió</h2>
+      <p>Jonas példájában a születési év egy beviteli mezőből érkezik. Szövegként kapjuk meg, akárcsak a <code>prompt()</code>-ba írt választ. A <code>+</code> ezért először összefűzi a két értéket.</p>
+      <pre><code>const inputYear = "1991";
+console.log(inputYear + 18); // "199118"
+
+const birthYear = Number(inputYear);
+console.log(birthYear + 18); // 2009
+console.log(typeof inputYear, typeof birthYear); // string number</code></pre>
+      <p>A <code>Number()</code> eredménye egy új érték. Az <code>inputYear</code> továbbra is szöveg. A <code>Number(inputYear) + 18</code> alakban egy sorban is megteheted ugyanezt.</p>
+      <pre><code>console.log(Number("Jonas"));        // NaN
+console.log(typeof Number("Jonas")); // number
+console.log(String(23), typeof String(23)); // 23 string</code></pre>
+      <p>A <code>NaN</code> jelentése <em>Not a Number</em>. Itt azt jelzi, hogy az átalakításból nem kaptunk használható számot, bár a <code>typeof</code> eredménye <code>"number"</code>. A <code>String()</code> szöveggé alakít. Mindkét név nagybetűvel kezdődik. A konzolon a szám és a szöveg hasonlóan nézhet ki, ezért használd a <code>typeof</code>-ot. A <code>null</code> és az <code>undefined</code> külön értékek. Ezeket közvetlenül is megadhatod. A harmadik gyakori átalakítás a <code>Boolean()</code>. Erre a következő videóban térünk vissza.</p>
+    </section>
+
+    <section>
+      <h2>Automatikus átalakítás</h2>
+      <p>Típuskényszerítéskor a JavaScript az operátor szabályai alapján alakítja át az értékeket. Szám és szöveg esetén a <code>+</code> szöveget fűz össze. A sablonliterál is szövegként illeszti be a számot. Az alábbi kivonásnál, szorzásnál és osztásnál a numerikus szövegből szám lesz.</p>
+      <pre><code>console.log("Én " + 23 + " éves vagyok."); // Én 23 éves vagyok.
+console.log("23" - "10" - 3); // 10
+console.log("23" + "10" + 3); // "23103"
+console.log("23" * "2");      // 46
+console.log("24" / "2");      // 12</code></pre>
+    </section>
+
+    <section class="practice">
+      <h2>Tippeld meg az értéket és a típust</h2>
+      <pre><code>let n = "1" + 1;
+n = n - 1;
+console.log(n);
+
+console.log(2 + 3 + 4 + "5");
+console.log("10" - "4" - "3" - 2 + "5");</code></pre>
+      <details>
+        <summary>Megoldás</summary>
+        <ul>
+          <li><code>"1" + 1</code> eredménye <code>"11"</code>. A kivonás ebből számot csinál, így <code>10</code> lesz.</li>
+          <li>Az első három szám összege <code>9</code>. Az utolsó összefűzés eredménye a <code>"95"</code> szöveg.</li>
+          <li>A kivonások eredménye sorban <code>6</code>, <code>3</code> és <code>1</code>. Az utolsó összefűzés eredménye <code>"15"</code>.</li>
+        </ul>
+      </details>
+      <p>Próbáld ki a 43. óra <code>prompt()</code>-jával is. Kérd be a születési évet, írj be <code>1991</code>-et, majd a <code>Number()</code> segítségével számold ki, melyik évben tölti be az illető a 18-at. Ehhez a próbához adj meg egy érvényes évszámot.</p>
+    </section>
+
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="../55_ora/index.html">Előző · 18. Taking Decisions</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+      <a class="lesson-button" href="truthy-falsy.html">Következő · 21. Truthy and Falsy Values</a>
+    </nav>
+  </main>
+</body>
+</html>
