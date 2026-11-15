@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>55. óra – Döntések az if és else segítségével</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+<main>
+<header><p class="label">11TC SZFT · Webprogramozás · 55. óra · Jonas 18. videója</p><h1>Döntések az if és else segítségével</h1><p>A program a feltétel eredménye alapján választ a kódblokkok közül.</p></header>
+<section>
+<h2>Egy feltétel, egy ág</h2>
+<p>Jonas jogosítványos példájában 18 év a feladatban választott korhatár. A <code>&gt;=</code> miatt a pontosan 18 éves személy is megfelel.</p>
+<pre><code>const age = 19;
+const isOldEnough = age &gt;= 18;
+
+if (isOldEnough) {
+  console.log("Sarah elkezdheti a jogosítvány megszerzését.");
+}</code></pre>
+<p>Az <code>if</code> után kerek zárójelbe írjuk a feltételt, kapcsos zárójelbe pedig a hozzá tartozó utasításokat. A blokk több sorból is állhat. Futtasd 19, majd 15 éves korral. A második futásnál a feltétel hamis, ezért a blokk kimarad, és ebből az elágazásból nem érkezik üzenet.</p>
+</section>
+<section>
+<h2>Mi történjen a másik esetben?</h2>
+<p>Cseréld le az előző példát erre. A feltételt most közvetlenül az <code>if</code>-be írjuk. Ha hamis, az <code>else</code> blokk fut le. Az <code>else</code> opcionális, nélküle a program az <code>if</code> után folytatódik.</p>
+<pre><code>const age = 15;
+
+if (age &gt;= 18) {
+  console.log("Sarah elkezdheti a jogosítvány megszerzését.");
+} else {
+  const yearsLeft = 18 - age;
+  console.log(`Sarah még túl fiatal. Várnia kell még ${yearsLeft} évet.`);
+}</code></pre>
+<p>15 éves korban három év van hátra. Próbáld ki 17, 18 és 19 éves korral is. Az <code>if / else</code> vezérlési szerkezet, mert a feltétel dönti el, melyik blokk fut le. A két ág után a program a következő utasítással folytatódik.</p>
+</section>
+<section>
+<h2>Értékadás az ágakban</h2>
+<p>Jonas második példája az 1901 és 2100 közötti évekre ad választ. A 2000 még a 20. századhoz, a 2001 már a 21. századhoz tartozik.</p>
+<pre><code>const birthYear = 1998;
+let century;
+
+if (birthYear &lt;= 2000) {
+  century = 20;
+} else {
+  century = 21;
+}
+
+console.log(century); // 20</code></pre>
+<p>A <code>century</code> változót az elágazás előtt deklaráljuk, így utána is elérhető. Az ágakban csak értéket adunk neki. Ha a külső <code>let century;</code> sort törlöd, és mindkét ágban külön <code>let century</code> változót hozol létre, a blokk utáni kiírás <code>ReferenceError</code>-t ad. Próbáld ki külön, majd állítsd vissza a működő változatot. A <code>birthYear</code> értékét írd át 2012-re, és ellenőrizd, hogy 21-et kapsz.</p>
+</section>
+<section class="practice">
+<h2>Önálló próba</h2>
+<p>A százados példát futtasd 2000-rel és 2001-gyel. Előbb tippelj, majd ellenőrizd, hogy melyik ág ad értéket a <code>century</code> változónak.</p>
+</section>
+<nav aria-label="Tananyag navigáció">
+<a class="lesson-button" href="../48_ora/index.html">Előző · 17. Strings and Template Literals</a>
+<a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+</nav>
+</main>
+</body>
+</html>
