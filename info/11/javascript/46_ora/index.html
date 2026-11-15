@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>46. óra – Alapműveletek</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · Webprogramozás · 46. óra · Jonas 13. videója</p>
+      <h1>Alapműveletek</h1>
+      <p>Számítás, szövegek összefűzése, értékadás és összehasonlítás.</p>
+    </header>
+    <section>
+      <h2>Számoljunk életkort</h2>
+      <p>Az operátor értékeken végez műveletet. A <code>-</code> például két szám különbségét adja. Jonas a példában 2037-et használ. Az évszám a <code>now</code> változóban szerepel, így egy helyen kell átírni. A <code>const</code> azért illik ide, mert a program később nem ad új értéket ezeknek a változóknak.</p>
+      <pre><code>const now = 2037;
+const ageJonas = now - 1991;
+const ageSarah = now - 2018;
+console.log(ageJonas, ageSarah); // 46 19
+console.log(ageJonas * 2, ageJonas / 10, 2 ** 3); // 92 4.6 8</code></pre>
+      <p>A <code>console.log()</code> vesszővel elválasztva több értéket is kiír. A <code>*</code> szoroz, a <code>/</code> oszt, a <code>**</code> hatványoz. A <code>2 ** 3</code> ugyanannyi, mint a <code>2 * 2 * 2</code>.</p>
+    </section>
+    <section>
+      <h2>Szövegek összefűzése</h2>
+      <p>Két számnál a <code>+</code> összead, két szövegnél összefűz. A szóközt külön adjuk hozzá. Később ugyanezt sablonliterállal is megoldjuk.</p>
+      <pre><code>const firstName = "Jonas";
+const lastName = "Schmedtmann";
+console.log(firstName + lastName);       // JonasSchmedtmann
+console.log(firstName + " " + lastName); // Jonas Schmedtmann</code></pre>
+      <p>Az előző leckében a <code>typeof</code> operátorral állapítottuk meg egy érték típusát.</p>
+    </section>
+    <section>
+      <h2>Értékadás lépésenként</h2>
+      <p>A <code>let x = 10 + 5;</code> sorban először az összeadás történik meg, majd az eredmény kerül az <code>x</code>-be. Azért használunk <code>let</code>-et, mert később új értékeket adunk neki.</p>
+      <pre><code>let x = 10 + 5; // 15
+x += 10;        // x = x + 10 → 25
+x *= 4;         // x = x * 4 → 100
+x++;            // eggyel nő → 101
+x--;            // eggyel csökken → 100
+x--;            // 99
+console.log(x); // 99</code></pre>
+      <p>Hasonló rövidítés a <code>-=</code> és a <code>/=</code>. Írj a sorok közé <code>console.log(x)</code> kiírásokat, hogy lásd a köztes értékeket is.</p>
+    </section>
+    <section>
+      <h2>Összehasonlítás</h2>
+      <p>A <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code> és <code>&lt;=</code> művelet eredménye <code>true</code> vagy <code>false</code>. A „legalább 18” feltételbe a 18 is beleszámít.</p>
+      <pre><code>console.log(ageJonas &gt; ageSarah); // true
+console.log(ageSarah &gt;= 18);     // true
+const isFullAge = ageSarah &gt;= 18;
+console.log(isFullAge);         // true
+console.log(now - 1991 &gt; now - 2018); // true</code></pre>
+      <p>Futtasd ezt az életkoros kód után. Ha Sarah születési évét 2019-re írod át, 18 éves lesz, és az <code>isFullAge</code> értéke <code>true</code> marad. Ha 2020-ra írod át, 17 éves lesz, és <code>false</code>-t kapsz. A tárolt logikai értéket később feltételként is használhatod.</p>
+      <p>Az oldal betöltése után a konzolban is kipróbálhatod az <code>ageSarah &gt;= 18</code> kifejezést. A konzolban végzett próbák nem kerülnek automatikusan a <code>script.js</code> fájlba. Az utolsó sorban mindkét kivonás megelőzi az összehasonlítást. A következő, 14. videó megmutatja, miért.</p>
+    </section>
+    <section class="practice">
+      <h2>Önálló feladat</h2>
+      <p>Indulj <code>let x = 15;</code> értékről. Adj hozzá 5-öt, szorozd meg hárommal, majd csökkentsd eggyel. Használj rövidített operátorokat, és ellenőrizd, hogy a végeredmény <strong>59</strong>.</p>
+    </section>
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+    </nav>
+  </main>
+</body>
+</html>
