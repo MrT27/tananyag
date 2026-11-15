@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logikai operátorok</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript · Jonas 24. videója</p>
+      <h1>Logikai operátorok a gyakorlatban</h1>
+      <p>Jonas példájában a program arról dönt, hogy Sarah vezessen-e.</p>
+    </header>
+
+    <section>
+      <h2>Jogosítvány és jó látás</h2>
+      <p>Az előző leckében a jogosítvány volt az A, a jó látás a B feltétel. Most adjunk nekik beszédes változónevet.</p>
+      <pre><code>const hasDriversLicense = true;
+const hasGoodVision = true;
+
+console.log(hasDriversLicense &amp;&amp; hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);</code></pre>
+      <p>Így a kimenet sorban <code>true</code>, <code>true</code>, <code>false</code>. Írd át a <code>hasGoodVision</code> kezdőértékét <code>false</code>-ra. Az ÉS eredménye hamis lesz, mert az egyik feltétel nem teljesül. A VAGY igaz marad, mert a jogosítvány megvan. A <code>!</code> az adott kifejezésben megfordítja az értéket, a változó értéke közben megmarad.</p>
+    </section>
+
+    <section>
+      <h2>Az eredményt felhasználjuk egy döntéshez</h2>
+      <p>Írd az előző példa alá. A <code>shouldDrive</code> a két feltétel közös eredményét tárolja.</p>
+      <pre><code>const shouldDrive = hasDriversLicense &amp;&amp; hasGoodVision;
+
+if (shouldDrive) {
+  console.log("Sarah vezethet.");
+} else {
+  console.log("Valaki más vezessen.");
+}</code></pre>
+      <p>Ha a látás feltétele hamis, az <code>else</code> fut. Ha mindkét feltétel igaz, Sarah vezethet. Jonas ezután közvetlenül az <code>if</code>-be írja a kifejezést: <code>if (hasDriversLicense &amp;&amp; hasGoodVision)</code>. Mindkét változat ugyanazt a döntést hozza.</p>
+    </section>
+
+    <section>
+      <h2>Három feltétel összekapcsolása</h2>
+      <p>Állítsd vissza a <code>hasGoodVision</code> értékét igazra, majd add hozzá a harmadik feltételt. Jonas ezt nevezi C-nek.</p>
+      <pre><code>const isTired = true;
+
+console.log(hasDriversLicense || hasGoodVision || isTired);
+console.log(hasDriversLicense &amp;&amp; hasGoodVision &amp;&amp; isTired);</code></pre>
+      <p>Ha mindhárom érték igaz, mindkét kiírás <code>true</code>. Állítsd az <code>isTired</code> értékét <code>false</code>-ra. A háromtagú ÉS eredménye hamis lesz, a VAGY eredménye igaz marad.</p>
+    </section>
+
+    <section>
+      <h2>Sarah akkor vezessen, ha nem fáradt</h2>
+      <p>Kommentezd ki a korábbi <code>if / else</code> blokkot, majd írd a következőt a három változó deklarációja után.</p>
+      <pre><code>if (hasDriversLicense &amp;&amp; hasGoodVision &amp;&amp; !isTired) {
+  console.log("Sarah vezethet.");
+} else {
+  console.log("Valaki más vezessen.");
+}</code></pre>
+      <p>Ha Sarah fáradt, az <code>isTired</code> igaz, ezért a <code>!isTired</code> hamis. Az első két feltétel hiába igaz, az <code>else</code> fut. Ha Sarah kipihent, a <code>!isTired</code> igaz lesz. Ekkor mindhárom feltétel teljesül.</p>
+    </section>
+
+    <section class="practice">
+      <h2>Önálló próba</h2>
+      <p>Tippeld meg a kiírást, majd futtasd a programot háromszor. Először Sarah fáradt, utána kipihent, végül kipihent, de nincs jogosítványa. Minden esetben mondd meg, melyik feltétel dönti el az eredményt.</p>
+    </section>
+
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="boole-logika.html">Előző · 23. Boolean Logic</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+    </nav>
+  </main>
+</body>
+</html>
