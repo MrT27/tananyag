@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Utasítások és kifejezések</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript · Jonas 27. videója</p>
+      <h1>Utasítások és kifejezések</h1>
+      <p>Mi kerülhet egy sablonliterál helyőrzőjébe?</p>
+    </header>
+    <section>
+      <h2>A kifejezésnek értéke van</h2>
+      <p>A <code>3 + 4</code> kiértékelve <code>7</code>. Egy önálló szám, például a <code>1991</code>, szintén kifejezés. A logikai operátorokat összekapcsoló kifejezésnek is van értéke. Az alábbi példákat írd be egyenként a böngésző konzoljába.</p>
+      <pre><code>3 + 4                       // 7
+1991                        // 1991
+true &amp;&amp; false &amp;&amp; !false     // false</code></pre>
+    </section>
+    <section>
+      <h2>Az utasítás megadja, mit tegyen a program</h2>
+      <p>Jonas hasonlatában az utasítás olyan, mint egy mondat, a benne lévő kifejezések pedig a mondat részei. Az <code>if</code> és a <code>switch</code> utasítás vezérli, melyik kódrész fusson le.</p>
+      <pre><code>if (23 &gt; 10) {
+  const str = "A 23 nagyobb.";
+}</code></pre>
+      <p>A <code>23 &gt; 10</code> logikai kifejezés. A <code>"A 23 nagyobb."</code> szöveg szintén kifejezés, a teljes <code>const</code> sor pedig deklaráció. Egy kifejezés önálló utasításként is szerepelhet. A pontosvessző önmagában ezért nem dönti el, hogy a soron belül mi számít kifejezésnek.</p>
+    </section>
+    <section>
+      <h2>A helyőrzőbe kifejezés kerül</h2>
+      <pre><code>const firstName = "Jonas";
+console.log(`A nevem ${firstName}, ${2037 - 1991} éves vagyok.`);</code></pre>
+      <p>A név kiértékelésekor a tárolt szöveget, a kivonásból a 46-ot kapjuk. Mindkét érték bekerül a mondatba.</p>
+      <details>
+        <summary>Mi történik, ha if-et írsz a helyőrzőbe?</summary>
+        <p>Ezt külön próbáld ki. Az <code>if</code> utasítás helyén a JavaScript kifejezést vár, ezért <code>SyntaxError</code>-t jelez.</p>
+        <pre><code>console.log(`${if (23 &gt; 10) { "A 23 nagyobb." }}`);</code></pre>
+      </details>
+    </section>
+    <section class="practice">
+      <h2>Önálló próba</h2>
+      <p>Hozz létre egy <code>birthYear</code> változót 2012-es értékkel. Írj sablonliterált, amelyben a helyőrző a <code>2037 - birthYear</code> kifejezéssel számolja ki az életkort. Ellenőrizd, hogy a mondatban 25 jelenik meg.</p>
+    </section>
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="../62_ora/index.html">Előző · 26. The switch Statement</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+      <a class="lesson-button" href="felteteles-operator.html">Következő · 28. The Conditional (Ternary) Operator</a>
+    </nav>
+  </main>
+</body>
+</html>

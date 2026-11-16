@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feltételes operátor</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript · Jonas 28. videója</p>
+      <h1>A feltételes operátor</h1>
+      <p>Válassz két érték közül egy feltétel alapján.</p>
+    </header>
+    <section>
+      <h2>Három rész, két lehetséges eredmény</h2>
+      <p>A minta <code>feltétel ? igaz_ág : hamis_ág</code>. A kérdőjel után az igaz eset kifejezése áll, a kettőspont után a hamis eseté. Mindhárom rész kötelező. Innen ered a <em>ternáris</em> elnevezés. Csak a kiválasztott ág értékelődik ki. Mindkét ág egy kifejezést tartalmaz, amely több sorban is állhat.</p>
+      <pre><code>const age = 23;
+age &gt;= 18 ? console.log("Szeretek bort inni.") : console.log("Szeretek vizet inni.");</code></pre>
+      <p>A 23 éves szereplőnél az első kiírás fut. Írd át a kort 15-re, és a második fut. A 18 is az igaz ághoz tartozik a <code>&gt;=</code> miatt.</p>
+    </section>
+
+    <section>
+      <h2>A kiválasztott érték eltárolása</h2>
+      <p>Jonas először közvetlenül az ágakban írta ki az üzenetet. Gyakrabban magát az értéket választjuk ki, majd egyszer írjuk ki. Tartsd meg az előző <code>age</code> deklarációt, és a kiíró sort cseréld erre:</p>
+      <pre><code>const drink = age &gt;= 18 ? "bor" : "víz";
+console.log(drink);</code></pre>
+      <p>Az egész feltételes kifejezés eredménye egy szöveg. A <code>drink</code> a deklarációkor megkapja ezt az értéket, így itt használható a <code>const</code>.</p>
+    </section>
+
+    <section>
+      <h2>Ugyanez if és else segítségével</h2>
+      <pre><code>let drink2;
+if (age &gt;= 18) {
+  drink2 = "bor";
+} else {
+  drink2 = "víz";
+}
+console.log(drink2);</code></pre>
+      <p>A <code>drink2</code> az elágazás előtt jön létre, mert utána is használjuk. Az ágakban csak értéket adunk neki. Próbáld ki mindkét megoldást 23 és 15 éves korral. Mindkettő ugyanazt az italt adja.</p>
+    </section>
+
+    <section>
+      <h2>Feltételes érték a sablonliterálban</h2>
+      <pre><code>console.log(`Szeretek ${age &gt;= 18 ? "bort" : "vizet"} inni.`);</code></pre>
+      <p>Az előző leckében az <code>if</code> utasítás hibát okozott a <code>${…}</code> helyőrzőben. A feltételes operátor itt használható, mert a teljes kifejezés értéke a mondatba illeszthető <code>"bort"</code> vagy <code>"vizet"</code>. Ha egy feltételtől több külön utasítás függ, az <code>if / else</code> blokkban áttekinthetőbb marad a kód.</p>
+    </section>
+
+    <section class="practice">
+      <h2>Önálló próba</h2>
+      <p>Futtasd a sablonliterálos példát 17, 18 és 19 éves korral. Ezután tárold a <code>"bort"</code> vagy <code>"vizet"</code> egy változóban, és a helyőrzőbe ennek a nevét írd. Ellenőrizd, hogy ugyanazt a mondatot kapod.</p>
+    </section>
+
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="utasitasok-kifejezesek.html">Előző · 27. Statements and Expressions</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+    </nav>
+  </main>
+</body>
+</html>
