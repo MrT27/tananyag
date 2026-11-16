@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Osztálystatisztika Excelben – Informatika, 13. évfolyam</title>
+<style>
+body{margin:0;background:#f3f6fa;color:#172638;font:1rem/1.6 system-ui,sans-serif}
+main{max-width:52rem;margin:auto;padding:2rem 1rem 3rem}
+header{border-bottom:3px solid #286477} h1,h2{line-height:1.25}
+table{width:100%;border-collapse:collapse;background:#fff}
+th,td{padding:.55rem;text-align:left;vertical-align:top;border-bottom:1px solid #c6d2dc}
+thead{background:#dceaf0} code{overflow-wrap:anywhere} li+li{margin-top:.5rem}
+</style>
+</head>
+<body><main>
+<nav aria-label="Navigáció"><a href="index.html">Vissza a 13. évfolyamhoz</a></nav>
+<header><p>Informatika · 13. évfolyam</p><h1>Osztálystatisztika Excelben</h1></header>
+<p>Készíts összesítést egy osztály jegyeiből. Számold ki a tanulói és tantárgyi átlagokat, a bukások számát és a jegyek megoszlását. Keresd meg a legjobb eredményt elérő tanulókat.</p>
+<h2>Kiinduló fájlok</h2>
+<p>Az <strong>Osztálystatisztika_üres.xlsx</strong> a gyakorlófájl. Az <strong>osztálystatisztika.xlsx</strong> kitöltött mintája az <strong>osztálystat_eredeti</strong> munkalapon található. A mintában a jegyek a B:O oszlopban vannak, a gyakorlófájlban a D:Q oszlopban. A feladat képletei a gyakorlófájl elrendezését követik. Gyakorláshoz használj kitalált neveket és jegyeket.</p>
+<h2>1. Tanulónkénti számítások</h2>
+<table>
+<thead><tr><th scope="col">Cella</th><th scope="col">Képlet</th><th scope="col">Mit számol?</th></tr></thead>
+<tbody>
+<tr><td>C2</td><td><code>=A2&amp;" "&amp;B2</code></td><td>Összefűzi a vezeték- és keresztnevet egy szóközzel.</td></tr>
+<tr><td>R2</td><td><code>=ÁTLAG(D2:Q2)</code></td><td>A tanuló beírt jegyeinek átlaga. Az üres cellákat az ÁTLAG kihagyja. Ha még egyetlen jegy sincs, várj az adatok kitöltésével az eredmény ellenőrzéséig.</td></tr>
+<tr><td>V2</td><td><code>=DARABTELI(D2:Q2;1)</code></td><td>Megszámolja az elégtelen osztályzatokat.</td></tr>
+<tr><td>S2</td><td><code>=HA(V2=0;R2;1)</code></td><td>A munkafüzet szabálya szerint bukás esetén 1, egyébként a kiszámolt átlag.</td></tr>
+</tbody>
+</table>
+<p>Másold a képleteket a 26. sorig. Ellenőrizd például, hogy az R3 képlete a D3:Q3 tartományra hivatkozik.</p>
+<h2>2. Tantárgyi átlag és jegyeloszlás</h2>
+<ol>
+<li>A D27 cellába írd be: <code>=ÁTLAG(D2:D26)</code>. Másold jobbra Q27-ig. Az R27 és S27 cellában külön összesítheted a kétféle tanulói átlagot: <code>=ÁTLAG(R2:R26)</code> és <code>=ÁTLAG(S2:S26)</code>.</li>
+<li>A D28 cellába írd be: <code>=DARABTELI(D$2:D$26;$C28)</code>. Másold le a 32. sorig, majd jobbra a Q oszlopig. A dollárjel rögzíti a jegytartomány sorszámait és az osztályzatot tartalmazó C oszlopot.</li>
+<li>A T27 cellába írd be: <code>=SZUM(T2:T26)</code>. Másold jobbra X27-ig a dicséretek, kitűnő értékelések, bukások és mulasztások összesítéséhez.</li>
+</ol>
+<h2>3. Kik érték el a legjobb eredményt?</h2>
+<ul>
+<li>A legjobb korrigált átlag: <code>=MAX(S2:S26)</code>.</li>
+<li>Az első helyezett neve: <code>=INDEX(C2:C26;HOL.VAN(MAX(S2:S26);S2:S26;0))</code>. A <code>0</code> pontos egyezést kér. Holtversenyben ez a képlet az első találatot adja.</li>
+<li>Minden első helyezett neve: <code>=SZŰRŐ(C2:C26;S2:S26=MAX(S2:S26);"nincs")</code>. A találatok egymás alá kerülnek, ezért hagyj üres helyet a képlet alatt.</li>
+<li>Akiknek a nyers átlaga 3-nál nagyobb és 4-nél kisebb: <code>=SZŰRŐ(C2:C26;(R2:R26&gt;3)*(R2:R26&lt;4);"nincs")</code>. A szorzás mindkét feltétel teljesülését megköveteli. A pontosan 3-as és 4-es átlag kimarad.</li>
+</ul>
+<h2>4. Haladó feladat – ösztöndíjsávok</h2>
+<p>A különálló gyakorlófájlban adj hozzá <strong>Ösztöndíj</strong> fejlécet az Y1 cellához. Az Y2-be írd a mintában szereplő összegekkel dolgozó képletet, majd másold lefelé:</p>
+<p><code>=HA(S2&lt;2;0;HA(S2&lt;3;8000;HA(S2&lt;4;25000;HA(S2&lt;4,5;42000;59000))))</code></p>
+<p>Próbáld ki a sávhatárokat. Pontosan 2 → 8 000 Ft, 3 → 25 000 Ft, 4 → 42 000 Ft, 4,5 → 59 000 Ft. Ezek a gyakorlófájl mintaszámításához használt összegek.</p>
+<h2>Önálló ellenőrzés</h2>
+<ol>
+<li>Írj be egy 1-est egy mintatanuló sorába. Ellenőrizd, hogy a bukások száma nő, a korrigált átlag pedig 1 lesz.</li>
+<li>Törölj egy jegyet. Ellenőrizd, hogy az üres cella nem jelenik meg külön jegyként az eloszlásban.</li>
+<li>Adj két tanulónak azonos, legmagasabb korrigált átlagot. Próbáld ki mindkét névkereső képletet, és hasonlítsd össze a találatokat.</li>
+</ol>
+<h2>Tanári megjegyzés a kitöltött mintához</h2>
+<ul>
+<li>A B35 cellában a szűrés feltételtartománya <code>Q2:Q2:Q26</code> alakban szerepel. Az egyértelmű tartomány <code>Q2:Q26</code>.</li>
+<li>A C38 cellában az INDEX második argumentuma beírt <code>12</code>. Hivatkozz helyette a C37 cellára: <code>=INDEX(A2:A26;C37)</code>. Így a név követi a HOL.VAN eredményét, ha változnak a jegyek.</li>
+</ul>
+</main></body></html>
