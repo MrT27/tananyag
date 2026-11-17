@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A JavaScript kiadásai</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript · Jonas 30. videója</p>
+      <h1>A JavaScript kiadásai</h1>
+      <p>ES5, ES6+ és ESNext</p>
+    </header>
+    <section>
+      <h2>A böngészős szkripttől az éves kiadásokig</h2>
+      <p>Brendan Eich 1995-ben, a Netscape-nél készítette el a nyelv első változatát. Akkor egyszerű interakciókat akartak hozzáadni a weboldalakhoz. A nyelvet ma teljes webalkalmazásokban is használjuk. Az <strong>ECMAScript</strong> a nyelv szabványa. A böngészők JavaScript-motorjai ezt valósítják meg.</p>
+      <ul>
+        <li><strong>1997 · ES1.</strong> Az ECMAScript első kiadása.</li>
+        <li><strong>2009 · ES5.</strong> A nyelv egyik jelentős frissítése.</li>
+        <li><strong>2015 · ES6, más néven ES2015.</strong> Ekkor érkezett például a <code>let</code>, a <code>const</code> és a sablonliterál.</li>
+        <li><strong>ES2016-tól éves kiadások.</strong> Az új funkciók kisebb adagokban kerülnek a szabványba. Az <strong>ES6+</strong> az ES2015 és az utána megjelent kiadások gyűjtőneve.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Mit jelent a kompatibilitás?</h2>
+      <p>A <strong>visszafelé kompatibilitás</strong> célja, hogy a régi weboldalak kódja továbbra is működjön új böngészőkben. Jonas ezt a „ne törjük el a webet” elvvel magyarázza. Ezért találkozunk ma is a <code>var</code>-ral, és ezért maradt meg például a <code>typeof null</code> szokatlan <code>"object"</code> eredménye.</p>
+      <p>Az <strong>előrefelé kompatibilitás</strong> a másik irány lenne. Jonas képzeletbeli példájában egy 2089-ben bevezetett szintaxist próbálnánk egy mai böngészőben futtatni. A motor csak a már megvalósított funkciókat ismeri, ezért ilyen támogatásra előre nem számíthatunk.</p>
+    </section>
+    <section>
+      <h2>Fejlesztés és közzététel</h2>
+      <p>Fejlesztés közben friss böngészőben próbáljuk ki a példákat. Közzétételkor azt is figyelembe vesszük, milyen böngészőket használnak az oldal látogatói. Egy funkció támogatását az adott funkció kompatibilitási táblázatában ellenőrizhetjük.</p>
+      <ul>
+        <li>A <strong>transzpilálás</strong> a modern szintaxist olyan kódra írja át, amelyet a célböngésző már ért. Erre mutat példát Jonas a Babellel.</li>
+        <li>A <strong>polyfill</strong> egy hiányzó beépített funkciót pótolhat. Például ha a böngésző motorja érti a metódushívást, de maga a metódus még hiányzik.</li>
+      </ul>
+      <p>Jonas az ES5-öt egy korabeli célként mutatja be. A projektben a támogatandó böngészők alapján választjuk ki, hogy mely átalakításokra van szükség. A mostani gyakorlathoz elég a böngésző.</p>
+      <p><a href="https://babeljs.io/docs/babel-preset-env">A Babel útmutatója a célböngészők beállításához</a></p>
+    </section>
+    <section>
+      <h2>Mit jelöl az ESNext?</h2>
+      <p>Az ESNext a készülő nyelvi újdonságok megnevezése. A TC39 lépésekben vizsgálja a javaslatokat. A 3. szakaszban a javaslat már elég kidolgozott a megvalósításhoz és a visszajelzések gyűjtéséhez. Egyes motorok ilyenkor már kipróbálhatóvá teszik. A 4. szakaszban a javaslat elkészült, és bekerülhet a szabvány következő kiadásába.</p>
+      <p><a href="https://tc39.es/process-document/">A TC39 hivatalos leírása a javaslatok szakaszairól</a></p>
+    </section>
+    <section class="practice">
+      <h2>Miért olvasunk régebbi kódot is?</h2>
+      <p>Régi oktatóanyagokban és meglévő projektekben találkozhatsz korábbi megoldásokkal. Ezek segítenek megérteni, hogyan jutottunk el a mai formákhoz. Nézd meg a két változatot külön-külön. Mindkettő ugyanazt írja ki, és a második a már tanult modern eszközöket használja.</p>
+      <pre><code>// Régebbi változat
+var firstName = "Jonas";
+console.log("Szia, " + firstName + "!");</code></pre>
+      <pre><code>// ES2015-ös eszközök
+const firstName = "Jonas";
+console.log(`Szia, ${firstName}!`);</code></pre>
+    </section>
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="../48_ora/felteteles-operator.html">Előző · 28. The Conditional (Ternary) Operator</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+    </nav>
+  </main>
+</body>
+</html>
