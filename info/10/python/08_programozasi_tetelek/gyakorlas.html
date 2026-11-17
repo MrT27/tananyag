@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>8. Programozási tételek – gyakorlás</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"></head>
+<body><main class="container py-5">
+<p><a href="index.html">← Vissza a leckéhez</a></p><h1>8. Programozási tételek – gyakorlás</h1>
+<p>Minden feladathoz írj külön Python-programot. Futtasd a megadott adatokkal, majd nyisd le az ellenőrzést, és hasonlítsd össze az eredményedet.</p>
+<section><h2>Kétféle megoldás ugyanarra a feladatra</h2><p>Az alábbi feladatokat oldd meg a lecke klasszikus és rövidebb változatával. Eldöntésnél próbáld ki mindhárom módszert.</p><ol><li><strong>Összegzés</strong> Mennyi a kölcsönzések összege? Használd a <code>[3, 5, 2, 8, 5]</code> listát.<details><summary>Ellenőrzés</summary>23</details></li><li><strong>Megszámlálás</strong> Hányszor szerepel az 5? Használd a <code>[3, 5, 2, 8, 5]</code> listát.<details><summary>Ellenőrzés</summary>2</details></li><li><strong>Eldöntés</strong> Szerepel-e a 8? Használd a <code>[3, 5, 2, 8, 5]</code> listát.<details><summary>Ellenőrzés</summary>True</details></li><li><strong>Lineáris keresés</strong> Hol van az első 5? Ha nincs, legyen az eredmény −1. Használd a <code>[3, 5, 2, 8, 5]</code> listát.<details><summary>Ellenőrzés</summary>1</details></li><li><strong>Minimumkiválasztás</strong> Melyik a legkisebb érték és az első ilyen elem indexe? Használd a <code>[3, 5, 2, 8, 5]</code> listát.<details><summary>Ellenőrzés</summary>2 2</details></li><li><strong>Maximumkiválasztás</strong> Melyik a legnagyobb érték és az első ilyen elem indexe? Használd a <code>[3, 5, 2, 8, 5]</code> listát.<details><summary>Ellenőrzés</summary>8 3</details></li><li><strong>Kiválasztás</strong> Hol van a biztosan szereplő 3? Használd a <code>[3, 5, 2, 8, 5]</code> listát.<details><summary>Ellenőrzés</summary>0</details></li><li><strong>Kiválogatás</strong> Mely értékek legalább ötösek? Használd a <code>[3, 5, 2, 8, 5]</code> listát.<details><summary>Ellenőrzés</summary>[5, 8, 5]</details></li><li><strong>Másolás átalakítással</strong> Kétszerezd meg az összes értéket egy új listában. Használd a <code>[3, 5, 2, 8, 5]</code> listát.<details><summary>Ellenőrzés</summary>[6, 10, 4, 16, 10]</details></li><li><strong>Átlagszámítás</strong> Mennyi az átlag? Üres listán jelezd, hogy nincs adat. Használd a <code>[3, 5, 2, 8, 5]</code> listát.<details><summary>Ellenőrzés</summary>4.6</details></li></ol><p>Eldöntésnél és keresésnél próbálj ki hiányzó értéket is. A biztos találatot feltételező kiválasztásnál maradj a megadott adatoknál.</p></section><h2 class="h4 mt-4">Bemelegítés</h2>
+<article class="card card-body mb-3"><h3 class="h5">1. feladat</h3><p>Ciklussal add össze a [12, 0, 18, 20] napi kölcsönzésszámokat, majd számítsd ki az átlagot.</p><details><summary>Ellenőrzés</summary><p>50, illetve 12,5</p></details></article>
+<article class="card card-body mb-3"><h3 class="h5">2. feladat</h3><p>A [0, 4, 5, 8, 5] listában számold meg a legalább öt könyvet kikölcsönző olvasókat.</p><details><summary>Ellenőrzés</summary><p>3</p></details></article>
+<article class="card card-body mb-3"><h3 class="h5">3. feladat</h3><p>A [2, 4, 0, 6] készletlistában döntsd el, van-e elfogyott könyv. Az első találatnál állj meg.</p><details><summary>Ellenőrzés</summary><p>Van.</p></details></article>
+<h2 class="h4 mt-4">Önálló gyakorlás</h2>
+<article class="card card-body mb-3"><h3 class="h5">4. feladat</h3><p>A [&quot;Dűne&quot;, &quot;Vuk&quot;, &quot;Tüskevár&quot;, &quot;Vuk&quot;] listában keresd a bekért címet, és add meg az első találat indexét.</p><details><summary>Ellenőrzés</summary><p>Vuk → 1. Micimackó → nincs találat.</p></details></article>
+<article class="card card-body mb-3"><h3 class="h5">5. feladat</h3><p>A [180, 120, 120, 270] oldalszámokból keresd meg a minimumot és az első ilyen elem indexét.</p><details><summary>Ellenőrzés</summary><p>120 oldal, 1-es index.</p></details></article>
+<article class="card card-body mb-3"><h3 class="h5">6. feladat</h3><p>A [0, 4, 5, 8, 5] kölcsönzésszámokból gyűjtsd külön az ötnél nagyobb értékeket.</p><details><summary>Ellenőrzés</summary><p>[8]</p></details></article>
+<article class="card card-body mb-3"><h3 class="h5">7. feladat</h3><p>A [2, 5, 12] perces olvasási időket váltsd át másodpercre, új listába.</p><details><summary>Ellenőrzés</summary><p>[120, 300, 720]</p></details></article>
+<h2 class="h4 mt-4">Ráadás</h2>
+<article class="card card-body mb-3"><h3 class="h5">8. feladat</h3><p>A [0, 5, 2, 8, 5, 0] napi kölcsönzésszámokból számíts átlagot, keress maximumot, és gyűjtsd ki a legalább ötös értékeket.</p><details><summary>Ellenőrzés</summary><p>3,33; 8; [5, 8, 5]</p></details></article>
+<section class="mt-5"><h2>Heti menü – összetett órai gyakorlat</h2>
+<p>Az azonos indexű adatok ugyanahhoz az ételhez tartoznak.</p>
+<pre><code>etelek = ["Tökleves", "Rántott csirke", "Karfiolleves", "Töltött káposzta", "Barackos gombóc", "Babgulyás"]
+kategoriak = ["leves", "főétel", "leves", "főétel", "desszert", "leves"]
+kaloriak = [180, 780, 200, 720, 480, 480]</code></pre>
+<ol>
+<li>Számold meg a leveseket. <details><summary>Ellenőrzés</summary>3.</details></li>
+<li>Add össze az összes étel kalóriatartalmát. <details><summary>Ellenőrzés</summary>2840 kcal.</details></li>
+<li>Döntsd el, van-e desszert. <details><summary>Ellenőrzés</summary>Igen.</details></li>
+<li>Keresd meg a legkisebb kalóriatartalmú ételt és írd ki a nevét. <details><summary>Ellenőrzés</summary>Tökleves, 180 kcal.</details></li>
+<li>Számítsd ki a levesek átlagos kalóriatartalmát. Ha nincs leves, jelezd. <details><summary>Ellenőrzés</summary>286,67 kcal.</details></li>
+<li>Kérj be egy ételnevet. Szóközök és betűméret egységesítése után írd ki a kategóriáját és kalóriatartalmát. Kezeld a hiányzó találatot. <details><summary>Ellenőrzés</summary>„ babgulyás ” → leves, 480 kcal. „Pizza” → nincs találat.</details></li>
+<li>Gyűjtsd listába a pontosan 480 kcal-os ételek nevét. <details><summary>Ellenőrzés</summary>['Barackos gombóc', 'Babgulyás']</details></li>
+</ol></section>
+</main></body></html>
