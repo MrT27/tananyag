@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Szigorú mód</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript Fundamentals – Part 2</p>
+      <h1>Szigorú mód bekapcsolása</h1>
+      <p>Egy elgépelt változónév példáján nézzük meg, milyen hibát segít megtalálni a szigorú mód.</p>
+    </header>
+    <section>
+      <h2>Hova kerül a „use strict”?</h2>
+      <p>Írd a <code>"use strict";</code> direktívát a <code>script.js</code> elejére, a változók és egyéb utasítások elé. Felette lehet üres sor vagy megjegyzés. A szigorú mód tilt bizonyos műveleteket, és egyes korábban észrevétlen hibákat a konzolon is jelez.</p>
+    </section>
+    <section>
+      <h2>Jonas jogosítványos példája</h2>
+      <p>Próbáld ki egy új, hagyományos böngészős szkriptben. Az első futtatáskor hagyd kommentben a direktívát. Mentsd a fájlt, töltsd újra az oldalt, és figyeld a konzolt.</p>
+      <pre><code>// "use strict";
+
+let hasDriversLicense = false;
+const passTest = true;
+
+if (passTest) {
+  hasDriverLicense = true;
+}
+
+if (hasDriversLicense) {
+  console.log("Vezethetek.");
+}</code></pre>
+      <p>A vizsga sikerült, mégsem jelenik meg az üzenet. Az értékadásból hiányzik egy <code>s</code>. A <code>hasDriverLicense</code> így egy másik név. Szigorú mód nélkül az értékadás létrehozhat egy tulajdonságot a globális objektumon, a böngészőben a <code>window</code>-n. A valódi változó értéke <code>false</code> marad.</p>
+      <ol>
+        <li>Vedd le a <code>//</code>-t az első sorról, mentsd és frissíts. A konzol <code>ReferenceError</code>-t jelez az elgépelt névnél. Keresd meg a hibaüzenetben a fájlt és a sorszámot.</li>
+        <li>Javítsd a nevet <code>hasDriversLicense</code>-ra. Újratöltés után megjelenik a <strong>Vezethetek.</strong> üzenet.</li>
+      </ol>
+      <p>A <code>passTest</code> itt egyszer kap értéket, ezért <code>const</code>. A <code>hasDriversLicense</code> a sikeres vizsga után új értéket kap, ezért <code>let</code>.</p>
+    </section>
+    <section class="practice">
+      <h2>Foglalt változónevek</h2>
+      <p>Próbáld ki a következő két deklarációt <strong>külön-külön</strong>, a fájl elején aktív <code>"use strict";</code> mellett.</p>
+      <pre><code>const interface = "hangkártya";</code></pre>
+      <pre><code>const private = 23;</code></pre>
+      <p>Mindkettő <code>SyntaxError</code>-t okoz már beolvasáskor, mert szigorú módban ezek foglalt szavak. Hasonló névadási szabállyal találkoztunk a 44. órán. Az <code>if</code> például mindkét módban foglalt. A próbák után kommentezd ki a hibás sorokat.</p>
+      <p>Jonas a következő leckék hagyományos szkriptjeiben bekapcsolva hagyja a szigorú módot. A következő téma a függvények használata.</p>
+    </section>
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="javascript-kiadasok.html">Előző · JavaScript Releases</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+      <a class="lesson-button" href="../66_ora/index.html">Következő · Functions</a>
+    </nav>
+  </main>
+</body>
+</html>
