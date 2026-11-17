@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For ciklus és listák – javítókulcs</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"></head>
+<body><main class="container py-4"><h1>For ciklus és listák – javítókulcs</h1><p>Összesen 40 pont. Az egyenértékű, a feladat megkötéseit betartó megoldások elfogadhatók. A részpontokat a megvalósított elemek alapján add meg.</p><section class="my-4"><h2 class="h4">1. Csökkenő számsor (8 pont)</h2><p>Kezdőérték 2 p, kizáró végérték 2 p, lépésköz 2 p, kiírás és sorrend 2 p.</p><pre class="bg-light p-3"><code>for szam in range(28, 3, -4):
+    print(szam)</code></pre><h3 class="h6">Várt kimenet</h3><pre class="bg-light p-3"><code>28
+24
+20
+16
+12
+8
+4</code></pre></section><section class="my-4"><h2 class="h4">2. Könyvek számozása (10 pont)</h2><p>Teljes indexes bejárás 3 p, megfelelő elem elérése 3 p, 1-től induló sorszám 2 p, soronkénti kiírás 2 p.</p><pre class="bg-light p-3"><code>cimek = [&quot;Vuk&quot;, &quot;Dűne&quot;, &quot;Tüskevár&quot;, &quot;Egri csillagok&quot;]
+for i in range(len(cimek)):
+    print(f&quot;{i + 1}. {cimek[i]}&quot;)</code></pre><h3 class="h6">Várt kimenet</h3><pre class="bg-light p-3"><code>1. Vuk
+2. Dűne
+3. Tüskevár
+4. Egri csillagok</code></pre></section><section class="my-4"><h2 class="h4">3. Napi kölcsönzések összege (10 pont)</h2><p>Kezdőérték 2 p, teljes bejárás 3 p, összeg frissítése 3 p, kiírás a ciklus után 2 p.</p><pre class="bg-light p-3"><code>osszeg = 0
+for darab in [6, 0, 12, 5, 7]:
+    osszeg += darab
+print(osszeg)</code></pre><h3 class="h6">Várt kimenet</h3><pre class="bg-light p-3"><code>30</code></pre></section><section class="my-4"><h2 class="h4">4. Forgalmas napok (12 pont)</h2><p>Számláló kezdőértéke 2 p, teljes bejárás 3 p, helyes feltétel 3 p, egyesével növelés 2 p, kiírás a ciklus után 2 p.</p><pre class="bg-light p-3"><code>darab = 0
+for kolcsonzes in [8, 3, 10, 0, 8, 7, 12]:
+    if kolcsonzes &gt;= 8:
+        darab += 1
+print(darab)</code></pre><h3 class="h6">Várt kimenet</h3><pre class="bg-light p-3"><code>4</code></pre></section></main></body></html>
