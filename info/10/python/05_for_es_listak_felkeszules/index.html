@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Felkészülés az 5. dolgozatra – for ciklus és listák</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+<main class="container py-5">
+  <h1>Felkészülés az 5. dolgozatra</h1>
+  <p class="lead">For ciklus és listák · 45 perc</p>
+  <p><a class="btn btn-primary" href="05_gyakorlas.py" download>Kezdőfájl letöltése (.py)</a></p>
+  <p>Írd a négy megoldást egymás alá ugyanabban a fájlban. Minden eredményhez írj érthető feliratot. A feladatokat sorban próbáld ki, a végén futtasd le a teljes fájlt.</p>
+
+  <h2 class="h4 mt-4">Bemelegítés · 5 perc</h2>
+  <p>Futtatás előtt jósolj! Mit ad a <code>range(3, 12, 3)</code>, és mit a <code>range(3, 13, 3)</code>?</p>
+  <details><summary>Ellenőrzés</summary><p>Az első 3, 6, 9 értékeket ad. A másodikban a 12 is szerepel.</p></details>
+
+  <h2 class="h4 mt-4">Közös gyakorlás · 12 perc</h2>
+  <h3 class="h5">1. Hárommal osztható számok</h3>
+  <p>Kérj be egy pozitív egész számot. <code>for</code> ciklussal, külön sorokba írd ki a hárommal osztható számokat 3-tól a bekért számig. A felső határ is szerepeljen, ha osztható hárommal.</p>
+  <details><summary>Tipp és próbaadatok</summary><p>A <code>range()</code> felső határa kimarad. 12-re és 13-ra is 3, 6, 9, 12 a várható sorozat. 2-re egy szám sem jelenik meg.</p></details>
+  <details class="mt-2"><summary>Teljes megoldás</summary><pre class="bg-light p-3"><code>hatar = int(input(&quot;Adj meg egy pozitív egész számot: &quot;))
+print(&quot;Hárommal osztható számok:&quot;)
+for szam in range(3, hatar + 1, 3):
+    print(szam)</code></pre></details>
+
+  <h3 class="h5 mt-3">2. Színek listája</h3>
+  <p>A <code>["zöld", "kék", "piros", "sárga"]</code> lista elemeit <code>for</code> ciklussal írd ki külön sorokba, 1-től sorszámozva.</p>
+  <details><summary>Tipp és ellenőrzés</summary><p>Használhatod a <code>range(len(szinek))</code> bejárást. Az első sor <code>1. zöld</code>, az utolsó <code>4. sárga</code>.</p></details>
+  <details class="mt-2"><summary>Teljes megoldás</summary><pre class="bg-light p-3"><code>szinek = [&quot;zöld&quot;, &quot;kék&quot;, &quot;piros&quot;, &quot;sárga&quot;]
+print(&quot;Színek:&quot;)
+for i in range(len(szinek)):
+    print(f&quot;{i + 1}. {szinek[i]}&quot;)</code></pre></details>
+
+  <h2 class="h4 mt-4">Önálló munka · 20 perc</h2>
+  <h3 class="h5">3. Öt szám bekérése</h3>
+  <p>Kérj be pontosan öt egész számot <code>for</code> ciklussal, és tárold őket egy listában. A bekérés után írd ki a teljes listát és az összegét.</p>
+  <details><summary>Tipp és próbaadat</summary><p>Kezdj üres listával, és minden bekért értéket adj hozzá <code>append()</code>-del. A 4, −2, 0, 7, 1 bemenetre a lista <code>[4, -2, 0, 7, 1]</code>, az összeg 10.</p></details>
+  <details class="mt-2"><summary>Teljes megoldás</summary><pre class="bg-light p-3"><code>szamok = []
+for i in range(5):
+    szam = int(input(f&quot;Add meg a(z) {i + 1}. egész számot: &quot;))
+    szamok.append(szam)
+
+print(&quot;A lista:&quot;, szamok)
+print(&quot;Összeg:&quot;, sum(szamok))</code></pre></details>
+
+  <h3 class="h5 mt-3">4. Olvasási idők</h3>
+  <p>A napi olvasási idők percekben <code>[22, 14, 0, 20, 35, 22, 19]</code>. Írd ki külön sorokba a 20 percnél nagyobb értékeket, számold meg őket, majd írd ki a teljes lista maximumát. Használhatod a <code>max()</code> függvényt.</p>
+  <details><summary>Tipp és ellenőrzés</summary><p>Ugyanabban a feltételes ágban írd ki az értéket és növeld a számlálót. A kiírt értékek sorrendben 22, 35, 22. A darabszám 3, a maximum 35 perc.</p></details>
+  <details class="mt-2"><summary>Teljes megoldás</summary><pre class="bg-light p-3"><code>olvasasi_idok = [22, 14, 0, 20, 35, 22, 19]
+darab = 0
+
+print(&quot;20 percnél nagyobb értékek:&quot;)
+for perc in olvasasi_idok:
+    if perc &gt; 20:
+        print(perc)
+        darab += 1
+
+print(&quot;Napok száma:&quot;, darab)
+print(&quot;Maximum:&quot;, max(olvasasi_idok), &quot;perc&quot;)</code></pre></details>
+
+  <h2 class="h4 mt-4">Közös ellenőrzés · 8 perc</h2>
+  <p>Futtassátok le a teljes fájlt a próbaadatokkal. Beszéljétek meg, hogyan tiltja ki a szigorú összehasonlítás a pontosan 20 perces adatot. Próbáljátok ki a 4. feladatot a <code>[12, 20, 5]</code> listával is.</p>
+  <details><summary>Ellenőrzés</summary><p>Nem ír ki 20 percnél nagyobb értéket. A darabszám 0, a teljes lista maximuma 20 perc.</p></details>
+</main>
+</body>
+</html>
