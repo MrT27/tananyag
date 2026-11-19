@@ -57,6 +57,25 @@ console.log(drink);</code></pre>
     </section>
 
     <section>
+      <h2>Kapcsolat a Pythonban tanultakkal</h2>
+      <p>Pythonban már találkozhattál a feltételes kifejezéssel. Mindkét nyelvben egy feltétel alapján választunk két érték közül, de eltér a részek sorrendje.</p>
+      <p><strong>Python</strong></p>
+      <pre><code>age = 23
+drink = "bor" if age &gt;= 18 else "víz"
+print(drink)  # bor</code></pre>
+      <p><strong>JavaScript</strong></p>
+      <pre><code>const age = 23;
+const drink = age &gt;= 18 ? "bor" : "víz";
+console.log(drink); // bor</code></pre>
+      <p>A JavaScript-példát külön futtasd, mert az előző példákban már létrehoztuk az <code>age</code> és <code>drink</code> változót.</p>
+      <ul>
+        <li>Pythonban a sorrend <code>igaz_érték if feltétel else hamis_érték</code>.</li>
+        <li>JavaScriptben a sorrend <code>feltétel ? igaz_érték : hamis_érték</code>.</li>
+      </ul>
+      <p>Mindkét teljes kifejezés eredménye egy kiválasztott érték, amelyet a <code>drink</code> változóban tárolunk. Írd át mindkét példában az életkort 15-re. Mindkét nyelvben a <code>"víz"</code> értéket kell kapnod.</p>
+    </section>
+
+    <section>
       <h2>Ugyanez if és else segítségével</h2>
       <pre><code>let drink2;
 if (age &gt;= 18) {
