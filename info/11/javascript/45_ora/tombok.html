@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bevezetés a tömbökbe</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript-alapok – 2. rész</p>
+      <h1>Bevezetés a tömbökbe</h1>
+      <p>Összetartozó értékeket tárolunk egy adatszerkezetben.</p>
+    </header>
+    <section>
+      <h2>Három külön változó helyett egy tömb</h2>
+      <p>A barátok neveit külön <code>friend1</code>, <code>friend2</code> és <code>friend3</code> változóban is tarthatnánk. Egy tömb egy név alatt, meghatározott sorrendben tárolja az értékeket. A tömb és az objektum a JavaScript két fontos adatszerkezete.</p>
+      <pre><code>'use strict';
+
+const friends = ["Michael", "Steven", "Peter"];
+console.log(friends);
+
+const birthYears = new Array(1991, 1984, 2008, 2020);
+console.log(birthYears);</code></pre>
+      <p>A szögletes zárójeles alak a tömbliterál, ezt fogjuk legtöbbször használni. Az értékek közötti vessző a szöveget lezáró idézőjel után áll. A <code>new Array(...)</code> egy másik létrehozási forma. A példában több számot adunk át neki.</p>
+    </section>
+    <section>
+      <h2>Index és elemszám</h2>
+      <pre><code>console.log(friends[0]); // Michael
+console.log(friends[2]); // Peter
+console.log(friends.length); // 3
+console.log(friends[friends.length - 1]); // Peter</code></pre>
+      <p>A tömb indexelése nullával kezdődik. A három elem indexe 0, 1 és 2. A <code>length</code> az elemszám, ezért az utolsó elem indexe <code>length - 1</code>. Az index helyén kifejezés is állhat, például ez a kivonás.</p>
+    </section>
+    <section>
+      <h2>Elem módosítása const mellett</h2>
+      <pre><code>friends[2] = "Jay";
+console.log(friends[2]); // Jay
+
+// friends = ["Bob", "Alice"]; // TypeError</code></pre>
+      <p>A <code>const</code> a változó új értékadását tiltja. A már tárolt tömb elemeit módosíthatjuk. Az egész tömb helyére másik tömböt rendelő, kikommentelt sor viszont hibát okoz. Próbáld ki külön, majd kommentezd vissza. A konzolban később kibontott objektum mutathatja a módosított tartalmat, ezért a változás ellenőrzéséhez az egyes elemeket is írd ki.</p>
+    </section>
+    <section>
+      <h2>Különböző típusok és beágyazott tömb</h2>
+      <pre><code>const firstName = "János";
+const janos = [firstName, "Kovács", 2037 - 1991, "tanár", friends];
+console.log(janos);
+console.log(janos.length); // 5</code></pre>
+      <p>Az egyes helyeken kiértékelhető kifejezések állnak. Itt szövegek, számítás eredménye és egy másik tömb kerül a tömbbe. A barátok tömbje egyetlen elem a <code>janos</code> tömbben.</p>
+    </section>
+    <section>
+      <h2>Életkorok kiszámítása</h2>
+      <pre><code>const calcAge = function (birthYear) {
+  return 2037 - birthYear;
+};
+
+const years = [1990, 1967, 2002, 2010, 2018];
+
+console.log(calcAge(years)); // NaN
+console.log(years + 10); // "1990,1967,2002,2010,201810"
+console.log(years - 10); // NaN
+
+const age1 = calcAge(years[0]);
+const age2 = calcAge(years[1]);
+const age3 = calcAge(years[years.length - 1]);
+console.log(age1, age2, age3); // 47 70 19
+
+const ages = [
+  calcAge(years[0]),
+  calcAge(years[1]),
+  calcAge(years[years.length - 1])
+];
+console.log(ages); // [47, 70, 19]</code></pre>
+      <p>A <code>calcAge</code> itt egyetlen évszámmal számol. A teljes tömb átadásától nem fut le automatikusan minden elemre. A <code>+</code> a példában szöveggé alakítja a tömböt, a kivonás pedig <code>NaN</code>-t ad. Az egyes elemeket argumentumként átadhatjuk. A függvényhívás kifejezés, ezért a visszaadott életkorokat közvetlenül az új tömbbe írhatjuk.</p>
+      <p>Ha az <code>Identifier has already been declared</code> üzenetet kapod, ellenőrizd, nem deklaráltad-e ugyanazt a <code>const</code> nevet korábbi példában is. Az előző kódot kommenteld ki, vagy válassz másik nevet.</p>
+    </section>
+    <section class="practice">
+      <h2>Önálló próba</h2>
+      <p>Számítsd ki a <code>years</code> harmadik és negyedik eleméhez tartozó életkort is, és tárold az eredményeket egy új tömbben. Ellenőrizd, hogy 35 és 27 szerepel benne. Mondd meg, miért a 2-es és a 3-as indexet használod.</p>
+    </section>
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="../66_ora/osszefoglalas.html">Előző · Reviewing Functions</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+      <a class="lesson-button" href="tombmetodusok.html">Következő · Basic Array Operations</a>
+    </nav>
+  </main>
+</body>
+</html>

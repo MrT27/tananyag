@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>66. óra – Függvények</title>
+  <title>Függvények</title>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
@@ -36,7 +36,7 @@
 <body>
   <main>
     <header>
-      <p class="label">11TC SZFT · Webprogramozás · 66. óra · Fundamentals – Part 2</p>
+      <p class="label">11TC SZFT · Webprogramozás · JavaScript-alapok – 2. rész</p>
       <h1>Függvények</h1>
       <p>Írj meg egy kódrészletet egyszer, majd használd többször, akár különböző adatokkal.</p>
     </header>
@@ -47,7 +47,7 @@
       <pre><code>"use strict";
 
 function logger() {
-  console.log("A nevem Jonas.");
+  console.log("A nevem János.");
 }
 
 logger();
@@ -58,7 +58,7 @@ logger();</code></pre>
 
     <section>
       <h2>Paraméterek és argumentumok</h2>
-      <p>Jonas gyümölcsfeldolgozója almát és narancsot kap, majd elkészíti a gyümölcslé leírását. Az <code>apples</code> és az <code>oranges</code> a deklarációban megadott <strong>paraméterek</strong>. A híváskor megadott konkrét értékek az <strong>argumentumok</strong>. A <code>fruitProcessor(5, 0)</code> hívásnál az első paraméter értéke 5, a másodiké 0.</p>
+      <p>A gyümölcsfeldolgozó almát és narancsot kap, majd elkészíti a gyümölcslé leírását. Az <code>apples</code> és az <code>oranges</code> a deklarációban megadott <strong>paraméterek</strong>. A híváskor megadott konkrét értékek az <strong>argumentumok</strong>. A <code>fruitProcessor(5, 0)</code> hívásnál az első paraméter értéke 5, a másodiké 0.</p>
       <pre><code>function fruitProcessor(apples, oranges) {
   console.log(apples, oranges);
   const juice = `Gyümölcslé ${apples} db almából és ${oranges} db narancsból.`;
@@ -88,6 +88,7 @@ console.log(appleOrangeJuice);</code></pre>
     <nav aria-label="Tananyag navigáció">
       <a class="lesson-button" href="../41_ora/szigoru-mod.html">Előző · Activating Strict Mode</a>
       <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+      <a class="lesson-button" href="deklaracio-kifejezes.html">Következő · Function Declarations vs. Expressions</a>
     </nav>
   </main>
 </body>

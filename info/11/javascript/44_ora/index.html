@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>44. óra – Változók és konstansok</title>
+  <title>Változók és konstansok</title>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
@@ -36,30 +36,30 @@
 <body>
   <main>
     <header>
-      <p class="label">11TC SZFT · Webprogramozás · 44. óra</p>
+      <p class="label">11TC SZFT · Webprogramozás</p>
       <h1>Változók és konstansok</h1>
       <p>Tárolj egy nevet változóban, használd fel több helyen, majd próbáld ki, mi történik, ha módosítod.</p>
     </header>
 
     <section>
       <h2 id="video-9">Szöveges és numerikus értékek</h2>
-      <p>A <code>"Jonas"</code> egy szöveges érték, a <code>23</code> egy szám. Egy kifejezés eredménye is érték. A <code>40 + 8 + 23 - 10</code> eredménye például <code>61</code>.</p>
-      <pre><code>console.log("Jonas");
+      <p>A <code>"János"</code> egy szöveges érték, a <code>23</code> egy szám. Egy kifejezés eredménye is érték. A <code>40 + 8 + 23 - 10</code> eredménye például <code>61</code>.</p>
+      <pre><code>console.log("János");
 console.log(23);
 console.log(40 + 8 + 23 - 10);</code></pre>
-      <p>Futtasd a kódot. A konzol sorban az <strong>Jonas</strong>, a <strong>23</strong> és a <strong>61</strong> értéket írja ki.</p>
+      <p>Futtasd a kódot. A konzol sorban az <strong>János</strong>, a <strong>23</strong> és a <strong>61</strong> értéket írja ki.</p>
     </section>
 
     <section>
       <h2>Adjunk nevet az értékeknek</h2>
-      <p>A <code>let</code> kulcsszóval létrehozunk egy változót, és az <code>=</code> jellel kezdőértéket adunk neki. Később a változó nevével férünk hozzá az aktuális értékéhez. Próbáld ki a 41. órán használt HTML–JavaScript mintához hasonlóan, egy külön <code>script.js</code> fájlban.</p>
-      <pre><code>let firstName = "Jonas";
+      <p>A <code>let</code> kulcsszóval létrehozunk egy változót, és az <code>=</code> jellel kezdőértéket adunk neki. Később a változó nevével férünk hozzá az aktuális értékéhez. Próbáld ki A korábbi leckében használt HTML–JavaScript mintához hasonlóan, egy külön <code>script.js</code> fájlban.</p>
+      <pre><code>let firstName = "János";
 console.log(firstName);
 console.log(firstName);
 
 firstName = "Matilda";
 console.log(firstName);</code></pre>
-      <p>Az első két kiírásban a <strong>Jonas</strong>, az utolsóban a <strong>Matilda</strong> jelenik meg. Az új érték megadásakor ugyanazt a változót használjuk, ezért az értékadás előtt nem írunk újra <code>let</code>-et. A már kiírt sorok szövege nem változik meg.</p>
+      <p>Az első két kiírásban a <strong>János</strong>, az utolsóban a <strong>Matilda</strong> jelenik meg. Az új érték megadásakor ugyanazt a változót használjuk, ezért az értékadás előtt nem írunk újra <code>let</code>-et. A már kiírt sorok szövege nem változik meg.</p>
       <details>
         <summary>Mi változik, ha idézőjelbe teszem a nevet?</summary>
         <p>A <code>console.log(firstName)</code> a változó értékét írja ki. A <code>console.log("firstName")</code> magát a <strong>firstName</strong> szót írja ki.</p>
@@ -72,12 +72,12 @@ console.log(firstName);</code></pre>
       <h3>Mit enged meg a JavaScript?</h3>
       <ul>
         <li>A példáinkban a név betűvel, aláhúzásjellel (<code>_</code>) vagy dollárjellel (<code>$</code>) kezdődhet. Számjegy csak az első karakter után állhat. A <code>3years</code> hibás, a <code>years3</code> érvényes.</li>
-        <li>A névben nem lehet szóköz vagy <code>&amp;</code> jel. A <code>jonas&amp;matilda</code> hibás, a <code>jonas_matilda</code> érvényes.</li>
+        <li>A névben nem lehet szóköz vagy <code>&amp;</code> jel. A <code>janos&amp;matilda</code> hibás, a <code>janos_matilda</code> érvényes.</li>
         <li>Foglalt kulcsszót önmagában nem használhatunk névként. A <code>new</code> és a <code>function</code> hibás, a <code>$function</code> és a <code>newJob</code> érvényes.</li>
         <li>A JavaScript különbséget tesz kis- és nagybetű között. A <code>firstName</code> és a <code>firstname</code> két külön név.</li>
       </ul>
       <pre><code>let years3 = 3;
-let jonas_matilda = "JM";
+let janos_matilda = "JM";
 let $function = 27;</code></pre>
 
       <h3>Hogyan érdemes nevet választani?</h3>
@@ -94,10 +94,10 @@ let job2 = "tanár";</code></pre>
       <p>Mindkét névpár szabályos. A <code>myFirstJob</code> és a <code>myCurrentJob</code> megmutatja, melyik az első munka és melyik a jelenlegi.</p>
 
       <details>
-        <summary>Próbáld ki Jonas hibás példáit</summary>
+        <summary>Próbáld ki a hibás példákat</summary>
         <p>Külön-külön írj be egy sort a <code>script.js</code> fájlba, mentsd el, majd frissítsd az oldalt.</p>
         <pre><code>let 3years = 3;
-let jonas&amp;matilda = "JM";
+let janos&amp;matilda = "JM";
 let new = 27;</code></pre>
         <p>A VS Code jelezheti a hibát, a böngésző konzoljában pedig <code>SyntaxError</code> jelenik meg. A konzol mutatja a fájlt és a sorszámot. A hiba kiírásához nem kell <code>console.log()</code>. Javítsd a nevet, és frissíts újra, mielőtt a következő sort kipróbálod.</p>
       </details>
@@ -117,13 +117,13 @@ let new = 27;</code></pre>
     </section>
 
     <nav aria-label="Tovább az adattípusokhoz">
-      <a class="lesson-button" href="../45_ora/index.html">Következő: 11. Data Types</a>
+      <a class="lesson-button" href="../45_ora/index.html">Következő: Data Types</a>
     </nav>
 
     <section>
       <h2 id="video-12">Mikor használjuk a let, const és var kulcsszót?</h2>
-      <p>A <code>var</code> a régebbi deklarációs forma. A <code>let</code> és a <code>const</code> az ES2015-ben, más néven ES6-ban jelent meg, amelyről a 41. órán beszéltünk.</p>
-      <p>A <code>let</code> akkor kell, ha később új értéket adunk a változónak. A videóban Jonas ezt módosításnak, azaz mutációnak is nevezi.</p>
+      <p>A <code>var</code> a régebbi deklarációs forma. A <code>let</code> és a <code>const</code> az ES2015-ben, más néven ES6-ban jelent meg, amelyről A korábbi leckében beszéltünk.</p>
+      <p>A <code>let</code> akkor kell, ha később új értéket adunk a változónak. A példában ezt módosításnak, azaz mutációnak is nevezi.</p>
       <pre><code>let age = 30;
 age = 31;
 console.log(age); // 31</code></pre>
@@ -133,9 +133,9 @@ console.log(year); // undefined
 
 year = 1991;
 console.log(year); // 1991</code></pre>
-      <p>A <code>let</code> kezdőérték nélkül is használható. Például előre létrehozhatjuk a változót, majd egy későbbi feltétel alapján adhatunk neki értéket. Az <code>undefined</code> jelentését a 45. órán vizsgáljuk meg közelebbről.</p>
+      <p>A <code>let</code> kezdőérték nélkül is használható. Például előre létrehozhatjuk a változót, majd egy későbbi feltétel alapján adhatunk neki értéket. Az <code>undefined</code> jelentését A korábbi leckében vizsgáljuk meg közelebbről.</p>
       <h3>Állandó érték a const segítségével</h3>
-      <p>A <code>const</code> deklarációhoz kezdőérték kell, és később nem adhatunk új értéket a változónak. Jonas példájában az életkor frissül, a születési év ugyanaz marad.</p>
+      <p>A <code>const</code> deklarációhoz kezdőérték kell, és később nem adhatunk új értéket a változónak. A példában az életkor frissül, a születési év ugyanaz marad.</p>
       <pre><code>const birthYear = 1991;
 console.log(birthYear); // 1991</code></pre>
       <details>
@@ -170,8 +170,8 @@ console.log(currentJob); // tanár
 
     <section>
       <h2>Mi történik, ha lemarad a deklaráció?</h2>
-      <p>Jonas megmutatja, hogy a <code>lastName = "Schmedtmann";</code> egy hagyományos, nem szigorú böngészős szkriptben látszólag működhet. Ha a név még nem létezik, az értékadás tulajdonságot hozhat létre a globális objektumon, a böngészőben a <code>window</code> objektumon. Szigorú módban ugyanez <code>ReferenceError</code>-t okoz.</p>
-      <pre><code>const lastName = "Schmedtmann";
+      <p>A következő példa megmutatja, hogy a <code>lastName = "Kovács";</code> egy hagyományos, nem szigorú böngészős szkriptben látszólag működhet. Ha a név még nem létezik, az értékadás tulajdonságot hozhat létre a globális objektumon, a böngészőben a <code>window</code> objektumon. Szigorú módban ugyanez <code>ReferenceError</code>-t okoz.</p>
+      <pre><code>const lastName = "Kovács";
 console.log(lastName);</code></pre>
       <p>Új változót mindig deklarálj. A fenti példában <code>const</code> illik a vezetéknévhez, mert a program egyszer ad neki értéket.</p>
     </section>
@@ -184,18 +184,10 @@ console.log(lastName);</code></pre>
       </ol>
     </section>
 
-    <aside>
-      <h2>Kapcsolódó videók</h2>
-      <p><a href="https://www.udemy.com/course/the-complete-javascript-course/">Jonas Schmedtmann Udemy-kurzusa</a></p>
-      <ul>
-        <li><strong>9. Values and Variables</strong></li>
-        <li><strong>12. let, const and var</strong></li>
-        <li>A láthatóság működését Jonas később a <em>How JavaScript Works Behind the Scenes</em> fejezetben bontja ki. A fenti blokkos példa a mi tanmenetünk szerint már a 44. órához tartozik.</li>
-      </ul>
-    </aside>
+    
     <nav aria-label="Tananyag navigáció">
       <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
-      <a class="lesson-button" href="../46_ora/index.html">Következő: 13. Basic Operators</a>
+      <a class="lesson-button" href="../46_ora/index.html">Következő: Basic Operators</a>
     </nav>
   </main>
 </body>

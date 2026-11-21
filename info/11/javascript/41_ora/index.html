@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>41. óra – Bevezetés a JavaScriptbe</title>
+  <title>Bevezetés a JavaScriptbe</title>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
@@ -36,7 +36,7 @@
 <body>
   <main>
     <header>
-      <p class="label">11TC SZFT · Webprogramozás · 41. óra</p>
+      <p class="label">11TC SZFT · Webprogramozás</p>
       <h1>Bevezetés a JavaScriptbe</h1>
       <p>Írd meg az első JavaScript-fájlodat, és nézd meg, hogyan fut le a böngészőben.</p>
     </header>
@@ -66,7 +66,7 @@
 
     <section>
       <h2>Mit hozott a 2015-ös frissítés?</h2>
-      <p>Az <strong>ECMAScript</strong> a JavaScript nyelvi szabványa. A 2015-ben megjelent <strong>ES2015</strong>, más néven <strong>ES6</strong>, többek között bevezette a <code>let</code> és <code>const</code> kulcsszót, valamint a nyílfüggvényeket. A <code>let</code> és a <code>const</code> használatát a 44. órán gyakoroljuk. Régebbi példákban gyakran találkozunk majd a <code>var</code> kulcsszóval is.</p>
+      <p>Az <strong>ECMAScript</strong> a JavaScript nyelvi szabványa. A 2015-ben megjelent <strong>ES2015</strong>, más néven <strong>ES6</strong>, többek között bevezette a <code>let</code> és <code>const</code> kulcsszót, valamint a nyílfüggvényeket. A <code>let</code> és a <code>const</code> használatát A korábbi leckében gyakoroljuk. Régebbi példákban gyakran találkozunk majd a <code>var</code> kulcsszóval is.</p>
       <details>
         <summary>Honnan jött a JavaScript, és miért látni többféle ES-számot?</summary>
         <p>Brendan Eich 1995-ben, a Netscape-nél készítette el a nyelv első változatát. A fejlesztés során Mocha, majd LiveScript néven szerepelt, végül JavaScript lett a neve. A hasonló név ellenére a Java és a JavaScript két külön programozási nyelv.</p>
@@ -83,7 +83,7 @@
 
     <section>
       <h2 id="video-8">Közös példa – az első JavaScript-fájl</h2>
-      <p>Jonas először közvetlenül a HTML-ben, egy <code>&lt;script&gt;</code> elemben próbálja ki a kódot, majd külön fájlba költözteti. Egy rövid próba így néz ki a HTML törzsében:</p>
+      <p>Először közvetlenül a HTML-ben, egy <code>&lt;script&gt;</code> elemben próbálja ki a kódot, majd külön fájlba költözteti. Egy rövid próba így néz ki a HTML törzsében:</p>
       <pre><code>&lt;script&gt;
   console.log(40 + 8 + 23 - 10);
 &lt;/script&gt;</code></pre>
@@ -112,7 +112,7 @@
       <p><a href="pelda/index.html">A működő példa megnyitása</a></p>
       <details>
         <summary>Mini kísérlet – mikor jelenik meg a számítás eredménye?</summary>
-        <p>Jonas példájában egy számítással ellenőrzi a kód futását. Írd a <code>script.js</code> végére az alábbi két sort, majd mentsd a fájlt és frissítsd az oldalt.</p>
+        <p>A példában egy számítással ellenőrzi a kód futását. Írd a <code>script.js</code> végére az alábbi két sort, majd mentsd a fájlt és frissítsd az oldalt.</p>
         <pre><code>40 + 8 + 23 - 10;
 console.log(40 + 8 + 23 - 10);</code></pre>
         <p>A konzolban egyszer jelenik meg a <strong>61</strong>. A fájlban mindkét sor kiszámítja az összeget. A második sor a <code>console.log()</code> segítségével ki is írja. Ha a konzol a kiírás mellett fájlnevet és sorszámot mutat, arra kattintva megkeresheted a kiírást a forráskódban.</p>
@@ -122,8 +122,8 @@ console.log(40 + 8 + 23 - 10);</code></pre>
         <p>Ellenőrizd, hogy a két fájl ugyanabban a mappában van-e, a fájlnevek pontosan egyeznek-e, és mentés után frissítetted-e az oldalt. Nézd meg a konzol hibaüzenetét is. Ha fájlnevet és sorszámot mutat, ott kezdd a keresést. Ha a konzol szűrve van, töröld a szűrőt.</p>
       </details>
       <details>
-        <summary>Miért máshol van a script sor Jonas mintafájljában?</summary>
-        <p>Jonas mintájában a <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code> sor a <code>&lt;/body&gt;</code> előtt van, így a böngésző addigra már feldolgozta az előtte álló elemeket. A mi példánkban a sor a <code>&lt;head&gt;</code> részben van, és a <code>defer</code> késlelteti a futtatást. Mindkét esetben a böngésző egy külön <code>script.js</code> fájlt tölt be.</p>
+        <summary>Miért máshol van a script sor a kezdőmintában?</summary>
+        <p>A kezdőmintában a <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code> sor a <code>&lt;/body&gt;</code> előtt van, így a böngésző addigra már feldolgozta az előtte álló elemeket. A mi példánkban a sor a <code>&lt;head&gt;</code> részben van, és a <code>defer</code> késlelteti a futtatást. Mindkét esetben a böngésző egy külön <code>script.js</code> fájlt tölt be.</p>
       </details>
     </section>
 
@@ -150,18 +150,10 @@ console.log(40 + 8 + 23 - 10);</code></pre>
       </ol>
     </section>
 
-    <aside>
-      <h2>Kapcsolódó videók</h2>
-      <p><a href="https://www.udemy.com/course/the-complete-javascript-course/">Jonas Schmedtmann Udemy-kurzusa</a>, <em>JavaScript Fundamentals – Part 1</em> fejezet.</p>
-      <ul>
-        <li><strong>7.</strong> <em>A Brief Introduction to JavaScript</em> – a JavaScript felhasználása, jellemzői és fejlődése.</li>
-        <li><strong>8.</strong> <em>Linking a JavaScript File</em> – a fájl bekötése. Az órán a fenti saját mintával gyakorolunk.</li>
-      </ul>
-      <p>Jonas fejezet-összefoglalójában ezt a két témát a 2. és 3. PDF-oldal tárgyalja. A <em>Hello World!</em> videó a 42. óra konzolos gyakorlatához kapcsolódik.</p>
-    </aside>
+    
     <nav aria-label="Tananyag navigáció">
       <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
-      <a class="lesson-button" href="../44_ora/index.html#video-9">Következő: 9. Values and Variables</a>
+      <a class="lesson-button" href="../44_ora/index.html#video-9">Következő: Values and Variables</a>
     </nav>
   </main>
 </body>

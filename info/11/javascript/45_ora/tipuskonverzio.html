@@ -36,14 +36,14 @@
 <body>
   <main>
     <header>
-      <p class="label">11TC SZFT · JavaScript · Jonas 20. videója</p>
+      <p class="label">11TC SZFT · JavaScript</p>
       <h1>Típuskonverzió és típuskényszerítés</h1>
       <p>Számoláshoz a beírt szöveget gyakran számmá kell alakítani.</p>
     </header>
 
     <section>
       <h2>Kifejezett típuskonverzió</h2>
-      <p>Jonas példájában a születési év egy beviteli mezőből érkezik. Szövegként kapjuk meg, akárcsak a <code>prompt()</code>-ba írt választ. A <code>+</code> ezért először összefűzi a két értéket.</p>
+      <p>A példában a születési év egy beviteli mezőből érkezik. Szövegként kapjuk meg, akárcsak a <code>prompt()</code>-ba írt választ. A <code>+</code> ezért először összefűzi a két értéket.</p>
       <pre><code>const inputYear = "1991";
 console.log(inputYear + 18); // "199118"
 
@@ -51,10 +51,10 @@ const birthYear = Number(inputYear);
 console.log(birthYear + 18); // 2009
 console.log(typeof inputYear, typeof birthYear); // string number</code></pre>
       <p>A <code>Number()</code> eredménye egy új érték. Az <code>inputYear</code> továbbra is szöveg. A <code>Number(inputYear) + 18</code> alakban egy sorban is megteheted ugyanezt.</p>
-      <pre><code>console.log(Number("Jonas"));        // NaN
-console.log(typeof Number("Jonas")); // number
+      <pre><code>console.log(Number("János"));        // NaN
+console.log(typeof Number("János")); // number
 console.log(String(23), typeof String(23)); // 23 string</code></pre>
-      <p>A <code>NaN</code> jelentése <em>Not a Number</em>. Itt azt jelzi, hogy az átalakításból nem kaptunk használható számot, bár a <code>typeof</code> eredménye <code>"number"</code>. A <code>String()</code> szöveggé alakít. Mindkét név nagybetűvel kezdődik. A konzolon a szám és a szöveg hasonlóan nézhet ki, ezért használd a <code>typeof</code>-ot. A <code>null</code> és az <code>undefined</code> külön értékek. Ezeket közvetlenül is megadhatod. A harmadik gyakori átalakítás a <code>Boolean()</code>. Erre a következő videóban térünk vissza.</p>
+      <p>A <code>NaN</code> jelentése <em>Not a Number</em>. Itt azt jelzi, hogy az átalakításból nem kaptunk használható számot, bár a <code>typeof</code> eredménye <code>"number"</code>. A <code>String()</code> szöveggé alakít. Mindkét név nagybetűvel kezdődik. A konzolon a szám és a szöveg hasonlóan nézhet ki, ezért használd a <code>typeof</code>-ot. A <code>null</code> és az <code>undefined</code> külön értékek. Ezeket közvetlenül is megadhatod. A harmadik gyakori átalakítás a <code>Boolean()</code>. Erre a következő leckében térünk vissza.</p>
     </section>
 
     <section>
@@ -83,13 +83,13 @@ console.log("10" - "4" - "3" - 2 + "5");</code></pre>
           <li>A kivonások eredménye sorban <code>6</code>, <code>3</code> és <code>1</code>. Az utolsó összefűzés eredménye <code>"15"</code>.</li>
         </ul>
       </details>
-      <p>Próbáld ki a 43. óra <code>prompt()</code>-jával is. Kérd be a születési évet, írj be <code>1991</code>-et, majd a <code>Number()</code> segítségével számold ki, melyik évben tölti be az illető a 18-at. Ehhez a próbához adj meg egy érvényes évszámot.</p>
+      <p>Próbáld ki a korábbi lecke <code>prompt()</code>-jával is. Kérd be a születési évet, írj be <code>1991</code>-et, majd a <code>Number()</code> segítségével számold ki, melyik évben tölti be az illető a 18-at. Ehhez a próbához adj meg egy érvényes évszámot.</p>
     </section>
 
     <nav aria-label="Tananyag navigáció">
-      <a class="lesson-button" href="../55_ora/index.html">Előző · 18. Taking Decisions</a>
+      <a class="lesson-button" href="../55_ora/index.html">Előző · Taking Decisions</a>
       <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
-      <a class="lesson-button" href="truthy-falsy.html">Következő · 21. Truthy and Falsy Values</a>
+      <a class="lesson-button" href="truthy-falsy.html">Következő · Truthy and Falsy Values</a>
     </nav>
   </main>
 </body>

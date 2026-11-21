@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Függvényhívás egy függvényből</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript-alapok – 2. rész</p>
+      <h1>Függvényhívás egy függvényből</h1>
+      <p>A gyümölcsfeldolgozó a lé elkészítése előtt feldaraboltatja a gyümölcsöket.</p>
+    </header>
+    <section>
+      <h2>Két függvény együtt dolgozik</h2>
+      <p>Kommentezd ki a korábbi gyümölcsfeldolgozó példát, és próbáld ki ezt. A <code>cutFruitPieces</code> minden gyümölcsből négy darabot számol. A <code>fruitProcessor</code> az almákhoz és a narancsokhoz is meghívja.</p>
+      <pre><code>'use strict';
+
+function cutFruitPieces(fruit) {
+  return fruit * 4;
+}
+
+function fruitProcessor(apples, oranges) {
+  const applePieces = cutFruitPieces(apples);
+  const orangePieces = cutFruitPieces(oranges);
+  const juice = `Gyümölcslé ${applePieces} almadarabból és ${orangePieces} narancsdarabból.`;
+  return juice;
+}
+
+console.log(fruitProcessor(2, 3));</code></pre>
+      <p>A konzolban <strong>Gyümölcslé 8 almadarabból és 12 narancsdarabból.</strong> jelenik meg. Egyetlen külső hívás a daraboló függvényt kétszer futtatja.</p>
+    </section>
+    <section>
+      <h2>Kövesd az adatokat lépésenként</h2>
+      <ol>
+        <li>A <code>fruitProcessor(2, 3)</code> hívásban a 2 és a 3 az argumentum. A függvényen belül az <code>apples</code> értéke 2, az <code>oranges</code> értéke 3.</li>
+        <li>A <code>cutFruitPieces(apples)</code> a 2-t adja tovább. Ebben a hívásban a <code>fruit</code> paraméter értéke 2, a visszaadott <code>2 * 4</code> eredménye 8. Ezt kapja az <code>applePieces</code>.</li>
+        <li>A <code>cutFruitPieces(oranges)</code> a 3-at adja tovább. A második hívásban a <code>fruit</code> értéke 3, az eredmény 12. Ezt kapja az <code>orangePieces</code>.</li>
+        <li>A sablonliterál a két darabszámból elkészíti a mondatot. A <code>return juice;</code> ezt adja a külső hívás eredményeként a <code>console.log()</code>-nak.</li>
+      </ol>
+      <p>A belső hívás argumentuma lehet egy változóban tárolt érték is. Ezért írhatjuk a <code>cutFruitPieces(apples)</code> alakot. A daraboló függvény <code>fruit</code> paramétere az adott híváskor megkapott számot használja.</p>
+    </section>
+    <section>
+      <h2>Miért külön függvény a darabolás?</h2>
+      <p>Az <code>apples * 4</code> és az <code>oranges * 4</code> közvetlenül is kiszámítható. Azért emeli külön függvénybe a műveletet, hogy a közös szabály egy helyen szerepeljen. Ha minden gyümölcsöt három darabra vágunk, elég a <code>return fruit * 4;</code> sorban a 4-et 3-ra cserélni. Mindkét gyümölcs feldolgozása követi a módosítást. Ez a DRY, azaz a „ne ismételd magad” elv.</p>
+    </section>
+    <section class="practice">
+      <h2>Önálló próba</h2>
+      <p>Módosítsd a darabolást három darabra. Mielőtt futtatnád, tippeld meg a <code>fruitProcessor(2, 3)</code> eredményét. Ellenőrizd a 6 almadarabot és a 9 narancsdarabot. Ezután hívd meg a feldolgozót 5 almával és 0 naranccsal is. Mutasd meg, melyik függvény hányszor fut le egy hívás során.</p>
+    </section>
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="nyilfuggvenyek.html">Előző · Arrow Functions</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+      <a class="lesson-button" href="osszefoglalas.html">Következő · Reviewing Functions</a>
+    </nav>
+  </main>
+</body>
+</html>

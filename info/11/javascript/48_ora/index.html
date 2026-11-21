@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>48. óra – Szövegek és sablonliterálok</title>
+  <title>Szövegek és sablonliterálok</title>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
@@ -36,37 +36,37 @@
 <body>
   <main>
     <header>
-      <p class="label">11TC SZFT · Webprogramozás · 48. óra · Jonas 17. videója</p>
+      <p class="label">11TC SZFT · Webprogramozás</p>
       <h1>Szövegek és sablonliterálok</h1>
       <p>Állíts össze bemutatkozó mondatot névből, életkorból és foglalkozásból.</p>
     </header>
     <section>
       <h2>Bemutatkozás a + operátorral</h2>
-      <pre><code>const firstName = "Jonas";
+      <pre><code>const firstName = "János";
 const job = "tanár";
 const birthYear = 1991;
 const year = 2037;
 
-const jonas = firstName + " vagyok, " + (year - birthYear) + " éves " + job + "!";
-console.log(jonas); // Jonas vagyok, 46 éves tanár!</code></pre>
+const janos = firstName + " vagyok, " + (year - birthYear) + " éves " + job + "!";
+console.log(janos); // János vagyok, 46 éves tanár!</code></pre>
       <p>A zárójel miatt először az életkort számoljuk ki. Az összefűzéskor a JavaScript a <code>46</code> számot automatikusan szöveggé alakítja. Erre a típuskonverziónál még visszatérünk. A szóközöket a szövegrészekben mi adjuk meg.</p>
-      <p>Jonas angol példájában az <code>I'm</code> aposztrófja miatt kényelmes dupla idézőjelet használni, például <code>"I'm Jonas."</code>. Egy szöveg elején és végén ugyanolyan idézőjel álljon.</p>
+      <p>A példa angol példájában az <code>I'm</code> aposztrófja miatt kényelmes dupla idézőjelet használni, például <code>"I'm János."</code>. Egy szöveg elején és végén ugyanolyan idézőjel álljon.</p>
     </section>
     <section>
       <h2>Ugyanaz a mondat sablonliterállal</h2>
       <p>Az ES2015-ben bevezetett sablonliterált fordított idézőjel, angolul <em>backtick</em> határolja (<code>&#96;</code>). A <code>${…}</code> helyére a változó értéke vagy a benne lévő kifejezés eredménye kerül. Futtasd az előző példa változóival.</p>
-      <pre><code>const jonasNew = `${firstName} vagyok, ${year - birthYear} éves ${job}!`;
-console.log(jonasNew); // Jonas vagyok, 46 éves tanár!</code></pre>
+      <pre><code>const janosNew = `${firstName} vagyok, ${year - birthYear} éves ${job}!`;
+console.log(janosNew); // János vagyok, 46 éves tanár!</code></pre>
       <p>Az egyszeres és dupla idézőjeles szövegben a <code>${firstName}</code> betű szerint jelenik meg. Backtickkel helyőrzők nélküli szöveget is írhatsz, például <code>&#96;Ez egy szöveg.&#96;</code>.</p>
       <p>Próbáld ki külön, mi történik, ha a <code>${job}</code> helyett <code>${teacher}</code> szerepel. Ha nincs ilyen nevű változó, a konzol <code>ReferenceError</code>-t jelez. Olvasd le a hibás nevet és a sorszámot, majd írd vissza a <code>job</code> nevet.</p>
     </section>
     <section>
       <h2>Többsoros szöveg</h2>
-      <p>Hagyományos szövegben a <code>\n</code> jelöl sortörést. Jonas régebbi példájában a sorvégi <code>\</code> azt teszi lehetővé, hogy a következő kódsorban folytassuk ugyanazt a szöveget. A kimenetben a sortörést továbbra is a <code>\n</code> adja. Sablonliterálban az Enterrel beírt sortörés a szöveg része.</p>
-      <pre><code>console.log("Név: Jonas\n\
+      <p>Hagyományos szövegben a <code>\n</code> jelöl sortörést. János régebbi példájában a sorvégi <code>\</code> azt teszi lehetővé, hogy a következő kódsorban folytassuk ugyanazt a szöveget. A kimenetben a sortörést továbbra is a <code>\n</code> adja. Sablonliterálban az Enterrel beírt sortörés a szöveg része.</p>
+      <pre><code>console.log("Név: János\n\
 Foglalkozás: tanár");
 
-console.log(`Név: Jonas
+console.log(`Név: János
 Foglalkozás: tanár`);</code></pre>
       <p>Mindkét kiírás két sorból áll. A többsoros sablonliterál akkor is jól jön majd, amikor JavaScriptből állítunk össze HTML-részleteket.</p>
     </section>
@@ -75,9 +75,9 @@ Foglalkozás: tanár`);</code></pre>
       <p>Írj bemutatkozást egy kitalált személyről. A nevét és a foglalkozását változókból illeszd be, az életkorát a sablonon belül számold ki. Ezután írd ki ugyanazokat az adatokat egy többsoros sablonliterállal is.</p>
     </section>
     <nav aria-label="Tananyag navigáció">
-      <a class="lesson-button" href="../47_ora/index.html">Előző: 14. Operator Precedence</a>
+      <a class="lesson-button" href="../47_ora/index.html">Előző: Operator Precedence</a>
       <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
-      <a class="lesson-button" href="../55_ora/index.html">Következő · 18. Taking Decisions</a>
+      <a class="lesson-button" href="../55_ora/index.html">Következő · Taking Decisions</a>
     </nav>
   </main>
 </body>

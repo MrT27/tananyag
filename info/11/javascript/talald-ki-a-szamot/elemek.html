@@ -36,7 +36,7 @@
 <body>
   <main>
     <header>
-      <p class="label">11TC SZFT · DOM és események · Jonas 76. videója</p>
+      <p class="label">11TC SZFT · DOM és események</p>
       <h1>Elemek kiválasztása és módosítása</h1>
       <p>A játék feliratát, pontszámát és beviteli mezőjét JavaScriptből módosítjuk.</p>
     </header>
@@ -57,7 +57,7 @@ document.querySelector('.score').textContent = 10;</code></pre>
     </section>
     <section>
       <h2>A beviteli mező értéke</h2>
-      <p>Az <code>input.guess</code> mezőbe írt adatot a <code>value</code> tulajdonsággal érjük el. A kezdetben üres mező értéke üres szöveg. Először olvasd ki, majd add meg a videóban szereplő 23-at.</p>
+      <p>Az <code>input.guess</code> mezőbe írt adatot a <code>value</code> tulajdonsággal érjük el. A kezdetben üres mező értéke üres szöveg. Először olvasd ki, majd add meg a leckében szereplő 23-at.</p>
       <pre><code>console.log(document.querySelector('.guess').value); // kezdetben ""
 document.querySelector('.guess').value = 23;
 console.log(document.querySelector('.guess').value); // "23"</code></pre>
@@ -66,16 +66,16 @@ console.log(document.querySelector('.guess').value); // "23"</code></pre>
     <section>
       <h2>Két gyakori elakadás</h2>
       <p>A <code>document.querySelector()</code> szelektor nélkül hibát ad, mert meg kell adni, melyik elemet keressük. Az osztály elé pont kerül, például <code>'.guess'</code>. Ha a szelektor egyetlen elemre sem illeszkedik, az eredmény <code>null</code>, és annak <code>value</code> vagy <code>textContent</code> tulajdonságát már nem tudjuk kiolvasni.</p>
-      <p>Jonas egy kiíró sort a szerkesztőben az értékadás alá mozgat. A VS Code-ban az aktuális sor mozgatása Windowson <kbd>Alt</kbd> + <kbd>↓</kbd>, Macen <kbd>Option</kbd> + <kbd>↓</kbd>. Így a kiírás már az új értéket mutatja.</p>
+      <p>Mozgasd a kiíró sort a szerkesztőben az értékadás alá. A VS Code-ban az aktuális sor mozgatása Windowson <kbd>Alt</kbd> + <kbd>↓</kbd>, Macen <kbd>Option</kbd> + <kbd>↓</kbd>. Így a kiírás már az új értéket mutatja.</p>
     </section>
     <section class="practice">
       <h2>Önálló próba</h2>
       <p>Írd át az üzenetet <strong>Próbálkozz újra!</strong> szövegre, a pontszámot 15-re, a beviteli mezőt 7-re. Olvasd vissza mindhárom adatot a konzolban. Ha készen vagy, kommentezd ki ezeket a próbaértékadásokat a következő lecke előtt.</p>
     </section>
     <nav aria-label="Tananyag navigáció">
-      <a class="lesson-button" href="dom.html">Előző · 75. Mi a DOM?</a>
+      <a class="lesson-button" href="dom.html">Előző · Mi a DOM?</a>
       <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
-      <a class="lesson-button" href="kattintas.html">Következő · 77. Kattintások kezelése</a>
+      <a class="lesson-button" href="kattintas.html">Következő · Kattintások kezelése</a>
     </nav>
   </main>
 </body>

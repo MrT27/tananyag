@@ -36,7 +36,7 @@
 <body>
   <main>
     <header>
-      <p class="label">11TC SZFT · DOM és események · Jonas 74. videója</p>
+      <p class="label">11TC SZFT · DOM és események</p>
       <h1>Találd ki a számot!</h1>
       <p>A projekt bemutatása és az első HTML-elem kiválasztása JavaScriptből.</p>
     </header>
@@ -50,7 +50,7 @@
     <section>
       <h2>Nyisd meg a projektet</h2>
       <p>Csomagold ki a ZIP-et, és nyisd meg a mappát a VS Code-ban. Az <code>index.html</code> tartalmazza a felületet, a <code>style.css</code> a retro megjelenést, a <code>script.js</code>-be írjuk a programot. Az eredeti CSS a Press Start 2P betűtípust az internetről tölti be.</p>
-      <p>Nyisd meg az <code>index.html</code>-t a böngészőben, majd a fejlesztői konzolt. Ha használod a VS Code Live Server bővítményét, a <strong>Go Live</strong> gombbal indíthatod. Jonas a videóban terminálból indítja a már telepített <code>live-server</code>-t. Ennél a példánál közvetlen fájlmegnyitással is dolgozhatsz.</p>
+      <p>Nyisd meg az <code>index.html</code>-t a böngészőben, majd a fejlesztői konzolt. Ha használod a VS Code Live Server bővítményét, a <strong>Go Live</strong> gombbal indíthatod. A példában terminálból indítja a már telepített <code>live-server</code>-t. Ennél a példánál közvetlen fájlmegnyitással is dolgozhatsz.</p>
     </section>
     <section>
       <h2>Kapcsolat a HTML és a JavaScript között</h2>
@@ -58,18 +58,18 @@
       <pre><code>&lt;p class="message"&gt;Kezdj el tippelni...&lt;/p&gt;</code></pre>
       <p>A <code>script.js</code> fájlban a szigorú mód sora alá írd:</p>
       <pre><code>console.log(document.querySelector('.message'));</code></pre>
-      <p>Mentsd és frissítsd az oldalt. A konzolban a kiválasztott <code>p</code> elem jelenik meg. A <code>document.querySelector()</code> az első megfelelő elemet választja ki. A paraméter CSS-szelektor. Osztályhoz <code>.</code>, azonosítóhoz <code>#</code> tartozik. Az angol osztályneveket megtartottuk, hogy Jonas kódját követni tudd.</p>
-      <p>Jonas a <code>cl</code> saját kódrészlettel írja be a <code>console.log()</code>-ot. Ugyanezt kézzel is begépelheted.</p>
+      <p>Mentsd és frissítsd az oldalt. A konzolban a kiválasztott <code>p</code> elem jelenik meg. A <code>document.querySelector()</code> az első megfelelő elemet választja ki. A paraméter CSS-szelektor. Osztályhoz <code>.</code>, azonosítóhoz <code>#</code> tartozik. Az angol osztályneveket megtartottuk, hogy János kódját követni tudd.</p>
+      <p>A példa a <code>cl</code> saját kódrészlettel írja be a <code>console.log()</code>-ot. Ugyanezt kézzel is begépelheted.</p>
     </section>
     <section>
       <h2>Az elem szövegének kiolvasása</h2>
       <p>Cseréld le a kiírást erre:</p>
       <pre><code>console.log(document.querySelector('.message').textContent);</code></pre>
-      <p>A <code>querySelector()</code> eredményén elérjük a <code>textContent</code> tulajdonságot. A konzolban most a <strong>Kezdj el tippelni...</strong> szöveg jelenik meg. Ezzel létrejött az első kapcsolat a kód és a böngészőben látható felület között. A DOM jelentését a következő videóban bontjuk ki.</p>
+      <p>A <code>querySelector()</code> eredményén elérjük a <code>textContent</code> tulajdonságot. A konzolban most a <strong>Kezdj el tippelni...</strong> szöveg jelenik meg. Ezzel létrejött az első kapcsolat a kód és a böngészőben látható felület között. A DOM jelentését a következő leckében bontjuk ki.</p>
     </section>
     <nav aria-label="Tananyag navigáció">
       <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
-      <a class="lesson-button" href="dom.html">Következő · 75. Mi a DOM?</a>
+      <a class="lesson-button" href="dom.html">Következő · Mi a DOM?</a>
     </nav>
   </main>
 </body>

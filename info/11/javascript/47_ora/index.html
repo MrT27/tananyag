@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>47. óra – Műveleti sorrend</title>
+  <title>Műveleti sorrend</title>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
@@ -36,18 +36,18 @@
 <body>
   <main>
     <header>
-      <p class="label">11TC SZFT · Webprogramozás · 47. óra · Jonas 14. videója</p>
+      <p class="label">11TC SZFT · Webprogramozás</p>
       <h1>Műveleti sorrend</h1>
       <p>Miért számolja ki a JavaScript mindkét életkort az összehasonlítás előtt?</p>
     </header>
     <section>
       <h2>Melyik operátor köt erősebben?</h2>
       <pre><code>const now = 2037;
-const ageJonas = now - 1991;
+const ageJanos = now - 1991;
 const ageSarah = now - 2018;
 
 console.log(now - 1991 &gt; now - 2018); // true
-console.log(ageJonas &gt; ageSarah);     // true</code></pre>
+console.log(ageJanos &gt; ageSarah);     // true</code></pre>
       <p>A kivonás elsőbbséget élvez a <code>&gt;</code> operátorral szemben. Az első összehasonlítás ezért úgy csoportosul, mintha ezt írnánk: <code>(now - 1991) &gt; (now - 2018)</code>. A <code>46 &gt; 19</code> eredménye <code>true</code>.</p>
       <p>Az elsőbbséget az <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence">MDN műveleti sorrend táblázatában</a> ellenőrizheted. Keresd meg benne a kivonást és a relációs operátorokat. A táblázat azt is mutatja, hogyan csoportosulnak az azonos szintű műveletek.</p>
     </section>
@@ -65,8 +65,8 @@ console.log(x, y); // 10 10</code></pre>
     <section>
       <h2>Átlagéletkor zárójellel</h2>
       <p>Futtasd ezt az első példa változóival. Az osztás erősebben köt az összeadásnál, így az első sorban csak Sarah életkora feleződik. Az 55,5 nagyobb mindkét életkornál, ezért nem lehet a kettő átlaga. A zárójellel a két életkor összegét osztjuk el kettővel.</p>
-      <pre><code>console.log(ageJonas + ageSarah / 2); // 55.5
-const averageAge = (ageJonas + ageSarah) / 2;
+      <pre><code>console.log(ageJanos + ageSarah / 2); // 55.5
+const averageAge = (ageJanos + ageSarah) / 2;
 console.log(averageAge); // 32.5</code></pre>
     </section>
     <section class="practice">
@@ -74,9 +74,9 @@ console.log(averageAge); // 32.5</code></pre>
       <p>Tippeld meg a <code>10 + 6 / 2</code> eredményét. Ezután tegyél bele zárójelet úgy, hogy az eredmény 8 legyen. Ellenőrizd mindkét változatot a konzolban.</p>
     </section>
     <nav aria-label="Tananyag navigáció">
-      <a class="lesson-button" href="../46_ora/index.html">Előző: 13. Basic Operators</a>
+      <a class="lesson-button" href="../46_ora/index.html">Előző: Basic Operators</a>
       <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
-      <a class="lesson-button" href="../48_ora/index.html">Következő: 17. Strings and Template Literals</a>
+      <a class="lesson-button" href="../48_ora/index.html">Következő: Strings and Template Literals</a>
     </nav>
   </main>
 </body>

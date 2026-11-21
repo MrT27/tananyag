@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alapvető tömbmetódusok</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript-alapok – 2. rész</p>
+      <h1>Alapvető tömbmetódusok</h1>
+      <p>Elemeket adunk hozzá, veszünk ki és keresünk meg a barátok tömbjében.</p>
+    </header>
+    <section>
+      <h2>Elemek hozzáadása</h2>
+      <p>A metódus egy objektumhoz kapcsolódó függvény. A ponttal elérjük, zárójelekkel meghívjuk. A korábbi <code>friends</code> példát kommentezd ki, és indíts új tömbbel.</p>
+      <pre><code>'use strict';
+
+const friends = ["Michael", "Steven", "Peter"];
+
+const newLength = friends.push("Jay");
+console.log(newLength); // 4
+console.log(friends); // ["Michael", "Steven", "Peter", "Jay"]
+
+friends.unshift("John");
+console.log(friends); // ["John", "Michael", "Steven", "Peter", "Jay"]</code></pre>
+      <p>A <code>push()</code> a végére, az <code>unshift()</code> az elejére teszi az argumentumot. Mindkettő az eredeti tömböt módosítja, és az új hosszt adja vissza. A <code>const</code> mellett is módosíthatjuk a tömb tartalmát. A visszaadott értéket csak akkor kell eltárolni, ha később felhasználjuk.</p>
+    </section>
+    <section>
+      <h2>Elemek eltávolítása</h2>
+      <p>Folytasd ugyanazzal a tömbbel. A <code>pop()</code> a végéről, a <code>shift()</code> az elejéről vesz ki egy elemet. Argumentum nélkül hívjuk őket, mert a helyet a metódus neve meghatározza.</p>
+      <pre><code>friends.pop(); // Jay eltávolítása
+const popped = friends.pop(); // Peter eltávolítása
+console.log(popped); // Peter
+
+const shifted = friends.shift(); // John eltávolítása
+console.log(shifted); // John
+console.log(friends); // ["Michael", "Steven"]</code></pre>
+      <p>A visszaadott érték az eltávolított elem. Az <code>unshift()</code> hozzáad az elejéhez, a <code>shift()</code> eltávolít onnan. Ügyelj a két eltérő művelet nevére.</p>
+    </section>
+    <section>
+      <h2>Index keresése</h2>
+      <pre><code>console.log(friends.indexOf("Steven")); // 1
+console.log(friends.indexOf("Bob"));    // -1</code></pre>
+      <p>Az <code>indexOf()</code> az első egyezés nullától számított indexét adja. Hiányzó elemnél <code>-1</code> az eredmény.</p>
+    </section>
+    <section>
+      <h2>Benne van-e a tömbben?</h2>
+      <pre><code>console.log(friends.includes("Steven")); // true
+console.log(friends.includes("Bob"));    // false
+
+friends.push(23);
+console.log(friends.includes("23")); // false
+console.log(friends.includes(23));   // true
+
+if (friends.includes("Peter")) {
+  console.log("Van egy Peter nevű barátod.");
+}
+if (friends.includes("Steven")) {
+  console.log("Van egy Steven nevű barátod.");
+}</code></pre>
+      <p>Az <code>includes()</code> logikai értéket ad. A <code>"23"</code> szöveget és a <code>23</code> számot külön kezeli, típusátalakítást nem végez. Ezért közvetlenül feltételként is használhatjuk. Peter már kikerült a tömbből, így csak Steven üzenete jelenik meg.</p>
+      <p>Az <code>includes()</code> az ES2016 kiadásban jelent meg. Összehasonlításának neve SameValueZero. A fenti példákban a szigorú egyenlőséghez hasonlóan viselkedik, de például a <code>NaN</code> értéket is képes megtalálni.</p>
+    </section>
+    <section class="practice">
+      <h2>Önálló próba</h2>
+      <p>Az eredményül kapott tömb elejére tedd Bobot, és tárold az új hosszt. Ezután vedd ki a végéről a 23-at, és tárold az eltávolított értéket. Ellenőrizd, hogy a hossz először 4, az eltávolított érték 23, végül az <code>includes(23)</code> hamis.</p>
+    </section>
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="tombok.html">Előző · Introduction to Arrays</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+    </nav>
+  </main>
+</body>
+</html>

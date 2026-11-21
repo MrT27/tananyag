@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Függvények összefoglalása</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript-alapok – 2. rész</p>
+      <h1>Függvények összefoglalása</h1>
+      <p>Az életkorszámítás, az egymást hívó függvények és a visszatérés közös példája.</p>
+    </header>
+    <section>
+      <h2>A nyugdíjas példa újraírása</h2>
+      <p>A 36. lecke nyílfüggvényét hagyományos függvénykifejezéssé alakítjuk. A számítást először így írd meg, a korábbi azonos nevű függvényt kommentezd ki:</p>
+      <pre><code>'use strict';
+
+const yearsUntilRetirement = function (birthYear, firstName) {
+  const age = 2037 - birthYear;
+  const retirement = 65 - age;
+  return retirement;
+};
+
+console.log(yearsUntilRetirement(1991, "János")); // 19
+console.log(yearsUntilRetirement(1970, "Mike"));  // -2</code></pre>
+      <p>A példa választott éve 2037, a feltételezett nyugdíjkorhatár 65. Mike eredménye negatív, ezért külön kezeljük a korhatárt már elért személyt.</p>
+    </section>
+    <section>
+      <h2>Külön életkorszámító, feltételes visszatérés</h2>
+      <p>Cseréld az előző példát erre. A <code>calcAge</code> külön végzi az életkorszámítást, a másik függvény ezt hívja meg.</p>
+      <pre><code>const calcAge = function (birthYear) {
+  return 2037 - birthYear;
+};
+
+const yearsUntilRetirement = function (birthYear, firstName) {
+  const age = calcAge(birthYear);
+  const retirement = 65 - age;
+
+  if (retirement &gt; 0) {
+    console.log(`${firstName} ${retirement} év múlva megy nyugdíjba.`);
+    return retirement;
+  } else {
+    console.log(`${firstName} már elérte a példában megadott nyugdíjkorhatárt.`);
+    return -1;
+  }
+};
+
+console.log(yearsUntilRetirement(1991, "János"));
+console.log(yearsUntilRetirement(1950, "Mike"));</code></pre>
+      <p>A két <code>birthYear</code> két külön helyi paraméter. Az <code>1991</code> először a <code>yearsUntilRetirement</code> paraméterébe kerül. A <code>calcAge(birthYear)</code> hívás ezt az értéket adja tovább a <code>calcAge</code> saját paraméterének. Innen 46 tér vissza, így 19 év marad. Ha a <code>calcAge</code> paraméterét és a törzsében használt nevét együtt átírod <code>year</code>-re, az eredmény ugyanaz marad.</p>
+      <p>A <code>-1</code> ebben a függvényben választott jelzőérték arra, hogy a számított hátralévő idő nem pozitív. A jelentését a saját programunk határozza meg. A függvény mindkét ágban számot ad vissza, ezért az eredményt később számításban vagy feltételben is felhasználhatjuk.</p>
+    </section>
+    <section>
+      <h2>A return azonnal befejezi a hívást</h2>
+      <p>Tedd az ágakban lévő <code>console.log()</code> sort a hozzá tartozó <code>return</code> alá. Az üzenet eltűnik, mert a futás már visszatért a hívás helyére. Ezután mozgasd a kiírást vissza a <code>return</code> elé.</p>
+      <p>A VS Code-ban a sor feljebb mozgatása Windowson <kbd>Alt</kbd> + <kbd>↑</kbd>, Macen <kbd>Option</kbd> + <kbd>↑</kbd>. A kijelölt név következő előfordulását Windowson <kbd>Ctrl</kbd> + <kbd>D</kbd>, Macen <kbd>Command</kbd> + <kbd>D</kbd> jelöli ki. Ellenőrizd a kijelöléseket átnevezés előtt.</p>
+    </section>
+    <section>
+      <h2>A három megismert alak</h2>
+      <ul>
+        <li><strong>Függvénydeklaráció.</strong> Például <code>function calcAge(birthYear) { return 2037 - birthYear; }</code>. A saját hatókörén belül a szövegbeli helye előtt is hívható.</li>
+        <li><strong>Függvénykifejezés.</strong> Például <code>const calcAge = function (birthYear) { return 2037 - birthYear; };</code>. A függvényértéket változó tárolja, amelynek a hívás előtt meg kell kapnia az értékét.</li>
+        <li><strong>Nyílfüggvény.</strong> Például <code>const calcAge = birthYear =&gt; 2037 - birthYear;</code>. Kifejezéstörzzsel implicit a visszatérés. Saját <code>this</code> kötése nincs, a környezetét használja, ezt később részletezzük.</li>
+      </ul>
+      <p>Mindegyik forma fogadhat bemeneti adatokat, dolgozhat velük és visszaadhat eredményt. Paraméter nélküli függvény is lehet, és a kifejezett <code>return</code> is elhagyható, ilyenkor a szokásos blokkos függvény visszatérési értéke <code>undefined</code>.</p>
+    </section>
+    <section>
+      <h2>A console.log és a return szerepe</h2>
+      <p>A <code>calcAge</code> név a függvényértékre hivatkozik. A <code>calcAge(1991)</code> meghívja azt, és a <code>return</code> miatt a kifejezés értéke 46 lesz. A <code>const age = calcAge(1991);</code> ezt tárolja el.</p>
+      <p>A függvényen belüli <code>console.log()</code> egy másik függvényhívás, amely a konzolba ír. A saját függvényünk visszaadott értékét a <code>return</code> határozza meg. A fenti külső <code>console.log(yearsUntilRetirement(...))</code> ezért először a belső üzenetet, aztán a visszaadott számot írja ki.</p>
+    </section>
+    <section class="practice">
+      <h2>Önálló ellenőrzés</h2>
+      <p>Tippeld meg a visszaadott értéket 1991-es, 1972-es és 1950-es születési évnél. Futtasd a példákat különböző keresztnevekkel. A példában 1972-nél nulla év marad, ezért az <code>else</code> ág fut és <code>-1</code> tér vissza. Mutasd meg a paramétert, az argumentumot, a függvénytestet, a belső hívást és a visszatérést.</p>
+    </section>
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="fuggvenyhivas.html">Előző · Functions Calling Other Functions</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+      <a class="lesson-button" href="../45_ora/tombok.html">Következő · Introduction to Arrays</a>
+    </nav>
+  </main>
+</body>
+</html>

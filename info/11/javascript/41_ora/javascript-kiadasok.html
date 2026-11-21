@@ -36,7 +36,7 @@
 <body>
   <main>
     <header>
-      <p class="label">11TC SZFT · JavaScript · Jonas 30. videója</p>
+      <p class="label">11TC SZFT · JavaScript</p>
       <h1>A JavaScript kiadásai</h1>
       <p>ES5, ES6+ és ESNext</p>
     </header>
@@ -52,17 +52,17 @@
     </section>
     <section>
       <h2>Mit jelent a kompatibilitás?</h2>
-      <p>A <strong>visszafelé kompatibilitás</strong> célja, hogy a régi weboldalak kódja továbbra is működjön új böngészőkben. Jonas ezt a „ne törjük el a webet” elvvel magyarázza. Ezért találkozunk ma is a <code>var</code>-ral, és ezért maradt meg például a <code>typeof null</code> szokatlan <code>"object"</code> eredménye.</p>
-      <p>Az <strong>előrefelé kompatibilitás</strong> a másik irány lenne. Jonas képzeletbeli példájában egy 2089-ben bevezetett szintaxist próbálnánk egy mai böngészőben futtatni. A motor csak a már megvalósított funkciókat ismeri, ezért ilyen támogatásra előre nem számíthatunk.</p>
+      <p>A <strong>visszafelé kompatibilitás</strong> célja, hogy a régi weboldalak kódja továbbra is működjön új böngészőkben. Ez a „ne törjük el a webet” elve. Ezért találkozunk ma is a <code>var</code>-ral, és ezért maradt meg például a <code>typeof null</code> szokatlan <code>"object"</code> eredménye.</p>
+      <p>Az <strong>előrefelé kompatibilitás</strong> a másik irány lenne. Egy képzeletbeli példában egy 2089-ben bevezetett szintaxist próbálnánk egy mai böngészőben futtatni. A motor csak a már megvalósított funkciókat ismeri, ezért ilyen támogatásra előre nem számíthatunk.</p>
     </section>
     <section>
       <h2>Fejlesztés és közzététel</h2>
       <p>Fejlesztés közben friss böngészőben próbáljuk ki a példákat. Közzétételkor azt is figyelembe vesszük, milyen böngészőket használnak az oldal látogatói. Egy funkció támogatását az adott funkció kompatibilitási táblázatában ellenőrizhetjük.</p>
       <ul>
-        <li>A <strong>transzpilálás</strong> a modern szintaxist olyan kódra írja át, amelyet a célböngésző már ért. Erre mutat példát Jonas a Babellel.</li>
+        <li>A <strong>transzpilálás</strong> a modern szintaxist olyan kódra írja át, amelyet a célböngésző már ért. Erre használható például a Babel.</li>
         <li>A <strong>polyfill</strong> egy hiányzó beépített funkciót pótolhat. Például ha a böngésző motorja érti a metódushívást, de maga a metódus még hiányzik.</li>
       </ul>
-      <p>Jonas az ES5-öt egy korabeli célként mutatja be. A projektben a támogatandó böngészők alapján választjuk ki, hogy mely átalakításokra van szükség. A mostani gyakorlathoz elég a böngésző.</p>
+      <p>Az ES5 korábban gyakori célkiadás volt. A projektben a támogatandó böngészők alapján választjuk ki, hogy mely átalakításokra van szükség. A mostani gyakorlathoz elég a böngésző.</p>
       <p><a href="https://babeljs.io/docs/babel-preset-env">A Babel útmutatója a célböngészők beállításához</a></p>
     </section>
     <section>
@@ -74,14 +74,14 @@
       <h2>Miért olvasunk régebbi kódot is?</h2>
       <p>Régi oktatóanyagokban és meglévő projektekben találkozhatsz korábbi megoldásokkal. Ezek segítenek megérteni, hogyan jutottunk el a mai formákhoz. Nézd meg a két változatot külön-külön. Mindkettő ugyanazt írja ki, és a második a már tanult modern eszközöket használja.</p>
       <pre><code>// Régebbi változat
-var firstName = "Jonas";
+var firstName = "János";
 console.log("Szia, " + firstName + "!");</code></pre>
       <pre><code>// ES2015-ös eszközök
-const firstName = "Jonas";
+const firstName = "János";
 console.log(`Szia, ${firstName}!`);</code></pre>
     </section>
     <nav aria-label="Tananyag navigáció">
-      <a class="lesson-button" href="../48_ora/felteteles-operator.html">Előző · 28. The Conditional (Ternary) Operator</a>
+      <a class="lesson-button" href="../48_ora/felteteles-operator.html">Előző · The Conditional (Ternary) Operator</a>
       <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
       <a class="lesson-button" href="szigoru-mod.html">Következő · Activating Strict Mode</a>
     </nav>

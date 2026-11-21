@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>46. óra – Alapműveletek</title>
+  <title>Alapműveletek</title>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
@@ -36,27 +36,27 @@
 <body>
   <main>
     <header>
-      <p class="label">11TC SZFT · Webprogramozás · 46. óra · Jonas 13. videója</p>
+      <p class="label">11TC SZFT · Webprogramozás</p>
       <h1>Alapműveletek</h1>
       <p>Számítás, szövegek összefűzése, értékadás és összehasonlítás.</p>
     </header>
     <section>
       <h2>Számoljunk életkort</h2>
-      <p>Az operátor értékeken végez műveletet. A <code>-</code> például két szám különbségét adja. Jonas a példában 2037-et használ. Az évszám a <code>now</code> változóban szerepel, így egy helyen kell átírni. A <code>const</code> azért illik ide, mert a program később nem ad új értéket ezeknek a változóknak.</p>
+      <p>Az operátor értékeken végez műveletet. A <code>-</code> például két szám különbségét adja. A példában 2037-tel számolunk. Az évszám a <code>now</code> változóban szerepel, így egy helyen kell átírni. A <code>const</code> azért illik ide, mert a program később nem ad új értéket ezeknek a változóknak.</p>
       <pre><code>const now = 2037;
-const ageJonas = now - 1991;
+const ageJanos = now - 1991;
 const ageSarah = now - 2018;
-console.log(ageJonas, ageSarah); // 46 19
-console.log(ageJonas * 2, ageJonas / 10, 2 ** 3); // 92 4.6 8</code></pre>
+console.log(ageJanos, ageSarah); // 46 19
+console.log(ageJanos * 2, ageJanos / 10, 2 ** 3); // 92 4.6 8</code></pre>
       <p>A <code>console.log()</code> vesszővel elválasztva több értéket is kiír. A <code>*</code> szoroz, a <code>/</code> oszt, a <code>**</code> hatványoz. A <code>2 ** 3</code> ugyanannyi, mint a <code>2 * 2 * 2</code>.</p>
     </section>
     <section>
       <h2>Szövegek összefűzése</h2>
       <p>Két számnál a <code>+</code> összead, két szövegnél összefűz. A szóközt külön adjuk hozzá. Később ugyanezt sablonliterállal is megoldjuk.</p>
-      <pre><code>const firstName = "Jonas";
-const lastName = "Schmedtmann";
-console.log(firstName + lastName);       // JonasSchmedtmann
-console.log(firstName + " " + lastName); // Jonas Schmedtmann</code></pre>
+      <pre><code>const firstName = "János";
+const lastName = "Kovács";
+console.log(firstName + lastName);       // JánosKovács
+console.log(firstName + " " + lastName); // János Kovács</code></pre>
       <p>Az előző leckében a <code>typeof</code> operátorral állapítottuk meg egy érték típusát.</p>
     </section>
     <section>
@@ -74,7 +74,7 @@ console.log(x); // 99</code></pre>
     <section>
       <h2>Összehasonlítás</h2>
       <p>A <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code> és <code>&lt;=</code> művelet eredménye <code>true</code> vagy <code>false</code>. A „legalább 18” feltételbe a 18 is beleszámít.</p>
-      <pre><code>console.log(ageJonas &gt; ageSarah); // true
+      <pre><code>console.log(ageJanos &gt; ageSarah); // true
 console.log(ageSarah &gt;= 18);     // true
 const isFullAge = ageSarah &gt;= 18;
 console.log(isFullAge);         // true
@@ -88,7 +88,7 @@ console.log(now - 1991 &gt; now - 2018); // true</code></pre>
     </section>
     <nav aria-label="Tananyag navigáció">
       <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
-      <a class="lesson-button" href="../47_ora/index.html">Következő: 14. Operator Precedence</a>
+      <a class="lesson-button" href="../47_ora/index.html">Következő: Operator Precedence</a>
     </nav>
   </main>
 </body>

@@ -36,25 +36,25 @@
 <body>
   <main>
     <header>
-      <p class="label">11TC SZFT · JavaScript · Jonas 21. videója</p>
+      <p class="label">11TC SZFT · JavaScript</p>
       <h1>Truthy és falsy értékek</h1>
       <p>Mi történik, ha az <code>if</code> feltételébe egy számot vagy egy szöveget írunk?</p>
     </header>
 
     <section>
       <h2>Átalakítás logikai értékké</h2>
-      <p>A <strong>falsy</strong> értékből <code>false</code>, a <strong>truthy</strong> értékből <code>true</code> lesz logikai átalakításkor. Jonas öt gyakori falsy értéket emel ki. Ezek a <code>0</code>, az üres szöveg (<code>""</code>), az <code>undefined</code>, a <code>null</code> és a <code>NaN</code>. Maga a <code>false</code> is falsy. A <code>-0</code> és a <code>0n</code> szintén <code>false</code>-t ad.</p>
-      <p>A <code>Boolean()</code> segítségével közvetlenül ellenőrizheted az átalakítást. Próbáld ki Jonas példáit.</p>
+      <p>A <strong>falsy</strong> értékből <code>false</code>, a <strong>truthy</strong> értékből <code>true</code> lesz logikai átalakításkor. Öt gyakori falsy értéket vizsgálunk. Ezek a <code>0</code>, az üres szöveg (<code>""</code>), az <code>undefined</code>, a <code>null</code> és a <code>NaN</code>. Maga a <code>false</code> is falsy. A <code>-0</code> és a <code>0n</code> szintén <code>false</code>-t ad.</p>
+      <p>A <code>Boolean()</code> segítségével közvetlenül ellenőrizheted az átalakítást. Próbáld ki a példákat.</p>
       <pre><code>console.log(Boolean(0));         // false
 console.log(Boolean(undefined)); // false
-console.log(Boolean("Jonas"));   // true
+console.log(Boolean("János"));   // true
 console.log(Boolean({}));        // true
 console.log(Boolean(""));        // false</code></pre>
       <p>A nem üres szöveg truthy, ezért a <code>Boolean("false")</code> és a <code>Boolean("0")</code> eredménye is <code>true</code>. Az üres objektum (<code>{}</code>) is truthy. A <code>Boolean()</code> itt megmutatja azt az átalakítást, amelyet az <code>if</code> magától elvégez. A logikai operátoroknál is találkozunk ezzel a vizsgálattal.</p>
     </section>
 
     <section>
-      <h2>Jonas pénzes példája</h2>
+      <h2>Pénzes példa</h2>
       <pre><code>const money = 0;
 
 if (money) {
@@ -75,7 +75,7 @@ if (height) {
   console.log("Nincs megadva a magasság.");
 }</code></pre>
       <p>Kezdőérték nélkül a <code>height</code> értéke <code>undefined</code>, ezért a második üzenet jelenik meg. Próbáld ki a <code>let height = 123;</code> kezdősort. Most az első üzenetet kapod. Ezután állítsd az értéket <code>0</code>-ra. A program ismét hiányzónak jelzi az adatot, mert a nulla is falsy.</p>
-      <p>Ha ennél a példánál az <code>undefined</code> jelöli a hiányzó adatot, a feltételt pontosíthatjuk. Az <code>if (height !== undefined)</code> azt ellenőrzi, hogy az érték eltér-e az <code>undefined</code>-tól. Így a nulla is megadott adatnak számít. Az egyenlőségi operátorokat a következő videóban vesszük részletesen.</p>
+      <p>Ha ennél a példánál az <code>undefined</code> jelöli a hiányzó adatot, a feltételt pontosíthatjuk. Az <code>if (height !== undefined)</code> azt ellenőrzi, hogy az érték eltér-e az <code>undefined</code>-tól. Így a nulla is megadott adatnak számít. Az egyenlőségi operátorokat a következő leckében vesszük részletesen.</p>
     </section>
 
     <section class="practice">
@@ -84,9 +84,9 @@ if (height) {
     </section>
 
     <nav aria-label="Tananyag navigáció">
-      <a class="lesson-button" href="tipuskonverzio.html">Előző · 20. Type Conversion and Coercion</a>
+      <a class="lesson-button" href="tipuskonverzio.html">Előző · Type Conversion and Coercion</a>
       <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
-      <a class="lesson-button" href="egyenloseg.html">Következő · 22. Equality Operators</a>
+      <a class="lesson-button" href="egyenloseg.html">Következő · Equality Operators</a>
     </nav>
   </main>
 </body>

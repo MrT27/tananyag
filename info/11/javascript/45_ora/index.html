@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>45. óra – Elemi és összetett adattípusok</title>
+  <title>Elemi és összetett adattípusok</title>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
@@ -36,7 +36,7 @@
 <body>
   <main>
     <header>
-      <p class="label">11TC SZFT · Webprogramozás · 45. óra</p>
+      <p class="label">11TC SZFT · Webprogramozás</p>
       <h1>Elemi és összetett adattípusok</h1>
       <p>Mi a különbség a <code>23</code> és a <code>"23"</code> között? Miben tárolnád egy ember adatait vagy a barátai nevét?</p>
     </header>
@@ -46,7 +46,7 @@
       <p>A JavaScriptben minden érték vagy <strong>elemi (primitív) érték</strong>, vagy <strong>objektum</strong>. Hét elemi típus van. Az objektumok közé tartoznak az óra második felében bemutatott tömbök, <code>Map</code> és <code>Set</code> gyűjtemények is.</p>
       <ul>
         <li><strong>Number:</strong> lebegőpontos szám, például <code>23</code> vagy <code>3.5</code>. A <code>23</code> és a <code>23.0</code> ugyanazt a számértéket jelöli.</li>
-        <li><strong>String:</strong> szöveg, például <code>"Jonas"</code> vagy <code>"23"</code>.</li>
+        <li><strong>String:</strong> szöveg, például <code>"János"</code> vagy <code>"23"</code>.</li>
         <li><strong>Boolean:</strong> logikai érték, amely <code>true</code> vagy <code>false</code> lehet. Az 55. órán ilyen értékek alapján döntünk majd az <code>if</code> utasításban.</li>
         <li><strong>undefined:</strong> például egy <code>let</code> változó értéke, ha még nem adtunk neki értéket.</li>
         <li><strong>null:</strong> külön érték, amellyel például szándékosan jelezhetjük egy adat hiányát.</li>
@@ -62,13 +62,13 @@
       <p>A megjegyzés magyarázatot adhat az olvasónak, vagy ideiglenesen kikapcsolhat egy kódrészletet. A JavaScript a megjegyzést nem futtatja.</p>
       <ul>
         <li>A <code>//</code> jeltől a sor végéig tart az egysoros megjegyzés. A jel állhat egy külön sor elején vagy egy utasítás után is.</li>
-        <li>A <code>/*</code> és a <code>*/</code> közötti megjegyzés több soron át tarthat. Jonas így hagyja meg a korábbi leckék kódját a <code>script.js</code>-ben, miközben az új példán dolgozik.</li>
+        <li>A <code>/*</code> és a <code>*/</code> közötti megjegyzés több soron át tarthat. Így hagyhatjuk meg a korábbi leckék kódját a <code>script.js</code>-ben, miközben az új példán dolgozik.</li>
       </ul>
       <pre><code>// A korábbi óra számítása
 console.log(40 + 8 + 23 - 10); // 61
 
 /*
-console.log("Jonas");
+console.log("János");
 console.log(23);
 */</code></pre>
       <p>Futtasd a példát. Csak a <strong>61</strong> jelenik meg. Tegyél <code>//</code> jelet a számítást kiíró sor elé, mentsd a fájlt, és frissítsd az oldalt. Az új futás már nem írja ki a 61-et. Vedd le a jelet, és próbáld újra. A VS Code-ban a sor megjegyzéssé alakítását a <kbd>⌘</kbd> + <kbd>/</kbd> (Mac), illetve a <kbd>Ctrl</kbd> + <kbd>/</kbd> (Windows, Linux) kapcsolja ki és be.</p>
@@ -83,15 +83,15 @@ console.log(typeof "23");    // string
 console.log(typeof true);    // boolean
 console.log(typeof "true");  // string</code></pre>
       <h3>Az idézőjel itt a jelentést változtatja meg</h3>
-      <pre><code>console.log("Jonas");
-console.log('Jonas');
-// console.log(Jonas); // ReferenceError, ha nincs Jonas nevű változó</code></pre>
-      <p>A szöveg két végén azonos idézőjelet használj. Az idézőjelek nélküli <code>Jonas</code> névként értelmeződik. Ha ilyen változót nem hoztál létre, a harmadik sor bekapcsolása hivatkozási hibát (<code>ReferenceError</code>) eredményez.</p>
+      <pre><code>console.log("János");
+console.log('János');
+// console.log(János); // ReferenceError, ha nincs János nevű változó</code></pre>
+      <p>A szöveg két végén azonos idézőjelet használj. Az idézőjelek nélküli <code>János</code> névként értelmeződik. Ha ilyen változót nem hoztál létre, a harmadik sor bekapcsolása hivatkozási hibát (<code>ReferenceError</code>) eredményez.</p>
     </section>
 
     <section>
       <h2>A változóban tárolt érték típusa változhat</h2>
-      <p>Jonas példájában a <code>javascriptIsFun</code> változó először a <code>true</code> logikai értéket kapja, később az <code>"Igen!"</code> szöveget. A <code>typeof</code> mindig az éppen tárolt érték típusát mutatja. Hibát okozhat, ha a kód szöveget kap ott, ahol számmal szeretnénk számolni.</p>
+      <p>A példában a <code>javascriptIsFun</code> változó először a <code>true</code> logikai értéket kapja, később az <code>"Igen!"</code> szöveget. A <code>typeof</code> mindig az éppen tárolt érték típusát mutatja. Hibát okozhat, ha a kód szöveget kap ott, ahol számmal szeretnénk számolni.</p>
       <p>A példában az utasítások fentről lefelé futnak le. A <code>let javascriptIsFun</code> deklaráció után használjuk a nevet. Ha a kiírást a deklaráció elé teszed, <code>ReferenceError</code> keletkezik. Az új értéket a változó nevével és az <code>=</code> jellel adjuk meg, második <code>let</code> nélkül.</p>
       <pre><code>let javascriptIsFun = true;
 console.log(typeof javascriptIsFun); // boolean
@@ -122,7 +122,7 @@ console.log(middleName, typeof middleName); // null object</code></pre>
       <pre><code>const friends = ["Michael", "Peter", "Steven"];
 console.log(friends[0]); // Michael
 
-const person = { firstName: "Jonas", job: "tanár" };
+const person = { firstName: "János", job: "tanár" };
 console.log(person.job); // tanár
 
 const namesById = new Map([[101, "Michael"], [102, "Peter"]]);
@@ -146,14 +146,10 @@ console.log(uniqueNames.size); // 2</code></pre>
       </details>
     </section>
 
-    <aside>
-      <h2>Kapcsolódó videó</h2>
-      <p><strong>11. Data Types</strong> · <a href="https://www.udemy.com/course/the-complete-javascript-course/">Jonas Schmedtmann Udemy-kurzusa</a></p>
-      <p>A videó az elemi típusokat, a kommentelést és a <code>typeof</code> használatát mutatja be. A tömb, az objektum, a <code>Map</code> és a <code>Set</code> példái a tanmenethez tartozó kiegészítések.</p>
-    </aside>
+    
     <nav aria-label="Tananyag navigáció">
       <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
-      <a class="lesson-button" href="../44_ora/index.html#video-12">Következő: 12. let, const and var</a>
+      <a class="lesson-button" href="../44_ora/index.html#video-12">Következő: let, const and var</a>
     </nav>
   </main>
 </body>
