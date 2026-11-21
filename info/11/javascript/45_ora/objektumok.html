@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bevezetés az objektumokba</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · JavaScript-alapok – 2. rész</p>
+      <h1>Bevezetés az objektumokba</h1>
+      <p>Az összetartozó adatokhoz neveket rendelünk kulcs–érték párokkal.</p>
+    </header>
+    <section>
+      <h2>Ismétlés: összetartozó adatok egy tömbben</h2>
+      <p>Eddig tömbbel tároltunk több, egymással összefüggő értéket egy változóban. Egy személy adatai például így szerepelhetnek benne. Ezt a példát most elég áttekinteni.</p>
+      <pre><code>const janosArray = [
+  'János',
+  'Kovács',
+  2037 - 1991,
+  'tanár',
+  ['Michael', 'Peter', 'Steven']
+];</code></pre>
+      <p>A tömböt több sorba is írhatjuk, így könnyebben áttekinthető. Az elemeket továbbra is vessző választja el. Az utolsó elem maga is egy tömb: tömbön belül is tárolhatunk tömböt.</p>
+      <p>Mi tudjuk, hogy az első elem keresztnév, a második vezetéknév, majd az életkor, a foglalkozás és a barátok következnek. A tömb elemeit azonban az eddig tanult módon az indexükkel érjük el: a <code>janosArray[0]</code> a keresztnevet adja. A tömb nem rendel ezekhez az adatokhoz olyan tulajdonságneveket, mint a <code>firstName</code> vagy a <code>job</code>.</p>
+    </section>
+    <section>
+      <h2>Objektum létrehozása</h2>
+      <p>Ha az értékeket névvel szeretnénk ellátni, objektumot használhatunk. Az objektumban <strong>kulcs–érték párokat</strong> adunk meg. Írd be a következő példát a <code>script.js</code> fájlba:</p>
+      <pre><code>const janos = {
+  firstName: 'János',
+  lastName: 'Kovács',
+  age: 2037 - 1991,
+  job: 'tanár',
+  friends: ['Michael', 'Peter', 'Steven']
+};
+
+console.log(janos);</code></pre>
+      <p>A tömbök <code>[]</code> szögletes zárójelei helyett itt <code>{}</code> kapcsos zárójelek közé írjuk a tartalmat. A kapcsos zárójelet már használtuk például az <code>if</code>, a <code>switch</code> és a függvények kódblokkjainál. Itt, az értékadás jobb oldalán, egy objektumot hozunk létre vele.</p>
+      <p>A kulcs után <strong>kettőspont</strong>, majd az érték következik. A párokat <strong>vesszővel</strong> választjuk el egymástól. A kulcs az adat neve az objektumon belül; nem külön deklarált változó.</p>
+    </section>
+    <section>
+      <h2>Tulajdonságok és értékek</h2>
+      <p>Az objektum egy elnevezett adatát <strong>tulajdonságnak</strong> nevezzük; a kulcs ennek a neve. A példában öt tulajdonság van:</p>
+      <ul>
+        <li><code>firstName</code>: értéke a <code>'János'</code> karakterlánc.</li>
+        <li><code>lastName</code>: értéke a <code>'Kovács'</code> karakterlánc.</li>
+        <li><code>age</code>: értéke a kivonás eredménye, a <code>46</code> szám.</li>
+        <li><code>job</code>: értéke a <code>'tanár'</code> karakterlánc.</li>
+        <li><code>friends</code>: értéke egy három barátot tartalmazó tömb.</li>
+      </ul>
+      <p>Az érték különböző típusú lehet. Értéket előállító kifejezést is írhatunk ide: a <code>2037 - 1991</code> kiszámítódik, és az eredménye lesz az <code>age</code> tulajdonság értéke.</p>
+    </section>
+    <section>
+      <h2>Objektumliterál</h2>
+      <p>Az objektumok a JavaScript alapvető építőelemei. Többféleképpen létrehozhatók; most az egyik legegyszerűbb módot tanuljuk. Amikor kapcsos zárójelek között közvetlenül leírjuk a teljes tartalmat, <strong>objektumliterált</strong> használunk.</p>
+    </section>
+    <section>
+      <h2>Mikor tömb, mikor objektum?</h2>
+      <p>Mindkettővel összetartozó adatokat csoportosítunk. A tömbnél az elemek sorrendje határozza meg az indexet, amellyel elérjük őket. Ha felcseréljük a keresztnevet és a vezetéknevet, a <code>janosArray[0]</code> már mást jelent.</p>
+      <p>Az objektumban az adatoknak nevük van. A <code>firstName</code> továbbra is a keresztnevet jelöli akkor is, ha a tulajdonságokat más sorrendben írjuk le. A név szerinti elérés nem a tulajdonság helyétől függ.</p>
+      <p><strong>Tömböt</strong> válassz például barátok rendezett listájához; <strong>objektumot</strong> egy személy különböző, névvel ellátott adatainak tárolásához. Az objektum is strukturált adat: itt az elnevezett tulajdonságok, a tömbnél az indexek szervezik az adatokat.</p>
+      <p>Az objektum tulajdonságainak kiolvasását a következő leckében tanuljuk meg.</p>
+    </section>
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="tombmetodusok.html">Előző · Alapvető tömbmetódusok</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+    </nav>
+  </main>
+</body>
+</html>

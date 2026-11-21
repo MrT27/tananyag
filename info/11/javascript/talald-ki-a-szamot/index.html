@@ -43,13 +43,13 @@
     <section>
       <h2>Milyen játékot készítünk?</h2>
       <p>A kész játékban egy 1 és 20 közötti titkos számot kell kitalálni. Az üzenet megmondja, hogy a tipp túl alacsony, túl magas vagy helyes. A pontszám 20-ról indul, és minden sikertelen tippnél eggyel csökken. Találatkor a háttér zöldre vált, és szükség esetén frissül a rekord. Az Újra! gomb új kört indít, a rekordot az oldalon belül megtartja.</p>
-      <p>A kezdőcsomag az eredeti HTML és CSS magyar szövegű változata. A játék működését a következő leckékben építjük hozzá.</p>
+      <p>A kezdőcsomag a játék HTML- és CSS-fájljait tartalmazza. Az elrendezést Grid és Flexbox adja. A játék működését a következő leckékben építjük hozzá.</p>
       <a class="lesson-button" href="kezdo.zip" download>Kezdőcsomag letöltése (ZIP)</a>
       <a class="lesson-button" href="kezdo/index.html">Kezdőoldal megnyitása</a>
     </section>
     <section>
       <h2>Nyisd meg a projektet</h2>
-      <p>Csomagold ki a ZIP-et, és nyisd meg a mappát a VS Code-ban. Az <code>index.html</code> tartalmazza a felületet, a <code>style.css</code> a retro megjelenést, a <code>script.js</code>-be írjuk a programot. Az eredeti CSS a Press Start 2P betűtípust az internetről tölti be.</p>
+      <p>Csomagold ki a ZIP-et, és nyisd meg a mappát a VS Code-ban. Az <code>index.html</code> tartalmazza a felületet, a <code>style.css</code> a retro megjelenést, a <code>script.js</code>-be írjuk a programot. A CSS a Press Start 2P betűtípust az internetről tölti be.</p>
       <p>Nyisd meg az <code>index.html</code>-t a böngészőben, majd a fejlesztői konzolt. Ha használod a VS Code Live Server bővítményét, a <strong>Go Live</strong> gombbal indíthatod. A példában terminálból indítja a már telepített <code>live-server</code>-t. Ennél a példánál közvetlen fájlmegnyitással is dolgozhatsz.</p>
     </section>
     <section>
@@ -58,7 +58,7 @@
       <pre><code>&lt;p class="message"&gt;Kezdj el tippelni...&lt;/p&gt;</code></pre>
       <p>A <code>script.js</code> fájlban a szigorú mód sora alá írd:</p>
       <pre><code>console.log(document.querySelector('.message'));</code></pre>
-      <p>Mentsd és frissítsd az oldalt. A konzolban a kiválasztott <code>p</code> elem jelenik meg. A <code>document.querySelector()</code> az első megfelelő elemet választja ki. A paraméter CSS-szelektor. Osztályhoz <code>.</code>, azonosítóhoz <code>#</code> tartozik. Az angol osztályneveket megtartottuk, hogy János kódját követni tudd.</p>
+      <p>Mentsd és frissítsd az oldalt. A konzolban a kiválasztott <code>p</code> elem jelenik meg. A <code>document.querySelector()</code> az első megfelelő elemet választja ki. A paraméter CSS-szelektor. Osztályhoz <code>.</code>, azonosítóhoz <code>#</code> tartozik. Ezeket az osztályneveket használjuk a játék elemeinek kiválasztásához.</p>
       <p>A példa a <code>cl</code> saját kódrészlettel írja be a <code>console.log()</code>-ot. Ugyanezt kézzel is begépelheted.</p>
     </section>
     <section>
