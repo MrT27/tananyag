@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Találd ki a számot! – Projektindítás</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · DOM és események · Jonas 74. videója</p>
+      <h1>Találd ki a számot!</h1>
+      <p>A projekt bemutatása és az első HTML-elem kiválasztása JavaScriptből.</p>
+    </header>
+    <section>
+      <h2>Milyen játékot készítünk?</h2>
+      <p>A kész játékban egy 1 és 20 közötti titkos számot kell kitalálni. Az üzenet megmondja, hogy a tipp túl alacsony, túl magas vagy helyes. A pontszám 20-ról indul, és minden sikertelen tippnél eggyel csökken. Találatkor a háttér zöldre vált, és szükség esetén frissül a rekord. Az Újra! gomb új kört indít, a rekordot az oldalon belül megtartja.</p>
+      <p>A kezdőcsomag az eredeti HTML és CSS magyar szövegű változata. A játék működését a következő leckékben építjük hozzá.</p>
+      <a class="lesson-button" href="kezdo.zip" download>Kezdőcsomag letöltése (ZIP)</a>
+      <a class="lesson-button" href="kezdo/index.html">Kezdőoldal megnyitása</a>
+    </section>
+    <section>
+      <h2>Nyisd meg a projektet</h2>
+      <p>Csomagold ki a ZIP-et, és nyisd meg a mappát a VS Code-ban. Az <code>index.html</code> tartalmazza a felületet, a <code>style.css</code> a retro megjelenést, a <code>script.js</code>-be írjuk a programot. Az eredeti CSS a Press Start 2P betűtípust az internetről tölti be.</p>
+      <p>Nyisd meg az <code>index.html</code>-t a böngészőben, majd a fejlesztői konzolt. Ha használod a VS Code Live Server bővítményét, a <strong>Go Live</strong> gombbal indíthatod. Jonas a videóban terminálból indítja a már telepített <code>live-server</code>-t. Ennél a példánál közvetlen fájlmegnyitással is dolgozhatsz.</p>
+    </section>
+    <section>
+      <h2>Kapcsolat a HTML és a JavaScript között</h2>
+      <p>A HTML-ben keresd meg ezt a bekezdést:</p>
+      <pre><code>&lt;p class="message"&gt;Kezdj el tippelni...&lt;/p&gt;</code></pre>
+      <p>A <code>script.js</code> fájlban a szigorú mód sora alá írd:</p>
+      <pre><code>console.log(document.querySelector('.message'));</code></pre>
+      <p>Mentsd és frissítsd az oldalt. A konzolban a kiválasztott <code>p</code> elem jelenik meg. A <code>document.querySelector()</code> az első megfelelő elemet választja ki. A paraméter CSS-szelektor. Osztályhoz <code>.</code>, azonosítóhoz <code>#</code> tartozik. Az angol osztályneveket megtartottuk, hogy Jonas kódját követni tudd.</p>
+      <p>Jonas a <code>cl</code> saját kódrészlettel írja be a <code>console.log()</code>-ot. Ugyanezt kézzel is begépelheted.</p>
+    </section>
+    <section>
+      <h2>Az elem szövegének kiolvasása</h2>
+      <p>Cseréld le a kiírást erre:</p>
+      <pre><code>console.log(document.querySelector('.message').textContent);</code></pre>
+      <p>A <code>querySelector()</code> eredményén elérjük a <code>textContent</code> tulajdonságot. A konzolban most a <strong>Kezdj el tippelni...</strong> szöveg jelenik meg. Ezzel létrejött az első kapcsolat a kód és a böngészőben látható felület között. A DOM jelentését a következő videóban bontjuk ki.</p>
+    </section>
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+      <a class="lesson-button" href="dom.html">Következő · 75. Mi a DOM?</a>
+    </nav>
+  </main>
+</body>
+</html>

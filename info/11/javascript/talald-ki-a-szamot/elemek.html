@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elemek kiválasztása és módosítása</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="label">11TC SZFT · DOM és események · Jonas 76. videója</p>
+      <h1>Elemek kiválasztása és módosítása</h1>
+      <p>A játék feliratát, pontszámát és beviteli mezőjét JavaScriptből módosítjuk.</p>
+    </header>
+    <section>
+      <h2>Olvasás, módosítás, újraolvasás</h2>
+      <p>A projekt <code>script.js</code> fájljában a szigorú mód sora alá írd a következő kódot. Ha a korábbi kiírás már benne van, egészítsd ki. Ments, és frissítsd a <a href="kezdo/index.html">játék oldalát</a>.</p>
+      <pre><code>console.log(document.querySelector('.message').textContent);
+document.querySelector('.message').textContent = "Helyes szám!";
+console.log(document.querySelector('.message').textContent);</code></pre>
+      <p>Az első kiírás a <strong>Kezdj el tippelni...</strong> szöveget mutatja. Az értékadás átírja az elem szövegét a felületen. A második kiírás már a <strong>Helyes szám!</strong> üzenetet olvassa. Az utasítások sorrendje ezért számít.</p>
+    </section>
+    <section>
+      <h2>A szám és a pontszám módosítása</h2>
+      <p>A HTML-ben a <code>div.number</code> mutatja a titkos szám helyét, a <code>span.score</code> a pontszámot. A megjelenő szövegüket írjuk át.</p>
+      <pre><code>document.querySelector('.number').textContent = 13;
+document.querySelector('.score').textContent = 10;</code></pre>
+      <p>A felületen a kérdőjel helyére 13, a pontszámhoz 10 kerül. A <code>querySelector()</code> az elemet adja vissza. A <code>textContent</code> megadásával annak szöveges tartalmát módosítjuk. Ezek most közvetlen próbák, a találat ellenőrzését és a pontozást később írjuk meg.</p>
+    </section>
+    <section>
+      <h2>A beviteli mező értéke</h2>
+      <p>Az <code>input.guess</code> mezőbe írt adatot a <code>value</code> tulajdonsággal érjük el. A kezdetben üres mező értéke üres szöveg. Először olvasd ki, majd add meg a videóban szereplő 23-at.</p>
+      <pre><code>console.log(document.querySelector('.guess').value); // kezdetben ""
+document.querySelector('.guess').value = 23;
+console.log(document.querySelector('.guess').value); // "23"</code></pre>
+      <p>A mezőben 23 jelenik meg, ugyanúgy szerkesztheted és törölheted, mint a kézzel beírt adatot. A kiolvasott <code>value</code> szöveg, szám típusú beviteli mezőnél is. A következő leckében a gomb megnyomásakor olvassuk ki és alakítjuk számmá. A 23 itt a beírás kipróbálását szolgálja, a játék számhatára továbbra is 1–20.</p>
+    </section>
+    <section>
+      <h2>Két gyakori elakadás</h2>
+      <p>A <code>document.querySelector()</code> szelektor nélkül hibát ad, mert meg kell adni, melyik elemet keressük. Az osztály elé pont kerül, például <code>'.guess'</code>. Ha a szelektor egyetlen elemre sem illeszkedik, az eredmény <code>null</code>, és annak <code>value</code> vagy <code>textContent</code> tulajdonságát már nem tudjuk kiolvasni.</p>
+      <p>Jonas egy kiíró sort a szerkesztőben az értékadás alá mozgat. A VS Code-ban az aktuális sor mozgatása Windowson <kbd>Alt</kbd> + <kbd>↓</kbd>, Macen <kbd>Option</kbd> + <kbd>↓</kbd>. Így a kiírás már az új értéket mutatja.</p>
+    </section>
+    <section class="practice">
+      <h2>Önálló próba</h2>
+      <p>Írd át az üzenetet <strong>Próbálkozz újra!</strong> szövegre, a pontszámot 15-re, a beviteli mezőt 7-re. Olvasd vissza mindhárom adatot a konzolban. Ha készen vagy, kommentezd ki ezeket a próbaértékadásokat a következő lecke előtt.</p>
+    </section>
+    <nav aria-label="Tananyag navigáció">
+      <a class="lesson-button" href="dom.html">Előző · 75. Mi a DOM?</a>
+      <a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a>
+      <a class="lesson-button" href="kattintas.html">Következő · 77. Kattintások kezelése</a>
+    </nav>
+  </main>
+</body>
+</html>

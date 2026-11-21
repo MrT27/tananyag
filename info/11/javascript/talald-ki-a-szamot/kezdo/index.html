@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Találd ki a számot!</title>
+  </head>
+  <body>
+    <header>
+      <h1>Találd ki a számot!</h1>
+      <p class="between">(1 és 20 között)</p>
+      <button class="btn again">Újra!</button>
+      <div class="number">?</div>
+    </header>
+    <main>
+      <section class="left">
+        <input type="number" class="guess" />
+        <button class="btn check">Ellenőrzés!</button>
+      </section>
+      <section class="right">
+        <p class="message">Kezdj el tippelni...</p>
+        <p class="label-score">💯 Pontszám: <span class="score">20</span></p>
+        <p class="label-highscore">
+          🥇 Rekord: <span class="highscore">0</span>
+        </p>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
