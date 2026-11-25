@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Objektummetódusok</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body><main><header><p class="label">11TC SZFT · JavaScript-alapok – 2. rész</p><h1>Objektummetódusok</h1><p>Függvények az objektumban, a this kulcsszó és számított adatok tárolása.</p></header><section><h2>Függvény is lehet egy tulajdonság értéke</h2><p>Egy objektum szöveget, számot, logikai értéket, tömböt, sőt másik objektumot is tartalmazhat. A függvény szintén érték, ezért tulajdonságként függvényt is tárolhatunk. Az objektumhoz kapcsolódó függvényt <strong>metódusnak</strong> nevezzük.</p><p>Az előző objektumot most alakítsd át: az előre kiszámított <code>age</code> helyére <code>birthYear</code> kerül, és hozzáadunk egy jogosítványt jelző logikai értéket. A korábbi objektumot cseréld le, ne deklaráld újra ugyanabban a fájlban!</p><pre><code>const janos = {
+  firstName: &#x27;János&#x27;,
+  lastName: &#x27;Kovács&#x27;,
+  birthYear: 1991,
+  job: &#x27;tanár&#x27;,
+  friends: [&#x27;Michael&#x27;, &#x27;Peter&#x27;, &#x27;Steven&#x27;],
+  hasDriversLicense: true,
+
+  calcAge: function (birthYear) {
+    return 2037 - birthYear;
+  }
+};</code></pre><p>A <code>2037</code> a példák rögzített referenciaéve; most is ezzel számolunk.</p></section>
+<section><h2>Kapcsolat a függvénykifejezésekkel</h2><pre><code>// Korábban: függvényérték egy változóban
+const calcAge = function (birthYear) {
+  return 2037 - birthYear;
+};</code></pre><p>Az objektumban ugyanezt a függvénykifejezést használjuk. Ott a <code>calcAge</code> tulajdonságnév után kettőspont áll, nem értékadó egyenlőségjel. A metódus tehát olyan tulajdonság, amelynek az értéke függvény. A tulajdonságokat, így a metódusokat is, vessző választja el.</p><p>Egy önálló <code>function calcAge(...) { ... }</code> deklarációt nem illeszthetünk az objektum tulajdonságai közé. A most használt <code>calcAge:</code> után értéket előállító függvénykifejezés kell. Később más, rövidebb metódusszintaxissal is találkozhatunk.</p></section>
+<section><h2>Metódus elérése és meghívása</h2><pre><code>console.log(janos.calcAge(1991));    // 46
+console.log(janos[&#x27;calcAge&#x27;](1991)); // 46</code></pre><p>Mindkét jelöléssel elérjük a függvényértéket, majd a kerek zárójelekkel meghívjuk és átadjuk az argumentumot. A <code>janos.calcAge</code> önmagában a függvényt jelenti; a <code>janos.calcAge(1991)</code> már a hívás eredménye.</p><p>Először a tulajdonság-elérés történik meg, majd a kapott függvény meghívása. A <code>['calcAge']</code> a nevet választja ki; az utána álló <code>(1991)</code> a híváshoz tartozik.</p></section>
+<section><h2>Miért ne ismételjük meg a születési évet?</h2><p>Az <code>1991</code> már az objektumban is szerepel. Ha a hívásnál véletlenül <code>1992</code>-t adnánk át, más eredményt kapnánk. Ugyanazt az adatot több helyen karbantartani hibalehetőség.</p><p>A <strong>DRY</strong> (Don’t Repeat Yourself, azaz „ne ismételd magad”) elv szerint az ilyen ismétlést érdemes elkerülni. Olvassuk ki a születési évet közvetlenül a hívó objektumból!</p></section>
+<section><h2>A this kulcsszó: a hívó objektum</h2><p>Az objektum <code>calcAge</code> tulajdonságát cseréld erre a második változatra. A régi változatot megőrizheted kommentben, de egyszerre csak az egyik legyen aktív!</p><pre><code>calcAge: function () {
+  console.log(this);
+  return 2037 - this.birthYear;
+}</code></pre><pre><code>console.log(janos.calcAge()); // az objektum, majd 46</code></pre><p>Ennél a normál függvénnyel írt, objektumon keresztül meghívott metódusnál a <code>this</code> arra az objektumra mutat, amelyen meghívjuk. A <code>janos.calcAge()</code> esetén ez a <code>janos</code>. A <code>this.birthYear</code> így ennek az objektumnak az <code>1991</code> értékét olvassa ki. Már nem kell paraméter és argumentum.</p><p>A <code>this</code> értékét a hívás módja határozza meg; nem minden függvényben automatikusan a körülötte leírt objektumot jelenti. Ebben a leckében maradunk az objektumon keresztüli hívásnál és a <code>function</code> alaknál.</p></section>
+<section><h2>Miért this.birthYear, miért nem janos.birthYear?</h2><p>A konkrét <code>janos.birthYear</code> itt szintén működne, de a metódust ehhez a változónévhez kötné. Ha az objektum változónevét és a hívást <code>janos2</code>-re neveznénk át, a metódusban maradt régi nevet is javítanunk kellene. A <code>this.birthYear</code> a hívó objektum adatát használja, így a metódus belsejét nem kell átírni.</p></section>
+<section><h2>Az eredmény eltárolása az objektumban</h2><p>Ha négyszer meghívjuk a második változatot, a számítás négyszer fut le. Egy kivonásnál ez elhanyagolható, de egy drágább műveletnél hasznos lehet az eredményt eltárolni, és később kiolvasni. Cseréld le a metódust a harmadik változatra:</p><pre><code>calcAge: function () {
+  this.age = 2037 - this.birthYear;
+  return this.age;
+}</code></pre><pre><code>console.log(janos.age);       // undefined: még nem számítottuk ki
+console.log(janos.calcAge()); // 46: kiszámítja, eltárolja és visszaadja
+console.log(janos.age);       // 46
+console.log(janos.age);       // 46
+console.log(janos.age);       // 46</code></pre><p>A <code>this.age = ...</code> új tulajdonságot hoz létre a hívó objektumon. A későbbi kiolvasás nem futtatja újra a metódust. Minden új <code>calcAge()</code> hívás viszont újraszámol; ez nem automatikus gyorsítótár. Ha a kiinduló adat megváltozik, az eltárolt értéket is frissíteni kell.</p><p>A <code>return</code> nélkül is létrejönne az <code>age</code>, de a hívás eredménye <code>undefined</code> lenne. A visszatérési érték miatt a számított életkort közvetlenül is használhatjuk.</p><p>VS Code-ban a következő egyező előfordulás kijelölése Windows alatt <strong>Ctrl + D</strong>, Macen <strong>Command + D</strong>. Többszöri használatával több helyen egyszerre szerkeszthetsz.</p></section>
+<section><h2>Önálló próba: getSummary metódus</h2><p>Adj az objektumhoz <code>getSummary</code> nevű metódust! Adjon vissza egy összefoglaló szöveget a névből, az életkorból, a foglalkozásból és a jogosítvány meglétéből:</p><p><strong>János egy 46 éves tanár, és van jogosítványa.</strong></p><p>Ha a <code>hasDriversLicense</code> hamis, a mondat vége „nincs jogosítványa.” legyen. Használd a <code>this</code> kulcsszót és a feltételes operátort! Ne feltételezd, hogy a <code>calcAge()</code>-t már meghívtuk!</p><details><summary>Teljes megoldás</summary><pre><code>const janos = {
+  firstName: &#x27;János&#x27;,
+  lastName: &#x27;Kovács&#x27;,
+  birthYear: 1991,
+  job: &#x27;tanár&#x27;,
+  friends: [&#x27;Michael&#x27;, &#x27;Peter&#x27;, &#x27;Steven&#x27;],
+  hasDriversLicense: true,
+
+  calcAge: function () {
+    this.age = 2037 - this.birthYear;
+    return this.age;
+  },
+
+  getSummary: function () {
+    return `${this.firstName} egy ${this.calcAge()} éves ${this.job}, és ${this.hasDriversLicense ? &#x27;van&#x27; : &#x27;nincs&#x27;} jogosítványa.`;
+  }
+};
+
+console.log(janos.getSummary());
+// János egy 46 éves tanár, és van jogosítványa.
+
+janos.hasDriversLicense = false;
+console.log(janos.getSummary());
+// János egy 46 éves tanár, és nincs jogosítványa.</code></pre><p>A teljes példát külön próbáld ki, vagy cseréld le vele a korábbi objektumot; ne deklaráld kétszer ugyanazt a <code>const janos</code> változót.</p></details></section>
+<section><h2>Hogyan működik az összefoglalás?</h2><p>A <code>janos.getSummary()</code> hívásban a <code>this</code> a <code>janos</code> objektum. A sablonliterálban a <code>this.calcAge()</code> meghív egy másik metódust ugyanazon az objektumon. A visszaadott szám bekerül a szövegbe. Ez akkor is működik, ha az <code>age</code> tulajdonság korábban még nem létezett.</p><p>A <code>this.hasDriversLicense ? 'van' : 'nincs'</code> kifejezés a logikai érték alapján választ szöveget. A feltételes operátor kifejezés, ezért használható a sablonliterál helyőrzőjében. A <code>getSummary</code> visszaadja a kész szöveget, a külső <code>console.log()</code> jeleníti meg.</p><p>Ne felejtsd el a két metódus közötti vesszőt! Próbáld ki a jogosítvány mindkét értékét, és változtasd meg a születési évet is!</p></section>
+<section><h2>Kapcsolat a tömbmetódusokkal</h2><pre><code>janos.friends.push(&#x27;Jay&#x27;);
+console.log(janos.friends);</code></pre><p>A tömbök a JavaScriptben speciális objektumok. Ezért rendelkezhetnek metódusokkal, például <code>push()</code>, <code>pop()</code>, <code>shift()</code> és <code>unshift()</code> műveletekkel. Korábban a tömbök beépített metódusait használtuk; most a saját objektumunkhoz írtunk saját metódusokat.</p></section><nav aria-label="Tananyag navigáció"><a class="lesson-button" href="tulajdonsagok-elerese.html">Előző · Tulajdonságok elérése</a><a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a></nav></main></body></html>
