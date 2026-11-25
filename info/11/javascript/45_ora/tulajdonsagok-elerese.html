@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tulajdonságok elérése ponttal és szögletes zárójellel</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body><main><header><p class="label">11TC SZFT · JavaScript-alapok – 2. rész</p><h1>Tulajdonságok elérése</h1><p>Pontjelölés, szögletes zárójeles jelölés, adatbekérés és az objektum bővítése.</p></header><section><h2>Az előző objektum megtekintése</h2><p>Folytasd az előző lecke objektumával. Ha már szerepel a fájlban, ne deklaráld újra, csak egészítsd ki a kódot!</p><pre><code>const janos = {
+  firstName: &#x27;János&#x27;,
+  lastName: &#x27;Kovács&#x27;,
+  age: 2037 - 1991,
+  job: &#x27;tanár&#x27;,
+  friends: [&#x27;Michael&#x27;, &#x27;Peter&#x27;, &#x27;Steven&#x27;]
+};
+
+console.log(janos);</code></pre><p>A konzolban megvizsgálhatod az objektum tulajdonságait. A fejlesztői eszköz megjelenítheti őket ábécérendben is; ez böngészőfüggő megjelenítés. A tulajdonságokat névvel érjük el, nem a konzolban látható helyük alapján.</p></section>
+<section><h2>Pontjelölés és szögletes zárójeles jelölés</h2><pre><code>console.log(janos.lastName);    // Kovács
+console.log(janos[&#x27;lastName&#x27;]); // Kovács</code></pre><p>A pont utáni név megadja, melyik tulajdonságot szeretnénk kiolvasni. A pont a tulajdonság-elérés operátora. A második alakban a szögletes zárójelek közé a tulajdonság nevét tartalmazó karakterláncot írjuk. Mindkettő ugyanazt az értéket adja.</p><p>A zárójelek hasonlítanak a tömbök indexelésére, de itt egy elnevezett tulajdonságot választunk ki.</p></section>
+<section><h2>Kifejezés a szögletes zárójelek között</h2><pre><code>const nameKey = &#x27;Name&#x27;;
+
+console.log(janos[&#x27;first&#x27; + nameKey]); // János
+console.log(janos[&#x27;last&#x27; + nameKey]);  // Kovács</code></pre><p>A <code>firstName</code> és <code>lastName</code> közös része a <code>Name</code>. Először a szögletes zárójelben álló kifejezés értékelődik ki: a <code>'first' + nameKey</code> eredménye <code>'firstName'</code>. Ezután a JavaScript az így kapott nevű tulajdonságot olvassa ki. Az összefűzés helyett sablonliterál is használható.</p><pre><code>console.log(janos[`first${nameKey}`]); // János
+
+// Hibás szintaxis, ne futtasd így:
+// console.log(janos.&#x27;first&#x27; + nameKey);</code></pre><p>A pont után közvetlenül a tulajdonság azonosítóként használható nevét írjuk, nem számítást vagy idézőjeles szöveget. Ha a név kiszámított, vagy változóban érkezik, szögletes zárójelet használunk. Egy ismert, egyszerű névhez általában a rövidebb pontjelölést választjuk.</p></section>
+<section><h2>A felhasználó választja ki az adatot</h2><p>A böngészőben a <code>prompt()</code> beviteli ablakot nyit. A megadott szöveget visszaadja, ezért eltárolhatjuk egy változóban. A Mégse gomb eredménye <code>null</code>.</p><pre><code>const interestedIn = prompt(
+  &#x27;Mit szeretnél tudni Jánosról? Válassz: firstName, lastName, age, job, friends&#x27;
+);
+
+console.log(interestedIn);
+console.log(janos.interestedIn); // undefined
+console.log(janos[interestedIn]);</code></pre><p>Ha <code>job</code> a válasz, akkor a változó értéke a <code>'job'</code> szöveg. A <code>janos.interestedIn</code> szó szerint az <code>interestedIn</code> nevű tulajdonságot keresi. Ilyen nincs, ezért <code>undefined</code> az eredmény. A <code>janos[interestedIn]</code> a változó értékét használja névként, így a <code>job</code> értékét, a <code>'tanár'</code> szöveget kapjuk.</p><p>Próbáld ki a <code>location</code> választ is! Ezt a tulajdonságot még nem adtuk meg, ezért a zárójeles elérés is <code>undefined</code> értéket ad. Figyelj a kis- és nagybetűkre: a <code>firstName</code> és a <code>firstname</code> különböző név.</p></section>
+<section><h2>Nem létező tulajdonság kezelése</h2><p>A korábbi <code>interestedIn</code> változót használva a kiírásokat cseréld erre:</p><pre><code>if (janos[interestedIn]) {
+  console.log(janos[interestedIn]);
+} else {
+  console.log(&#x27;Hibás kérés! Válassz: firstName, lastName, age, job, friends&#x27;);
+}</code></pre><p>A hiányzó tulajdonság értéke <code>undefined</code>, amely falsy, ezért az <code>else</code> ág fut. A példában szereplő nem üres szövegek, a nem nulla életkor és a barátok tömbje truthy értékek.</p><p><strong>Ez az ellenőrzés az érték igazságértékét vizsgálja, nem általánosan a tulajdonság létezését.</strong> Egy létező tulajdonság <code>0</code>, <code>false</code> vagy üres karakterlánc értéke szintén az <code>else</code> ágba vezetne. A mostani objektumnál ez nem okoz problémát.</p><p>A kódsorok mozgatásához a VS Code-ban Windows alatt az Alt + fel/le nyíl, Macen az Option + fel/le nyíl használható.</p></section>
+<section><h2>Új tulajdonság hozzáadása és meglévő módosítása</h2><pre><code>janos.location = &#x27;Portugália&#x27;;
+janos[&#x27;twitter&#x27;] = &#x27;@janos&#x27;;
+console.log(janos);</code></pre><p>Mindkét jelöléssel hozzáadhatunk új tulajdonságot: az elérés bal oldalára értéket adunk. A konzolban már a <code>location</code> és a <code>twitter</code> is megjelenik. Zárójelek között itt is használhatunk változót vagy más kifejezést.</p><pre><code>janos.job = &#x27;programozó&#x27;;
+janos[&#x27;job&#x27;] = &#x27;tanár&#x27;;</code></pre><p>Ha a tulajdonság már létezik, ugyanígy módosítjuk az értékét. A <code>const</code> mellett az objektum tartalma módosítható, de a <code>janos</code> változóhoz nem rendelhetünk egy másik objektumot.</p><p>A kód felülről lefelé fut: ha a <code>location</code> hozzáadása a bekérés után van, az első bekéréskor még nem létezik. Frissítéskor a <code>prompt()</code> ismét megjelenik; a bekérést tartalmazó részt ideiglenesen kikommentezheted, ha csak az új példákat próbálod.</p></section>
+<section><h2>Önálló próba: mondat az objektum adataiból</h2><p>Írasd ki a következő mondatot úgy, hogy a nevet, a barátok számát és az első barát nevét az objektumból veszed, nem kézzel írod be:</p><p><strong>János barátainak száma 3, és a legjobb barátját Michaelnek hívják.</strong></p><p>A példában az első barátot tekintjük a legjobb barátnak. Tipp: a <code>friends</code> egy tömb; a hosszához a <code>length</code>, az első eleméhez a <code>[0]</code> tartozik. Próbáld meg önállóan, mielőtt megnyitod a megoldást!</p><details><summary>Megoldás és magyarázat</summary><pre><code>console.log(
+  `${janos.firstName} barátainak száma ${janos.friends.length}, és a legjobb barátját ${janos.friends[0]}nek hívják.`
+);</code></pre><p>A <code>janos.friends</code> eredménye a barátok tömbje. A <code>length</code> minden tömbön rendelkezésre álló tulajdonság, nem kell külön létrehoznunk. A <code>janos.friends[0]</code> pedig ennek a tömbnek az első elemét adja.</p></details></section>
+<section><h2>Miért működik a láncolás?</h2><p>A pontjelölés és a számított, szögletes zárójeles tulajdonság-elérés magas precedenciájú művelet. A láncot balról jobbra követjük:</p><pre><code>janos.friends.length
+// 1. janos.friends → [&#x27;Michael&#x27;, &#x27;Peter&#x27;, &#x27;Steven&#x27;]
+// 2. a kapott tömb .length tulajdonsága → 3
+
+janos.friends[0]
+// 1. janos.friends → a barátok tömbje
+// 2. a kapott tömb [0] eleme → &#x27;Michael&#x27;</code></pre><p>A ponttal előbb az objektum tömböt tartalmazó tulajdonságát érjük el, majd a kapott tömbbel dolgozunk tovább. A zárójeleken belüli kifejezés külön kiértékelődik. A használat gyakorlással válik természetessé; nem kell teljes precedenciatáblázatot bemagolnod.</p></section><nav aria-label="Tananyag navigáció"><a class="lesson-button" href="objektumok.html">Előző · Bevezetés az objektumokba</a><a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a></nav></main></body></html>
