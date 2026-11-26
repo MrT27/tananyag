@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visszafelé bejárás és egymásba ágyazott ciklusok</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body><main><header><p class="label">11TC SZFT · JavaScript-alapok – 2. rész</p><h1>Visszafelé bejárás és egymásba ágyazott ciklusok</h1><p>Csökkenő számláló, külső és belső ciklus.</p></header><section><h2>A tömb utolsó elemétől az elsőig</h2><p>Az előző leckében a tömb elejétől haladtunk a végéig. Most fordított sorrendben olvassuk ki ugyanazokat az adatokat. Először az öt elemű változattal dolgozz; a korábbi tömböt cseréld le, ne deklaráld újra ugyanabban a fájlban!</p><pre><code>const janosArray = [
+  &#x27;János&#x27;,
+  &#x27;Kovács&#x27;,
+  2037 - 1991,
+  &#x27;tanár&#x27;,
+  [&#x27;Michael&#x27;, &#x27;Peter&#x27;, &#x27;Steven&#x27;]
+];</code></pre><p>Előrefelé az indexek: 0, 1, 2, 3, 4. Visszafelé: 4, 3, 2, 1, 0. Ennek megfelelően a kezdőértéket, a feltételt és a frissítést is át kell gondolnunk.</p></section>
+<section><h2>A visszafelé haladó for ciklus</h2><pre><code>for (let i = janosArray.length - 1; i &gt;= 0; i--) {
+  console.log(janosArray[i]);
+}</code></pre><ul><li><strong>Kezdőérték:</strong> <code>janosArray.length - 1</code>, vagyis az utolsó érvényes index. Öt elemnél ez 4. Nem rögzített számot írunk, így a ciklus a tömb hosszához igazodik.</li><li><strong>Feltétel:</strong> <code>i &gt;= 0</code>. A nulladik elemet is ki akarjuk olvasni, ezért az egyenlőség szükséges.</li><li><strong>Frissítés:</strong> <code>i--</code>, vagyis eggyel csökkentjük a számlálót. Itt ez ugyanazt a változást végzi, mint az <code>i = i - 1</code>.</li></ul><p>Először a barátok tömbje, majd a foglalkozás, a 46-os életkor, a vezetéknév és végül a keresztnév jelenik meg. A belső tömb itt továbbra is egyetlen elemként kerül kiírásra.</p></section>
+<section><h2>A számláló követése</h2><p>A sorrendet könnyebb ellenőrizni, ha az indexet is kiíratjuk:</p><pre><code>for (let i = janosArray.length - 1; i &gt;= 0; i--) {
+  console.log(i, janosArray[i]);
+}
+// 4 [&#x27;Michael&#x27;, &#x27;Peter&#x27;, &#x27;Steven&#x27;]
+// 3 &#x27;tanár&#x27;
+// 2 46
+// 1 &#x27;Kovács&#x27;
+// 0 &#x27;János&#x27;</code></pre><p>A 0 még megfelel a <code>0 &gt;= 0</code> feltételnek. A nulladik elem kiírása után a számláló −1 lesz. A <code>-1 &gt;= 0</code> már hamis, így befejeződik a ciklus. Ha <code>i &gt; 0</code> lenne a feltétel, az első elem kimaradna.</p><p>A tömb tartalmát nem fordítjuk meg és nem módosítjuk: csak az olvasás sorrendje változik.</p></section>
+<section><h2>Mi történik, ha hosszabb lesz a tömb?</h2><p>Próbaként adj egy új elemet a végéhez, majd futtasd újra a bejárást:</p><pre><code>janosArray.push(true);
+
+for (let i = janosArray.length - 1; i &gt;= 0; i--) {
+  console.log(i, janosArray[i]);
+}</code></pre><p>Most a hossz 6, ezért a kezdőindex <code>6 - 1</code>, vagyis 5. Elsőként az új <code>true</code> jelenik meg, utána a korábbi elemek. A cikluson semmit nem kellett változtatni. Ha újra csak ezt a <code>push()</code> sort futtatod, újabb elemet adsz a tömbhöz.</p><p>A gyakorlat lényege a ciklus három részének tudatos megválasztása, nem egy rögzített fejléc bemagolása.</p></section>
+<section><h2>Ciklus egy másik cikluson belül</h2><p>Térjünk vissza az edzőtermi példához! Most <strong>három különböző gyakorlatot</strong> végzünk, mindegyikből <strong>öt ismétlést</strong>. Ehhez a külső ciklus a gyakorlatokat, a belső az ismétléseket számlálja.</p><p>Először csak a három gyakorlat kezdetét írjuk ki:</p><pre><code>for (let exercise = 1; exercise &lt; 4; exercise++) {
+  console.log(`--- A(z) ${exercise}. gyakorlat kezdete ---`);
+}</code></pre><p>A <code>exercise &lt; 4</code> ebben az 1-ről induló, egyesével növekvő ciklusban ugyanazokat az értékeket engedi át, mint a <code>exercise &lt;= 3</code>: 1, 2 és 3.</p></section>
+<section><h2>Öt ismétlés minden gyakorlaton belül</h2><p>A külső ciklus törzsébe helyezzük az ismétléseket végző második ciklust:</p><pre><code>for (let exercise = 1; exercise &lt; 4; exercise++) {
+  console.log(`--- A(z) ${exercise}. gyakorlat kezdete ---`);
+
+  for (let rep = 1; rep &lt; 6; rep++) {
+    console.log(`Súlyemelés – ${rep}. ismétlés 🏋️`);
+  }
+}</code></pre><p>A <code>rep &lt; 6</code> mellett a belső számláló 1-től 5-ig halad. Itt ez ugyanaz, mint a <code>rep &lt;= 5</code>. A külső ciklus egyetlen ismétlésén belül a teljes belső ciklus lefut.</p><p>Mielőtt futtatod, gondold végig: hány gyakorlatkezdő és hány súlyemelést jelző üzenet fog megjelenni?</p></section>
+<section><h2>A végrehajtás sorrendje</h2><ol><li><code>exercise = 1</code>: kiírjuk az első gyakorlat kezdetét, majd a belső ciklus 1-től 5-ig végigfut.</li><li>A belső ciklus befejeződik, a külső számláló 2-re nő. Kiírjuk a második gyakorlat kezdetét, majd egy új belső ciklus indul <code>rep = 1</code> értékkel.</li><li><code>exercise = 3</code>: ugyanígy újra lefut az öt ismétlés.</li><li>A külső számláló 4-re nő. A <code>4 &lt; 4</code> hamis, így a külső ciklus is befejeződik.</li></ol><p>A belső ciklus mindhárom alkalommal újra 1-ről indul. Összesen <strong>3 × 5 = 15 súlyemelés</strong> történik. A három gyakorlatkezdő sorral együtt <strong>18 konzolkiírás</strong> jelenik meg.</p></section>
+<section><h2>A külső számláló a belső ciklusban is használható</h2><p>Tegyük az ismétlések szövegébe az aktuális gyakorlat számát is:</p><pre><code>for (let exercise = 1; exercise &lt; 4; exercise++) {
+  console.log(`--- A(z) ${exercise}. gyakorlat kezdete ---`);
+
+  for (let rep = 1; rep &lt; 6; rep++) {
+    console.log(`${exercise}. gyakorlat – ${rep}. súlyemelés 🏋️`);
+  }
+}</code></pre><p>Az <code>exercise</code> a teljes külső ciklustörzsben elérhető, így az abba ágyazott belső ciklusban is. A <code>rep</code> a saját belső ciklusához tartozik; azon kívül nem használhatjuk.</p><p>Az első öt súlyemelésnél az <code>exercise</code> 1, a következő ötnél 2, az utolsó ötnél 3. A két számlálónak külön szerepe van: a külső választja a gyakorlatot, a belső az azon belüli ismétlést.</p></section>
+<section><h2>Kapcsolat a Pythonban tanultakkal</h2><pre><code># Python
+for exercise in range(1, 4):
+    print(f&#x27;--- A(z) {exercise}. gyakorlat kezdete ---&#x27;)
+    for rep in range(1, 6):
+        print(f&#x27;{exercise}. gyakorlat – {rep}. súlyemelés&#x27;)</code></pre><p>Az egymásba ágyazás elve ugyanaz: a belső ciklus teljes egészében lefut a külső minden ismétlésekor. Pythonban a behúzás, JavaScriptben a kapcsos zárójelek jelölik a ciklustörzseket. A következetes behúzás JavaScriptben is segít látni, melyik sor melyik ciklushoz tartozik.</p></section><nav aria-label="Tananyag navigáció"><a class="lesson-button" href="tombok-bejarasa.html">Előző · Tömbök bejárása</a><a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a></nav></main></body></html>
