@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A for ciklus</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f8f9fa; color: #172335; font: 1.05rem/1.6 system-ui, sans-serif; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header, section, aside { padding: clamp(1rem, 3vw, 2rem); margin-bottom: 1rem; border: 1px solid #dce3eb; border-radius: 1rem; background: white; }
+    header { background: #eef7ff; }
+    h1, h2 { margin: 0 0 .5rem; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); }
+    h2 { font-size: 1.45rem; }
+    p { margin: .6rem 0; }
+    li + li { margin-top: .35rem; }
+    .label { color: #244c78; font-weight: 700; }
+    pre { padding: .9rem 1rem; overflow: auto; background: #172335; color: #fff; border-radius: .6rem; font-size: .95rem; }
+    a { color: #154d8a; }
+    summary { cursor: pointer; font-weight: 700; }
+    .practice { border-inline-start: .35rem solid #288653; }
+    .lesson-button {
+      display: block;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 8px;
+      background-color: #154d8a;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .lesson-button:hover, .lesson-button:focus { background-color: #0f3765; }
+  </style>
+</head>
+<body><main><header><p class="label">11TC SZFT · JavaScript-alapok – 2. rész</p><h1>A for ciklus</h1><p>Ismétlődő feladatok, számláló, feltétel és frissítés.</p></header><section><h2>Ismétlődő feladatok automatizálása</h2><p>Az <code>if–else</code> elágazás vezérlési szerkezet: eldönti, melyik kódág fusson le. Egy másik vezérlési szerkezet a <strong>ciklus</strong>, amellyel ugyanazt a műveletet ismételjük. A ciklusok a programozási nyelvek alapvető építőelemei.</p><p>Képzelj el egy edzőtermi gyakorlatot: tízszer emeled fel a súlyt. Ciklus nélkül minden kiírást külön kellene leírnod:</p><pre><code>console.log(&#x27;Súlyemelés – 1. ismétlés 🏋️&#x27;);
+console.log(&#x27;Súlyemelés – 2. ismétlés 🏋️&#x27;);
+console.log(&#x27;Súlyemelés – 3. ismétlés 🏋️&#x27;);
+// ...és így tovább a 10. ismétlésig</code></pre><p>Harminc ismétléshez harminc hasonló sor kellene. Ha a szöveget módosítanánk, minden sorban javítanunk kellene. Ez sérti a <strong>DRY</strong>, azaz „ne ismételd magad” elvet. A ciklusban a műveletet egyszer írjuk le, a program pedig többször végrehajtja.</p></section>
+<section><h2>A számlálós for ciklus</h2><p>A <code>for</code> utasítás fejlécében három rész szerepel, egymástól két pontosvesszővel elválasztva. A kapcsos zárójelek közé kerül az ismétlendő kód, a ciklustörzs.</p><pre><code>for (let rep = 1; rep &lt;= 10; rep = rep + 1) {
+  console.log(&#x27;Súlyemelés – 1. ismétlés 🏋️&#x27;);
+}</code></pre><p>A <code>rep</code> az ismétlést jelentő angol <em>repetition</em> rövidítése. Ez egy általunk választott változónév, más megfelelő névvel is dolgozhatnánk. A korábbi kézi kiírásokat kommentezd ki, hogy csak az új példa eredményét lásd!</p></section>
+<section><h2>1. Kezdőérték: let rep = 1</h2><p>A számlálót egyszer, a ciklus indulásakor hozzuk létre. Az első ismétléshez az értéke <code>1</code>. A <code>let</code> szükséges, mert később változtatjuk a számláló értékét; ehhez a <code>const</code> nem megfelelő.</p><p>A fejlécben <code>let</code>-tel létrehozott változó a cikluson belül használható, kívül nem. A fejléc <code>let rep = 1</code> része nem fut le újra minden ismétléskor.</p></section>
+<section><h2>2. Feltétel: rep &lt;= 10</h2><p>A feltételt <strong>minden ismétlés előtt</strong> ellenőrzi a program, az első előtt is. Ha igaz, lefut a ciklustörzs. Ha hamis, kilépünk a ciklusból, és a ciklus utáni kóddal folytatjuk a programot.</p><p><strong>A ciklus addig folytatódik, amíg a feltétel igaz.</strong> A <code>10 &lt;= 10</code> még igaz, ezért a tizedik ismétlés is lefut. A <code>11 &lt;= 10</code> már hamis. Ha a feltétel már induláskor hamis, a törzs egyszer sem fut le.</p></section>
+<section><h2>3. Frissítés: rep++</h2><p>A ciklustörzs minden rendes lefutása után frissítjük a számlálót. A <code>rep = rep + 1</code> eggyel növeli az értékét. Az operátoroknál tanult rövidítéssel:</p><pre><code>for (let rep = 1; rep &lt;= 10; rep++) {
+  console.log(&#x27;Súlyemelés – 1. ismétlés 🏋️&#x27;);
+}</code></pre><p>Itt a <code>rep++</code> ugyanazt a növelést végzi. A frissítés után a program újra megvizsgálja a feltételt.</p><p>Ha a számláló nem változna, és a feltételt sem tenné hamissá más művelet, vég nélkül ismételnénk a törzset. Az ilyen <strong>végtelen ciklus</strong> lefoglalhatja a böngészőt. Ne próbáld ki a növelés elhagyásával ezt a példát!</p></section>
+<section><h2>Miért csak egy üzenet látszik a konzolban?</h2><p>A fenti változat tízszer ugyanazt az „1. ismétlés” szöveget írja ki: a számláló már változik, de a szövegben még rögzített szám van. Egyes fejlesztői konzolok összevonják az azonos üzeneteket, és egy számmal jelzik az előfordulásukat. A kiírás ilyenkor is tízszer történt meg.</p></section>
+<section><h2>A számláló beillesztése a szövegbe</h2><p>A rögzített szám helyére a <code>rep</code> aktuális értékét tesszük. Használjunk sablonliterált, backtick karakterekkel és <code>${rep}</code> helyőrzővel:</p><pre><code>for (let rep = 1; rep &lt;= 10; rep++) {
+  console.log(`Súlyemelés – ${rep}. ismétlés 🏋️`);
+}</code></pre><p>Most az első sorban 1, a következőben 2, végül 10 szerepel. A számláló a törzsben közönséges változóként használható. A kiírás csak szemléltetés: a törzsben bármilyen más ismétlődő művelet is lehet.</p></section>
+<section><h2>A végrehajtás sorrendje</h2><ol><li><code>let rep = 1</code>: egyszer beállítjuk a kezdőértéket.</li><li><code>rep &lt;= 10</code>: megvizsgáljuk a feltételt.</li><li>Igaz feltételnél lefut a törzs az aktuális <code>rep</code> értékkel.</li><li><code>rep++</code>: eggyel növeljük a számlálót.</li><li>Visszatérünk a feltétel ellenőrzéséhez.</li></ol><p>Az első kiíráskor a <code>rep</code> 1, csak utána lesz 2. A második kiíráskor 2, utána 3. A tizedik kiírás után 11-re nő; az új feltételvizsgálat hamis, így több kiírás nem történik.</p><pre><code>for (let rep = 1; rep &lt;= 10; rep++) {
+  console.log(`Súlyemelés – ${rep}. ismétlés 🏋️`);
+}
+
+console.log(&#x27;A gyakorlat véget ért.&#x27;);</code></pre><p>A ciklus utáni üzenet egyszer jelenik meg, amikor a ciklus befejeződött.</p></section>
+<section><h2>Más kezdőérték és más felső határ</h2><p>A számláló nem kötelezően 1-ről indul. Ha a kezdőérték 5, a kiírás az ötödik ismétléssel kezdődik:</p><pre><code>for (let rep = 5; rep &lt;= 10; rep++) {
+  console.log(`Súlyemelés – ${rep}. ismétlés 🏋️`);
+}</code></pre><p>Ez <strong>hat</strong> ismétlés: 5, 6, 7, 8, 9 és 10. Ha harminc ismétlés kell, az 1-ről induló ciklus felső határát 30-ra módosítjuk:</p><pre><code>for (let rep = 1; rep &lt;= 30; rep++) {
+  console.log(`Súlyemelés – ${rep}. ismétlés 🏋️`);
+}</code></pre><p>Az ismétlendő művelethez nem kellett új sorokat másolnunk. A <code>&lt;</code> és a <code>&lt;=</code> közötti különbségre mindig figyelj: az egyik kizárja, a másik beleérti a felső határt.</p></section>
+<section><h2>Kapcsolat a Pythonban tanultakkal</h2><p>Pythonban ugyanezt a számsorozatot így járhattuk be:</p><pre><code># Python
+for rep in range(1, 11):
+    print(f&#x27;Súlyemelés – {rep}. ismétlés&#x27;)</code></pre><p>A Python <code>range(1, 11)</code> felső határa kizárt, ezért 1-től 10-ig halad. A JavaScript most tanult <code>for</code> alakjában külön megadjuk a kezdőértéket, a folytatás feltételét és a frissítést. A törzset Pythonban behúzás, itt kapcsos zárójel határolja.</p></section><nav aria-label="Tananyag navigáció"><a class="lesson-button" href="objektummetodusok.html">Előző · Objektummetódusok</a><a class="lesson-button" href="../index.html">Vissza a JavaScript tananyaghoz</a><a class="lesson-button" href="tombok-bejarasa.html">Következő · Tömbök bejárása</a></nav></main></body></html>
